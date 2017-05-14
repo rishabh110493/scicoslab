@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xchange</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xchange</b> -  transformation de coordonnées de l'échelle courante en pixels et inversement  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x1,y1,rect]=xchange(x,y,dir)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y  </b></tt>
+    : deux matrices de taille (n1,n2) (coordonnées d'un ensemble de points).
+</li>
+<li>
+<tt><b>x1,y1  </b></tt>
+    : deux matrices de taille (n1,n2) (coordonnées transformées).
+</li>
+<li>
+<tt><b>rect  </b></tt>
+    : un vecteur de taille 4.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Après l'appel à une fonction graphique de haut niveau, <tt><b>xchange</b></tt> calcule des coordonnées en pixels à partir des coordonnées "réelles" à l'échelle du dessin courant, et inversement, suivant la valeur du paramètre <tt><b>dir</b></tt> :
+    "f2i" (float to int) signifie réel vers pixel et "i2f" (int to float)
+    signifie pixel vers réel.
+    <tt><b>x1</b></tt> et <tt><b>y1</b></tt> sont les nouvelles coordonnées de l'ensemble de points 
+    définis par les anciennes coordonnées <tt><b>x</b></tt> et <tt><b>y</b></tt>.
+  </p>
+<p><tt><b>rect</b></tt> sont les coordonnées en pixels
+    du rectangle du cadre courant : [point en haut à gauche, largeur, hauteur].
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=[0:0.1:2*%pi]';
+plot2d(t,sin(t))
+[x,y,rect]=xchange(1,1,"f2i")
+[x,y,rect]=xchange(0,0,"i2f")
+ </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

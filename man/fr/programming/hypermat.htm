@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hypermat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hypermat</b> -  initialisation d'une matrice à N dimensions   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>M=hypermat(dims [,v])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims  </b></tt>
+    : vecteur des dimensions de l'hypermatrice
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur des termes de l'hypermatrice (valeur par défaut <tt><b>zeros(prod(dims),1)</b></tt>)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Initialisation d'une matrice à N dimensions dont les dimensions sont données dans le vecteur dims
+    et dont les termes sont éventuellement donnés dans un vecteur optionnel <tt><b>v</b></tt>.
+  </p>
+<p>
+    La structure de données M contient un champ <tt><b>M('dims')</b></tt> contenant les dimensions de l'hypermatrice et un champ contenant le vecteur des termes <tt><b>M('entries')</b></tt>, rangés tel que l'indice
+    le plus à gauche varie en premier :
+    <tt><b>[M(1,1,..);..;M(n1,1,..);...;M(1,n2,..);..;M(n1,n2,..);...]</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+M=hypermat([2 3 2 2],1:24)
+ </pre>
+</body>
+</html>

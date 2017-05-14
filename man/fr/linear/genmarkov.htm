@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>genmarkov</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>genmarkov</b> -  generates random markov matrix with recurrent and transient classes</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>M=genmarkov(rec,tr)  </tt></dd>
+<dd><tt>M=genmarkov(rec,tr,flag)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rec</b></tt>: integer row vector (its dimension is the number of recurrent classes).</li>
+<li>
+<tt><b>tr</b></tt>: integer (number of transient states)</li>
+<li>
+<tt><b>M</b></tt>: real Markov matrix. Sum of entries in each row should add to one.</li>
+<li>
+<tt><b>flag</b></tt>: string <tt><b>'perm'</b></tt>. If given, a random permutation of the states is done.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns in M a random Markov transition probability matrix
+    with <tt><b>size(rec,1)</b></tt> recurrent classes with <tt><b>rec(1),...rec($)</b></tt> 
+    entries respectively and tr transient states.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//P has two recurrent classes (with 2 and 1 states) 2 transient states
+P=genmarkov([2,1],2,'perm')
+[perm,rec,tr,indsRec,indsT]=classmarkov(P);
+P(perm,perm)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/classmarkov.htm"><tt><b>classmarkov</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/eigenmarkov.htm"><tt><b>eigenmarkov</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

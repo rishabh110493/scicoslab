@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lqg2stan</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lqg2stan</b> -  LQG to standard problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,r]=lqg2stan(P22,bigQ,bigR)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P22</b></tt>: <tt><b>syslin</b></tt> list (nominal plant) in state-space form</li>
+<li>
+<tt><b>bigQ</b></tt>: <tt><b>[Q,S;S',N]</b></tt> (symmetric) weighting matrix</li>
+<li>
+<tt><b>bigR</b></tt>: <tt><b>[R,T;T',V]</b></tt> (symmetric) covariance matrix</li>
+<li>
+<tt><b>r</b></tt>: <tt><b>1</b></tt>x<tt><b>2</b></tt> row vector = (number of measurements, number of inputs)  (dimension of  the 2,2 part of <tt><b>P</b></tt>)</li>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list (augmented plant)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lqg2stan</b></tt>  returns the augmented plant for linear LQG (H2) controller 
+    design.</p>
+<p><tt><b>P22=syslin(dom,A,B2,C2)</b></tt> is the nominal plant; it can be in continuous 
+    time (<tt><b>dom='c'</b></tt>) or discrete time (<tt><b>dom='d'</b></tt>).</p>
+<pre>
+
+  . 
+  x = Ax + w1 + B2u
+  y = C2x + w2
+   
+    </pre>
+<p>
+    for continuous time plant.</p>
+<pre>
+
+  x[n+1]= Ax[n] + w1 + B2u
+      y = C2x + w2
+   
+    </pre>
+<p>
+    for discrete time plant.</p>
+<p>
+    The (instantaneous) cost function is <tt><b>[x' u'] bigQ [x;u]</b></tt>.</p>
+<p>
+    The covariance of <tt><b>[w1;w2]</b></tt> is <tt><b>E[w1;w2] [w1',w2'] = bigR</b></tt></p>
+<p>
+    If <tt><b>[B1;D21]</b></tt> is a factor of <tt><b>bigQ</b></tt>, <tt><b>[C1,D12]</b></tt>
+    is a factor of <tt><b>bigR</b></tt> and <tt><b>[A,B2,C2,D22]</b></tt> is
+    a realization of P22, then <tt><b>P</b></tt> is a realization of
+    <tt><b>[A,[B1,B2],[C1,-C2],[0,D12;D21,D22]</b></tt>.
+    The (negative) feedback computed by <tt><b>lqg</b></tt> stabilizes <tt><b>P22</b></tt>,
+    i.e. the poles of <tt><b>cl=P22/.K</b></tt> are stable.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ny=2;nu=3;nx=4;
+P22=ssrand(ny,nu,nx);
+bigQ=rand(nx+nu,nx+nu);bigQ=bigQ*bigQ';
+bigR=rand(nx+ny,nx+ny);bigR=bigR*bigR';
+[P,r]=lqg2stan(P22,bigQ,bigR);K=lqg(P,r);  //K=LQG-controller
+spec(h_cl(P,r,K))      //Closed loop should be stable
+//Same as Cl=P22/.K; spec(Cl('A'))
+s=poly(0,'s')
+lqg2stan(1/(s+2),eye(2,2),eye(2,2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg.htm"><tt><b>lqg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqe.htm"><tt><b>lqe</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obscont.htm"><tt><b>obscont</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h_inf.htm"><tt><b>h_inf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/augment.htm"><tt><b>augment</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/fstabst.htm"><tt><b>fstabst</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/feedback.htm"><tt><b>feedback</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

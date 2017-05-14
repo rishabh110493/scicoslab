@@ -1,0 +1,49 @@
+function tt_ufunc=conv2tex_ufunc(txt,typdoc)
+
+  rhs=argn(2)
+  if rhs<2 then
+    typdoc='html'
+  end
+
+  tt_ufunc=[]
+
+  if txt<>[] then
+
+   tt_ufunc='\begin{itemize}';
+
+   for i=1:size(txt,'r')
+
+     if typdoc=='html' then
+       if (txt(i,3)<>"")&(txt(i,3)<>"") then
+         tt_ufunc=[tt_ufunc;'  '+...
+                   '\item{\htmladdnormallink{'+...
+                     latexsubst(txt(i,1))+...
+                     ' - '+latexsubst(txt(i,3))+...
+                     ' ('+latexsubst(txt(i,4))+')'+...
+                     '}{'+txt(i,2)+'}}'];
+       else
+         tt_ufunc=[tt_ufunc;'  '+...
+                   '\item{\htmladdnormallink{'+...
+                     latexsubst(txt(i,1))+...
+                     '}{'+txt(i,2)+'}}'];
+       end
+     else
+       //on peut rajouter un \ref{} ici!
+       if txt(i,3)<>""&txt(i,3)<>"" then
+         tt_ufunc=[tt_ufunc;'  '+...
+                   '\item{'+...
+                     latexsubst(txt(i,1))+...
+                     ' - '+latexsubst(txt(i,3))+...
+                     ' ('+latexsubst(txt(i,4))+')}'];
+       else
+         tt_ufunc=[tt_ufunc;'  '+...
+                   '\item{'+...
+                     latexsubst(txt(i,1))+...
+                     '}'];
+       end
+     end
+   end
+   tt_ufunc=[tt_ufunc;'\end{itemize}'];
+
+  end
+endfunction

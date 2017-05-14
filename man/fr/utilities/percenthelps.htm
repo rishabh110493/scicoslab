@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>%helps</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>%helps</b> -  variable contenant les noms des répertoires des chapitres d'aide  </p>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>%helps</b></tt> est une matrice de chaînes de caractères à deux colonnes. Chaque ligne est formée comme ceci
+  </p>
+<pre>
+répertoire_du_chapitre    titre_du_chapitre
+   </pre>
+<p>
+    Par exemple, nous avons le chapitre "graphics". 
+    <tt><b>%helps(2,:)</b></tt>.
+  </p>
+<p>
+    La valeur par défaut de <tt><b>%helps</b></tt> est initialisée dans le fichier <tt><b>SCI+"scilab.star"</b></tt>.
+  </p>
+<p>
+    Pour ajouter de nouveaux chapitres d'aide il suffit d'ajouter des lignes à la variable <tt><b>%helps</b></tt>, par exemple dans le fichier utilisateur de démarrage <tt><b>SCIHOME/.scilab</b></tt>.
+  </p>
+<p>
+    Par exemple, 
+    <tt><b>%helps=[%helps; "répertoire_du_chapitre",  "titre_du_chapitre"];</b></tt></p>
+<p>
+    "titre_du_chapitre" devient le titre d'un nouveau chapitre.
+  </p>
+<p>
+    Chaque répertoire d'aide contient des fichiers <tt><b>*.html</b></tt>,
+    généralement généré à partir d'un fichier XML, et un fichier
+    <tt><b>whatis.html</b></tt> contenant une ligne pour chaque mot-clé documenté
+    dans le chapitre correspondant. Chaque ligne doit avoir le format :
+  </p>
+<p></p>
+<pre>
+&lt;BR&gt;&lt;A HREF="item.html"&gt;item&lt;/A&gt; - description rapide
+   </pre>
+<p><tt><b>item</b></tt> est l'article de la liste d'aide, c'est-à-dire que la commande <tt><b>help item</b></tt> affiche le contenu du fichier <tt><b>item.html</b></tt>.
+  </p>
+<p>
+      
+    La commande <tt><b>apropos mot-clé</b></tt> renvoie les lignes de tous les fichiers
+    <tt><b>whatis</b></tt> dans lesquels <tt><b>mot-clé</b></tt> apparaît.
+  </p>
+<p></p>
+<p>
+    Sur les plates-formes Linux, Scilab dispose d'un Makefile pour transformer les fichiers <tt><b>.xml</b></tt> en <tt><b>.html</b></tt> (voir SCI/examples/man-examples).
+  </p>
+<p></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/apropos.htm"><tt><b>apropos</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

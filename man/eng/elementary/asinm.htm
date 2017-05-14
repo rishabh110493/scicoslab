@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>asinm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>asinm</b> -  matrix wise sine inverse</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=asinm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>t</b></tt>: real or complex square matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>t</b></tt> are sine inverse of the <tt><b>x</b></tt> matrix. Diagonalization
+    method is used. For non symmetric matrices result may be inaccurate.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4]
+sinm(asinm(A))
+asinm(A)+%i*logm(%i*A+sqrtm(eye()-A*A))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/asin.htm"><tt><b>asin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sinm.htm"><tt><b>sinm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>%helps</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>%helps</b> -  Variable defining the path of help directories</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The global variable <tt><b>%helps</b></tt> is an N x 2 matrix of strings. 
+    The kth row of <tt><b>%helps</b></tt>, <tt><b>%helps(k,:)</b></tt> represents
+    the kth chapter of the manual and is made of two strings:</p>
+<p><tt><b>%helps(k,1)</b></tt> is the absolute pathname for a help directory.</p>
+<p><tt><b>%helps(k,2)</b></tt> is a title for this help directory.
+    For instance, for k=2, we have the graphics chapter 
+    <tt><b>%helps(2,:)</b></tt>.</p>
+<p>
+    The variable <tt><b>%helps</b></tt> is defined in the Scilab startup
+    file <tt><b>SCI+"/scilab.star"</b></tt>.</p>
+<p>
+    To add a new help directory, the user should add a row to
+    the variable <tt><b>%helps</b></tt>. (One row for each directory).</p>
+<p>
+    For instance, <tt><b>%helps=[%helps; "Path-Of-My-Help-Dir","My-Title"];</b></tt>
+    enables the Scilab help browser to look for help manual items
+    in the directory with pathname "Path-Of-My-Help-Dir".</p>
+<p>
+    "My-Title" is then the title of a new help chapter.</p>
+<p>
+    A valid help directory must contain:</p>
+<p>
+    1- A set of <tt><b>.html</b></tt> files (e.g. <tt><b>item1.html, item2.html</b></tt> etc).
+    The <tt><b>.html</b></tt> files are usually built from XML files.</p>
+<p>
+    2- A <tt><b>whatis.html</b></tt> file, which must have a special format. Each row
+    of the <tt><b>whatis</b></tt> must be as follows:</p>
+<pre>
+
+&lt;BR&gt;&lt;A HREF="item.html"&gt;item&lt;/A&gt; - quick description
+   
+    </pre>
+<p><tt><b>item</b></tt> is the item of the help, i.e. the command <tt><b>help item</b></tt>
+    displays the contents of the file <tt><b>item.html</b></tt>.</p>
+<p>
+    The command <tt><b>apropos keyword</b></tt> returns the row(s) of all
+    the <tt><b>whatis.html</b></tt> file(s) in which the keyword appears.</p>
+<p>
+    On Linux platforms Scilab provides a Makefile for transforming
+    <tt><b>.xml</b></tt> pages into <tt><b>.html</b></tt> pages (see SCIDIR/examples/man-examples).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/apropos.htm"><tt><b>apropos</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/man.htm"><tt><b>man</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

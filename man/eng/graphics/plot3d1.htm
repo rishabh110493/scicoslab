@@ -1,0 +1,175 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plot3d1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot3d1</b> - 3D gray or color level plot of a
+  surface</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plot3d1(x,y,z,[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>plot3d1(xf,yf,zf,[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>plot3d1(x,y,z,&lt;opts_args&gt;)</tt></dd>
+<dd><tt>plot3d1(xf,yf,zf,&lt;opts_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: row vectors of sizes n1 and n2 (x-axis and y-axis
+          coordinates). These coordinates must be monotone.</li>
+<li>
+<tt><b>z</b></tt>: matrix of size (n1,n2). <tt><b>z(i,j)</b></tt> is the value of
+          the surface at the point (x(i),y(j)).</li>
+<li>
+<tt><b>xf,yf,zf</b></tt>: matrices of size (nf,n). They define the facets used to draw
+          the surface. There are <tt><b>n</b></tt> facets. Each facet
+          <tt><b>i</b></tt> is defined by a polygon with <tt><b>nf</b></tt> points.
+          The x-axis, y-axis and z-axis coordinates of the points of the ith
+          facet are given respectively by <tt><b>xf(:,i)</b></tt>,
+          <tt><b>yf(:,i)</b></tt> and <tt><b>zf(:,i)</b></tt>.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: theta, alpha
+          ,leg,flag,ebox (see definition below).</li>
+<li>
+<tt><b>theta, alpha</b></tt>: real values giving in degree the spherical coordinates of the
+          observation point.</li>
+<li>
+<tt><b>leg</b></tt>: string defining the labels for each axis with @ as a field
+          separator, for example "X@Y@Z".</li>
+<li>
+<tt><b>flag</b></tt>: a real vector of size three.
+          <tt><b>flag=[mode,type,box]</b></tt>.<ul>
+<li>
+<tt><b>mode</b></tt>: an integer (surface color).<ul>
+<li>
+<tt><b>mode&gt;0</b></tt>: the surface is painted with color
+                      <tt><b>"mode"</b></tt> ; the boundary of the facet is drawn
+                      with current line style and color.</li>
+<li>
+<tt><b>mode=0:</b></tt>a mesh of the surface is drawn.</li>
+<li>
+<tt><b>mode&lt;0:</b></tt>the surface is painted with color
+                      <tt><b>"-mode"</b></tt> ; the boundary of the facet is not
+                      drawn.<p>Note that the surface color treatement can be done
+                      using <tt><b>color_mode</b></tt> and
+                      <tt><b>color_flag</b></tt> options through the surface
+                      entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>type</b></tt>: an integer (scaling).<ul>
+<li>
+<tt><b>type=0:</b></tt>the plot is made using the current 3D scaling (set
+                      by a previous call to <tt><b>param3d</b></tt>,
+                      <tt><b>plot3d</b></tt>, <tt><b>contour</b></tt> or
+                      <tt><b>plot3d1</b></tt>).</li>
+<li>
+<tt><b>type=1:</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are specified by the value of the
+                      optional argument <tt><b>ebox</b></tt>.</li>
+<li>
+<tt><b>type=2:</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are computed using the given
+                      data.</li>
+<li>
+<tt><b>type=3:</b></tt>3d isometric with box bounds given by optional
+                      <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=4:</b></tt>3d isometric bounds derived from the data, to
+                      similarily<tt><b>type=2</b></tt>.</li>
+<li>
+<tt><b>type=5:</b></tt>3d expanded isometric bounds with box bounds given
+                      by optional <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=6:</b></tt>3d expanded isometric bounds derived from the data,
+                      similarily to <tt><b>type=2</b></tt>.<p>Note that axes boundaries can be customized through
+                      the axes entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>box</b></tt>: an integer (frame around the plot).<ul>
+<li>
+<tt><b>box=0:</b></tt>nothing is drawn around the plot.</li>
+<li>
+<tt><b>box=1:</b></tt>unimplemented (like box=0).</li>
+<li>
+<tt><b>box=2:</b></tt>only the axes behind the surface are drawn.</li>
+<li>
+<tt><b>box=3:</b></tt>a box surrounding the surface is drawn and captions
+                      are added.</li>
+<li>
+<tt><b>box=4:</b></tt>a box surrounding the surface is drawn, captions and
+                      axes are added.<p>Note that axes aspect can also be customized through
+                      the axes entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ebox</b></tt>: It specifies the boundaries of the plot as the vector
+          <tt><b>[xmin,xmax,ymin,ymax,zmin,zmax]</b></tt>. This argument is used
+          together with <tt><b>type</b></tt> in <tt><b>flag</b></tt> : if it is set
+          to <tt><b>1</b></tt>, <tt><b>3</b></tt> or <tt><b>5</b></tt> (see above to
+          see the corresponding behaviour). If <tt><b>flag</b></tt> is missing,
+          <tt><b>ebox</b></tt> is not taken into acoount.<p>Note that, when specified, the <tt><b>ebox</b></tt> argument acts on
+          the <tt><b>data_bounds</b></tt> field that can also be reset through
+          the axes entity properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot3d1</b></tt> plots a surface with colors depending on the
+    z-level of the surface. This special plot function can also be enabled
+    setting <tt><b>color_flag=1</b></tt> after a <tt><b>plot3d</b></tt> (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>)</p>
+<p>Enter the command <tt><b>plot3d1()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// simple plot using z=f(x,y) 
+t=[0:0.3:2*%pi]'; z=sin(t)*cos(t'); 
+plot3d1(t,t,z) 
+// same plot using facets computed by genfac3d 
+[xx,yy,zz]=genfac3d(t,t,z); 
+clf(); 
+plot3d1(xx,yy,zz) 
+// multiple plots 
+clf(); 
+plot3d1([xx xx],[yy yy],[zz 4+zz]) 
+// simple plot with viewpoint and captions 
+clf() ;
+plot3d1(1:10,1:20,10*rand(10,20),35,45,"X@Y@Z",[2,2,3]) 
+// same plot without grid 
+clf() 
+plot3d1(1:10,1:20,10*rand(10,20),35,45,"X@Y@Z",[-2,2,3]) 
+// plot of a sphere using facets computed by eval3dp 
+deff("[x,y,z]=sph(alp,tet)",["x=r*cos(alp).*cos(tet)+orig(1)*ones(tet)";.. 
+"y=r*cos(alp).*sin(tet)+orig(2)*ones(tet)";.. 
+"z=r*sin(alp)+orig(3)*ones(tet)"]); 
+r=1; orig=[0 0 0]; 
+[xx,yy,zz]=eval3dp(sph,linspace(-%pi/2,%pi/2,40),linspace(0,%pi*2,20)); 
+clf() 
+
+plot3d(xx,yy,zz)
+e=gce();
+e.color_flag=1;
+scf(2);
+plot3d1(xx,yy,zz) // the 2 graphics are similar
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gce.htm"><tt><b>gce</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

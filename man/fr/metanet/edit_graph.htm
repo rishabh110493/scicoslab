@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>edit_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>edit_graph</b> -  graph and network graphical editor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>num=edit_graph()  </tt></dd>
+<dd><tt>num=edit_graph(file_name [,zoom [,wsize]])</tt></dd>
+<dd><tt>num=edit_graph(G [,zoom [,wsize]])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_name</b></tt>: character string. The path of a "graph" file</li>
+<li>
+<tt><b>G</b></tt>: a <tt><b> graph-list</b></tt>data structure</li>
+<li>
+<tt><b>zoom</b></tt>: real positive scalar. The zoom factor, its default value is 1.</li>
+<li>
+<tt><b>wsize</b></tt>: real positive vector <tt><b> [width height]</b></tt>. The initial
+  window dimensions, its default value is <tt><b>[600,400]</b></tt>.</li>
+<li>
+<tt><b>num</b></tt>: integer scalar. The associated window number
+  window dimension.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   This function starts a network graphical editor.   Each time <tt><b>edit_graph</b></tt> is
+  executed, a new editor window  is created.  The editor capabilities
+   and menus are described in <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/edit_graph_menus.htm"><tt><b>edit_graph_menus</b></tt></a></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+ he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+ g=make_graph('foo',1,17,ta,he);
+ g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+ g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+ edit_graph(g)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/netclose.htm"><tt><b>netclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/show_graph.htm"><tt><b>show_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/netwindow.htm"><tt><b>netwindow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/edit_graph_menus.htm"><tt><b>edit_graph_menus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

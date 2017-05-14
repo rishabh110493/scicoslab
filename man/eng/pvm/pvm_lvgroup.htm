@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_lvgroup</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_lvgroup</b> -  Unenrolls the calling process from a named group.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[info] = pvm_lvgroup(group)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>group</b></tt>: string, group name of an existing group.</li>
+<li>
+<tt><b>info</b></tt>: integer, status code returned by the routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_lvgroup</b></tt> 
+    unenrolls the calling process from
+    the group named <tt><b>group</b></tt></p>
+<p>
+    The returned value will be &gt;= 0 if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<p>
+    If a process leaves a group by calling either pvm_lvgroup
+    or pvm_exit, and later rejoins the same group, the process
+    may be assigned a new instance number. Old instance
+    numbers are reassigned to processes calling pvm_joingroup.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

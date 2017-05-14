@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lasterror</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lasterror</b> -  get last recorded error message</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>str=lasterror( [opt] )  </tt></dd>
+<dd><tt>[str,n]=lasterror([opt])  </tt></dd>
+<dd><tt>[str,n,line,func]=lasterror([opt])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>:  vector of character strings or an empty matrix. The last recorded error message.</li>
+<li>
+<tt><b>n</b></tt>:  integer, 0 or the last recorded error number.</li>
+<li>
+<tt><b>line</b></tt>:  integer, 0 or the last recorded function line number.</li>
+<li>
+<tt><b>func</b></tt>:  string, the last recorded function name</li>
+<li>
+<tt><b>opt</b></tt>:  boolean, if %t recorded message is cleared. Default is %t.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Each time an error occurs, the Scilab error handler records it in an
+    internal table (only the last one is retained). The <tt><b>lasterror</b></tt>
+    function allows to get the message, the error number, the current
+    function (if any) and the current line number in the current function
+    out of this table.</p>
+<p>
+    The reported line number is the <em>physical</em> line
+    number where the last error occurred. Note that Scilab versions before 5.0
+    used to report the <em>logical</em> line number of the last
+    error. There is a difference only if the function in error includes
+    <em>continued lines</em> (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/dot.htm"><tt><b>dot</b></tt></a>) before the point where
+    the error happened.</p>
+<p>
+    This function is especially useful while using <tt><b>errcatch</b></tt> or <tt><b>execstr</b></tt>.</p>
+<p>
+    The recorded error message may be retained for a further call to
+    <tt><b>lasterror</b></tt> using <tt><b>lasterror(%f)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ierr=execstr('a=zzzzzzz','errcatch')
+if ierr&gt;0 then disp(lasterror()),end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/error.htm"><tt><b>error</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errclear.htm"><tt><b>errclear</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/edit_error.htm"><tt><b>edit_error</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

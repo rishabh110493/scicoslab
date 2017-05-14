@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lotest</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lotest</b> -  demo of the Lorenz attractor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[]=lotest([f_l,odem,xdim,npts,pinit])  </tt></dd>
+<dd><tt>[y]=lorenz(t,x)  </tt></dd>
+<dd><tt>[]=ilo(sig,ro,beta)  </tt></dd>
+<dd><tt>[]=ilof(sig,ro,beta)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f_l</b></tt>: can be <tt><b>"loren"</b></tt> or <tt><b>lorenz</b></tt>. it
+  is the name of the external for  the Lorenz
+  system. <tt><b>"loren"</b></tt> will use a Fortran coded
+  version of the lorenz system and arnold will and <tt><b>loren</b></tt>
+  will use a Scilab coded version.<tt><b>lorentz</b></tt> is the Scilab
+  macro which code the lorenz system.  This macro is loaded when
+  calling <tt><b>lotest</b></tt>.</li>
+<li>
+<tt><b>ilof, ilo</b></tt>:are used to fix the parameters of the Fortran and Scilab code version of the  Lorenz system.</li>
+<li>
+<tt><b>odem,xdim,npts</b></tt>: are optional arguments. Their meaning and syntax can be found in the portr3d   help</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A call to the function <tt><b>lotest()</b></tt> will interactively 
+    display a phase portrait of  a the following dynamical system</p>
+<pre>
+
+ y(1)=sig*(x(2)-x(1));
+ y(2)=ro*x(1) -x(2)-x(1)*x(3);
+ y(3)=-beta*x(3)+x(1)*x(2);
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tdcs/portr3d.htm"><tt><b>portr3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tdcs/chaintest.htm"><tt><b>chaintest</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tdcs/lotest.htm"><tt><b>lotest</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

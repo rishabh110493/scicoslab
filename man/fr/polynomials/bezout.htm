@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bezout</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bezout</b> -  équation de Bezout pour les polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pgcd,U]=bezout(p1,p2)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>p1, p2  </b></tt>
+    : deux polynômes réels ou deux entiers (type égal à 8)
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[thegcd,U]=bezout(p1,p2)</b></tt> calcule le PGCD <tt><b>pgcd</b></tt> de <tt><b>p1</b></tt> et <tt><b>p2</b></tt> et de plus une matrice
+    unimodulaire (2x2) <tt><b>U</b></tt> telle que :
+  </p>
+<p><tt><b>[p1,p2]*U = [pgcd,0]</b></tt></p>
+<p>
+    Le PPCM de <tt><b>p1</b></tt> et <tt><b>p2</b></tt> est donné par
+  </p>
+<p><tt><b>p1*U(1,2)</b></tt> (ou <tt><b>-p2*U(2,2)</b></tt>)
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// cas des polynômes
+x=poly(0,'x');
+p1=(x+1)*(x-3)^5;p2=(x-2)*(x-3)^3;
+[pgcd,U]=bezout(p1,p2) 
+det(U)
+clean([p1,p2]*U)
+ppcm=p1*U(1,2)
+lcm([p1,p2])
+// cas des entiers
+i1=int32(2*3^5); i2=int32(2^3*3^2);
+[thegcd,U]=bezout(i1,i2) 
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+[thegcd,U]=gcd(V)
+V*U
+lcm(V)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/roots.htm"><tt><b>roots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/lcm.htm"><tt><b>lcm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

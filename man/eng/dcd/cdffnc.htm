@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cdffnc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdffnc</b> -  cumulative distribution function non-central f-distribution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdffnc("PQ",F,Dfn,Dfd,Pnonc)  </tt></dd>
+<dd><tt>[F]=cdffnc("F",Dfn,Dfd,Pnonc,P,Q);  </tt></dd>
+<dd><tt>[Dfn]=cdffnc("Dfn",Dfd,Pnonc,P,Q,F);  </tt></dd>
+<dd><tt>[Dfd]=cdffnc("Dfd",Pnonc,P,Q,F,Dfn)  </tt></dd>
+<dd><tt>[Pnonc]=cdffnc("Pnonc",P,Q,F,Dfn,Dfd);  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,F,Dfn,Dfd,Pnonc</b></tt>: six real vectors of the same size.</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>The integral from 0 to F of the non-central f-density. Input range: [0,1-1E-16).</li>
+<li>
+<tt><b>F</b></tt>: Upper limit of integration of the non-central f-density. Input range: [0, +infinity). Search range: [0,1E300]</li>
+<li>
+<tt><b>Dfn</b></tt>: Degrees of freedom of the numerator sum of squares. Input range: (0, +infinity). Search range: [ 1E-300, 1E300]</li>
+<li>
+<tt><b>Dfd</b></tt>: Degrees of freedom of the denominator sum of squares. Must be in range: (0, +infinity). Input range: (0, +infinity). Search range: [ 1E-300, 1E300]</li>
+<li>
+<tt><b>Pnonc</b></tt>: The non-centrality parameter Input range: [0,infinity) Search range: [0,1E4]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates any one parameter of the Non-central F
+    distribution given values for the others.</p>
+<p>
+    Formula  26.6.20   of   Abramowitz   and   Stegun,  Handbook  of
+    Mathematical  Functions (1966) is used to compute the cumulative
+    distribution function.</p>
+<p>
+    Computation of other parameters involve a seach for a value that
+    produces  the desired  value  of P.   The search relies  on  the
+    monotinicity of P with the other parameter.</p>
+<p>
+    The computation time  required for this  routine is proportional
+    to the noncentrality  parameter  (PNONC).  Very large  values of
+    this parameter can consume immense  computer resources.  This is
+    why the search range is bounded by 10,000.</p>
+<p>
+    The  value  of the  cumulative  noncentral F distribution is not
+    necessarily monotone in either degrees  of freedom.  There  thus
+    may be two values that provide a given  CDF value.  This routine
+    assumes monotonicity  and will find  an arbitrary one of the two
+    values.</p>
+<p>
+    From DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.</p>
+</body>
+</html>

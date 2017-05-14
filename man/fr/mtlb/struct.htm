@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>struct</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>struct</b> - creer une struct</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>st=struct(field1,value1,field2,value2,
+    ...)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>field1, field2, ...</b></tt>: noms des champs (chaines de caracteres)</li>
+<li>
+<tt><b>value1, value2, ...</b></tt>: les valeurs des champs (acceptent tous types de données
+          (double, matrice de doubles,des cells, char, ...)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>La fonction <tt><b>struc</b></tt>t retourne une struct avec des noms de
+    champs <tt><b>field1</b></tt>, <tt><b>field2</b></tt>, .., et dont les valeurs
+    respectives sont <tt><b>value</b></tt><tt><b>1</b></tt>, <tt><b>value2</b></tt>,
+    ...</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>//creer une struct: date les champs sont: 'jour' (valeur: 25), 'mois' (valeur: 'DEC'), 'annee' (valeur: 2006) 
+date=struct('jour',25,'mois','DEC','annee',2006)
+// changer la valeur des champs
+date.jour=19;
+date.mois='AOU';
+date.annee=1973;
+// ajouter un champ 'semaine'
+date.semaine=32</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/cell.htm"><tt><b>cell</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>newaxes</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>newaxes</b> -  Creates a new Axes entity</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>a=newaxes()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>a</b></tt>: a handle, the handle on the newly created Axes entity</li></ul>
+<h3><font color="blue">Description</font></h3>
+<tt><b>newaxes()</b></tt> is used to create a new <tt><b>Axes</b></tt> entity (see
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>) in the current figure. The properties of
+      this entity are inherited from the <tt><b>default_axes</b></tt> entity (see
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>) <h3><font color="blue">Examples</font></h3>
+<pre>
+
+clf()
+a1=newaxes(); 
+a1.axes_bounds=[0,0,1.0,0.5];
+t=0:0.1:20;
+plot(t,acosh(t),'r')
+a2=newaxes();
+a2.axes_bounds=[0,0.5,1.0,0.5];
+x=0:0.1:4;
+plot(x,sinh(x))
+legend('sinh')
+
+sca(a1); //make first axes current
+plot(t,asinh(t),'g')
+legend(['acosh','asinh'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/subplot.htm"><tt><b>subplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/sca.htm"><tt><b>sca</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer, INRIA</p>
+</body>
+</html>

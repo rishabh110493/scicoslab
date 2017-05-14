@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unix_g</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unix_g</b> -  shell (sh) command execution, output redirected to a variable</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rep=unix_g(cmd)  </tt></dd>
+<dd><tt>[rep,stat]=unix_g(cmd)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>cmd</b></tt>: a character string</li>
+<li>
+<tt><b>rep</b></tt>: a column vector of character strings</li>
+<li>
+<tt><b>stat</b></tt>: a integer, the error status. stat=0 if no error occured</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sends a string <tt><b>cmd</b></tt> to Unix for execution by the sh
+    shell. The standard output is redirected to scilab variable <tt><b>rep</b></tt>.
+    Unix execution errors are trapped; *NOTE* that only the last shell command
+    error is reported when a list of command separated by ";" is sent: this is
+    not recommended.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+function d=DIR(path)
+  path=pathconvert(path,%t,%t)
+  if MSDOS then
+    d=unix_g('dir '+path)
+  else
+    d=unix_g('ls '+path)
+  end
+endfunction
+
+DIR('SCI/demos')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_s.htm"><tt><b>unix_s</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_w.htm"><tt><b>unix_w</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_x.htm"><tt><b>unix_x</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix.htm"><tt><b>unix</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

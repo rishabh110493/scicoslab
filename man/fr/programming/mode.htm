@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mode</b> -  choisit le mode d'exécution des scripts
+    et des fonctions  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mode(k)  </tt></dd>
+<dd><tt>k=mode()   </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Utilisé <tt><b>uniquement</b></tt> dans un script ou une fonction,
+      <tt><b>mode(k)</b></tt> permet de choisir le mode d'affichage utilisé
+      pendant l'exécution, suivant la valeur de <tt><b>k</b></tt> : 
+    </p>
+<dl>
+<dd>
+<b>k=0</b>
+	  : les nouvelles valeurs des variables sont affichées (voir
+	  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/semi.htm"><tt><b>semi</b></tt></a> ou <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/comma.htm"><tt><b>comma</b></tt></a>). 
+	</dd>
+<dd>
+<b>k=-1</b>
+	  : l'exécution est silencieuse (rien n'est affiché : mode
+	  par défaut pour les fonctions) 
+	</dd>
+<dd>
+<b>k=1 ou k=3</b>
+	  : les nouvelles valeurs des variables sont affichées, chaque ligne de
+	  commande est affichée et précédée de l'invite de commande (mode
+	  par défaut pour les scripts lancés par "exec") 
+	</dd>
+<dd>
+<b>k=7</b>: les nouvelles valeurs des variables sont affichées, chaque ligne de
+	  commande est affichée et précédée de l'invite de
+	  commande. L'exécution est interrompue après chaque ligne et
+	  reprend après un appui sur la touche entrée/return.Si la touche
+	  entrée/return et précédée du caractère "p", l'éxecution est suspendue
+	  (voir <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pause.htm"><tt><b>pause</b></tt></a>).	</dd>
+</dl>
+      L'affichage est supprimé dans les fonctions compilées (voir getf ou
+      comp). Par défaut les fonctions Scilab sont éxécutées en mode silencieux ("-1"). 
+
+    <h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/semi.htm"><tt><b>semi</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/comma.htm"><tt><b>comma</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

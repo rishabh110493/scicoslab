@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fec_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fec_properties</b> - description of the fec entities
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Fec entity is a leaf of the graphics entities hierarchy. It
+    represents 2D finite elements plots (see <tt><b>fec</b></tt>,
+    <tt><b>Sgrayplot</b></tt>).</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        fec entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>Fec</b></tt> handles currently do not have
+        any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        By default, the plot is visible, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the plot is not drawn on the
+        screen.</dd>
+<dd>
+<b>data: </b>This is a three column matrix <tt><b>[x,y,f]</b></tt>, where
+        <tt><b>x(i)</b></tt> and <tt><b>y(i)</b></tt> are the coordinates of the
+        <tt><b>i</b></tt>'th node. <tt><b>f(i)</b></tt> is the value associated to
+        the node <tt><b>i</b></tt>.</dd>
+<dd>
+<b>triangles: </b>This is a five column matrix <tt><b>[tn,n1,n2,n3,flag]</b></tt>.
+        <tt><b>tn(j)</b></tt> is the triangle number. <tt><b>n1(j)</b></tt>,
+        <tt><b>n2(j)</b></tt> and <tt><b>n3(j)</b></tt> are the index of the nodes
+        which constitute the triangle. (<tt><b>flag(j)</b></tt> is not
+        used).</dd>
+<dd>
+<b>z_bounds: </b>This <tt>[zmin,zmax]</tt> vector gives the z values associated
+        with the first and the last color (of the current colormap). More
+        exactly if the colormap have <tt>nc</tt> colors and if we note <tt>dz
+        = (zmax-zmin)/nc</tt>, then the part of the triangulation where
+        <tt>zmin + (i-1)dz &lt;= z &lt; zmin + i dz</tt> is filled with the
+        color <tt>i</tt>). By default <tt>zmin = min(func)</tt> and <tt>zmax =
+        max(func)</tt>. If you want to do an animation with func values that
+        varie in time, take for <tt>zmin</tt> and <tt>zmax</tt> the global
+        minimum and maximum or something close. </dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the fec data
+        structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+   set("figure_style","new"); //create a figure
+
+   x=-10:10; y=-10:10;m =rand(21,21);
+   Sgrayplot(x,y,m);
+   a=get("current_axes");
+   f=a.children.children(1)
+   f.data(:,3)=(1:size(f.data,1))';
+   a.parent.color_map=hotcolormap(64);
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec.htm"><tt><b>fec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Sgrayplot.htm"><tt><b>Sgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

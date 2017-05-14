@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>convol</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>convol</b> -  convolution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[y]=convol(h,x)  </tt></dd>
+<dd><tt>[y,e1]=convol(h,x,e0)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,h</b></tt>:input sequences (<tt><b>h</b></tt> is a "short" sequence, <tt><b>x</b></tt> a "long" one)</li>
+<li>
+<tt><b>e0</b></tt>: old tail to overlap add (not used in first call)</li>
+<li>
+<tt><b>y</b></tt>: output of convolution</li>
+<li>
+<tt><b>e1</b></tt>: new tail to overlap add (not used in last call)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    calculates the convolution <tt><b>y= h*x</b></tt> of two
+    discrete sequences by using the fft.  Overlap add method can be used.</p>
+<p>
+    USE OF OVERLAP ADD METHOD: 
+    For x=[x1,x2,...,xNm1,xN]
+    First call is [y1,e1]=convol(h,x1); 
+    Subsequent calls : [yk,ek]=convol(h,xk,ekm1);
+    Final call : [yN]=convol(h,xN,eNm1);
+    Finally y=[y1,y2,...,yNm1,yN]</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=1:3;
+h1=[1,0,0,0,0];h2=[0,1,0,0,0];h3=[0,0,1,0,0];
+x1=convol(h1,x),x2=convol(h2,x),x3=convol(h3,x),
+convol(h1+h2+h3,x)
+p1=poly(x,'x','coeff')
+p2=poly(h1+h2+h3,'x','coeff')
+p1*p2
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/corr.htm"><tt><b>corr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/fft.htm"><tt><b>fft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/pspect.htm"><tt><b>pspect</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D , C. Bunks Date 3 Oct. 1988; ;   </p>
+</body>
+</html>

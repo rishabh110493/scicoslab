@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>max_clique</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>max_clique</b> -  clique maximum d'un graphe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[size,nodes] = max_clique(g,[ind])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>ind  </b></tt>
+    : entier (optionnel) 
+</li>
+<li>
+<tt><b>size  </b></tt>
+    : entier
+</li>
+<li>
+<tt><b>nodes  </b></tt>
+    : vecteur ligne d'entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>max_clique</b></tt> calcule la clique maximum d'un graphe <tt><b>g</b></tt> i.e. le 
+    sous-graphe complet de taille maximum. <tt><b>ind</b></tt> est un paramètre pour le 
+    choix de la méthode: si <tt><b>ind</b></tt> vaut 0 la méthode est un 
+    algorithme partiellement énumératif et si <tt><b>ind</b></tt> vaut 1 l'algorithme 
+    est de type programmation quadratique zéro-un. La valeur est 0 par défaut.
+    La sortie <tt><b>size</b></tt> est le nombre de sommets de la clique trouvée par
+    l'algorithme et <tt><b>nodes</b></tt> est le vecteur des sommets correspondants.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 2 3 4 5 6 6 7 8  9 10 16 16 10 11 11 12 12 11 14 15 15 13 7 13 13];
+he=[2 3 4 5 6 7 8 8 9 10 16  2  3 11 12 13  1 14 14 15  5  9 12 4 14 15];
+g=make_graph('foo',0,16,ta,he);
+g('node_x')=[106 199 369 467 470 403 399 347 308 269 184 108 199 268 345 272];
+g('node_y')=[341 420 422 321 180 212 286 246 193 244 243 209  59 134  51 348];
+g('node_diam')=[1:(g('node_number'))]+20;
+show_graph(g);
+[ns,no] = max_clique(g);
+show_nodes(no);
+g1=graph_complement(g);
+[ns,no] = max_clique(g1);
+show_nodes(no);
+ </pre>
+</body>
+</html>

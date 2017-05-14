@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>write4b</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>write4b</b> -  fortran file binary write</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>write4b(file-name,a [,rec])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-name</b></tt>: string or integer</li>
+<li>
+<tt><b>rec</b></tt>: vector of positive integers. the selected records for direct access. This vector size must be equal to the number of rows of <tt><b>a</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    writes in binary format the matrix <tt><b>a</b></tt> in the file
+    <tt><b>'filename'</b></tt>. Matrix entries are  stored on 8 byte words</p>
+<p>
+    For direct record access, file must have been previously opened using
+    <tt><b>file</b></tt> function to set the record_length. <tt><b>file-name</b></tt> must be
+    the result of the <tt><b>file</b></tt> function.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/readb.htm"><tt><b>readb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/read4b.htm"><tt><b>read4b</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

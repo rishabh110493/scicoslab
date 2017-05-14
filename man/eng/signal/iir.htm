@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>iir</b> -  iir digital filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[hz]=iir(n,ftype,fdesign,frq,delta)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: filter order (pos. integer)</li>
+<li>
+<tt><b>ftype</b></tt>: string  specifying the filter type  <tt><b>'lp','hp','bp','sb'</b></tt>
+</li>
+<li>
+<tt><b>fdesign</b></tt>: string specifying the analog filter design  <tt><b>='butt','cheb1','cheb2','ellip'</b></tt>
+</li>
+<li>
+<tt><b>frq</b></tt>: 2-vector of discrete cut-off frequencies (i.e.,
+  <tt><b>0&lt;frq&lt;.5</b></tt>). For <tt><b>lp</b></tt> and
+  <tt><b>hp</b></tt> filters only <tt><b>frq(1)</b></tt> is used. For
+  <tt><b>bp</b></tt> and <tt><b>sb</b></tt> filters <tt><b>frq(1)</b></tt> is
+  the lower cut-off frequency and <tt><b>frq(2)</b></tt> is the upper
+  cut-off frequency</li>
+<li>
+<tt><b>delta</b></tt><p>
+    : 2-vector of error values for <tt><b>cheb1, cheb2</b></tt>, and
+  <tt><b>ellip</b></tt> filters where only <tt><b>delta(1)</b></tt> is used
+  for <tt><b>cheb1</b></tt> case, only <tt><b>delta(2)</b></tt> is used for
+  <tt><b>cheb2</b></tt> case, and <tt><b>delta(1)</b></tt> and
+  <tt><b>delta(2)</b></tt> are both used for <tt><b>ellip</b></tt>
+  case. <tt><b>0&lt;delta(1),delta(2)&lt;1</b></tt></p>
+<ul>
+<li>
+<tt><b>-  </b></tt>for <tt><b>cheb1</b></tt> filters <tt><b>1-delta(1)&lt;ripple&lt;1</b></tt> in passband</li>
+<li>
+<tt><b>-  </b></tt>for <tt><b>cheb2</b></tt> filters <tt><b>0&lt;ripple&lt;delta(2)</b></tt> in stopband</li>
+<li>
+<tt><b>-  </b></tt>for <tt><b>ellip</b></tt> filters <tt><b>1-delta(1)&lt;ripple&lt;1</b></tt> in passband and <tt><b>0&lt;ripple&lt;delta(2)</b></tt> in stopband</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    function which designs an iir digital filter using analog filter designs.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+hz=iir(3,'bp','ellip',[.15 .25],[.08 .03]);
+[hzm,fr]=frmag(hz,256);
+plot2d(fr',hzm')
+xtitle('Discrete IIR filter band pass  0.15&lt;fr&lt;0.25 ',' ',' ');
+q=poly(0,'q');     //to express the result in terms of the ...
+hzd=horner(hz,1/q) //delay operator q=z^-1
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/eqfir.htm"><tt><b>eqfir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/eqiir.htm"><tt><b>eqiir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

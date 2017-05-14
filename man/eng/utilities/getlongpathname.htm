@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getlongpathname</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getlongpathname</b> - get long path name (Only for
+  Windows)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>longpath=getlongpathname(shortpath)</tt></dd>
+<dd><tt>[longpath,bOK]=getlongpathname(shortpath)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>shortpath</b></tt>: A character string the short path</li>
+<li>
+<tt><b>longpath</b></tt>: A character string the long path</li>
+<li>
+<tt><b>bOK</b></tt>: A boolean %T if path has been converted else %F</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>The getlongpathname primitive converts the specified path to its long
+    form. It no long path is found, this primitive returns the specified
+    name.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>[longpath,bOK]=getlongpathname(SCI) 
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/getshortpathname.htm"><tt><b>getshortpathname</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>samwr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>samwr</b> -  Sampling without replacement </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>s = samwr(sizam,numsamp,X)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sizam</b></tt>: integer. Size of a sample. It must be less or equal than
+        size of X.</li>
+<li>
+<tt><b>numsamp</b></tt>: integer. Number of samples to be extracted.</li>
+<li>
+<tt><b>X</b></tt>: column vector. It contains the population.</li>
+<li>
+<tt><b>s</b></tt>: matrix of type sizsam  x numsamp. It contains
+         numsamp  random samples  (the  columns) each  of
+         sizam  (size(X,'*'))  extractions,  without
+         replacement, from the column vector X.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Gives samples without replacement from a column vector.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    a=[0.33 1.24 2.1 1.03]
+    s=samwr(4,12,a)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/sample.htm"><tt><b> sample</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/samplef.htm"><tt><b> samplef</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Carlos Klimann
+  </p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>RandomNet </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>RandomNet  -   Random generation of traffic network data  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>net=RandomNet(nn,na,nd,nf)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>nn  </b></tt>
+    : number of nodes
+  </li>
+  <li><tt><b>na  </b></tt>
+    : number of arcs
+  </li>
+  <li><tt><b>nd  </b></tt>
+    : number of OD-pairs (origin-destination)
+  </li>
+  <li><tt><b>nf  </b></tt>
+    : model chosen for the computation of the travel time
+  </li>
+  <li><tt><b>net  </b></tt>
+    : the resulting Netlist 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Generates randomly a strongly connected network with nn nodes, 
+    (approximately) na links and (approximately) nd OD pairs.
+    The value of nf indicates the formula chosen for the computation of
+    the travel time, by default it is 6.
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=RandomNet(3,5,2);
+// generates a network with 3 nodes, 5 arcs and 2 OD-pairs
+ShowNet();
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="RandomNNet.htm"><tt><b>RandomNNet</b></tt></a>&nbsp;&nbsp;<a href="Regular.htm"><tt><b>Regular</b></tt></a>&nbsp;&nbsp;<a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

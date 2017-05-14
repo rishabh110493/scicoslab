@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lu</b> -  LU factors of Gaussian elimination</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[L,U]= lu(A)  </tt></dd>
+<dd><tt>[L,U,E]= lu(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex  matrix (m x n).</li>
+<li>
+<tt><b>L</b></tt>:  real or complex matrices  (m x min(m,n)).</li>
+<li>
+<tt><b>U</b></tt>: real or complex matrices  (min(m,n) x n ).</li>
+<li>
+<tt><b>E</b></tt>: a (n x n) permutation matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[L,U]= lu(A)</b></tt> produces two matrices <tt><b>L</b></tt> and
+    <tt><b>U</b></tt> such that <tt><b>A = L*U</b></tt> with <tt><b>U</b></tt>
+    upper triangular and <tt><b>E*L</b></tt> lower triangular for a
+    permutation matrix <tt><b>E</b></tt>.</p>
+<p><tt><b>[L,U,E]= lu(A)</b></tt> produces three matrices <tt><b>L</b></tt>, <tt><b>U</b></tt> and
+    <tt><b>E</b></tt> such that <tt><b>E*A = L*U</b></tt> with
+    <tt><b>U</b></tt> upper triangular and <tt><b>E*L</b></tt> lower
+    triangular for a permutation matrix <tt><b>E</b></tt>.</p>
+<p> 
+    If <tt><b>A</b></tt> is a real matrix, using the function
+    <tt><b>lufact</b></tt> and  <tt><b>luget</b></tt> it is possible to obtain
+    the permutation matrices and also when <tt><b>A</b></tt> is not full
+    rank the column compression of the matrix <tt><b>L</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=rand(4,4);
+[l,u]=lu(a)
+norm(l*u-a)
+
+[h,rk]=lufact(sparse(a))  // lufact with sparse matrices
+[P,L,U,Q]=luget(h);
+ludel(h)
+P=full(P);L=full(L);U=full(U);Q=full(Q); 
+norm(P*L*U*Q-a) // P,Q = permutation matrices
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+   lu decompositions are based on the Lapack routines DGETRF for real
+   matrices and ZGETRF for the complex case.</p>
+</body>
+</html>

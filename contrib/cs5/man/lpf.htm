@@ -1,0 +1,69 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>lpf </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>lpf  -   Travel time functions  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[ta,dta,cta]=lpf(F,lpp,nf)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>F  </b></tt>
+    : row vector of flows in each arc
+  </li>
+  <li><tt><b>lpp  </b></tt>
+    : parameters of the travel time functions (ttf) for each arc
+  </li>
+  <li><tt><b>nf  </b></tt>
+    : model for the ttf
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : travel time of each arc for the given flow
+  </li>
+  <li><tt><b>dta  </b></tt>
+    : derivate of the ttf for the given arc flow
+  </li>
+  <li><tt><b>cta  </b></tt>
+    : integral of the ttf for the given arc flow
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Computes the travel time of each arc for the given flow using the travel time
+    functions with parameters lpp and formula nf. Each colum of lpp is of the form
+    [t0;ca;ma;ba] where the coefficients t0 and ca have the meanings:
+  </p>
+ 
+
+  <li><b>t0</b> 
+    : free-flow travel time
+  </li>
+
+  <li><b>ca</b> 
+    : practical capacity of the link 
+  </li>
+
+  <li><b>The different formulae for the ttf are:</b> 
+    
+  </li>
+
+  <li><b>nf=0 -&gt; c=t0+ma/ca*F+ma*(max(0,F-ca))^ba, with ba&gt;=1</b> 
+  </li>
+
+  <li><b>nf=1 -&gt; c=t0*exp((F/ca)-1), with ca&gt;0</b> 
+  </li>
+
+  <li><b>nf=2 -&gt; c=t0*2^((F/ca)-1), with ca&gt;0</b> 
+  </li>
+
+  <li><b>nf=3 -&gt; c=t0*(1+0.15*(F/ca)^ma), with ma&gt;=1 and ca&gt;0</b> 
+  </li>
+
+  <li><b>nf=4 -&gt; c=t0+log(ca)-log(ca-F), with ca&gt;0</b> 
+  </li>
+
+  <li><b>nf=5 -&gt; c=ba-ca*(t0-ba)/(F-ca), with ca&gt;0</b> 
+  </li>
+
+  <li><b>nf=6 -&gt; c=t0+ca*F+ma*F^ba, with ba&gt;1</b> 
+    
+  </li>
+ 
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Small');
+[g,d,lpp,nf]=Net2Par(net);
+F=rand(1,9);
+[ta,dta,cta]=lpf(F,lpp,nf) 
+// shows the function with the different parameters
+dlpf(0.1,.01,5,lpp,6);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="dlpf.htm"><tt><b>dlpf</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

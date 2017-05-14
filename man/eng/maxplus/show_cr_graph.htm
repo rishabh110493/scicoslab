@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>show_cr_graph </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>show_cr_graph </b> -   flowshop critical graph (maxplus)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>gh=show_cr_graph(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    :  flowshop graph built with flowshop_graph
+  </li>
+<li>
+<tt><b>gh  </b></tt>
+    : graph of the flowshop with critical graph highlighted
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Shows the critical graph (bottleneck) of a flowshop described
+    by g in a metanet window.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+PT=#([2,1;%0,1;4,%0]);
+xsetech([0 0 0.5 0.5]);
+[g,T,N]=flowshop_graph(PT,[1,1,1],[2,2],50);
+show_cr_graph(g);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/flowshop_graph.htm"><tt><b>flowshop_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/flowshop.htm"><tt><b>flowshop</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/saturation_graph.htm"><tt><b>saturation_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

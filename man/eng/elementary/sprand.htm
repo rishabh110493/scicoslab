@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sprand</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sprand</b> -   sparse random matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sp=sprand(nrows,ncols,fill [,typ])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nrows</b></tt>: integer (number of rows)</li>
+<li>
+<tt><b>ncols</b></tt>: integer (number of columns)</li>
+<li>
+<tt><b>fill</b></tt>: filling coefficient (density)</li>
+<li>
+<tt><b>typ</b></tt>: character string (<tt><b>'uniform'</b></tt> (default) or <tt><b>'normal'</b></tt>)</li>
+<li>
+<tt><b>sp</b></tt>: sparse matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sp=sprand(nrows,ncols,fill)</b></tt> returns a sparse matrix <tt><b>sp</b></tt> 
+    with <tt><b>nrows</b></tt> rows, <tt><b>ncols</b></tt> columns and approximately
+    <tt><b>fill*nrows*ncols</b></tt> non-zero entries.</p>
+<p>
+    If <tt><b>typ='uniform'</b></tt> uniformly distributed values on [0,1] are generated.
+    If <tt><b>typ='normal'</b></tt> normally distributed values are generated (mean=0 and standard deviation=1).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+W=sprand(100,1000,0.001);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/rand.htm"><tt><b>rand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/speye.htm"><tt><b>speye</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

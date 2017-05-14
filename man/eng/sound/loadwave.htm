@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>loadwave</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>loadwave</b> - load a sound wav file
+  into scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>x=loadwave(filename);</tt></dd>
+<dd><tt>[x,y]=loadwave(filename);</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: a string. The path of the wav file to be loaded</li>
+<li>
+<tt><b>x</b></tt>: a matrix one line for each channel</li>
+<li>
+<tt><b>y</b></tt>: vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Reads a <tt><b>.wav</b></tt> sound file into Scilab as a matrix. If y is
+    given, it is filled with information about the samples (See the message
+    sent by <tt><b>loadwave</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// At first we create 0.5 seconds of sound parameters.
+t=soundsec(0.5);
+// Then we generate the sound: a two channels sound.
+s=[sin(2*%pi*440*t);sin(2*%pi*350*t)];
+savewave(TMPDIR+'/foo.wav',s);
+s1=loadwave(TMPDIR+'/foo.wav');
+max(abs(s1-s))
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/savewave.htm"><tt><b>savewave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/analyze.htm"><tt><b>analyze</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/mapsound.htm"><tt><b>mapsound</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

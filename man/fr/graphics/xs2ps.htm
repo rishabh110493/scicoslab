@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xs2ps</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xs2ps</b> - send graphics to a file in PS
+  syntax</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xs2ps(win_num,filen,[color])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>win_num</b></tt>: integer scalar or vector .</li>
+<li>
+<tt><b>filen</b></tt>: string, file name.</li>
+<li>
+<tt><b>color</b></tt>: optional integer. 0 means black and white and 1 means color.
+          The default value is to use a value compatible with the screen
+          status.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xs2ps</b></tt> saves the recorded graphics of the window
+    <tt><b>win_num</b></tt> to file <tt><b>filen</b></tt> in Postscript syntax. The
+    <tt><b>filen</b></tt> must not have suffix extension.</p>
+<p>Note that the generated Postscript file cannot be direcly printed since
+    it requires a header file. The Scilab command <tt><b>BEpsf</b></tt> or others
+    can be used to add a header file. The function <tt><b>xs2eps</b></tt> can be
+    used to directly produce an encapsulated Postscript file with an
+    header.</p>
+<p>This function works only if the selected driver is <tt><b>"Rec"</b></tt>
+    in the window <tt><b>win_num</b></tt> or if the window is in "new style". The
+    generated postscript file does not contrains the header part</p>
+<h3><font color="blue">Examples</font></h3>
+<pre> 
+    scf(0)
+    plot2d()
+    // Postcript export
+    filename='foo'; // ! no extension
+    xs2ps(0,filename)
+    //add the Postscript file header and create &lt;filename&gt;.eps file
+    if MSDOS then
+      unix_s(pathconvert('""'+WSCI+'/bin/BEpsf'+'""',%f)+' -p ' +filename)
+    else
+      unix_s(pathconvert('SCI/bin/BEpsf',%f)+' -p ' +filename)
+    end
+    // Gif export
+    xs2gif(0,'foo.gif')
+    // ppm export
+    xs2ppm(0,'foo.ppm')
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set_posfig_dim.htm"><tt><b>set_posfig_dim</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/printing.htm"><tt><b>printing</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2eps.htm"><tt><b>xs2eps</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2gif.htm"><tt><b>xs2gif</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

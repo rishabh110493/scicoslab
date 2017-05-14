@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nlev</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nlev</b> -  Leverrier's algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[num,den]=nlev(A,z [,rmax])    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real square matrix</li>
+<li>
+<tt><b>z</b></tt>: character string</li>
+<li>
+<tt><b>rmax</b></tt>: optional parameter (see <tt><b>bdiag</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[num,den]=nlev(A,z [,rmax])</b></tt> computes
+    <tt><b>(z*eye()-A)^(-1)</b></tt></p>
+<p>
+    by block diagonalization of A followed by Leverrier's algorithm
+    on each block.</p>
+<p>
+   This algorithm is better than the usual leverrier algorithm but
+   still not perfect!</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(3,3);x=poly(0,'x');
+[NUM,den]=nlev(A,'x')
+clean(den-poly(A,'x'))
+clean(NUM/den-inv(x*eye()-A))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/coff.htm"><tt><b>coff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque., S. Steer INRIA;   </p>
+</body>
+</html>

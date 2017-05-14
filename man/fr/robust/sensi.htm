@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sensi</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sensi</b> -  sensitivity functions</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Se,Re,Te]=sensi(G,K)  </tt></dd>
+<dd><tt>[Si,Ri,Ti]=sensi(G,K,flag)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: standard plant (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>K</b></tt>: compensator (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>flag</b></tt>: character string <tt><b>'o'</b></tt> (default value) or <tt><b>'i'</b></tt>
+</li>
+<li>
+<tt><b>Se</b></tt>: output sensitivity function <tt><b>(I+G*K)^-1</b></tt>
+</li>
+<li>
+<tt><b>Re</b></tt>: <tt><b>K*Se</b></tt>
+</li>
+<li>
+<tt><b>Te</b></tt>: <tt><b>G*K*Se</b></tt> (output complementary sensitivity function)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sensi</b></tt> computes sensitivity functions. If <tt><b>G</b></tt> and <tt><b>K</b></tt> are
+    given in state-space form, the systems returned are generically minimal. 
+    Calculation is made by <tt><b>lft</b></tt>, e.g., 
+    <tt><b>Se</b></tt> can be given by the commands 
+    <tt><b> P = augment(G,'S')</b></tt>, <tt><b>Se=lft(P,K)</b></tt>.
+    If <tt><b>flag</b></tt> = <tt><b>'i'</b></tt>, <tt><b>[Si,Ri,Ti]=sensi(G,K,'i')</b></tt>
+    returns the input sensitivity functions.</p>
+<pre>
+
+[Se;Re;Te]= [inv(eye()+G*K);K*inv(eye()+G*K);G*K*inv(eye()+G*K)];
+[Si;Ri;Ti]= [inv(eye()+K*G);G*inv(eye()+K*G);K*G*inv(eye()+K*G)];
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+G=ssrand(1,1,3);K=ssrand(1,1,3);
+[Se,Re,Te]=sensi(G,K);
+Se1=inv(eye()+G*K);  //Other way to compute
+ss2tf(Se)    //Se seen in transfer form
+ss2tf(Se1)
+ss2tf(Te)
+ss2tf(G*K*Se1)
+[Si,Ri,Ti]=sensi(G,K,'i');
+w1=[ss2tf(Si);ss2tf(Ri);ss2tf(Ti)]
+w2=[ss2tf(inv(eye()+K*G));ss2tf(G*inv(eye()+K*G));ss2tf(K*G*inv(eye()+K*G))];
+clean(w1-w2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/augment.htm"><tt><b>augment</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h_cl.htm"><tt><b>h_cl</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

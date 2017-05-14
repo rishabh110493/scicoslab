@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gcd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gcd</b> -  gcd calculation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pgcd,U]=gcd(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>p</b></tt>: polynomial row vector <tt><b>p=[p1,..,pn]</b></tt> or integer row
+	    vector (type equal to 8)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes the gcd  of components of <tt><b>p</b></tt> and a unimodular 
+    matrix (with polynomial inverse) <tt><b>U</b></tt>, with minimal degree such that</p>
+<p><tt><b>p*U=[0 ... 0 pgcd]</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//polynomial case
+s=poly(0,'s');
+p=[s,s*(s+1)^2,2*s^2+s^3];
+[pgcd,u]=gcd(p);
+p*u
+
+//integer case
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+[thegcd,U]=gcd(V)
+V*U
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/bezout.htm"><tt><b>bezout</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/lcm.htm"><tt><b>lcm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/hermit.htm"><tt><b>hermit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

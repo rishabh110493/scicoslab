@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>coeff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coeff</b> -  coefficients d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[C]=coeff(Mp [,v])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Mp  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur (ligne ou colonne) d'entiers des degrés choisis
+</li>
+<li>
+<tt><b>C  </b></tt>
+    : grosse matrice de coefficients
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>C=coeff(Mp)</b></tt>
+    renvoie dans une grosse matrice <tt><b>C</b></tt> les coefficients de la
+    matrice de polynômes <tt><b>Mp</b></tt>. <tt><b>C</b></tt> est
+    partitionnée comme <tt><b>C=[C0,C1,...,Ck]</b></tt> 
+    où les <tt><b>Ci</b></tt> sont arrangés dans l'ordre décroissant .
+    <tt><b>k = maxi(degree(Mp))</b></tt></p>
+<p><tt><b>C=coeff(Mp,v)</b></tt> renvoie la matrice des coefficients avec les 
+    degrés dans <tt><b>v</b></tt>.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/degree.htm"><tt><b>degree</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/inv_coeff.htm"><tt><b>inv_coeff</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

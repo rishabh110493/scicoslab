@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>erf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>erf</b> -   The error function.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> y = erf(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: real vector or matrix (of same size than x)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>erf</b></tt> computes the error function:</p>
+<pre>
+
+                    /x     2
+            2       |    -t
+     y = -------    |   e    dt
+         sqrt(pi)  /0
+                   
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('y=f(t)','y=exp(-t^2)');
+erf(0.5)-2/sqrt(%pi)*intg(0,0.5,f)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/erfc.htm"><tt><b>erfc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/erfcx.htm"><tt><b>erfcx</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/calerf.htm"><tt><b>calerf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/dcd/cdfnor.htm"><tt><b>cdfnor</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>W. J. Cody (code from Netlib (specfun))</p>
+</body>
+</html>

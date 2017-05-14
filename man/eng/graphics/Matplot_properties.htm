@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Matplot_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Matplot_properties</b> - description of the Matplot
+  entities properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Matplot entity is a leaf of the graphics entities hierarchy. It
+    represents 2D plots of surface using colors and images (see
+    <tt><b>Matplot</b></tt> and <tt><b>Matplot1</b></tt>).</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        Matplot entity should be of the type <tt><b>"Axes"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>Matplot</b></tt> handles currently do not
+        have any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        By default, the plot is visible, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the plot is not drawn on the
+        screen.</dd>
+<dd>
+<b>data: </b>This field defines a [<tt><b>m</b></tt>x<tt><b>n</b></tt>]
+        <tt><b>color</b></tt> data matrix using the current colormap. The color
+        associated to <tt><b>color(i,j)</b></tt> is used do draw a small square
+        of length 1 with center at location <tt><b>(x=j,y=(m-i+1))</b></tt>.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the Matplot
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   set("figure_style","new") //create a figure
+    
+   Matplot((1:xget("lastpattern")))
+   e=gce(); // get current entity
+
+   e.data=e.data($:-1:1) // reverse order
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/grayplot.htm"><tt><b>grayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Matplot.htm"><tt><b>Matplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Matplot1.htm"><tt><b>Matplot1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/grayplot_properties.htm"><tt><b>grayplot_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Leray</p>
+</body>
+</html>

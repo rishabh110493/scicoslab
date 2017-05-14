@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chol</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chol</b> -  Cholesky factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[R]=chol(X)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X</b></tt>: a symmetric positive definite real or complex matrix.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>X</b></tt> is positive definite, then <tt><b>R = chol(X)</b></tt> produces an upper 
+    triangular matrix <tt><b>R</b></tt> such that <tt><b>R'*R = X</b></tt>.</p>
+<p><tt><b>chol(X)</b></tt> uses only the diagonal and upper triangle of <tt><b>X</b></tt>.
+    The lower triangular is assumed to be the (complex conjugate) 
+    transpose of the upper.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+ Cholesky decomposition is based on  the Lapack routines
+ DPOTRF for  real matrices and  ZPOTRF for the complex case.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+W=rand(5,5)+%i*rand(5,5);
+X=W*W';
+R=chol(X);
+norm(R'*R-X)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spchol.htm"><tt><b>spchol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

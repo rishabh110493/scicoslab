@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>graph_sum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graph_sum</b> -  sum of two graphs</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g2 = graph_sum(g,g1)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>g1</b></tt>: graph list</li>
+<li>
+<tt><b>g2</b></tt>: graph list of the new graph</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>graph_sum</b></tt> creates a graph <tt><b>g2</b></tt> with an adjacency matrix  
+    equal to the sum of the adjacency matrices of the two graphs <tt><b>g</b></tt> and 
+    <tt><b>g1</b></tt>.
+    <tt><b>g</b></tt> and <tt><b>g1</b></tt> are supposed to be simple graphs (use <tt><b>graph_simp</b></tt> 
+    before calling <tt><b>graph_complement</b></tt> if necessary) and to have the same 
+    number of nodes.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 13 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+g('edge_color')=modulo([1:(edge_number(g))],15)+1;
+g('edge_width')=ones(1,(edge_number(g)));
+g('node_diam')=[1:(g('node_number'))]+20;
+g('node_name')=['A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'M' 'N' 'O' 'P' 'Q'];
+show_graph(g);
+ta=[2 3 4 5 11 12 1];
+he=[10 5 6 7 15 17 7];
+g1=make_graph('foo',1,17,ta,he);
+g1('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g1('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+g1('edge_color')=modulo([1:(edge_number(g1))],15)+1;
+g1('edge_width')=10*ones(1,(edge_number(g1)));
+g1('node_diam')=[1:(g1('node_number'))]+20;
+g1('node_name')=['A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'M' 'N' 'O' 'P' 'Q'];
+show_graph(g1,'new');
+g2=graph_sum(g,g1);
+show_graph(g2,'new');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph_complement.htm"><tt><b>graph_complement</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph_union.htm"><tt><b>graph_union</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

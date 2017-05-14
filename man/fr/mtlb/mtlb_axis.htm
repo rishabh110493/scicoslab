@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_axis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_axis</b> - Fonction d'émulation de la fonction
+  Matlab axis</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mtlb_axis(X)</tt></dd>
+<dd><tt>mtlb_axis(st)</tt></dd>
+<dd><tt>mtlb_axis(axeshandle, ...)</tt></dd>
+<dd><tt>[mode,visibility,direction]=mtlb_axis('state')</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: un vecteur de réels ([xmin xmax ymin ymax] ou [xmin xmax ymin
+          ymax zmin zmax])</li>
+<li>
+<tt><b>st</b></tt>: une chaine de caractères ('auto', 'manual', 'tight', 'ij',
+          'xy', 'equal', 'square', 'vis3d', 'off', 'on')</li>
+<li>
+<tt><b>axeshandle</b></tt>:handle sur l'axe courant</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>La fonction Matlab<tt><b> axis</b></tt> n'a pas de fonction Scilab
+    équivalente :</p>
+<p>La fonction <tt><b>mtlb_axis(n,X[,normflag])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>axis(...)</b></tt> quand il
+    n'était pas possible de savoir ce qu'étaient les paramètres d'entrée
+    pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution.
+    (<tt><b>'fill'</b></tt> , <tt><b>'image' </b></tt> et <tt><b>'normal'</b></tt> ne
+    sont pas implémentés).Pour obtenir un code plus performant on peut
+    remplacer les appels à  <tt><b>mtlb_axis</b></tt> par les appels à 
+    get(axeshandle,prop), ou prop est une propriété des axes (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axis_properties.htm"><tt><b>axis_properties</b></tt></a>)</p>
+<p>Attention : <tt><b>mtlb_axis</b></tt> ne doit pas être utilisée pour une
+    programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>F.B.</dd></dl>
+</body>
+</html>

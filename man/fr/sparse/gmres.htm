@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gmres</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gmres</b> -  generalized minimum residual method with restarts  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,flag,err,iter,res] = gmres(A,b,rstr,tol,maxi,M,x0)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	  : n-by-n matrix or function returning <tt><b>A*x</b></tt>
+</li>
+<li>
+<tt><b>b  </b></tt>
+	  : right hand side vector
+	</li>
+<li>
+<tt><b>x0  </b></tt>
+	  : initial guess vector (default: zeros(n,1))
+	</li>
+<li>
+<tt><b>M  </b></tt>
+	  : preconditioner: matrix or function returning <tt><b>M*x</b></tt> (In the first case, default: eye(n,n))
+	</li>
+<li>
+<tt><b>rstr  </b></tt>
+	  : number of iterations between restarts (default: 10)
+	</li>
+<li>
+<tt><b>maxi  </b></tt>
+	  : maximum number of iterations (default: n)
+	</li>
+<li>
+<tt><b>tol  </b></tt>
+	  : error tolerance (default: 1e-6)
+	</li>
+<li>
+<tt><b>x  </b></tt>
+	  : solution vector
+	</li>
+<li>
+<tt><b>err  </b></tt>
+	  : final residual norm
+	</li>
+<li>
+<tt><b>iter  </b></tt>
+	  : number of iterations performed
+	</li>
+<li>
+<tt><b>flag  </b></tt>
+	  : 0 = <tt><b>gmres</b></tt> converged to the desired tolerance within <tt><b>maxi</b></tt> iterations
+	</li>
+<li>
+<tt><b>res  </b></tt>
+	  : residual vector
+	</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Solves the linear system <tt><b>Ax=b</b></tt> using the Generalized Minimal residual (GMRES(m)) method with restarts.
+    </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sparse/pcg.htm"><tt><b>pcg</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Sage Group (IRISA, 2005) </p>
+</body>
+</html>

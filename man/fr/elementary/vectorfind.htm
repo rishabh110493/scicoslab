@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>vectorfind</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>vectorfind</b> - finds in a matrix rows or columns
+  matching a vector</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>ind = vectorfind(m,v,job)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>m</b></tt>: a matrix of any  type</li>
+<li>
+<tt><b>v</b></tt>: vector  of any  type</li>
+<li>
+<tt><b>job</b></tt>: string flag with possible values "r" to look for matching
+       rows or "c" to look for matching columns</li>
+<li>
+<tt><b>ind</b></tt>: row vector containing indices of matching rows or columns</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   finds in a matrix rows or columns  matching a vector</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+      alr=[1,2,2;
+	   1,2,1;
+	   1,1,2;
+	   1,1,1;
+	   1,2,1];
+      ind = vectorfind(alr,[1,2,1],'r')
+      ind = vectorfind(string(alr),string([1,2,1]),'r')
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b> find</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/gsort.htm"><tt><b> gsort</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    R. Nikoukhah, S. Steer INRIA
+  </p>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdfchn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfchn</b> -  fonction de répartition de la distribution du chi-deux non centrée   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfchn("PQ",X,Df,Pnonc)  </tt></dd>
+<dd><tt>[X]=cdfchn("X",Df,Pnonc,P,Q);  </tt></dd>
+<dd><tt>[Df]=cdfchn("Df",Pnonc,P,Q,X)  </tt></dd>
+<dd><tt>[Pnonc]=cdfchn("Pnonc",P,Q,X,Df)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,X,Df,Pnonc  </b></tt>
+    : 5 vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    :  L'intégrale de 0 à X de la distribution.  En entrée : [0, 1-1E-16).
+</li>
+<li>
+<tt><b>X  </b></tt>
+    : Borne supérieure d'intégration En entrée : [0, +infini). En recherche : [0,1E300]
+</li>
+<li>
+<tt><b>Df  </b></tt>
+    : Degrés de liberté de la densité En entrée : (0, +infini). En recherche : [ 1E-300, 1E300]
+</li>
+<li>
+<tt><b>Pnonc  </b></tt>
+    : paramètre de décentrage En entrée : [0, +infini). En recherche : [0,1E4]
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution du chi-deux non-centré.
+  </p>
+<p>
+    La formule  26.4.25  de  "Abramowitz   and   Stegun,  Handbook  of
+    Mathematical  Functions (1966)" est utilisée pour le calcul de la fonction de répartition.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+<p>
+    Le temps de calcul est proportionnel au paramètre de décentrage.
+    La plage de recherche est bornée par 10,000 pour limiter le temps de calcul (pouvant devenir énorme pour des grandes valeurs de Pnonc).
+  </p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

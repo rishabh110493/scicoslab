@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdfnbn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfnbn</b> -  fonction de répartition de la distribution binomiale négative  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfnbn("PQ",S,Xn,Pr,Ompr)  </tt></dd>
+<dd><tt>[S]=cdfnbn("S",Xn,Pr,Ompr,P,Q)  </tt></dd>
+<dd><tt>[Xn]=cdfnbn("Xn",Pr,Ompr,P,Q,S)  </tt></dd>
+<dd><tt>[Pr,Ompr]=cdfnbn("PrOmpr",P,Q,S,Xn)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,S,Xn,Pr,Ompr  </b></tt>
+    : six vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    : La somme de 0 à S de la distribution binomiale négative En entrée : [0,1].
+</li>
+<li>
+<tt><b>S  </b></tt>
+    : Borne supérieure de la somme Il y a F (ou moins) échecs avant le Xième succès. En entrée : [0, +infini). En recherche : [0, 1E300]
+</li>
+<li>
+<tt><b>Xn  </b></tt>
+    :  Le nombre de succès. En entrée : [0, +infini). En recherche : [0, 1E300]
+</li>
+<li>
+<tt><b>Pr  </b></tt>
+    :  La probabilité de succès pour chaque essai binomial En entrée : [0,1]. En recherche : [0,1].
+</li>
+<li>
+<tt><b>Ompr  </b></tt>
+    :   1-PR En entrée : [0,1]. En recherche : [0,1] PR + OMPR = 1.0 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution binomiale négative.
+  </p>
+<p>
+    Cette distribution renvoie la probabilité d'avoir
+    F échecs ou moins avant un succès dans des essais binomiaux, où la probabilité de succès est PR.
+  </p>
+<p>
+    Les termes individuels sont égaux à la probabilité de
+    S échecs avant XN succès qui est égale à
+    Choisir( S, XN+S-1 ) * PR^(XN) * (1-PR)^S
+  </p>
+<p>
+    La formule  26.5.26  de   Abramowitz  et  Stegun,   Handbook   of
+    Mathematical Functions  (1966) est utilisée pour réduire le calcul de la fonction de répartition de la distribution à celle d'une loi beta incomplète.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fsolve</b> -  résout un système d'équations non-linéaires  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x [,v [,info]]]=fsolve(x0,fct [,fjac] [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x0  </b></tt>
+	    : vecteur réel (vecteur initial).
+	  </li>
+<li>
+<tt><b>fct  </b></tt>
+	    : fonction externe (fonction Scilab ou chaîne de caractères ou liste).
+	  </li>
+<li>
+<tt><b>fjac  </b></tt>
+	    : fonction externe (fonction Scilab ou chaîne de caractères ou liste).
+	  </li>
+<li>
+<tt><b>tol  </b></tt>
+	    : scalaire. Tolérance : l'algorithme s'arrête lorsque l'erreur relative estimée entre x et la solution est inférieure à tol (<tt><b>tol=1.d-10</b></tt> par défaut).
+	  </li>
+<li>
+<tt><b>x :  </b></tt>
+	    vecteur réel (solution estimée).
+	  </li>
+<li>
+<tt><b>v :  </b></tt>
+	    vecteur réel (valeur de la fonction en x).
+	  </li>
+<li>
+<tt><b>info  </b></tt>
+	    : indicateur d'arrêt de l'algorithme
+	  <ul>
+<li>
+<tt><b>0  </b></tt>
+		  : paramètres d'entrée incorrects
+		</li>
+<li>
+<tt><b>1  </b></tt>
+		  : l'erreur relative estimée entre x et la solution est inférieure à tol
+		</li>
+<li>
+<tt><b>2  </b></tt>
+		  : nombre d'appels à fct
+		</li>
+<li>
+<tt><b>3  </b></tt>
+		  : tol est trop petit. L'algorithme stationne.
+		</li>
+<li>
+<tt><b>4  </b></tt>
+		  : les itérations n'améliorent pas assez la solution.
+		</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Résout un système de n équations non linéaires à n inconnues avec un algorithme du type
+      méthode hybride de Powell. La Jacobienne peut être fournie (c'est fortement conseillé).
+    </p>
+<pre>
+      0 = fct(x) 
+      </pre>
+<p><tt><b>fct</b></tt> est une fonction "externe"
+      Cette fonction renvoie <tt><b>v=fct(x)</b></tt> pour <tt><b>x</b></tt> donné.
+    </p>
+<p>
+      La séquence d'appel de <tt><b>fct</b></tt> est :
+    </p>
+<pre>
+      [v]=fct(x).
+      </pre>
+<p>
+      Si <tt><b>fct</b></tt> est une chaîne de caractères, elle désigne le nom d'une subroutine Fortran ou C liée dynamiquement à Scilab, avec comme liste d'appel Fortran :
+    </p>
+<pre>
+      fct(n,x,v,iflag)
+      integer n,iflag
+      double precision x(n),v(n)
+      </pre>
+<p>
+      ou alors pour une routine C : 
+    </p>
+<pre>
+      fct(int *n, double x[],double v[],int *iflag)
+      </pre>
+<p></p>
+<p>
+      (voir <tt><b>link</b></tt>).
+    </p>
+<p><tt><b>jac</b></tt> est une fonction "externe" aussi.
+      Cette fonction renvoie <tt><b>v=d(fct)/dx (x)</b></tt> pour <tt><b>x</b></tt> donné.
+    </p>
+<p>
+      La séquence d'appel de <tt><b>jac</b></tt> est :
+    </p>
+<pre>
+      [v]=jac(x).
+      </pre>
+<p>
+      Si <tt><b>jac</b></tt> est une chaîne de caractères, elle désigne le nom d'une subroutine Fortran ou C liée dynamiquement à Scilab. Les séquences d'appel sont les mêmes que pour fct (attention v doit être un tableau n x n).
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    // un exemple simple
+    a=[1,7;2,8];b=[10;11];
+    deff('[y]=fsol1(x)','y=a*x+b');
+    deff('[y]=fsolj1(x)','y=a');
+    [xres]=fsolve([100;100],fsol1);
+    a*xres+b
+    [xres]=fsolve([100;100],fsol1,fsolj1);
+    a*xres+b
+    // voir routines/default/Ex-fsolve.f
+    [xres]=fsolve([100;100],'fsol1','fsolj1',1.e-7);
+    a*xres+b
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/quapro.htm"><tt><b>quapro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/linpro.htm"><tt><b>linpro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

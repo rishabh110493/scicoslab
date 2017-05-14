@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_size</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_size</b> - Matlab size emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>size</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With two inputs: Matlab <tt><b>size</b></tt> can be used with second parameter giving
+	a not-existing dimension of first parameter (returns 1 in this case) but not Scilab one.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With more than one output: if number of output is lesser than number of dimensions,
+	last output is the product of all remaining dimensions in Matlab but not in Scilab.
+	If number of output is greater than number of dimensions, outputs corresponding to a
+	not-existing dimension are set to 1 in Matlab but Scilab gives an error in this case.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>[d1,[d2,...]] = mtlb_size(X[,dim])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>[d1,[d2,...]] = size(X[,dim])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_size</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With two inputs: if <tt><b>dim</b></tt> gives an existing dimension of <tt><b>X</b></tt><tt><b>mtlb_size(X,dim)</b></tt> may be replaced by <tt><b>size(X,dim)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        With more than one outputs: if the number of outputs is equal to the number of dimensions of <tt><b>X</b></tt><tt><b>[d1,[d2,...]] = mtlb_size(X)</b></tt> may be replaced by <tt><b>[d1,[d2,...]] = size(X)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_size</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

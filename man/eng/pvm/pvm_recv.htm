@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_recv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_recv</b> -  receive a message.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[buff, info, msgtid, tag] = pvm_recv(tid, msgtag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>tid</b></tt>: integer, task identifier of sending process supplied by the user.</li>
+<li>
+<tt><b>msgtag : integer, message tag supplied by the user.  msgtag should be</b></tt>&gt;= 0.</li>
+<li>
+<tt><b>buff</b></tt>: scilab variable, where the received message will be stored.</li>
+<li>
+<tt><b>info</b></tt>: integer, status code returned by the routine. Values less than zero indicate an error.</li>
+<li>
+<tt><b>msgtid : integer, returning  the source of the  message.  Useful when the</b></tt>message was received with a wildcard tid.</li>
+<li>
+<tt><b>tag</b></tt>: integer, returning the  message label.  Useful when the message was received with a wildcard msgtag.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_recv</b></tt> 
+    blocks the process until a message with label
+    <tt><b>msgtag</b></tt> (<tt><b>-1</b></tt> can be used to match 
+    all message tags)
+    has arrived from <tt><b>tid</b></tt> (<tt><b>-1</b></tt> can be used to
+    match all tids). 
+    <tt><b>pvm_recv</b></tt> returns the message in <tt><b>buff</b></tt>.</p>
+<p>
+    If <tt><b>tid=-1</b></tt> and <tt><b>msgtag</b></tt> is defined by the user, 
+    then <tt><b>pvm_recv</b></tt> will accept a
+    message from any process which has a matching
+    <tt><b>msgtag</b></tt>.</p>
+<p>
+    If <tt><b>msgtag = -1</b></tt>
+    and <tt><b>tid</b></tt> is defined by the user, then 
+    <tt><b>pvm_recv</b></tt> will accept any message
+    that is sent from process <tt><b>tid</b></tt> .
+    If <tt><b>tid=-1</b></tt> and <tt><b>msgtag = -1</b></tt> then
+    <tt><b>pvm_recv</b></tt> will accept any message from any process.</p>
+<p>
+    When wildcard  are used,   the  application is   able to  receive  any
+    incoming message. If  the action taken depends on  the source tid  and
+    the msgtag associated with the message that comes in first, the
+    information given by msgtid and tag can be very usefull.</p>
+<p>
+    The PVM model guarantees the following about message order.  If task 1
+    sends message A to task 2, then task 1 sends message B to task 2,
+    message A will arrive at task 2 before message B.  Moreover, if both
+    messages arrive before task 2 does a receive, then a wildcard receive
+    will always return message A.</p>
+<p><tt><b>info</b></tt> will be the status code returned by the routine. 
+    If some error occurs then it will be &lt; 0.</p>
+<p>
+    pvm_recv is blocking which means the routine waits until a message
+    matching the user specified tid and msgtag values arrives at the local
+    pvmd. If the message has already arrived then pvm_recv returns
+    immediately with the message.</p>
+<p>
+    Once pvm_recv returns, the data in the message can be unpacked
+    into the user's memory using the unpack routines.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_send.htm"><tt><b>pvm_send</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_bcast.htm"><tt><b>pvm_bcast</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

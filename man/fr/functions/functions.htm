@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>functions</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>functions</b> -  procédures Scilab et objets Scilab  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Les fonctions Scilab sont des procédures ("macros", "fonction" et "procédures"
+    ont la même signification). 
+  </p>
+<dl>
+<dd>
+<b>Définition de fonctions</b><p>
+    Les fonctions sont tapées dans un éditeur de texte et chargées dans Scilab avec la commande <tt><b>getf</b></tt> ou via une librairie (voir <tt><b>lib</b></tt> ou <tt><b>genlib</b></tt>). Mais elles peuvent être définies en ligne (voir <tt><b>deff</b></tt> ou <tt><b>function</b></tt>).  Une fonction est définie en deux parties :  
+  </p>
+<p>une ligne de déclaration formelle</p>
+<pre>
+ function [y1,...,yn]=foo(x1,...,xm)
+ function [y1,...,yn,varargout]=foo(x1,...,xm,varargin)
+   </pre>
+<p>une suite d'instructions Scilab.</p>
+<p>
+     La "ligne de définition" donne la syntaxe d'appel complète de la fonction. Les <tt><b>yi</b></tt> sont les variables de sortie, calculées à partir des variables d'entrée <tt><b>xi</b></tt> et des variables existantes dans le contexte appelant lorsque la fonction est exécutée. On peut utiliser éventuellement un sous-ensemble de ces variables d'entrée et de sortie.
+  </p>
+</dd>
+<dd>
+<b>Appel à une fonction</b><p>
+    LA syntaxe d'appel est habituellement <tt><b>[y1,...,yn]=foo(x1,...,xm)</b></tt>. On peut utiliser éventuellement un sous-ensemble de ces variables d'entrée et de sortie. Dans ce cas, seules les premières variables à partir de la gauche sont utilisées. La fonction <tt><b>argn</b></tt> peut être utilisée pour connaître le nombre effectif d'arguments d'appel.
+  </p>
+<p>
+    Il est aussi possible d'utiliser des "arguments nommés" pour spécifier les valeurs des arguments d'entrée  : supposons que la fonction <tt><b>fun1</b></tt> est définie ainsi <tt><b>function y1=fun1(x1,x2,x3)</b></tt> alors on peut utiliser la syntaxe  <tt><b>y=fun1(x1=33,x3=[1 2 3])</b></tt>, et dans <tt><b>fun1</b></tt> x2 ne sera pas défini. Il est possible de vérifier quelles sont les variables définies avec la fonction <tt><b>exists</b></tt>.
+  </p>
+<p>
+    Quand une fonction n'a pas d'argument de sortie et est appelée avec des arguments d'entrée de type chaîne de caractère, la syntaxe d'appel peut être simplifiée : <tt><b>fun('a','toto','une chaîne')</b></tt> est alors équivalent à <tt><b>fun a toto 'une chaîne'</b></tt></p>
+</dd>
+<dd>
+<b>Divers</b><p>
+    Les fonctions sont des objets Scilab (numéro de type 13 ou 11). Elles peuvent être manipulées (passées en argument, sauvées, chargées, ...) comme toute autre variable.
+  </p>
+<p>
+    Un ensemble de fonctions peut être assemblé dans une librairie. Les fonctions dont le nom commence par le caractère <tt><b>%</b></tt> (exemple : <tt><b>%foo</b></tt>) sont utilisées pour la surcharge des opérateurs (voir <tt><b>overloading</b></tt>) ou des fonctions pour des nouveaux types de données.
+  </p>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// définition en ligne
+function [x,y]=myfct(a,b)
+x=a+b
+y=a-b
+endfunction
+
+[x,y]=myfct(3,2)
+
+// autre type de définition en ligne
+deff('[x,y]=myfct(a,b)',['x=a+b';
+                         'y=a-b'])
+// définition dans un fichier texte (voir exec)
+exec SCI/macros/elem/asinh.sci;
+
+// définition dans un fichier texte (voir getf)
+getf SCI/macros/elem/asinh.sci;
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/deff.htm"><tt><b>deff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/lib.htm"><tt><b>lib</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getd.htm"><tt><b>getd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/genlib.htm"><tt><b>genlib</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exists.htm"><tt><b>exists</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/varargin.htm"><tt><b>varargin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/varargout.htm"><tt><b>varargout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

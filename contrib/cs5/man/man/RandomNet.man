@@ -1,0 +1,47 @@
+.TH RandomNet  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+RandomNet  -  Random generation of traffic network data
+.SH CALLING SEQUENCE
+.nf
+net=RandomNet(nn,na,nd,nf)
+.fi
+.SH PARAMETERS
+.TP 10
+nn
+: number of nodes
+.TP 10
+na
+: number of arcs
+.TP 10
+nd
+: number of OD-pairs (origin-destination)
+.TP 10
+nf
+: model chosen for the computation of the travel time
+.TP 10
+net
+: the resulting Netlist
+
+.SH DESCRIPTION
+Generates randomly a strongly connected network with nn nodes, 
+(approximately) na links and (approximately) nd OD pairs.
+The value of nf indicates the formula chosen for the computation of
+the travel time, by default it is 6.
+
+
+
+.SH EXAMPLES
+.nf
+%net=RandomNet(3,5,2);
+// generates a network with 3 nodes, 5 arcs and 2 OD-pairs
+ShowNet();
+.fi
+.SH SEE ALSO
+IntroTrfAsg,
+RandomNNet,
+Regular,
+ShowNet
+
+
+
+

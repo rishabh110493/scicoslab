@@ -1,0 +1,211 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>polyline_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>polyline_properties</b> - description of the Polyline
+  entity properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Polyline entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for polylines.</p>
+<dl>
+<dd>
+<b>parent: </b>This field contains the handle of the parent. The parent of the
+        polyline entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, polyline handles currently do not have any
+        <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        By default, the polyline is visible, the value's property is
+        <tt><b>"on" </b></tt>. If <tt><b>"off"</b></tt> the polyline is not drawn on
+        the screen.</dd>
+<dd>
+<b>data: </b>This field contains the values for the x and y coordinates.
+        Component Z is to be added in the case of three-dimensional axes. It
+        is a two (three) column matrix <tt><b>[x,y,[z]]</b></tt> of points.</dd>
+<dd>
+<b>closed: </b>This field determines wether the polyline is closed or not: its
+        value can be <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt> (no default
+        value, it depends on the primitive used to create the polyline).</dd>
+<dd>
+<b>line_mode: </b>This field contains the default <tt><b>line_mode</b></tt> property
+        value for the polyline. Its value should be <tt><b>"on" </b></tt>(line
+        drawn) or <tt><b>"off"</b></tt> (no line drawn).</dd>
+<dd>
+<b>fill_mode: </b>If the <tt><b>polyline_style</b></tt> field is different of 5, fill
+        the background of the curve with color defined by the
+        <tt><b>background</b></tt> property.</dd>
+<dd>
+<b>line_style: </b>The <tt><b>line_style</b></tt> property value should be an integer in
+        [1 6]. 1 stands for solid the other value stands for a selection of
+        dashes (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/getlinestyle.htm"><tt><b>getlinestyle</b></tt></a>).</dd>
+<dd>
+<b>thickness: </b>This field contains the line <tt><b>thickness</b></tt> property. It's
+        value should be positive integer.</dd>
+<dd>
+<b>arrow_size_factor: </b>This integer allows to set the size of arrows drawn on the
+        polyline. The actual size of arrows is the product of the
+        <tt><b>thickness</b></tt> and the the size factor.</dd>
+<dd>
+<b>polyline_style: </b>This property sets several polyline drawing mode:<dl>
+<dd>
+<b></b>If the value is 0 or 1 lines are drawn between two
+            consecutives points.</dd>
+<dd>
+<b></b>If the value is 2 the polyline produces a staircase plot. Two
+            consecutives points are linked by an horizontal line followed by a
+            vertical line.</dd>
+<dd>
+<b></b>If the value is 3 the polyline produces a bar plot. For each
+            given point (x,y) a vertical line is drawn from (x,y) to
+            (x,0).</dd>
+<dd>
+<b></b>If the value is 4 arrows are drawn between two consecutives
+            points.</dd>
+<dd>
+<b></b>If the value is 5 the polyline is filled (patch).</dd>
+<dd>
+<b></b>If the value is 6 the polyline is a Matlab-like bar object.
+            The properties <tt><b>bar_shift</b></tt> and <tt><b>bar_width</b></tt>
+            command its appearance.</dd>
+</dl>
+</dd>
+<dd>
+<b>foreground: </b>This field contains the default <tt><b>foreground</b></tt> property
+        used to draw the polyline. Its value should be a color index (relative
+        to the current colormap).</dd>
+<dd>
+<b>background: </b>This field contains the color used to fill the background of the
+        polyline. Its value should be a color index (relative to the current
+        colormap).</dd>
+<dd>
+<b>interp_color_vector: </b>This field contains the vector of color indices used to fill in
+        the polyline when the <tt><b>interp_color_mode</b></tt> property is set
+        to <tt><b>"on"</b></tt>. It defines the intervals of colormap indices
+        used to fill each segment. For instance, the first segment will be
+        filled by every colors whose index is between the first two elements
+        of the vecor. It is only applicable if the polyline is defined by 3 or
+        4 points. Therefore, the size of the vector must match this
+        dimension.</dd>
+<dd>
+<b>interp_color_mode: </b>This field determines if we are using the interpolated shading
+        mode to fill the polyline : its value can be <tt><b>"on"</b></tt> or
+        <tt><b>"off"</b></tt>. Note that an <tt><b>interp_color_vector</b></tt> must
+        be defined before switching to "on" value (see above).</dd>
+<dd>
+<b>mark_mode: </b>This field contains the default <tt><b>mark_mode</b></tt> property
+        value for the polyline. Its value should be <tt><b>"on"</b></tt> (marks
+        drawn) or <tt><b>"off"</b></tt> (no marks drawn).</dd>
+<dd>
+<b>mark_style: </b>The <tt><b>mark_style</b></tt> property value is used to select the
+        type of mark to use when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. The value should be an integer in [0 14] which
+        stands for: dot, plus, cross, star, filled diamond, diamond, triangle
+        up, triangle down, diamond plus, circle, asterisk, square, triangle
+        right, triangle left and pentagram.</dd>
+<dd>
+<b>mark_size_unit: </b>This field contains the default <tt><b>mark_size_unit</b></tt>
+        property value. If <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"point"</b></tt>, then the <tt><b>mark_size</b></tt> value is
+        directly given in points. When <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"tabulated"</b></tt>, <tt><b>mark_size</b></tt> is computed relative
+        to the font size array: therefore, its value should be an integer in
+        [0 5] which stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt. Note that
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> and pure scilab functions use
+        <tt><b>tabulated</b></tt> mode as default ; when using <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot.htm"><tt><b>plot</b></tt></a>
+        function, the <tt><b>point</b></tt> mode is automatically enabled.</dd>
+<dd>
+<b>mark_size: </b>The <tt><b>mark_size</b></tt> property is used to select the type of
+        size of the marks when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. Its value should be an integer between 0 and 5
+        whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>mark_foreground: </b>This field contains the <tt><b>mark_foreground</b></tt> property
+        value which is the marks' edge color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>mark_background: </b>This field contains the <tt><b>mark_background</b></tt> property
+        value which is the marks' face color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>x_shift: </b>This field contains the offset computed by a call to the
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/bar.htm"><tt><b>bar</b></tt></a> function (or re-computed by a call to
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/barhomogenize.htm"><tt><b>barhomogenize</b></tt></a>) and is used to perform a nice vertical bar
+        representation. Note that this offset is also taken into account for
+        all the other <tt><b>polyline_style</b></tt>. The unit is expressed in
+        user coordinates.</dd>
+<dd>
+<b>y_shift: </b>This field contains the offset computed by a call to the
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/bar.htm"><tt><b>bar</b></tt></a> function (or re-computed by a call to
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/barhomogenize.htm"><tt><b>barhomogenize</b></tt></a>) and is used to perform a nice horizontal
+        bar representation. Note that this offset is also taken into account
+        for all the other <tt><b>polyline_style</b></tt>. The unit is expressed
+        in user coordinates.</dd>
+<dd>
+<b>z_shift: </b>This field contains the offset the user may specify. Note that
+        this offset is taken into account for all the
+        <tt><b>polyline_style</b></tt>. The unit is expressed in user
+        coordinates.</dd>
+<dd>
+<b>bar_width: </b>This field determines the width of the selected polyline when its
+        <tt><b>polyline_style</b></tt> is set to bar mode (case 6) : the unit is
+        expressed in user coordinates.</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value for
+        the polyline. It should be :<dl>
+<dd>
+<b></b><tt><b>"off"</b></tt> this means that the polyline is not
+            clipped.</dd>
+<dd>
+<b></b><tt><b>"clipgrf"</b></tt> this means that the polyline is clipped
+            outside the Axes box.</dd>
+<dd>
+<b></b><tt><b>"on"</b></tt> this means that the polyline is clipped
+            outside the rectangle given by property clip_box.</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field is to determinate the <tt><b>clip_box</b></tt> property.
+        By Default its value should be an empty matrix if clip_state is "off".
+        Other cases the vector <tt><b>[x,y,w,h]</b></tt> (upper-left point width
+        height) defines the portions of the polyline to display, however
+        <tt><b>clip_state</b></tt> property value will be changed.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the polyline
+        data structure, and to retrieve it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>  
+
+   set("figure_style","new") //create a figure
+   a=get("current_axes")//get the handle of the newly created axes
+   a.data_bounds=[-2,-2;2,2];
+
+   xpoly(sin(2*%pi*(0:5)/5),cos(2*%pi*(0:5)/5),"lines",0)
+   p=get("hdl"); //get handle on current entity (here the polyline entity)
+   p.foreground=2;
+   p.thickness=3;
+   p.mark_style=9;
+   d=p.data;d(1,:)=[0 0];p.data=d;
+   a.rotation_angles=[0 45];
+   
+   p.data=[(-2:0.1:2)' sin((-2:0.1:2)*%pi)']
+   p.mark_mode="off";
+   p.polyline_style=3;
+   p.line_style=4;
+
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xpoly.htm"><tt><b>xpoly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfpoly.htm"><tt><b>xfpoly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xpolys.htm"><tt><b>xpolys</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfpolys.htm"><tt><b>xfpolys</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

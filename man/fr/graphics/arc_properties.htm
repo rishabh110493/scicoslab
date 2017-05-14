@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>arc_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arc_properties</b> - description of the Arc entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Arc entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for ellipses and part of ellipses and the
+    filled ones.</p>
+<dl>
+<dd>
+<b>parent: </b>This field contains the handle of the parent. The parent of the
+        arc entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>arc</b></tt> handles currently do not have
+        any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>thickness: </b>This field contains the line <tt><b>thickness</b></tt> property. Its
+        value should be positive integer.</dd>
+<dd>
+<b>line_style: </b>The <tt><b>line_style</b></tt> property value should be an integer in
+        [1 6]. 1 stands for solid the other value stands for a selection of
+        dashes.</dd>
+<dd>
+<b>line_mode: </b>This property allows to display or not the line representing the
+        arc. The value must be <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt>.</dd>
+<dd>
+<b>fill_mode: </b>If <tt><b>fill_mode</b></tt> property value is <tt><b>"on" </b></tt>,
+        the arc is filled with the <tt><b>background</b></tt> color.</dd>
+<dd>
+<b>foreground: </b>This field contains the default <tt><b>foreground</b></tt> property
+        value used to draw or to fill arc. It should be a color index
+        (relative to the current colormap).</dd>
+<dd>
+<b>background: </b>This field contains the color used to fill the arc. It should be a
+        color index (relative to the current colormap).</dd>
+<dd>
+<b>data: </b>This property is to return the coordinates of the upper-left
+        point, the width and the height of the inclosing rectangle as well as
+        the boundary angles of the sector. It is the matrix
+        <tt><b>[xleft,yup,[zup],width,height,a1,a2]</b></tt> where
+        <tt><b>a1/64</b></tt> and <tt><b>a2/64</b></tt> are the sector boundary
+        angles in degree.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt>. If
+        <tt><b>"on"</b></tt> the arc is drawn, If <tt><b>"off"</b></tt> the arc is
+        not displayed on the screen.</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value for
+        the arc. Clip_state value should be :<dl>
+<dd>
+<b></b><tt><b>"off"</b></tt> this means that the arc is not clipped</dd>
+<dd>
+<b></b><tt><b>"clipgrf"</b></tt> this means that the arc is clipped
+            outside the Axes box.</dd>
+<dd>
+<b></b><tt><b>"on"</b></tt> this means that the arc is clipped outside
+            the arc given by property clip_box.</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field is to determinate the <tt><b>clip_box</b></tt> property.
+        By Default its value should be an empty matrix if clip_state is "off".
+        Other cases the vector <tt><b>[x,y,w,h]</b></tt> (upper-left point width
+        height) defines the portions of the arc to display, however
+        <tt><b>clip_state</b></tt> property value will be changed.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the arc data
+        structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   set("figure_style","new") //create a figure
+   a=get("current_axes");//get the handle of the newly created axes
+   a.data_bounds=[-2,-2;2,2];
+
+   xarc(-1.5,1.5,3,3,0,360*64)
+
+   arc=get("hdl"); //get handle on current entity (here the arc entity)
+   arc.fill_mode="on";
+   arc.foreground=5;
+   arc.data(:,[3 6])=[2 270*64];  
+   xfarc(-.5,1,.4,.6,0,360*64);
+   arc.visible="off";
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xarc.htm"><tt><b>xarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xarcs.htm"><tt><b>xarcs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarc.htm"><tt><b>xfarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarcs.htm"><tt><b>xfarcs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

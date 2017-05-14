@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_fread</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_fread</b> - Matlab fread emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>There is no Scilab equivalent for Matlab <tt><b>fread</b></tt>. Scilab <tt><b>mget</b></tt>
+    and Matlab <tt><b>fread</b></tt> behave differently in many cases, but they are equivalents in some cases.</p>
+<p>
+    The function <tt><b>mtlb_fread(varargin)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>fread</b></tt>. This function will
+    determine the correct semantic at run time. It is sometimes possible to replace
+    calls to <tt><b>mtlb_fread</b></tt> by calls to <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>.
+    </p>
+<p>Caution: <tt><b>mtlb_fread</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

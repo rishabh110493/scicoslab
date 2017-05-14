@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>save</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>save</b> -  saving variables in binary files</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>save(filename [,x1,x2,...,xn])  </tt></dd>
+<dd><tt>save(fd [,x1,x2,...,xn])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: character string containing the path of the file</li>
+<li>
+<tt><b>fd</b></tt>: a file descriptor given by a call to mopen</li>
+<li>
+<tt><b>xi</b></tt>: arbitrary Scilab variable(s)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>The <tt><b>save</b></tt> command can be used to save Scilab current variables 
+     in a binary file. If a variable is a graphic handle, the <tt><b>save</b></tt> function
+      saves all the corresponding <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a> definition. </p>
+<p>The file can be given either by its paths or
+    by its descriptor previously given by <tt><b>mopen</b></tt>.</p>
+<p><tt><b>save(filename)</b></tt> saves all current variables in the file defined
+    by  <tt><b>filename</b></tt>.</p>
+<p><tt><b>save(fd)</b></tt> saves all current variables in the file defined
+    by  the descriptor <tt><b>fd</b></tt>.</p>
+<p><tt><b>save(filename,x,y)</b></tt> or <tt><b>save(fd,x,y)</b></tt> saves only named
+    variables <tt><b>x</b></tt> and <tt><b>y</b></tt>.</p>
+<p>Saved  variables can be reloaded by the <tt><b>load</b></tt> command.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=eye(2,2);b=ones(a);
+save('val.dat',a,b);
+clear a
+clear b
+load('val.dat','a','b');
+
+// sequential save into a file
+fd=mopen('TMPDIR/foo','wb')
+for k=1:4, x=k^2;save(fd,x,k),end
+mclose(fd)
+fd=mopen('TMPDIR/foo','rb')
+for i=1:4, load(fd,'x','k');x,k,end
+mclose(fd)
+
+// appending variables to an old save file
+fd=mopen('TMPDIR/foo','r+')
+mseek(0,fd,'end') 
+lst=list(1,2,3)
+save(fd,lst)
+mclose(fd)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save_format.htm"><tt><b>save_format</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

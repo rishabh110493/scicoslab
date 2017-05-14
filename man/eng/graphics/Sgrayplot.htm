@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sgrayplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Sgrayplot</b> - smooth 2D plot of a surface using
+  colors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Sgrayplot(x,y,z,&lt;opt_args&gt;)</tt></dd>
+<dd><tt>Sgrayplot(x,y,z [,strf, rect, nax, zminmax, colminmax, mesh, colout])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: real row vectors of size n1 and n2.</li>
+<li>
+<tt><b>z</b></tt>: real matrix of size (n1,n2). <tt><b>z(i,j)</b></tt> is the value
+          of the surface at the point (x(i),y(j)).</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements
+          <tt><b>key1=value1,key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: strf, rect, nax, zminmax, colminmax, mesh, colout
+          (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> for the 3 first and <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec.htm"><tt><b>fec</b></tt></a> for the 4 last).</li>
+<li>
+<tt><b>strf,rect,nax</b></tt>: see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>.</li>
+<li>
+<tt><b>zminmax, colminmax, mesh, colout</b></tt>: see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec.htm"><tt><b>fec</b></tt></a>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Sgrayplot</b></tt> is the same as <tt><b>grayplot</b></tt> but the
+    plot is smoothed. The function <tt><b>fec</b></tt> is used for smoothing. The
+    surface is plotted assuming that it is linear on a set of triangles built
+    from the grid (here with n1=5, n2=3):</p>
+<pre>
+             _____________
+             | /| /| /| /|
+             |/_|/_|/_|/_| 
+             | /| /| /| /| 
+             |/_|/_|/_|/_|</pre>
+<p>The function <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colorbar.htm"><tt><b>colorbar</b></tt></a> may be used to see the color scale.</p>
+<p>The parameter <tt><b>zminmax</b></tt> is useful for animation purpose (see an
+       example after) and the parameter <tt><b>colminmax</b></tt> lets the user choose a part
+       of the current colormap (see the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec.htm"><tt><b>fec</b></tt></a> help page).</p>
+<p>Enter the command <tt><b>Sgrayplot()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// example #1
+x=-10:10; y=-10:10;m =rand(21,21);
+clf()
+xset("colormap",hotcolormap(64))
+Sgrayplot(x,y,m, strf="011", rect=[-20,-20,20,20])
+
+// example #2
+t=-%pi:0.1:%pi; m=sin(t)'*cos(t);
+clf()
+xset("colormap",jetcolormap(64))
+colorbar(-1,1)
+Sgrayplot(t,t,m, strf="041")
+
+// example #3: an animation display cos(t)*sin(x)sin(y).
+// (Remark: this animation uses the old mode)
+n = 30;
+nt = 100;
+x = linspace(0,2*%pi,n);
+y = linspace(0,%pi,n/2);
+z = sin(x')*sin(y);
+t = linspace(0,4*%pi,nt);
+xselect(); clf()
+f=gcf();
+f.color_map=jetcolormap(64);
+f.pixmap='on';
+colorbar(-1,1)
+Sgrayplot(x,y,cos(t(1))*z, strf="042", zminmax=[-1,1])
+c=gce(),e=c.children
+xtitle("Kaa''s eyes")
+for i = 1:nt
+   e.data(:,3)=matrix(cos(t(i))*z,-1,1);
+   show_pixmap()
+end
+f.pixmap='off';
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec.htm"><tt><b>fec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fgrayplot.htm"><tt><b>fgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/grayplot.htm"><tt><b>grayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Sfgrayplot.htm"><tt><b>Sfgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colorbar.htm"><tt><b>colorbar</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

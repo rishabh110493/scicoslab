@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>min_lcost_flow2</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>min_lcost_flow2</b> -  flot de coût linéaire minimum  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[c,phi,flag] = min_lcost_flow2(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>c  </b></tt>
+    : valeur du coût
+</li>
+<li>
+<tt><b>phi  </b></tt>
+    : vecteur ligne des valeurs des flots sur les arcs
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : problème soluble ou pas (0 ou 1)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>min_lcost_flow2</b></tt> calcule flot de coût linéaire minimum dans un réseau 
+    <tt><b>g</b></tt>. Elle renvoie le coût total du flot sur les arcs <tt><b>c</b></tt> et
+    le vecteur ligne des flots sur les arcs <tt><b>phi</b></tt>. Si le problème n'est pas soluble (impossible de trouver un flot compatible), <tt><b>flag</b></tt> est égal à 0, sinon il est égal à 1.
+  </p>
+<p>
+    Les bornes sur les flots sont données par les éléments <tt><b>edge_min_cap</b></tt> et
+    <tt><b>edge_max_cap</b></tt> du graphe. 
+    La valeur de la capacité minimum doit être égal à zéro. Les valeurs des capacités maximum doivent être entières et positives.
+    Si les valeurs <tt><b>edge_min_cap</b></tt> ou <tt><b>edge_max_cap</b></tt> ne sont pas données (vecteur vide <tt><b>[]</b></tt>), elles sont supposées nulles sur chaque arête.
+  </p>
+<p>
+    Les coûts sur les arêtes sont donnés par les éléments <tt><b>edge_cost</b></tt> du graphe.
+    Les coûts doivent être entiers et positifs.
+    Si la valeur de <tt><b>edge_cost</b></tt> n'est pas donnée (vecteur vide <tt><b>[]</b></tt>), 
+    elle est supposé nulle sur chaque arête.
+  </p>
+<p></p>
+<p>
+    La demande sur les sommets est donnée par l'élément <tt><b>node_demand</b></tt> du graphe.
+    Les demandes doivent être des nombre entiers. La somme des demandes doit être nulle pour que le problème soit soluble. Si la valeur de <tt><b>node_demand</b></tt> n'est pas donnée (vecteur vide <tt><b>[]</b></tt>), elle est supposée nulle sur chaque sommet.
+  </p>
+<p>
+    Cette fonction utilise un algorithme de relaxation dû à D. Bertsekas.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 4 5 6 6 6 7 7 7 8 9 10 12 12 13 13 13 14 15 14 9 11 10 1 8];
+he=[2 6 3 4 5 1 3 5 1 7 10 11 5 8 9 5 8 11 10 11 9 11 15 13 14 4 6 9 1 12 14];
+g=make_graph('foo',1,15,ta,he);
+g('node_x')=[194 191 106 194 296 305 305 418 422 432 552 550 549 416 548];
+g('node_y')=[56 221 316 318 316 143 214 321 217 126 215 80 330 437 439];
+show_graph(g);
+g1=g; ma=arc_number(g1); n=g1('node_number');
+g1('edge_min_cap')=0.*ones(1,ma);
+x_message(['Generation aléatoire des données';
+           'Les premiers problèmes générés peuvent être insolubles']);
+while %T then
+ rand('uniform');
+ g1('edge_max_cap')=round(20*rand(1,ma))+20*ones(1,ma);
+ g1('edge_cost')=round(10*rand(1,ma)+ones(1,ma));
+ rand('normal');
+ dd=20.*rand(1,n)-10*ones(1,n);
+ dd=round(dd-sum(dd)/n*ones(1,n));
+ dd(n)=dd(n)-sum(dd);
+ g1('node_demand')=dd;
+ [c,phi,flag]=min_lcost_flow2(g1);
+ if flag==1 then break; end;
+end;
+x_message(['Le cout est: '+string(c);
+           'Voici le flot sur les arcs et les demandes des sommets']);
+ii=find(phi&lt;&gt;0); edgecolor=phi; edgecolor(ii)=11*ones(ii);
+g1('edge_color')=edgecolor;
+edgefontsize=8*ones(1,ma); edgefontsize(ii)=18*ones(ii);
+g1('edge_font_size')=edgefontsize;
+g1('edge_label')=string(phi);
+g1('node_label')=string(g1('node_demand'));
+show_graph(g1);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/min_lcost_cflow.htm"><tt><b>min_lcost_cflow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/min_lcost_flow1.htm"><tt><b>min_lcost_flow1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/min_qcost_flow.htm"><tt><b>min_qcost_flow</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

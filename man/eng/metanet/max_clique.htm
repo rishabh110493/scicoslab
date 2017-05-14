@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>max_clique</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>max_clique</b> -  maximum clique of a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[size,nodes] = max_clique(g,[ind])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>ind</b></tt>: integer (optional)</li>
+<li>
+<tt><b>size</b></tt>: integer</li>
+<li>
+<tt><b>nodes</b></tt>: integer row vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>max_clique</b></tt> computes the maximum clique of the graph <tt><b>g</b></tt> i.e. the 
+    complete subgraph of maximum size. <tt><b>ind</b></tt> is a parameter for the choice
+    of the method: if <tt><b>ind</b></tt> is 0 the method is a partial enumerative 
+    algorithm and if <tt><b>ind</b></tt> is 1 the algorithm is based on quadratic 
+    zero-one programming. The default is 0.
+    The output <tt><b>size</b></tt> is the number of the nodes of the clique found by the
+    algorithm and <tt><b>nodes</b></tt> is the vector of the corresponding nodes.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 2 3 4 5 6 6 7 8  9 10 16 16 10 11 11 12 12 11 14 15 15 13 7 13 13];
+he=[2 3 4 5 6 7 8 8 9 10 16  2  3 11 12 13  1 14 14 15  5  9 12 4 14 15];
+g=make_graph('foo',0,16,ta,he);
+g('node_x')=[106 199 369 467 470 403 399 347 308 269 184 108 199 268 345 272];
+g('node_y')=[341 420 422 321 180 212 286 246 193 244 243 209  59 134  51 348];
+g('node_diam')=[1:(g('node_number'))]+20;
+show_graph(g);
+[ns,no] = max_clique(g);
+show_nodes(no);
+g1=graph_complement(g);
+[ns,no] = max_clique(g1);
+show_nodes(no);
+ 
+  </pre>
+</body>
+</html>

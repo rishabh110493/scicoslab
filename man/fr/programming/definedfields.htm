@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>definedfields</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>definedfields</b> -  return index of list's defined fields</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>k=definedfields(l)    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>l</b></tt>: a list , tlist or mlist variable.</li>
+<li>
+<tt><b>k</b></tt>: a vector of index.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>If <tt><b>l</b></tt> is a  <tt><b>list</b></tt><tt><b>tlist</b></tt><tt><b>mlist</b></tt><tt><b>k=definedfields(l)</b></tt> returns in
+    <tt><b>k</b></tt> the indices of the defined list fields. This
+    function is useful because indexing undefined fields produces an
+    error.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+l=list(1);l(3)=5 
+k=definedfields(l)
+
+t=tlist('x');t(5)=4
+definedfields(t)
+
+m=mlist(['m','a','b']);m.b='sdfgfgd' 
+definedfields(m)  
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mlist.htm"><tt><b>mlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

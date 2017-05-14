@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>max_cap_path</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>max_cap_path</b> -  chemin de capacité maximum  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p,cap] = max_cap_path(i,j,g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>i,j  </b></tt>
+    : entiers, numéros des sommets
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>p  </b></tt>
+    : vecteur ligne des numéros des arcs du chemin s'il existe
+</li>
+<li>
+<tt><b>cap  </b></tt>
+    : valeur de la capacité du chemin
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>max_cap_path</b></tt> renvoie le chemin de capacité maximum du sommet
+    <tt><b>i</b></tt> au sommet <tt><b>j</b></tt> pour le graphe <tt><b>g</b></tt> s'il existe, et renvoie 
+    le vecteur vide <tt><b>[]</b></tt> sinon.
+  </p>
+<p>
+    Les capacités des arêtes sont données par l'élément <tt><b>edge_max_cap</b></tt>
+    du graphe. Si sa valeur n'est pas donnée (vecteur vide <tt><b>[]</b></tt>), 
+    <tt><b>max_cap_path</b></tt> renvoie le vecteur vide <tt><b>[]</b></tt>.
+    Les capacités doivent être strictement positives, i.e les capacités 
+    négatives sont considérées égales à 0 (aucune capacité).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+ma=edge_number(g);
+g('edge_max_cap')=int(rand(1,ma)*16)+5;
+[p,cap]=max_cap_path(1,14,g);
+edgecolor=1*ones(1,ma); edgecolor(p)=11*ones(p); g('edge_color')=edgecolor;
+x_message(['La capacité maximum est : '+string(cap);
+           'Voici le chemin correspondant']);
+show_graph(g); show_arcs(p);
+ </pre>
+</body>
+</html>

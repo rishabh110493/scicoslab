@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>macro</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>macro</b> -  Scilab procedure and Scilab object</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Macros are Scilab procedures ("macro", "function" and "procedure"
+    have the save meaning). Usually, they are defined 
+    in files with an editor and loaded into Scilab by <tt><b>getf</b></tt> or through
+    a library.</p>
+<p>
+    They can also be defined on-line (see <tt><b>deff</b></tt>). 
+    A file which contains a macro must begin as follows:</p>
+<pre>
+
+function [y1,...,yn]=foo(x1,...,xm)
+   
+    </pre>
+<p>
+    The <tt><b>yi</b></tt> are output variables calculated as functions of
+    input variables and variables existing in Scilab
+    when the macro is executed.
+    A macro can be compiled for faster execution. Collections
+    of macros can be collected in libraries.
+    Macros which begin with <tt><b>%</b></tt> sign (e.g. <tt><b>%foo</b></tt>) and whose
+    arguments are lists are used to perform specific 
+    operations: for example, <tt><b>z=%rmr(x,y)</b></tt> is equivalent
+    to <tt><b>z=x*y</b></tt> when <tt><b>x</b></tt> and <tt><b>z</b></tt> are rationals 
+    (i.e. <tt><b>x=list('r',n,d,[])</b></tt> with <tt><b>n</b></tt> and <tt><b>d</b></tt> polynomials).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/deff.htm"><tt><b>deff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/lib.htm"><tt><b>lib</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rtitr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rtitr</b> -  discrete time response (transfer matrix)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=rtitr(Num,Den,u [,up,yp])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Num,Den</b></tt>: polynomial  matrices (resp. dimensions : <tt><b>n</b></tt>x<tt><b>m</b></tt> and <tt><b>n</b></tt>x<tt><b>n</b></tt>)</li>
+<li>
+<tt><b>u</b></tt>: real matrix (dimension <tt><b>m</b></tt>x<tt><b>(t+1)</b></tt>
+</li>
+<li>
+<tt><b>up,yp</b></tt>: real matrices (<tt><b>up</b></tt> dimension <tt><b>m</b></tt>x<tt><b>
+  (maxi(degree(Den)))</b></tt> (default values=<tt><b>0</b></tt>) ,
+  <tt><b>yp</b></tt> dimension <tt><b>n</b></tt>x<tt><b>
+  (maxi(degree(Den)))</b></tt>)</li>
+<li>
+<tt><b>y</b></tt>: real matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=rtitr(Num,Den,u [,up,yp])</b></tt> returns the time response of
+    the discrete time linear system with transfer matrix <tt><b>Den^-1 Num</b></tt> 
+    for the input <tt><b>u</b></tt>, i.e <tt><b>y</b></tt> and <tt><b>u</b></tt> are such that <tt><b>Den y = Num u</b></tt> at t=0,1,...</p>
+<p>
+    If <tt><b>d1=maxi(degree(Den))</b></tt>, and <tt><b>d2=maxi(degree(Num))</b></tt> the polynomial 
+    matrices  <tt><b>Den(z)</b></tt> and <tt><b>Num(z)</b></tt> may be written respectively as:</p>
+<pre>
+
+  D(z)= D_0  + D_1  z + ... + D_d1   z^d1
+  N(z)= N_0  + N_1  z + ... + N_d2   z^d2
+   
+    </pre>
+<p>
+    and <tt><b>Den y = Num u</b></tt> is interpreted as the recursion:</p>
+<pre>
+
+  D(0)y(t)+D(1)y(t+1)+...+ D(d1)y(t+d1)= N(0) u(t) +....+ N(d2) u(t+d2)
+   
+    </pre>
+<p>
+    It is assumed that <tt><b>D(d1)</b></tt> is non singular.</p>
+<p>
+    The columns of u are the inputs of the system at t=0,1,...,T:</p>
+<pre>
+
+  u=[u(0) , u(1),...,u(T)]
+   
+    </pre>
+<p>
+    The outputs at <tt><b>t=0,1,...,T+d1-d2</b></tt> are the columns of the matrix <tt><b>y</b></tt>:</p>
+<pre>
+
+  y=[y(0), y(1),  .... y(T+d1-d2)]
+   
+    </pre>
+<p><tt><b>up</b></tt> and <tt><b>yp</b></tt> define the initial conditions for t &lt; 0 i.e</p>
+<pre>
+
+  up=[u(-d1), ..., u(-1)  ]
+  yp=[y(-d1), ...  y(-1)  ]
+   
+    </pre>
+<p>
+    Depending on the relative values of <tt><b>d1</b></tt> and <tt><b>d2</b></tt>, some of the
+    leftmost components of <tt><b>up</b></tt>, <tt><b>yp</b></tt> are ignored.
+    The default values of <tt><b>up</b></tt> and <tt><b>yp</b></tt> are zero:
+    <tt><b>up = 0*ones(m,d1), yp=0*ones(n,d1)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+z=poly(0,'z');
+Num=1+z;Den=1+z;u=[1,2,3,4,5];
+rtitr(Num,Den,u)-u
+//Other examples
+//siso
+//causal
+n1=1;d1=poly([1 1],'z','coeff');       // y(j)=-y(j-1)+u(j-1)
+r1=[0 1 0 1 0 1 0 1 0 1 0];
+r=rtitr(n1,d1,ones(1,10));norm(r1-r,1)
+//hot restart
+r=rtitr(n1,d1,ones(1,9),1,0);norm(r1(2:11)-r)
+//non causal
+n2=poly([1 1 1],'z','coeff');d2=d1;    // y(j)=-y(j-1)+u(j-1)+u(j)+u(j+1)
+r2=[2 1 2 1 2 1 2 1 2];
+r=rtitr(n2,d2,ones(1,10));norm(r-r2,1)
+//hot restart
+r=rtitr(n2,d2,ones(1,9),1,2);norm(r2(2:9)-r,1)
+//
+//MIMO example
+//causal
+d1=d1*diag([1 0.5]);n1=[1 3 1;2 4 1];r1=[5;14]*r1;
+r=rtitr(n1,d1,ones(3,10));norm(r1-r,1)
+//
+r=rtitr(n1,d1,ones(3,9),[1;1;1],[0;0]);
+norm(r1(:,2:11)-r,1)
+//polynomial n1  (same ex.)
+n1(1,1)=poly(1,'z','c');r=rtitr(n1,d1,ones(3,10));norm(r1-r,1)
+//
+r=rtitr(n1,d1,ones(3,9),[1;1;1],[0;0]);
+norm(r1(:,2:11)-r,1)
+//non causal
+d2=d1;n2=n2*n1;r2=[5;14]*r2;
+r=rtitr(n2,d2,ones(3,10));norm(r2-r)
+//
+r=rtitr(n2,d2,ones(3,9),[1;1;1],[10;28]);
+norm(r2(:,2:9)-r,1)
+//
+//  State-space or transfer
+a = [0.21 , 0.63 , 0.56 , 0.23 , 0.31
+     0.76 , 0.85 , 0.66 , 0.23 , 0.93
+     0 , 0.69 , 0.73 , 0.22 , 0.21
+     0.33 , 0.88 , 0.2 , 0.88 , 0.31
+     0.67 , 0.07 , 0.54 , 0.65 , 0.36];
+b = [0.29 , 0.5 , 0.92
+     0.57 , 0.44 , 0.04
+     0.48 , 0.27 , 0.48
+     0.33 , 0.63 , 0.26
+     0.59 , 0.41 , 0.41];
+c = [0.28 , 0.78 , 0.11 , 0.15 , 0.84
+     0.13 , 0.21 , 0.69 , 0.7 , 0.41];
+d = [0.41 , 0.11 , 0.56
+     0.88 , 0.2 , 0.59];
+s=syslin('d',a,b,c,d);
+h=ss2tf(s);num=h('num');den=h('den');den=den(1,1)*eye(2,2);
+u=1;u(3,10)=0;r3=flts(u,s);
+r=rtitr(num,den,u);norm(r3-r,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ltitr.htm"><tt><b>ltitr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/exp.htm"><tt><b>exp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/flts.htm"><tt><b>flts</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>biGraphic </title></head>
+<body bgcolor="FFFFFF">
+<CENTER>Traffic-toolbox Function  </CENTER>
+<p><b>biGraphic  -   Upper level function graphic  </b></p>
+<H3><font color="blue">Calling Sequence</font></H3>
+<dl><dd><tt>[prix,opfV,gan,p1,p2]=biGraphic(prlk,lp,up,n)</tt></dd></dl>
+<H3><font color="blue">Parameters</font></H3>
+<ul><ul>
+  <li><tt><b>prlk  </b></tt>
+    : row vector of the priced links
+  </li>
+  <li><tt><b>lp  </b></tt>
+    : row vector of the lower bound for prices
+  </li>
+  <li><tt><b>up  </b></tt>
+    : row vector ot the uper bound for prices 
+  </li>
+  <li><tt><b>n  </b></tt>
+    : grid's size 
+  </li>
+  <li><tt><b>prix  </b></tt>
+    : optimal link prices
+  </li>
+  <li><tt><b>pfV  </b></tt>
+    : optimum value of the profit function
+  </li>
+  <li><tt><b>gan  </b></tt>
+    : nxn matrix of the profit function values
+  </li>
+  <li><tt><b>p1, p2</b></tt>
+    : row vectors of prices
+  </li>
+   </ul></ul>
+<H3><font color="blue">Description</font></H3><dl>
+  <p>
+Plots the two dimensional profit function, f(x(p),p)=x'p, in the rectangle 
+given by the lower and the uper bounds of prices. Computes the optimal price
+over the points of the grid.
+</p>
+</dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+ShowNet()
+[prix,pfV,gan,p1,p2]=biGraphic([10,21],0,10,10);
+</pre></ul><H3><font color="blue">See Also</font></H3>
+<p><ul>
+<a href="bigls.htm"><tt><b>bigls</b></tt></a>&nbsp;&nbsp;
+<a href="biterGrid.htm"><tt><b>biterGrid</b></tt></a>&nbsp;&nbsp;
+<a href="bilevel.htm"><tt><b>bilevel</b></tt></a>&nbsp;&nbsp;
+</ul></p>
+</body>
+</html>

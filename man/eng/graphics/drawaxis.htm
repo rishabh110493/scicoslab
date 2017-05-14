@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>drawaxis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>drawaxis</b> -  draw an axis</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>drawaxis([options])   </tt></dd>
+<dd><tt>// options: x,y,dir,sub_int,fontsize,format_n,seg,textcolor,ticscolor,tics</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dir=string</b></tt>: used to specify the tics direction. <tt><b>string</b></tt> can be chosen among   'u','r','d','l' and 'l' is the default value. the values 'u','r','d','l' stands respectively for up, right, down, left</li>
+<li>
+<tt><b>tics=string</b></tt>: A flag which describes how the tics are given.   <tt><b>string</b></tt> can be chosen among 'v','r', and 'i', and, 'v' is the default value</li>
+<li>
+<tt><b>x,y</b></tt>: two vectors which give tics positions.</li>
+<li>
+<tt><b>val= string matrix</b></tt>: A string matrix, which, when given, gives the string to be drawn along the axis at tics positions.</li>
+<li>
+<tt><b>fontsize=int</b></tt>: specifies the fontsize to use for displaying values along the axis. Default value is <tt><b>-1</b></tt> which stands for current fontsize</li>
+<li>
+<tt><b>format_n=string</b></tt>: format to use for displaying numbers along the axis</li>
+<li>
+<tt><b>seg= 1 or 0</b></tt>: A flag which controls the display of the base segment of the axis (default value is 1).</li>
+<li>
+<tt><b>sub_int=integer</b></tt>: an integer which gives the number of sub-intervals to draw  between large tics.</li>
+<li>
+<tt><b>textcolor=integer</b></tt>: specify the color to use for displaying values along the axis. Default value is <tt><b>-1</b></tt> which stands for current color.</li>
+<li>
+<tt><b>ticscolor=integer</b></tt>: specify the color to use for tics drawing. Default value is <tt><b>-1</b></tt> which stands for current color.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>drawaxis</b></tt> is used to draw an axis in vertical or horizontal 
+    direction. the direction of the axis is given by dir 
+    <tt><b>dir = 'u'</b></tt> or <tt><b>'d'</b></tt> gives a horizontal axis 
+    with tics going up (<tt><b>'u'</b></tt>) or down (<tt><b>'d'</b></tt>). 
+    <tt><b>dir = 'r'</b></tt> or <tt><b>'l'</b></tt> give a vertical axis 
+    with tics going right (<tt><b>'r'</b></tt>) or left (<tt><b>'l'</b></tt>).</p>
+<p><tt><b>x</b></tt> and <tt><b>y</b></tt> give the axis tics positions. 
+    If the axis is horizontal then <tt><b>y</b></tt> 
+    must be a scalar or can be omitted and <tt><b>x</b></tt> 
+    is a Scilab vector. The meaning of <tt><b>x</b></tt> 
+    is controlled by <tt><b>tics</b></tt>.</p>
+<p>
+    If <tt><b>tics='v'</b></tt> then <tt><b>x</b></tt> gives the tics positions along the x-axis.</p>
+<p>
+    If <tt><b>tics='r'</b></tt> then <tt><b>x</b></tt> must be of size 3. <tt><b>x=[xmin,xmax,n]</b></tt> and 
+    <tt><b>n</b></tt> gives the number of intervals.</p>
+<p>
+    If <tt><b>tics='i'</b></tt> then <tt><b>x</b></tt> must be of size 4, <tt><b>x=[k1,k2,a,n]</b></tt>. 
+    then <tt><b>xmin=k1*10^a</b></tt>, <tt><b>xmax=k2*10^a</b></tt> and <tt><b>n</b></tt> gives the number of intervals</p>
+<p>
+    If <tt><b>y</b></tt> is omitted then the axis will be positioned at 
+    the top of the frame if <tt><b>dir='u'</b></tt> or at the bottom if  <tt><b>dir='d'</b></tt></p>
+<p>
+    By default, numbers are drawn along the axis. They are drawn using 
+    a default format which can be changed with <tt><b>format_n</b></tt>. 
+    It is also possible to display given strings and not numbers, 
+    this is done if <tt><b>val</b></tt> is provided. The size of <tt><b>val</b></tt> must 
+    match the number of tics.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d(1:10,1:10,1,"020")
+// horizontal axis 
+drawaxis(x=2:7,y=4,dir='u',tics='v')
+// horizontal axis on top of the frame
+drawaxis(x=2:7,dir='u',tics='v') 
+// horizontal axis at the bottom of the frame
+drawaxis(x=2:7,dir='d',tics='v') 
+
+// horizontal axis given by a range 
+drawaxis(x=[2,7,3],y=4,dir='d',tics='r') 
+
+// vertical axis 
+drawaxis(x=4,y=2:7,dir='r',tics='v')
+drawaxis(x=2,y=[2,7,3],dir='l',tics='r')
+drawaxis(y=2:7,dir='r',tics='v')
+drawaxis(y=2:7,dir='l',tics='v')
+
+// horizontal axis with strings displayed at tics positions
+drawaxis(x=2:7,y=8,dir='u',tics='v',val='A'+string(1:6));
+// vertical axis with strings displayed at tics positions
+drawaxis(x=8,y=2:7,dir='r',tics='v',val='B'+string(1:6));
+
+// horizontal axis given with a 'i' range. 
+drawaxis(x=[2,5,0,3],y=9,dir='u',tics='i');
+drawaxis(x=9,y=[2,5,0,3],dir='r',tics='i',sub_int=5);
+
+// horizontal axis again 
+drawaxis(x=2:7,y=4,dir='u',tics='v',fontsize=10,textcolor=9,ticscolor=7,seg=0,sub_int=20) 
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

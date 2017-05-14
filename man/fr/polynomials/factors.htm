@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>factors</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>factors</b> -  factorisation réelle de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[lnum,g]=factors(pol [,'flag'])  </tt></dd>
+<dd><tt>[lnum,lden,g]=factors(rat [,'flag'])  </tt></dd>
+<dd><tt>rat=factors(rat,'flag')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>pol  </b></tt>
+    : polynôme réel
+</li>
+<li>
+<tt><b>rat  </b></tt>
+    : fraction rationnelle (<tt><b>rat=pol1/pol2</b></tt>)
+</li>
+<li>
+<tt><b>lnum  </b></tt>
+    : liste de polynômes (de degrés 1 ou 2)
+</li>
+<li>
+<tt><b>lden  </b></tt>
+    : liste de polynômes (de degrés 1 ou 2)
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : nombre réel
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : chaîne de caractères, <tt><b>'c'</b></tt> ou <tt><b>'d'</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    renvoie les facteurs du polynôme <tt><b>pol</b></tt> dans la liste <tt><b>lnum</b></tt>
+    et le "gain" g.
+  </p>
+<p>
+    On a pol = g multiplié par le produit des termes de la liste <tt><b>lnum</b></tt>
+    (si <tt><b>flag</b></tt> n'est pas donné). Si <tt><b>flag='c'</b></tt>, on a <tt><b>|pol(i omega)|</b></tt> = <tt><b>|g*prod(lnum_j(i omega)|</b></tt>.
+    Si <tt><b>flag='d'</b></tt> alors
+    on a <tt><b>|pol(exp(i omega))|</b></tt> = <tt><b>|g*prod(lnum_i(exp(i omega))|</b></tt>.
+    Si l'argument de <tt><b>factors</b></tt> est une fraction rationnelle 1x1 <tt><b>rat=pol1/pol2</b></tt>, 
+    les facteurs du numérateur <tt><b>pol1</b></tt> et le dénominateur <tt><b>pol2</b></tt> 
+    sont renvoyés dans les listes <tt><b>lnum</b></tt> et <tt><b>lden</b></tt>, respectivement.
+  </p>
+<p>
+    Le "gain" est renvoyé dans <tt><b>g</b></tt>, c'est à dire
+    rat = g multiplié par (produit des termes dans lnum) / (produit des termes dans lden).
+  </p>
+<p>
+    Si <tt><b>flag</b></tt> vaut <tt><b>'c'</b></tt> (resp. <tt><b>'d'</b></tt>), les racines de <tt><b>pol</b></tt> 
+    sont réfléchies par rapport à l'axe imaginaire (resp. le cercle unité), i.e. 
+    les facteurs dans <tt><b>lnum</b></tt> sont des polynômes stables.
+    Idem si <tt><b>factors</b></tt> est appelé avec des arguments rationnels :
+    les termes dans <tt><b>lnum</b></tt> et <tt><b>lden</b></tt> sont des polynômes stables si
+    <tt><b>flag</b></tt> est donné. <tt><b>R2=factors(R1,'c')</b></tt> ou <tt><b>R2=factors(R1,'d')</b></tt>
+    avec <tt><b>R1</b></tt> une fraction rationnelle ou une liste <tt><b>syslin</b></tt> SISO : la sortie <tt><b>R2</b></tt> est rationnelle avec un numérateur et un dénominateur stables et
+    de même module que <tt><b>R1</b></tt> sur l'axe imaginaire (<tt><b>'c'</b></tt>)
+    ou le cercle unité (<tt><b>'d'</b></tt>).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+n=poly([0.2,2,5],'z');
+d=poly([0.1,0.3,7],'z');
+R=syslin('d',n,d);
+R1=factors(R,'d')
+roots(R1('num'))
+roots(R1('den'))
+w=exp(2*%i*%pi*[0:0.1:1]);
+norm(abs(horner(R1,w))-abs(horner(R,w)))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

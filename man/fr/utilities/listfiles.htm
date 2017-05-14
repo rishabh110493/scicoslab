@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>listfiles</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>listfiles</b> -  list files</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>files= listfiles(paths [,flag,flagexpand])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>paths</b></tt>: a string matrix giving a set of pathnames (eventually  ended by a pattern built with <tt><b>*</b></tt>)</li>
+<li>
+<tt><b>flag,flagexpand</b></tt>: boolean optional parameters. (default value <tt><b>%t</b></tt>).</li>
+<li>
+<tt><b>files</b></tt>: a string matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>listfiles</b></tt> can be used to list the files which match 
+    the patterns given by one of the paths entries. 
+    Patterns are given to the unix <tt><b>ls</b></tt> or to the windows
+    <tt><b>dir</b></tt> commands in order to get information on files. 
+    Thus in order to write portable Scilab script valid wildcard patterns 
+    for both os are to be given. Note that Pathname conversion is
+    performed and for example <tt><b>SCI/macros/util/*.sci</b></tt> is a valid 
+    pattern for both unix and windows.</p>
+<p>
+    if <tt><b>flag</b></tt> is true the pathnames given by <tt><b>paths</b></tt> are 
+    converted according to the MSDOS value (See <tt><b>pathconvert</b></tt>). 
+    Moreover, if <tt><b>flagexpand</b></tt> is true leading strings like
+    <tt><b>HOME</b></tt>, <tt><b>SCI</b></tt> or <tt><b>~</b></tt> are expanded using environment
+    variables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+files=listfiles(['SCI/macros/util/*.sci';'SCI/macros/util/*.bin']);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/basename.htm"><tt><b>basename</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/pathconvert.htm"><tt><b>pathconvert</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

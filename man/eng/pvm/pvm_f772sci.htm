@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_f772sci</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_f772sci</b> -  Convert a F77 complex into a complex scalar</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[res] = pvm_f772sci(var)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>var : local scilab variable.  On  return, the  variable will  be</b></tt>overwritten with the result  of conversion operation.</li>
+<li>
+<tt><b>res</b></tt>: if the parameter var is not a variable, the result of the conversion  is returned in res.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_f772sci</b></tt> converts all the complex matrices
+    contained in the representation of a scilab  variable 
+    form a f77 coding to the Scilab complex matrix coding scheme. 
+    This can be  useful if Scilab is receiving  data  from  a   non  scilab
+    application (directly from a C or F77 program for example).</p>
+<p>
+    Note  that  the parameter is passed  by  adress. It  means that if the
+    parameter is a  variable, this variable will  be overwritten with  the
+    result of conversion operation. On the other case, if the parameter is
+    not a variable, the result will be returned in res.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a = [1+%i, 2+2*%i,3+3*%i];
+pvm_f772sci(a)
+if norm(a - [1.+2* %i,3.+%i, 2. + 3. *%i ]) &gt;10*%eps then pause;end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_sci2f77.htm"><tt><b>pvm_sci2f77</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

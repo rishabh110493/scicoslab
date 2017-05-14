@@ -1,0 +1,73 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>ShowNet </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>ShowNet  -   Show a net using Metanet or Scigraph  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>ShowNet()  </tt></dd><dd><tt>ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax)  </tt></dd><dd><tt>ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax,d)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>%net  </b></tt>
+    : the global NetList varaible databasis
+  </li>
+  <li><tt><b>nodes  </b></tt>
+    : string or row vector of integers (nodes)
+  </li>
+  <li><tt><b>arcs  </b></tt>
+    : string or row vector of integers (arcs)
+  </li>
+  <li><tt><b>fmin,fmax  </b></tt>
+    : reals, minimum and maximum flow
+  </li>
+  <li><tt><b>tmin,tmax  </b></tt>
+    : reals, minimum and maximum time
+  </li>
+  <li><tt><b>demands  </b></tt>
+    : string or row vector of integers (demands)
+  </li>
+  <li><tt><b>dmin,dmax  </b></tt>
+    : reals, minimum and maximum demand 
+  </li>
+  <li><tt><b>d  </b></tt>
+    : integer, a demand number 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     ShowNet shows the state of the NetList with the flow and the travel time if they are
+    already assigned. The conventions are that the non used arcs are light
+    blue, the used arcs are black with their width proportional to the flow. The
+    demands are magenta with their width proportional to the demand flow.
+    The orientation of the demand arcs is from origin to destination. 
+  </p>
+  <p>
+     It is possible to give a list of nodes, arcs and demands to be shown or
+    a predefined string 
+  </p>
+  <p>
+    - For the nodes the strings available are : "all"
+    representing all the nodes, and "used" representing the nodes used by some
+    route. 
+  </p>
+  <p>
+    - For the arcs the options are "all" or "between" in this case 
+    the flow limits are the parameters fmin, fmax and the travel time limits are tmin, tmax.
+  </p>
+  <p>
+    - For the demands the options are "all" or "between" in this case the
+    demand limits are dmin,dmax. 
+  </p>
+  <p>
+     It is also possible to choose a demand in order to show the disaggregated flow 
+    corresponding to a specific commodity. In this case the
+    limits on the flow given by fmin and fmax corresponds to the total
+    flow but the width and the colors of the arcs correspond to the
+    disaggregated flow.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample('Steenbrink');
+%net.gp.algorithm='DSDisaggregated';
+TrafficAssig();
+ShowNet() // Shows the net
+ShowNet('used','between',1000,2000,0,0,3,0,10000,3)
+// Shows the net with the flow corresponding to demand 3, 
+// the light blue arcs are not used by the commodity 3
+// but by other commodities. The width corresponds to
+// the flow of the commodity 3. The arcs not shown have
+// total flow less than 1000 or greater than 2000.
+   </pre><p>
+    
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="ShowLinks.htm"><tt><b>ShowLinks</b></tt></a>&nbsp;&nbsp;<a href="ShowDemands.htm"><tt><b>ShowDemands</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;<a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

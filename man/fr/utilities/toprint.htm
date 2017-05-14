@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>toprint</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>toprint</b> - Send text or figure to the printer
+  (Windows)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>toprint('filename')</tt></dd>
+<dd><tt>toprint(['line1','line2',...],'page
+    header')</tt></dd>
+<dd><tt>toprint(num)</tt></dd>
+<dd><tt>toprint(num,output)</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>toprint('filename') send text file to the printer.</p>
+<p>bOK=toprint('filename') send text file to the printer. bOK is %T if
+    file exist.</p>
+<p>toprint(['line1','line2',...],'page header')</p>
+<p>toprint(num) send the figure with figure_id=num to the printer.</p>
+<p>toprint(num,output) send the figure with figure_id=num to the
+    printer.With ouput='pos' or 'gdi' ('gdi' by default)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>toprint(['Test','toprint primitive'],'Scilab page header');
+scf(4);
+plot();
+toprint(4);
+toprint(4,'pos');
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/printsetupbox.htm"><tt><b>printsetupbox</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C</dd></dl>
+</body>
+</html>

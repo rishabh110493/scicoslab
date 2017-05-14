@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>percent (%)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>percent (%)</b> -  caractère spécial  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Certains noms de variables prédéfinies commencent par le caractère <tt><b>%</b></tt>, tels que <tt><b>%i</b></tt> (pour <tt><b>sqrt(-1)</b></tt>), <tt><b>%inf</b></tt> (pour <tt><b>Infinity</b></tt>), <tt><b>%pi</b></tt> (pour <tt><b>3.14...</b></tt>),
+    <tt><b>%T</b></tt> (pour la constante booléene <tt><b>"true"="vrai"</b></tt>),...
+  </p>
+<p>
+    De plus, les fonctions dont les noms commencent par <tt><b>%</b></tt> sont spéciales : 
+    elles sont utilisées pour surcharger les primitives et opérateurs usuels (voir <tt><b>overloading</b></tt>).
+  </p>
+<p>
+    Par exemple la fonction <tt><b>%rmr</b></tt> calcule la multiplication (opérateur <tt><b>m</b></tt>)
+    <tt><b>x*y</b></tt> pour des matrices rationnelles <tt><b>x</b></tt> et <tt><b>y</b></tt> (type <tt><b>r</b></tt>).
+    Les conventions de codage sont précisées dans le fichier README du répertoire 
+    <tt><b>SCIDIR/macros/percent</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x1=tlist('x',1,2);
+x2=tlist('x',2,3);
+deff('x=%xmx(x1,x2)','x=list(''x'',x1(2)*x2(2),x2(3)*x2(3))');
+x1*x2
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

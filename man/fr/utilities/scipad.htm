@@ -1,0 +1,365 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>scipad</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>scipad</b> - Scilab/Scicoslab text editor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>scipad()</tt></dd>
+<dd><tt>scipad(f1[,f2,...])</tt></dd>
+<dd><tt>scipad f1 f2 ...</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>f1, f2...</b></tt>: (strings or vectors of strings) files or directory
+          pathnames, or macro names</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>Scipad is a Scilab/Scicoslab text editor written in Tcl/Tk. It can be
+    started with a fresh text buffer from Scilab/Scicoslab command line with the instruction
+    <tt><b>scipad()</b></tt>, or it can open specific files if invoked with any
+    of the calling sequences above.</p>
+<p>The same invocation adds further files to an already opened Scipad. If
+    any of the arguments is a directory pathname, a file chooser starting in
+    that directory pops up, allowing (multiple) selection of files.</p>
+<p>Scipad allows Windows like edition modes. Keyboard shortcuts are
+    defined for most possible editing actions and reported by the menu
+    entries.</p>
+<p>Additionally, the following shortcuts are defined:</p>
+<div align="center"><table border="2">
+<tr align="center">
+<td>&lt;F2&gt;</td>
+<td>Save file</td>
+</tr>
+<tr align="center">
+<td>&lt;F5&gt;</td>
+<td>Save file and run it</td>
+</tr>
+<tr align="center">
+<td>&lt;F6&gt;</td>
+<td>Show previous buffer: if it is visible then switch focus there, otherwise show it in the current tile</td>
+</tr>
+<tr align="center">
+<td>&lt;F7&gt;</td>
+<td>Show next buffer: if it is visible then switch focus there, otherwise show it in the current tile</td>
+</tr>
+<tr align="center">
+<td>&lt;Shift-F6&gt;</td>
+<td>Show previous hidden buffer in the current tile</td>
+</tr>
+<tr align="center">
+<td>&lt;Shift-F7&gt;</td>
+<td>Show next hidden buffer in the current tile</td>
+</tr>
+<tr align="center">
+<td>&lt;Control-F6&gt;</td>
+<td>Switch focus to previous already visible buffer</td>
+</tr>
+<tr align="center">
+<td>&lt;Control-F7&gt;</td>
+<td>Switch focus to next already visible buffer</td>
+</tr>
+<tr align="center">
+<td>&lt;double-click
+        mouse-button1&gt;</td>
+<td>Select word</td>
+</tr>
+<tr align="center">
+<td>&lt;triple-click
+        mouse-button1&gt;</td>
+<td>Select line</td>
+</tr>
+<tr align="center">
+<td>&lt;Shift-Control-mouse-button1&gt;</td>
+<td>Select a block (a rectangular area in the text)</td>
+</tr>
+<tr align="center">
+<td>&lt;mouse-button2&gt;</td>
+<td>Paste selection</td>
+</tr>
+<tr align="center">
+<td>&lt;mouse-button3&gt;</td>
+<td>Popup exec and edit menues, or debug menu if clicked during a
+        debug session</td>
+</tr>
+<tr align="center">
+<td>&lt;Control-mouse-button3&gt;</td>
+<td>Popup Options menu</td>
+</tr>
+<tr align="center">
+<td>&lt;Shift-Control-mouse-button3&gt;</td>
+<td>Open the source of the library function under the
+        pointer</td>
+</tr>
+<tr align="center">
+<td>&lt;Control-plus&gt;</td>
+<td>Increase the font size</td>
+</tr>
+<tr align="center">
+<td>&lt;Control-minus&gt;</td>
+<td>Decrease the font size</td>
+</tr>
+<tr align="center">
+<td>&lt;double-button1&gt; on a tile
+        title</td>
+<td>Maximize this tile</td>
+</tr>
+<tr align="center">
+<td>&lt;double-button1&gt; on a sash</td>
+<td>Space sashes evenly (for this paned
+        window)</td>
+</tr>
+<tr align="center">
+<td>&lt;button2&gt; on a tile title</td>
+<td>Show next hidden buffer in this tile</td>
+</tr>
+</table></div>
+<p></p>
+<p>The "Load Into Scilab" (Ctrl-lowercase-l) menu entry can be used to
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a> the file content into Scilab/Scicoslab, while "Execute selection"
+    (Ctrl-lowercase-y) passes the selected lines to the Scilab/Scicoslab shell using
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/ScilabEval.htm"><tt><b>ScilabEval</b></tt></a> (i.e. kind of <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>).</p>
+<p></p>
+<h3><font color="blue">Debugger</font></h3>
+<dl>
+<p>Scipad includes a debugger targeted to Scilab/Scicoslab scripts and macros. The
+    user can:</p>
+<p></p>
+<dd>
+<li>
+<b><font color="maroon">Set/remove breakpoints anywhere in the opened files.</font></b>The breakpointed lines get pink background. No breakpoint can be
+        set on empty, blank or commented lines. Insertion and deletion of
+        breakpoints can be done either before the debug session starts, and
+        during such a session. Breakpoints can have a condition, which is a
+        generic expression written in Scilab language. When the execution
+        process encounters a breakpoint, this breakpoint is said to be
+        reached. When the breakpoint is reached and its associated conditional
+        expression is true (or changed, depending on the user's selection),
+        then the breakpoint is said to be hit. The hit count is the number of
+        times the breakpoint has been hit. Execution stops at a breakpoint if
+        the hit count satisfies a selectable break condition. A user interface
+        dedicated to breakpoints is available to control their conditional
+        expression, the hit count and the break condition.<p></p>
+</li>
+<li>
+<b><font color="maroon">Remove all breakpoints.</font></b>This allows to quickly remove all the breakpoints from all
+        currently opened files.<p></p>
+</li>
+<li>
+<b><font color="maroon">Configure execution.</font></b>The user has to provide the function name to execute, its variable
+        names, and variable values. To ease this step, a scan of the currently
+        displayed buffer is implemented to look for functions defined in it,
+        scan their names and variable names. All this is displayed to the user
+        in a dialog for easy selection. First, the user has to select a
+        function, then eventually one of its variables. Once a
+        variable is selected, the user can set/change its value (another
+        dialog pops). Variable values and names are displayed in listboxes.
+        The user can also add a new variable or remove already defined
+        variables. This is in case the user changes the input variables of his
+        function in the file, and he does not want to scan the buffer again
+        (which causes all the variable values to be reset to a null value).
+        Note also that the <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/varargin.htm"><tt><b>varargin</b></tt></a> keyword is fully supported,
+        and that variables that are not given a value by the user are ignored
+        when Scipad launches the function for debug. If the current file
+        contains main level code (i.e. executable code outside of a function
+        definition), Scipad proposes to debug this file as a .sce file (see
+        below).<p></p>
+</li>
+</dd>
+<dd>
+<li>
+<b><font color="maroon">Go to next breakpoint.</font></b>Scilab executes the code, and stops at the next breakpoint or goes
+        to the end of the file if there is no more breakpoints. The active
+        breakpoint is highlighted in Scipad so that it can easily be
+        identified.<p></p>
+</li>
+<li>
+<b><font color="maroon">Execute step by step, going into functions (step into).</font></b>Scilab stops before execution of each line. The active stop
+        position is highlighted in Scipad so that it can easily be identified.
+        Every line of code in functions from opened files is taken into
+        account, but Scipad does not search for or open files by itself in
+        order to step into them. Lines with no executable code (blank or
+        commented lines) are skipped.<p></p>
+</li>
+<li>
+<b><font color="maroon">Execute step by step, without going into ancillary functions (step over).</font></b>Similar to step into, but ancillaries are executed at once without
+        stepping into them. However, if the user has set a breakpoint in an
+        ancillary, Scilab will nevertheless stop at this breakpoint.<p></p>
+</li>
+<li>
+<b><font color="maroon">Execute step by step, starting back from the return point of the current function (step out).</font></b>Scilab executes instructions until the function returns from the
+        current context, i.e. the next stop occurs just after the current
+        function has returned. However, if the user has set a breakpoint in
+        the current function or in an ancillary, Scilab will nevertheless stop
+        at this breakpoint. Lines with no executable code (blank or commented
+        lines) are skipped.<p></p>
+</li>
+<li>
+<b><font color="maroon">Run execution up to the next return point.</font></b>Scilab executes instructions until the next return point is
+        reached. It stops just before executing the line that will make the
+        current nest level to return. If the user has set breakpoints in the
+        current function or in an ancillary, Scilab will skip them and stop
+        only when the return point is reached. The list of exit points for the
+        current function includes the line containing the endfunction keyword
+        corresponding to the function declaration line (there can be only one
+        such line in Scilab, no multiple "endfunction" for one "function"),
+        but also possibly multiple "return" and "resume" statements.<p></p>
+</li>
+<li>
+<b><font color="maroon">Run execution up to the cursor position.</font></b>Scilab executes instructions until the cursor position is reached.
+        If the user has set breakpoints in the current function or in an
+        ancillary, Scilab will skip them and stop only when the cursor
+        position is reached. Lines with no executable code (blank or commented
+        lines) are also skipped: if the cursor is in such a line, Scilab will
+        stop just before executing the next line carrying executable
+        code.<p></p>
+</li>
+<li>
+<b><font color="maroon">Continue ignoring any breakpoint.</font></b>Finish execution in Scilab as if there was no breakpoint at
+        all.<p></p>
+</li>
+<li>
+<b><font color="maroon">Break execution.</font></b>Scilab pauses execution. This is useful to check out where a long
+        script is stuck, e.g. in case of an endless loop.<p></p>
+</li>
+<li>
+<b><font color="maroon">Abort debug.</font></b>Abort execution in Scilab and cancel the current debug session in
+        Scipad.<p></p>
+</li>
+</dd>
+<p>When one of the run commands above is triggered for the first time,
+    Scipad launches execution, i.e. it execs the currently displayed buffer as
+    well as all the opened buffers that contain functions, sends to Scilab the
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/setbpt.htm"><tt><b>setbpt</b></tt></a> instructions relative to all the breakpoints that have
+    been set, and executes the selected function with the input variable
+    values provided during the configure execution step. Then the execution is
+    automagically stopped by Scilab according to the debug command that was
+    launched. A new debug command can then be executed.</p>
+<p></p>
+<p>At any time during the debug, a <b>watch window</b> can be displayed
+    on user request. It allows to monitor any variable value, or change a
+    variable value during a breakpoint stop and relaunch execution with the
+    modified value. A watchable variable can be part of a larger structure,
+    for instance if A is a 20x20 matrix, the shorter sub-matrix A(2:4,7:9) can
+    be watched. The user can also watch all local variables without having to
+    input their name manually, or all locals and (locally referenced) nolocals
+    at the same time. It is also possible to "watch" generic expressions, i.e.
+    enter a list of expressions that will be evaluated whenever execution
+    stops, so that for instance an array can be plotted at each step. The
+    watch window also displays the calling stack and contains a toolbar with
+    the most useful commands from the debug menu.</p>
+<p></p>
+<p>In its current development state the debugger works well with
+    functions, i.e. <b>pure .sci files</b>, but support of .sce files or
+    mixed .sce/.sci files is however also fully implemented. Debug of .sce or
+    mixed .sce/sci files makes use of the implementation for the .sci case
+    after having automatically wrapped the code in a function/endfunction
+    clause. The wrapper is automatically removed when the debug ends.</p>
+<p></p>
+<p>Due to technical limitations, <b>ancillary files of Scipad</b> cannot
+    be debugged nor stepped into. During the configure step, Scipad detects if
+    the user intends to configure one of its ancillaries for debugging, and
+    prevents from doing so. The list of reserved function names is then
+    displayed in a message box. In case it is really needed to debug a Scipad
+    ancillary, it is possible to try to change the name of the reserved
+    function in order to debug a copy of it, but there are some catches to
+    that, if the function calls itself other reserved ancillaries, or if the
+    original file is still currently opened. Not only the name of the function
+    in its definition line should be changed, but also any call to this
+    function, and any call to the original function ancillaries if the
+    original file is still open.</p>
+<p></p>
+<p><b>The debugger fully works with Scilab 4.1.2 or Scicoslab. Unfortunately
+    it does not work with Scilab 5.</b> For more information about the reasons
+    for this, and for details about the way the debugger internally works,
+    please read:
+    <tt><b>http://wiki.scilab.org/Scipad_debugger_inner_beauties</b></tt></p>
+<p></p>
+</dl>
+<h3><font color="blue">Remarks</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">Localisation:</font></b><p></p>Scipad menues and messages can be translated to several languages.
+        The very first time Scipad is launched from a new Scilab/Scicoslab installation,
+        the language used by Scipad is the Scilab language. If the Scilab
+        language is not available in Scipad, then the English fallback is
+        used. Later, the localization in effect can be selected with the menu
+        Options/Locale and is remembered across sessions. Currently, the
+        supported languages are: "ca_es" (Catalan), "da_dk" (Danish), "de_de"
+        (German), "en_us" (English), "es_es" (Spanish), "fr_fr" (French),
+        "it_it" (Italian), "ja_jp" (Japanese), "no" (Norwegian), "pl"
+        (Polish), "se" (Swedish), "zh_cn" (Chinese-simplified), "zh_tw"
+        (Chinese-Taiwan).Further languages can be added by creating the proper translation
+        file and putting it in <tt><b>SCI/tcl/scipadsources/msg_files/</b></tt>.
+        If you plan to do such a job, please check the file
+        <tt><b>SCI/tcl/scipadsources/msg_files/AddingTranslations.txt</b></tt>
+        for detailed instructions, and consider to contribute it to the
+        community.<p></p>
+</li>
+<li>
+<b><font color="maroon">Drag and drop:</font></b><p></p>DnD has been implemented in Scipad for moving around text, for
+        dropping selected text from and to external applications, and for
+        opening a file or a list of files.<p>Dragging one or more files from an explorer and dropping to Scipad
+        will open the file(s) in Scipad. Doing the same with a directory will
+        open recursively all the directory contents (beware!)</p>
+<p>For text selected within the Scipad window, the possible actions
+        are move (just use mouse button-1) and copy (Control button-1). Text
+        selections can be moved or copied also between different Scipad
+        subpanes, when tiling is active.</p>
+<p></p>
+</li>
+</dd></dl>
+<h3><font color="blue">Bugs, fixes and Scipad homepage</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">The Scipad project:</font></b><p></p>Scipad is now an independant project, hosted at SourceForge.
+        The developers make their best efforts to support the different
+        hosting environments (Scilab or Scicoslab) and the different
+        platforms (Windows/Linux/MacOS), with various levels of success.<p></p>To get the latest Scipad version, <b>please visit the Scipad
+        project homepage</b> at:
+        <tt><b>http://sourceforge.net/p/scipad</b></tt><p></p>
+</li>
+<li>
+<b><font color="maroon">Bugs:</font></b><p></p>There are still a few... Details can be found in file
+        <tt><b>SCI/tcl/scipadsources/BUGS</b></tt>.<p></p>Officially reported bugs are filed in the tracker page of the
+        Scipad project:
+        <tt><b>http://sourceforge.net/p/scipad/tickets</b></tt><p></p>Please report any bugs you find. The developers appreciate
+        your help very much.
+        <p></p>
+</li>
+<li>
+<b><font color="maroon">Additional features in Scipad and most recent developments:</font></b><p></p>Scipad should run on Tcl/Tk 8.4.6 or higher. Scipad however offers
+        a handful of quite handy features that are available as soon as Tcl/Tk
+        8.5 (or higher) is running in its background. For instance, peer text widgets are
+        available from Tk 8.5, and this capability is used in Scipad to allow
+        for displaying more than one contiguous area of an opened file at a
+        time in tile mode. Scilab 5 and Scicoslab are currently shipped with Tcl/Tk 8.5 (at
+        least on Windows). Should you need to upgrade from Tcl/Tk8.4,
+        instructions about how to do this can be found on the Scilab wiki:
+        <tt><b>http://wiki.scilab.org/Linking_Scilab_with_Tcl/Tk_8.5</b></tt><p></p>
+</li>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   scipad SCI/etc/scilab.start 
+   scipad("typeof")
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/manedit.htm"><tt><b>manedit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/edit_error.htm"><tt><b>edit_error</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>Scipad is derived from <tt><b>tknotepad</b></tt> written by
+    Joseph Acosta;</dd>
+<dd>
+<b></b>Mathieu Philippe, INRIA, 2001;</dd>
+<dd>
+<b></b>Enrico Segre, Weizmann Institute, 2003-2006;</dd>
+<dd>
+<b></b>Francois Vogel, 2004-2012.</dd>
+</dl>
+</body>
+</html>

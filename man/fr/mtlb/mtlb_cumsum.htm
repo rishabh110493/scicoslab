@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_cumsum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_cumsum</b> - Fonction d'émulation de la fonction Matlab cumsum</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>cumsum</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec un argument d'entrée (<tt><b>cumsum(A)</b></tt>) : La fonction <tt><b>cumsum</b></tt> de Matlab
+	traite les valeurs suivant la première dimension qui n'est pas 1 comme des vecteurs alors
+	que Scilab traite toutes les valeurs de A.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux arguments d'entrée (<tt><b>cumsum(A,dim)</b></tt>) : Matlab tolère une valeur de
+	<tt><b>dim</b></tt> supérieure au nombre de dimensions de A alors que Scilab renvoie un
+	message d'erreur dans ce cas.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>R = mtlb_cumsum(A,[,dim])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>cumsum(A,[,dim])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_cumsum</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>dim</b></tt> est inférieure ou égale au nombre de dimensiopns de A 
+        <tt><b>R = mtlb_cumsum(A,dim)</b></tt> peut être remplacé par <tt><b>R = cumsum(A,dim)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>dim</b></tt> est supérieure au nombre de dimensiopns de A 
+        <tt><b>R = mtlb_cumsum(A,dim)</b></tt> peut être remplacé par <tt><b>R = A</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_cumsum</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

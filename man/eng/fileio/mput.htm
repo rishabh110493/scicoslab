@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mput</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mput</b> -  writes  byte or word in a given binary format</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>mput(x [,type,fd])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: a vector of floating point or integer type numbers</li>
+<li>
+<tt><b>fd</b></tt>: scalar. The <tt><b>fd</b></tt> parameter returned by the function.  Default value is -1 which stands for the last (<tt><b>mopen</b></tt>) opened file.</li>
+<li>
+<tt><b>type</b></tt>: a string. Give the binary format used to write all the entries of x.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>mput</b></tt> function writes data to the output specified by the
+    stream parameter <tt><b>fd</b></tt>. Data is written at the
+    position at which the file pointer is currently pointing and 
+    advances the indicator appropriately. 
+  </p>
+<p>
+    The <tt><b>type</b></tt> parameter is a conversion specifier which may be set to any of the
+    following flag characters (with default value "l"):
+  </p>
+<dl>
+<dd>
+<b>"l","i","s","ul","ui","us","d","f","c","uc"</b>: for  writing respectively a long, an int, a short, an unsigned long, an unsigned int, an unsigned short, a double, a float, a char and an unsigned char. The bytes which are wrote are automatically swapped if necessary (by checking little-endian status) in order to produce machine independent binary files ( in little-endian mode). This default swapping mode can be suppressed by adding a flag in the <tt><b>mopen</b></tt> function.</dd>
+<dd>
+<b>"..l" or "..b"</b>: It is also possible to write in little-endian or big-endian mode  by adding a 'l' or 'b' character at the end of a type specification. For example "db" will write a double in big-endian mode.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  filen = 'test.bin';
+  mopen(filen,'wb');
+  mput(1996,'l');mput(1996,'i');mput(1996,'s');mput(98,'c');
+// force little-endian 
+  mput(1996,'ll');mput(1996,'il');mput(1996,'sl');mput(98,'cl');
+// force big-endian 
+  mput(1996,'lb');mput(1996,'ib');mput(1996,'sb');mput(98,'cb');
+//
+  mclose();
+  mopen(filen,'rb');
+  if 1996&lt;&gt;mget(1,'l') then pause,end
+  if 1996&lt;&gt;mget(1,'i') then pause,end
+  if 1996&lt;&gt;mget(1,'s') then pause,end
+  if   98&lt;&gt;mget(1,'c') then pause,end
+  // force little-endian
+  if 1996&lt;&gt;mget(1,'ll') then pause,end
+  if 1996&lt;&gt;mget(1,'il') then pause,end
+  if 1996&lt;&gt;mget(1,'sl') then pause,end
+  if   98&lt;&gt;mget(1,'cl') then pause,end
+  // force big-endian 
+  if 1996&lt;&gt;mget(1,'lb') then pause,end
+  if 1996&lt;&gt;mget(1,'ib') then pause,end
+  if 1996&lt;&gt;mget(1,'sb') then pause,end
+  if   98&lt;&gt;mget(1,'cb') then pause,end
+  //
+  mclose();
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/meof.htm"><tt><b>meof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mputstr.htm"><tt><b>mputstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mseek.htm"><tt><b>mseek</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mtell.htm"><tt><b>mtell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mdelete.htm"><tt><b>mdelete</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

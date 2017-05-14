@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>h_inf_st</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>h_inf_st</b> -  static H_infinity problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Kopt,gamaopt]=h_inf_stat(D,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>D</b></tt>: real matrix</li>
+<li>
+<tt><b>r</b></tt>: 1x2 vector</li>
+<li>
+<tt><b>Kopt</b></tt>: matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes a matrix <tt><b>Kopt</b></tt> such that largest singular value of:</p>
+<p><tt><b>lft(D,r,K)=D11+D12* K*inv(I-D22*K)* D21</b></tt>
+    is minimal (Static H-infinity four blocks problem).</p>
+<p>
+    D is partionned as <tt><b>D=[D11 D12; D21 D22]</b></tt>
+    where <tt><b>size(D22)=r=[r1 r2]</b></tt></p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D. ;   </p>
+</body>
+</html>

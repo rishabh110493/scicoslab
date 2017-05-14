@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>show_arcs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>show_arcs</b> -  highlights a set of arcs</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>show_arcs(p,[sup])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p</b></tt>: row vector of arc numbers (directed graph) or edge numbers (undirected graph)</li>
+<li>
+<tt><b>sup</b></tt>: string, superposition flag</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>show_arcs</b></tt> highlights the set of arcs or edges <tt><b>p</b></tt> of the
+    displayed graph in the current edit_graph window.
+    If the optional argument <tt><b>sup</b></tt> is equal to the string 'sup',
+    the highlighting is superposed on the previous one.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+t=min_weight_tree(1,g); g1=g; ma=edge_number(g1);
+edgecolor=1*ones(1,ma); g1('edge_color')=edgecolor;
+edgewidth=1*ones(1,ma); edgewidth(t)=4*ones(t); g1('edge_width')=edgewidth;
+for i=8:12,
+ edgecolor(t)=i*ones(t); g1('edge_color')=edgecolor;
+ xpause(3d5); show_graph(g1);
+ show_arcs(t);
+end;
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/edit_graph.htm"><tt><b>edit_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/show_nodes.htm"><tt><b>show_nodes</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/netwindow.htm"><tt><b>netwindow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/netwindows.htm"><tt><b>netwindows</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

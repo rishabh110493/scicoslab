@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arma2p</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arma2p</b> -  extract polynomial matrices from ar representation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[A,B,D]=arma2p(ar)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B,D</b></tt>: three polynomial matrices</li>
+<li>
+<tt><b>ar</b></tt>: Scilab 'ar' tlist for arma storage (see <tt><b>armac</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    this function extract polynomial matrices <tt><b>(A,B,D)</b></tt> from an armax
+    description.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=[1,-2.851,2.717,-0.865].*.eye(2,2)
+b=[0,1,1,1].*.[1;1];
+d=[1,0.7,0.2].*.eye(2,2);
+sig=eye(2,2);
+ar=armac(a,b,d,2,1,sig)
+// extract polynomial matrices from ar representation 
+[A,B,D]=arma2p(ar);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/arma.htm"><tt><b>arma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armax1.htm"><tt><b>armax1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/arsimul.htm"><tt><b>arsimul</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armac.htm"><tt><b>armac</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

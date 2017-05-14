@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>copfac</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>copfac</b> -  right coprime factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[N,M,XT,YT]=copfac(G [,polf,polc,tol])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: <tt><b>syslin</b></tt> list  (continuous-time linear system )</li>
+<li>
+<tt><b>polf, polc</b></tt>: respectively the poles of <tt><b>XT</b></tt> and <tt><b>YT</b></tt> and the poles of <tt><b>n</b></tt>  and <tt><b>M</b></tt> (default values =-1).</li>
+<li>
+<tt><b>tol</b></tt>: real threshold for detecting stable poles (default value <tt><b>100*%eps</b></tt>)</li>
+<li>
+<tt><b>N,M,XT,YT</b></tt>: linear systems represented by <tt><b>syslin</b></tt> lists</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[N,M,XT,YT]=copfac(G,[polf,polc,[tol]])</b></tt> returns a right coprime factorization of <tt><b>G</b></tt>.</p>
+<p><tt><b>G = N*M^-1</b></tt> where <tt><b>N</b></tt> and <tt><b>M</b></tt> are stable, proper and right coprime.
+    (i.e. <tt><b>[N M]</b></tt> left-invertible with stability)</p>
+<p><tt><b>XT</b></tt> and <tt><b>YT</b></tt> satisfy:</p>
+<p><tt><b>[XT -YT].[M N]' = eye</b></tt> (Bezout identity)</p>
+<p><tt><b>G</b></tt> is assumed stabilizable and detectable.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/lcf.htm"><tt><b>lcf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

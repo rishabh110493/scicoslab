@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>int8int16int32uint8uint16uint32</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>int8</b> -  conversion to one byte integer representation</p>
+<p><b>int16</b> -  conversion to 2 bytes integer representation</p>
+<p><b>int32</b> -  conversion to 4 bytes integer representation</p>
+<p><b>uint8</b> -  conversion to one byte unsigned integer representation</p>
+<p><b>uint16</b> -  conversion to 2 bytes unsigned integer representation</p>
+<p><b>uint32</b> -  conversion to 4 bytes unsigned integer representation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=int8(X)  </tt></dd>
+<dd><tt>y=int16(X)  </tt></dd>
+<dd><tt>y=int32(X)  </tt></dd>
+<dd><tt>y=uint8(X)  </tt></dd>
+<dd><tt>y=uint16(X)  </tt></dd>
+<dd><tt>y=uint32(X)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: matrix of floats or integers</li>
+<li>
+<tt><b>y</b></tt>: matrix of integers coded on one, two or four bytes.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    converts and stores data two one, two or four bytes integers. These
+    data types are specialy useful to store big objects such as images,
+    long signals,...
+  </p>
+<dl>
+<dd>
+<b>y=int8(X)</b>: return numbers in the range [-128,127]</dd>
+<dd>
+<b>y=uint8(X)</b>: return numbers in the range [0,255]</dd>
+<dd>
+<b>y=int16(X)</b>: return numbers in the range [-32768,32767]</dd>
+<dd>
+<b>y=uint16(X)</b>: return numbers in the range [0, 65535]</dd>
+<dd>
+<b>y=int32(X)</b>: return numbers in the range [-2147483648,2147483647]</dd>
+<dd>
+<b>y=uint32(X)</b>: return numbers in the range [0, 4294967295]</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+int8([1 -120 127 312])
+uint8([1 -120 127 312])
+
+x=int32(-200:100:400)
+int8(x)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/double.htm"><tt><b>double</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/inttype.htm"><tt><b>inttype</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/iconvert.htm"><tt><b>iconvert</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

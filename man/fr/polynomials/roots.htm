@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>roots</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>roots</b> -  racines d'un polynôme
+  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=roots(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>p  </b></tt>
+    : polynôme à coefficients réels ou complexes ou vecteur des coefficients du
+	    polynŽôme ordonnés par puissance décroissante (compatibilité avec
+	    Matlab).</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>x=roots(p)</b></tt> renvoie dans le vecteur complexe <tt><b>x</b></tt> les
+      racines du polynôme <tt><b>p</b></tt>. Pour les polynŽômes à coéfficients
+      réels et de degré &lt;=100, l'algorithme rapide RPOLY est utilisé. Dans
+      les autres cas les racines sont calculées comme valeurs propres de la
+      matrice compagnion du polynŽôme. Pour forcer ce dernier algorithme dans
+      tous les cas utilisez <tt><b>x=roots(p,'e')</b></tt>.  
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+p=poly([0,10,1+%i,1-%i],'x');
+roots(p)
+A=rand(3,3);roots(poly(A,'x'))    // comparaison via le polynôme caractéristique
+spec(A) 
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/companion.htm"><tt><b>companion</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>Serge Steer (INRIA)</dd></dl>
+<h3><font color="blue">Bibliography</font></h3>La routine RPOLY est decrite dans ACM TOMS 1 (1975) 178-189<h3><font color="blue">Used Function</font></h3>Le code source de rpoly.f peut être trouvé dans le repertoire
+      routines/control de la distribution source de Scilab. Le calcul des
+      valeurs propores est effectué en utilisant les routines DGEEV et ZGEEV de
+      LAPACK. </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>chsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chsolve</b> -  solveur de Cholesky creux  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sol=chsolve(spcho,rhs)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>spcho  </b></tt>
+	    : liste contenant les facteurs de Cholesky renvoyés par chfact 
+	  </li>
+<li>
+<tt><b>rhs, sol  </b></tt>
+	    : vecteurs
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sol=chsolve(spcho,rhs)</b></tt> calcule la solution de 
+      <tt><b>rhs=A*sol</b></tt>, où <tt><b>A</b></tt> est une matrice symétrique
+      définie positive. Cette fonction est basée sur le programme Ng-Peyton
+      (ORNL). Voir le programme Fortran pour une description complète des
+      variables de la liste <tt><b>spcho</b></tt>. 
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=sprand(20,20,0.1);
+    A=A*A'+eye();  
+    spcho=chfact(A);
+    sol=(1:20)';rhs=A*sol;
+    spcho=chfact(A);
+    chsolve(spcho,rhs)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/chfact.htm"><tt><b>chfact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spchol.htm"><tt><b>spchol</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

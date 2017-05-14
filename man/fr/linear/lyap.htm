@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lyap </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lyap </b> -  Equation de Lyapunov  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X]=lyap(A,C,flag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, C  </b></tt>
+	    : matrices réelles, <tt><b>C</b></tt> doit être symétrique
+	  </li>
+<li>
+<tt><b>flag  </b></tt>
+	    : chaîne de caractères, 'c' ou 'd'
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>X = lyap(A,C,flag)</b></tt> résout l'équation matricielle de
+      Lyapunov en temps continu ou discret
+    </p>
+<pre>
+      A'*X + X*A = C       ( flag = 'c' )
+      A'*X*A - X = C       ( flag = 'd' )
+      </pre>
+<p>
+    Une solution unique existe si <tt><b>A</b></tt> n'a pas de valeur propre
+    sur l'axe imaginaire (<tt><b>flag='c'</b></tt>) ou si 1 n'est pas
+    valeur propre de <tt><b>A</b></tt> (<tt><b>flag='d'</b></tt>).
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(4,4);C=rand(A);C=C+C';
+    X=lyap(A,C,'c');
+    A'*X + X*A -C
+    X=lyap(A,C,'d');
+    A'*X*A - X -C
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/sylv.htm"><tt><b>sylv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ctr_gram.htm"><tt><b>ctr_gram</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obs_gram.htm"><tt><b>obs_gram</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

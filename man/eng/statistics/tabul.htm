@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tabul</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tabul</b> -  frequency of values of a matrix or vector</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[m]=tabul(X [,order])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: vector or matrix (of real or complex numbers or strings)</li>
+<li>
+<tt><b>order</b></tt>: (optionnal) a character equal to "d" or "i" (default value "d")</li>
+<li>
+<tt><b>m</b></tt>: a 2 columns matrix (if <tt><b>X</b></tt> is a numerical vector or matrix) or 
+      a list with 2 members (if <tt><b>X</b></tt> is a string vector or matrix).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   This function computes the frequency of values of 
+   the components of a vector or matrix <tt><b>X</b></tt> of numbers or
+   string characters :
+   </p>
+<dl>
+<dd>
+<b>if X is a numerical vector or matrix</b>then <tt><b>m</b></tt>  is a  two column matrix who contains in 
+           the first column the distinct values of <tt><b>X</b></tt> 
+           and  in the other column the number of occurrences 
+           of those values (m(i,2) is the number of occurrences
+           of m(i,1)).</dd>
+<dd>
+<b>if X is a string vector or matrix</b>then <tt><b>m</b></tt> is  a list whose  first member is a 
+           string (column) vector composed with the distinct 
+           values of <tt><b>X</b></tt> and the second member is a 
+           (column) vector whose components are the number of 
+           occurrences of those values ( m(i)(2) is the number 
+           of occurrences of the string m(i)(1) ).</dd>
+</dl>
+<p>
+   The optional parameter <tt><b>order</b></tt> must be  "d" or "i" (by default 
+   order="d") and gives the order (decreasing or increasing) the distinct 
+   values of X will be sorted.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// first example
+X = [2 8 0 3 7 6 8 7 9 1 6 7 7 2 5 2 2 2 9 7]
+m1 = tabul(X)
+m2 = tabul(X, "i")
+
+// second example 
+X = ["ba" "baba" "a" "A" "AA" "a" "aa" "aa" "aa" "A" "ba"]
+m = tabul(X,"i")
+
+// third example
+n = 50000;
+X = grand(n,1,"bin",70,0.5);
+m = tabul(X,"i");
+xbasc()
+plot2d3(m(:,1), m(:,2)/n)
+xtitle("empiral probabilities of B(70,0.5)")
+
+// last example : computes the occurrences of words of the scilab license
+text = read(SCI+"/license.txt",-1,1,"(A)"); // read the scilab license
+bigstr = strcat(text," ");                  // put all the lines in a big string
+sep =  [" " "," "." ";" "*" ":" "-" """"];  // words separators 
+words = tokens(bigstr, sep);                // cut the big string into words
+m = tabul(words);                           // computes occurrences of each word
+[occ , p] = sort(m(2));                     // sort by decreasing frequencies
+results = [m(1)(p) string(occ)]             // display result
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/dsearch.htm"><tt><b>dsearch</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/histplot.htm"><tt><b>histplot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b> Carlos Klimann (original author)</dd>
+<dd>
+<b></b> J.S. Giet and B. Pincon (new version)</dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+     Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, 
+     fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

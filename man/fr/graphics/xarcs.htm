@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xarcs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xarcs</b> -  dessine des arcs d'ellipses  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xarcs(arcs,[style])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>arcs  </b></tt>
+    : matrice de taille (6,n) décrivant les ellipses.
+</li>
+<li>
+<tt><b>style  </b></tt>
+    : vecteur ligne de taille n donnant les couleurs à utiliser
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xarcs</b></tt> dessine des arcs d'un ensemble d'ellipses décrites par <tt><b>arcs</b></tt> : 
+    <tt><b>arcs=[x y w h a1 a2;x y w h a1 a2;...]'</b></tt> où chaque ellipse est définie 
+    par les 6 paramètres <tt><b>(x,y,w,h,a1,a2)</b></tt> (voir <tt><b>xarc</b></tt>).
+  </p>
+<p><tt><b>style(i)</b></tt> donne la couleur utilisée pour dessiner l'ellipse <tt><b>i</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+plot2d(0,0,-1,"031"," ",[-1,-1,1,1])
+arcs=[-1.0 0.0 0.5; // x du point en haut à gauche
+       1.0 0.0 0.5; // y du point en haut à gauche
+       0.5 1.0 0.5; // largeur
+       0.5 0.5 1.0; // hauteur
+       0.0 0.0 0.0; // angle 1
+       180*64 360*64 90*64]; // angle 2
+xarcs(arcs,[1,2,3])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xarc.htm"><tt><b>xarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarc.htm"><tt><b>xfarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarcs.htm"><tt><b>xfarcs</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.;   </p>
+</body>
+</html>

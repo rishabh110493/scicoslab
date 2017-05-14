@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_dec2hex</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_dec2hex</b> - Matlab dec2hex emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>dec2hex</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With empty matrix: Matlab <tt><b>dec2hex</b></tt> returns "" but in Scilab you get [].
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With complex inputs: Matlab <tt><b>dec2hex</b></tt> automatically removes complex part of inputs but not Scilab one.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Matlab <tt><b>dec2hex</b></tt> always returns a row vector but in Scilab <tt><b>dec2hex</b></tt>
+	returns a value which have the same size as the input.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Matlab <tt><b>dec2hex</b></tt> can have two inputs but not Scilab one.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_dec2hex(D[,N])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>dec2hex(D[,N])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_dec2hex</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        If <tt><b>D</b></tt> is not an empty matrix,
+        <tt><b>mtlb_dec2hex(D)</b></tt> may be replaced by
+	<tt><b>matrix(dec2hex(real(D)),-1,1)</b></tt> if <tt><b>D</b></tt> is complex and by
+	<tt><b>matrix(dec2hex(D),-1,1)</b></tt> else.
+        </li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_dec2hex</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

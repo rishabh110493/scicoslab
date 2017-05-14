@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mfft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mfft</b> -  multi-dimensional fft</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xk]=mfft(x,flag,dim)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: <tt><b>x(i,j,k,...)</b></tt> input signal in the form of a row vector whose values are arranged so that the i index runs the quickest, followed by the j index, etc.</li>
+<li>
+<tt><b>flag</b></tt>: (-1) FFT or (1) inverse FFT</li>
+<li>
+<tt><b>dim</b></tt>: dimension vector which gives the number of values of <tt><b>x</b></tt> for each of its indices</li>
+<li>
+<tt><b>xk</b></tt>: output of multidimensional fft in same format as for <tt><b>x</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    FFT for a multi-dimensional signal</p>
+<p>
+    For example for a three dimensional vector which has three points
+    along its first dimension, two points along its second
+    dimension and three points along its third dimension the row
+    vector is arranged as follows</p>
+<pre>
+
+     x=[x(1,1,1),x(2,1,1),x(3,1,1),
+        x(1,2,1),x(2,2,1),x(3,2,1),
+              x(1,1,2),x(2,1,2),x(3,1,2),
+              x(1,2,2),x(2,2,2),x(3,2,2),
+                    x(1,1,3),x(2,1,3),x(3,1,3),
+                    x(1,2,3),x(2,2,3),x(3,2,3)]
+   
+    </pre>
+<p>
+    and the <tt><b>dim</b></tt> vector is: <tt><b>dim=[3,2,3]</b></tt></p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>addinter</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>addinter</b> -  new functions interface incremental linking at run time</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>addinter(files,spname,fcts)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>files</b></tt>: a character string or a vector of character string contain object files used to define the new Scilab interface routine (interface code, user routines or libraries, system libraries).</li>
+<li>
+<tt><b>spname</b></tt>: a character string. Name of interface routine entry point</li>
+<li>
+<tt><b>fcts</b></tt>: vector of character strings. The name of new Scilab function implemented in the new interface (in <tt><b> fin</b></tt> the order ).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>addinter</b></tt> performs incremental linking of a compiled C or Fortran
+    new Scilab interface routine (see <tt><b>intersci</b></tt> documentation)
+    and define corresponding scilab functions.</p>
+<p>
+    For machines using dlopen functionality one can unlink an interface 
+    with <tt><b>ulink</b></tt> ( use the command <tt><b>link('show')</b></tt> to get the number 
+    of the shared library ). And to reload a new version of an interface a call to <tt><b>ulink</b></tt> is 
+    necessary to get rid of the old version.</p>
+<p>
+    See <tt><b>link</b></tt> for more precision on use.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/intersci.htm"><tt><b>intersci</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/newfun.htm"><tt><b>newfun</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/clearfun.htm"><tt><b>clearfun</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

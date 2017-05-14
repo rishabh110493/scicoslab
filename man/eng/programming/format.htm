@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>format</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>format</b> -  number printing and display format</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>format([type],[long])  </tt></dd>
+<dd><tt>format()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>type</b></tt>: character string</li>
+<li>
+<tt><b>long</b></tt>: integer ( max number of digits (default 10))</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sets the current printing format with the parameter <tt><b>type</b></tt> ; it is one of the following :
+  </p>
+<dl>
+<dd>
+<b>"v"</b>: for a variable format (default)</dd>
+<dd>
+<b>"e"</b>: for the  e-format.</dd>
+</dl>
+<p><tt><b>long</b></tt> defines the max number of digits (default 10).
+    <tt><b>format()</b></tt> returns a vector for the current format:
+    first component is the type of format (0 if <tt><b>v</b></tt> ; 1 if <tt><b>e</b></tt> );
+    second component is the number of digits.</p>
+<p>
+    In "variable format" mode, vectors entries which are less than %eps
+    times the maximum absolute value of the entries were displayed as "0"
+    in the previous Scilab versions. It is no more the case, the clean
+    function can be used to set neglitible entries to zeros.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=rand(1,5);
+format('v',10);x
+format(20);x
+format('e',10);x
+format(20);x
+
+x=[100 %eps];
+format('e',10);x
+format('v',10);x
+
+format("v")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/disp.htm"><tt><b>disp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/print.htm"><tt><b>print</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

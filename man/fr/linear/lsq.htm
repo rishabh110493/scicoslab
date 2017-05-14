@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lsq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lsq</b> -  linear least square problems.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>X=lsq(A,B [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: Real or complex (m x n) matrix</li>
+<li>
+<tt><b>B</b></tt>: real or complex (m x p) matrix</li>
+<li>
+<tt><b>tol</b></tt>: positive scalar,  used to determine the effective rank of A
+	    (defined as the order of the largest leading triangular 
+          submatrix R11 in the QR factorization with pivoting of A,
+          whose estimated condition number &lt;= 1/tol. The tol default value is
+	    set to <tt><b>sqrt(%eps)</b></tt>.</li>
+<li>
+<tt><b>X</b></tt>: real or complex (n x p) matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>X=lsq(A,B)</b></tt> computes the minimum norm least square solution of
+    the equation <tt><b>A*X=B</b></tt>, while <tt><b>X=A \ B</b></tt> compute a least square
+    solution with at at most <tt><b>rank(A)</b></tt>  nonzero components per column.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p><tt><b>lsq</b></tt> function is  based on the LApack functions DGELSY for
+      real matrices and ZGELSY for complex matrices.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Build the data
+x=(1:10)';
+
+y1=3*x+4.5+3*rand(x,'normal');
+y2=1.8*x+0.5+2*rand(x,'normal');
+plot2d(x,[y1,y2],[-2,-3])
+//Find the linear regression 
+A=[x,ones(x)];B=[y1,y2];
+X=lsq(A,B);
+
+y1e=X(1,1)*x+X(2,1);
+y2e=X(1,2)*x+X(2,2);
+plot2d(x,[y1e,y2e],[2,3])
+
+//Difference between lsq(A,b) and A\b
+A=rand(4,2)*rand(2,3);//a rank 2 matrix
+b=rand(4,1);
+X1=lsq(A,b)
+X2=A\b
+[A*X1-b, A*X2-b] //the residuals are the same
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>trisolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>trisolve</b> -  symbolic linear system solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x [,sexp]] = trisolve(A,b [,sexp])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>A,b</b></tt>: matrices of strings</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    symbolically solves <tt><b>A*x =b</b></tt> , <tt><b>A</b></tt> being assumed to be
+    upper triangular.</p>
+<p><tt><b>sexp</b></tt> is a vector of common subexpressions in <tt><b>A, b, x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=['x','y';'0','z'];b=['0';'1'];
+w=trisolve(A,b)
+x=5;y=2;z=4;
+evstr(w)
+inv(evstr(A))*evstr(b)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/trianfml.htm"><tt><b>trianfml</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/solve.htm"><tt><b>solve</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D, S.S</p>
+</body>
+</html>

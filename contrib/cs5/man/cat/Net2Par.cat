@@ -1,0 +1,28 @@
+Net2Par                         Traffic-toolbox Function            Net2Par
+NAME
+   Net2Par  -   Parameters from net
+  
+CALLING SEQUENCE
+ [g,d,lpp,nf]=Net2Par(net)
+PARAMETERS
+   
+  
+ net        : a NetList
+            
+ g          : graph-list, graph of the network
+            
+ d          : 3 x nd matrix, tail, head and value of the demands
+            
+ lpp        : 4 x na matrix, data for the link performance functions
+            
+ nf         : integer between 0 and 6, travel time function formula  
+            
+DESCRIPTION
+   Net2Par  -  Recovers the data fields from a NetList. 
+  
+EXAMPLES
+ net=TrafficExample('Sioux Falls');
+ [g,d,lpp,nf]=Net2Par(net);
+SEE ALSO
+   IntroTrfAsg, NetList, Par2Net, TrafficExample     
+  

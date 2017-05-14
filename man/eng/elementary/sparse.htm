@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sparse</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sparse</b> -  sparse matrix definition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>sp=sparse(X)  </tt></dd>
+<dd><tt>sp=sparse(ij,v [,mn])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: real or complex full (or sparse) matrix</li>
+<li>
+<tt><b>ij</b></tt>: two columns integer matrix (indices of non-zeros entries)</li>
+<li>
+<tt><b>v</b></tt>: vector</li>
+<li>
+<tt><b>mn</b></tt>: integer vector with two entries (row-dimension, column-dimension)</li>
+<li>
+<tt><b>sp</b></tt>: sparse matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sparse</b></tt> is used to build a sparse matrix. Only non-zero entries
+    are stored.</p>
+<p><tt><b>sp = sparse(X)</b></tt>  converts a full matrix to sparse form by
+     squeezing out any zero elements. (If <tt><b>X</b></tt> is already sparse
+    <tt><b>sp</b></tt> is <tt><b>X</b></tt>).</p>
+<p><tt><b>sp=sparse(ij,v [,mn])</b></tt>  builds an <tt><b>mn(1)</b></tt>-by-<tt><b>mn(2)</b></tt>
+    sparse matrix with <tt><b>sp(ij(k,1),ij(k,2))=v(k)</b></tt>. 
+    <tt><b>ij</b></tt> and <tt><b>v</b></tt> must have the same column dimension.
+    If optional <tt><b>mn</b></tt> parameter is not given the <tt><b>sp</b></tt>
+    matrix dimensions are the max value of <tt><b>ij(:,1)</b></tt> and <tt><b>ij(:,2)</b></tt>
+    respectively.</p>
+<p>
+    Operations (concatenation, addition, etc,) with sparse matrices are
+    made using the same syntax as for full matrices.</p>
+<p>
+    Elementary functions are also available (<tt><b>abs,maxi,sum,diag,...</b></tt>)
+    for sparse matrices.</p>
+<p>
+    Mixed operations (full-sparse) are allowed. Results are full or sparse
+    depending on the operations.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+sp=sparse([1,2;4,5;3,10],[1,2,3])
+size(sp)
+x=rand(2,2);abs(x)-full(abs(sparse(x)))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/spget.htm"><tt><b>spget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sprand.htm"><tt><b>sprand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/speye.htm"><tt><b>speye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

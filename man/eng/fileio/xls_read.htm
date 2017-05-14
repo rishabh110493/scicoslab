@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xls_read</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xls_read</b> - read a sheet in an Excel file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Value,TextInd] = xls_read(fd,Sheetpos)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fd</b></tt>
+       : a number, the logical unit on the Excel stream returned by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_open.htm"><tt><b>xls_open</b></tt></a>.
+       </li>
+<li>
+<tt><b>Sheetpos</b></tt>
+       :  a number: the position of the beginning of the sheet in the
+	    Excel stream. This position is one of those returned by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_open.htm"><tt><b>xls_open</b></tt></a>.
+       </li>
+<li>
+<tt><b>Value</b></tt>
+       : a matrix of numbers, the numerical data found in the sheet. The cell
+	    without numerical data are represented by <tt><b>NaN</b></tt> values.
+       </li>
+<li>
+<tt><b>TextInd</b></tt>
+       : a matrix of indices with the same size as <tt><b>Value</b></tt>. The 0
+	    indices indicates that no string exists in the correspondin Excel
+	    cell. a positive index <tt><b>i </b></tt> points to the string
+	    <tt><b>SST(i)</b></tt>  where <tt><b>SST</b></tt>  is given by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_open.htm"><tt><b>xls_open</b></tt></a>.
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+     This function reads an Excel sheet given a logical unit on an Excel stream
+      ant the position of the beginning of the sheet within this stream. It
+      returns the numerical data and the strings contained by the Excel cells.
+     </p>
+<p>The <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/readxls.htm"><tt><b>readxls</b></tt></a> function can be used to read all an Excel file
+      in one function with a single function call.</p>
+<p> Warning only BIFF8 Excel files (last Excel file version) are handled  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   //Decode ole file, extract and open Excel stream
+    [fd,SST,Sheetnames,Sheetpos] = xls_open('SCI/demos/excel/Test1.xls')
+    //Read first data sheet
+    [Value,TextInd] = xls_read(fd,Sheetpos(1))
+    //close the excel stream
+    mclose(fd)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_open.htm"><tt><b>xls_open</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/readxls.htm"><tt><b>readxls</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>Pierrick Mode</b>
+    INRIA
+    </dd>
+<dd>
+<b>Serge Steer</b>
+    INRIA
+    </dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>This function is based on Excel
+      stream description from OpenOffice (http://sc.openoffice.org/excelfileformat.pdf).<h3><font color="blue">Used Function</font></h3>
+     This unction uses the xls.c file which can be found in a Scilab source
+      version in the directory SCIDIR/routines/sound 
+     </body>
+</html>

@@ -1,0 +1,150 @@
+SHELL = /bin/sh
+
+SCIDIR=../../..
+SCIDIR1=..\..\..
+
+include $(SCIDIR)/Makefile.incl
+
+.SUFFIXES: .sci .bin $(SUFFIXES)
+
+NAME =metanetlib
+NAM =SCI/contrib/cs5/metanet
+
+MACROS= add_edge.sci \
+	adj_lists.sci \
+	arc_graph.sci \
+	articul.sci \
+	bandwr.sci \
+	best_match.sci \
+	check_graph.sci \
+	circuit.sci \
+	connex.sci \
+	con_nodes.sci \
+	contract_edge.sci \
+	convex_hull.sci \
+	cycle_basis.sci \
+	delete_arcs.sci \
+	delete_nodes.sci \
+	dist2polylines.sci \
+	edge_number.sci \
+	editgraph_arc.sci \
+	editgraph_diagram.sci \
+	editgraph_node.sci \
+	edit_graph.sci \
+	editgraph_ver.sci \
+	find_path.sci \
+	ge_add_arc.sci \
+	ge_add_history.sci \
+	ge_add_node_copy.sci \
+	ge_add_node.sci \
+	ge_arc_coordinates.sci \
+	ge_arc_fields.sci \
+	ge_check_before_quit.sci \
+	ge_check_names.sci \
+	ge_complete_defaults.sci \
+	ge_compute.sci \
+	ge_create_menus.sci \
+	ge_delete_arc.sci \
+	ge_delete_node.sci \
+	ge_dig_bound.sci \
+	ge_do_copy_region.sci \
+	ge_do_copy.sci \
+	ge_do_default_names.sci \
+	ge_do_delete_region.sci \
+	ge_do_delete.sci \
+	ge_do_export.sci \
+	ge_do_find.sci \
+	ge_do_information.sci \
+	ge_do_load.sci \
+	ge_do_move_region.sci \
+	ge_do_move.sci \
+	ge_do_new.sci \
+	ge_do_options.sci \
+	ge_do_paste.sci \
+	ge_do_properties.sci \
+	ge_do_quit.sci \
+	ge_do_region2node.sci \
+	ge_do_SaveAs.sci \
+	ge_do_save.sci \
+	ge_do_select.sci \
+	ge_do_settings.sci \
+	ge_do_shortestpath.sci \
+	ge_do_undo.sci \
+	ge_do_version.sci \
+	ge_do_zoom.sci \
+	ge_drawarcs.sci \
+	ge_draw_loop_arcs.sci \
+	ge_drawnodes.sci \
+	ge_drawobj.sci \
+	ge_drawobjs.sci \
+	ge_draw_std_arcs.sci \
+	ge_drawtitle.sci \
+	ge_edit.sci \
+	ge_enablemenus.sci \
+	ge_eventhandler.sci \
+	ge_font.sci \
+	ge_getarc.sci \
+	ge_get_arcs_id.sci \
+	ge_get_info.sci \
+	ge_get_new_window.sci \
+	ge_getnode.sci \
+	ge_get_nodes_in_rect.sci \
+	ge_getobj.sci \
+	ge_get_region.sci \
+	ge_graph.sci \
+	ge_help.sci \
+	ge_newarc.sci \
+	gen_net.sci \
+	ge_node_fields.sci \
+	ge_set_arcs_id.sci \
+	ge_set_nodes_id.sci \
+	ge_set_winsize.sci \
+	ge_shortcut.sci \
+	girth.sci \
+	graph_2_mat.sci \
+	graph_center.sci \
+	graph_complement.sci \
+	graph_diameter.sci \
+	graph_power.sci \
+	graph_simp.sci \
+	graph_sum.sci \
+	graph_union.sci \
+	hamilton.sci \
+	initial_editgraph_tables.sci \
+	knapsack.sci \
+	load_graph.sci \
+	make_graph.sci \
+	mat_2_graph.sci \
+	max_cap_path.sci \
+	max_clique.sci \
+	mesh2d.sci \
+	message.sci \
+	min_lcost_cflow.sci \
+	min_lcost_flow1.sci \
+	min_lcost_flow2.sci \
+	min_weight_tree.sci \
+	neighbors.sci \
+	netclose.sci \
+	netwindow.sci \
+	netwindows.sci \
+	node_number.sci \
+	nodes_2_path.sci \
+	path_2_nodes.sci \
+	perfect_match.sci \
+	pipe_network.sci \
+	plot_graph.sci \
+	predecessors.sci \
+	qassign.sci \
+	save_graph.sci \
+	shortest_path.sci \
+	show_arcs.sci \
+	show_nodes.sci \
+	split_Edge.sci \
+	splitfilepath.sci \
+	strong_connex.sci \
+	strong_con_nodes.sci \
+	successors.sci \
+	supernode.sci \
+	trans_closure.sci 
+
+include $(SCIDIR)/macros/Make.lib

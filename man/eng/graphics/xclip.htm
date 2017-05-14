@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xclip</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xclip</b> -  set a clipping zone</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>xclip([x,y,w,h])  </tt></dd>
+<dd><tt>xclip(rect)  </tt></dd>
+<dd><tt>xclip("clipgrf")  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,w,h</b></tt>: real values.</li>
+<li>
+<tt><b>rect</b></tt>: row vector of size 4.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xclip</b></tt> is obsolete with the new graphic mode, use the
+      <tt><b>clip_state</b></tt> and <tt><b>clip_box</b></tt> properties of the
+      entities instead.</p>
+<p><tt><b>xclip</b></tt> set a clipping zone given by the coordinates, in the current
+    graphics scale, of the rectangle <tt><b>x,y,w,h</b></tt> 
+    (upper-left point, width, height). If only one argument is given, it stands
+    for a rectangle specification <tt><b>rect=[x,y,w,h]</b></tt>.</p>
+<p><tt><b>xclip("clipgrf")</b></tt> is used to clip the usual rectangle boundaries.</p>
+<p>
+    To unclip a region use the command <tt><b>xclip()</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=0:0.2:2*%pi;
+x1=[sin(x);100*sin(x)];
+y1=[cos(x);100*cos(x)];
+y1=y1+20*ones(y1);
+
+// set the frame
+clf();a=gca();a.data_bounds=[-100 -100;500 600];
+    
+// No clipping
+xsegs(10*x1+200*ones(x1),10*y1+200*ones(y1))
+e=gce(); //handle on the Segs entity
+
+// draw rectangle clipping zone 
+xrect(150,460,100,150)
+// set clip_box for  Segs entity
+e.clip_box=[150,460,100,150];
+
+// Set usual rectangle boundaries clipping zone 
+e.clip_state='clipgrf';
+xclip("clipgrf")
+// remove clipping
+e.clip_state='off';
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

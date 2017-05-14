@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nodes_degrees</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nodes_degrees</b> -  degrees of the nodes of a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[outdegree,indegree] = graph_degree(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>outdegree</b></tt>: row vector of the out degrees of the nodes</li>
+<li>
+<tt><b>indegree</b></tt>: row vector of the in degrees of the nodes</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>nodes_degrees</b></tt> returns the 2 row vectors of the out and in degrees of the 
+    nodes of the graph <tt><b>g</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+[outdegree,indegree]=nodes_degrees(g)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/adj_lists.htm"><tt><b>adj_lists</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

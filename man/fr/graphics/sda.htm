@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sda</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sda</b> -   Set default axes. </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>sda()</tt></dd>
+<dd><tt>a = gda(); set(a,"default_values",1) </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>a</b></tt>: handle, the handle of the default axes.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   This routine resets the axes' model to default values.
+   </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   
+  x=[0:0.1:2*%pi]';
+  set old_style off
+  f=get("default_figure"); // get the handle of the model figure 
+  a=get("default_axes"); // get the handle of the model axes 
+    // setting its' properties
+  f.figure_size=[1200 900];
+  f.figure_position=[0 0]; 
+  a.background=4; 
+  a.box="off";
+  a. tics_color=5;
+  a.labels_font_color=25;
+  a.labels_font_size=4;
+  a.sub_tics=[7 3];
+  a.x_location="middle";
+  a.y_location="middle";
+  a.tight_limits="on";
+  a.thickness=2;
+  a.grid=[-1 24];
+  subplot(221);
+  plot2d(x-2,sin(x))
+  subplot(222);
+  plot2d(x-6,[2*cos(x)+.7 2*cos(x)+.9 cos(2*x) .2+sin(3*x)],[-1,-2,-3 -4])
+  sda() // return to the  default values of the axes' model
+  subplot(223);
+  plot2d(x-2,sin(x))
+  subplot(224);
+  plot2d(x-6,[2*cos(x)+.7 2*cos(x)+.9 cos(2*x) .2+sin(3*x)],[-1,-2,-3 -4])
+  xdel(0)
+  plot2d(x-2,sin(x))
+  
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/sdf.htm"><tt><b> sdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gda.htm"><tt><b> gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gdf.htm"><tt><b> gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b> set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Djalel ABDEMOUCHE
+  </p>
+</body>
+</html>

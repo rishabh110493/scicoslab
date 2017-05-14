@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_full</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_full</b> - Matlab full emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>full</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With character strings input: Matlab <tt><b>full</b></tt> can be used with character string input
+	while Scilab function cannot.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With boolean input: Matlab <tt><b>full</b></tt> can be used with boolean input
+	while Scilab function cannot.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_full(A)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>full(A)</b></tt> when it was not
+    possible to know what was the input while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_full</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is a double matrix
+        <tt><b>mtlb_full(A)</b></tt> may be replaced by <tt><b>full(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is a boolean matrix
+        <tt><b>mtlb_full(A)</b></tt> may be replaced by <tt><b>full(bool2s(A))</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_full</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

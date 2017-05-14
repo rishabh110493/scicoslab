@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>analyze</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>analyze</b> -  frequency plot of a sound  signal</p>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>fmin,fmax,rate,points</b></tt>: scalars. default values fmin=100,fmax=1500,rate=22050,points=8192;</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Make a frequency plot of the signal <tt><b>w</b></tt> with sampling rate <tt><b>rate</b></tt>.
+    The data must be at least <tt><b>points</b></tt> long.
+    The maximal frequency plotted will be <tt><b>fmax</b></tt>, the minimal <tt><b>fmin</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// At first we create 0.5 seconds of sound parameters.
+t=soundsec(0.5);
+// Then we generate the sound.
+s=sin(440*t)+sin(220*t)/2+sin(880*t)/2;
+[nr,nc]=size(t);
+s(nc/2:nc)=sin(330*t(nc/2:nc));
+analyze(s);
+ 
+  </pre>
+</body>
+</html>

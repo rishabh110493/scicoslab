@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nanmedian</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nanmedian</b> -  median of the  values of a numerical vector or matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>m=nanmedian(x)  </tt></dd>
+<dd><tt>m=nanmedian(x,'r') (or m=nanmedian(x,1))  </tt></dd>
+<dd><tt>m=nanmedian(x,'c') (or m=nanmedian(x,2))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    For   a   vector    or   a  matrix   <tt><b>    x</b></tt>,   <tt><b>
+    [m]=nanmedian(x)</b></tt>  returns in the vector  <tt><b>  m</b></tt> the
+    median of the  values (ignoring the NANs)  of vector <tt><b> x
+    </b></tt>.</p>
+<p><tt><b>[m]=nanmedian(x,'r')</b></tt>       (or,        equivalently,
+    <tt><b>[m]=nanmedian(x,1)</b></tt>) are  the  rowwise  medians.   It
+    returns in each position of  the row vector  <tt><b> m</b></tt> the
+    medians of data  (ignoring the NANs) in  the corresponding
+    column of <tt><b> x</b></tt>.</p>
+<p><tt><b>[m]=nanmedian(x,'c')</b></tt>      (or,   equivalently,   <tt><b>
+    [m]=nanmedian(x,2)</b></tt>)  are the  columnwise  madians.   It
+    returns in each position of the column vector <tt><b> m</b></tt> the
+    medians of data (ignoring  the NANs) in the  corresponding
+    row of <tt><b> x</b></tt>.</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 %nan 0.6653811;0.7560439 0.3303271 0.6283918]
+m=nanmedian(x)
+m=nanmedian(x,1)
+m=nanmedian(x,2)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

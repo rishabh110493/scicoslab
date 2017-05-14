@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sum</b> -  sum (row sum, column sum) of vector/matrix entries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=sum(x)  </tt></dd>
+<dd><tt>y=sum(x,'r') or y=sum(x,1)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>y=sum(x,'c') or y=sum(x,2)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>y=sum(x,'m')   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vector or matrix (real, complex, sparse or polynomial)</li>
+<li>
+<tt><b>y</b></tt>: scalar or vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> For a vector or a matrix <tt><b>x</b></tt>, <tt><b>y=sum(x)</b></tt>  returns
+      in the scalar <tt><b>y</b></tt> the sum of all the entries of
+      <tt><b>x</b></tt>.</p>
+<p><tt><b>y=sum(x,'r')</b></tt> (or, equivalently, <tt><b>y=sum(x,1)</b></tt>) is
+      the rowwise sum: <tt><b>y(j)= sum(x(:,j))</b></tt>. <tt><b>y</b></tt> is a row
+      vector</p>
+<p><tt><b>y=sum(x,'c')</b></tt> (or, equivalently, <tt><b>y=sum(x,2)</b></tt>) is
+      the columnwise sum. It returns in each entry of the column vector
+      <tt><b>y</b></tt> the sum :  <tt><b>y(i)= sum(x(i,:))</b></tt>)).</p>
+<p><tt><b>y=sum(x,'m')</b></tt>  is the sum along the first non singleton
+      dimension of <tt><b>x</b></tt> (for compatibility with Matlab).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4];
+trace(A)-sum(diag(A))
+sum(A,'c')-A*ones(2,1)
+sum(A+%i)
+A=sparse(A);sum(A,'c')-A*ones(2,1)
+s=poly(0,'s');
+M=[s,%i+s;s^2,1];
+sum(M),sum(M,2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cumsum.htm"><tt><b>cumsum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/prod.htm"><tt><b>prod</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_mode</b> -  choisit le mode de compatibilité Matlab  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mmode=mtlb_mode()  </tt></dd>
+<dd><tt>mtlb_mode(mmode)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mmode  </b></tt>
+    : un booléen
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Les additions et soustractions fonctionnent différemment dans Scilab et Matlab quand un des opérandes est une matrice vide :
+  </p>
+<dl>
+<dd>
+<b>Scilab</b>:<pre>
+
+a+[] --&gt;a
+a-[] --&gt;a
+[]+a --&gt;a
+[]-a --&gt;-a
+   
+        </pre>
+</dd>
+<dd>
+<b>Matlab</b><pre>
+
+a+[] --&gt;[]
+a-[] --&gt;[]
+[]+a --&gt;[]
+[]-a --&gt;[]
+   
+
+        </pre>
+</dd>
+</dl>
+<p><tt><b> mtlb_mode(%t)</b></tt> passe au mode de compatibilité Matlab pour les additions et les soustractions. <tt><b> mtlb_mode(%f)</b></tt> retourne au mode Scilab.
+  </p>
+<p><tt><b> mtlb_mode()</b></tt> renvoie la valeur du mode de compatibilité courant (%t=Matlab, %f=Scilab).
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/empty.htm"><tt><b>empty</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

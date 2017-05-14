@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dft</b> -  discrete Fourier transform</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xf]=dft(x,flag);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: input vector</li>
+<li>
+<tt><b>flag</b></tt>: indicates dft (flag=-1)  or idft (flag=1)</li>
+<li>
+<tt><b>xf</b></tt>: output vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Function which computes dft of vector <tt><b>x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+n=8;omega = exp(-2*%pi*%i/n);
+j=0:n-1;F=omega.^(j'*j);  //Fourier matrix
+x=1:8;x=x(:);
+F*x
+fft(x,-1)
+dft(x,-1)
+inv(F)*x
+fft(x,1)
+dft(x,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/fft.htm"><tt><b>fft</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

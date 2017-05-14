@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>grayplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>grayplot</b> - 2D plot of a surface using
+  colors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>grayplot(x,y,z,[strf,rect,nax])</tt></dd>
+<dd><tt>grayplot(x,y,z,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: real row vectors of size n1 and n2.</li>
+<li>
+<tt><b>z</b></tt>: real matrix of size (n1,n2). <tt><b>z(i,j)</b></tt> is the value
+          of the surface at the point (x(i),y(j)).</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: rect, nax, strf
+          or axesflag and frameflag (see <tt><b>plot2d</b></tt> and
+          <tt><b>plot2d_old_version</b></tt>).</li>
+<li>
+<tt><b>strf,rect,nax</b></tt>: see <tt><b>plot2d</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>grayplot</b></tt> makes a 2D plot of the surface given by
+    <tt><b>z</b></tt> on a grid defined by <tt><b>x</b></tt> and <tt><b>y</b></tt>.
+    Each rectangle on the grid is filled with a gray or color level depending
+    on the average value of <tt><b>z</b></tt> on the corners of the
+    rectangle.</p>
+<p>Enter the command <tt><b>grayplot()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=-10:10; y=-10:10;m =rand(21,21);
+grayplot(x,y,m,rect=[-20,-20,20,20])
+t=-%pi:0.1:%pi; m=sin(t)'*cos(t);
+clf()
+grayplot(t,t,m)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/fgrayplot.htm"><tt><b>fgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/Sgrayplot.htm"><tt><b>Sgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/Sfgrayplot.htm"><tt><b>Sfgrayplot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

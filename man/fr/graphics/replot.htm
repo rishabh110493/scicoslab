@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>replot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>replot</b> - redessine la fenêtre graphique courante en
+  changeant les bornes</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>replot(rect)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: vecteur ligne de taille 4.</li>
+<li>
+<tt><b>handle</b></tt>: argument optionnel. Handle(s) graphiques de type Axes
+          définissant le(s) axe(s) auxquels les nouvelles bornes s'appliquent.
+          Option uniquement disponible en nouveau mode graphique.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>replot</b></tt> est utilisée pour redessiner la fenêtre graphique
+    courante en changeant les bornes, données sous la forme
+    <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt>. En ancien mode graphique,
+    fonctionne uniquement avec le pilote <tt><b>"Rec"</b></tt>.</p>
+<p>En nouveau mode graphique, cette transformation s'applique aux axes
+    spécifiés par <tt><b>handle</b></tt> Si <tt><b>handle</b></tt> n'est pas
+    renseigné, la transformation s'applique à  l'axe courant de la figure
+    courante. La transformation change les valeurs <tt><b>data_bounds</b></tt>
+    des axes. A noter que la propriété <tt><b>tight_limits</b></tt> de l'axe doit
+    être mise à  <tt><b>"on"</b></tt> pour selectionner strictement ces bornes
+    (voir <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).<tt><b></b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+backupstyle='?'
+if (get('old_style')=='off') then
+  set('old_style','on');
+  backupstyle='off'
+end
+
+// under old graphics mode
+x=[0:0.1:2*%pi]';
+plot2d(x,sin(x)) 
+replot([-1,-1,10,2]) 
+
+// under new graphics mode
+set old_style off
+xdel(winsid());
+plot() // plot demo
+f=gcf();
+replot([-1,-1,10,2],f.children(1)) // specify axes handle's value
+replot([-3,-2,8,4],f.children(2)) 
+if (backupstyle =='off') then set('old_style',backupstyle);end;
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasr.htm"><tt><b>xbasr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

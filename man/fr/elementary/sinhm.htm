@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sinhm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sinhm</b> -  sinus hyperbolique matriciel  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=sinhm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,t  </b></tt>
+    : matrice carrée réelle ou complexe
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    sinhm(x) est le sinus hyperbolique matriciel de la matrice x.
+    <tt><b>t=(expm(x)+expm(-x))/2</b></tt>. Le résultat peut être imprécis pour les matrices non symétriques.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;2,4]
+asinhm(sinhm(A))
+A(1,1)=%i;sinhm(A)-(expm(A)-expm(-A))/2   // cas complexe
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sinh.htm"><tt><b>sinh</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/expm.htm"><tt><b>expm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fusee</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fusee</b> -  a set of Scilab macro for a landing rocket problem</p>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>FUSEE</b><tt><b>[xdot]=fusee(t,x)</b></tt> gives the dynamical motion equation
+    for the rocket</dd>
+<dd>
+<b>FINIT</b><tt><b>finit()</b></tt>  Initialises the following parameters for rocket landing.<dd>
+<li>
+<b><font color="maroon">k</font></b>: The acceleration of the rocket engines</li>
+<li>
+<b><font color="maroon">gamma</font></b>: The moon gravity acceleration.</li>
+<li>
+<b><font color="maroon">umax</font></b>: the gaz ejection flow out.</li>
+<li>
+<b><font color="maroon">mcap</font></b>: the mass of the space capsule.</li>
+<li>
+<b><font color="maroon">cpen</font></b>: penalisation in the cost function of the final state.</li>
+</dd>
+</dd>
+<dd>
+<b>FUSEEGRAD</b><tt><b>[ukp1]=fuseegrad(niter,ukp1,pasg)</b></tt> Iterate a gradient method and returns the computed control.<dd>
+<li>
+<b><font color="maroon">niter</font></b>: number of gradient iteration steps.</li>
+<li>
+<b><font color="maroon">ukp1</font></b>: initial control value ( vector of sie 135 )</li>
+<li>
+<b><font color="maroon">pasg</font></b>: the gradient step value.</li>
+</dd>
+</dd>
+<dd>
+<b>FUSEEP</b><tt><b>[pdot]=fuseep(t,p)</b></tt>     adjoint equation for the
+  landing rocket problem.</dd>
+<dd>
+<b>POUSSE</b><tt><b>[ut]=pousse(t)</b></tt> return the value of a piece wise
+  constant control build on the discrete control <tt><b>uk</b></tt>
+</dd>
+<dd>
+<b>UBANG</b><tt><b>[uk]=ubang(tf,tcom)</b></tt> returns a bang-bang control, 0
+   form time 0 to tcom  and 1 form tcom to tf.</dd>
+<dd>
+<b>FCOUT</b><tt><b>[c,xk,pk,ukp1]=fcout(tf,uk,pasg)</b></tt> optimise the following
+    cost function by gradient iterations. <tt><b>c = -m(tf) + C*( h(tf)**2 + v(tf)**2)</b></tt>
+</dd>
+<dd>
+<b>SFUSEE</b><tt><b>[]=sfusee(tau,h0,v0,m0,Tf)</b></tt> computes the rocket
+    trajectory when a bang-bang control is used <tt><b>tau</b></tt> is
+    the commutation time.<dd>
+<li>
+<b><font color="maroon">h0</font></b>: The initial position (high)</li>
+<li>
+<b><font color="maroon">v0</font></b>: The initial speed ( negative if the rocket is landing )</li>
+<li>
+<b><font color="maroon">m0</font></b>: The total initial mass ( capsule and fuel).</li>
+<li>
+<b><font color="maroon">Tf</font></b>: Time horizon.</li>
+</dd>
+</dd>
+<dd>
+<b>EQUAD</b><tt><b> [xk,pk]=equad(tf,uk)</b></tt> Computes the state and adjoint state of the rocket system for a given 
+    control <tt><b>ur</b></tt>.</dd>
+<dd>
+<b>TRAJ</b><tt><b> [xt]=traj(t)</b></tt> returns a piece wise value of the mass evolution.</dd>
+</dl>
+</body>
+</html>

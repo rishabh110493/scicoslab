@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getmark</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getmark</b> - dialog to select mark
+  (symbol)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[mark,mrkSize]=getmark()</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mark</b></tt>: integer, the number of the selected mark</li>
+<li>
+<tt><b>mrkSize</b></tt>: integer, the size of the selected mark</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>getmark</b></tt> opens a graphic window to select a mark
+    (symbol).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=0:0.1:10;
+set("figure_style","new")
+[mark,mrkSize]=getmark();
+plot2d(x,sin(x),style=-mark);
+clf();
+plot2d(x,sin(x))
+e=gce(); // store the Compound containing the plot
+[mark,mrkSize]=getmark();
+e.children(1).mark_style = mark;
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getfont.htm"><tt><b>getfont</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getlinestyle.htm"><tt><b>getlinestyle</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

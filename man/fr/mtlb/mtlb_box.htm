@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_box</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_box</b> - Fonction d'émulation de la fonction Matlab box</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas de fonction Scilab équivalente à la fonction Matlab <tt><b>box</b></tt> mais elle peut facilement être remplacée.</p>
+<p>
+    La fonction <tt><b>mtlb_box([axes_handle[,val]])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>box([axes_handle[,val]])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_box</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Pour un appel sans paramètre d'entrée,
+        <tt><b>mtlb_box()</b></tt> peut être remplacé par <tt><b>a=gca();if a.box=="on" then a.box="off";else a.box="on";end;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>axes_handle</b></tt> est une chaîne de caractères,
+	<tt><b>mtlb_box(axes_handle)</b></tt> peut être remplacé par <tt><b>a=gca();a.box=convstr(axes_handle,"l");</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>axes_handle</b></tt> est un handle graphique,
+	<tt><b>mtlb_box(axes_handle)</b></tt> peut être remplacé par 
+	<tt><b>if axes_handle.box=="on" then axes_handle.box="off";else axes_handle.box="on";end;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>axes_handle</b></tt> est un handle graphique et <tt><b>val</b></tt> est une chaîne de caractères,
+	<tt><b>mtlb_box(axes_handle,val)</b></tt> peut être remplacé par <tt><b>axes_handle.box=convstr(val,"l");</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_box</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

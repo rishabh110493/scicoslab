@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sci_files</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Documentation</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sci_files</b> - Comment écrire des fonctions de conversion</p>
+<h3><font color="blue">Description</font></h3>
+<p>  
+  Pour convertir les appels à des fonctions Matlab, <tt><b>mfile2sci</b></tt> utilise une fonctions appelée
+  <tt><b>sci_&lt;nom_de_la_fonction_Matlab&gt;</b></tt>. Toutes ces fonctions sont définies dans des <tt>sci_files</tt>
+  dans le répertoire SCI/macros/m2sci/sci_files/. La palette de <tt>sci_files</tt> fournie dans Scilab
+  ne permet pas encore de convertir les appels à toutes les fonctions Matlab.
+  Cependant, un utilisateur Scilab peut ajouter des <tt>sci_files</tt> (pour des fonctions Matlab
+  ou pour ses propres fonctions) en utilisant les conseils suivants.
+  </p>
+<p>
+  Dans M2SCI, un appel à une fonction est considéré comme un "arbre" (c'est aussi le cas des instructions
+  du fichier à convertir), représenté dans Scilab par une <tt><b>tlist</b></tt> avec les champs suivants :
+  </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon">name</font></b> : nom de la fonction Matlab</li>
+<li>
+<b><font color="maroon">lhsnb</font></b> : nombre de paramètres de sortie de la fonction Matlab</li>
+<li>
+<b><font color="maroon">lhs</font></b> : liste des paramètres de sortie de la fonction Matlab</li>
+<li>
+<b><font color="maroon">rhs</font></b> : liste des paramètres d'entrée de la fonction Matlab</li>
+</dd>
+</dd></dl>
+<p>
+  Une <tt>sci_function</tt> a un paramètre d'entrée <tt><b>tree</b></tt> qui est aussi la sortie de cette fonction.
+  Une <tt>sci_function</tt> doit convertir cet arbre pour qu'il soit compatible avec Scilab
+  en changeant name, lhsnb, lhs et/ou rhs. L'autre rôle de cette fonction est de gérer
+  l'inférence. L'arbre d'entrée contient des données d'inférence dans ses rhs qui devront être mises à jour avec
+  ce que l'on peut inférer pour les lhs de cette fonction. 
+  </p>
+<p>
+  Plusieurs fonctions ont été écrites pour aider à la rédaction de fonctions de conversion :
+  </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon">Funcall</font></b> : créé un arbre qui représente l'appel à une fonction</li>
+<li>
+<b><font color="maroon">Operation</font></b> : créé un arbre qui représente une opération</li>
+<li>
+<b><font color="maroon">Variable</font></b> : créé un arbre qui représente une variable</li>
+<li>
+<b><font color="maroon">Cste</font></b> : créé un arbre qui représente une constante</li>
+<li>
+<b><font color="maroon">Infer</font></b> : créé un arbre qui représente les données d'inférence</li>
+<li>
+<b><font color="maroon">Type</font></b> : créé un arbre qui représente le type pour l'inférence</li>
+<li>
+<b><font color="maroon">Equal</font></b> : créé un arbre qui représente une instruction</li>
+</dd>
+</dd></dl>
+<p>
+  Quelques fonctions ont été écrites pour récupérer les propriétés des opérandes/entrées. En considérant A comme une tlist utilisée dans l'arbre, vous pouvez utiliser les fonctions suivantes :
+  </p>
+<div align="center"><table border="2">
+<tr align="center">
+<td>La fonction</td>
+<td>renvoie %T si...</td>
+</tr>
+<tr align="center">
+<td>is_empty(A)</td>
+<td>toutes les dimensions de A sont égales à 0</td>
+</tr>
+<tr align="center">
+<td>not_empty(A)</td>
+<td>toutes les dimensions de A sont connues et au moins une dimension de A est différente de 0</td>
+</tr>
+<tr align="center">
+<td>is_a_scalar(A)</td>
+<td>toutes les dimensions de A sont égales 1</td>
+</tr>
+<tr align="center">
+<td>not_a_scalar(A)</td>
+<td>toutes les dimensions de A sont connues et au moins une dimension de A est différente de 1</td>
+</tr>
+<tr align="center">
+<td>is_a_vector(A)</td>
+<td>toutes les dimensions de A sotn connues et toutes les dimensions de A sauf une sont égales à 1</td>
+</tr>
+<tr align="center">
+<td>not_a_vector(A)</td>
+<td>toutes les dimensions de A sotn connues et au moins deux dimensions de A sont supérieures à 1</td>
+</tr>
+<tr align="center">
+<td>is_real(A)</td>
+<td>A est réel</td>
+</tr>
+<tr align="center">
+<td>is_complex(A)</td>
+<td>A est complexe</td>
+</tr>
+<tr align="center">
+<td>isdefinedvar(A)</td>
+<td>A est une variable déjà définie dans le M-file en cours de conversion</td>
+</tr>
+<tr align="center">
+<td>allunknown(A)</td>
+<td>Toutes les dimensions de A sont inconnues</td>
+</tr>
+</table></div>
+<p>
+  D'autres fonctions ont été écrites pour des besoins spécifiques lors de l'écriture de fonctions de conversion :
+  </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon">first_non_singleton</font></b>: est équivalente à <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a> pour une tlist M2SCI. Séquence d'appel : dim = first_non_singleton(A)</li>
+<li>
+<b><font color="maroon">gettempvar</font></b>: génère une variable temporaire portant une nom qui n'existe pas. Séquence d'appel : v = gettempvar()</li>
+<li>
+<b><font color="maroon">insert</font></b>: permet d'insérer des instruction. Séquence d'appel : insert(Equal(...),opt) avec opt~=1 pour insérer avan tl'instruction courante et opt=1 pour insérer après celle-ci.</li>
+<li>
+<b><font color="maroon">getoperands</font></b>: peut être utilisée pour extraire chaque opérande comme une variable. Séquence d'appel : [A,B] = getoperands(operation_tlist)</li>
+<li>
+<b><font color="maroon">getrhs</font></b>: peut être utilisée pour extraire chaque paramètre comme une variable. Séquence d'appel : [A,...] = getrhs(funcall_tlist)</li>
+<li>
+<b><font color="maroon">convert2double</font></b>: change le type de l'entrée quand ce type n'est pas implémenté pour une fonction particulière de Scilab. Séquence d'appel : A = convert2double(A)</li>
+</dd>
+</dd></dl>
+<p>
+  Pour plus d'informations sur la fçon d'écrire ces fichiers, consulter le répertoire
+  SCI/macros/m2sci/sci_files/ qui donne de nombreux exemples, des plus simples (e.g. sci_abs.sci)
+  aux plus compliqués (e.g. sci_zeros.sci).
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/m2scideclare.htm"><tt><b>m2scideclare</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Funcall.htm"><tt><b>Funcall</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Operation.htm"><tt><b>Operation</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Variable.htm"><tt><b>Variable</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Cste.htm"><tt><b>Cste</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Infer.htm"><tt><b>Infer</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Type.htm"><tt><b>Type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/Equal.htm"><tt><b>Equal</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

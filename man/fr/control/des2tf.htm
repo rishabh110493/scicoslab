@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>des2tf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>des2tf</b> -  descriptor to transfer function conversion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[S]=des2tf(sl)  </tt></dd>
+<dd><tt>[Bfs,Bis,chis]=des2tf(sl)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: list (linear system in descriptor form)</li>
+<li>
+<tt><b>Bfs, Bis</b></tt>: two polynomial matrices</li>
+<li>
+<tt><b>chis</b></tt>: polynomial</li>
+<li>
+<tt><b>S</b></tt>: rational matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the linear system in descriptor form i.e.
+    <tt><b>Sl=list('des',A,B,C,D,E)</b></tt>, <tt><b>des2tf</b></tt> converts <tt><b>sl</b></tt> into
+    its transfer function representation:</p>
+<pre>
+
+S=C*(s*E-A)^(-1)*B+D
+   
+    </pre>
+<p>
+    Called with 3 outputs arguments <tt><b>des2tf</b></tt> returns
+    <tt><b>Bfs</b></tt> and <tt><b>Bis</b></tt> two polynomial matrices, and <tt><b>chis</b></tt>
+    polynomial such that:</p>
+<pre>
+
+S=Bfs/chis - Bis
+   
+    </pre>
+<p><tt><b>chis</b></tt> is the determinant of <tt><b>(s*E-A)</b></tt> (up to a xcative constant);</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+G=[1/(s+1),s;1+s^2,3*s^3];
+Descrip=tf2des(G);Tf1=des2tf(Descrip)
+Descrip2=tf2des(G,"withD");Tf2=des2tf(Descrip2)
+[A,B,C,D,E]=Descrip2(2:6);Tf3=C*inv(s*E-A)*B+D
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/pol2des.htm"><tt><b>pol2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/tf2des.htm"><tt><b>tf2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/des2ss.htm"><tt><b>des2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowshuff.htm"><tt><b>rowshuff</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

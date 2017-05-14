@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tokens</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tokens</b> -  returns the tokens of a character string.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>T=tokens(str [,delimiter])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: a character string. The string where to search the tokens.</li>
+<li>
+<tt><b>delimiter</b></tt>: (optional) a character or a vector of characters. The tokens delimeters.</li>
+<li>
+<tt><b>T</b></tt>: column vector of found tokens</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>T=tokens(str [,delimiter]) </b></tt> searches the tokens included in the
+    string <tt><b>str</b></tt>. The <tt><b>delimiter</b></tt> default value is [" ",&lt;Tab&gt;]
+    where &lt;Tab&gt; stands for <tt><b>ascii(9)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+tokens('This is a character string')
+
+tokens('SCI/demos/scicos','/')
+
+tokens('y=a+b*2',['=','+','*'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/strindex.htm"><tt><b>strindex</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/tokenpos.htm"><tt><b>tokenpos</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

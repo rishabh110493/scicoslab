@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xnumb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xnumb</b> -  draw numbers</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xnumb(x,y,nums,[box,angle])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,nums</b></tt>: vectors of same size.</li>
+<li>
+<tt><b>box</b></tt>: integer value.</li>
+<li>
+<tt><b>angle</b></tt>: optional vector of same size as <tt><b>x</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xnumb</b></tt> draws the value of <tt><b>nums(i)</b></tt>
+    at position <tt><b>x(i),y(i)</b></tt> in the current scale.
+    If <tt><b>box</b></tt> is 1, a box is drawn around the numbers. 
+    If <tt><b>angle</b></tt> is given, it gives the direction for string drawing.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d([-100,500],[-100,600],[-1,-1],"022")
+x=0:100:200;
+xnumb(x,500*ones(x),[10,20,35],1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

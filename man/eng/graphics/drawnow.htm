@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>drawnow</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>drawnow</b> - draw hidden graphics
+  entities.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>drawnow()</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>Considering the current figure, this function can be used to draw the
+    hidden graphics entities and all its chidren, that may have been postponed
+    by a previous call to <tt><b>drawlater</b></tt>. The
+    <tt><b>immediate_drawing</b></tt> property of the <tt><b>current figure</b></tt>
+    is set to <tt><b>"on" </b></tt>.</p>
+<p>It can specially be used with the <tt><b>drawlater</b></tt> function.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+  set("figure_style","new") // select entity based graphics
+  f=get("current_figure") // handle of the current figure
+  
+  drawlater()
+  subplot(221);
+  t=1:10;plot2d(t,t.^2)
+  subplot(222);
+  x=0:1:7;plot2d(x,cos(x),2) 
+  subplot(234);
+  plot2d(t,cos(t),3);
+  subplot(235);
+  plot2d(x,sin(2*x),5); 
+  subplot(236);
+  plot2d(t,tan(2*t));  
+ 
+  draw(gca()); //draw the current axes and its children
+  draw(f.children([3 4])); // draw the specified axes and their children
+  drawnow(); // draw the current figure
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/drawlater.htm"><tt><b>drawlater</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE, F.Leray</p>
+</body>
+</html>

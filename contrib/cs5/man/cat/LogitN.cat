@@ -1,0 +1,29 @@
+LogitN                             CiudadSim Function                LogitN
+NAME
+   LogitN  - Net Logit Assignment 
+  
+CALLING SEQUENCE
+ LogitN(theta,method)
+PARAMETERS
+ theta      : stochasticity parameter 
+            
+ method     : macro among LogitB, LogitD, LogitMB, LogitMD
+            
+DESCRIPTION
+  %net global variable NetList
+  Compute the logit traffic assignment using a method among LogitB, LogitD,
+  LogitMB, LogitMD the travel time is taken in %net.links.time and the
+  assigned fow is put in the field %net.links.flow of the variable %net
+  which is a NetList which must be declared global.
+  
+EXAMPLES
+ // Graph generation (the graph must be stongly connected)
+ %net=TrafficExample("Steenbrink");
+ //theta definition (almost determinsitic)
+ theta=10;
+ // Flow calculation
+ LogitN(theta,LogitMB)
+ ShowNet()
+SEE ALSO
+   LogitD, LogitB, LogitMB, LogitMD, LogitNE, TrafficAssig
+  

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>LogitNE  </TITLE>
+  <TYPE>CiudadSim Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="LogitNE "> Net Logit Equilibrium   </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>bench=LogitNE(theta,method,eps,Niter,Num)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>theta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : stochasticity parameter 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>method  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : macro among LogitB, LogitD, LogitMB, LogitMD
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>eps  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : convergence error test 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>Niter  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : maximal number of iteration 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>Num  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : number of iteration already done
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>bench  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : niter x 5  matrix
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net global variable NetList  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Compute the logit traffic equilibrium using a
+    logit method among LogitB, LogitD, LogitMB, LogitMD
+    the travel time is taken in %net.links.time
+    and the assigned fow is put in the field
+    %net.links.flow of the variable %net which
+    is a NetList which must be declared global.
+  </P>
+  <P>
+    The equilibrium is computed by a divergent series
+    method F[n+1]=F[n]*(1-rho[n])+rho[n]*f
+    where f is the new assigned flow computed with the
+    travelling time associated to the flow F[n],
+    with rho[n]=1/(n+1). 
+  </P>
+  <P>
+    If %net.gp.verbose=%T  convergence informations are displayed.
+    These informations are returned by the function in the variable %net.gp.bench.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost determinsitic)
+theta=10
+// Flow calculation
+LogitNE(theta,LogitMD,1.e-6,30,0)
+ShowNet()
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>LogitD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitN</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNELS</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

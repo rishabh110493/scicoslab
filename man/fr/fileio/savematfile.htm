@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>savematfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>savematfile</b> - write a Matlab MAT-file (binary or ASCII)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>savematfile('filename')</tt></dd>
+<dd><tt>savematfile('filename', 'var1', 'var2', ...)</tt></dd>
+<dd><tt>savematfile('filename', '-struct', 's')</tt></dd>
+<dd><tt>savematfile('filename', '-struct', 's', 'f1', 'f2', ...)</tt></dd>
+<dd><tt>savematfile(..., 'format')</tt></dd>
+<dd><tt>savematfile filename var1 var2 ...</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: character string containing the path of the file (needed)</li>
+<li>
+<tt><b>format</b></tt>: data format to use<ul>
+<li>
+<tt><b>"-mat"</b></tt>: binary MAT-file (default)</li>
+<li>
+<tt><b>"-ascii"</b></tt>: 8-bit ASCII format</li>
+<li>
+<tt><b>"-ascii" "-double"</b></tt>: 16-bit ASCII format</li>
+<li>
+<tt><b>"-ascii" "-tabs"</b></tt>: delimits with tabs</li>
+<li>
+<tt><b>"-ascii" "-double" "-tabs"</b></tt>: 16-digit ASCII format, tab delimited</li>
+<li>
+<tt><b>"-v4"</b></tt>: A format that MATLAB Version 4 can open</li>
+<li>
+<tt><b>"-v6"</b></tt>: A format that MATLAB Version 6 and earlier can open (default)</li>
+</ul>
+</li>
+<li>
+<tt><b>var1, var2</b></tt>: character strings containing the name of the variables to load (only for binary files)</li>
+<li>
+<tt><b>"-struct" "s"</b></tt>: saves all fields of the scalar structure s as individual variables within the file filename.</li>
+<li>
+<tt><b>"-struct" "s" "f1" "f2"</b></tt>: saves as individual variables only those structure fields specified (s.f1, s.f2, ...).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    saves variables in a Matlab MAT-file from Scilab. The Scilab data types are
+    converted into the Matlab equivalents.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/loadmatfile.htm"><tt><b>loadmatfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/mfile2sci.htm"><tt><b>mfile2sci</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>Serge Steer (INRIA)</dd>
+<dd>
+<b></b>V.C</dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>
+<p>This function has been developped following the "MAT-File Format"
+  description: 
+<tt><b>www.mathworks.com/access/helpdesk/help/pdf_doc/matlab/matfile_format.pdf</b></tt></p>
+</body>
+</html>

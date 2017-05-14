@@ -1,0 +1,39 @@
+Probit                         Traffic-toolbox Function              Probit
+NAME
+   Probit  -  Probit-based stochastic network assignment
+  
+CALLING SEQUENCE
+ [f,s]=Probit(net,ta,beta,accuracy,kmax)
+   
+  
+PARAMETERS
+ net        : a NetList 
+            
+ ta         : link travel time
+            
+ beta       : variance of the perceived travel time over a road segment of
+            unit travel time
+            
+ accuracy   : precision
+            
+ kmax       : maximum number of iterations
+            
+ f          : assigned flow (disaggregated by commodity)
+            
+ s          : standard deviation for the assigned flow f 
+            
+DESCRIPTION
+   Assigns the flow with a Probit-based model. In this model the perceived
+  travel time along any given path is normally  distributed with mean ta
+  and variance beta*ta. The algorithm use to make the assignment is base on
+  a Monte Carlo simulation of the perceived link travel times. 
+  
+EXAMPLES
+ net=TrafficExample("Small");
+ ta=net.links.lpf_data(1,:);
+ // uses the example net Small
+ [f,s]=Probit(net,ta,0.1,0.001,7);
+ 
+SEE ALSO
+   AON, IAON, CAPRES, FW, TrafficAssig     
+  

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>wardropN  </TITLE>
+  <TYPE>Maxplus Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="WardropN "> Wardrop equilibrium ( Newton hybrid method )  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>bench=WardropN(a,k,eps,niter)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>a  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : regularization coefficient (small number)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>k  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reducing regularization coefficient exponential rate (number &gt;= 1)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>eps  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : precision of the convergence test (small number)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>niter  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : maximal number of iterations
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>bench  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : niter x 5  matrix
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : global variable NetList   
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Compute the Wardrop equilibrium of a transport
+    assignment problem by solving the following nodes-links
+    variational formulation of the problem:
+  </P>
+  <P>
+    Min_q Sum_l C(f_l)
+  </P>
+  <P>
+    f_l=Sum_i q_li
+  </P>
+  <P>
+    Hq_i=d_i
+  </P>
+  <P>
+    O&lt;=q_li
+  </P>
+  <P>
+    where :
+  </P>
+  <P>
+    - C(f) is a cost in the classes defined by the lpf function,
+    - H is is the incidence nodes-arcs matrix of the network,
+    - q_li is the flow of the commodity i on the link l,
+  </P>
+  <P>
+    %net is the netlist containing all the information relative to
+    the network and the cost function used.
+  </P>
+  <P>
+    The method used is a decomposed newton method
+    in the space (q_i,v_i) i=1,p, where the v_i denote the dual
+    variables associated to the constraints Hq_i=d_i .
+  </P>
+  <P>
+    The variable a regularizes
+    the  matrices giving the potentials.
+    At each iteration a is reduced by a factor k.
+    We can try first a small a and k=1. 
+  </P>
+  <P>
+    This method is useful mainly in the case of
+    a small number of commodities.
+  </P>
+  <P>
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+
+// Definition of the Network
+nw=4;
+%net=TrafficExample("Regular City",nw,nw);
+
+// Traffic Assignment
+bench=WardropN(0.1,2,1.e-4,12);
+
+// Visualization of the NET
+ShowNet();
+
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>DSD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>FW</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>Probit</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>MSASUE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNELS</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

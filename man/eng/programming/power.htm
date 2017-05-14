@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>power</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>power</b> -  power operation <tt><b>(^,.^)</b></tt></p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>t=A^b</tt></dd>
+<dd><tt>t=A**b</tt></dd>
+<dd><tt>t=A.^b</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,t</b></tt>: scalar, polynomial or rational matrix.</li>
+<li>
+<tt><b>b</b></tt>:a scalar, a vector or a scalar matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dd>
+<li>
+<b><font color="maroon"></font></b><tt><b>"(A:square)^(b:scalar)"</b></tt>
+        : If <tt><b>A</b></tt> is a square matrix and <tt><b>b</b></tt> is a scalar then  <tt><b>A^b</b></tt> is the matrix <tt><b>A</b></tt> to the power <tt><b>b</b></tt>.</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>"(A:matrix).^(b:scalar)"</b></tt>
+    : If <tt><b>b</b></tt> is a scalar and <tt><b>A</b></tt> a matrix then
+    <tt><b>A.^b</b></tt>  is the matrix formed by the element of
+    <tt><b>A</b></tt> to the power <tt><b>b</b></tt> (elementwise power). If
+    <tt><b>A</b></tt> is a vector and <tt><b>b</b></tt> is a scalar then
+    <tt><b>A^b</b></tt> and <tt><b>A.^b</b></tt> performs the same operation
+    (i.e elementwise power). </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>"(A:scalar).^(b:matrix)"</b></tt>
+        If <tt><b>A</b></tt> is a scalar  and <tt><b>b</b></tt> is a matrix (or vector) <tt><b>A^b</b></tt> and <tt><b>A.^b</b></tt> are the matrices (or vectors) formed by  <tt><b> a^(b(i,j))</b></tt>.</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>"(A:matrix).^(b:matrix)"</b></tt>
+        If <tt><b>A</b></tt> and <tt><b>b</b></tt>  are vectors (matrices) of the same size <tt><b>A.^b</b></tt> is the  <tt><b>A(i)^b(i)</b></tt> vector (<tt><b>A(i,j)^b(i,j)</b></tt> matrix).</li>
+</dd>
+<p>
+    Notes:</p>
+<p>
+     -
+    For square matrices <tt><b>A^p</b></tt> is computed through successive
+    matrices multiplications if <tt><b>p</b></tt> is a positive integer, and by
+    diagonalization if not.</p>
+<p>
+     -
+    <tt><b>**</b></tt> and <tt><b>^</b></tt> operators are synonyms.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1 2;3 4];
+A^2.5,
+A.^2.5
+(1:10)^2
+(1:10).^2
+
+s=poly(0,'s')
+s^(1:10)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/exp.htm"><tt><b>exp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>inttype</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inttype</b> -   type des entiers utilisés dans les types entiers de données.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[i]=inttype(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice d'entiers (voir int8)
+</li>
+<li>
+<tt><b>i  </b></tt>
+    : un entier
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    renvoie un entier donnant le type de données stockées dans
+    <tt><b>x</b></tt> avec la convention suivante :
+  </p>
+<p>
+     1 
+    :  codage entier à 1 octet
+  </p>
+<p>
+     2 
+    :  codage entier à 2 octets
+  </p>
+<p>
+     4 
+    :  codage entier à 4 octets
+  </p>
+<p>
+     11 
+    :  codage entier non-signé à 1 octet
+  </p>
+<p>
+     12 
+    :  codage entier non-signé à 2 octets
+  </p>
+<p>
+     14 
+    :  codage entier non-signé à 4 octets
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=uint16(1:10);
+inttype(x)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/int8.htm"><tt><b>int8</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

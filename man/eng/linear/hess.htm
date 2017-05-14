@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hess</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hess</b> -  Hessenberg form</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>H = hess(A)  </tt></dd>
+<dd><tt>[U,H] = hess(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>H</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>U</b></tt>: orthogonal or unitary square matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[U,H] = hess(A)</b></tt> produces a unitary matrix
+    <tt><b>U</b></tt> and a Hessenberg matrix <tt><b>H</b></tt> so that
+    <tt><b>A = U*H*U'</b></tt> and <tt><b>U'*U</b></tt> =
+    Identity.  By itself, <tt><b>hess(A)</b></tt> returns <tt><b>H</b></tt>.</p>
+<p>
+    The Hessenberg form of a matrix is zero below the first
+    subdiagonal. If the matrix is symmetric or Hermitian, the form is
+    tridiagonal.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+  hess function is based on the Lapack routines
+ DGEHRD, DORGHR for  real matrices and  ZGEHRD, ZORGHR for the complex case.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(3,3);[U,H]=hess(A);
+and( abs(U*H*U'-A)&lt;1.d-10 )
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p><tt><b>hess</b></tt> function is based on the Lapack routines
+  DGEHRD, DORGHR for  real matrices and  ZGEHRD, ZORGHR for the
+  complex  case.</p>
+</body>
+</html>

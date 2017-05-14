@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dtsi</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dtsi</b> -  stable anti-stable decomposition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ga,Gs,Gi]=dtsi(G,[tol])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>Ga</b></tt>: linear system (<tt><b>syslin</b></tt> list) antistable and strictly proper</li>
+<li>
+<tt><b>Gs</b></tt>: linear system (<tt><b>syslin</b></tt> list) stable and strictly proper</li>
+<li>
+<tt><b>Gi</b></tt>: real matrix (or polynomial matrix for improper systems)</li>
+<li>
+<tt><b>tol</b></tt>: optional parameter for detecting stables poles. Default value: <tt><b>100*%eps</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns the stable-antistable decomposition of <tt><b>G</b></tt>:</p>
+<p><tt><b>G = Ga + Gs + Gi</b></tt>,  <tt><b>(Gi = G(oo))</b></tt></p>
+<p><tt><b>G</b></tt> can be given in state-space form or in transfer form.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/pbig.htm"><tt><b>pbig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/psmall.htm"><tt><b>psmall</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/pfss.htm"><tt><b>pfss</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

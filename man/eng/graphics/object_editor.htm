@@ -1,0 +1,126 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>object_editor graphic menus</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>object_editor </b> - description of the graphic object
+  editor capacities</p>
+<p><b>graphic </b> - description of the graphic object editor
+  capacities</p>
+<p><b>menus</b> - description of the graphic object editor
+  capacities</p>
+<h3><font color="blue">Description</font></h3>
+<p>As explained in the <tt><b>graphics_entities</b></tt> help file, Scilab
+    graphics is now based on a brent new graphics mode. This mode allows the
+    user to have more interaction with graphics before and after having them
+    drawn. In the <tt><b>"new"</b></tt> mode, each graphics window and the
+    drawing it contains are represented by hierchical entities. The hierachy
+    top level is the Figure. Each Figure defines at least one child of type
+    Axes. Each Axes entity contains a set of leaf entities which are the basic
+    graphics objects like Polylines, Rectangles, Arcs, Segs,... It can also
+    contain a Compound type which are recursive sets of entities.</p>
+<p>The main interest of the new graphic mode is to make property changes
+    easier. This new graphics'mode provides a set of high-level graphing
+    routines (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>) used to control objects'
+    properties such as data, coordinates and scaling, color and appearences
+    without requiring to replay the initial graphics commands.</p>
+<p>Graphics entities are associated to Scilab variables of type
+    <tt><b>handle</b></tt>. The handle is a unique identifier which is associated
+    to each instance of a created graphical entity. Using this handle, it will
+    be possible to reach entities' properties through "set" and "get"
+    routines. The handles are also used to manipulate graphics objects, to
+    move them, to make copies or delete them.</p>
+<p>To complete and use the graphics handle capacity at its maximum, a
+    graphic object editor has been created too. It is a set of Tcl/Tk
+    interfaces available for each kind of graphics objects (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a> for more details) that can be enabled for
+    each graphic window. To make it work, select the <tt><b>Edit</b></tt> menu in
+    the graphic window. Seven graphics editing operations are available :</p>
+<p></p>
+<dl>
+<dd>
+<b>Select figure as current: </b>Let thisfigure be the current one.<p></p>
+</dd>
+<dd>
+<b>Redraw figure: </b>Redraw the content of the graphics window (only useful for
+        old_style mode).<p></p>
+</dd>
+<dd>
+<b>Erase figure: </b>Erase the content of the graphics window. Its action corresponds
+        to a <tt><b>xbasc</b></tt> (old graphic style) or <tt><b>clf</b></tt> (new
+        graphic style) command.<p></p>
+<p></p>
+<p>The last eight items are specially dedicated to the graphic editor
+        :</p>
+<p></p>
+</dd>
+<dd>
+<b>Copy object: </b>Using the mouse, it allows the user to select a 2D object (like a
+        curve, a rectangle...) and put it in the clipboard. Thus, by a next
+        call to <tt><b>Paste object</b></tt>, the object is copied in the
+        selected current axes.<p></p>
+</dd>
+<dd>
+<b>Paste object: </b>Allow the user to paste a previous object put into in the
+        clipboard inside the selected current axes.<p></p>
+</dd>
+<dd>
+<b>Move object: </b>Using the mouse, it allows the user to move a 2D object (like a
+        curve, a rectangle...) inside the selected current axes.<p></p>
+</dd>
+<dd>
+<b>Delete object: </b>Using the mouse, it allows the user to pick up a 2D object (like a
+        curve, a rectangle...) inside the selected current axes and to delete
+        it instantly.<p></p>
+</dd>
+<dd>
+<b>Figure Properties: </b>Launch the Tcl/Tk interface for the Figure object applied to the
+        figure handle of the graphics window.<p></p>
+</dd>
+<dd>
+<b>Current Axes Properties: </b>Launch the Tcl/Tk interface for the Axes object applied to the
+        current axes handle of the graphics window.<p></p>
+</dd>
+<dd>
+<b>Start Entity Picker: </b>Start an event handler on the graphics window to catch the mouse
+        clicks on graphics objects and launch the corresponding Tcl/Tk
+        interface. The left mouse-click allows object edition and the right
+        click performs a move of the selected object. Note that, for now, this
+        feature is applied to 2D objects only.<p></p>
+</dd>
+<dd>
+<b>Stop Entity Picker: </b>Stop the action of the Entity Picker by terminating the event
+        handler on the graphics window.<p></p>
+</dd>
+</dl>
+<p>Once the graphic interface is enabled (using the <tt><b>Figure
+    Properties</b></tt> or <tt><b>Current Axes Properties</b></tt> options), two
+    main areas appear :</p>
+<p></p>
+<p></p>
+<dl><dd>
+<b>A tree selector: </b>Placed on the left side of the graphical editor, a hierarchical
+        tree selector specifies which object is currently edited. It can be
+        used to switch from a graphic object to another provided that they are
+        in the same graphic window.</dd></dl>
+<p><IMG ALIGN="CENTERED" src="../../images/graphics/tree.gif"></p>
+<p></p>
+<dl><dd>
+<b>A notebook: </b>The second area represents a notebook composed with different
+        properties pages (like <tt><b>Style</b></tt>, <tt><b>Data</b></tt>,
+        <tt><b>Clipping</b></tt>...) depending on the selected graphic object.
+        Using this editor, man can edit more easily the whole properties set
+        of each graphic object (like through the <tt><b>"set"</b></tt> and
+        <tt><b>"get"</b></tt> commands). Here is an example of the axes' notebook
+        displaying axes properties:</dd></dl>
+<p><IMG ALIGN="CENTERED" src="../../images/graphics/notebook.gif"></p>
+<p></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Leray INRIA</p>
+</body>
+</html>

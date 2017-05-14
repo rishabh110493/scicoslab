@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xs2gif</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xs2gif</b> -  send graphics to a file in GIF syntax</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xs2gif(win_num,filen,[color])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>win_num</b></tt>: integer scalar or vector .</li>
+<li>
+<tt><b>filen</b></tt>: string, file name.</li>
+<li>
+<tt><b>color</b></tt>: optional integer. 0 means black and white and 1 means color. The default value is to use a value compatible  with the screen status.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xs2gif</b></tt> sends the recorded graphics of the
+    window <tt><b>win_num</b></tt> in the file <tt><b>filen</b></tt> in GIF format.
+    This function works only if the selected 
+    driver is <tt><b>"Rec"</b></tt> in the window
+    <tt><b>win_num</b></tt>  or if the window is in "new style".</p>
+<p>To convert a sequence of "GIF"  files to an animated GIF file
+      one can use the "convert" program for ImageMagic
+      (http://www.imagemagick.org/)</p>
+<p>For example if one has generated a sequence of Gif files named
+      <tt><b>img*.gif</b></tt> it is possible to build an animated Gif file (named
+      anim.gif) by</p>
+<pre>
+    
+    convert -delay 10  img*.gif anim.gif  
+     
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre> 
+    scf(0)
+    plot2d()
+    xs2gif(0,'foo.gif')
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ps.htm"><tt><b>xs2ps</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

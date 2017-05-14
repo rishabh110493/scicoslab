@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dcf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dcf</b> -  double coprime factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[N,M,X,Y,NT,MT,XT,YT]=dcf(G,[polf,polc,[tol]])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: <tt><b>syslin</b></tt> list (continuous-time linear system)</li>
+<li>
+<tt><b>polf, polc</b></tt>: respectively the poles of <tt><b>XT</b></tt> and <tt><b>YT</b></tt> and the poles of <tt><b>N</b></tt>  and <tt><b>M</b></tt> (default values =<tt><b>-1</b></tt>).</li>
+<li>
+<tt><b>tol</b></tt>: real threshold for detecting stable poles (default value <tt><b>100*%eps</b></tt>).</li>
+<li>
+<tt><b>N,M,XT,YT,NT,MT,X,Y</b></tt>: linear systems represented by <tt><b>syslin</b></tt> lists</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns eight stable systems <tt><b>(N,M,X,Y,NT,MT,XT,YT) </b></tt>
+    for the doubly coprime factorization</p>
+<p><tt><b>G</b></tt> must be stabilizable and detectable.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/copfac.htm"><tt><b>copfac</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

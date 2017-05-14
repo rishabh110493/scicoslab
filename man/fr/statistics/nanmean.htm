@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nanmean</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nanmean</b> -  mean  (ignoring  Nan's)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>m=nanmean(val)  </tt></dd>
+<dd><tt>m=nanmean(val,'r') (or m=nanmean(val,1))  </tt></dd>
+<dd><tt>m=nanmean(val,'c') (or m=nanmean(val,2))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>val</b></tt>:   real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function returns in scalar <tt><b> m</b></tt> the mean of the
+    values (ignoring  the NANs) of a  vector or matrix <tt><b> val
+    </b></tt>.</p>
+<p>
+    For a vector or matrix <tt><b> val</b></tt> , <tt><b> m=nanmean(val) </b></tt>
+    or <tt><b> m=nanmean(val,'*') </b></tt> returns  in scalar <tt><b> m</b></tt>
+    the mean of all the entries (ignoring the NANs) of <tt><b> val
+    </b></tt>.</p>
+<p><tt><b>m=nanmean(val,'r')</b></tt>    (or,    equivalently,    <tt><b>
+    m=nanmean(val,1)  </b></tt>)  returns in each   entry of the row
+    vector <tt><b> m</b></tt> of type  1xsize(val,'c') the mean of each
+    column of <tt><b> val</b></tt> (ignoring the NANs).</p>
+<p><tt><b>m=nanmeanf(val,'c')  </b></tt>     (or,  equivalently,  <tt><b>
+    m=nanmean(val,2) </b></tt>) returns  in each entry of the column
+    vector <tt><b> m</b></tt> of type  size(val,'c')x1 the mean of each
+    row of <tt><b> val</b></tt> (ignoring the NANs).</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 %nan 0.6653811;0.7560439 0.3303271 0.6283918]
+m=nanmean(x)
+m=nanmean(x,1)
+m=nanmean(x,2)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

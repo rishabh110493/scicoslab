@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>smooth</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>smooth</b> -  smoothing by spline functions</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pt]=smooth(ptd [,step])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ptd</b></tt>: (2xn) real vector</li>
+<li>
+<tt><b>step</b></tt>: real (discretization step of abscissae)</li>
+<li>
+<tt><b>pt</b></tt>: (2xn) real vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    this function computes interpolation by spline 
+    functions for a given set of points in the plane.
+    The  coordinates  are   <tt><b>(ptd(1,i),ptd(2,i))</b></tt>.  The
+    components <tt><b>ptd(1,:)</b></tt> must be in ascending order.
+    The default value for the step is
+    <tt><b>abs(maxi(ptd(1,:))-mini(ptd(1,:)))/100</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[1 10 20 30 40];
+y=[1 30 -10 20 40];
+plot2d(x',y',[3],"011"," ",[-10,-40,50,50]);
+yi=smooth([x;y],0.1);
+plot2d(yi(1,:)',yi(2,:)',[1],"000");
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/splin.htm"><tt><b>splin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/interp.htm"><tt><b>interp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/interpln.htm"><tt><b>interpln</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>whereami</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>whereami</b> -  donne l'arborescence d'appel de l'instruction courante  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>whereami()  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Affiche l'arborescence des appels jusqu'à l'emplacement courant, où se trouve
+    l'appel à whereami(). Peut être utilisé suite à un appel à <tt><b>pause</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+deff('y=test(a)',['y=sin(a)+1';
+                  'y=t1(y)';
+                  'y=y+1'])
+deff('y=t1(y)',['y=y^2';'whereami()'])
+test(1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/where.htm"><tt><b>where</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

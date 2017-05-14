@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>scilink</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>scilink</b> -  Unix script to relink Scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>scilink &lt;object-files&gt;  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This script is used to produce a local <tt><b>scilex</b></tt> (executable code
+    of Scilab) linked with the  additional files given by the 
+    user in <tt><b>&lt;object-files&gt;</b></tt>.</p>
+<p>
+    If in the list of object files some names are known <tt><b>scilex</b></tt> names 
+    (from <tt><b>SCIDIR/routines/default</b></tt> ) then the <tt><b>scilex</b></tt> default 
+    files are omitted and replaced with the given ones .</p>
+<p>
+    This script also produces an <tt><b>xscilab</b></tt> script, which when called 
+    will ran the new generated scilex file.</p>
+<p>
+    For example the command</p>
+<pre>
+
+scilink C/interf.o C/evol.o C/bib.a
+   
+    </pre>
+<p>
+    will create a new <tt><b>scilex</b></tt> file in which the default <tt><b>interf.o</b></tt> 
+    file will be replaced by <tt><b>C/interf.o</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

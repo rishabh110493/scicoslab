@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>help_skeleton</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>help_skeleton</b> - build the skeleton of the
+  xml help file associated to a Scilab function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt = help_skeleton(funname [,path])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>funname</b></tt>: character string : the name of the function</li>
+<li>
+<tt><b>path</b></tt>: character string : the path where the file will be create if
+	    required. If this argument is not given the skeleton is returned as
+	  a string.</li>
+<li>
+<tt><b>txt</b></tt>: the XML code or the complete xml file path</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>txt = help_skeleton(funname)</b></tt> generates a vector of
+   strings containing the skeleton of the XML code describing the help
+   of the function <tt><b>funname</b></tt>.</p>
+<p><tt><b>fullpath = help_skeleton(funname,dirpath)</b></tt> generates the 
+      XML code describing the help of the function <tt><b>funname</b></tt> 
+      in a file named <tt><b>funname.xml</b></tt> in
+      the directory specified by the path <tt><b>dirpath</b></tt>. In this case the
+    function returns the file path.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   function [y,z]=foo(a,b),y=a+b,z=1,endfunction
+    p=help_skeleton('foo',TMPDIR)
+    scipad(p)
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Serge Steer, INRIA
+  </p>
+</body>
+</html>

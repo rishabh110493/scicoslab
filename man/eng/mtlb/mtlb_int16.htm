@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_int16</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_int16</b> - Matlab int16 emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>int16</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With complex input: Matlab <tt><b>int16</b></tt> can be used with complex values what Scilab function can not.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With <tt><b>%inf</b></tt>: Matlab <tt><b>int16</b></tt> returns 32767 and Scilab returns -32768.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With <tt><b>%nan</b></tt>: Matlab <tt><b>int16</b></tt> returns 0 and Scilab returns -32768.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With <tt><b>-%nan</b></tt>: Matlab <tt><b>int16</b></tt> returns 0 and Scilab returns -32768.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_int16(A)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>int16(A)</b></tt> when it was not
+    possible to know what was the input while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_int16</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> does not contain <tt><b>%inf</b></tt>, <tt><b>%nan</b></tt> or <tt><b>-%nan</b></tt> values
+        <tt><b>mtlb_int16(A)</b></tt> may be replaced by <tt><b>int16(A)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_int16</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

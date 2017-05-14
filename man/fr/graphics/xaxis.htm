@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xaxis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xaxis</b> -  dessine un axe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xaxis(alpha,nsteps,size,init)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>alpha  </b></tt>
+    : réel, angle en degrés de l'axe
+</li>
+<li>
+<tt><b>nsteps  </b></tt>
+    : vecteur réel de taille 2, nombre d'intervalles et de sous-intervalles
+</li>
+<li>
+<tt><b>size  </b></tt>
+    : vecteur réel de taille 3, taille des sous-intervalles, des petites et grandes graduations
+</li>
+<li>
+<tt><b>init  </b></tt>
+    : vecteur réel de taille 2, origine de l'axe.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xaxis</b></tt> dessine un axe. 
+  </p>
+<p>
+    La direction de l'axe est donnée par <tt><b>alpha</b></tt> en degrés. 
+  </p>
+<p><tt><b>init=[x0 y0]</b></tt> est l'origine de l'axe.
+  </p>
+<p><tt><b>nsteps=[n1,n2]</b></tt> donne le nombre d'intervalles et de sous-intervalles séparés par des graduations.
+  </p>
+<p><tt><b>size=[s1,s2,c1]</b></tt> 
+    où <tt><b>s1</b></tt> donne la taille des sous-intervalles, <tt><b>s2</b></tt> donne la taille des sous-graduations et
+    <tt><b>s2*c1</b></tt> donne la taille des grandes graduations. Les tailles sont données dans l'échelle courante du dessin.
+  </p>
+<pre>
+            exemple : n1=3, n2=2, alpha=0
+                    (s2*c1) 
+            |     (s2)   |            |           |
+            |______|_____|_____|______|_____|_____|
+               s1
+   </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=[-%pi:0.1:%pi]';
+// dessin avec axe
+plot2d(x,sin(x),1,"010"," ",[-4 -1 4 1])
+// l'axe des x
+xpoly([-4 4],[0 0],"lines")
+xaxis(0,[2 2],[2 0.1 3],[-4 0])
+xstring(-4.1,-0.25,"-4"); xstring(-0.2,-0.1,"0"); xstring(4,-0.25,"4")
+//  l'axe des y
+xpoly([0 0],[-1 1],"lines")
+xaxis(90,[2 2],[0.5 0.025 3],[0 1])
+xstring(-0.5,-1.05,"-1"); xstring(-0.35,0.95,"1")
+ </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

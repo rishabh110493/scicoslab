@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_num2str</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_num2str</b> - Matlab num2str emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab <tt><b>num2str</b></tt> and Scilab equivalents (<tt><b>string</b></tt>, <tt><b>msprintf</b></tt>) behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With two input parameters, the second giving precision: There is no Scilab equivalent function, but
+	<tt><b>msprintf</b></tt> can be used to emulate.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With two input parameters, the second giving format: Scilab equivalent for Matlab 
+	<tt><b>num2string(a,format)</b></tt> is <tt><b>msprintf(format,a)</b></tt>.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_num2str(x,f)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>num2str(x,f)</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_num2str</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        If <tt><b>f</b></tt> is a character string
+        <tt><b>mtlb_num2str(x,f)</b></tt> may be replaced by <tt><b>msprintf(f,x)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_num2str</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>msprintf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

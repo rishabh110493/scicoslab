@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>delbpt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>delbpt</b> - delete breakpoints</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>delbpt([macroname
+    [,linenumb]])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>macroname</b></tt>: string</li>
+<li>
+<tt><b>linenumb</b></tt>: scalar integer or vector of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Deletes the breakpoint at line <tt><b>linenumb</b></tt> in the function
+    <tt><b>macroname</b></tt>.</p>
+<p><tt><b>linenumb</b></tt> can be a line or column vector of line numbers,
+    or a single scalar line number.</p>
+<p>Line numbers in <tt><b>linenumb</b></tt> are
+    <em>physical</em> line numbers in function
+    <tt><b>macroname</b></tt>. Note that Scilab versions before 5.0 used
+    <em>logical</em> line numbers. The difference between physical
+    and logical line numbers is the number of <em>continued
+    lines</em> (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/dot.htm"><tt><b>dot</b></tt></a>).</p>
+<p>If <tt><b>linenumb</b></tt> is omitted, all the breakpoints in function
+    <tt><b>macroname</b></tt> are deleted.</p>
+<p>If both <tt><b>macroname</b></tt> and <tt><b>linenumb</b></tt> are omitted,
+    all the breakpoints in all the functions are deleted.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>setbpt('foo',1),setbpt('foo',10),delbpt('foo',10),dispbpt()
+delbpt('foo',1),dispbpt()
+
+setbpt('foo1',4),setbpt('foo1',9),setbpt('foo2',6),setbpt('foo3',8),dispbpt()
+delbpt('foo2'),dispbpt()
+delbpt(),dispbpt()
+
+delbpt('foo',[1,2,5,6]),dispbpt()</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/setbpt.htm"><tt><b>setbpt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/dispbpt.htm"><tt><b>dispbpt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/resume.htm"><tt><b>resume</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

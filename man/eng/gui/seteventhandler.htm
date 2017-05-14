@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>seteventhandler</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>seteventhandler</b> -  set an event handler for
+  the current graphic window</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>seteventhandler(sfun_name)   </tt></dd>
+<dd><tt>seteventhandler('')   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>sfun_name</b></tt>: a character string. The name of the Scilab function which is
+  intended to handle the events</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The function allows the user to set a particular event handler for
+    the current graphic window. <tt><b>seteventhandler('') </b></tt>
+    removes the handler.
+    </p>
+<p>
+    The event handler is defined by a Scilab function whose calling
+    sequence must be <tt><b>function sfun_name(win,x,y,ibut)</b></tt>, where
+    </p>
+<dl>
+<dd>
+<b></b><p><tt><b>win</b></tt> represents the number of the window where the
+    event had occured.
+   </p>
+</dd>
+<dd>
+<b></b><p><tt><b>x,y</b></tt> are the coordinates of the pointer (in pixels), when the event
+    has occured
+    </p>
+</dd>
+<dd>
+<b></b><p><tt><b>ibut</b></tt>is the event type:</p>
+<dd>
+<li>
+<b><font color="maroon">ibut==0</font></b>: Left mouse button has been pressed</li>
+<li>
+<b><font color="maroon">ibut==1</font></b>: Middle mouse button has been pressed</li>
+<li>
+<b><font color="maroon">ibut==2</font></b>: Right mouse button has been pressed<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut==3</font></b>: Left mouse button has been clicked</li>
+<li>
+<b><font color="maroon">ibut==4</font></b>: Middle mouse button has been clicked</li>
+<li>
+<b><font color="maroon">ibut==5</font></b>: Right mouse button has been clicked<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut==10</font></b>: Left mouse button has been double-clicked</li>
+<li>
+<b><font color="maroon">ibut==11</font></b>: Middle mouse button has been double-clicked</li>
+<li>
+<b><font color="maroon">ibut==12</font></b>: Right mouse button has been double-clicked<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut==-5</font></b>: Left mouse button has been released</li>
+<li>
+<b><font color="maroon">ibut==-4</font></b>: Middle mouse button has been released</li>
+<li>
+<b><font color="maroon">ibut==-3</font></b>: Right mouse button has been released<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut==-1</font></b>: pointer has moved<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut &gt; =32</font></b>: key with ascii code ascii(ibut) has been pressed</li>
+<li>
+<b><font color="maroon">ibut &lt; =-32</font></b>: key with ascii code ascii(-ibut)   has been released<p></p>
+</li>
+<li>
+<b><font color="maroon">ibut &gt; =1000+32</font></b>: key with ascii code ascii(ibut-1000) has been pressed while CTRL
+	    key pressed</li>
+<li>
+<b><font color="maroon">ibut==-1000</font></b>: graphic window has been closed</li>
+</dd>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   function my_eventhandler(win,x,y,ibut)
+      if ibut==-1000 then return,end
+      [x,y]=xchange(x,y,'i2f')
+       xinfo(msprintf('Event code %d at mouse position is (%f,%f)',ibut,x,y))
+   endfunction
+   plot2d()
+   seteventhandler('my_eventhandler')
+   //now:
+   //   -  move the mouse over the graphic window
+   //   -  press and release keys shifted or not with Ctrl pressed or not
+   //   -  press button, wait a little release
+   //   -  press and release button
+   //   -  double-click button
+
+
+   seteventhandler('') //suppress the event handler
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/addmenu.htm"><tt><b>addmenu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xchange.htm"><tt><b>xchange</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

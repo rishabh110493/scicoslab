@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>TrafficExample  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="TrafficExample">  Traffic network example  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>net=TrafficExample(&quot;name&quot;,p1,p2,p3,p4)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : NetList of the traffic network
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>name  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string to choose among &quot;Braess&quot;, &quot;Diamond&quot;, &quot;Empty&quot;, &quot;Nguyen Dupuis&quot;, &quot;Normal Random City&quot;, &quot;Random City&quot;, &quot;Regular City&quot;,  &quot;Sioux Falls&quot;, &quot;Small&quot;, &quot;Steenbrink&quot;, &quot;Triangle&quot;.
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>p1, p2,  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>p3, p4  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals needed for examples: Regular City, Random City and Normal Random City 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+     Generates a net-list choosing among many traffic network
+    examples:
+  </P>
+  <P>
+    -&quot;Braess&quot; -&gt; 4 nodes, 5 links and 1 demand. Linear travel time
+    functions.
+  </P>
+  <P>
+    -&quot;Chicago&quot; -&gt; 546 nodes, 2176 links and 93135 demands. Real large example.
+  </P>
+  <P>
+    -&quot;Diamond&quot; -&gt; 8 nodes, 14 links and 1 demand, diamond shaped network.
+  </P>
+  <P>
+    -&quot;Empty&quot; -&gt;  2 nodes and 1 link graph.
+  </P>
+  <P>
+    -&quot;Nguyen Dupuis&quot; -&gt; 13 nodes, 19 links and 4 demands network. Linear travel
+    time functions.
+  </P>
+  <P>
+    -&quot;Normal Random City&quot; -&gt; A net is generated using RandomNNet(p1,p2,p3,p4).
+  </P>
+  <P>
+    -&quot;Random City&quot; -&gt; A net is generated using RandomNet(p1,p2,p3,p4).
+  </P>
+  <P>
+    -&quot;Regular City&quot; -&gt;  A net is generated using Regular(p1,p2,p3).
+  </P>
+  <P>
+    -&quot;Sioux Falls&quot; -&gt; 24 nodes, 76 links and 528 demands network. Travel time
+    functions of power 4.
+  </P>
+  <P>
+    -&quot;Small&quot; -&gt; 4 nodes, 9 links and 2 demands network. Quadratic travel time
+    functions.
+  </P>
+  <P>
+    -&quot;Steenbrink&quot; -&gt; 9 nodes, 36 links and 12 demands network. Linear travel time
+    functions.
+  </P>
+  <P>
+    -&quot;Triangle&quot; -&gt;  3 nodes and 6 links network
+  </P>
+  <P>
+  </P>
+  <P>
+    These examples can be used as starting point to make different networks.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=TrafficExample("Sioux Falls");
+ShowNet()
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>RandomNet</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>RandomNNet</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>Regular</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

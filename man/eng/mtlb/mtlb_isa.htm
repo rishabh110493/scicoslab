@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_isa</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_isa</b> - Matlab isa emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>There is no Scilab equivalent function for Matlab <tt><b>isa</b></tt> but some equivalent expressions can be used when the object "class" exists in Scilab.</p>
+<p>
+    The function <tt><b>mtlb_isa(OBJ,class)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>isa(OBJ,class)</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_isa</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "logical",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==4</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "char",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==10</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "numeric",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>or(type(OBJ)==[1,5,8])</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "intX" (X being equal to 8, 16, or 32),
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>typeof(OBJ)=="intX"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "uintX" (X being equal to 8, 16, or 32),
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>typeof(OBJ)=="uintX"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "single",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==1</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "double",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==1</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "cell",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>typeof(OBJ)=="ce"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "struct",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>typeof(OBJ)=="st"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "function_handle",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==13</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "sparse",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>type(OBJ)==5</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>class</b></tt> is equal to "lti",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> may be replaced by <tt><b>typeof(OBJ)=="state-space"</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_isa</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

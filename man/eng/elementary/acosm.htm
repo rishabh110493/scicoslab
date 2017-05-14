@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>acosm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>acosm</b> -  matrix wise cosine inverse</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=acosm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>t</b></tt>: real or complex square matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>t</b></tt> are cosine inverse of the <tt><b>x</b></tt> matrix. Diagonalization
+    method is used. For nonsymmetric matrices result may 
+    be inaccurate.One has <tt><b>t=-%i*logm(x+%i*sqrtm(eye()-x*x))</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4];
+cosm(acosm(A))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/acos.htm"><tt><b>acos</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sqrtm.htm"><tt><b>sqrtm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/logm.htm"><tt><b>logm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

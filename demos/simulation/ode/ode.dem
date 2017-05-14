@@ -1,0 +1,26 @@
+mode(-1)
+// Copyright INRIA
+oldln=lines();
+lines(0)
+deff('[]=demoex(num)','exec(''SCI/demos/simulation/ode/''+demolist(num,2),-1)')
+
+demolist=[
+'Simple ODE','ode1.dem';
+'Chemical process (Stiff)','ode2.dem';
+'Chemical process (Implicit)','ode3.dem';
+'Lorenz equation','ode4.dem'
+'ODE 1D vector field','odenew1_1.sce'
+'Van der Pol vector field','vanderpol.sce'
+'Lotka-Volterra vector field','lotka.sce']
+
+while %t then
+  num=tk_choose(demolist(:,1),'Click to choose a demo')
+  if num==0 then 
+     lines(oldln(1))
+     return
+  else
+     demoex(num)
+  end
+end
+
+

@@ -1,0 +1,39 @@
+Graph2Net                     Traffic-toolbox Function            Graph2Net
+NAME
+   Graph2Net  -  Recovers the net from a graph
+  
+CALLING SEQUENCE
+ net=Graph2Net(g,nf)
+PARAMETERS
+   
+  
+ g  :       graph-list
+            
+ nf :       integer between 0 and 6, chooses the travel time formula
+            
+ net        : a NetList  
+            
+DESCRIPTION
+   Graph2Net recovers the NetList from a graph-list. In order to distinguish
+  the demands and links arcs,  the following color conventions must be
+  satisfied in the graph: - the links arcs must have color 1 (black), - the
+  demands arcs must have the color 6 (cyan).  After saving an edited
+  traffic network (shown with ShowNet) in a scigraph window we get a
+  graph-list that we can transform in a NetList with Graph2Net.  
+  
+EXAMPLES
+ 
+ %net=TrafficExample('Empty');
+ ShowNet()
+ // Now you can edit in the scigraph window following the
+ // color conventions  to  distinguish the demands  from
+ // the links and then save the graph.
+ g=load_graph('name.graph');
+ %net=Graph2Net(g); // By default nf=6
+ // You can check if the net is the same you saved.
+ ShowNet()
+ 
+ 
+SEE ALSO
+   IntroTrfAsg, TrafficExample, ShowNet     
+  

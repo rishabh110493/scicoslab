@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Symbol</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dot</b> -  (.)  symbol</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>123.33</tt></dd>
+<dd><tt>a.*b</tt></dd>
+<dd><tt>[123,..  </tt></dd>
+<dd><tt> 456]  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>.</b><p>Dot is used to mark decimal point for numbers : 3.25 and 0.001</p>
+</dd>
+<dd>
+<b>.&lt;op&gt;</b><p>used in conjunction with other operator symbols (<tt><b>* / \ ^ '</b></tt>) to form other operators.  Element-by-element multiplicative operations are obtained using <tt><b> .* , .^ , ./ , .\</b></tt> or <tt><b>.'</b></tt>.  For example, C = A ./ B is the matrix with elements c(i,j) = a(i,j)/b(i,j). Kronecker product is noted .*. .  Note that when dot follows a number it is alway prt of the number so 2.*x is evaluated as 2.0*x and 2 .*x is evaluated as (2).*x</p>
+</dd>
+<dd>
+<b>..</b><p>Continuation mark.  Two or more decimal points at the end
+        of a line (or followed by a comment) causes the following line
+        to be a continuation.</p>
+<p> Continuation lines are handled by a preprocessor wich
+        builds a long logical line from a given sequence of
+        continuation lines. So the continuation marks can be used to
+        cut a line at any point.</p>
+<p>The following function foo:</p>
+<pre>
+        function foo
+          a=1
+          disp(a),..
+          disp('ok')
+        endfunction</pre>
+<p>is equivalent to:</p>
+<pre>
+        function foo
+          a=1
+          
+          disp(a),disp('ok')
+        endfunction</pre>
+<p>The logical line formed by physical line 3 and physical line 4
+        is built as if it was entirely written in the physical line 4 while
+        physical line 3 would be empty. This is done this way because
+        continuation marks can be put anywhere even inside an
+        expression.</p>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//decimal point
+1.345
+
+//used as part of an operator
+x=[1 2 3];x.^2 .*x // a space is required between 2 and dot
+
+// used to enter continuation lines
+T=[123,..//first element
+   456] //second one
+
+a="here I start a very long string...  //but I'm not in the mood of continuing
+     - and here I go on"
+y=12..
+45
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/star.htm"><tt><b>star</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/hat.htm"><tt><b>hat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/slash.htm"><tt><b>slash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

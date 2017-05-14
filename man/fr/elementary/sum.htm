@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sum</b> -  somme des vecteurs et matrices</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=sum(x)  </tt></dd>
+<dd><tt>y=sum(x,'r') ou y=sum(x,1)  </tt></dd>
+<dd><tt>y=sum(x,'c') ou y=sum(x,2)  </tt></dd>
+<dd><tt>y=sum(x,'m')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vecteur ou matrice (entière, réelle ou complexe)</li>
+<li>
+<tt><b>y</b></tt>: vecteur ou matrice (entière, réelle ou complexe)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> Si <tt><b>x</b></tt> est un vecteur ou une matrice, <tt><b>y=sum(x)</b></tt>  retourne
+      le scalaire <tt><b>y</b></tt> contenant la somme de tous les élements de
+      <tt><b>x</b></tt>.</p>
+<p><tt><b>y=sum(x,'r')</b></tt> (ou <tt><b>y=sum(x,1)</b></tt>) retourne le
+      vecteur ligne <tt><b>y</b></tt> : <tt><b>y(j)= sum(x(:,j))</b></tt>. </p>
+<p><tt><b>y=sum(x,'c')</b></tt> (ou <tt><b>y=sum(x,2)</b></tt>) retourve le
+      vecteur colonne <tt><b>y</b></tt> :  <tt><b>y(i)= sum(x(i,:))</b></tt>)).</p>
+<p><tt><b>y=sum(x,'m')</b></tt>
+      effectue la somme selon la première dimension plus grande que
+      1 (compatibilité avec Matlab). </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4];
+trace(A)-sum(diag(A))
+sum(A,'c')-A*ones(2,1)
+sum(A+%i)
+A=sparse(A);sum(A,'c')-A*ones(2,1)
+s=poly(0,'s');
+M=[s,%i+s;s^2,1];
+sum(M),sum(M,2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/cumsum.htm"><tt><b>cumsum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/prod.htm"><tt><b>prod</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

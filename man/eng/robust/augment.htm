@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>augment</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>augment</b> -  augmented plant</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,r]=augment(G)  </tt></dd>
+<dd><tt>[P,r]=augment(G,flag1)  </tt></dd>
+<dd><tt>[P,r]=augment(G,flag1,flag2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: linear system (<tt><b>syslin</b></tt> list), the nominal plant</li>
+<li>
+<tt><b>flag1</b></tt>: one of the following (upper case) character string: <tt><b> 'S' </b></tt>, <tt><b> 'R' </b></tt>, <tt><b> 'T' </b></tt><tt><b> 'SR' </b></tt>, <tt><b> 'ST' </b></tt>, <tt><b> 'RT' </b></tt><tt><b> 'SRT' </b></tt>
+</li>
+<li>
+<tt><b>flag2</b></tt>: one of the following character string: <tt><b> 'o' </b></tt> (stands for 'output', this is the default value) or <tt><b>'i'</b></tt> (stands for 'input').</li>
+<li>
+<tt><b>P</b></tt>: linear system (<tt><b>syslin</b></tt> list), the ``augmented'' plant</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector, dimension of <tt><b>P22 = G</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>flag1='SRT'</b></tt> (default value), returns the "full" augmented plant</p>
+<pre>
+
+    [ I | -G]   --&gt;'S'
+    [ 0 |  I]   --&gt;'R'
+P = [ 0 |  G]   --&gt;'T'
+    [-------]
+    [ I | -G]
+   
+    </pre>
+<p><tt><b> 'S' </b></tt>, <tt><b> 'R' </b></tt>, <tt><b> 'T' </b></tt> refer to the first three (block) rows
+    of <tt><b>P</b></tt> respectively.</p>
+<p>
+    If one of these letters is absent in <tt><b>flag1</b></tt>, the corresponding
+    row in <tt><b>P</b></tt> is missing.</p>
+<p>
+    If <tt><b>G</b></tt> is given in state-space form, the returned <tt><b>P</b></tt> is minimal.
+    <tt><b>P</b></tt> is calculated by: <tt><b>[I,0,0;0,I,0;-I,0,I;I,0,0]*[I,-G;0,I;I,0]</b></tt>.</p>
+<p>
+    The augmented plant associated with input sensitivity functions, namely</p>
+<pre>
+
+    [ I | -I]   --&gt;'S'  (input sensitivity)
+    [ G | -G]   --&gt;'R'  (G*input sensitivity)
+P = [ 0 |  I]   --&gt;'T'  (K*G*input sensitivity)
+    [-------]
+    [ G | -G]
+   
+    </pre>
+<p>
+    is obtained by the command <tt><b>[P,r]=augment(G,flag,'i')</b></tt>. For
+    state-space <tt><b>G</b></tt>, this <tt><b>P</b></tt>
+    is calculated by: <tt><b>[I,-I;0,0;0,I;0,0]+[0;I;0;I]*G*[I,-I]</b></tt>
+    and is thus generically minimal.</p>
+<p>
+    Note that weighting functions can be introduced by left-multiplying
+    <tt><b>P</b></tt> by a diagonal system of appropriate dimension, e.g.,
+    <tt><b> P = sysdiag(W1,W2,W3,eye(G))*P</b></tt>.</p>
+<p>
+    Sensitivity functions can be calculated by <tt><b>lft</b></tt>. One has:</p>
+<p>
+    For output sensitivity functions [P,r]=augment(P,'SRT'):
+    lft(P,r,K)=[inv(eye()+G*K);K*inv(eye()+G*K);G*K*inv(eye()+G*K)];</p>
+<p>
+    For input sensitivity functions [P,r]=augment(P,'SRT','i'):
+    lft(P,r,K)=[inv(eye()+K*G);G*inv(eye()+K*G);K*G*inv(eye()+G*K)];</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+G=ssrand(2,3,2); //Plant
+K=ssrand(3,2,2); //Compensator
+[P,r]=augment(G,'T');
+T=lft(P,r,K);   //Complementary sensitivity function
+Ktf=ss2tf(K);Gtf=ss2tf(G);
+Ttf=ss2tf(T);T11=Ttf(1,1);
+Oloop=Gtf*Ktf;
+Tn=Oloop*inv(eye(Oloop)+Oloop);
+clean(T11-Tn(1,1));
+//
+[Pi,r]=augment(G,'T','i');
+T1=lft(Pi,r,K);T1tf=ss2tf(T1); //Input Complementary sensitivity function
+Oloop=Ktf*Gtf;
+T1n=Oloop*inv(eye(Oloop)+Oloop);
+clean(T1tf(1,1)-T1n(1,1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/sensi.htm"><tt><b>sensi</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

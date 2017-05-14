@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>deff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>deff</b> -  on-line definition of function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>deff('[s1,s2,...]=newfunction(e1,e2,....)',text [,opt])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>e1,e2,...,  </b></tt>: input variables.</li>
+<li>
+<tt><b>s1,s2,...,  </b></tt>: output variables.</li>
+<li>
+<tt><b>text</b></tt>: matrix of character strings</li>
+<li>
+<tt><b>opt</b></tt>: optional character string<ul>
+<li>
+<tt><b>'c'  </b></tt>: function is "compiled" to be more efficient (default)</li>
+<li>
+<tt><b>'n'  </b></tt>: function is not "compiled"</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    On-line definition of function (user defined function): the name of the 
+    created function is <tt><b>newfunction</b></tt>.
+    <tt><b>text</b></tt> is a sequence of instructions usually set as a vector of 
+    character strings.</p>
+<p>
+    This command can be used inside a function and the new function
+    can be an input or output of any other function.</p>
+<p>
+    Usually, functions are defined in a file and loaded into Scilab by
+    <tt><b>getf</b></tt></p>
+<p>
+    Some time, in particular when you want to use define strings within
+    <tt><b>deff</b></tt><tt><b>text</b></tt> is rather difficult to write. A more tractable
+    way may be to define your function in a file as usual, to load it into
+    Scilab by <tt><b>getf</b></tt> (without <tt><b>'c'</b></tt>  option) and use sci2exp to
+    get corresponding <tt><b>deff</b></tt> instructions.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('[x]=myplus(y,z)','x=y+z')
+//
+deff('[x]=mymacro(y,z)',['a=3*y+1'; 'x=a*z+y'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

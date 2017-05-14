@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>ShowDemands  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="ShowDemands ">  Shows the demands of a net using Metanet or Scigraph  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>ShowDemands()  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>ShowDemands(nodes,demands,dmin,dmax)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <P>  </P>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : the global NetList variable databasis
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nodes  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (nodes)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>demands  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (demands)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>dmin,dmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum demands   
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+     ShowDemands shows the demands of NetList that their volume is between
+    dmin and dmax. All the demands are shown if nothing is indicated)
+  </P>
+  <P>
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=TrafficExample('Steenbrink');
+ShowDemands() // Shows the net
+ShowDemands('all','between',100,200)
+ShowDemands('used','between',100,200)
+// Shows the net with the demands between 100 and 200,
+// and the used nodes.
+ShowDemands('used',[1 3 8 12],100,200)
+// Shows the given demands with values between 100 and 200
+   ]]></VERBATIM>
+  <P>
+    
+  </P>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>ShowNet</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>ShowLinks</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficExample</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>colormap</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colormap</b> -  using colormaps</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A colormap <tt><b>cmap</b></tt> is defined by a m x 3 matrix. m is the number of colors.
+    Color number i is given as a 3-uple <tt><b>cmap(i,1)</b></tt>, <tt><b>cmap(i,2)</b></tt><tt><b>cmap(i,3)</b></tt>
+    corresponding respectively to red, green and blue intensity between
+    0 and 1.</p>
+<p>
+    At the beginning, 32 colors are defined in the colormap. You can
+    change the colormap of a figure by using <tt><b>set(f,"color_map",cmap)</b></tt>
+    where <tt><b>f</b></tt> is the handle of the figure.</p>
+<p>
+    Each color in the colormap has an id you have to use to specify color
+    in most plot functions. To see the ids, use function <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>.</p>
+<p>
+    The functions <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/hotcolormap.htm"><tt><b>hotcolormap</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/jetcolormap.htm"><tt><b>jetcolormap</b></tt></a> and  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graycolormap.htm"><tt><b>graycolormap</b></tt></a> 
+    provide colormaps with continuous variation of the colors.</p>
+<p>
+    You can get the default colormap by <tt><b>cmap=get(sdf(),"color_map")</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+n=64;
+r=linspace(0,1,n)';
+g=linspace(1,0,n)';
+b=ones(r);
+cmap=[r g b];
+f=gcf(); f.color_map=cmap;
+plot3d1()
+f.color_map=get(sdf(),"color_map");
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/hotcolormap.htm"><tt><b>hotcolormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graycolormap.htm"><tt><b>graycolormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/jetcolormap.htm"><tt><b>jetcolormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color.htm"><tt><b>color</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

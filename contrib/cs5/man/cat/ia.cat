@@ -1,0 +1,27 @@
+IA                               Traffic-toolbox Function                IA
+NAME
+   IA  -  Incremental traffic assignment algorithm
+  
+CALLING SEQUENCE
+ [f,ta]=IA(net,k)
+PARAMETERS
+ net        : a NetList
+            
+ k          : number of iterations of the algorithm
+            
+ f          : assigned flow (disaggregated by commodity)
+            
+ ta         : row vector of reals, current time for the assigned flow f 
+            
+DESCRIPTION
+   Assigns the flow with the Incremental Assignment algorithm. Each
+  origin-destination flow is divided into k equal parts. Each part is
+  assigned by AON. The link costs are updated using the travel time
+  functions of  the assigned flow f. 
+  
+EXAMPLES
+ net=TrafficExample('Small');
+ [f,ta]=IA(net,10);
+SEE ALSO
+   AON, IAON, CAPRES, FW, TrafficAssig     
+  

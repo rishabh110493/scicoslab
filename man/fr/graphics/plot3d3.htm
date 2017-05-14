@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plot3d3</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot3d3</b> - mesh plot surface defined by rectangular
+  facets</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plot3d3(X,Y,Z
+    [,vect,theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>plot3d3(X,Y,Z,
+    &lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X, Y, Z:</b></tt>3 real matrices defining a data structure.</li>
+<li>
+<tt><b>vect</b></tt>: a real vector.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: theta, alpha
+          ,leg,flag,ebox (see definition below).</li>
+<li>
+<tt><b>theta, alpha</b></tt>: real values giving in degree the spherical coordinates of the
+          observation point.</li>
+<li>
+<tt><b>leg</b></tt>: string defining the labels for each axis with @ as a field
+          separator, for example "X@Y@Z".</li>
+<li>
+<tt><b>flag</b></tt>: a real vector of size three.
+          <tt><b>flag=[mode,type,box]</b></tt>.<ul>
+<li>
+<tt><b>mode</b></tt>: an integer (surface color).<ul>
+<li>
+<tt><b>mode&gt;0</b></tt>: the surface is painted with color
+                      <tt><b>"mode"</b></tt> ; the boundary of the facet is drawn
+                      with current line style and color.</li>
+<li>
+<tt><b>mode=0: </b></tt>a mesh of the surface is drawn.</li>
+<li>
+<tt><b>mode&lt;0:</b></tt> the surface is painted with color
+                      <tt><b>"-mode"</b></tt> ; the boundary of the facet is not
+                      drawn.<p>Note that the surface color treatement can be done
+                      using <tt><b>color_mode</b></tt> and
+                      <tt><b>color_flag</b></tt> options through the surface
+                      entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>type</b></tt>: an integer (scaling).<ul>
+<li>
+<tt><b>type=0:</b></tt>the plot is made using the current 3D scaling (set
+                      by a previous call to <tt><b>param3d</b></tt>,
+                      <tt><b>plot3d</b></tt>, <tt><b>contour</b></tt> or
+                      <tt><b>plot3d1</b></tt>).</li>
+<li>
+<tt><b>type=1:</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are specified by the value of the
+                      optional argument <tt><b>ebox</b></tt>.</li>
+<li>
+<tt><b>type=2:</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are computed using the given
+                      data.</li>
+<li>
+<tt><b>type=3:</b></tt>3d isometric with box bounds given by optional
+                      <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=4:</b></tt>3d isometric bounds derived from the data, to
+                      similarily<tt><b>type=2</b></tt>.</li>
+<li>
+<tt><b>type=5:</b></tt>3d expanded isometric bounds with box bounds given
+                      by optional <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=6:</b></tt>3d expanded isometric bounds derived from the data,
+                      similarily to <tt><b>type=2</b></tt>.<p>Note that axes boundaries can be customized through
+                      the axes entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>box</b></tt>: an integer (frame around the plot).<ul>
+<li>
+<tt><b>box=0:</b></tt>nothing is drawn around the plot.</li>
+<li>
+<tt><b>box=1:</b></tt>unimplemented (like box=0).</li>
+<li>
+<tt><b>box=2:</b></tt>only the axes behind the surface are drawn.</li>
+<li>
+<tt><b>box=3:</b></tt>a box surrounding the surface is drawn and captions
+                      are added.</li>
+<li>
+<tt><b>box=4:</b></tt>a box surrounding the surface is drawn, captions and
+                      axes are added.<p>Note that axes aspect can also be customized through
+                      the axes entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ebox</b></tt>: It specifies the boundaries of the plot as the vector
+          <tt><b>[xmin,xmax,ymin,ymax,zmin,zmax]</b></tt>. This argument is used
+          together with <tt><b>type</b></tt> in <tt><b>flag</b></tt> : if it is set
+          to <tt><b>1</b></tt>, <tt><b>3</b></tt> or <tt><b>5</b></tt> (see above to
+          see the corresponding behaviour). If <tt><b>flag</b></tt> is missing,
+          <tt><b>ebox</b></tt> is not taken into acoount. Note that, when
+          specified, the <tt><b>ebox</b></tt> argument acts on the
+          <tt><b>data_bounds</b></tt> field that can also be reset through the
+          axes entity properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot3d3</b></tt> performs a mesh plot of a surface defined by
+    rectangular facets. (X,Y,Z) are three matrices which describe a surface.
+    The surface is composed of four sided polygons.</p>
+<p>The X-coordinates of a facet are given by
+    X(i,j),X(i+1,j),X(i,j+1),X(i+1,j+1). And similarly Y and Z are Y and Z
+    coordinates.</p>
+<p>The <tt><b>vect</b></tt> vector is used when multiple surfaces are coded
+    in the same (X,Y,Z) matrices. <tt><b>vect(j)</b></tt> gives the line at which
+    the coding of the jth surface begins. See <tt><b>plot3d2</b></tt> for a full
+    description. As a mesh plot, the only available property you can edit is
+    the <tt><b>visible</b></tt> option (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+u = linspace(-%pi/2,%pi/2,40);
+v = linspace(0,2*%pi,20);
+X = cos(u)'*cos(v);
+Y = cos(u)'*sin(v);
+Z = sin(u)'*ones(v);
+plot3d3(X,Y,Z);
+ // New Graphic mode only  
+e=gce(); // get the current entity
+e.visible='off';
+e.visible='on'; // back to the mesh view
+
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d2.htm"><tt><b>plot3d2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/param3d.htm"><tt><b>param3d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

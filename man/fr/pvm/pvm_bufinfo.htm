@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_bufinfo</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_bufinfo</b> -  Returns information about a message buffer.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[bytes, msgtag, tid, info] = pvm_bufinfo(bufid)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>bufid</b></tt>:   integer, specifying   a  particular  message buffer  identifier.</li>
+<li>
+<tt><b>bytes</b></tt>: integer, size of the message in bytes  (not very useful inside scilab).</li>
+<li>
+<tt><b>msgtag</b></tt>: integer,  label of the  message.  Useful when the message was 
+    received with a wildcard msgtag.</li>
+<li>
+<tt><b>tid</b></tt>: integer, task ID of the source of the message.</li>
+<li>
+<tt><b>info</b></tt>: integer, status code returned by  the routine. Values less than 
+    zero indicate an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_bufinfo</b></tt> returns information   about  the requested   message
+    buffer.  Typically it is  used   to determine  facts  about the   last
+    received   message  such  as   its size  or   source. <tt><b>pvm_bufinfo</b></tt> is
+    especially useful when an application is  able to receive any incoming
+    message, and the action taken depends on the source tid and the msgtag
+    associated  with the message that comes  in first.</p>
+<p>
+    The returned value <tt><b>info</b></tt>will be zero if 
+    <tt><b>pvm_bufinfo</b></tt> is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_recv.htm"><tt><b>pvm_recv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

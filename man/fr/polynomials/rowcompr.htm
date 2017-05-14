@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rowcompr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowcompr</b> -  compression de lignes d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X,rk,Ac]=rowcompr(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>Y  </b></tt>
+    : matrice carrée de polynômes (base unimodulaire à gauche)
+</li>
+<li>
+<tt><b>rk  </b></tt>
+    : rang normal de <tt><b>A</b></tt>
+</li>
+<li>
+<tt><b>Ac  </b></tt>
+    : <tt><b>Ac=X*A</b></tt>, matrice de polynômes
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Compression de lignes de la matrice de polynômes <tt><b>A </b></tt>.
+  </p>
+<p><tt><b>X</b></tt> est une base de polynômes unimodulaire à gauche qui compresse les lignes
+    de <tt><b>A</b></tt>. <tt><b>rk</b></tt> est le rang normal de A.
+  </p>
+<p>
+    Attention : élimination des termes "petits" (à utiliser avec précaution).
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/colcompr.htm"><tt><b>colcompr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

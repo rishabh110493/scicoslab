@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_exist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_exist</b> - Fonction d'émulation de la fonction Matlab exist</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas d'équivalent Scilab pour la fonction Matlab <tt><b>exist</b></tt> sauf si l'entrée est une variable.
+    La fonction Scilab <tt><b>mtlb_exist</b></tt> est une émulation partielle de cette fonction.</p>
+<p>
+    La fonction <tt><b>r = mtlb_exist(nam[,tp])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>exist(nam[,tp])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_exist</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Avec une entrée et si <tt><b>nam</b></tt> est un nom de variable,
+        <tt><b>mtlb_exist(nam)</b></tt> peut être remplacé par <tt><b>exists(nam)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_exist</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exists.htm"><tt><b>exists</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

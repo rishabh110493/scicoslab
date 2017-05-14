@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>parrot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>parrot</b> -  Parrot's problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>K=parrot(D,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>D,K</b></tt>: matrices</li>
+<li>
+<tt><b>r</b></tt>: 1X2 vector (dimension of the 2,2 part of <tt><b>D</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given a matrix <tt><b>D</b></tt> partionned as <tt><b>[D11 D12; D21 D22]</b></tt>
+    where <tt><b>size(D22)=r=[r1,r2]</b></tt>
+    compute a matrix <tt><b>K</b></tt> such that
+    largest singular value of <tt><b>[D11 D12; D21 D22+K]</b></tt>
+    is minimal (Parrot's problem)</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h_inf_st.htm"><tt><b>h_inf_st</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

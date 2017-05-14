@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gsort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gsort</b> -  tri par ordre décroissant  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[s, [k]]=gsort(v )  </tt></dd>
+<dd><tt>[s, [k]]=gsort(v,flag1)  </tt></dd>
+<dd><tt>[s, [k]]=gsort(v,flag1,flag2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v,s  </b></tt>
+    : vecteur ou matrice de nombres réels ou de chaînes de caractères.
+</li>
+<li>
+<tt><b>flag1  </b></tt>
+    : la chaîne de caractères <tt><b>'r'</b></tt>, <tt><b>'c'</b></tt>,<tt><b>'g'</b></tt>,<tt><b>'lr'</b></tt> et <tt><b>'lc'</b></tt>.
+</li>
+<li>
+<tt><b>flag2  </b></tt>
+    : la chaîne de caractères <tt><b>'i'</b></tt> pour l'ordre croissant et <tt><b>'d'</b></tt> pour l'ordre décroissant. k : vecteur ou matrice de nombres entiers.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gsort</b></tt> est similaire à <tt><b>sort</b></tt> avec des propriétés supplémentaires.
+    Le troisième argument peut être utilisé pour choisir entre tri croissant ou décroissant. Le deuxième argument est utilisé pour l'ordre lexical.
+  </p>
+<p><tt><b>[s,k]=gsort(a,'g')</b></tt> et <tt><b>[s,k]=gsort(a,'g','d')</b></tt> produisent le même résultat que <tt><b>[s,k]=gsort(a)</b></tt>. Ces instructions produisent un tri de la 
+    matrice <tt><b>a</b></tt>, <tt><b>a</b></tt> vue comme un vecteur <tt><b>a(:)</b></tt>
+    (les colonnes sont empilées). <tt><b>[s,k]=gsort(a,'g','i')</b></tt> fonctionne de la même manière pour l'ordre croissant.
+  </p>
+<p><tt><b>[s,k]=gsort(a,'lr')</b></tt> trie les lignes de la matrice <tt><b>int(a)</b></tt> 
+    (si <tt><b>a</b></tt> est une matrice réelle ou une matrice de chaînes de caractères)
+    dans l'ordre lexical décroissant. <tt><b>s</b></tt> est obtenue par une permutation 
+    des lignes de la matrice <tt><b>int(a)</b></tt> (ou <tt><b>a</b></tt>) donnée par le vecteur <tt><b>k</b></tt>)
+    de telle manière que les lignes de <tt><b>s</b></tt> vérifient <tt><b>s(i,:) &gt; s(j,:)</b></tt> si
+    <tt><b>i&lt;j</b></tt>. <tt><b>[s,k]=gsort(a,'lr','i')</b></tt> fonctionne de la même manière 
+    pour l'ordre lexical croissant. 
+  </p>
+<p><tt><b>[s,k]=gsort(a,'lc')</b></tt> trie les colonnes de la matrice <tt><b>int(a)</b></tt> 
+    (si <tt><b>a</b></tt> est une matrice réelle ou une matrice de chaînes de caractères)
+    dans l'ordre lexical décroissant. <tt><b>s</b></tt> est obtenue par une permutation  
+    des colonnes de la matrice <tt><b>int(a)</b></tt> (ou <tt><b>a</b></tt>) donnée par le vecteur <tt><b>k</b></tt>)
+    de telle manière que les colonnes de <tt><b>s</b></tt> vérifient <tt><b>s(:,i) &gt; s(:,j)</b></tt> si
+    <tt><b>i&lt;j</b></tt>. <tt><b>[s,k]=gsort(a,'lc','i')</b></tt> fonctionne de la même manière 
+    pour l'ordre lexical croissant. 
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+alr=[1,2,2;
+     1,2,1;
+     1,1,2;
+     1,1,1];
+[alr1,k]=gsort(alr,'lr','i')
+[alr1,k]=gsort(alr,'lc','i')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>bdiag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bdiag</b> -  block diagonalization, generalized eigenvectors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ab [,X [,bs]]]=bdiag(A [,rmax])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>rmax</b></tt>: real number</li>
+<li>
+<tt><b>Ab</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>X</b></tt>: real or complex non-singular matrix</li>
+<li>
+<tt><b>bs</b></tt>: vector of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<pre>
+
+[Ab [,X [,bs]]]=bdiag(A [,rmax]) 
+   
+    </pre>
+<p>
+    performs the block-diagonalization of matrix <tt><b>A</b></tt>.  bs
+    gives the structure of the blocks (respective sizes of the
+    blocks).  <tt><b>X</b></tt> is the change of basis i.e 
+    <tt><b>Ab = inv(X)*A*X</b></tt>is block diagonal.</p>
+<p><tt><b>rmax</b></tt> controls the conditioning of <tt><b>X</b></tt>; the
+    default value is the l1 norm of <tt><b>A</b></tt>.</p>
+<p>
+    To get a diagonal form (if it exists) choose a large value for
+    <tt><b>rmax</b></tt> (<tt><b>rmax=1/%eps</b></tt> for example).
+    Generically (for real random A) the blocks are (1x1) and (2x2) and
+    <tt><b>X</b></tt> is the matrix of eigenvectors.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Real case: 1x1 and 2x2 blocks
+a=rand(5,5);[ab,x,bs]=bdiag(a);ab
+//Complex case: complex 1x1 blocks
+[ab,x,bs]=bdiag(a+%i*0);ab
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/sylv.htm"><tt><b>sylv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

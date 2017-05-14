@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tk_savefile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tk_savefile</b> - dialog to get a file path for
+  writing</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>path=tk_savefile([Title='string'])</tt></dd>
+<dd><tt>path=tk_savefile(file_mask,[Title='string'])</tt></dd>
+<dd><tt>path=tk_savefile(file_mask,dir,[Title='string'])</tt></dd>
+<dd><tt>path=tk_savefile(file_mask,dir,'string')</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_mask</b></tt>: a character string which gives the file mask to use for file
+          selection. <tt><b>file_mask</b></tt> is written with Unix convention.
+          the default value is '*'.</li>
+<li>
+<tt><b>dir</b></tt>: a character string which gives the initial directory used for
+          file search. by default tk_savefile uses the previously selected
+          directory.</li>
+<li>
+<tt><b>path</b></tt>: is the user selected file path if user answers "Ok" or the " "
+          string if user answers "Cancel"</li>
+<li>
+<tt><b>Title='string'</b></tt>:Optional arguments which gives the title for the tk_savefile
+          window. <tt><b>Warning</b></tt>: use the variable name
+          <tt><b>Title</b></tt> intead of <tt><b>title</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Creates a dialog window for output file selection</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+tk_savefile()
+tk_savefile('*.sci','SCI/macros/xdess')
+tk_savefile(Title='Choose a file name ')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/xgetfile.htm"><tt><b>xgetfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/tk_getdir.htm"><tt><b>tk_getdir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/tk_getfile.htm"><tt><b>tk_getfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

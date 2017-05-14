@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>save_format</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data Type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>save_format</b> - format of files produced by "save"</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+     Variables are saved by Scilab with the <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a> command in this
+     format:
+     </p>
+<p>
+     each variable record is appended consecutively to the file. The variable
+     record begins with 24 bytes holding the variable name in encoded format 
+     (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/code2str.htm"><tt><b>code2str</b></tt></a>), where the name is terminated by the value 40.
+     </p>
+<p>
+     After that comes the variable type (long integer), then, depending on it, for:
+     </p>
+<dl><dd>
+<b>Floating matrices (type 1)</b><p>row size m (long integer), column size n (long integer), it (long integer);</p>
+<p>data (8*n*m*(it+1) bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Polynomials (type 2) and Size implicit indices (?) (type 129)</b><p>row size m (long integer), column size n (long integer), it (long integer);</p>
+<p>formal variable name (16 bytes); pointer table (m*n+1 long integers);</p>
+<p>data (8*(N-1)*(it+1) bytes, where N is the last entry of the pointer table)</p>
+</dd></dl>
+<dl><dd>
+<b>Booleans (type 4)</b><p>row size m (long integer), column size n (long integer);</p>
+<p>data (4*n*m bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Floating sparse matrices (type 5)</b><p>row size m (long integer), column size n (long integer),
+           it (long integer), nel (long integer); </p>
+<p>index (4*m+nel bytes);</p>
+<p>non-zero values (8*nel*(it+1) bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Boolean sparse matrices (type 6)</b><p>row size m (long integer), column size n (long integer),
+            it (long integer), nel (long integer);</p>
+<p>index (4*m+nel bytes);</p>
+<p> non-zero values (4*nel*(it+1) bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Integer matrices (type 8)</b><p>row size m (long integer), column size n (long integer),</p>
+<p>integer type (long integer): 1,2,4, or 11,12,14 for signed and unsigned
+              1,2,4 bytes integers;</p>
+<p>data (n*m*(it modulo 10) bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>handles (type 9)</b>
+           ??
+          </dd></dl>
+<dl><dd>
+<b>Strings (type 10)</b><p>row size m (long integer), column size n (long integer),</p>
+<p>total number of characters nc+1 (long integer);</p>
+<p>pointer table (n*m+1 bytes);</p>
+<p>data (4*nc bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Uncompiled functions (type 11)</b><p>nout (long integer), lhs names (24*nout bytes),</p>
+<p>nin (long integer), rhs names (24*nin bytes);</p>
+<p>code length N (long integer),</p>
+<p>code (4*N bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Compiled functions (type 13)</b><p>nout (long integer), lhs names (24*nout bytes),</p>
+<p>nin (long integer), rhs names (24*nin bytes);</p>
+<p>code length N (long integer),</p>
+<p>pseudocode (4*N bytes)</p>
+</dd></dl>
+<dl><dd>
+<b>Libraries (type 14)</b><p>path length np (long integer), path name (4*np bytes),</p>
+<p>number of names nn (long integer),</p>
+<p>class pointers (120 bytes);</p>
+<p>names (24*nn bytes);</p>
+</dd></dl>
+<dl><dd>
+<b>Lists (type 15), tlists (type 16), mlists (type 17)</b><p>number of fields n (long integer),</p>
+<p>pointers (4*(n+1) bytes);</p>
+<p>variables (each one written according to its format)</p>
+</dd></dl>
+<dl><dd>
+<b>Pointers (type 128)</b>
+     ??
+     </dd></dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/listvarinfile.htm"><tt><b>listvarinfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>compiled by Enrico Segre</dd></dl>
+</body>
+</html>

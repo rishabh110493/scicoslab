@@ -1,0 +1,26 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>IA </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>IA  -   Incremental traffic assignment algorithm  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[f,ta]=IA(net,k)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList
+  </li>
+  <li><tt><b>k  </b></tt>
+    : number of iterations of the algorithm
+  </li>
+  <li><tt><b>f  </b></tt>
+    : assigned flow (disaggregated by commodity)
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : row vector of reals, current time for the assigned flow f 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow with the Incremental Assignment algorithm.
+    Each origin-destination flow is divided into k equal parts.
+    Each part is assigned by AON. The link costs are updated
+    using the travel time functions of  the assigned flow f.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Small');
+[f,ta]=IA(net,10);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="IAON.htm"><tt><b>IAON</b></tt></a>&nbsp;&nbsp;<a href="CAPRES.htm"><tt><b>CAPRES</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

@@ -1,0 +1,53 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>LogitNE </title></head><body bgcolor="FFFFFF"><CENTER>CiudadSim Function  </CENTER><p><b>LogitNE  -  Net Logit Equilibrium   </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>bench=LogitNE(theta,method,eps,Niter,Num)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>theta  </b></tt>
+    : stochasticity parameter 
+  </li>
+  <li><tt><b>method  </b></tt>
+    : macro among LogitB, LogitD, LogitMB, LogitMD
+  </li>
+  <li><tt><b>eps  </b></tt>
+    : convergence error test 
+  </li>
+  <li><tt><b>Niter  </b></tt>
+    : maximal number of iteration 
+  </li>
+  <li><tt><b>Num  </b></tt>
+    : number of iteration already done
+  </li>
+  <li><tt><b>bench  </b></tt>
+    : niter x 5  matrix
+  </li>
+  <li><tt><b>%net global variable NetList  </b></tt>
+    
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Compute the logit traffic equilibrium using a
+    logit method among LogitB, LogitD, LogitMB, LogitMD
+    the travel time is taken in %net.links.time
+    and the assigned fow is put in the field
+    %net.links.flow of the variable %net which
+    is a NetList which must be declared global.
+  </p>
+  <p>
+    The equilibrium is computed by a divergent series
+    method F[n+1]=F[n]*(1-rho[n])+rho[n]*f
+    where f is the new assigned flow computed with the
+    travelling time associated to the flow F[n],
+    with rho[n]=1/(n+1). 
+  </p>
+  <p>
+    If %net.gp.verbose=%T  convergence informations are displayed.
+    These informations are returned by the function in the variable %net.gp.bench.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost determinsitic)
+theta=10
+// Flow calculation
+LogitNE(theta,LogitMD,1.e-6,30,0)
+ShowNet()
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="LogitD.htm"><tt><b>LogitD</b></tt></a>&nbsp;&nbsp;<a href="LogitB.htm"><tt><b>LogitB</b></tt></a>&nbsp;&nbsp;<a href="LogitMB.htm"><tt><b>LogitMB</b></tt></a>&nbsp;&nbsp;<a href="LogitMD.htm"><tt><b>LogitMD</b></tt></a>&nbsp;&nbsp;<a href="LogitN.htm"><tt><b>LogitN</b></tt></a>&nbsp;&nbsp;<a href="LogitNELS.htm"><tt><b>LogitNELS</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

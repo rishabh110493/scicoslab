@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sm2des</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sm2des</b> -  system matrix to descriptor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Des]=sm2des(Sm);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sm</b></tt>: polynomial matrix (pencil system matrix)</li>
+<li>
+<tt><b>Des</b></tt>: descriptor system (<tt><b>list('des',A,B,C,D,E)</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function: converts the system matrix:</p>
+<pre>
+
+ Sm = [-sE + A   B;
+      [    C     D]
+   
+    </pre>
+<p>
+    to descriptor system <tt><b>Des=list('des',A,B,C,D,E)</b></tt>).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2des.htm"><tt><b>ss2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/sm2ss.htm"><tt><b>sm2ss</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

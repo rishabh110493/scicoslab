@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>macglov</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>macglov</b> -  Mac Farlane Glover problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,r]=macglov(Sl)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>P</b></tt>: linear system (<tt><b>syslin</b></tt> list), ``augmented'' plant</li>
+<li>
+<tt><b>r</b></tt>: 1x2 vector, dimension of <tt><b>P22</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[P,r]=macglov(Sl)</b></tt> returns the standard plant
+    <tt><b>P</b></tt> for the Glover-McFarlane problem.</p>
+<p>
+    For this problem ro_optimal = 1-hankel_norm(<tt><b>[N,M]</b></tt>)
+    with <tt><b>[N,M]=lcf(sl)</b></tt> (Normalized coprime factorization) i.e.</p>
+<p>
+    gama_optimal = <tt><b>1/sqrt(ro_optimal)</b></tt></p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque INRIA</p>
+</body>
+</html>

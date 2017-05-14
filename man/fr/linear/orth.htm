@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>orth</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>orth</b> -  calcul d'une base orthogonale  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>Q=orth(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice réelle ou complexe
+</li>
+<li>
+<tt><b>Q  </b></tt>
+    : matrice réelle ou complexe
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Q=orth(A)</b></tt> renvoie <tt><b>Q</b></tt>, une base
+    orthogonale de l'image de <tt><b>A</b></tt>.  Im(<tt><b>Q</b></tt>)
+    = Im(<tt><b>A</b></tt>) et <tt><b>Q'*Q = I</b></tt>.
+  </p>
+<p>
+    Le nombre de colonnes de <tt><b>Q</b></tt> est égal au rang de
+    <tt><b>A</b></tt>, comme déterminé par l'algorithme QR.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=rand(5,3)*rand(3,4);
+[X,dim]=rowcomp(A);X=X';
+svd([orth(A),X(:,1:dim)])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/range.htm"><tt><b>range</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

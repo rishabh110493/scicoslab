@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gdf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gdf</b> - Return handle of default
+  figure.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>f = gdf()</tt></dd>
+<dd><tt>f = get("default_figure")</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>f</b></tt>: handle, the handle of the default figure.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>The default figure is a graphic entity which is never drawn. It is used
+    as a reference for the figure properties default values. These default
+    properties values are used to initialize new figures.</p>
+<p>The <tt><b>gdf</b></tt> function returns the handle on the default figure.
+    The user can use this handle to set or get the figure properties default
+    values.</p>
+<p>Note that an equivalent default graphic entity exists for axes entities
+    too (see <tt><b>gda</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   
+   set old_style off
+   f=gdf() // get the handle of the model figure 
+   // setting its' properties
+   f.background=7;
+   f.figure_name="Function gdf()";
+   f.figure_position=[-1 100];
+   f.auto_resize="off";
+   f.figure_size=[300 461];
+   f.axes_size=[600 400];
+   plot2d() //create a figure
+   scf(1);
+   plot3d() //create a second figure
+   set(f,"default_values",1); // return to the  default values of figure's model
+                              // see sdf() function
+   scf(2);
+   plot2d() 
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/sdf.htm"><tt><b>sdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/sda.htm"><tt><b>sda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

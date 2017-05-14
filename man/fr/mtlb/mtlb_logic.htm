@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_logic</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_logic</b> - Fonction d'émulation des opérateurs logiques de Matlab</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, les opérateurs logiques se comportent différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec des opérandes complexes : Les opérateurs <tt><b>&lt;</b></tt>, <tt><b>&lt;=</b></tt>,
+	<tt><b>&gt;</b></tt> et <tt><b>&gt;=</b></tt> ne peuvent pas être utilisés dans Scilab
+	avec des opérandes complexes alors que cela est possible dans Matlab. Dans ce cas,
+	seule la partie réelle des opérandes est comparée.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec des matrices vides : Si les deux opérandes des opérateurs <tt><b>&lt;</b></tt>, <tt><b>&lt;=</b></tt>,
+	<tt><b>&gt;</b></tt> and <tt><b>&gt;=</b></tt> sont des matrices vides, Scilab renvoie un message d'erreur
+	alors que Matlab retourne une matrice vide. Pour les opérateurs <tt><b>==</b></tt> et <tt><b>~=</b></tt>,
+	si au moins une opérande est une matrice vide alors Matlab renvoie [] alors que Scilab
+	retourne un booléen %T ou %F.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_logic(A,symbol,B)</b></tt> (avec "symbol" une chaîne de caractères contenant
+    le symbole de l'opérateur) est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>A symbol B</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_logic</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> et <tt><b>B</b></tt> ne sont pas des complexes ni des matrices vides
+        <tt><b>mtlb_logic(A,symbol,B)</b></tt> peut être remplacé par <tt><b>A symbol B</b></tt>
+</li></dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_logic</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

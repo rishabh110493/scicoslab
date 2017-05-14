@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>geom3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>geom3d</b> - projection from 3D on 2D after a 3D
+  plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,y]=geom3d(x1,y1,z1)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x1,y1,z1</b></tt>: real vectors of the same size (points in 3D).</li>
+<li>
+<tt><b>x,y</b></tt>: real vectors of the same size as <tt><b>x1</b></tt>,
+          <tt><b>y1</b></tt> and <tt><b>z1</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>After having used a 3D plot function such as <tt><b>plot3d</b></tt>,
+    <tt><b>plot3d1</b></tt> or <tt><b>param3d</b></tt>, <tt><b>geom3d</b></tt> gives
+    the mapping between a point in 3D space <tt><b>(x1(i),y1(i),z1(i))</b></tt>
+    and the corresponding point <tt><b>(x(i),y(i))</b></tt> in the projected 2D
+    plan. Then all the 2D graphics primitives working on <tt><b>(x,y)</b></tt>
+    can be used for superposition on the 3D plot.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff("[z]=surf(x,y)","z=sin(x)*cos(y)")
+t=%pi*(-10:10)/10;
+// 3D plot of the surface
+fplot3d(t,t,surf,35,45,"X@Y@Z")
+// now (t,t,sin(t).*cos(t)) is a curve on the surface
+// which can be drawn using geom3d and xpoly
+[x,y]=geom3d(%pi/2,0,surf(%pi/2,0))
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>loadmatfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>loadmatfile</b> - loads a Matlab V6 MAT-file (binary or ASCII) into Scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>loadmatfile(format,filename[,var1[,var2[,...]]])</tt></dd>
+<dd><tt>loadmatfile(filename[,format[,var1[,var2[,...]]]])</tt></dd>
+<dd><tt>loadmatfile(filename[,var1[,var2,[,...[,format]]]])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: character string containing the path of the file (needed)</li>
+<li>
+<tt><b>format</b></tt>: file format (if not given and file has extension ".mat", file is considered to be binary)<ul>
+<li>
+<tt><b>"-mat"</b></tt>: binary file</li>
+<li>
+<tt><b>"-ascii"</b></tt>: option to force Scilab to read file as an ASCII file</li>
+</ul>
+</li>
+<li>
+<tt><b>var1, var2</b></tt>: character strings containing the name of the variables to load (only for binary files)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    loads a Matlab MAT-file into Scilab. The Matlab data types are
+    converted into the Scilab equivalents.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/savematfile.htm"><tt><b>savematfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/mfile2sci.htm"><tt><b>mfile2sci</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/matfile2sci.htm"><tt><b>matfile2sci</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>Serge Steer (INRIA)</dd>
+<dd>
+<b></b>V.C</dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>
+<p>This function has been developped following the "MAT-File Format"
+  description: 
+<tt><b>www.mathworks.com/access/helpdesk/help/pdf_doc/matlab/matfile_format.pdf</b></tt></p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>isdef</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>isdef</b> -  vérifie si une variable existe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>isdef(name [,where])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name  </b></tt>
+    : une chaîne de caractères.
+</li>
+<li>
+<tt><b>where  </b></tt>
+    : une chaîne de caractères valant par défaut 'all'
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>isdef(name)</b></tt> renvoie <tt><b>%T</b></tt> (vrai) si la variable <tt><b>'name'</b></tt> existe
+    et <tt><b>%F</b></tt> (faux) sinon.
+  </p>
+<p><tt><b>isdef(name,'local')</b></tt> renvoie <tt><b>%T</b></tt> si la variable <tt><b>'name'</b></tt> existe
+    dans l'environnement local de la fonction courante et <tt><b>%F</b></tt> sinon.
+  </p>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=1;
+isdef('A')
+clear A
+isdef('A')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exists.htm"><tt><b>exists</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/whereis.htm"><tt><b>whereis</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/clear.htm"><tt><b>clear</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

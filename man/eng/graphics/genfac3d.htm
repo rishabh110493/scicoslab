@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>genfac3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>genfac3d</b> -  compute facets of a 3D surface</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xx,yy,zz]=genfac3d(x,y,z,[mask])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xx,yy,zz</b></tt>: matrices of size (4,n-1xm-1). <tt><b>xx(:,i)</b></tt> ,<tt><b>yy(:,i)</b></tt> and <tt><b>zz(:,i)</b></tt>  are respectively the x-axis, y-axis and z-axis coordinates of the 4 points of  the ith four sided facet.</li>
+<li>
+<tt><b>x</b></tt>: x-axis coordinates vector of size m.</li>
+<li>
+<tt><b>y</b></tt>: y-axis coordinates vector of size n.</li>
+<li>
+<tt><b>z</b></tt>: matrix of size (m,n). <tt><b>z(i,j)</b></tt> is the value of the surface at the point (x(i),y(j)).</li>
+<li>
+<tt><b>mask</b></tt>: boolean optional matrix with same size as <tt><b>z</b></tt> used to select  the entries of <tt><b>z</b></tt> to be represented by facets.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>genfac3d</b></tt> computes a four sided facets representation of a 3D surface 
+    <tt><b>z=f(x,y)</b></tt> defined by <tt><b>x</b></tt>, <tt><b>y</b></tt> and <tt><b>z</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=[0:0.3:2*%pi]'; z=sin(t)*cos(t');
+[xx,yy,zz]=genfac3d(t,t,z);
+plot3d(xx,yy,zz)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/eval3dp.htm"><tt><b>eval3dp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

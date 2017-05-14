@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>spaninter</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spaninter</b> -  subspace intersection</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X,dim]=spaninter(A,B [,tol])    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, B</b></tt>: two real or complex matrices with equal number of rows</li>
+<li>
+<tt><b>X</b></tt>: orthogonal or unitary square matrix</li>
+<li>
+<tt><b>dim</b></tt>: integer, dimension of subspace range(<tt><b>A</b></tt>) inter range(<tt><b>B</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes the intersection of range(<tt><b>A</b></tt>) and range(<tt><b>B</b></tt>).</p>
+<p>
+    The first <tt><b>dim</b></tt> columns of <tt><b>X</b></tt> span this intersection i.e.
+    <tt><b>X(:,1:dim)</b></tt> is an orthogonal basis for</p>
+<p>
+    range(<tt><b>A</b></tt>) inter range(<tt><b>B</b></tt>)</p>
+<p>
+    In the <tt><b>X</b></tt> basis <tt><b>A</b></tt> and <tt><b>B</b></tt> are respectively represented by:</p>
+<p><tt><b>X'*A</b></tt> and <tt><b>X'*B</b></tt>.</p>
+<p><tt><b>tol</b></tt> is a threshold (<tt><b>sqrt(%eps)</b></tt> is the default value).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,3)*rand(3,4);     // A is 5 x 4, rank=3
+B=[A(:,2),rand(5,1)]*rand(2,2);
+[X,dim]=spaninter(A,B);
+X1=X(:,1:dim);    //The intersection
+svd(A),svd([X1,A])   // X1 in span(A)
+svd(B),svd([B,X1])   // X1 in span(B)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spanplus.htm"><tt><b>spanplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spantwo.htm"><tt><b>spantwo</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

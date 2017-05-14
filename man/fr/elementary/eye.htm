@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>eye</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eye</b> -  matrice identité  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X=eye(m,n)  </tt></dd>
+<dd><tt>X=eye(A)  </tt></dd>
+<dd><tt>X=eye()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,X  </b></tt>
+    : matrices ou listes de type <tt><b>syslin</b></tt>.
+</li>
+<li>
+<tt><b>m,n  </b></tt>
+    : entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Renvoie, suivant les arguments, une matrice <tt><b>m</b></tt>x<tt><b>n</b></tt> avec des 1 sur la diagonale principale ou une matrice identité de même taille que <tt><b>A</b></tt> .
+  </p>
+<p>
+    Attention : <tt><b>eye(10)</b></tt> est équivalent à <tt><b>eye(A)</b></tt> avec <tt><b>A=10</b></tt> c'est à dire <tt><b>1</b></tt>.
+    (Ce n'est pas une matrice identité 10 x 10!).
+  </p>
+<p>
+    Si <tt><b>A</b></tt> est un système linéaire représenté par une liste de type <tt><b>syslin</b></tt>, <tt><b>eye(A)</b></tt>
+    renvoie une <tt><b>eye</b></tt> matrice de dimension appropriées : (nombre de sorties x nombre d'entrées).
+  </p>
+<p><tt><b>eye()</b></tt> renvoie une matrice identité de dimension non définie.
+    Ses dimensions sont définies quand cette matrice est ajoutée à une matrice de dimensions fixées.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+eye(2,3)
+A=rand(2,3);eye(A)
+s=poly(0,'s');A=[s,1;s,s+1];eye(A)
+A=[1/s,1;s,2];eye(A);
+A=ssrand(2,2,3);eye(A)
+[1 2;3 4]+2*eye()
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/zeros.htm"><tt><b>zeros</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>star</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>star</b> -  maxplus star  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>B=star(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : maxplus full square matrix
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : Id+A+A^2+.....
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Solve <tt><b>x=Ax+Id</b></tt> in the maxplus algebra.
+    When there is no circuits with positive weight in
+    G(A) (the incidence graph of A) <tt><b>B=Id+A+.....A^(n-1)</b></tt>
+    where n denotes the order of the square matrix A.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+star(#(1))
+star(#(-1))
+star(#([1,2;3,4]))
+a=#([-3,-2;-1,0]); b=star(a)
+b==%eye(2,2)+a
+b==b+a*a
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/plus.htm"><tt><b>plus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

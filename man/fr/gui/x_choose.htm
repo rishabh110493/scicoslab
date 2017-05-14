@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>x_choose</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_choose</b> -  boîte de dialogue permettant de faire des choix  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[num]=x_choose(items,title [,button])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>items  </b></tt>
+    : vecteur colonne de chaînes de caractères. Les articles à choisir
+</li>
+<li>
+<tt><b>title  </b></tt>
+    : vecteur colonne de chaînes de caractères. Titre de la boîte
+</li>
+<li>
+<tt><b>button  </b></tt>
+    : chaîne de caractères, texte du bouton d'annulation ('Cancel' par défaut)
+</li>
+<li>
+<tt><b>num  </b></tt>
+    : entier, le numéro de l'article choisi ou 0 si "Cancel" a été pressé.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Renvoie dans <tt><b>num</b></tt> le numéro de l'article choisi.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+n=x_choose(['item1';'item2';'item3'],['ceci est un commentaire';'pour la boite de dialogue'])
+n=x_choose(['item1';'item2';'item3'],['ceci est un commentaire'],'Terminer')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_choices.htm"><tt><b>x_choices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/getvalue.htm"><tt><b>getvalue</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_g.htm"><tt><b>unix_g</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

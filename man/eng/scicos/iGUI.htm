@@ -1,0 +1,1021 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>iGUI</TITLE>
+<META NAME="description" CONTENT="iGUI">
+<META NAME="keywords" CONTENT="iGUI">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="iGUI.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Modelica
+<BR><A NAME="tex2html1"
+  HREF="../../fr/scicos/iGUI.htm">fr</A> - <A NAME="tex2html2"
+  HREF="./iGUI.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="iGUI"></A><BR>
+<b>iGUI</b> - Scicos initialization GUI
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+<H3><font color="blue"><A NAME="SECTION00012000000000000000">
+Introduction</A>
+</font></H3>
+In this use manual we will focus on initializing Modelica models in Scicos.
+A Modelica model in general can be expressed as hybrid model. The continuous-time part can be defined with a DAE and the discrete-time part with discrete-time equations, as follows: 
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+\left\{
+  \begin{array}{llll}
+    0&=& F(\dot x,x,y,z,p)& {\rm Continuous-time}\\
+    z(k)&=&G(z(k-1),x,y,p) &  {\rm Discrete-time}
+  \end{array}
+  \right.
+\end{displaymath}
+ -->
+</P><DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="411" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/iGUI_img1_eng.gif"
+ ALT="$\displaystyle \left\{
+\begin{array}{llll}
+0&amp;=&amp; F(\dot x,x,y,z,p)&amp; {\rm Continuous-time}\\
+z(k)&amp;=&amp;G(z(k-1),x,y,p) &amp; {\rm Discrete-time}
+\end{array} \right.
+$">
+</DIV><P></P>
+where <B>x</B>, <B>dot(x)</B>, <B>y</B>, <B>z</B>, and <B>p</B>  are the vector of differential variables,
+ derivative of differential variables, algebraic variables, discrete-time states, and model
+parameters, respectively [<A
+ HREF="iGUI.htm#Brenan">3</A>,<A
+ HREF="iGUI.htm#Brown">4</A>].  A model can be simulated only if it is initialized correctly.  A
+reason lies in the fact that a DAE (Differential-Algebraic Equation)
+resulting from a Modelica program can be simulated only if the initial
+value of all variables as well as their derivatives are known and
+consistent. Furthermore, sometimes the user needs to start the model at a specified initial states, <I>e.g.,</I> at equilibrium point.
+
+<P>
+By default,  Scicos supposes  that the parameters and the initial
+value of differential variables (variables whose derivative exist in
+the Modelica program) are known and given by <TT>start</TT> keyword (otherwise they are set to zero), then
+a solver is used to compute the derivative of differential variables
+and algebraic variables.  The user can also give start values of
+algebraic variables in the Modelica program which are used as guess
+values to help the solver to find consistent initial values. In many
+practical applications, this approach of initialization does not cover
+all forms of initializations. For example, often it is required to
+start a simulation in the steady state. In this case, derivatives of
+differential variables are set to zero and the initial values of all
+the variables are found as a function of known outputs (or observable
+states).  The initialization problem can also be formulated as an
+inverse problem where the system outputs are known at initial time,
+and the inputs and internal states are to be computed.  Sizing is
+another form of initialisation, where, <I>e.g.,</I> a parameter of the
+model is computed at steady states as a function of a system output
+(or observable states).
+
+<P>
+In ScicosLab, an initialization GUI has been developed 
+providing support for a more general form of initialization. In this
+initialization GUI, the user can select freely the known and
+unknowns of the initialization problem between the all Modelica
+variables, the derivatives of differential variables, discrete-variables, and the
+parameters of the model. A weight is associated to each
+value specifying the degree of confidence in that value. The
+weight varies from zero to one where zero means the value is
+just a pure guess and one means the guess value corresponds to the
+actual value. This latter situation corresponds in particular to the
+usage of the "fixed" keyword in Modelica. With this initialization
+methodology, no matter if an unknown is a parameter or a differential
+or algebraic variable, it can be computed as a function of other known
+values.
+
+<P>
+Another problem with the previous approach of initialization concerns
+with start values of algebraic variables. The Modelica compiler of
+Scicos performs formal simplifications on Modelica programs and
+generates a DAE which is used for both model initialization and
+dynamic simulation. Using the simplified Modelica model causes a
+problem in initialization of big Modelica programs where guess values
+of algebraic variables are important for convergence of the solver.
+The generated DAE contains all differential variables and their
+derivatives, but many algebraic variables are eliminated during the
+formal simplification phase of the Modelica model. This has several
+consequences: First, algebraic variables to be eliminated may change
+when the Modelica model changes a bit. Thus, the user is unable to
+know in advance what algebraic variables will be selected to provide
+their guess values. Furthermore, in many cases the remained algebraic
+variables may not have physical interpretation and the user cannot
+provide the guess value without performing a calculation.
+
+<P>
+Because of these difficulties, we decided to separate the model
+initialization and the dynamic simulation and generate two models for
+each one.
+With this approach, the problem of the selection of algebraic
+variables no longer exists. In fact, once the initialization phase
+finished, initial values of all algebraic variables as well those of
+derivatives of differential variables are known. As a consequence, the
+selection of algebraic variables in the simplified Modelica code does
+not affect the dynamic simulation.
+
+<P>
+In Modelica, the <TT>start</TT> keyword can be used to set start values
+of variables.  Start value of derivatives of variables can be given
+within <TT>initial equation</TT> section. For small programs, this method
+can be easily used but as the program size grows, it becomes difficult
+to set start values and change the <TT>fixed</TT> attribute of
+variables/parameters directly in the Modelica program; initialization
+via modifying the Modelica model is specially difficult for models
+with multiple level of inheritance.  Then, the
+user often needs to have a single model but with several
+initialization scenarios. So, for each scenario a copy of the model
+should be saved.
+
+<P>
+Having confronted these inconveniences, we found it easier and more
+intuitive if start values and other attributes of variables/parameters
+are provided via a GUI.  In the GUI, the user can easily change
+attributes such as <TT>start</TT>, <TT>max</TT>, <TT>min</TT>,
+<TT>nominal</TT> for variables/parameter of a model. Furthermore, it is
+possible to indicate whether a variable, the derivative of a variable
+or a parameter must be fixed or relaxed during initialization. It is
+also possible to save the resulting configuration in a file and use it
+later.
+
+<P>
+In the following sections the initialization methodology for Modelica
+models, the initialization GUI, and available initialization computing
+methods for continuous-time Modelica models (index-1 DAE) will be
+explained.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00013000000000000000">
+Initialization methodology in Scicos</A>
+</font></H3>
+
+<P>
+The first objective of the initialization is to compute consistent
+initial values for all variables and derivatives of differential
+variables (for index-1 DAEs). In order to  initialize the
+model, it is first flattened. Then if the model contains
+derivatives, they should be converted into a pure algebraic model. For
+that, all derivatives should be replaced by algebraic variables.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<A NAME="Flowchart">  <DIV ALIGN="CENTER">
+<!-- MATH
+ $\resizebox{!}{130mm}{\includegraphics{flowchart.eps}}$
+ -->
+<IMG
+ WIDTH="241" HEIGHT="588" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/iGUI_img2_eng.gif"
+ ALT="\resizebox{!}{130mm}{\includegraphics{flowchart.eps}}">
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#Flowchart">1</A> </b>: Initialization  in Scicos
+
+</DIV>
+
+<P>
+The procedure of initialization is given in
+Figure&nbsp;<A HREF="#Flowchart">1</A>. The initialization is composed of:
+
+<UL>
+<LI>converting the Modelica program into an XML file containing the flat model
+</LI>
+<LI>modifying the XML file by the initialization GUI
+</LI>
+<LI>converting the XML file back to a Modelica program
+</LI>
+<LI>computing the unknown variables/parameters.
+</LI>
+</UL>
+
+<P>
+In the initialization process, three external applications are used:
+ <TT>Translator</TT>, <TT>XML2Modelica</TT>, and <TT>modelicac</TT> (all
+ 
+developed at <I><A NAME="tex2html4"
+  HREF="http://www.lmsintl.com">LMS Imagine.Lab</A></I>).
+
+<P>
+<TT>Translator</TT> is used for three purposes:
+
+<UL>
+<LI>Modelica Front-end for dynamic simulation. When called with
+  appropriate options, <TT>Translator</TT> generates a flat Modelica
+  program. For that, <TT>Translator</TT> verifies the syntax and
+  semantics of the Modelica program, applies inheritance rules,
+  generates equations for <TT>connect</TT> expressions, expands <TT>for</TT>
+  loops, handles predefined functions and operators, performs the
+  implicit type conversion, and etc. The generated flat model contains
+  all the variables, derivatives of differential variables, and
+  parameters defined and declared with <TT>fixed=false</TT>. Constants
+  and parameters with the attribute <TT>fixed=true</TT> are replaced by
+  their numerical values.
+
+<P>
+</LI>
+<LI>Modelica Front-end for initialization. In this case, besides
+   generating a flat Modelica model, derivatives of the variables are
+   replaced by an algebraic variable. As a convention, <I>e.g.,</I>
+   <B>der(x)</B> is replaced by <B>__der_x</B> in the generated flat
+   model for initialization.
+
+<P>
+</LI>
+<LI>XML generator. When called with -xml option, <TT>Translator</TT>
+  generates an XML file from a flat Modelica model. The generated XML
+  file contains all the information of the flat model. An example of an
+  XML file is given in Appendix.
+  
+</LI>
+</UL>
+
+<P>
+Once the XML file generated, the user can change variable/parameter
+attributes. The modified XML file should be reconverted into a
+Modelica program to be compiled and initialized. <TT>XML2Modelica</TT> is
+used to perform this task. 
+
+<P>
+<TT>Modelicac</TT>, which is a compiler for the subset of the Modelica
+language, compiles a flat Modelica model and generates a C program for
+Scicos targets.  The main features of the compiler are the
+simplification of the Modelica models and the generation of the C
+program ready for simulation. It supports discontinuous model
+switching and provides the analytical Jacobian of the model. It does
+not support higher index DAEs. 
+
+<P>
+When the user requests a Modelica initialization in Scicos, as shown
+in Figure&nbsp;<A HREF="#Flowchart">1</A>, <TT>Translator</TT> is called and first a flat
+Modelica model, then an XML file are generated. The XML file can then
+be used in the initialization GUI.  The user can change the
+variable/parameter attributes in the XML file. The modified XML file
+is then translated back to a Modelica program. The Modelica program is
+compiled with <TT>modelicac</TT> and a C program is generated. The C
+program is used by Scicos to compute the initial value of
+variables/parameters. Once the initialization finished, whether
+succeeded or failed, the XML file is updated with the most recent
+results which the user can visualize and decide if the dynamic
+simulation should start or not.
+
+<P>
+At the beginning of the dynamic simulation, the initial values of the
+variables are read from the XML file and the simulation can start. The
+results of the dynamic simulation can also be saved in an another XML
+file to be used as a starting point for another simulation.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00014000000000000000">
+Initialization GUI</A>
+</font></H3>
+In order to manipulate an XML file, a GUI has been developed for
+Scicos. This API has been developed in
+<I><A NAME="tex2html5"
+  HREF="http://www.tcl.tk/software/tcltk/">TCL/TK</A></I>.
+A screenshot of this GUI is shown in Figure&nbsp;<A HREF="#guix">1.4</A>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<A NAME="guix"><IMG
+ WIDTH="795" HEIGHT="462" BORDER="0"
+ SRC="../../images/scicos/iGUI_img3_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\epsfig{file=IHM2.eps,width=500pt}
+\end{center}
+\end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#guix">1.4</A> </b>: Screenshot of the initialization GUI in Scicos
+
+</DIV>
+
+<P>
+With this GUI, the user can Open/Close/Save XML files and
+visualize the attributes of variables/parameters. Each
+variable/parameter has several attributes: <TT>name</TT>, <TT>id</TT>, <TT>type</TT>, <TT>fixed</TT>, <TT>value</TT>, <TT>weight</TT>, <TT>max</TT>, <TT>min</TT>,
+<TT>nominal</TT>, <TT>comment</TT>, and <TT>selection</TT>.
+
+<UL>
+<LI><TT>name:</TT> attribute is the name of the variable/parameter used
+  in the Modelica program. Note that the derivative of a variable is
+  replaced by an algebraic variable. The user cannot change the <TT>  name</TT> attribute.
+
+<P>
+</LI>
+<LI><TT>id:</TT> the identification of <TT>name</TT> and is used to locate
+  the variable in the XML file. The user cannot change the <TT>id</TT>
+  attribute.
+
+<P>
+</LI>
+<LI><TT>kind:</TT> it indicates whether <TT>name</TT> is a parameter or a
+  variable in the <TT>original</TT> Modelica program. The user cannot change
+  the <TT>type</TT> attribute.
+
+<P>
+</LI>
+<LI><TT>fixed:</TT> it shows the value of the <TT>fixed</TT> attribute of <TT>  name</TT> in the <TT>original</TT> Modelica program. The user cannot change
+  the <TT>fixed</TT> attribute.
+
+<P>
+</LI>
+<LI><TT>value:</TT> it is the default value of <TT>name</TT> in the original
+  Modelica program. The user can modify this field. If the start value of the variable is not given in the <TT>original</TT> Modelica model, the default value is set to 1.0;
+
+<P>
+</LI>
+<LI><TT>weight:</TT> it is the confidence factor attributed to <TT>  name</TT> and can take a value in the range [0,1]. <TT>weight==0</TT>
+  means the value is just a pure guess. This situation corresponds to
+  the <TT>fixed=false</TT> in Modelica.  <TT>weight==1</TT> means the given
+  value corresponds to the initial value. This situation corresponds
+  to <TT>fixed=true</TT> in Modelica.  The default value of <TT>weight</TT>
+  for parameters and differential variables is one, whereas for
+  algebraic variables and derivative of differential variables
+  (converted to variables) is zero. Note that when the user sets <TT>  weight</TT> to one, the corresponding variable/parameter will be
+  considered as a constant and in the initialization phase, it will be
+  replaced by its numerical value. In this way, a parameter in
+  Modelica program can be considered as an unknown and its value be
+  computed during the initialization phase.
+
+<P>
+</LI>
+<LI><TT>max/min:</TT> they are used to set  maximum and minimum bounds on 
+  values (Not implemented yet).
+
+<P>
+</LI>
+<LI><TT>nominal:</TT> it is used to set error tolerances and normalize
+variables/parameters (Not implemented yet).
+
+<P>
+</LI>
+<LI><TT>Comment:</TT> it is the comment provided in the Modelica program
+  for variables or parameters and can be modified by the user.
+
+<P>
+</LI>
+<LI><TT>selection:</TT> it is used to select and display interesting
+  variables/parameters. If the display mode is <TT>Selected</TT>, only
+  variables/parameters whose selection field is 'y' will be
+  displayed. This option is useful specially when the block has many
+  variables but the user is interested only in a few. There are
+  other display modes, <I>i.e.,</I> <TT>F.selected</TT> which displays
+  all selected variables, <TT>Changed</TT> which displays only the
+  variables or parameters whose <TT>weight</TT> attributes have changed.
+
+<P>
+</LI>
+</UL>
+
+<P>
+Once the user changes the new attributes of variables/parameters, the
+initialization process can be invoked by clicking on the compute
+button. The obtained results, either successful or failed, are put
+back into the XML file and new values are displayed. If failed, the
+user can select another computing methods available and iterate
+until a consistent result is obtained.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00015000000000000000">
+Computation methods</A>
+</font></H3>
+The initialization problem is generally defined as the solution of a
+nonlinear system of equations <P><!-- MATH
+ \begin{displaymath}
+0=F(X)
+\end{displaymath}
+ -->
+</P><DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="79" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/iGUI_img4_eng.gif"
+ ALT="$\displaystyle 0=F(X)$">
+</DIV><P></P>
+where <B>X</B> is a vector
+composed of all the variables, derivatives of the differential
+variables (transformed into algebraic variables), and relaxed
+parameters (<TT>fixed=false</TT>). The initialization GUI provides several
+computation methods for initialization. None are guaranteed to
+converge, so the user should try sequentially several available
+methods until one works. This is possible because, if one method
+fails, another method can be tried using the last obtained result. In
+this section these methods as well as their characteristics will
+presented.
+
+<P>
+
+<H3><A NAME="SECTION00015100000000000000">
+KINSOL</A>
+</H3>
+<I><A NAME="tex2html6"
+  HREF="https://computation.llnl.gov/casc/sundials/">SUNDIALS</A></I>
+ [<A
+ HREF="iGUI.htm#sundials1">5</A>,<A
+ HREF="iGUI.htm#sundials2">6</A>] is a family of solvers which includes <TT>CVODE</TT>, for systems of ordinary differential equations, <TT>CVODES</TT>,
+systems of nonlinear algebraic equations, and <TT>IDA</TT>, for systems
+of differential-algebraic equations.
+
+<P>
+<TT>CVODE</TT> and <TT>IDA</TT> solvers have already been integrated in
+Scicos for dynamic simulation of models. <TT>KINSOL</TT> includes an
+optional user-callable module to recompute the initial conditions so
+as to be consistent with the given DAE system.  This module uses
+inexact Newton methods with line-search strategies for accelerated
+convergence. This solver provides the possibility of scaling variables, provided via <TT>Nominal</TT> value of the variable.
+The user can select if this method uses an analytical Jacobian or not. An analytical Jacobian provides better convergence.
+
+<P>
+
+<H3><A NAME="SECTION00015200000000000000">
+IDA</A>
+</H3>
+ <TT>IDA</TT> includes an
+optional user-callable module to recompute the initial conditions so
+as to be consistent with the given DAE system.  This module uses
+inexact Newton methods with line-search strategies for accelerated
+convergence. We used this feature of <TT>IDA</TT> for initialization of
+models. <TT>IDA </TT> also permits inequality constraints to be imposed
+on the solution components. This can be used to implement <TT>  max/min</TT> attributes used in Modelica.
+
+<P>
+The user can select if this method uses an analytical Jacobian or not. An analytical Jacobian provides better convergence.  
+
+<P>
+
+<H3><A NAME="SECTION00015300000000000000">
+Fsolve</A>
+</H3>
+Similar to <TT>IDA</TT>, <TT>Fsolve</TT> finds a zero of a system of
+nonlinear functions. This solver is based on the Modified Newton
+method and uses the QR factorization technique. This solver often obtains less precise but more robust solutions than previous solvers.
+
+<P>
+
+<H3><A NAME="SECTION00015400000000000000">
+Optim</A>
+</H3>
+When the Modelica model is flattened, several variables exist for
+which start values are not given by the user. The compiler sets their
+start values to zero. It happens very often that the Jacobian matrix
+associated with the nonlinear equations in the very first step becomes
+singular, <I>e.g.,</I> consider the equation set (<A HREF="#throt2">1</A>) with
+<!-- MATH
+ $X(0)=[0,0]^t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="106" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/iGUI_img5_eng.gif"
+ ALT="$ X(0)=[0,0]^t$"></SPAN> start values.
+
+<P>
+<P></P><DIV ALIGN="LEFT"><A NAME="throt2"></A><!-- MATH
+ \begin{equation}
+\htmlimage{align=left}
+  F(X):\left\{
+  \begin{array}{lll}
+    0&=&x-1\\
+    0&=&xy-1\\
+  \end{array}
+\right.
+\end{equation}
+ -->
+<A NAME="throt2"></A><IMG
+ WIDTH="556" HEIGHT="60" ALIGN="LEFT"
+ SRC="../../images/scicos/iGUI_img6_eng.gif"
+ ALT="\begin{equation}
+F(X):\left\{
+\begin{array}{lll}
+0&amp;=&amp;x-1\\
+0&amp;=&amp;xy-1\\
+\end{array}\right.
+\end{equation}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+The first computed Jacobian matrix is singular and the Newton method
+fails. In order to overcome this problem, the user can choose the <TT>Optim</TT> solver. In this case, Scicos tried to obtain the solution by
+minimizing the cost function <B>C(X)</B>.
+
+<P>
+<P></P><DIV ALIGN="LEFT"><A NAME="costx"></A><!-- MATH
+ \begin{equation}
+\htmlimage{align=left}
+  C(X)=\sum^{N}_{i=1}f_i^2(X)
+\end{equation}
+ -->
+<A NAME="costx"></A><IMG
+ WIDTH="556" HEIGHT="72" ALIGN="LEFT"
+ SRC="../../images/scicos/iGUI_img7_eng.gif"
+ ALT="\begin{equation}
+C(X)=\sum^{N}_{i=1}f_i^2(X)
+\end{equation}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+The result of this optimization provides non-zero values that may be
+used as new start values for other methods, such as <TT>Sundials</TT>.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00016000000000000000">
+Model Tree </A>
+</font></H3>
+In the left hand side of the iGUI the model is displayed as a
+hierarchical tree. Each main branch designates an instance of a
+block. The name of a branch is composed of tree parts: the base-name
+of the block, the identification of the block which is defined in
+Scicos windows (right clicking on the block a pop-up menu appears,
+then clicking on the Identification item), and a number if there are two
+blocks with the same name and the same identification.
+
+<P>
+Double clicking on each branch (block), the corresponding block in
+Scicos will be highlighted.
+
+<P>
+Clicking on the cross of each branch, the variables and
+parameters defined in that block will be displayed at right hand side
+of the GUI. A block may have sub-components, connectors, vector/matrix
+variables, etc. In this case, these items are displayed with
+sub-branches, See Figure 2.  
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00017000000000000000">
+Pull-down Menus</A>
+</font></H3>
+
+<P>
+
+<H3><A NAME="SECTION00017100000000000000">
+File</A>
+</H3>
+
+<P>
+
+<UL>
+<LI><TT>Open XML:</TT> Opens an XML file containing data already saved.
+</LI>
+<LI><TT>Load Simulation result:</TT> After each simulation performed with iGUI open, the simulation result at final time are stored in a XML file. This XML file can be read and used as a starting point for another simulation.
+
+<P>
+</LI>
+<LI><TT>Close XML:</TT> closes the XML file, and removes the data from the display tree.
+
+<P>
+</LI>
+<LI><TT>Save XML for Simulation:</TT> When new data are entered in the GUI, in order that these data are used as starting point of a simulation, they should be saved. When the Solve button is pressed and a solution is obtained, new data are automatically save to be used as starting point of the simulation. This menu allows user to manually do this job if for example loads an XML containing a solution point.
+
+<P>
+</LI>
+<LI><TT>Save  XML as:</TT> Allows the user to save data in an XML file to used and loaded later.  
+</LI>
+</UL>
+
+<P>
+
+<H3><A NAME="SECTION00017200000000000000">
+Derivative</A>
+</H3>
+ A dynamic model consists of variables and their derivatives. In initialization of these models, the user should decide what to do about the derivative of differential variables. There are two options:
+
+<P>
+
+<UL>
+<LI><TT>Fixed states:</TT>  start values of differential variables are considered as initial values and their derivatives are computed.
+</LI>
+<LI><TT>Steady states:</TT> derivatives are set to 0.0 and differential values are computed. 
+</LI>
+</UL>
+
+<P>
+Of course after selecting one of these option, the user can also manually change if a variable is fixed or not.
+
+<P>
+When the iGUI is launched, if the model contains any derivatives, the user is asked to select one of there options or do it later.
+
+<P>
+
+<H3><A NAME="SECTION00017300000000000000">
+Display</A>
+</H3>
+
+<P>
+
+<UL>
+<LI><TT>Normal:</TT> All variables, as well as their derivatives, the parameters (selected with fixed=false in the original Modelica model) will be displayed for all components.
+</LI>
+<LI><TT>Simplified Model:</TT> The the compiler optimizes the model, many variables are omitted. The final model is a model with a reduced size. The remaining variables are displayed in this mode. In this way, if the solver does not converge, the user can help the solver to find the solution by giving a better start value to these variables.
+</LI>
+<LI><TT>Only fixed items:</TT> Only variables and parameters whose weight is identical to 1.0 are displayed.
+
+<P>
+</LI>
+<LI><TT>Selected:</TT> Only variables and parameters whose "selection" files is set to 'y' are displayed.
+By default the "selection"  filed of all differential variables,
+ and all variables with a given start values are set to 'y'. The user can select or deselect them as well.
+
+<P>
+</LI>
+<LI><TT>Selected (show all):</TT> all  variables and parameters whose "selection" files is set to 'y' are displayed in the main window frame.
+
+<P>
+</LI>
+<LI><TT>Changed:</TT> all  variables and parameters whose weight field has changed are displayed in the main window frame.
+
+<P>
+</LI>
+</UL>
+
+<P>
+Being in any mode, double-clicking on the hierarchical tree in the left sub-frame, the display mode is set to "Normal".
+
+<P>
+
+<H3><A NAME="SECTION00017400000000000000">
+Code generation</A>
+</H3>
+
+<P>
+
+<UL>
+<LI><TT>parameter embedding:</TT> when the C code is generated for the Modelica model, all fixed variables or parameters are replaced by their numerical value in the C code. Thus if the value of one of fixed items is changed, the c code should be regenerated. This option allows to generate a code using  embedded parameters in the code. As a result, if a parameter changes, there is no need to regenerate the c code. 
+</LI>
+<LI><TT>Generate Jacobian:</TT> When this option is activated, the code generator, generates a C code with the analytical Jacobian included. A code with analytical Jacobian is more likely to converge than a code using numerical Jacobian. However activating this option may increases the compile time of the model.
+</LI>
+</UL>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00018000000000000000">
+Search Button</A>
+</font></H3>
+
+<P>
+With this edit field, the user can search for a variable or a parameter. The ID of all variables are compared with the searched text, if compatible, the variable is displayed.
+
+<P>
+Note than the search is case-sensitive. In order to return back to normal display mode, you can either select "Normal" from Display menu, or double click on the tree at the left hand side  of the iGUI.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00019000000000000000">
+Information  bar</A>
+</font></H3>
+
+<P>
+
+<UL>
+<LI><TT>Equation:</TT> 
+Number of equations of the system, including initial equations.
+</LI>
+<LI><TT>Unknowns:</TT> 
+Number of unknowns in the system which is equal to sum of relaxed variables, relaxed parameters and relaxed discrete variables.
+</LI>
+<LI><TT>Reduced:</TT> 
+number of variables of the model after system optimization and reducing the system size.
+</LI>
+<LI><TT>Diff St:</TT> 
+number of differential states of the system, <I>i.e.,</I> variables whose derivative is present in the model.
+</LI>
+<LI><TT>Fixed Par:</TT> number of parameters with weight equal to 1.0. By default all parameters with fixed=false are displayed in the iGUI. The default weight value of parameters is 1.0.
+
+<P>
+</LI>
+<LI><TT>Relxd par:</TT>  number of parameters with weight equal to 0.0.
+
+<P>
+</LI>
+<LI><TT>Fixed Var:</TT> number of variables with weight equal to 1.0. 
+
+<P>
+</LI>
+<LI><TT>Relxd var:</TT> number of variables with weight equal to 0.0. 
+
+<P>
+</LI>
+<LI><TT>Discrete:</TT> number of discrete variables. 
+
+<P>
+</LI>
+<LI><TT>Inputs:</TT> number of inputs coming from Scicos environment. The value of these variables are considered fixed during initialization. 
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<H3><A NAME="SECTION00019100000000000000">
+Solve Button</A>
+</H3>
+
+<P>
+Clicking on this button, the model is compiled and a C code is generated. Before compiling is is verified if number of unknowns agrees with number of equations. If they are not equal, a message warns the user.
+The button remains disable until the solver ends the work. Either successful or not, the new obtained results are displayed in the iGUI, and the Solve button is enabled. and the user can try again either using the same solver, another solver, or using a code with analytical Jacobian.
+
+<P>
+
+<H3><A NAME="SECTION00019200000000000000">
+Error</A>
+</H3>
+
+<P>
+In this box the infinite norm of the residual of the solution (maximum error value) is displayed.
+When the error value is unknown (at the beginning) or when it becomes NaN or INF, a "?" sign is displayed.
+
+<H3><font color="blue"><A NAME="SECTION000110000000000000000">
+Example</A>
+</font></H3>
+Consider the electrical circuit shown in Figure&nbsp;<A HREF="#elect">1.10</A>. This
+circuit has been modeled with Modelica blocks in Scicos. The
+initialization GUI for this circuit is shown in Figure&nbsp;<A HREF="#guix">1.4</A>. For
+this electrical circuit, we would like to use the initialization GUI
+for two purposes: initialization from equilibrium state and for
+parameter sizing.
+
+<P>
+
+<DIV ALIGN="CENTER">
+
+<A NAME="elect"><IMG
+ WIDTH="556" HEIGHT="248" BORDER="0"
+ SRC="../../images/scicos/iGUI_img8_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\epsfig{file=RLC.eps,width=350pt}
+\end{center}
+\end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#elect">1.10</A> </b>: An electrical circuit to be initialized
+
+</DIV>
+
+<P>
+
+<UL>
+<LI><B>Initialization:</B> In order to initialize from the steady
+state, all derivatives values should be fixed to zero. For that, in
+the initialization GUI, derivatives of the differential variables
+which have been transformed into algebraic variables should be set to
+zero and their weight attribute should be set to one. In this circuit
+there are only two derivatives variables defined in inductor and
+capacitor blocks. In the initialization GUI, clicking on the name of
+these blocks, the user can change the attributes of derivatives. Then,
+the user can select a compute method and launch the
+initialization. Once the initialization finished, the obtained results
+will be displayed in the GUI and the user can start the dynamic
+simulation or retry another initialization method.
+
+<P>
+</LI>
+<LI><B>Parameter sizing:</B> In this case, the user needs to find a
+parameter value as a function of known system outputs. Suppose that
+the user needs to compute the resistance value of <TT>Resistance1</TT>
+that results in a current equal to two Amperes through the inductor
+at steady state. In this case, the <TT>R</TT> parameter in <TT>Resistance1</TT> should be relaxed by setting its weight attribute to
+zero. Then, the current through <TT>Inductor1</TT> should be fixed to two
+Amperes (by setting the weight attribute of <TT>i</TT> to one and its
+value to two). After selecting the compute method, the resistance value
+would be computed.
+</LI>
+</UL>
+
+<P>
+It is interesting to note that several initializations can be
+performed without modifying the Modelica program. Each initialization
+can be saved in an XML file and be used later.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION000111000000000000000">
+XML file example</A>
+</font></H3> 
+
+<P>
+<B>RLC_circuit_imf_init.xml</B>
+
+<P>
+<PRE>
+&lt;model&gt;
+&lt;name&gt;RLC_circuit_imf&lt;/name&gt;
+  &lt;elements&gt;
+&lt;struct&gt;
+&lt;name&gt;Capacitor_&lt;/name&gt; 
+&lt;subnodes&gt;
+&lt;terminal&gt;
+&lt;name&gt;__der_v&lt;/name&gt;
+&lt;kind&gt;variable&lt;/kind&gt;
+&lt;id&gt;Capacitor_.__der_v&lt;/id&gt;
+&lt;fixed value="false"/&gt;
+&lt;initial_value value="0."/&gt;
+&lt;nominal_value value=""/&gt;
+&lt;comment value="Time derivative of Capacitor_.v"/&gt;
+&lt;selected value="y" /&gt;
+&lt;/terminal&gt;
+&lt;terminal&gt;
+.....
+&lt;terminal&gt;
+&lt;name&gt;vi&lt;/name&gt;
+&lt;kind&gt;variable&lt;/kind&gt;
+&lt;id&gt;OutPutPort_1.vi&lt;/id&gt;
+&lt;fixed value="false"/&gt;
+&lt;initial_value value=""/&gt;
+&lt;nominal_value value=""/&gt;
+&lt;comment value=""/&gt;
+&lt;/terminal&gt;
+&lt;/subnodes&gt;
+&lt;/struct&gt;
+  &lt;/elements&gt;
+&lt;equations&gt;
+&lt;equation value="	`Inductor_.i` = `Inductor_.p.i`;"/&gt;
+&lt;equation value="	`Inductor_.n.i` = (- `Inductor_.i`);"/&gt;
+&lt;equation value="	`Inductor_.v` = (`Inductor_.p.v` - `Inductor_.n.v`);"/&gt;
+&lt;equation value="	(0.0001 * `Inductor_.__der_i`) = `Inductor_.v`;"/&gt;
+&lt;equation value="	`Capacitor_.i` = `Capacitor_.p.i`;"/&gt;
+&lt;equation value="	`Capacitor_.n.i` = (- `Capacitor_.i`);"/&gt;
+&lt;equation value="	`Capacitor_.v` = (`Capacitor_.p.v` - `Capacitor_.n.v`);"/&gt;
+....
+&lt;equation value="	`VsourceAC_.p.v` = `Ground_.p.v`;"/&gt;
+&lt;equation value="	`CurrentSensor_.p.v` = `Ground_.p.v`;"/&gt;
+&lt;equation value="	`Resistor_.p.v` = `VsourceAC_.n.v`;"/&gt;
+&lt;equation value="	`VoltageSensor_.v` = `OutPutPort_.vi`;"/&gt;
+&lt;equation value="	`CurrentSensor_.i` = `OutPutPort_1.vi`;"/&gt;
+&lt;/equations&gt;
+  &lt;when_clauses&gt;
+  &lt;/when_clauses&gt;
+&lt;/model&gt;
+</PRE>
+
+<P>
+ 
+<H3><font color="blue"><A NAME="SECTION00020000000000000000">
+Bibliography</A>
+</font></H3><DL COMPACT><DD>
+
+<P>
+<P></P><DT><A NAME="Campbell05">1</A>
+<DD> S. L. Campbell, J.P. Chancelier, R. Nikoukhah,
+  Modeling and simulation in Scilab/Scicos, Springer Verlag
+  publishing, 2005.
+
+<P>
+<P></P><DT><A NAME="Chancelier2002">2</A>
+<DD> J. P. Chancelier, F. Delebecque, C. Gomez,
+  M. Goursat, R. Nikoukhah, S. Steer, An introduction to Scilab,
+  Springer Verlag, Le Chesnay, France, 2002.
+
+<P>
+<P></P><DT><A NAME="Brenan">3</A>
+<DD> K. E. Brenan, S. L. Campbell, and L. R. Petzold,
+  <I>Numerical Solution of Initial-Value Problems in
+    Differential-Algebraic Equations</I>, SIAM publication, Philadelphia,
+  1996.
+
+<P>
+<P></P><DT><A NAME="Brown">4</A>
+<DD> P. N. Brown, A. C. Hindmarsh, and L. R. Petzold,
+  "Consistent initial condition calculation for differential-algebraic
+  systems", <I>SIAM J. Sci. Comp.</I>, no. 19, 1998.
+
+<P>
+<P></P><DT><A NAME="sundials1">5</A>
+<DD> A. C. Hindmarsh, P. N. Brown, K. E. Grant,
+ S. L. Lee, R. Serban, D. E. Shumaker, and C. S. Woodward, "SUNDIALS:
+ Suite of Nonlinear and Differential/Algebraic Equation Solvers," ACM
+ Transactions on Mathematical Software, 31(3), pp. 363-396, 2005.
+
+<P>
+<P></P><DT><A NAME="sundials2">6</A>
+<DD> A. C. Hindmarsh, "The PVODE and IDA Algorithms," LLNL technical
+  report UCRL-ID-141558, December 2000. 
+
+<P>
+<P></P><DT><A NAME="Allgower1">7</A>
+<DD> E.L. Allgower and K. Georg, <I>Numerical
+    Continuation Methods, an Introduction</I>, Springer Ser. in Comput.
+  Math. Springer-Verlag, Vol 13, 1990.
+
+<P>
+<P></P><DT><A NAME="Allgower2">8</A>
+<DD> E.L. Allgower and K.Georg, "Continuation and path
+  following", <I>Acta Numerica</I>, 1993, pp. 1-64.
+
+<P>
+<P></P><DT><A NAME="spice">9</A>
+<DD> Kenneth S. Kundert. ``The designer's guide to Spice and
+Spectre''. Kluwer academic publishers, 1995.
+
+<P>
+<P></P><DT><A NAME="Trajkovic1">10</A>
+<DD> A. Dyess, E. Chan, H. Hofmann, W. Horia, and Lj.
+  Trajkovic, "Simple implementations of homotopy algorithms for
+  finding dc solutions of nonlinear circuits", <I>Proc. IEEE Int.
+    Symp. Circuits and Systems</I>, Orlando, FL, Vol. VI, 1999, pp.
+  290-293.
+
+<P>
+<P></P><DT><A NAME="Trajkovic2">11</A>
+<DD> W. Mathis, Lj. Trajkovic, M. Koch, and U.
+  Feldmann, "Parameter embedding methods for finding dc operating
+  points of transistor circuits", <I>Proc. NDES '95</I>, Dublin,
+  Ireland, 1995, pp. 147-150.
+
+<P>
+<P></P><DT><A NAME="hompackx">12</A>
+<DD> L.T. Watson, Appl. Math. Comput. 5 (1979),
+  pp. 297-311.
+
+<P>
+<P></P><DT><A NAME="Watson2">13</A>
+<DD> L.T. Watson, "Golobally convergent homotopy
+  algorithm for nonlinear systems of equations", <I>Nonlinear
+    Dynamics</I>, Vol. 1, 1990, pp. 143-191.
+
+<P>
+<P></P><DT><A NAME="Watson1">14</A>
+<DD> L. T. Watson, M. Sosonkina, R. C. Melville, A. P.
+  Morgan, and H. F. Walker, "Algorithm 777: HOMPACK90: A suite of
+  FORTRAN 90 codes for globally convergent homotopy algorithms", <I>    ACM Trans. Math. Software</I>, Vol. 23, 1997, pp. 514-549.
+
+<P>
+<P></P><DT><A NAME="Eaves">15</A>
+<DD> B. C. Eaves, "A Short Course in Solving Equations
+  with PL Homotopies", <I>SIAM-AMS Proceedings</I> IX, 1976, pp.
+  73-143.
+
+<P>
+<P></P><DT><A NAME="Georg">16</A>
+<DD> K. Georg," An introduction to PL algorithms:
+  Computational solution of nonlinear systems of equations", <I>    Lectures in Applied Mathematics, American Mathematical Society</I>,
+  26, 1990, pp. 207-236.
+
+<P>
+<P></P><DT><A NAME="Heemels">17</A>
+<DD> W.P.M.H. Heemels, J.M. Schumacher, and S. Weiland,
+  "Linear complementarity systems", <I>SIAM Journal on Applied
+    Mathematics</I>,Vol. 60 (2000), pp. 1234-1269.
+
+<P>
+<P></P><DT><A NAME="Lemke">18</A>
+<DD> C.E. Lemke, and J.T. Howson, "Equilibrium points of
+  bimatrix games", <I>SIAM J. Appl. Math.</I>, Vol. 12, 1964, pp.
+  413-423.
+
+<P>
+<P></P><DT><A NAME="Bokhoven">19</A>
+<DD> D. M.W. Leenaerts, W.M.G. van Bokhoven. <I>    Piecewise Linear Modelling and Analysis</I>. Kluwer Academic
+  Publishers, Boston, 1998.
+
+<P>
+</DL>
+<H3><font color="blue"><A NAME="SECTION00021000000000000000">
+Authors</A>
+</font></H3>
+<b>Masoud Najafi</b> INRIA
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

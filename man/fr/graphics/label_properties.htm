@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>label_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>label_properties</b> - description of the Label entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Label entity is a child of an <tt><b>Axes</b></tt> entity. When an
+    Axes entity is built, the Title and Labels handles come with it and are
+    part of the Axes properties. Therefore, the properties of those
+    sub-objects are editable via the Axes handle (see <tt><b>gca</b></tt> and
+    <tt><b>gda</b></tt>). This entity defines the parameters for label
+    drawing:</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        label entity should be of type <tt><b>"Axes"</b></tt> .<p>Note that, for now, Label entity is exclusively used in
+        <tt><b>title</b></tt>, <tt><b>x_label</b></tt>, <tt><b>y_label</b></tt> and
+        <tt><b>z_label</b></tt> building.</p>
+</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .By
+        default, the label is visible, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the label is not displayed on
+        the screen.</dd>
+<dd>
+<b>text: </b>This field is the character string vector which contains the
+        label.</dd>
+<dd>
+<b>foreground: </b>This field contains the color used to display the characters label
+        and the line around the box if any. Its value should be a color index
+        (relative to the current colormap).</dd>
+<dd>
+<b>background: </b>This field contains the color used to fill the box if any. Its
+        value should be a color index (relative to the current colormap).</dd>
+<dd>
+<b>fill_mode: </b>This field takes the values <tt><b>"on"</b></tt> or
+        <tt><b>"off"</b></tt>. If <tt><b>"on"</b></tt> a box is draw around the text
+        with a line on its edge and a background.</dd>
+<dd>
+<b>font_style: </b>Seven differents fonts are available : "Courrier", "Symbol",
+        "Times", "Times Italic", "Times Bold", "User defined". The font_size
+        property is an index in [0 6] which is associated to the previous font
+        names.</dd>
+<dd>
+<b>font_size: </b>The <tt><b>font_size</b></tt> property is used to select the type of
+        size of the label. Its value should be an integer in between 0 and 5
+        which stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>font_angle: </b>This scalar allows you to turn the label. The font is turned
+        clockise with the angle given in degrees. Note that changing the
+        <tt><b>font_angle</b></tt> will automatically disable the
+        <tt><b>auto_rotation</b></tt> property.</dd>
+<dd>
+<b>auto_rotation: </b>If <tt><b>"on"</b></tt>, Scilab computes automaticaly the best angle
+        to turn the label for the display. If <tt><b>"off"</b></tt>, the label
+        can be manually turned with the <tt><b>font_angle</b></tt> property.</dd>
+<dd>
+<b>position: </b>This 2d vector allows you to place manually the label on the
+        screen. The position is stored in the data units of the axes. Note
+        that changing the <tt><b>font_angle</b></tt> will automatically disable
+        the <tt><b>auto_position</b></tt> property.</dd>
+<dd>
+<b>auto_position: </b>If <tt><b>"on"</b></tt>, Scilab computes automaticaly the best
+        position in the graphic window for the display. If <tt><b>"off"</b></tt>,
+        the label can be manually places with the <tt><b>position</b></tt>
+        property.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>   
+
+   set("figure_style","new") //create a figure
+   a=get("current_axes");
+   a.title
+   type(a.title)
+   plot3d()
+   a.x_label
+   a.y_label
+   a.z_label
+   xtitle("My title","my x axis label", "Volume") 
+   a.z_label.text="Month"
+
+   t=a.title;
+   t.foreground=9;
+   t.font_size=5;
+   t.font_style=5;
+   t.text="SCILAB";
+   
+   xlabel=a.x_label;
+   xlabel.text=" Weight"
+   xlabel.font_style= 5;
+   a.y_label.foreground = 12;
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/text_properties.htm"><tt><b>text_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

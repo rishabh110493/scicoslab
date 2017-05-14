@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>correl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>correl</b> -   correlation of two variables</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rho=correl(x,y,fre)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector</li>
+<li>
+<tt><b>y</b></tt>: real or complex vector</li>
+<li>
+<tt><b>fre</b></tt>: matrix of type length(x) x length(y)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>correl(x,y,fre)</b></tt>  computes the correlation of two variables x and y.
+    fre is a matrix of dimensions  length(x) x length(y). In fre the element
+    of indices (i,j) corresponds to the value or number or frequences of
+    x_i&amp;y_j.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, J.Wiley &amp; Sons, 1990.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[2.5 7.5 12.5 17.5]
+h=[0 1 2]
+fre=[.03 .12 .07;.02 .13 .11;.01 .13 .14;.01 .09 .14]
+rho=correl(x,h,fre)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/covar.htm"><tt><b>covar</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

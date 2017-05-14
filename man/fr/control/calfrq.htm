@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>calfrq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>calfrq</b> -  frequency response discretization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[frq,split]=calfrq(h,[fmin,fmax])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: SISO linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>fmin,fmax</b></tt>: real scalars (min and max frequencies)</li>
+<li>
+<tt><b>frq</b></tt>: row vector (discretization of interval)</li>
+<li>
+<tt><b>split</b></tt>: vector of frq splitting points indexes</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    frequency response discretization ; <tt><b>frq</b></tt> is the discretization of  
+    <tt><b>[fmin,fmax]</b></tt> 
+    such that the peaks in the frequency response are well represented.</p>
+<p>
+    Default values for <tt><b>fmin</b></tt> and <tt><b>fmax</b></tt> are
+    <tt><b>1.d-3</b></tt>, <tt><b>1.d+3</b></tt> if <tt><b>h</b></tt> is continuous-time
+    or <tt><b>1.d-3</b></tt>, <tt><b>1/(2*h('dt'))</b></tt> if <tt><b>h</b></tt> is discrete-time.</p>
+<p>
+    Singularities are located between <tt><b>frq(split(k))</b></tt> and <tt><b>frq(split(k)+1)</b></tt>
+    for <tt><b>k&gt;1</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s')
+h=syslin('c',(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01))
+h1=h*syslin('c',(s^2+2*0.1*15.1*s+228.01)/(s^2+2*0.9*15*s+225)) 
+[f1,spl]=calfrq(h1,0.01,1000);
+rf=repfreq(h1,f1);
+plot2d(real(rf)',imag(rf)')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/bode.htm"><tt><b>bode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/black.htm"><tt><b>black</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/nyquist.htm"><tt><b>nyquist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/logspace.htm"><tt><b>logspace</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

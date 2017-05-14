@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>readxls</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>readxls</b> - reads an Excel file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sheets = readxls(file_path)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_path</b></tt>
+       : a character string: the path of the Excel file.
+       </li>
+<li>
+<tt><b>sheets</b></tt>
+       : an <tt><b>mlist</b></tt> of type <tt><b>xls</b></tt>, with one field named <tt><b>sheets</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Given an Excel file path this function returns an <tt><b>mlist</b></tt> data structure
+      of type <tt><b>xls</b></tt>, with one field named <tt><b>sheets</b></tt>. The
+      <tt><b>sheets</b></tt> field itself contains a list of sheet data structure.</p>
+<p><tt><b>sheet=mlist(['xlssheet','name','text','value'],sheetname,Text,Value)</b></tt> where 
+      <tt><b>sheetname</b></tt> is a character string containing the name of the sheet,
+      <tt><b>Text</b></tt> is a matrix of string which contains the cell's
+      strings and  <tt><b>Value</b></tt> is a matrix of numberswhich contains the cell's
+      values. </p>
+<p> Warning only BIFF8 Excel files (last Excel file version) are handled  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    Sheets = readxls('SCI/demos/excel/t1.xls')
+    // some basic operations on Sheets
+    typeof(Sheets)
+    s1=Sheets(1) //get the first sheet
+    typeof(s1)
+    s1.value //get the first sheet value field
+    s1.text  //get the first sheet text field
+    s1(2,:)  //get the 2 row of the sheet
+    typeof(s1(2,:))
+
+    editvar s1
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_open.htm"><tt><b>xls_open</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/xls_read.htm"><tt><b>xls_read</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>Pierrick Mode</b>
+    INRIA
+    </dd>
+<dd>
+<b>Serge Steer</b>
+    INRIA
+    </dd>
+</dl>
+<h3><font color="blue">Used Function</font></h3> This function is based on the Scilab functions <tt><b>xls_open</b></tt>
+      and  <tt><b>xls_read</b></tt>
+</body>
+</html>

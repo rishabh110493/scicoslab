@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>shift</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>shift</b> -  shift maxplus linear system   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[s]=shift(n,d)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li><tt><b>n : integer larger or equal to 1 which is  shift in counting  </b></tt></li>
+<li><tt><b>d : real which is a  shift in dating  </b></tt></li>
+<li><tt><b>s : maxplus linear system  </b></tt></li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    shift  defines an  implicit dynamic linear maxplus system 
+    associated to a shift in counting and dating.
+  </p>
+<pre>
+x(t)=u(t-n), y=d*x(t).
+   </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=shift(2,3)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

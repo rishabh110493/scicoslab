@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>exec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>exec</b> -  exécution d'un script (fichier de commandes)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>exec(path [,mode])  </tt></dd>
+<dd><tt>exec(fun [,mode])  </tt></dd>
+<dd><tt>ierr=exec(path,'errcatch' [,mode])  </tt></dd>
+<dd><tt>ierr=exec(fun,'errcatch' [,mode])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path  </b></tt>
+	    : chaîne de caractères, le chemin du script à exécuter
+	  </li>
+<li>
+<tt><b>mode  </b></tt>
+	    : entier, précisant le mode d'exécution (voir plus bas)
+	  </li>
+<li>
+<tt><b>fun  </b></tt>
+	    : identificateur d'une fonction scilab
+	  </li>
+<li>
+<tt><b>ierr  </b></tt>
+	    : entier, 0 ou numéro d'erreur 
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>exec(path [,mode])</b></tt> exécute séquentiellement les instructions
+      Scilab contenues dans le fichier spécifié par <tt><b>path</b></tt> avec le
+      mode d'exécution optionnel <tt><b>mode</b></tt> .
+    </p>
+<p>Les différentes valeurs de <tt><b>mode</b></tt> sont :</p>
+<dl>
+<dd>
+<b>0</b>: valeur par défaut</dd>
+<dd>
+<b>-1</b>: rien n'est affiché</dd>
+<dd>
+<b>1</b>: chaque ligne de commande est affichée</dd>
+<dd>
+<b>2</b>: l'invite de commande <tt><b>--&gt;</b></tt> est affiché</dd>
+<dd>
+<b>3</b>: lignes de commandes + invite de commande</dd>
+<dd>
+<b>4</b>: pause dans l'exécution au début de chaque ligne. L'exécution
+	reprend après un appui sur la touche entrée/return. </dd>
+<dd>
+<b>7</b>: pause + invite + affichage : ce mode est utile pour les démonstrations.</dd>
+</dl>
+<p><tt><b>exec(fun [,mode])</b></tt> exécute la fonction <tt><b>fun</b></tt> comme
+      un script : aucun argument n'est utilisé en entrée ou en sortie, et
+      l'exécution se fait dans l'environnement courant (les variables
+      créées dans la fonction sont conservées après l'exécution). Cette
+      forme est plus efficace, car ainsi les instructions du script peuvent
+      être pré-compilées (voir getf, comp). Cette méthode d'exécution des
+      scripts permet aussi de stocker des scripts comme des fonctions dans des
+      librairies. 
+    </p>
+<p>
+      Si une erreur se produit pendant l'exécution, si la chaîne de
+      caractères 'errcatch' est présente, <tt><b>exec</b></tt> ne
+      produit pas de message d'erreur, mais stoppe l'exécution du
+      script et renvoie une valeur de <tt><b>ierr</b></tt> égale au numéro de
+      l'erreur. Si la chaîne 'errcatch' n'est pas présente,
+      la gestion habituelle des erreurs est utilisée.
+    </p>
+<h3><font color="blue">REMARQUE</font></h3>
+<dl></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    // création d'un script
+    mputl('a=1;b=2',TMPDIR+'/myscript')
+    // on l'exécute
+    exec(TMPDIR+'/myscript')
+    whos -name "a "
+
+    // création d'une function
+    function y=foo(x),a=x+1;y=a^2,endfunction
+    clear a b
+    // appel à la fonction
+    foo(1)
+    // a est une variable créée dans l'environnement de la fonction foo
+    // elle est détruite à la sortie de la fonction.
+    whos -name "a "
+
+    x=1 // on crée la variable x pour qu'elle soit connue à l'exécution de foo
+    exec(foo)
+    // a et y ont été créées dans l'environnement courant
+    whos -name "a "
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mode.htm"><tt><b>mode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/chdir.htm"><tt><b>chdir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pwd.htm"><tt><b>getcwd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

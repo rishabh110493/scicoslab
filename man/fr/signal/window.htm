@@ -1,0 +1,143 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>window</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>window</b> -  compute symmetric window of various type</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>
+      win_l=window('re',n)
+    </tt></dd>
+<dd><tt>
+      win_l=window('tr',n)
+    </tt></dd>
+<dd><tt>
+      win_l=window('hn',n)
+    </tt></dd>
+<dd><tt>
+      win_l=window('hm',n)
+    </tt></dd>
+<dd><tt>
+      win_l=window('kr',n,alpha)
+    </tt></dd>
+<dd><tt>
+      [win_l,cwp]=window('ch',n,par)
+    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: window length</li>
+<li>
+<tt><b>par</b></tt>: parameter 2-vector <tt><b>par=[dp,df])</b></tt>, where
+	    <tt><b>dp</b></tt>  (<tt><b>0&lt;dp&lt;.5</b></tt>) rules the  main lobe
+	    width and  <tt><b>df</b></tt> rules the side lobe height
+	    (<tt><b>df&gt;0</b></tt>).Only one of these two value should be specified the other one
+	    should set equal to <tt><b>-1</b></tt>.</li>
+<li>
+<tt><b>alpha</b></tt>: kaiser window parameter <tt><b>alpha &gt;0</b></tt>). </li>
+<li>
+<tt><b>win</b></tt>: window</li>
+<li>
+<tt><b>cwp</b></tt>: unspecified Chebyshev window parameter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      function which calculates various symmetric window for Disgital signal processing</p>
+<p>
+      The Kaiser window is a nearly optimal window function. <tt><b>alpha</b></tt>
+      is an arbitrary positive real number that determines the shape of the
+      window,  and the integer  <tt><b>n</b></tt> is the length of the window.
+</p>
+<p>
+    By construction, this function peaks at unity for <tt><b> k = n/2</b></tt> ,
+    i.e. at the center of the window, and decays exponentially towards the 
+    window edges.   The larger the value of <tt><b>alpha</b></tt>, the narrower 
+    the window becomes; <tt><b>alpha = 0</b></tt> corresponds to a rectangular window.
+    Conversely, for larger <tt><b>alpha</b></tt> the width of the main lobe
+    increases in the Fourier transform, while the side lobes decrease in
+    amplitude. 
+    Thus, this parameter controls the tradeoff between main-lobe width and
+    side-lobe area.
+</p>
+<div align="center"><table border="2">
+<tr align="center">
+<td>alpha</td>
+<td>window shape</td>
+</tr>
+<tr align="center">
+<td>0</td>
+<td>Rectangular shape</td>
+</tr>
+<tr align="center">
+<td>5</td>
+<td>Similar to the Hamming window</td>
+</tr>
+<tr align="center">
+<td>6</td>
+<td>Similar to the Hanning window</td>
+</tr>
+<tr align="center">
+<td>8.6</td>
+<td>Similar to the Blackman window</td>
+</tr>
+</table></div>
+<p>
+      The Chebyshev window minimizes the mainlobe width, given a particular sidelobe
+      height. It is characterized by an equiripple behavior, that is, its
+      sidelobes all have the same height.
+</p>
+<p>
+      The Hanning and Hamming windows are quite similar, they only differ in
+      the choice of one parameter <tt><b>alpha</b></tt>: 
+      <tt><b> w=alpha+(1 - alpha)*cos(2*%pi*x/(n-1))</b></tt><tt><b>alpha</b></tt> is equal to 1/2 in Hanning window and to 0.54 in
+      Hamming window.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Hamming window
+clf()
+N=64;
+w=window('hm',N);
+subplot(121);plot2d(1:N,w,style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+subplot(122)
+n=256;[W,fr]=frmag(w,n);
+plot2d(fr,20*log10(W),style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+
+//Kaiser window
+clf()
+N=64;
+w=window('kr',N,6);
+subplot(121);plot2d(1:N,w,style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+subplot(122)
+n=256;[W,fr]=frmag(w,n);
+plot2d(fr,20*log10(W),style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+
+//Chebyshev window
+clf()
+N=64;
+[w,df]=window('ch',N,[0.005,-1]);
+subplot(121);plot2d(1:N,w,style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+subplot(122)
+n=256;[W,fr]=frmag(w,n);
+plot2d(fr,20*log10(W),style=color('blue'))
+set(gca(),'grid',[1 1]*color('gray'))
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/wfir.htm"><tt><b>wfir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/frmag.htm"><tt><b>frmag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/ffilt.htm"><tt><b>ffilt</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Carey  Bunks  </p>
+<h3><font color="blue">Bibliography</font></h3>IEEE. Programs for Digital Signal Processing. IEEE Press. New York: John
+    Wiley and Sons, 1979. Program 5.2.</body>
+</html>

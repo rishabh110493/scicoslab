@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>x_message</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_message</b> -  boîte de dialogue modale  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[num]=x_message(strings [,buttons])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>strings  </b></tt>
+    : vecteur de chaînes de caractères à afficher
+</li>
+<li>
+<tt><b>buttons  </b></tt>
+    : chaîne de caractère ou vecteur de deux chaînes de caractères donnant les noms des boutons ("Ok" par défaut).
+</li>
+<li>
+<tt><b>num  </b></tt>
+    : numéro du bouton pressé (si 2 boutons ont été spécifiés)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Pour afficher un message (diagnostic, ... ) et attendre une réponse (pression sur un bouton). La fonction rend la main dès qu'un des deux boutons est pressé.
+  </p>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ gain=0.235;x_message('La valeur du gain est :'+string(gain))
+ x_message(['matrice singuliere';'utiliser les moindres carres'])
+
+ r=x_message(['Votre probleme est mal conditionne';
+             'continuer ?'],['Oui','Non'])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_message_modeless.htm"><tt><b>x_message_modeless</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

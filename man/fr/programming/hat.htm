@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hat (^)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hat (^)</b> -  élévation à la puissance  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>A^b  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Élévation à la puissance de matrices ou vecteurs.
+  </p>
+<p>
+    Si <tt><b>A</b></tt> est un vecteur ou une matrice non-carrée l'élévation à la puissance est faite élément par élément avec la signification usuelle.
+  </p>
+<p>
+    Pour une matrice carrée <tt><b>A</b></tt> l'élévation est faite au sens matriciel.
+  </p>
+<p>
+    Pour les matrices booléennes, rationnelles ou polynomiales, l'exposant doit être entier.
+  </p>
+<p>
+    Notez que <tt><b>123.^b</b></tt> est interprété comme <tt><b>(123).^b</b></tt>. Dans un tel cas le point fait partie de l'opérateur et non pas du nombre.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+2^4
+[1 2;2 4]^(1+%i)
+s=poly(0,"s");
+[1 2 s]^4
+[s 1;1  s]^(-1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/exp.htm"><tt><b>exp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

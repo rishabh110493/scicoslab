@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>min_weight_tree</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>min_weight_tree</b> -  arbre couvrant de poids minimum  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t = min_weight_tree([i],g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>i  </b></tt>
+    : entier, numéro de sommet racine de l'arbre
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>t  </b></tt>
+    : vecteur ligne d'entiers : numéros des arcs de l'arbre s'il existe
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>min_weight_tree</b></tt> essaye de trouver un arbre couvrant de poids minimum pour l'arbre
+    graphe <tt><b>g</b></tt>. L'argument optionnel <tt><b>i</b></tt> est le numéro du sommet racine de l'arbre; sa valeur par défaut est le sommet 1. Ce sommet n'est pas significatif pour un graphe non-orienté.
+  </p>
+<p>
+    Les poids sont données par les éléments <tt><b>edge_weight</b></tt> du graphe.
+    Si ces valeurs ne sont pas données (vecteur vide <tt><b>[]</b></tt>), elles sont supposées nulles.
+    Les poids peuvent être positifs, nuls ou négatifs. Pour calculer un arbre recouvrant sans tenir compte des poids, leur donner une valeur nulle ou vide <tt><b>[]</b></tt>.
+  </p>
+<p><tt><b>min_weight_tree</b></tt> renvoie l'arbre <tt><b>t</b></tt> sous forme d'un vecteur ligne des numéros
+    d'arcs (cas orienté) ou d'arêtes (cas non-orienté), si il existe, ou le vecteur vide <tt><b>[]</b></tt> sinon.
+    Si l'arbre existe, la dimension de <tt><b>t</b></tt> est le nombre de sommets moins 1.
+    Si <tt><b>t(i)</b></tt> est la racine de l'arbre, 
+      - pour j &lt; i, <tt><b>t(j)</b></tt> est le numéro de l'arc dans l'arbre après le
+          sommet <tt><b>t(j)</b></tt>
+      - pour j &gt; i, <tt><b>t(j)</b></tt> est le numéro de l'arc dans l'arbre avant le
+          sommet <tt><b>t(j)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+t=min_weight_tree(1,g); 
+g1=g; ma=arc_number(g1); n=g1('node_number');
+nodetype=0*ones(1,n); nodetype(1)=2; g1('node_type')=nodetype;
+edgecolor=1*ones(1,ma); edgecolor(t)=11*ones(t); g1('edge_color')=edgecolor;
+edgewidth=1*ones(1,ma); edgewidth(t)=4*ones(t); g1('edge_width')=edgewidth;
+x_message('Arbre de poids minimum à partir du sommet 1');
+show_graph(g1);
+ </pre>
+</body>
+</html>

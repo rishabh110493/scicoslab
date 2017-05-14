@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fftshift</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fftshift</b> -  rearranges the fft output, moving the zero frequency to the center of the spectrum</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=fftshift(x [,job])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector or matrix.</li>
+<li>
+<tt><b>y</b></tt>: real or complex vector or matrix.</li>
+<li>
+<tt><b>job</b></tt>: integer, dimension selection, or string 'all'</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    if <tt><b>x</b></tt> results of an fft computation <tt><b>y= fftshift(x)</b></tt> or <tt><b>y= fftshift(x,"all")</b></tt> moves the zero frequency component to the center
+    of the spectrum, which is sometimes a more convenient form.</p>
+<p>
+    If <tt><b>x</b></tt> is a vector of size n, y is the vector <tt><b>x([n/2+1:n,1:n/2])</b></tt></p>
+<p>
+    If <tt><b>x</b></tt> is an <tt><b>m</b></tt> by <tt><b>n</b></tt>  matrix <tt><b>y</b></tt> is the matrix
+    <tt><b>x([m/2+1:n,1:m/2],[n/2+1:n,1:n/2])</b></tt>.</p>
+<pre>
+
+  [x11 x12]                  [x22 x21]
+x=[       ]        gives   y=[       ]
+  [x21 x22]                  [x12 x11]
+   
+    </pre>
+<p><tt><b>y= fftshift(x,n)</b></tt>  make the swap only along the <tt><b>n</b></tt>th dimension</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//make a signal
+t=0:0.1:1000;
+x=3*sin(t)+8*sin(3*t)+0.5*sin(5*t)+3*rand(t);
+//compute the fft
+y=fft(x,-1);
+//display 
+xbasc();
+subplot(2,1,1);plot2d(abs(y))
+subplot(2,1,2);plot2d(fftshift(abs(y)))
+
+//make a 2D image
+t=0:0.1:30;
+x=3*sin(t')*cos(2*t)+8*sin(3*t')*sin(5*t)+..
+  0.5*sin(5*t')*sin(5*t)+3*rand(t')*rand(t);
+//compute the fft
+y=fft(x,-1);
+//display 
+xbasc();
+xset('colormap',hotcolormap(256))
+subplot(2,1,1);Matplot(abs(y))
+subplot(2,1,2);Matplot(fftshift(abs(y)))
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/fft.htm"><tt><b>fft</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

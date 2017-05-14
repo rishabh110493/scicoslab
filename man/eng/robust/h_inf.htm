@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>h_inf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>h_inf</b> -  H-infinity (central) controller</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Sk,ro]=h_inf(P,r,romin,romax,nmax)  </tt></dd>
+<dd><tt>[Sk,rk,ro]=h_inf(P,r,romin,romax,nmax)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list : continuous-time linear system (``augmented'' plant given in state-space form  or in transfer form)</li>
+<li>
+<tt><b>r</b></tt>: size of the <tt><b>P22</b></tt> plant i.e. 2-vector <tt><b>[#outputs,#inputs]</b></tt>
+</li>
+<li>
+<tt><b>romin,romax</b></tt>: a priori bounds on <tt><b>ro</b></tt> with <tt><b>ro=1/gama^2</b></tt>; (<tt><b>romin=0</b></tt>  usually)</li>
+<li>
+<tt><b>nmax</b></tt>: integer, maximum number of iterations in the gama-iteration.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>h_inf</b></tt> computes H-infinity optimal controller for the 
+    continuous-time plant <tt><b>P</b></tt>.</p>
+<p>
+    The partition of <tt><b>P</b></tt> into four sub-plants is given through
+    the 2-vector <tt><b>r</b></tt> which is the size of the <tt><b>22</b></tt> part of <tt><b>P</b></tt>.</p>
+<p><tt><b>P</b></tt> is given in state-space 
+    e.g. <tt><b>P=syslin('c',A,B,C,D)</b></tt> with <tt><b>A,B,C,D</b></tt> = constant matrices
+    or <tt><b>P=syslin('c',H)</b></tt> with <tt><b>H</b></tt> a transfer matrix.</p>
+<p><tt><b>[Sk,ro]=H_inf(P,r,romin,romax,nmax)</b></tt> returns
+    <tt><b>ro</b></tt> in <tt><b>[romin,romax]</b></tt> and the central
+    controller <tt><b>Sk</b></tt> in the same representation as
+    <tt><b>P</b></tt>.</p>
+<p>
+    (All calculations are made in state-space, i.e conversion to
+    state-space is done by the function, if necessary).</p>
+<p>
+    Invoked with three LHS parameters,</p>
+<p><tt><b>[Sk,rk,ro]=H_inf(P,r,romin,romax,nmax)</b></tt> returns
+    <tt><b>ro</b></tt> and the Parameterization of all stabilizing
+    controllers:</p>
+<p>
+    a stabilizing controller <tt><b>K</b></tt> is obtained by
+    <tt><b>K=lft(Sk,r,PHI)</b></tt> where <tt><b>PHI</b></tt> is a linear
+    system with dimensions <tt><b>r'</b></tt> and satisfy:</p>
+<p><tt><b>H_norm(PHI) &lt; gamma</b></tt>.  <tt><b>rk (=r)</b></tt> is the
+    size of the <tt><b>Sk22</b></tt> block and <tt><b>ro = 1/gama^2</b></tt>
+    after <tt><b>nmax</b></tt> iterations.</p>
+<p>
+    Algorithm is adapted from Safonov-Limebeer. Note that <tt><b>P</b></tt> is assumed to be 
+    a continuous-time plant.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/gamitg.htm"><tt><b>gamitg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/ccontrg.htm"><tt><b>ccontrg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/leqr.htm"><tt><b>leqr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Delebecque INRIA (1990)  </p>
+</body>
+</html>

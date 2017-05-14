@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plus</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Operator</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plus</b> -  (+)  addition operator</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X+Y</tt></dd>
+<dd><tt>str1+str2</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X,Y</b></tt>: scalar or vector or matrix of numbers, polynomials or rationals. It may also be a <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>str1,str2</b></tt>: a character string, a vector or a matrix of character strings</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Addition.</p>
+<p>
+    For numeric operands addition as its usual meaning.
+    If one of the operands is a matrix and the other one a scalar the
+    scalar is added to each matrix entries. if one of the operands is an
+    empty matrix the other operand is returned (this default behavior can be modified by the function <tt><b>mtlb_mode</b></tt>).</p>
+<p>
+    For character strings <tt><b>+</b></tt> means concatenation.</p>
+<p>
+    Addition may also be defined for other data types through
+    "soft-coded" operations (see <tt><b>overloading</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[1,2]+1
+[]+2
+s=poly(0,"s");
+s+2
+1/s+2
+"cat"+"enate"
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/addf.htm"><tt><b>addf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mtlb_mode.htm"><tt><b>mtlb_mode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

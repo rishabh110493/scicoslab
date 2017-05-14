@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_isa</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_isa</b> - Fonction d'émulation de la fonction Matlab isa</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas de fonction Scilab équivalente à la fonction Matlab <tt><b>isa</b></tt> mais quand la "classe" d'objet recherchée existe dans Scilab, des expressions équivalentes existent.</p>
+<p>
+    La fonction <tt><b>mtlb_isa(OBJ,class)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>isa(OBJ,class)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_isa</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "logical",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==4</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "char",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==10</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "numeric",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>or(type(OBJ)==[1,5,8])</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "intX" (X valant 8, 16 ou 32),
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>typeof(OBJ)=="intX"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "uintX" (X valant 8, 16 ou 32),
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>typeof(OBJ)=="uintX"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "single",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==1</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "double",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==1</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "cell",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>typeof(OBJ)=="ce"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "struct",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>typeof(OBJ)=="st"</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "function_handle",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==13</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "sparse",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>type(OBJ)==5</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>class</b></tt> est égal à "lti",
+        <tt><b>mtlb_isa(OBJ,class)</b></tt> peut être remplacé par <tt><b>typeof(OBJ)=="state-space"</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_isa</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

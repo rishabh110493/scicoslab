@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>repfreq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>repfreq</b> -  frequency response</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[ [frq,] repf]=repfreq(sys,fmin,fmax [,step])  </tt></dd>
+<dd><tt>[ [frq,] repf]=repfreq(sys [,frq])  </tt></dd>
+<dd><tt>[ frq,repf,splitf]=repfreq(sys,fmin,fmax [,step])  </tt></dd>
+<dd><tt>[ frq,repf,splitf]=repfreq(sys [,frq])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sys</b></tt>: <tt><b>syslin</b></tt> list : SIMO linear system</li>
+<li>
+<tt><b>fmin,fmax</b></tt>: two real numbers (lower and upper frequency bounds)</li>
+<li>
+<tt><b>frq</b></tt>: real vector of frequencies (Hz)</li>
+<li>
+<tt><b>step</b></tt>: logarithmic discretization step</li>
+<li>
+<tt><b>splitf</b></tt>: vector of indexes of critical frequencies.</li>
+<li>
+<tt><b>repf</b></tt>: vector of the complex frequency response</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>repfreq</b></tt> returns the frequency response calculation of a linear
+    system. If <tt><b>sys(s)</b></tt> is the transfer function of <tt><b>Sys</b></tt>, <tt><b>repf(k)</b></tt> 
+    equals <tt><b>sys(s)</b></tt> evaluated at <tt><b>s= %i*frq(k)*2*%pi</b></tt> for continuous time systems and 
+    at <tt><b>exp(2*%i*%pi*dt*frq(k))</b></tt> for discrete time systems (<tt><b>dt</b></tt> is the sampling period).</p>
+<p><tt><b>db(k)</b></tt> is the magnitude of <tt><b>repf(k)</b></tt> expressed in dB i.e.
+    <tt><b>db(k)=20*log10(abs(repf(k)))</b></tt> and <tt><b>phi(k)</b></tt> is the phase
+    of <tt><b>repf(k)</b></tt> expressed in degrees.</p>
+<p>
+    If <tt><b>fmin,fmax,step</b></tt> are input parameters, the response is calculated
+    for the vector of frequencies <tt><b>frq</b></tt> given by:
+    <tt><b>frq=[10.^((log10(fmin)):step:(log10(fmax))) fmax];</b></tt></p>
+<p>
+    If <tt><b>step</b></tt> is not given, the output parameter <tt><b>frq</b></tt> is calculated by <tt><b>frq=calfrq(sys,fmin,fmax)</b></tt>.</p>
+<p>
+    Vector <tt><b>frq</b></tt> is splitted into regular parts with the <tt><b>split</b></tt> vector.
+    <tt><b>frq(splitf(k):splitf(k+1)-1)</b></tt> has no critical frequency. 
+    <tt><b>sys</b></tt> has a pole in the range <tt><b>[frq(splitf(k)),frq(splitf(k)+1)]</b></tt> and 
+    no poles outside.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2]);B=[1;1];C=[1,1];
+Sys=syslin('c',A,B,C);
+frq=0:0.02:5;w=frq*2*%pi; //frq=frequencies in Hz ;w=frequencies in rad/sec;
+[frq1,rep] =repfreq(Sys,frq);
+[db,phi]=dbphi(rep);
+Systf=ss2tf(Sys)    //Transfer function of Sys
+x=horner(Systf,w(2)*sqrt(-1))    // x is Systf(s) evaluated at s = i w(2)
+rep=20*log(abs(x))/log(10)   //magnitude of x in dB
+db(2)    // same as rep
+ang=atan(imag(x),real(x));   //in rad.
+ang=ang*180/%pi              //in degrees
+phi(2)
+repf=repfreq(Sys,frq);
+repf(2)-x
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/bode.htm"><tt><b>bode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/calfrq.htm"><tt><b>calfrq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/horner.htm"><tt><b>horner</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/nyquist.htm"><tt><b>nyquist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/dbphi.htm"><tt><b>dbphi</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. S.  </p>
+</body>
+</html>

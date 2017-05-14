@@ -1,0 +1,56 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>LogitMD </title></head><body bgcolor="FFFFFF"><CENTER>CiudadSim Function  </CENTER><p><b>LogitMD  -  Logit equilibrium ( Markov Dial Method )  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[F]=LogitMB(A,D,theta)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>A  </b></tt>
+    : nxn nodesxnodes matrix of travel times
+  </li>
+  <li><tt><b>D  </b></tt>
+    : nxn nodesxnodes matrix of demand flows 
+  </li>
+  <li><tt><b>theta  </b></tt>
+    : stochasticity parameter 
+  </li>
+  <li><tt><b>F  </b></tt>
+    : nxn nodesxnodes assigned flow matrix
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Compute the logit traffic assignment by the Markov
+    method where on each road at each crossing
+    we have to choose a link among the efficient links 
+    leaving this crossing excluding the ones comming back
+    to the origine.
+  </p>
+  <p>
+    A Markov chain is defined by normalizing the following
+    transition matrix Wij=exp(-theta (Lj+Aij-Li))
+    where Lj denotes the smallest travelling time from j
+    to the destination of the considered demand defined
+    only on the efficient links. The flow is assigned
+    proportionnaly to the probability
+    to use an arc before reaching the destination of the
+    demand for the markov chain starting at the origine
+    of the demand with a probability 1.
+  </p>
+  <p>
+    The graph must be strongly connected.
+    If it is not the case we can add artificial 
+    arcs with large travel time in such a way that
+    the new graph becomes strongly connected.
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+// Graph generation (the graph must be stongly connected)
+// n is the number of nodes, m the number of arcs
+n=10; m=40; 
+c1=m/(n*n);
+A=sprand(n,n,c1)+diag(sparse(ones(n-1,1)),1);
+A(n,1)=1;A=A-diag(diag(A));
+// Demand generation, p is the number of demand.
+p=30; c2=p/(n*n);D=sprand(n,n,c2);D=D-diag(diag(D));
+//theta definition (almost determinsitic)
+theta=10
+// Flow calculation
+FD=LogitMD(A,D,theta)
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="LogitD.htm"><tt><b>LogitD</b></tt></a>&nbsp;&nbsp;<a href="LogitB.htm"><tt><b>LogitB</b></tt></a>&nbsp;&nbsp;<a href="LogitMB.htm"><tt><b>LogitMB</b></tt></a>&nbsp;&nbsp;<a href="LogitN.htm"><tt><b>LogitN</b></tt></a>&nbsp;&nbsp;<a href="LogitNE.htm"><tt><b>LogitNE</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

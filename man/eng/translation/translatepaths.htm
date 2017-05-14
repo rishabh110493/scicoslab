@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>translatepaths</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>translatepaths</b> -  convert a set of Matlab M-files directories to Scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>translatepaths(dirs_path [,res_path])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dirs_path</b></tt>: a character string vector which gives the paths of Matlab M-file directories to convert</li>
+<li>
+<tt><b>res_path</b></tt>: a character string which gives the path of the directory where the Scilab functions are written to. Default value is current directory.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>translatepaths</b></tt>, converts all Matlab M-file contained in a set of directories to
+    Scilab functions. Each function is converted by <tt><b>mfile2sci</b></tt>.</p>
+<p>
+    Trace of conversion information is stored in a file named <tt><b>"log"</b></tt> in
+    the <tt><b>res_path</b></tt> directory</p>
+<p>
+    When called without rhs, <tt><b>translatepaths()</b></tt> launches a GUI to help to select a file/directory and options.
+    </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/translation/mfile2sci.htm"><tt><b>mfile2sci</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>V. Couvert</dd>
+<dd>
+<b></b>S. Steer</dd>
+</dl>
+</body>
+</html>

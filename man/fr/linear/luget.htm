@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>luget</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>luget</b> -  extraction de facteurs LU creux  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,L,U,Q]=luget(hand)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>hand  </b></tt>
+    : pointeur vers des facteurs L,U creux déjà calculés (sortie de lufact)
+</li>
+<li>
+<tt><b>P  </b></tt>
+    : matrice de permutation (creuse)
+</li>
+<li>
+<tt><b>L  </b></tt>
+    : matrice creuse, triangulaire inférieure si <tt><b>hand</b></tt> provient de la factorisation d'une matrice régulière.
+</li>
+<li>
+<tt><b>U  </b></tt>
+    : matrice carrée creuse, régulière, triangulaire supérieure à diagonale unité.
+</li>
+<li>
+<tt><b>Q  </b></tt>
+    : matrice de permutation (creuse)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[P,L,U,Q]=luget(hand)</b></tt> avec <tt><b>hand</b></tt> obtenue avec la commande <tt><b>[hand,rk]=lufact(A)</b></tt> avec <tt><b>A</b></tt> une matrice creuse, renvoie quatre matrices P,L,U,Q telles que <tt><b>P*L*U*Q=A</b></tt>.
+  </p>
+<p>
+    La  matrice A n'est pas obligatoirement de rang plein mais doit être carrée
+    (puisque A est supposée creuse on peut lui ajouter des lignes ou des colonnes nulles pour la rendre carrée).
+  </p>
+<p>
+    Si <tt><b>A</b></tt> est singulière, la matrice <tt><b>L</b></tt> est à colonnes compressées (avec
+    <tt><b>rk</b></tt> colonnes indépendantes non nulles) :  la matrice creuse régulière 
+    <tt><b>Q'*inv(U)</b></tt> compresse les colonnes de <tt><b>A</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=rand(5,2)*rand(2,5);A=sparse(a);
+[hand,rk]=lufact(A);[P,L,U,Q]=luget(hand);
+full(L), P*L*U*Q-A
+clean(P*L*U*Q-A)
+ludel(hand)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

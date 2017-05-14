@@ -1,0 +1,12 @@
+#!/bin/bash
+source /usr/local/mingw32/scripts/withmingw
+./configure --host=i686-pc-mingw32 --without-java --without-ocaml --disable-debug --without-man
+
+
+
+
+
+
+
+
+

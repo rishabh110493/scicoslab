@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>make_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>make_graph</b> -  makes a graph list</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g = make_graph(name,directed,n,tail,head)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: string, the name of the graph</li>
+<li>
+<tt><b>directed</b></tt>: integer, 0 (undirected graph) or 1 (directed graph)</li>
+<li>
+<tt><b>n</b></tt>: integer, the number of nodes of the graph</li>
+<li>
+<tt><b>tail</b></tt>: row vector of the numbers of the tail nodes of the graph (its size is  the number of edges of the graph)</li>
+<li>
+<tt><b>head</b></tt>: row vector of the numbers of the head nodes of the graph (its size is  the number of edges of the graph)</li>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>make_graph</b></tt> makes a graph list according to its arguments which are
+    respectively the name of the graph, a flag for directed or undirected, the
+    number of nodes and the row vectors tail and head. These are the minimal data
+    needed for a graph.</p>
+<p>
+    If <tt><b>n</b></tt> is a positive number, graph <tt><b>g</b></tt> has <tt><b>n</b></tt> nodes; this
+    number must be greater than or equal to <tt><b>max(max(tail),max(head))</b></tt>. If
+    it is greater than this number,graph <tt><b>g</b></tt> has isolated nodes. 
+    The nodes names are taken as the nodes numbers.</p>
+<p>
+    If <tt><b>n</b></tt> is equal to 0, graph <tt><b>g</b></tt> has no isolated node and the number
+    of nodes is computed from <tt><b>tail</b></tt> and <tt><b>head</b></tt>. The nodes names are
+    taken from the numbers in <tt><b>tail</b></tt> and <tt><b>head</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// creating a directed graph with 3 nodes and 4 arcs.
+g=make_graph('foo',1,3,[1,2,3,1],[2,3,1,3]);
+// creating a directed graph with 13 nodes and 14 arcs.
+ta=[1  1 2 7 8 9 10 10 10 10 11 12 13 13];
+he=[2 10 7 8 9 7  7 11 13 13 12 13  9 10];
+g=make_graph('foo',1,13,ta,he);
+g('node_x')=[120  98  87 188 439 698 226 127 342 467 711 779 477];
+g('node_y')=[ 21 184 308 426 435 428 129 360 435  55 109 320 321];
+show_graph(g)
+// creating same graph without isolated node and 14 arcs.
+g=make_graph('foo',1,0,ta,he);
+g('node_x')=[120  98 226 127 342 467 711 779 477];
+g('node_y')=[ 21 184 129 360 435  55 109 320 321];
+show_graph(g,'new')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph-list.htm"><tt><b>graph-list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gr_menu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gr_menu</b> -  simple interactive graphic editor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sd1]=gr_menu([sd,flag,no_frame])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sd</b></tt>: list (output of <tt><b>gr_menu</b></tt>), or vector of  length four <tt><b>[xmin,ymin,xmax,ymax]</b></tt> (boundaries of the plot).</li>
+<li>
+<tt><b>sd1</b></tt>: list (graphical objects created under <tt><b>gr_menu</b></tt>
+</li>
+<li>
+<tt><b>flag,noframe</b></tt>: integers with 0, 1 value. Use <tt><b>flag=1</b></tt> for non interactive mode  (i.e to redraw saved <tt><b>gr_menu</b></tt> graphics) and <tt><b>no_frame=1</b></tt> to  avoid a frame around <tt><b>gr_menu</b></tt> graphics.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gr_menu</b></tt> is a simple interactive graphic editor.
+    When you execute <tt><b>gr_menu()</b></tt>, three new menus, <tt><b>Objects</b></tt>, 
+    <tt><b>Settings</b></tt> and <tt><b>Edit</b></tt> are added to the current graphics window.
+    Use the item <tt><b>Exit</b></tt> of menu <tt><b>Edit</b></tt> to exit <tt><b>gr_menu</b></tt>.
+  </p>
+<p>
+    The created graphics are saved as a list which 
+    can be given to <tt><b>gr_menu</b></tt> as an entry value.
+  </p>
+<dl>
+<dd>
+<b>[sd]=gr_menu([xmin,ymin,xmax,ymax])</b>: enters <tt><b>gr_menu</b></tt> with a given frame</dd>
+<dd>
+<b>[sd]=gr_menu();</b>: enters <tt><b>gr_menu</b></tt> with the frame [0 0 100 100].</dd>
+<dd>
+<b>[sd]=gr_menu(sd)</b>: redraws the graphics stored in sd and enters interactive mode</dd>
+<dd>
+<b>[sd]=gr_menu(sd,1)</b>: only draws the graphics stored in <tt><b>sd</b></tt>.</dd>
+<dd>
+<b>[sd]=gr_menu(sd,1,1)</b>: only draws the graphics stored in <tt><b>sd</b></tt> and no frame is added.</dd>
+</dl>
+<h3><font color="blue">Author</font></h3>
+<p>S.S. &amp; J.Ph.C.; ; ; ; ;   </p>
+</body>
+</html>

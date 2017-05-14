@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_cumsum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_cumsum</b> - Matlab cumsum emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>cumsum</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	When used with one input (<tt><b>cumsum(A)</b></tt>), Matlab <tt><b>cumsum</b></tt>
+	treats the values along the first non-singleton dimension of A as vectors while
+	Scilab <tt><b>cumsum</b></tt> treats all A values.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+	When used with two inputs (<tt><b>cumsum(A,dim)</b></tt>), Matlab tolerates <tt><b>dim</b></tt>
+	to be greater than the number of dimensions of A while Scilab returns an error message in this case.
+        </li>
+</dd>
+</dd></dl>
+<p>    
+    The function <tt><b>R = mtlb_cumsum(A[,dim])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>cumsum(A[,dim])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_cumsum</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	If <tt><b>dim</b></tt> is less equal to the number of dimensions of A
+	<tt><b>R = mtlb_cumsum(A,dim)</b></tt> may be replaced by <tt><b>R = cumsum(A,dim)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	If <tt><b>dim</b></tt> is greater than then number of dimensions of A
+	<tt><b>R = mtlb_cumsum(A,dim)</b></tt> may be replaced by <tt><b>R = A</b></tt>.
+        </li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_cumsum</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

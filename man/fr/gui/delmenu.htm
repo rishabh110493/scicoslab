@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>delmenu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>delmenu</b> -  interactive button or menu deletion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>delmenu(button)   </tt></dd>
+<dd><tt>delmenu(gwin,button)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>button</b></tt>: a character string. The button name. On Windows operating systems (not X_window), an &amp; should be placed before the character in the name used for keyboard shortcut; this character is underlined on the GUI.</li>
+<li>
+<tt><b>gwin</b></tt>: integer. The number of graphic window where the button is required to be installed</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The function allows the user to delete  buttons or menus create by
+    <tt><b>addmenu</b></tt> in the main or graphics windows command panels. 
+    Predefined buttons on Scilab graphic windows can also be deleted.</p>
+<p>
+    If possible, it is better to delete first the latest created button
+    for a given window to avoid gaps in  command panels.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+addmenu('foo')
+delmenu('foo')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/setmenu.htm"><tt><b>setmenu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/unsetmenu.htm"><tt><b>unsetmenu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/addmenu.htm"><tt><b>addmenu</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

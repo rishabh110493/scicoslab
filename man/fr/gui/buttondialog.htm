@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>buttondialog</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>sciGUI toolbox function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>buttondialog</b> -  Create a simple button dialog</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>answer=buttondialog(mes,buttons[,icon])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mes</b></tt>: string, message to display.</li>
+<li>
+<tt><b>buttons</b></tt>: string, buttons name.</li>
+<li>
+<tt><b>icon</b></tt>: string, icon type, should be: error, hourglass, info, passwd, question and warning.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>buttondialog</b></tt> create a simple button dialog and retur the answer. <tt><b>buttons</b></tt> identify the buttons to show in the following manner : "button_1|button_2....|button_n"</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+answ=buttondialog("This is an example","ok");
+answ=buttondialog("Do the work?","yes|no|maybe","question");
+
+</pre>
+<h3><font color="blue">Author</font></h3>
+<p>Jaime Urzua</p>
+</body>
+</html>

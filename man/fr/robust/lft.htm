@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lft</b> -  linear fractional transformation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P1]=LFT(P,K)  </tt></dd>
+<dd><tt>[P1]=LFT(P,r,K)  </tt></dd>
+<dd><tt>[P1,r1]=LFT(P,r,P#,r#)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: linear system (<tt><b>syslin</b></tt> list), the ``augmented'' plant, implicitly partitioned into four blocks (two input ports and two output ports).</li>
+<li>
+<tt><b>K</b></tt>: linear system (<tt><b>syslin</b></tt> list), the controller (possibly an ordinary gain).</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector, dimension of <tt><b>P22</b></tt>
+</li>
+<li>
+<tt><b>P#  </b></tt>: linear system (<tt><b>syslin</b></tt> list), implicitly partitioned into four blocks (two input ports and two output ports).</li>
+<li>
+<tt><b>r#  </b></tt>: 1x2 row vector, dimension of <tt><b>P#22</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Linear fractional transform between two standard plants
+    <tt><b>P</b></tt> and <tt><b>P#</b></tt> in state space form or in
+    transfer form (<tt><b>syslin</b></tt> lists).</p>
+<p><tt><b>r= size(P22) r#=size(P22#)</b></tt></p>
+<p><tt><b>LFT(P,r, K)</b></tt> is the linear fractional transform
+    between <tt><b>P</b></tt> and a controller <tt><b>K</b></tt>
+    (<tt><b>K</b></tt> may be a gain or a controller in state space form
+    or in transfer form);</p>
+<p><tt><b>LFT(P,K)</b></tt> is <tt><b>LFT(P,r,K)</b></tt> with
+    <tt><b>r</b></tt>=size of <tt><b>K</b></tt> transpose;</p>
+<p><tt><b>P1= P11+P12*K* (I-P22*K)^-1 *P21</b></tt></p>
+<p><tt><b>[P1,r1]=LFT(P,r,P#,r#)</b></tt> returns the generalized (2
+    ports) lft of <tt><b>P</b></tt> and <tt><b>P#</b></tt>.</p>
+<p><tt><b>P1</b></tt> is the pair two-port interconnected plant and the
+    partition of <tt><b>P1</b></tt> into 4 blocks in given by
+    <tt><b>r1</b></tt> which is the dimension of the <tt><b>22</b></tt>
+    block of <tt><b>P1</b></tt>.</p>
+<p><tt><b>P</b></tt> and <tt><b>R</b></tt> can be PSSDs i.e. may admit a
+    polynomial <tt><b>D</b></tt> matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+P=[1/s, 1/(s+1); 1/(s+2),2/s]; K= 1/(s-1);
+lft(P,K)
+lft(P,[1,1],K)
+P(1,1)+P(1,2)*K*inv(1-P(2,2)*K)*P(2,1)   //Numerically dangerous!
+ss2tf(lft(tf2ss(P),tf2ss(K)))
+lft(P,-1)
+f=[0,0;0,1];w=P/.f; w(1,1)
+//Improper plant (PID control)
+W=[1,1;1,1/(s^2+0.1*s)];K=1+1/s+s
+lft(W,[1,1],K); ss2tf(lft(tf2ss(W),[1,1],tf2ss(K)))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/sensi.htm"><tt><b>sensi</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/augment.htm"><tt><b>augment</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/feedback.htm"><tt><b>feedback</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sysdiag.htm"><tt><b>sysdiag</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

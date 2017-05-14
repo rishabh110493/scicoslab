@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lmitool</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lmitool</b> -  tool for solving linear matrix inequations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>lmitool()  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>lmitool(filename)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>txt=lmitool(probname,varlist,datalist)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: a string referring to a <tt><b>.sci</b></tt> function</li>
+<li>
+<tt><b>probname</b></tt>: a string containing the name of the problem</li>
+<li>
+<tt><b>varlist</b></tt>: a string containing the names of the unknown matrices (separated by commas if there are more than one)</li>
+<li>
+<tt><b>datalist</b></tt>:  a string containing the names of  data matrices (separated by commas if there are more than one)</li>
+<li>
+<tt><b>txt</b></tt>: a string providing information on what the user should do next</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lmitool()</b></tt> or <tt><b>lmitool(filename)</b></tt> is used to define 
+    interactively a LMI problem.
+    In the non interactive mode,
+    <tt><b>txt=lmitool(probname,varlist,datalist)</b></tt>
+    generates a file in the current directory. The name of this file 
+    is obtained by adding <tt><b>.sci</b></tt> to the end of <tt><b>probname</b></tt>. 
+    This file is the skeleton of a solver function and the corresponding 
+    evaluation function needed by <tt><b>lmisolver</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/lmisolver.htm"><tt><b>lmisolver</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

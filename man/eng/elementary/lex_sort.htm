@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lex_sort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lex_sort</b> -  lexicographic matrix rows  sorting</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N, [k]]=lex_sort(M [,sel] [,'unique'])  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>M</b></tt>: real matrix</li>
+<li>
+<tt><b>N</b></tt>: real  matrix</li>
+<li>
+<tt><b>k</b></tt>: column vector  of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>N=lex_sort(M)</b></tt> sorts the rows (as a group) of the matrix <tt><b>M</b></tt>
+    in ascending order. If required the output argument <tt><b>k</b></tt> contains
+    the ordering: <tt><b>[N,k]=lex_sort(M)</b></tt> returns <tt><b>k</b></tt>  such as <tt><b>N</b></tt>  is
+    uequal to <tt><b>M(k,:)</b></tt> .</p>
+<p><tt><b>N=lex_sort(M,sel [,'unique'])</b></tt> produces the  same result as the
+    following sequence of instructions:</p>
+<pre>
+
+[N,k]=lex_sort(M(:,sel) [,'unique']);
+N=M(k,:)
+   
+    </pre>
+<p>
+    The <tt><b>'unique'</b></tt> flag has to be given if one wants to retain only
+    unique rows in the result. Note that <tt><b>lex_sort(M,sel,'unique')</b></tt>
+    retains only rows such that M(:,sel) are unique.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+M=round(2*rand(20,3));
+
+lex_sort(M)
+lex_sort(M,'unique')
+[N,k]=lex_sort(M,[1 3],'unique')
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

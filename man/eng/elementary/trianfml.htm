@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>trianfml</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>trianfml</b> -  symbolic triangularization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[f [,sexp]]=trianfml(f [,sexp])  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Symbolic triangularization of the  matrix <tt><b>f</b></tt> ; triangularization 
+    is performed by elementary row operations;
+    <tt><b>sexp</b></tt> is a set of common expressions stored by the algorithm.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=['1','2';'a','b']
+W=trianfml([A,string(eye(2,2))])
+U=W(:,3:4)
+a=5;b=6;
+A=evstr(A)
+U=evstr(U)
+U*A
+evstr(W(:,1:2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/addf.htm"><tt><b>addf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/mulf.htm"><tt><b>mulf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/solve.htm"><tt><b>solve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/trisolve.htm"><tt><b>trisolve</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

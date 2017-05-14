@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ilib_compile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ilib_compile</b> -  ilib_build utility: executes the
+    makefile produced by ilib_gen_Make</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>libn=ilib_compile(lib_name,makename [,files])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>lib_name</b></tt>: a character string, the generic name of the library without path and extension.</li>
+<li>
+<tt><b>makename</b></tt>: character string. The path of the Makefile file without extension.</li>
+<li>
+<tt><b>files</b></tt>: optionnal vector of character strings. If files is given the make is performed on each 
+	    target contained in files then a whole make is performed </li>
+<li>
+<tt><b>libn</b></tt>: character string. The path of the really generated shared library file.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function used by <tt><b>ilib_build</b></tt></p>
+<p>
+    This executes the  makefile produced by <tt><b>ilib_gen_Make</b></tt>, compiles
+    the C and fortran files and generates the shared library.</p>
+<p>
+    Shared libraries can then be used with the <tt><b>link</b></tt> and
+    <tt><b>addinter</b></tt> scilab function for incremental linking.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_build.htm"><tt><b>ilib_build</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_gen_Make.htm"><tt><b>ilib_gen_Make</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_gen_gateway.htm"><tt><b>ilib_gen_gateway</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_gen_loader.htm"><tt><b>ilib_gen_loader</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_for_link.htm"><tt><b>ilib_for_link</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>diffblk_c_routcos</TITLE>
+<META NAME="description" CONTENT="diffblk_c_routcos">
+<META NAME="keywords" CONTENT="diffblk_c_routcos">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="diffblk_c_routcos.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Fonction de calcul
+<BR><A NAME="tex2html1"
+  HREF="./diffblk_c_routcos.htm">fr</A>
+
+</DIV>
+<H2><A NAME="SECTION00010000000000000000"></A><A NAME="diffblk_c_routcos"></A>
+<BR>
+diffblk_c
+</H2>
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Contenu du fichier</A>
+</font></H3>
+<BR>
+<PRE  CLASS="verbatim">#include "scicos_block4.h"
+
+/*     February 2008 */
+/*    Copyright INRIA
+ *    Scicos block simulator
+ */
+
+void diffblk_c(scicos_block *block,int flag)
+{
+  double *_xd=GetDerState(block);
+  double *_x=GetState(block);
+  double *_res=GetResState(block);
+  double *y,*u;
+  int i;
+  int* property=GetXpropPtrs(block);
+  int nx=GetNstate(block);
+    switch(flag)
+      {
+      case 4  : {
+        for (i=0;i&lt;nx;i++) property[i]=-1; /* xproperties*/
+        break;
+      }
+
+      case 6  : { 
+	u=GetRealInPortPtrs(block,1);
+	//	for (i=0;i&lt;nx;i++)  _x[i]=u[i];
+	break;	
+      }
+
+      case 7  : {
+	for (i=0;i&lt;nx;i++) property[i]=-1; /* xproperties*/
+	break;
+      }
+
+      case 0  : {
+	u=GetRealInPortPtrs(block,1);
+	for (i=0;i&lt;nx;i++) _res[i]=u[i]-_x[i];
+	break;
+      }
+
+      case 1  : {
+	y=GetRealOutPortPtrs(block,1);
+	for (i=0;i&lt;nx;i++)  y[i]=_xd[i];
+	break;	
+      }
+
+      default : break;
+      }
+}
+</PRE>
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

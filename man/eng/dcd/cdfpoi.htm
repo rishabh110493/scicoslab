@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cdfpoi</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfpoi</b> -  cumulative distribution function poisson distribution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfpoi("PQ",S,Xlam)  </tt></dd>
+<dd><tt>[S]=cdfpoi("S",Xlam,P,Q)  </tt></dd>
+<dd><tt>[Xlam]=cdfpoi("Xlam",P,Q,S);  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,S,Xlam</b></tt>: four real vectors of the same size.</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>:  The cumulation from 0 to S of the poisson density. Input range: [0,1].</li>
+<li>
+<tt><b>S</b></tt>:Upper limit of cumulation of the Poisson. Input range: [0, +infinity). Search range: [0,1E300]</li>
+<li>
+<tt><b>Xlam</b></tt>:  Mean of the Poisson distribution. Input range: [0, +infinity). Search range: [0,1E300]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates any one parameter of the Poisson
+    distribution given values for the others.</p>
+<p>
+    Formula   26.4.21  of   Abramowitz  and   Stegun,   Handbook  of
+    Mathematical Functions (1966) is used  to reduce the computation
+    of  the cumulative distribution function to that  of computing a
+    chi-square, hence an incomplete gamma function.</p>
+<p>
+    Cumulative  distribution function  (P) is  calculated  directly.
+    Computation of other parameters involve a seach for a value that
+    produces  the desired value of  P.   The  search relies  on  the
+    monotinicity of P with the other parameter.</p>
+<p>
+    From DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.</p>
+</body>
+</html>

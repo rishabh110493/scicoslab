@@ -1,0 +1,39 @@
+IntroTrfAsg                    Traffic-Toolbox Comments         IntroTrfAsg
+NAME
+   IntroTrfAsg - Introduction to the Traffic Assignment Toolbox
+  
+DESCRIPTION
+    The purpose of the toolbox is to solve traffic assignment problems. A
+  good reference is Michael Patriksson's book "The Traffic Assignment
+  Problem, Models and Methods". 
+  
+   To define the problem we need : 
+  
+      1) The Traffic Network : an oriented graph G where nn nodes
+      represent places or cities, and na arcs represent  links or roads.
+      
+      2) The Link Performance Functions (also known as travel time
+      functions): the travel time as a function of the flow in the arc.
+      Seven formulae are used needing 4 parameters. Once a formula is
+      chosen for the whole network, the parameters are defined in a 4 x na
+      matrix.
+      
+      3) The Origin-Destination traffic demand pairs (OD-pairs also called
+      commodities) : are given by an initial node, a final node and a flow.
+      The nd OD-pairs are defined by a 3 x nd matrix.
+      
+
+    All the data is stored in a scilab structure called a "NetList" that
+  plays the role of a geographic data basis which can be visualized by
+  "ShowNet" and edited inside "metanet" or "scigraph". This NetList is
+  build by "MakeNet".
+  
+    
+  
+   The traffic assignment is computed by "TrafficAssig". The results are
+  stored in the Geographic Data Basis and can be visualized with "ShowNet".
+  
+  
+SEE ALSO
+   NetList, MakeNet, ShowNet, TrafficAssig  
+  

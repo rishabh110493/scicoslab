@@ -1,0 +1,55 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Regular </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>Regular  -   Generation of regular city traffic network data  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>net=Regular(hs,vs,nd)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>hs  </b></tt>
+    : integer number of horizontal streets
+  </li>
+  <li><tt><b>vs  </b></tt>
+    : integer number of vertical streets
+  </li>
+  <li><tt><b>nd  </b></tt>
+    : non-negative real parameter related to the OD-pairs (origin-destination)
+  </li>
+  <li><tt><b>net  </b></tt>
+    : the resulting Netlist 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Generates a NetList consisting in a regular city whose graph is a hsxvs grid
+    For the link travel time functions, the data is the same for all links and given
+    by t0=ca=ma,ba=1. The lpf_model is 3.
+    It is possible to generated 4 different types of Regular City depending on parameter nd:
+  </p>
+  <p>
+    - nd=[] -&gt; The net has all possible O-D pairs all of them with demand equal to 1
+  </p>
+  <p>
+    - nd=1  -&gt; There is only one O-D pair joining the most distant nodes. Demand's value equal 
+    to 1.
+  </p>
+  <p>
+    - nd in (0,1) -&gt; The parameter nd represent the density of O-D pairs present in the net. 
+    Demands value equal to 1
+  </p>
+  <p>
+    - nd&gt;1 -&gt; There are [nd] random demands generated. Demands value in the interval [0,15].
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=Regular(4,5);
+// generates a network with 4 horizontal streets, 5 vertical streets, 
+// (20 nodes, 31 arcs) and all possible OD-pairs:343 
+ShowNet();
+
+%net=Regular(4,5,1);
+// generates only one demand
+ShowNet();
+
+%net=Regular(4,5,0.5);
+// generates randomly the OD-pairs with density 0.5
+ShowNet();
+
+%net=Regular(4,5,7);
+// generates 7 random OD-pairs
+ShowNet();
+
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

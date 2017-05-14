@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>trans_closure</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>trans_closure</b> -  transitive closure</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g1 = trans_closure(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>g1</b></tt>: graph list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>trans_closure</b></tt> returns as a new graph list <tt><b>g1</b></tt> the transitive
+    closure of the graph <tt><b>g</b></tt>. This graph must be directed and connected.
+    If <tt><b>&lt;name&gt;</b></tt> if the name of graph <tt><b>g</b></tt>, 
+    <tt><b>&lt;name&gt;_trans_closure</b></tt> is the name of the transitive closure.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[2 3 3 5 3 4 4 5 8];
+he=[1 2 4 2 6 6 7 7 4];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[129 200 283 281 128 366 122 333];
+g('node_y')=[61 125 129 189 173 135 236 249];
+show_graph(g);
+g1=trans_closure(g);
+vv=1*ones(ta); aa=sparse([ta' he'],vv');
+ta1=g1('tail'); he1=g1('head');
+ww=1*ones(ta1); bb=sparse([ta1' he1'],ww');
+dif=bb-aa; lim=size(ta1); edgecolor=0*ones(ta1);
+for i=1:lim(2)
+ if dif(ta1(i),he1(i))==1 then edgecolor(i)=11; end;
+end;
+g1('edge_color')=edgecolor;
+x_message('Transitive closure of the graph');
+show_graph(g1);
+ 
+  </pre>
+</body>
+</html>

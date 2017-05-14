@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>contourf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>contourf</b> -  filled level curves of a surface on a 2D plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>contourf(x,y,z,nz,[style,strf,leg,rect,nax])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two real row vectors of size n1 and n2: the grid.</li>
+<li>
+<tt><b>z</b></tt>: real matrix of size (n1,n2), the values of the function.</li>
+<li>
+<tt><b>nz</b></tt>: the level values or the number of levels.<ul>
+<li>
+<tt><b>-  </b></tt>If <tt><b>nz</b></tt> is an integer, its value gives the number of level curves  equally spaced from zmin to zmax as follows:<pre>
+
+ z= zmin + (1:nz)*(zmax-zmin)/(nz+1)
+   
+                </pre>
+<p>
+    Note that the <tt><b>zmin</b></tt> and <tt><b>zmax</b></tt> levels are not drawn  (generically they are reduced to points) but they can be added  with 
+  </p>
+<pre>
+
+ [im,jm] = find(z == zmin);     // or zmax 
+ plot2d(x(im)',y(jm)',-9,"000")
+   
+                </pre>
+</li>
+<li>
+<tt><b>-  </b></tt>If <tt><b>nz</b></tt> is a vector, <tt><b>nz(i)</b></tt> gives the value of the ith level curve.</li>
+</ul>
+</li>
+<li>
+<tt><b>style,strf,leg,rect,nax</b></tt>: see <tt><b>plot2d</b></tt>. The argument <tt><b>style</b></tt> gives the colors which are to be used for level curves. It must have the same size as the number of levels.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>contourf</b></tt> paints surface between two consecutives level curves of a surface <tt><b>z=f(x,y)</b></tt> on a 2D plot.
+    The values of <tt><b>f(x,y)</b></tt> are given by the matrix <tt><b>z</b></tt> at the
+    grid points defined by <tt><b>x</b></tt> and <tt><b>y</b></tt>.</p>
+<p>
+    You can change the format of the floating point number printed on the levels
+    by using <tt><b>xset("fpf",string)</b></tt> where <tt><b>string</b></tt> gives the 
+    format in C format syntax (for example <tt><b>string="%.3f"</b></tt>). Use 
+    <tt><b>string=""</b></tt> to switch back to default format.</p>
+<p>
+    Enter the command <tt><b>contour2d()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+contourf(1:10,1:10,rand(10,10),5,1:5,"011"," ",[0,0,11,11])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/contour.htm"><tt><b>contour</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fcontour.htm"><tt><b>fcontour</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fcontour2d.htm"><tt><b>fcontour2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/contour2di.htm"><tt><b>contour2di</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

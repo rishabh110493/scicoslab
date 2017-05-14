@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mpprojspec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mpprojspec</b> -   maxplus spectral projector  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,n]=eigenspace(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : maxplus square matrix full
+  </li>
+<li>
+<tt><b>P  </b></tt>
+    : spectral projector (sparse maxplus matrix)
+  </li>
+<li>
+<tt><b>n  </b></tt>
+    : weak dimension of the spectral space 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computes the spectral projector associated with the largest eigenvalue
+    of a maxplus matrix and gives the number of strongly connected components
+    of the critical graph which is the dimension of the corresponding
+    spectral space.
+  </p>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[P,n]=mpprojspec(#(1))
+a=#([1,2;3,4]);[P,n]=mpprojspec(a)
+P*a==P*4
+a=#([1,0;0,1]); [P,n]=mpprojspec(a)
+P*a==P*1
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/eigenspace.htm"><tt><b>eigenspace</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

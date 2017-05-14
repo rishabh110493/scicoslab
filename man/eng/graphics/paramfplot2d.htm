@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>paramfplot2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>paramfplot2d</b> -  animated 2D plot, curve defined by a function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>paramfplot2d(f,x,theta)  </tt></dd>
+<dd><tt>paramfplot2d(f,x,theta,flag)  </tt></dd>
+<dd><tt>paramfplot2d(f,x,theta,flagrect)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real vector.</li>
+<li>
+<tt><b>f</b></tt>: function <tt><b>y=f(x,t)</b></tt> . f is a Scilab function or a dynamically linked routine (referred to as a string).</li>
+<li>
+<tt><b>theta</b></tt>: real vector (set of parameters).</li>
+<li>
+<tt><b>flag</b></tt>: string <tt><b>'no'</b></tt> or <tt><b>'yes'</b></tt>: If "yes" screen is cleared  between two consecutive plots.</li>
+<li>
+<tt><b>rect</b></tt>: "rectangle" [xmin, xmax, ymin, ymax] (1 x 4 real vector),</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Animated plot of the function x--&gt;f(x,t) for t=theta(1),theta(2),etc.
+    f can be a either Scilab function or a dynamically linked routine since
+    y=f(x,t) is evaluated as y=feval(x(:),t,f). See feval.
+    f: mapping x,t -&gt; f(x,t) = <tt><b>R^N</b></tt>  valued function for x= vector of <tt><b>R^N</b></tt>
+    and t=real number. x is a N-vector of x-values and for each t in theta, f(x,t)=N-vector of y-values.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('y=f(x,t)','y=t*sin(x)')
+x=linspace(0,2*%pi,50);theta=0:0.05:1;
+paramfplot2d(f,x,theta);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/feval.htm"><tt><b>feval</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fplot2d.htm"><tt><b>fplot2d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

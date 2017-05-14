@@ -1,0 +1,74 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>biterGrid</title></head>
+<body bgcolor="FFFFFF">
+<CENTER>Traffic-toolbox Function  </CENTER>
+<p><b>biterGrid  -   Bilevel optimisation function using  grid linear search
+  </b></p>
+<H3><font color="blue">Calling Sequence</font></H3>
+<dl><dd><tt>[prix,opfV,sfV,sP]=biterGrid(prlk,lp,up,n,esp,m)</tt></dd></dl>
+<H3><font color="blue">Parameters</font></H3>
+<ul><ul>
+  <li><tt><b>prlk </b></tt>
+    : row vector of the priced links
+  </li>
+  <li><tt><b>lp  </b></tt>
+    : lower bound for prices
+  </li>
+  <li><tt><b>up  </b></tt>
+    : uper bound for prices 
+  </li>
+  <li><tt><b>n  </b></tt>
+    : grid's size 
+  </li>
+  <li><tt><b>eps  </b></tt>
+    : precision
+  </li>
+  <li><tt><b>m  </b></tt>
+    : number of grid subdivision 
+  </li>
+  <li><tt><b>prix  </b></tt>
+    : optimal link prices
+  </li>
+  <li><tt><b>opfV  </b></tt>
+    : optimum value of the profit function
+  </li>
+  <li><tt><b>sfV  </b></tt>
+    : sequence of the profit function values
+  </li>
+  <li><tt><b>sP  </b></tt>
+    : sequence of prices
+  </li>
+   </ul></ul>
+<H3><font color="blue">Description</font></H3><dl>
+  <p>This function solves numerically the optimal network pricing problem
+given by: Max_y f(x(y),y)=y'x(y), subject to x being solution of the 
+parametric (with parameter y) traffic assignment problem over the traffic 
+network describe in the global variable %net.
+</p>
+<p>The algorithm is based on a cyclic decomposition along coordenate axis
+of upper level objective function (given by the links prices y).
+In each direction a global line search is done through a 
+1-dimensional grid search. Once the precision eps is reached the grid is subdivided
+in a neighbourhood of the current optimum, eps is multyplied by 10-e3. This process
+is repeated m times.
+</p>
+<p>
+</p>
+
+</dl>
+
+<H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+[prix,opfV,sfV,sP]=biterGrid([10,21],0,10,50,1e-5,3);
+</pre></ul>
+
+<H3><font color="blue">See Also</font></H3>
+<p><ul><a href="biGls.htm"><tt><b> biGls</b></tt></a>&nbsp;&nbsp;<a href="biGraphic.htm"><tt><b>biGraphic</b></tt></a>&nbsp;&nbsp;<a href="bilevel.htm"><tt><b>bilevel</b></tt></a>&nbsp;&nbsp;
+</ul></p>
+</body>
+</html>
+
+
+

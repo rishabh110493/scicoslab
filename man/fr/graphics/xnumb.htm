@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xnumb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xnumb</b> -  dessine des nombres  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xnumb(x,y,nums,[box,angle])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,nums  </b></tt>
+    : vecteurs de même taille.
+</li>
+<li>
+<tt><b>box  </b></tt>
+    : entier.
+</li>
+<li>
+<tt><b>angle  </b></tt>
+    : vecteur optionnel de même taille que <tt><b>x</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xnumb</b></tt> dessine les nombres <tt><b>nums(i)</b></tt>
+    aux positions <tt><b>x(i),y(i)</b></tt> dans l'échelle courante.
+    Si <tt><b>box</b></tt> vaut 1, une boîte est dessinée autour des nombres. 
+    Si <tt><b>angle</b></tt> est donné, il donne la direction pour le dessin de la chaîne de caractères.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+plot2d([-100,500],[-100,600],[-1,-1],"022")
+x=0:100:200;
+xnumb(x,500*ones(x),[10,20,35],1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

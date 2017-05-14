@@ -1,0 +1,186 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>findBD</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>findBD</b> -  initial state and system matrices B and D of a discrete-time system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[(x0) (,B (,D)) (,V) (,rcnd)] = findBD(jobx0,comuse (,job),A (,B),C (,D),Y</tt></dd>
+<dd><tt>                                      (,U,tol,printw,ldwork))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>jobx0</b></tt>: integer option to specify whether or not the initial state  should be computed:<ul>
+<li>
+<tt><b>=  </b></tt>1 : compute the initial state x0;</li>
+<li>
+<tt><b>=  </b></tt>2 : do not compute the initial state (possibly, because x0 is known to be zero).</li>
+</ul>
+</li>
+<li>
+<tt><b>comuse</b></tt>: integer option to specify whether the system matrices B and D should be computed or used:<ul>
+<li>
+<tt><b>=  </b></tt>1 : compute the matrices B and D, as specified by job;</li>
+<li>
+<tt><b>=  </b></tt>2 : use the matrices B and D, as specified by job;</li>
+<li>
+<tt><b>=  </b></tt>3 : do not compute/use the matrices B and D.</li>
+</ul>
+</li>
+<li>
+<tt><b>job</b></tt>: integer option to determine which of the system matrices B and D should be computed or used:<ul>
+<li>
+<tt><b>=  </b></tt>1 : compute/use the matrix B only (D is known to be zero);</li>
+<li>
+<tt><b>=  </b></tt>2 : compute/use the matrices B and D.</li>
+</ul>
+<p>
+    job must not be specified if jobx0 = 2 and comuse = 2, or if comuse = 3.
+  </p>
+</li>
+<li>
+<tt><b>A</b></tt>: state matrix of the given system</li>
+<li>
+<tt><b>B</b></tt>: optionnal, input matrix of the given system</li>
+<li>
+<tt><b>C</b></tt>: output matrix of the given system</li>
+<li>
+<tt><b>D</b></tt>: optionnal, direct feedthrough of the given system</li>
+<li>
+<tt><b>Y</b></tt>: the t-by-l output-data sequence matrix.  Column  j  of  Y  contains the  t  values of the j-th output component for consecutive time increments.</li>
+<li>
+<tt><b>U</b></tt>: the t-by-m input-data sequence matrix (input when jobx0 = 1  and comuse = 2, or comuse = 1).  Column  j  of  U  contains the  t  values of the j-th input component for consecutive time increments.</li>
+<li>
+<tt><b>tol</b></tt>: optionnal, tolerance used for estimating the rank of
+  matrices. If  tol &gt; 0,  then the given value of  tol  is used as
+  a lower bound for the reciprocal condition number; an m-by-n matrix
+  whose estimated condition number is less than  1/tol  is considered
+  to be of full rank. Default:    m*n*epsilon_machine where
+  epsilon_machine is the relative machine precision.</li>
+<li>
+<tt><b>printw</b></tt>:optionnal, switch for printing the warning messages.<ul>
+<li>
+<tt><b>=  </b></tt>1:  print warning messages;</li>
+<li>
+<tt><b>=  </b></tt>0:  do not print warning messages.</li>
+</ul>
+<p>
+    Default:    printw = 0.
+  </p>
+</li>
+<li>
+<tt><b>ldwork</b></tt>: (optional) the workspace size. Default :   computed by the formula LDWORK = MAX( minimum workspace size needed, 2*CSIZE/3, CSIZE - ( m + l )*t - 2*n*( n + m + l ) - l*m ) where CSIZE is the cache size in double precision words.</li>
+<li>
+<tt><b>x0</b></tt>: initial state vector</li>
+<li>
+<tt><b>Br</b></tt>: system input matrix</li>
+<li>
+<tt><b>Dr</b></tt>: system direct feedthrough matrix</li>
+<li>
+<tt><b>V</b></tt>: the n-by-n orthogonal matrix which reduces A to a real Schur form (output when jobx0 = 1 or comuse = 1).</li>
+<li>
+<tt><b>rcnd</b></tt>: (optional) the reciprocal condition numbers of the matrices involved in rank decisions.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    findBD  function for estimating the initial state and the system
+    matrices B and D of a discrete-time system, using SLICOT routine 
+    IB01CD.
+  </p>
+<pre>
+
+
+     [x0,Br,V,rcnd] = findBD(1,1,1,A,C,Y,U)
+   [x0,Br,Dr,V,rcnd] = findBD(1,1,2,A,C,Y,U)
+        [Br,V,rcnd] = findBD(2,1,1,A,C,Y,U)
+      [B,Dr,V,rcnd] = findBD(2,1,2,A,C,Y,U)
+       [x0,V,rcnd] = findBD(1,2,1,A,B,C,Y,U)
+       [x0,V,rcnd] = findBD(1,2,2,A,B,C,D,Y,U)
+         [x0,rcnd] = findBD(2,2)      // (Set x0 = 0, rcnd = 1)
+       [x0,V,rcnd] = findBD(1,3,A,C,Y)
+   
+    </pre>
+<p>
+    Note: the example lines above may contain at the end the parameters
+    tol, printw, ldwork.
+  </p>
+<p>
+    FINDBD estimates the initial state and/or the system matrices Br and Dr
+    of a discrete-time system, given the system matrices A, C, and possibly
+    B, D, and the input and output trajectories of the system.
+  </p>
+<p>
+    The model structure is :
+  </p>
+<pre>
+
+         x(k+1) = Ax(k) + Bu(k),   k &gt;= 1,
+         y(k)   = Cx(k) + Du(k),
+   
+    </pre>
+<p>
+       where 
+     
+    x(k)  is the  n-dimensional state vector (at time k),
+  </p>
+<p>
+    u(k)  is the  m-dimensional input vector,
+  </p>
+<p>
+    y(k)  is the  l-dimensional output vector,
+  </p>
+<p>
+    and  A, B, C, and D  are real matrices of appropriate dimensions.
+  </p>
+<h3><font color="blue">Comments</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">1.</font></b>The n-by-m system input matrix B is an input parameter when jobx0 = 1  and comuse = 2, and it is an output parameter when comuse = 1.</li>
+<li>
+<b><font color="maroon">2.</font></b>The l-by-m system matrix D is an input parameter when jobx0 = 1,  comuse = 2 and job = 2, and it is an output parameter when comuse = 1  and job = 2.</li>
+<li>
+<b><font color="maroon">3.</font></b>The n-vector of estimated initial state x(0) is an output parameter when jobx0 = 1, but also when jobx0 = 2 and comuse &lt;= 2, in which case it is set to 0.</li>
+<li>
+<b><font color="maroon">4.</font></b>If ldwork is specified, but it is less than the minimum workspace size  needed, that minimum value is used instead.</li>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//generate data from a given linear system
+A = [ 0.5, 0.1,-0.1, 0.2;
+      0.1, 0,  -0.1,-0.1;      
+     -0.4,-0.6,-0.7,-0.1;  
+      0.8, 0,  -0.6,-0.6];      
+B = [0.8;0.1;1;-1];
+C = [1 2 -1 0];
+SYS=syslin(0.1,A,B,C);
+nsmp=100;
+U=prbs_a(nsmp,nsmp/5);
+Y=(flts(U,SYS)+0.3*rand(1,nsmp,'normal'));
+
+// Compute R
+S=15;L=1;
+[R,N,SVAL] = findR(S,Y',U');
+
+N=3;
+METH=3;TOL=-1;
+[A,C] = findAC(S,N,L,R,METH,TOL);
+[X0,B,D] = findBD(1,1,2,A,C,Y',U')
+SYS1=syslin(1,A,B,C,D,X0);
+
+Y1=flts(U,SYS1);
+xbasc();plot2d((1:nsmp)',[Y',Y1'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/inistate.htm"><tt><b>inistate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findx0BD.htm"><tt><b>findx0BD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findABCD.htm"><tt><b>findABCD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findAC.htm"><tt><b>findAC</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBD.htm"><tt><b>findBD</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>V. Sima, Katholieke Univ. Leuven, Belgium, May 2000.  
+  (Revisions: V. Sima, July 2000)</p>
+</body>
+</html>

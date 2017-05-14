@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>ExportMI  </TITLE>
+  <TYPE>CiudadSim Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="ExportMI "> Scilab to MapInfo interface   </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>ok=ExportMI(net,name,nameout,disp_option)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    Scilab variable containing the network
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>name  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    the name of the MI source file without extension
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nameout  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    the name of the MapInfo table where the results will be saved 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>disp_option  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    displaying options. 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    This command is meant to display in MapInfo the results obtained for
+    a network already recovered from mapinfo. 
+    It uses an existant MI file named name and creates two files : one .mif and one.mid.
+  </P>
+  <P>
+    To see them in MI , they must be imported (table/import), then the values
+    obtained in Scilab will be in the table associated with the file, and the
+    width of the arcs will be proportional to the chosen magnitude, flow or time.
+  </P>
+  <P>
+    The displaying option is used to specify the magnitude shown in the arcs.
+    The values for disp_option are the strings &apos;flow&apos; and &apos;time&apos;. 
+  </P>
+  <P>
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+// Scilab to MapInfo translation
+// 1) Choose the example Versailles where the scilab network is obtained
+// from a MapInfo file
+%net=TrafficExample("Versailles");
+// 2) Make an assignment
+TrafficAssig()
+// 3) Translate to mapinfo
+ok=ExportMI(%net,CS_DIR+"/examples/SGL_Versailles",CS_DIR+"/examples/man_example")
+// 4) Look the content of the variable CS_DIR (you need it in MapInfo)
+// 5) Open MapInfo and import the tables man_example,
+// look for it in CS_DIR then in examples
+
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>ImportMI</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

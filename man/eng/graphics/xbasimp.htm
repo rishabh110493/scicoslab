@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xbasimp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xbasimp</b> - send graphics to a Postscript printer or
+  in a file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xbasimp(win_num,[filen,printer])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>win_num</b></tt>: integer scalar or vector</li>
+<li>
+<tt><b>filen</b></tt>: string, Postscript file name (default value is "file"). The
+          window number is appended to <tt><b>filen</b></tt>.</li>
+<li>
+<tt><b>printer</b></tt>: string, printer name. If <tt><b>printer</b></tt> is present or if
+          there is only one argument in the calling sequence, the created file
+          is printed on printer <tt><b>printer</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xbasimp</b></tt> sends the recorded graphics of the window
+    <tt><b>win_num</b></tt> into the Postscript file <tt><b>filen. </b></tt>Note
+    that the generated Postscript file cannot be direcly printed since it
+    requires a header file. The Scilab command <tt><b>BEpsf</b></tt>,
+    <tt><b>Blpr</b></tt> or others can be used to add a header file. The function
+    <tt><b>xs2eps</b></tt> can be used to directly produce an encapsulated
+    Postscript file with an header. If a printer is specified, the Postscript
+    file is printed with the command <tt><b>Blpr</b></tt>. This function works
+    only if the selected driver is <tt><b>"Rec"</b></tt>.</p>
+<p>If <tt><b>win_num</b></tt> is a vector, several files are generated, one
+    for each selected window (with names <tt><b>filenxx</b></tt>), and the files
+    are printed on a unique page with the command <tt><b>Blpr</b></tt>.</p>
+<p>The window number is appended to <tt><b>filen</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/printing.htm"><tt><b>printing</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2gif.htm"><tt><b>xs2gif</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2ps.htm"><tt><b>xs2ps</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2eps.htm"><tt><b>xs2eps</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

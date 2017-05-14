@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>printing</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>printing</b> -  printing scilab graphics</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Blatexpr xscale yscale filename.ps</tt></dd>
+<dd><tt>BEpsf filename.ps</tt></dd>
+<dd><tt>Blpr "Title" filename1.ps filename2.ps ... filenamen.ps | lpr</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The scilab graphics can be saved with the <tt><b>xbasimp</b></tt>
+    command into unix files. The Scilab command :
+  </p>
+<pre>
+
+ xbasimp(xx,'des.ps',0)
+   
+    </pre>
+<p>
+    will save the graphics recorded in the graphic window xx in the 
+    file <tt><b>des.ps.xx</b></tt>. This file can't be directly send to a Postscript
+    printer and a set of programs ( in the <tt><b>bin</b></tt> Scilab directory ) are 
+    given with Scilab to print it :
+  </p>
+<dl>
+<dd>
+<b>BEpsf</b>: The <tt><b>BEpsf</b></tt> command will create an Epsf file from your <tt><b>des.ps.xx</b></tt> under the name <tt><b>des.epsf</b></tt>, this Epsf file can be printed on a Postscript printer or inserted into an other Postscript document.</dd>
+<dd>
+<b>Blatexpr</b>: The  <tt><b>Blatexpr</b></tt> command will create an Epsf file from
+    your <tt><b>des.ps.xx</b></tt><pre>
+
+  mv des.ps.xx des.ps
+  Blatexpr 1.0 1.0 des.ps
+   
+        </pre>
+<p>
+     under the name <tt><b>des.epsf</b></tt> and a LaTeX file 
+    <tt><b>des.tex</b></tt>. The file <tt><b>des.tex</b></tt> can be inserted in a LaTeX 
+    file in order to get the latex figure as follows ( the postscript 
+    file is inserted with the <tt><b>special</b></tt> command of LaTeX )
+  </p>
+<pre>
+
+ \input des.tex 
+ \dessin{caption}{label}
+   
+        </pre>
+</dd>
+<dd>
+<b>Blpr</b>: The <tt><b>Blpr</b></tt> command is used to print a set of graphics on a same  sheet of paper. For example to print two graphics on a unique page, one can use :<pre>
+
+Blpr "Two graphics" file1.ps.0 file2.ps.1 | lpr 
+   
+        </pre>
+</dd>
+<dd>
+<b>Blatexprs</b>: The <tt><b>Blatexprs</b></tt> command is used to insert in a single LaTeX figure  a set of Scilab Graphics<pre>
+
+Blatexprs res file1.ps.0 file2.ps.1
+   
+        </pre>
+<p>
+    will create two files <tt><b>res.ps</b></tt> and <tt><b>res.tex</b></tt>. The file <tt><b>res.tex</b></tt>
+    is used as in the <tt><b>Blatexpr</b></tt> command in order to get the figure.</p>
+</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2gif.htm"><tt><b>xs2gif</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

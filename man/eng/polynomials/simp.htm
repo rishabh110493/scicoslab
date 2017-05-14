@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>simp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>simp</b> -  rational simplification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N1,D1]=simp(N,D)  </tt></dd>
+<dd><tt>H1=simp(H)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>N,D</b></tt>: real polynomials or real matrix polynomials</li>
+<li>
+<tt><b>H</b></tt>: rational matrix (i.e matrix with entries <tt><b>n/d</b></tt> ,<tt><b>n</b></tt> and <tt><b>d</b></tt> real polynomials)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[n1,d1]=simp(n,d)</b></tt> calculates two polynomials <tt><b>n1</b></tt> and <tt><b>d1</b></tt>
+    such that <tt><b>n1/d1 = n/d</b></tt>.</p>
+<p>
+    If <tt><b>N</b></tt> and <tt><b>D</b></tt> are polynomial matrices the calculation
+    is performed element-wise.</p>
+<p><tt><b>H1=simp(H)</b></tt> is also valid (each entry of <tt><b>H</b></tt> is 
+    simplified in <tt><b>H1</b></tt>).</p>
+<p>
+    Caution:</p>
+<p>
+    -no threshold is given i.e. <tt><b>simp</b></tt> cannot forces a
+    simplification.</p>
+<p>
+    -For linear dynamic systems which include integrator(s) simplification
+    changes the static gain. (<tt><b>H(0)</b></tt> for continuous systems or <tt><b>H(1)</b></tt> for
+    discrete systems)</p>
+<p>
+    -for complex data, <tt><b>simp</b></tt> returns its input(s).</p>
+<p>
+    -rational simplification is called after nearly each operations on 
+    rationals. It is possible to toggle simplification on or off using
+    <tt><b>simp_mode</b></tt> function.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+[n,d]=simp((s+1)*(s+2),(s+1)*(s-2))
+
+simp_mode(%F);hns=s/s
+simp_mode(%T);hns=s/s
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/roots.htm"><tt><b>roots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/trfmod.htm"><tt><b>trfmod</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/simp_mode.htm"><tt><b>simp_mode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

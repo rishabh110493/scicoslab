@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>global</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>global</b> -  Define global variable</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>global('nam1',...,'namn')  </tt></dd>
+<dd><tt>global nam1 ... namn</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>nam1,..., namn</b></tt>: valid variable names</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Ordinarily, each Scilab function, has its
+    own local variables and can "read" all variables created in the base
+    workspace or by the calling functions. The <tt><b>global</b></tt> keyword allow to make
+    variables read/write across functions. Any assignment to that variable,
+    in any function, is available to all the other functions declaring
+    it <tt><b>global</b></tt>.</p>
+<p>
+    If the global variable doesn't exist the first time you issue
+    the <tt><b>global</b></tt> statement, it will be initialized to the empty matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//first: calling environnment and a function share a variable
+global a
+a=1
+deff('y=f1(x)','global a,a=x^2,y=a^2')
+f1(2)
+a
+//second: three functions share variables
+deff('initdata()','global A C ;A=10,C=30')
+deff('letsgo()','global A C ;disp(A) ;C=70')
+deff('letsgo1()','global C ;disp(C)')
+initdata()
+letsgo()
+letsgo1()
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/isglobal.htm"><tt><b>isglobal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/clearglobal.htm"><tt><b>clearglobal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/gstacksize.htm"><tt><b>gstacksize</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/resume.htm"><tt><b>resume</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fullrf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fullrf</b> -  factorisation de rang plein  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Q,M,rk]=fullrf(A,[tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice réelle ou complexe
+</li>
+<li>
+<tt><b>tol  </b></tt>
+    : nombre réel (tolérance pour le calcul du rang)
+</li>
+<li>
+<tt><b>Q,M  </b></tt>
+    : matrices réelles ou complexes
+</li>
+<li>
+<tt><b>rk  </b></tt>
+    : entier (rang de <tt><b>A</b></tt>)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cette fonction calcule la factorisation de rang plein de <tt><b>A</b></tt> : <tt><b>fullrf</b></tt> renvoie <tt><b>Q</b></tt> et <tt><b>M</b></tt> telles que <tt><b>A = Q*M</b></tt>
+    avec Im(<tt><b>Q</b></tt>)=Im(<tt><b>A</b></tt>) et ker(<tt><b>M</b></tt>)=ker(<tt><b>A</b></tt>),
+    <tt><b>Q</b></tt> de rang maximal, et les lignes de <tt><b>M</b></tt> sont linéairement indépendantes, 
+    <tt><b>rk</b></tt> = rank(<tt><b>A</b></tt>) = nombre de colonnes de <tt><b>Q</b></tt> =  nombre de lignes de <tt><b>M</b></tt>.
+  </p>
+<p><tt><b>tol</b></tt> = paramètre de tolérance (de l'ordre de <tt><b>%eps</b></tt> par défaut).
+    Le rang <tt><b>rk</b></tt> de <tt><b>A</b></tt> est considéré égal au nombre de ses valeurs singulières plus grandes que <tt><b>norm(A)*tol</b></tt>.
+  </p>
+<p>
+    Si A est symétrique, <tt><b>fullrf</b></tt> renvoie <tt><b>M=Q'</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=rand(5,2)*rand(2,5);
+[Q,M]=fullrf(A);
+norm(Q*M-A,1)
+[X,d]=rowcomp(A);Y=X';
+svd([A,Y(:,1:d),Q])        // Im(Q) = Im(A) = Im(Y(:,1:2))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

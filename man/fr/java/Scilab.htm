@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Scilab</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Java Interface</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Scilab</b> - Scilab Class</p>
+<h3><font color="blue">Description</font></h3>
+<p><IMG ALIGN="CENTERED" src="../../images/java/ScilabClass.gif"></p>
+<p>Method Summary :</p>
+<p><tt><b>public static void Events()</b></tt> : do a scilab event.</p>
+<p><tt><b>public static boolean HaveAGraph() </b></tt>: return true if there
+    is a scilab graphic window.</p>
+<p><tt><b>public static boolean Exec(String job) </b></tt>: execute a job in scilab. return true if there is no error.</p>
+<p><tt><b>public static native boolean ExistVar(String VarName) </b></tt>: Detect if VarName exists in Scilab. return true if Varname exist.</p>
+<p><tt><b>public static native int TypeVar(String VarName) </b></tt>: return  Scilab type of VarName. See <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a></p>
+<p><tt><b>public static native int GetLastErrorCode() </b></tt>: return  last Error code. See <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lasterror.htm"><tt><b>lasterror</b></tt></a></p>
+<p><tt><b>public static native boolean Finish() </b></tt>: terminate scilab (call scilab.quit , close a scilab object)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre> // See SCI/examples/Callsci/CallsciJava directory</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/java/SciDouble.htm"><tt><b>SciDouble</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/java/SciDoubleArray.htm"><tt><b>SciDoubleArray</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/java/SciString.htm"><tt><b>SciString</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/java/SciStringArray.htm"><tt><b>SciStringArray</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>A.C</p>
+</body>
+</html>

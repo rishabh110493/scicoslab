@@ -1,0 +1,193 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plot3d_old_version</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot3d_old_version</b> - 3D plot of a
+  surface</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plot3d(x,y,z,[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>plot3d(x,y,z,&lt;opt_args&gt;)</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>plot3d(xf,yf,zf,[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>plot3d(xf,yf,zf,&lt;opt_args&gt;)</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>plot3d(xf,yf,list(zf,colors),[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>plot3d(xf,yf,list(zf,colors),&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: row vectors of sizes n1 and n2 (x-axis and y-axis
+          coordinates). These coordinates must be monotone.</li>
+<li>
+<tt><b>z</b></tt>: matrix of size (n1,n2). <tt><b>z(i,j)</b></tt> is the value of
+          the surface at the point (x(i),y(j)).</li>
+<li>
+<tt><b>xf,yf,zf</b></tt>: matrices of size (nf,n). They define the facets used to draw
+          the surface. There are <tt><b>n</b></tt> facets. Each facet
+          <tt><b>i</b></tt> is defined by a polygon with <tt><b>nf</b></tt> points.
+          The x-axis, y-axis and z-axis coordinates of the points of the ith
+          facet are given respectively by <tt><b>xf(:,i)</b></tt>,
+          <tt><b>yf(:,i)</b></tt> and <tt><b>zf(:,i)</b></tt>.</li>
+<li>
+<tt><b>colors</b></tt>: a vector of size n giving the color of each facets or a matrix
+          of size (nf,n) giving color near each facet boundary (facet color is
+          interpolated )</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: theta, alpha
+          ,leg,flag,ebox (see definition below)</li>
+<li>
+<tt><b>theta, alpha</b></tt>: real values giving in degree the spherical coordinates of the
+          observation point.</li>
+<li>
+<tt><b>leg</b></tt>: string defining the captions for each axis with @ as a field
+          separator, for example "X@Y@Z".</li>
+<li>
+<tt><b>flag</b></tt>: a real vector of size three
+          <tt><b>flag=[mode,type,box]</b></tt>.<ul>
+<li>
+<tt><b>mode</b></tt>: string (treatment of hidden parts).<ul>
+<li>
+<tt><b>mode&gt;0</b></tt>the hidden parts of the surface are removed and the
+                      surface is painted with color <tt><b>mode</b></tt>.</li>
+<li>
+<tt><b>mode=0</b></tt>the hidden parts of the surface are drawn.</li>
+<li>
+<tt><b>mode&lt;0</b></tt>only the backward facing facets are painted with
+                      color or pattern id <tt><b>-mode</b></tt>. Use
+                      <tt><b>xset()</b></tt> to see the meaning of the ids.</li>
+</ul>
+</li>
+<li>
+<tt><b>type</b></tt>: an integer (scaling).<ul>
+<li>
+<tt><b>type=0</b></tt>the plot is made using the current 3D scaling (set
+                      by a previous call to <tt><b>param3d</b></tt>,
+                      <tt><b>plot3d</b></tt>, <tt><b>contour</b></tt> or
+                      <tt><b>plot3d1</b></tt>).</li>
+<li>
+<tt><b>type=1</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are specified by the value of the
+                      optional argument <tt><b>ebox</b></tt>.</li>
+<li>
+<tt><b>type=2</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are computed using the given
+                      data.</li>
+<li>
+<tt><b>type=3</b></tt>3d isometric with box bounds given by optional
+                      <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>
+</li>
+<li>
+<tt><b>type=4</b></tt>3d isometric bounds derived from the data, to
+                      similarily<tt><b>type=2</b></tt>
+</li>
+<li>
+<tt><b>type=5</b></tt>3d expanded isometric bounds with box bounds given
+                      by optional <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>
+</li>
+<li>
+<tt><b>type=6</b></tt>3d expanded isometric bounds derived from the data,
+                      similarily to <tt><b>type=2</b></tt>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>box</b></tt>: an integer (frame around the plot).<ul>
+<li>
+<tt><b>box=0</b></tt>nothing is drawn around the plot.</li>
+<li>
+<tt><b>box=1</b></tt>unimplemented (like box=0).</li>
+<li>
+<tt><b>box=2</b></tt>only the axes behind the surface are drawn.</li>
+<li>
+<tt><b>box=3</b></tt>a box surrounding the surface is drawn and captions
+                      are added.</li>
+<li>
+<tt><b>box=4</b></tt>a box surrounding the surface is drawn, captions and
+                      axes are added.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ebox</b></tt>: used when <tt><b>type</b></tt> in <tt><b>flag</b></tt> is 1. It
+          specifies the boundaries of the plot as the vector
+          <tt><b>[xmin,xmax,ymin,ymax,zmin,zmax]</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot3d(x,y,z,[theta,alpha,leg,flag,ebox])</b></tt> draws the
+    parametric surface <tt><b>z=f(x,y)</b></tt>.</p>
+<p><tt><b>plot3d(xf,yf,zf,[theta,alpha,leg ,flag,ebox])</b></tt> draws a
+    surface defined by a set of facets. You can draw multiple plots by
+    replacing <tt><b>xf</b></tt>, <tt><b>yf</b></tt> and <tt><b>zf</b></tt> by multiple
+    matrices assembled by rows as <tt><b>[xf1 xf2 ...]</b></tt>, 
+    <tt><b>[yf1 yf2 ...]</b></tt> and <tt><b>[zf1 zf2 ...]</b></tt>.</p>
+<p>You can give a specific color for each facet by using
+    <tt><b>list(zf,colors)</b></tt> instead of <tt><b>zf</b></tt>, where
+    <tt><b>colors</b></tt> is a vector of size <tt><b>n</b></tt>. If
+    <tt><b>colors(i)</b></tt> is positive it gives the color of facet
+    <tt><b>i</b></tt> and the boundary of the facet is drawn with current line
+    style and color. If <tt><b>colors(i)</b></tt> is negative, color id
+    <tt><b>-colors(i)</b></tt> is used and the boundary of the facet is not
+    drawn. Use <tt><b>xset()</b></tt> to see the ids of the colors.</p>
+<p>It is also possible to get interpolated color for facets. For that the
+    color argument must be a matrix of size nfxn giving the color near each
+    boundary of each facets. In this case positive values for colors mean that
+    the boundary are not drawn.</p>
+<p>The optional arguments <tt><b>theta,alpha,leg ,flag,ebox</b></tt>, can be
+    passed by a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,
+    ... In this case, the order has no special meaning.</p>
+<p>You can use the function <tt><b>genfac3d</b></tt> to compute four sided
+    facets from the surface <tt><b>z=f(x,y)</b></tt>. <tt><b>eval3dp</b></tt> can
+    also be used.</p>
+<p>Enter the command <tt><b>plot3d()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// simple plot using z=f(x,y)
+t=[0:0.3:2*%pi]'; z=sin(t)*cos(t');
+plot3d(t,t,z)
+// same plot using facets computed by genfac3d
+[xx,yy,zz]=genfac3d(t,t,z);
+xbasc()
+plot3d(xx,yy,zz)
+// multiple plots
+xbasc()
+plot3d([xx xx],[yy yy],[zz 4+zz])
+// multiple plots using colors
+xbasc()
+plot3d([xx xx],[yy yy],list([zz zz+4],[4*ones(1,400) 5*ones(1,400)]))
+// simple plot with viewpoint and captions
+xbasc()
+plot3d(1:10,1:20,10*rand(10,20),35,45,"X@Y@Z",[2,2,3])
+// plot of a sphere using facets computed by eval3dp
+deff("[x,y,z]=sph(alp,tet)",["x=r*cos(alp).*cos(tet)+orig(1)*ones(tet)";..
+  "y=r*cos(alp).*sin(tet)+orig(2)*ones(tet)";..
+  "z=r*sin(alp)+orig(3)*ones(tet)"]);
+r=1; orig=[0 0 0];
+[xx,yy,zz]=eval3dp(sph,linspace(-%pi/2,%pi/2,40),linspace(0,%pi*2,20));
+xbasc();plot3d(xx,yy,zz)
+
+xbasc();xset('colormap',hotcolormap(128));
+r=0.3;orig=[1.5 0 0];
+[xx1,yy1,zz1]=eval3dp(sph,linspace(-%pi/2,%pi/2,40),linspace(0,%pi*2,20));
+cc=(xx+zz+2)*32;cc1=(xx1-orig(1)+zz1/r+2)*32;   
+xbasc();plot3d1([xx xx1],[yy yy1],list([zz,zz1],[cc cc1]),70,80)
+
+xbasc();plot3d1([xx xx1],[yy yy1],list([zz,zz1],[cc cc1]),theta=70,alpha=80,flag=[5,6,3])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/eval3dp.htm"><tt><b>eval3dp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/genfac3d.htm"><tt><b>genfac3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/geom3d.htm"><tt><b>geom3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/param3d.htm"><tt><b>param3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d1.htm"><tt><b>plot3d1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

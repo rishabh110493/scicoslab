@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_tidtohost</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_tidtohost</b> -  returns the host of the specified PVM process.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[dtid] = pvm_tidtohost(tid)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>tid</b></tt>: integer, task identifier of the PVM process in question.</li>
+<li>
+<tt><b>dtid</b></tt>: integer, the tid of the host's pvmd3 or a negative value if an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_tidtohost</b></tt> returns the host id on which the process identified by
+    <tt><b>tid</b></tt> is running.</p>
+<p>
+    The returned value <tt><b>dtid</b></tt>will be &gt;= 0 if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_config.htm"><tt><b>pvm_config</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_tasks.htm"><tt><b>pvm_tasks</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

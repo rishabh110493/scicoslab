@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dscr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dscr</b> -   discretization of linear system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sld [,r]]=dscr(sl,dt [,m])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list containing <tt><b>[A,B,C,D]</b></tt>.</li>
+<li>
+<tt><b>dt</b></tt>: real number, sampling period</li>
+<li>
+<tt><b>m</b></tt>: covariance of the input noise (continuous time)(default value=0)</li>
+<li>
+<tt><b>r</b></tt>: covariance of the output noise (discrete time) given if <tt><b>m</b></tt> is  given as input</li>
+<li>
+<tt><b>sld</b></tt>: sampled (discrete-time) linear system, <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Discretization of linear system. <tt><b>sl</b></tt> is a continuous-time system:</p>
+<p><tt><b>dx/dt=A*x+B*u (+ noise)</b></tt>.</p>
+<p><tt><b>sld</b></tt> is the discrete-time system obtained by 
+    sampling <tt><b>sl</b></tt> with the sampling period <tt><b>dt</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+Sys=syslin('c',[1,1/(s+1);2*s/(s^2+2),1/s])
+ss2tf(dscr(tf2ss(Sys),0.1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/flts.htm"><tt><b>flts</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/dsimul.htm"><tt><b>dsimul</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

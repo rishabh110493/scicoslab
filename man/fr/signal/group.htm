@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>group</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>group</b> -  group delay for digital filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[tg,fr]=group(npts,a1i,a2i,b1i,b2i)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>npts</b></tt>: integer : number of points desired in calculation of group delay</li>
+<li>
+<tt><b>a1i</b></tt>: in coefficient, polynomial, rational polynomial, or cascade polynomial form this variable is the transfer function of the filter. In coefficient polynomial form this is a vector of coefficients (see below).</li>
+<li>
+<tt><b>a2i</b></tt>: in coeff poly form this is a vector of coeffs</li>
+<li>
+<tt><b>b1i</b></tt>: in coeff poly form this is a vector of coeffs</li>
+<li>
+<tt><b>b2i</b></tt>: in coeff poly form this is a vector of coeffs</li>
+<li>
+<tt><b>tg</b></tt>: values of group delay evaluated on the grid fr</li>
+<li>
+<tt><b>fr</b></tt>: grid of frequency values where group delay is evaluated</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculate the group delay of a digital filter
+    with transfer function h(z).</p>
+<p>
+    The filter specification can be in coefficient form,
+    polynomial form, rational polynomial form, cascade
+    polynomial form, or in coefficient polynomial form.</p>
+<p>
+    In the coefficient polynomial form the transfer function is
+    formulated by the following expression</p>
+<p><tt><b>h(z)=prod(a1i+a2i*z+z**2)/prod(b1i+b2i*z+z^2)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+z=poly(0,'z');
+h=z/(z-.5);
+[tg,fr]=group(100,h);
+plot(fr,tg)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plustimes </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plustimes </b> -   standard type constructor  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>B=plustimes(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : maxplus full or sparse matrix
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : standard full or sparse matrix 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Set the type to standard full if A is full or standard sparse if A is sparse.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+typeof(plustimes(#(1)))
+typeof(plustimes(sparse(#(1))))
+typeof(plustimes(#([1,2;3,4])))
+typeof(plustimes(sparse([%1,0;0,1])))
+typeof(#(1))
+typeof(#(sparse(1)))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

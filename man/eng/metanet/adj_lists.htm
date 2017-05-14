@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>adj_lists</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>adj_lists</b> -  computes adjacency lists</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[lp,la,ls] = adj_lists(g)  </tt></dd>
+<dd><tt>[lp,la,ls] = adj_lists(directed,n,tail,head)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>directed</b></tt>: integer, 0 (undirected graph) or 1 (directed  graph)</li>
+<li>
+<tt><b>n</b></tt>: integer, the number of nodes of the graph</li>
+<li>
+<tt><b>tail</b></tt>: the row vector of the numbers of the tail nodes of the graph (its size is the number of edges of the graph)</li>
+<li>
+<tt><b>head</b></tt>: the row vector of the numbers of the head nodes of the graph (its size is the number of edges of the graph)</li>
+<li>
+<tt><b>lp</b></tt>: row vector, pointer array of the adjacency lists description of the graph  (its size is the number of nodes of the graph + 1)</li>
+<li>
+<tt><b>la</b></tt>: row vector, arc array of the adjacency lists description of the graph  (its size is the number of edges of the graph)</li>
+<li>
+<tt><b>ls</b></tt>: row vector, node array of the adjacency lists description of the graph  (its size is the number of edges of the graph)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>adj_lists</b></tt> computes the row vectors of the adjacency lists description of 
+    the graph <tt><b>g</b></tt>.
+    It is also possible to give <tt><b>adj_lists</b></tt> the description of the
+    graph given by the number of nodes 
+    <tt><b>n</b></tt> and the row vectors <tt><b>tail</b></tt> and <tt><b>head</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[2 3 3 5 3 4 4 5 8];
+he=[1 2 4 2 6 6 7 7 4];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[129 200 283 281 128 366 122 333];
+g('node_y')=[61 125 129 189 173 135 236 249];
+show_graph(g);
+[lp,la,ls]=adj_lists(g)
+[lp,la,ls]=adj_lists(1,g('node_number'),ta,he)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/chain_struct.htm"><tt><b>chain_struct</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph_2_mat.htm"><tt><b>graph_2_mat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

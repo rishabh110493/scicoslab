@@ -1,0 +1,34 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>ShowDemands </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>ShowDemands  -   Shows the demands of a net using Metanet or Scigraph  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>ShowDemands()  </tt></dd><dd><tt>ShowDemands(nodes,demands,dmin,dmax)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>%net  </b></tt>
+    : the global NetList variable databasis
+  </li>
+  <li><tt><b>nodes  </b></tt>
+    : string or row vector of integers (nodes)
+  </li>
+  <li><tt><b>demands  </b></tt>
+    : string or row vector of integers (demands)
+  </li>
+  <li><tt><b>dmin,dmax  </b></tt>
+    : reals, minimum and maximum demands   
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     ShowDemands shows the demands of NetList that their volume is between
+    dmin and dmax. All the demands are shown if nothing is indicated)
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample('Steenbrink');
+ShowDemands() // Shows the net
+ShowDemands('all','between',100,200)
+ShowDemands('used','between',100,200)
+// Shows the net with the demands between 100 and 200,
+// and the used nodes.
+ShowDemands('used',[1 3 8 12],100,200)
+// Shows the given demands with values between 100 and 200
+   </pre><p>
+    
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;<a href="ShowLinks.htm"><tt><b>ShowLinks</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;<a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

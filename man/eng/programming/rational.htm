@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rational</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Objects</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rational</b> -  Scilab objects, rational in Scilab</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A rational <tt><b>r</b></tt> is a quotient of two polynomials <tt><b>r=num/den</b></tt>.
+    The internal representation of a rational is a list.
+    <tt><b>r=tlist('['r','num','den','dt'],num,den,[])</b></tt> is the same as <tt><b>r=num/den</b></tt>.
+    A rational matrix can be defined with the usual syntax
+    e.g. <tt><b>[r11,r12;r21,r22]</b></tt> is a 2x2 matrix where <tt><b>rij</b></tt> are 
+    1x1 rationals.
+    A rational matrix can also be defined as above as a list
+    <tt><b>tlist(['r','num','den','dt'],num,den,[])</b></tt> with <tt><b>num</b></tt> and <tt><b>den</b></tt> polynomial matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+W=[1/s,1/(s+1)]
+W'*W
+Num=[s,s+2;1,s];Den=[s*s,s;s,s*s];
+tlist(['r','num','den','dt'],Num,Den,[])
+H=Num./Den
+syslin('c',Num,Den)
+syslin('c',H)
+[Num1,Den1]=simp(Num,Den)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

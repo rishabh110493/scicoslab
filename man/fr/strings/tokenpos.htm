@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tokenpos</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tokenpos</b> -  returns the tokens positions in a character string.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>kdf=tokenpos(str [,delimiter])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: a character string. The string where to search the tokens.</li>
+<li>
+<tt><b>delimiter</b></tt>: (optional) a character or a vector of characters. The tokens delimeters.</li>
+<li>
+<tt><b>kdf</b></tt>: two columns matrix, first column gives the index of the beginning of the tokens, the second gives the index of the last character of the tokens.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>kdf=tokenpos(str [,delimiter]) </b></tt> searches the tokens included in the
+    string <tt><b>str</b></tt>. The <tt><b>delimiter</b></tt> default value is [" ",&lt;Tab&gt;]
+    where &lt;Tab&gt; stands for <tt><b>ascii(9)</b></tt>. It returns the indices of the
+    first and last characters of each found tokens.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+str='This is a character string';
+kdf=tokenpos(str)
+first=part(str,kdf(1,1):kdf(1,2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/strindex.htm"><tt><b>strindex</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/tokens.htm"><tt><b>tokens</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

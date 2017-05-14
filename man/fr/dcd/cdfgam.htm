@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdfgam</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfgam</b> -  fonction de répartition de la distribution gamma  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfgam("PQ",X,Shape,Scale)  </tt></dd>
+<dd><tt>[X]=cdfgam("X",Shape,Scale,P,Q)  </tt></dd>
+<dd><tt>[Shape]=cdfgam("Shape",Scale,P,Q,X)  </tt></dd>
+<dd><tt>[Scale]=cdfgam("Scale",P,Q,X,Shape)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,X,Shape,Scale  </b></tt>
+    : 5 vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    :  L'intégrale de 0 à X de la distribution gamma En entrée : [0,1].
+</li>
+<li>
+<tt><b>X  </b></tt>
+    :  Borne supérieure d'intégration En entrée : [0, +infini). En recherche : [0,1E300]
+</li>
+<li>
+<tt><b>Shape  </b></tt>
+    :  Le paramètre de forme de la distribution En entrée : (0, +infini). En recherche : [1E-300,1E300]
+</li>
+<li>
+<tt><b>Scale  </b></tt>
+    :  le paramètre d'échelle de la distribution En entrée : (0, +infini). En recherche : (1E-300,1E300]
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution gamma.
+  </p>
+<p>
+    La fonction de répartition (P) est calculée directement par
+    le code associé à
+  </p>
+<p>
+    DiDinato, A. R. and Morris, A. H. Computation of the  incomplete
+    gamma function  ratios  and their  inverse.   ACM  Trans.  Math.
+    Softw. 12 (1986), 377-393.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+<p>
+    La distribution gamma est proportionnelle à
+    <tt><b>T**(SHAPE - 1) * EXP(- SCALE * T)</b></tt></p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

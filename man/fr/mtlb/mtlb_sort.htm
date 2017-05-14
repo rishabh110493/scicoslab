@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_sort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_sort</b> - Fonction d'émulation de la fonction
+  Matlab sort</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>P = mtlb_sort(X)</tt></dd>
+<dd><tt>P = mtlb_sort(X,dim[,mode])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: un scalaire, un vecteur, une matrice ou hypermatrice
+          d'elements compris dans [-1 1]un scalaire, un vecteur ou une matrice
+          de réels, de booléens ou une string</li>
+<li>
+<tt><b>ndim</b></tt>: un entier positif</li>
+<li>
+<tt><b>mode</b></tt>:une chaine de caracteres (<tt><b>"ascend"</b></tt> or
+          <tt><b>"descend"</b></tt>) </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>sort</b></tt> de
+    Matlab et la fonction <tt><b>gsort</b></tt> de Scilab se comportent
+    différemment :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>Si <tt><b>X</b></tt> est un vecteur alors l'appel de la fonction
+            <tt><b>sort(X) </b></tt>de Matlab est équivalent à  l'appel de la
+            fonction <tt><b>sort(X,'g','i')</b></tt> de Scilab. </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>dim=1</b></tt> (resp. <tt><b>2</b></tt>) de Matlab est
+            equivalent au flag <tt><b>'r'</b></tt> (resp.<tt><b> 'c'</b></tt>) de
+            Scilab.</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>mode="ascend"</b></tt> (resp. <tt><b>"descend"</b></tt>) est
+            équivalent au flag <tt><b>'i'</b></tt> (resp <tt><b>'d'</b></tt>) de
+            Scilab.</li>
+</dd>
+</dd></dl>
+<p>La fonction <tt><b>mtlb_sort(X,dim[,mode])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>sort(X,dim[,mode])</b></tt>
+    quand il n'était pas possible de savoir ce qu'étaient les paramètres
+    d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette
+    fonction va déterminer la sémantique correcte pendant l'exécution. Pour
+    obtenir un code plus performant on peut remplacer les appels à 
+    <tt><b>mtlb_sort</b></tt> par des appels <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/gsort.htm"><tt><b>gsort</b></tt></a>.</p>
+<p>Attention : <tt><b>mtlb_sort</b></tt> ne doit pas être utilisée pour une
+    programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>F.B.</dd></dl>
+</body>
+</html>

@@ -1,0 +1,44 @@
+TrafficExample               Traffic-toolbox Function        TrafficExample
+NAME
+   TrafficExample -  Traffic network example
+  
+CALLING SEQUENCE
+   
+  
+ net=TrafficExample("name",p1,p2,p3,p4)
+PARAMETERS
+ net        : NetList of the traffic network
+            
+ name       : string to choose among "Braess", "Diamond", "Empty", "Nguyen
+            Dupuis", "Normal Random City", "Random City", "Regular City", 
+            "Sioux Falls", "Small", "Steenbrink", "Triangle".
+            
+ p1, p2,    
+            
+ p3, p4     : reals needed for examples: Regular City, Random City and
+            Normal Random City 
+            
+DESCRIPTION
+    Generates a net-list choosing among many traffic network examples: 
+  -"Braess" -> 4 nodes, 5 links and 1 demand. Linear travel time functions.
+   -"Chicago" -> 546 nodes, 2176 links and 93135 demands. Real large
+  example.  -"Diamond" -> 8 nodes, 14 links and 1 demand, diamond shaped
+  network.  -"Empty" ->  2 nodes and 1 link graph.  -"Nguyen Dupuis" -> 13
+  nodes, 19 links and 4 demands network. Linear travel time functions. 
+  -"Normal Random City" -> A net is generated using
+  RandomNNet(p1,p2,p3,p4).  -"Random City" -> A net is generated using
+  RandomNet(p1,p2,p3,p4).  -"Regular City" ->  A net is generated using
+  Regular(p1,p2,p3).  -"Sioux Falls" -> 24 nodes, 76 links and 528 demands
+  network. Travel time functions of power 4.  -"Small" -> 4 nodes, 9 links
+  and 2 demands network. Quadratic travel time functions.  -"Steenbrink" ->
+  9 nodes, 36 links and 12 demands network. Linear travel time functions. 
+  -"Triangle" ->  3 nodes and 6 links network   These examples can be used
+  as starting point to make different networks. 
+  
+EXAMPLES
+ %net=TrafficExample("Sioux Falls");
+ ShowNet()
+ 
+SEE ALSO
+   RandomNet, RandomNNet, Regular, NetList, TrafficAssig    
+  

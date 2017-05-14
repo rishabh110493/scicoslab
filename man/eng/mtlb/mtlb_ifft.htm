@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_ifft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_ifft</b> - Matlab ifft emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab <tt><b>ifft</b></tt> and Scilab <tt><b>fft</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        With one input parameter: If input is a scalar or vector Scilab equivalent for Matlab <tt><b>ifft(A)</b></tt>
+	is <tt><b>fft(A,1)</b></tt> else if input is a matrix Scilab equivalent for Matlab <tt><b>fft</b></tt>
+	is <tt><b>fft(A,1,2,1)</b></tt>
+</li></dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_ifft(X[,n,[job]])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>ifft(X[,n,[job]])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_ifft</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>X</b></tt> is a scalar or a vector
+        <tt><b>mtlb_ifft(X,1)</b></tt> may be replaced by <tt><b>fft(X,1)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>X</b></tt> is a matrix
+        <tt><b>mtlb_ifft(X,1)</b></tt> may be replaced by <tt><b>fft(X,1,2,1)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_ifft</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

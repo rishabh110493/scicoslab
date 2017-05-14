@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xfarc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xfarc</b> -  fill a part of an ellipse</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xfarc(x,y,w,h,a1,a2)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,w,h</b></tt>: four real values defining a rectangle.</li>
+<li>
+<tt><b>a1,a2</b></tt>: real values defining a sector.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xfarc</b></tt> fills a part of an ellipse contained in the rectangle 
+    <tt><b>(x,y,w,h)</b></tt>
+    (upper-left point, width, height), and in the sector defined by 
+    the angle <tt><b>alpha1</b></tt> and the angle <tt><b>alpha1+alpha2</b></tt>. 
+    <tt><b>alpha1</b></tt> and <tt><b>alpha2</b></tt> are 
+    given respectively by <tt><b>a1/64</b></tt> degrees and <tt><b>a2/64</b></tt> degrees.
+    This function uses the current color and graphics scale.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// isoview scaling 
+plot2d(0,0,-1,"031"," ",[-2,-2,2,2])
+xfarc(-0.5,0.5,1,1,0,90*64)
+xset("color",2)
+xfarc(0.5,0.5,1,1,0,360*64)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xarc.htm"><tt><b>xarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xarcs.htm"><tt><b>xarcs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfarcs.htm"><tt><b>xfarcs</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.;   </p>
+</body>
+</html>

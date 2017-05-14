@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>Probit  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="Probit ">  Probit-based stochastic network assignment  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>[f,s]=Probit(net,ta,beta,accuracy,kmax)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <P>  </P>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : a NetList 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>ta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : link travel time
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>beta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : variance of the perceived travel time over a road segment of unit travel time
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>accuracy  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : precision
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>kmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : maximum number of iterations
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>f  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : assigned flow (disaggregated by commodity)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>s  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : standard deviation for the assigned flow f 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Assigns the flow with a Probit-based model. In this model
+    the perceived travel time along any given path is normally 
+    distributed with mean ta and variance beta*ta.
+    The algorithm use to make the assignment is base on a
+    Monte Carlo simulation of the perceived link travel times.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+net=TrafficExample("Small");
+ta=net.links.lpf_data(1,:);
+// uses the example net Small
+[f,s]=Probit(net,ta,0.1,0.001,7);
+
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>AON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IAON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>CAPRES</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>FW</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>path_2_nodes</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>path_2_nodes</b> -  set of nodes from a path</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>ns = path_2_nodes(p,g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p</b></tt>: row vector of integer numbers of the arcs of the path</li>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>ns</b></tt>: row vector of integer numbers of the set of nodes</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>path_2_nodes</b></tt> returns the set of nodes <tt><b>ns</b></tt> corresponding to the 
+    path <tt><b>p</b></tt> given by its arc numbers ; if <tt><b>p</b></tt> is not a path, the
+    empty vector <tt><b>[]</b></tt> is returned.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+p=[2 16 23 25 26 22 17 18 19 13 10 11];
+g1=g; edgecolor=1*ones(ta); edgecolor(p)=11*ones(p);
+g1('edge_color')=edgecolor;
+show_graph(g1); show_arcs(p);
+ns=path_2_nodes(p,g);
+g1=g; nodecolor=1*ones(g1('node_number')); nodecolor(ns)=11*ones(ns);
+g1('node_color')=nodecolor;
+show_graph(g1);show_nodes(ns);
+show_arcs(p,'sup');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/nodes_2_path.htm"><tt><b>nodes_2_path</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>AON  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="AON ">  All or Nothing traffic assignment algorithm   </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>[F]=AON(net)  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>[F]=AON(net,t0)  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>[F]=AON(tl,hl,t0,nn,origins,td,hd,dd)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : a NetList, 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>t0  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : row vector, the link travel time (if not given in net)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>tl, hl  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : row vectors, tail and head nodes numbers of the links 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nn  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : node number
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>origins  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : origins of the OD pairs
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>td, hd, dd  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : row vectors, tail and head nodes numbers of the demands, and demands values
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>F  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : assigned flow  
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Assigns the flow with the All or Nothing algorithm. For each OD-pair
+    it looks for the minimum travel time path and assigns all the demand to this
+    path. The travel time of the links are given by t0 or by the corresponding field in net.
+    The non feasible OD pairs are ignored.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+net=TrafficExample('Small');
+F=AON(net)
+   ]]></VERBATIM>
+  <P>
+    
+  </P>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>AONd</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IA</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IAON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>FW</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>CAPRES</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

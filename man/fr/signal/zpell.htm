@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>zpell</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zpell</b> -  lowpass elliptic filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[zeros,poles,gain]=zpell(epsilon,A,omegac,omegar)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>epsilon</b></tt>: real : ripple of filter in pass band (<tt><b>0&lt;epsilon&lt;1</b></tt>)</li>
+<li>
+<tt><b>A</b></tt>: real : attenuation of filter in stop band (<tt><b>A&gt;1</b></tt>)</li>
+<li>
+<tt><b>omegac</b></tt>: real : pass band cut-off frequency in Hertz</li>
+<li>
+<tt><b>omegar</b></tt>: real : stop band cut-off frequency in Hertz</li>
+<li>
+<tt><b>zeros</b></tt>: resulting zeros of filter</li>
+<li>
+<tt><b>poles</b></tt>: resulting poles of filter</li>
+<li>
+<tt><b>gain</b></tt>: resulting gain of filter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Poles and zeros of prototype lowpass elliptic filter.
+    <tt><b>gain</b></tt> is the gain of the filter</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/ell1mag.htm"><tt><b>ell1mag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/eqiir.htm"><tt><b>eqiir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.   </p>
+</body>
+</html>

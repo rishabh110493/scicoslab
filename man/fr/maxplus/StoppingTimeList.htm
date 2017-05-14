@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>StoppingTimeList</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>StoppingTimeList</b> -  Optimal Markov Chain Stopping Time Data Bases  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>%StopTime=tlist(['StopTime','Mtrans','Cout','Einit','Eps','Efilt','Cfilt','Popt','Copt'],..  </tt></dd>
+<dd><tt>Mtrans,Cout,Einit,Eps,Efilt,Cfilt,Popt,Copt)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li><tt><b>Mtrans :  </b></tt></li>
+<li>
+<tt><b>Cout  </b></tt>
+    : Matrix of two colums costs of size n. The first column is the stopping cost and the second one is the instantaneous cost.
+  </li>
+<li>
+<tt><b>Einit  </b></tt>
+    : Row vector of size n rpresenting the initial conditional state law. 
+  </li>
+<li>
+<tt><b>Eps  </b></tt>
+    : Integer giving the bit number accepted to approximate the entries of the optimal state filter.  
+  </li>
+<li>
+<tt><b>Efilt  </b></tt>
+    : Matrix with n column representing the support of the  approximated filter law. The line number m depends of the problem and of the quantification level (Eps).
+  </li>
+<li>
+<tt><b>Cfilt  </b></tt>
+    : Matrix mx2 giving the average costs on the support of the filter law.
+  </li>
+<li>
+<tt><b>Popt  </b></tt>
+    : Sparse column vector (of size m) giving the optimal policy on the filter law support. When it takes the value 1 we continue. When it takes the value 0 we stop. 
+  </li>
+<li>
+<tt><b>Copt  </b></tt>
+    : Colum vector (of size m) giving the optimal cost on the filter support. 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p></p>
+<p>
+     All the data needed and obtained in solving optimal
+    stopping time for Markov chains incompletely observed
+    is stored in a tlist global variable called %StopTime.
+     
+    The number of states and possible
+    observations are supposed to be finite.
+  </p>
+<p>
+    The fields Efilt and Cfilt are filled by calling the function
+  </p>
+<pre>
+support() 
+   </pre>
+<p></p>
+<p>
+    The fields Popt and Copt are filled by the calling to the function
+  </p>
+<pre>
+optstop() 
+   </pre>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// Secretary Problem (4 scretaries)
+//
+// Definition of Transition Matrices
+nbr=2
+Obs0=[1 0 0 0;0 0.75 0 0;0 0 0.5 0;0 0 0 0.25]
+Obs1=[0 0 0 0;0.25 0 0 0;0.25 0.25 0 0;0.25 0.25 0.25 0]
+Mtrans=tlist(['trans','nbr','y1','y2'],nbr,Obs0,Obs1)
+//
+// Cost definitions
+C0=[1;0;0;0]
+C1=[-1/10;-1/10;-1/10;-1/10]
+C=[C0,C1]
+//
+// Uniform initial law
+E0=[0.25 0.25 0.25 0.25]
+//
+// 3 bits quantification
+Eps=3
+//
+// The data bases is a global variable
+global %StopTime
+//
+// Data Bases building
+%StopTime=tlist(['StopTime','Mtrans','Cout','Einit','Eps','Efilt','MTfilt','Cfilt','Popt','Copt'],..
+Mtrans,C,E0,Eps,[],[],[],[],[])
+//
+// Computation of the support of the filter law
+support()
+//
+// Computation of the optimal stopping time and cost
+optstop()
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/costo.htm"><tt><b>costo</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

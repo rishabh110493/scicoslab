@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>histplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>histplot</b> - dessine un histogramme</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>histplot(n, data, &lt;opt_args&gt;)</tt></dd>
+<dd><tt>histplot(x, data, &lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: entier strictement positif (nombre de classes)</li>
+<li>
+<tt><b>x</b></tt>: vecteur (strictement croissant) definissant les classes</li>
+<li>
+<tt><b>data</b></tt>: vecteur (contenant les données à  analyser)</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: Représente une séquence de la forme <tt><b>clé1=valeur1,
+          clé2=valeur2</b></tt>,... où <tt><b>clé1</b></tt>,
+          <tt><b>clé2,...</b></tt> peut être n'importe quel paramètre optionnel de <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> 
+          (<tt>style,strf,leg, rect,nax, logflag,frameflag, axesflag</tt>) ou encore <tt>normalization</tt>. 
+          Pour ce dernier la valeur correspondante est un scalaire booléen 
+          (la valeur par défaut étant %t).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> Cette fonction dessine un histogramme des données contenues dans le vecteur <tt><b>data</b></tt>
+        en utilisant les classes <tt><b>x</b></tt>. Quand le nombre de classes <tt><b>n</b></tt> est fourni
+        au lieu de <tt><b>x</b></tt>, celles-ci sont définies de manière équirépartie et telles que
+        <em>x(1) = min(data) &lt;  x(2) = x(1) + dx  &lt;  ...  &lt; x(n+1) = max(data)</em>
+        avec <em>dx = (x(n+1)-x(1))/n</em>.
+    </p>
+<p> Les classes sont définies par C1 = [x(1), x(2)] puis  Ci = ] x(i), x(i+1)] pour i = 2,3,...,n.
+        En notant Nmax le nombre total de données (Nmax = length(data)) et Ni le nombre de données 
+        se situant dans Ci, la valeur de l'histogramme pour x appartenant à  Ci 
+        est égale à  <em>Ni/(Nmax (x(i+1)-x(i)))</em> quand <tt><b>normalization</b></tt> est vrai
+        (comportement par défaut) et sinon elle vaut simplement <em>Ni</em>. Quand l'histogramme
+        est normalisé il vérifie la propriété suivante :
+    </p>
+<pre>
+            x(n+1)
+           /  
+           |   h(x) dx = 1,  quand x(1)&lt;=min(data) et max(data) &lt;= x(n+1)) 
+           /
+           x(1)
+     
+    </pre>
+<p>N'importe quel paramètre optionnel de <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> peut être passé à  histplot ; par exemple
+       pour dessiner votre histogramme avec la couleur numéro 2 (du bleu si vous utilisez la carte
+       des couleurs standard) tout en restreignant le dessin au le rectangle [-3,3]x[0,0.5],
+       vous pouvez utiliser <tt>histplot(n,data, style=2, rect=[-3,0,3,0.5])</tt>.
+    </p>
+<p>La commande <tt><b>histplot()</b></tt> sans argument montre un example.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// exemple #1: variations sur l'histogramme d'un échantillon gaussien N(0,1)
+d=rand(1,10000,'normal');
+clf();histplot(20,d)
+clf();histplot(20,d,normalization=%f)
+clf();histplot(20,d,leg='rand(1,10000,''normal'')',style=5)
+clf();histplot(20,d,leg='rand(1,10000,''normal'')',style=16, rect=[-3,0,3,0.5]); 
+
+// exemple #2: histogramme d'un échantillon de loi binomiale B(6,0.5)
+d = grand(1000,1,"bin", 6, 0.5);
+c = linspace(-0.5,6.5,8);
+xbasc()
+subplot(2,1,1)
+   histplot(c, d, style=2)
+   xtitle("l''histogramme normalisé")
+subplot(2,1,2)
+   histplot(c, d, normalization=%f, style=5)
+   xtitle("l''histogramme non normalisé")
+
+// exemple #3: histogramme d'un échantillon de loi exponentielle E(lambda)
+lambda = 2;
+X = grand(100000,1,"exp", 1/lambda);
+Xmax = max(X);
+xbasc()
+histplot(40, X, style=2)
+x = linspace(0,max(Xmax),100)';
+plot2d(x,lambda*exp(-lambda*x),strf="000",style=5)
+legend(["histogramme d''un échantillon E(lambda)" "densité exacte"]);
+// Rmq: si vous utilisez l'ancien mode graphique, la légende peut s'obtenir avec :
+// legends(["histogramme d''un échantillon E(lambda)" "densité exacte"],[2 5],"ur");
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/hist3d.htm"><tt><b>hist3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/dsearch.htm"><tt><b>dsearch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

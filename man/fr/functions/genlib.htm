@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>genlib</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>genlib</b> -  build library from functions in given directory</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>genlib(lib_name [[,dir_name, [ Force [,verb [,Names]]]])  </tt></dd>
+<dd><tt>genlib(lib_name [,path=dir_name] [,verbose=verb]
+      [,force=Force]  [,names=Names])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>lib_name:  </b></tt>Scilab string.  The variable name of the library to (re)create.</li>
+<li>
+<tt><b>dir_name:  </b></tt>Scilab string.  The name of the directory to look for
+	    <tt><b>.sci</b></tt>-files. </li>
+<li>
+<tt><b>Force</b></tt>: boolean value (default value is <tt><b>%f</b></tt>). Set it to
+	    <tt><b>%t</b></tt> to force the sci-files recompilation.</li>
+<li>
+<tt><b>verb</b></tt>: boolean values (default value is <tt><b>%f</b></tt>). Set it to
+	    <tt><b>%t</b></tt> to get information.</li>
+<li>
+<tt><b>Names</b></tt>: a vector of strings, the names of function to include in the
+	    library. By default all the sci-files are taken into account</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>For each <tt><b>.sci</b></tt> file in <tt><b>dir_name</b></tt> (or only those
+      specified by the <tt><b>Names</b></tt> argument), <tt><b>genlib</b></tt> executes a
+    <tt><b>getf</b></tt> and saves the functions to the corresponding <tt><b>.bin</b></tt>
+    file.  The <tt><b>.sci</b></tt> file must not contain anything but Scilab
+    functions.  If a <tt><b>.bin</b></tt> file is newer than the associated
+    <tt><b>.sci</b></tt> file, <tt><b>genlib</b></tt> does not translate and save the file.</p>
+<p>This default behaviour can be changed if <tt><b>force</b></tt> is given and 
+    set to <tt><b>%t</b></tt>. In this latter case the recompilation is always 
+    performed for each <tt><b>.sci</b></tt> file.</p>
+<p>When all <tt><b>.sci</b></tt> files have been processed, <tt><b>genlib</b></tt> creates a
+    library variable named <tt><b>lib_name</b></tt> and saves it in the file
+    <tt><b>lib</b></tt> in <tt><b>dir_name</b></tt>. If the Scilab variable
+      <tt><b>lib_name</b></tt> is not protected (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/predef.htm"><tt><b>predef</b></tt></a>) this
+      variable is updated.</p>
+<p>If <tt><b>verbose</b></tt> is et to <tt><b>%t</b></tt> information are displayed during 
+    the build process.</p>
+<p>If <tt><b>dir_name</b></tt> argument is not given and if <tt><b>lib_name</b></tt>
+    Scilab variable  exists and it is a library dir_name is taken equal to the
+    <tt><b>lib_name</b></tt> library path (update mode).</p>
+<h3><font color="blue">Restrictions</font></h3>
+<dl><p>
+    Scilab tacitly assumes that file <tt><b>foo.sci</b></tt> defines at least a
+      function named <tt><b>foo</b></tt>. If subsidiary functions are included,
+      they are made known to Scilab only after the function <tt><b>foo</b></tt>
+      had been referenced.</p></dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getd.htm"><tt><b>getd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/lib.htm"><tt><b>lib</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+.TH AddDemands  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+AddDemands  -  Add demands to a net list
+.SH CALLING SEQUENCE
+.nf
+AddDemands(td,hd,demand)
+.fi
+.SH PARAMETERS
+.TP 10
+%net 
+: global variable Netlist databasis
+.TP 10
+td
+: row vector, tail nodes numbers of the added demands
+.TP 10
+hd
+: row vector, head nodes numbers of the added demands
+.TP 10
+demand
+: row vector, the values of the added demands
+.SH DESCRIPTION
+AddDemands adds demands to a net list.
+.SH EXAMPLES
+.nf
+%net=TrafficExample('Diamond');
+ShowNet()
+// Add a new demand from node 3 to node 2 with value 10 in the same net
+AddDemands(3,2,10);
+// We can see the modifications with
+ShowNet()
+.fi
+.SH SEE ALSO
+IntroTrfAsg,
+NetList,
+AddLinks,
+AddNodes,
+MakeNet,
+ShowNet
+
+
+
+
+

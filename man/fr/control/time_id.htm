@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>time_id</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>time_id</b> -  SISO least square identification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[H [,err]]=time_id(n,u,y)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: order of transfer</li>
+<li>
+<tt><b>u</b></tt>: one of the following<ul>
+<li>
+<tt><b>u1</b></tt>: a vector of inputs to the system</li>
+<li>
+<tt><b>"impuls"  </b></tt>: if y is an impulse response</li>
+<li>
+<tt><b>"step"  </b></tt>: if y is a step response.</li>
+</ul>
+</li>
+<li>
+<tt><b>y</b></tt>: vector of response.</li>
+<li>
+<tt><b>H</b></tt>: rational function with degree n denominator and  degree n-1 numerator if y(1)==0 or rational function with degree n denominator and  numerator if y(1)&lt;&gt;0.</li>
+<li>
+<tt><b>err</b></tt>: <tt><b>||y - impuls(H,npt)||^2</b></tt>, where <tt><b>impuls(H,npt)</b></tt> are the <tt><b>npt</b></tt> first coefficients of impulse response of <tt><b>H</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Identification of discrete time response. If <tt><b>y</b></tt> is strictly
+    proper (<tt><b>y(1)=0</b></tt>) then <tt><b>time_id</b></tt> computes the least square
+    solution of the linear equation:  <tt><b>Den*y-Num*u=0</b></tt> with the
+    constraint  <tt><b>coeff(Den,n):=1</b></tt>. if <tt><b>y(1)~=0</b></tt> then the algorithm
+    first computes the proper part solution and then add  y(1) to the solution</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+z=poly(0,'z');
+h=(1-2*z)/(z^2-0.5*z+5)
+rep=[0;ldiv(h('num'),h('den'),20)]; //impulse response
+H=time_id(2,'impuls',rep)
+//  Same example with flts and u
+u=zeros(1,20);u(1)=1;
+rep=flts(u,tf2ss(h));        //impulse response
+H=time_id(2,u,rep)
+//  step response
+u=ones(1,20);
+rep=flts(u,tf2ss(h));     //step response.
+H=time_id(2,'step',rep)
+H=time_id(3,u,rep)    //with u as input and too high order required
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/imrep2ss.htm"><tt><b>imrep2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/arl2.htm"><tt><b>arl2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer INRIA</p>
+</body>
+</html>

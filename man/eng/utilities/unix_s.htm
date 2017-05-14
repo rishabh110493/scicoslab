@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unix_s</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unix_s</b> -  shell (sh) command execution, no output</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>unix_s(cmd)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>cmd</b></tt>: a character string</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sends a string <tt><b>cmd</b></tt> to Unix for execution by the sh shell. The standard 
+    output is redirected  to /dev/null.
+    Unix execution errors are trapped; *NOTE* that only the last shell command
+    error is reported when a list of command separated by ";" is sent: this is
+    not recommended.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+if MSDOS then 
+  unix_s("del foo");
+else 
+  unix_s("rm -f foo"); 
+end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/manedit.htm"><tt><b>manedit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_g.htm"><tt><b>unix_g</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_w.htm"><tt><b>unix_w</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_x.htm"><tt><b>unix_x</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix.htm"><tt><b>unix</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

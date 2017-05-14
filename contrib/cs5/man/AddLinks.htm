@@ -1,0 +1,25 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>AddLinks </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>AddLinks  -   Add links to a net list  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>AddLinks(tl,hl,lpp)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>%net  </b></tt>
+    : the global Netlist variable databasis
+  </li>
+  <li><tt><b>tl  </b></tt>
+    : row vector, tail nodes numbers of the added links
+  </li>
+  <li><tt><b>hl  </b></tt>
+    : row vector, head nodes numbers of the added links
+  </li>
+  <li><tt><b>lpp  </b></tt>
+    : 4 x nl matrix, travel time function parameters, where nl is the  number of added links 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    AddLinks adds links to a net list.
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample('Diamond');
+ShowNet()
+// Add a new link from node 3 to node 4 with lpp=[0;0;1;1]
+AddLinks(3,4,[0;0;1;1]);
+// We can see the modifications with
+ShowNet()
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;<a href="AddNodes.htm"><tt><b>AddNodes</b></tt></a>&nbsp;&nbsp;<a href="AddDemands.htm"><tt><b>AddDemands</b></tt></a>&nbsp;&nbsp;<a href="MakeNet.htm"><tt><b>MakeNet</b></tt></a>&nbsp;&nbsp;<a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

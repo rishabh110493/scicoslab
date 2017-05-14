@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>execstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>execstr</b> -  exécution d'instructions Scilab contenues dans des chaînes de caractères</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>execstr(instr)  </tt></dd>
+<dd><tt>ierr=execstr(instr,'errcatch' [,msg])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>instr  </b></tt>: vecteur de chaînes de caractères</li>
+<li>
+<tt><b>ierr  </b></tt>: entier, 0 ou numéro de l'erreur</li>
+<li>
+<tt><b>msg  </b></tt>: chaîne de caractères (<tt><b>'m'</b></tt> ou <tt><b>'n'</b></tt>). La valeur
+	    par défaut est <tt><b>'n'</b></tt>. </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Exécute les instructions Scilab données dans l'argument
+      <tt><b>instr</b></tt>. </p>
+<p>Note : les instructions ne doivent pas comporter de marques de suite (..). </p>
+<p></p>
+<p>Si 'errcatch' n'est pas présent dans les arguments, les erreurs sont contrôlées comme d'habitude.</p>
+<p>Si 'errcatch' est présent dans les arguments, et qu'une erreur est
+      rencontrée lors de l'évaluation d'un élément de <tt><b>instr</b></tt>,
+      <tt><b>execstr</b></tt> ne produit aucun message d'erreur, mais stoppe
+      l'exécution des instructions stockées dans <tt><b>instr</b></tt> (au point
+      où l'erreur s'est produite), et renvoie dans <tt><b>ierr</b></tt> le numéro
+      de l'erreur. Dans ce cas l'affichage du message d'erreur est contrôlé par
+      l'option <tt><b>msg</b></tt> : </p>
+<dl>
+<dd>
+<b>"m"</b>: le message d'erreur est affiché et enregistré</dd>
+<dd>
+<b>"n"</b>: le message d'erreur n'est pas affiché mais il est enregistré
+	  (voir <tt><b>lasterror</b></tt>). Il s'agit du comportement par
+	  défaut. </dd>
+</dl>
+<p> ierr=execstr(instr,'errcatch') peut gérer les erreurs de syntaxes. Ceci
+      peut être utile pour évaluer les instructions obtenues par une requète à
+      l'utilisateur (interface homme-machine).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+execstr('a=1') // affecte a=1.
+
+execstr('1+1') // ne fait rien de particulier (alors que evstr('1+1') renvoie 2)
+
+execstr(['if %t then';
+         '  a=1';
+         '  b=a+1';
+         'else'
+         ' b=0'
+         'end'])
+
+// récupération des erreurs d'exécution
+execstr('a=zzzzzzz','errcatch')
+execstr('a=zzzzzzz','errcatch','m')
+
+// récupération des erreurs de syntaxe
+execstr('a=1?02','errcatch')
+lasterror(%t)
+
+execstr('a=[1 2 3)','errcatch')
+lasterror(%t)
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/try.htm"><tt><b>try</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errclear.htm"><tt><b>errclear</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/iserror.htm"><tt><b>iserror</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/whereami.htm"><tt><b>whereami</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

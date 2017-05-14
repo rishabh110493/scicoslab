@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>st_ility</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>st_ility</b> -  stabilizability test</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[ns, [nc, [,U [,Slo] ]]]=st_ility(Sl [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: <tt><b>syslin</b></tt> list (linear system)</li>
+<li>
+<tt><b>ns</b></tt>:  integer (dimension of stabilizable subspace)</li>
+<li>
+<tt><b>nc</b></tt>:  integer (dimension of controllable subspace <tt><b>nc &lt;= ns</b></tt>)</li>
+<li>
+<tt><b>U</b></tt>: basis such that its <tt><b>ns</b></tt> (resp. <tt><b>nc</b></tt>) first components span the stabilizable (resp. controllable) subspace</li>
+<li>
+<tt><b>Slo</b></tt>: a linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>tol</b></tt>: threshold for controllability detection (see contr)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b> Slo=( U'*A*U, U'*B, C*U, D, U'*x0 )</b></tt> (<tt><b>syslin</b></tt> list)
+    displays the stabilizable form of <tt><b>Sl</b></tt>. Stabilizability means
+    <tt><b>ns=nx</b></tt> (dim. of <tt><b>A</b></tt> matrix).</p>
+<pre>
+
+         [*,*,*]            [*]
+U'*A*U = [0,*,*]     U'*B = [0]
+         [0,0,*]            [0]
+   
+    </pre>
+<p>
+    where <tt><b> (A11,B1) </b></tt> (dim(A11)= <tt><b>nc</b></tt>) is controllable and <tt><b>A22</b></tt> 
+    (dim(A22)=<tt><b>ns-nc</b></tt>) is stable.
+    "Stable" means real part of eigenvalues negative for a continuous
+    linear system, and magnitude of eigenvalues lower than one for a
+    discrete-time system (as defined by <tt><b>syslin</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([0.9,-2,3]);B=[0;0;1];Sl=syslin('c',A,B,[]);
+[ns,nc,U]=st_ility(Sl);
+U'*A*U
+U'*B
+[ns,nc,U]=st_ility(syslin('d',A,B,[]));
+U'*A*U
+U'*B
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/dt_ility.htm"><tt><b>dt_ility</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/stabil.htm"><tt><b>stabil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ssrand.htm"><tt><b>ssrand</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer INRIA 1988</p>
+</body>
+</html>

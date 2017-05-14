@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fgrayplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fgrayplot</b> -  représentation 2D en pseudo-couleurs d'une surface définie par une fonction  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>fgrayplot(x,y,f,[strf,rect,nax])  </tt></dd>
+<dd><tt>fgrayplot(x,y,f,&lt;opt_args&gt;)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y  </b></tt>
+    : vecteurs lignes de taille n1 et n2.
+</li>
+<li>
+<tt><b>f  </b></tt>
+    : fonction externe du type z=f(x,y)
+</li>
+<li>
+<tt><b>&lt;opt_args&gt;  </b></tt>
+    : une séquence d'affectations <tt><b>key1=value1, key2=value2</b></tt>,... où <tt><b>key1</b></tt>, <tt><b>key2,...</b></tt> peuvent prendre les valeurs : rect, nax, strf, axesflag ou frameflag (voir <tt><b>plot2d</b></tt>).
+</li>
+<li>
+<tt><b>strf,rect,nax  </b></tt>
+    : voir <tt><b>plot2d</b></tt>.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>fgrayplot</b></tt> dessine une représentation 2D en pseudo-couleurs d'une surface définie par <tt><b>z=f(x,y)</b></tt> sur une grille définie par <tt><b>x</b></tt> et <tt><b>y</b></tt>.
+    Chaque rectangle sur la grille est rempli avec une couleur dépendant de la moyenne des 
+    valeurs de <tt><b>z</b></tt> aux coins du rectangle.
+  </p>
+<p>
+    Taper <tt><b>fgrayplot()</b></tt> pour voir une démonstration de la fonction.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=-1:0.1:1;
+deff("[z]=my_surface(x,y)","z=x**2+y**2")
+fgrayplot(t,t,my_surface,rect=[-2,-2,2,2])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/grayplot.htm"><tt><b>grayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/Sgrayplot.htm"><tt><b>Sgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/Sfgrayplot.htm"><tt><b>Sfgrayplot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

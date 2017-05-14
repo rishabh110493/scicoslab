@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>x_choices</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_choices</b> -  boîte de dialogue permettant de choisir des articles parmi plusieurs options  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rep=x_choices(title,items)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>title  </b></tt>
+    : vecteur de chaînes de caractères. Titre général
+</li>
+<li>
+<tt><b>items  </b></tt>
+    : une liste d'articles <tt><b>items=list(item1,...,itemn)</b></tt>, où chaque <tt><b>item</b></tt> est aussi une liste du type suivant : <tt><b>item=list('label',default_choice,choices)</b></tt>. <tt><b>default_choice</b></tt> est un entier donnant le numéro du choix par défaut et <tt><b>choices</b></tt> est un vecteur ligne de chaînes de caractères donnant les choix possibles.
+</li>
+<li>
+<tt><b>rep  </b></tt>
+    : un entier donnant le numéro du choix pour chaque article. Si le bouton "Cancel" est pressé  <tt><b>rep</b></tt> vaut <tt><b>[]</b></tt> en sortie.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sélectionne des articles multiples et renvoie dans <tt><b>rep</b></tt> les numéros des articles sélectionnés.
+  </p>
+<p>
+    Taper <tt><b>x_choices()</b></tt> pour voir un exemple.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+l1=list('choix 1',1,['article c1','article c2','article c3']);
+l2=list('choix 2',2,['article d1','article d2','article d3']);
+l3=list('choix 3',3,['article e1','article e2']);
+rep=x_choices('Menu d''articles',list(l1,l2,l3));
+ </pre>
+</body>
+</html>

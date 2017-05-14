@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>continue</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>continue</b> -  keyword to pass control to the next
+  iteration of a loop</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Inside a <tt><b>for</b></tt> or <tt><b>while</b></tt> loop, the command
+    <tt><b>continue</b></tt> passes control to the next iteration of the loop
+    in which it appears, skipping any remaining statements between
+    this instruction and the loop's <tt><b>end</b></tt> instruction.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  for k=1:10,K=k;if k&gt;2&amp;k&lt;=8 then continue,disp('hello'),end,k,end
+
+  for j=1:2
+    x=[];
+    for k=1:10,if k&gt;j+1&amp;k&lt;=8 then continue,end,x=[x,k];end
+    x
+  end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/while.htm"><tt><b>while</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/for.htm"><tt><b>for</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/break.htm"><tt><b>break</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Serge Steer, INRIA</p>
+</body>
+</html>

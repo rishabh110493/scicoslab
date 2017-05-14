@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>whos</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>whos</b> -  liste des variables courantes dans un format détaillé</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>whos()</tt></dd>
+<dd><tt>whos -type typ</tt></dd>
+<dd><tt>whos -name nam</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>typ</b></tt>: nom du type des variables sélectionnées (voir <tt><b>typeof</b></tt>)</li>
+<li>
+<tt><b>nam</b></tt>: premiers caractères des noms des variables recherchées</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>whos()</b></tt> affiche tous les noms des variables courantes, leurs types et la place mémoire occupée.</p>
+<p><tt><b>whos -type typ</b></tt> affiche tous les noms des variables courantes de type spécifié dans <tt><b>typ</b></tt>.</p>
+<p><tt><b>whos -name nam</b></tt> affiche tous les noms des variables courantes dont le nom commence par <tt><b>'nam'</b></tt></p>
+<p>Remarque : si une variable est globale, le caractère * apparait devant son type.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+whos()
+
+whos -type boolean
+
+whos -name %
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

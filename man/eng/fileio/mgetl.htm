@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mgetl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mgetl</b> -  read lines from an ascii file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=mgetl(file_desc [,m])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_desc</b></tt>:a character string giving the file name or a logical unit returned by mopen</li>
+<li>
+<tt><b>m</b></tt>: an integer scalar. Default value is -1.</li>
+<li>
+<tt><b>txt</b></tt>: a column vector of string</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>mgetl</b></tt> function allows to read a lines from an ascii file.</p>
+<p>
+    If <tt><b>m</b></tt> is
+    omitted or is <tt><b>-1</b></tt> all lines till end of file occurs are read.</p>
+<p>
+    If <tt><b>m</b></tt> is given <tt><b>mgetl</b></tt> tries to read exactly m lines. This
+    option is useful to sequentialy read part of a file. In this case if
+    an end of file (EOF) occurs before <tt><b>m</b></tt> lines are read the read lines are
+    returned (it is possible to check if EOF had occured using the meof
+    function) issued.</p>
+<p><tt><b>mgetl</b></tt> allows to read files coming from Unix, Windows, or Mac
+    operating systems.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+mgetl('SCI/scilab.star',5)
+
+mgetl SCI/macros/elem/erf.sci
+
+fd=mopen('SCI/scilab.star','r')
+mgetl(fd,10)
+mclose(fd)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mputl.htm"><tt><b>mputl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer</p>
+</body>
+</html>

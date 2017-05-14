@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>intersect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>intersect</b> -  recherche de valeurs communes à deux vecteurs.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[v, [ka,kb]]=intersect(a,b)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a  </b></tt>
+    : vecteur de nombres réels ou de chaînes de caractères
+</li>
+<li>
+<tt><b>b  </b></tt>
+    : vecteur de nombres réels ou de chaînes de caractères
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur ligne de nombres réels ou de chaînes de caractères
+</li>
+<li>
+<tt><b>ka  </b></tt>
+    : vecteur ligne d'entiers
+</li>
+<li>
+<tt><b>kb  </b></tt>
+    : vecteur ligne d'entiers 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>intersect(a,b)</b></tt> renvoie un vecteur trié des valeurs communes à <tt><b>a</b></tt> et <tt><b>b</b></tt>.
+  </p>
+<p><tt><b>[v,ka,kb]=intersect(a,b)</b></tt> renvoie aussi deux vecteurs d'indices <tt><b>ka</b></tt> et
+    <tt><b>kb</b></tt> tels que <tt><b>v=a(ka)</b></tt> et <tt><b>v=b(kb)</b></tt>.
+  </p>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=round(5*rand(10,1));
+B=round(5*rand(7,1));
+
+intersect(A,B)
+[N,ka,kb]=intersect(A,B)
+
+intersect('a'+string(A),'a'+string(B))
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/unique.htm"><tt><b>unique</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/union.htm"><tt><b>union</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

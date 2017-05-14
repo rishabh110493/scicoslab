@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>msd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>msd</b> -  mean squared deviation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=msd(x)  </tt></dd>
+<dd><tt>y=msd(x,'r') or m=msd(x,1)  </tt></dd>
+<dd><tt>y=msd(x,'c') or m=msd(x,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes the  mean squared deviation of  the values of a
+    vector or matrix <tt><b> x</b></tt>.</p>
+<p>
+    For  a vector or a matrix  <tt><b> x</b></tt>, <tt><b>  y=msd(x) </b></tt> returns in the
+    scalar <tt><b> y</b></tt> the mean squared deviation of all the entries of <tt><b> x</b></tt>.</p>
+<p><tt><b> y=msd(x,'r') </b></tt>   (or, equivalently, <tt><b>  y=msd(x,1) </b></tt>)  is the
+    rowwise mean squared  deviation. It returns  in each entry of the  row
+    vector  <tt><b> y</b></tt> the  mean squared deviation  of each column of <tt><b> x </b></tt>.</p>
+<p><tt><b> y=msd(x,'c')  </b></tt> (or,  equivalently,  <tt><b> m=msd(x,2)  </b></tt>) is the
+    columnwise mean squared  deviation.  It returns in  each entry  of the
+    column vector <tt><b> y</b></tt> the mean squared deviation of  each row of <tt><b> x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+x=[0.2113249 0.0002211 0.6653811;0.7560439 0.3303271 0.6283918]
+m=msd(x)
+m=msd(x,'r')
+m=msd(x,'c')
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

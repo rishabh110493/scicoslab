@@ -1,0 +1,146 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>linpro</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>linpro</b> -  linear programming solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x,lagr,f]=linpro(p,C,b [,x0])  </tt></dd>
+<dd><tt>[x,lagr,f]=linpro(p,C,b,ci,cs [,x0])  </tt></dd>
+<dd><tt>[x,lagr,f]=linpro(p,C,b,ci,cs,me [,x0])  </tt></dd>
+<dd><tt>[x,lagr,f]=linpro(p,C,b,ci,cs,me,x0 [,imp])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p</b></tt>: real column vector (dimension <tt><b> n</b></tt>)</li>
+<li>
+<tt><b>C</b></tt>: real matrix (dimension <tt><b> m x n</b></tt>)
+          (If no constraints are given, you can set <tt><b>C =
+          []</b></tt>)</li>
+<li>
+<tt><b>b</b></tt>: RHS column vector (dimension <tt><b>m</b></tt>)
+          (If no constraints are given, you can set <tt><b>b =
+          []</b></tt>)</li>
+<li>
+<tt><b>ci</b></tt>: column vector of lower-bounds (dimension <tt><b>
+          n</b></tt>). If there are no lower bound constraints, put
+          <tt><b>ci = []</b></tt>. If some components of <tt><b>x</b></tt>
+          are bounded from below, set the other (unconstrained) values
+          of <tt><b>ci</b></tt> to a very large negative number
+          (e.g. <tt><b>ci(j) = -number_properties('huge')</b></tt>.</li>
+<li>
+<tt><b>cs</b></tt>: column vector of upper-bounds. (Same remarks as above).</li>
+<li>
+<tt><b>me</b></tt>: number of equality constraints (i.e. <tt><b>C(1:me,:)*x = b(1:me)</b></tt>) with <tt><b>me &lt;=m</b></tt>.</li>
+<li>
+<tt><b>x0</b></tt>: either an initial guess for <tt><b>x</b></tt> or one of
+          the character strings <tt><b>'v'</b></tt> or
+          <tt><b>'g'</b></tt>. If <tt><b>x0='v'</b></tt> the calculated
+          initial feasible point is a vertex. If <tt><b>x0='g'</b></tt>
+          the calculated initial feasible point is arbitrary.</li>
+<li>
+<tt><b>imp</b></tt>: verbose option (optional parameter) (Try
+          <tt><b>imp=7,8,...</b></tt>) warning the message are output in
+          the window where scilab has been started.</li>
+<li>
+<tt><b>x</b></tt>: optimal solution found.</li>
+<li>
+<tt><b>f</b></tt>: optimal value of the cost function (i.e. <tt><b>f=p'*x</b></tt>).</li>
+<li>
+<tt><b>lagr</b></tt>: vector of Lagrange multipliers.  If lower and
+          upper-bounds <tt><b>ci,cs</b></tt> are provided,
+          <tt><b>lagr</b></tt> has <tt><b>n + m</b></tt> components and
+          <tt><b>lagr(1:n)</b></tt> is the Lagrange vector associated
+          with the bound constraints and <tt><b>lagr (n+1 : n +
+          m)</b></tt> is the Lagrange vector associated with the linear
+          constraints. (If an upper-bound (resp. lower-bound)
+          constraint <tt><b>i</b></tt> is active <tt><b>lagr(i)</b></tt> is
+          &gt; 0 (resp. &lt;0). If no bounds are provided,
+          <tt><b>lagr</b></tt> has only <tt><b>m</b></tt> components.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[x,lagr,f]=linpro(p,C,b [,x0])</b></tt> Minimize
+    <tt><b>p'*x</b></tt> under the constraints <tt><b>C*x &lt;=
+    b</b></tt></p>
+<p><tt><b>[x,lagr,f]=linpro(p,C,b,ci,cs [,x0])</b></tt> Minimize
+    <tt><b>p'*x</b></tt> under the constraints <tt><b>C*x &lt;= b</b></tt>,
+    <tt><b>ci &lt;= x &lt;= cs</b></tt></p>
+<p><tt><b>[x,lagr,f]=linpro(p,C,b,ci,cs,me [,x0])</b></tt> Minimize
+    <tt><b>p'*x</b></tt> under the constraints</p>
+<pre>
+
+ C(j,:) x = b(j),  j=1,...,me
+ C(j,:) x &lt;= b(j), j=me+1,...,m
+ ci &lt;= x &lt;= cs
+   
+    </pre>
+<p>
+    If no initial point is given the
+    program computes a feasible initial point
+    which is a vertex of the region of feasible points if
+    <tt><b>x0='v'</b></tt>.</p>
+<p>
+    If <tt><b>x0='g'</b></tt>, the program computes a feasible initial 
+    point which is not necessarily a vertex. This mode is
+    advisable when the quadratic form is positive
+    definite and there are a few constraints in
+    the problem or when there are large bounds
+    on the variables that are security bounds and
+    very likely not active at the optimal solution.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Find x in R^6 such that:
+//  C1*x = b1  (3 equality constraints i.e me=3)
+C1= [1,-1,1,0,3,1;
+    -1,0,-3,-4,5,6;
+     2,5,3,0,1,0];
+b1=[1;2;3];
+//C2*x &lt;= b2  (2 inequality constraints)
+C2=[0,1,0,1,2,-1;
+    -1,0,2,1,1,0];
+b2=[-1;2.5];
+//with  x between ci and cs:
+ci=[-1000;-10000;0;-1000;-1000;-1000];cs=[10000;100;1.5;100;100;1000];
+//and minimize p'*x with
+p=[1;2;3;4;5;6]
+//No initial point is given: x0='v';
+C=[C1;C2]; b=[b1;b2] ; me=3; x0='v';
+[x,lagr,f]=linpro(p,C,b,ci,cs,me,x0)
+// Lower bound constraints 3 and 4 are active and upper bound
+// constraint 5 is active --&gt; lagr(3:4) &lt; 0 and lagr(5) &gt; 0.
+// Linear (equality) constraints 1 to 3 are active --&gt; lagr(7:9) &lt;&gt; 0
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/quapro.htm"><tt><b>quapro</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>Eduardo Casas  Renteria</b>, Universidad de Cantabria,</dd>
+<dd>
+<b>Cecilia Pola Mendez</b> , Universidad de Cantabria</dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>E. Casas and C. Pola, An algorithm for indefinite quadratic
+      programming based on a partial Cholesky factorization, RAIRO-Recherche
+      Opérationnelle/Operations Research, 27 (1993), 401-426. <h3><font color="blue">Used Function</font></h3>
+<p>
+in routines/optim directory (authors E.Casas, C. Pola Mendez):</p>
+<p>
+anfm01.f  anfm03.f  anfm05.f  anrs01.f  auxo01.f  dimp03.f  dnrm0.f   optr03.f  pasr03.f  zthz.f
+anfm02.f  anfm04.f  anfm06.f  anrs02.f  desr03.f  dipvtf.f  optr01.f
+opvf03.f  plcbas.f</p>
+<p> From BLAS library</p>
+<p>
+daxpy.f dcopy.f ddot.f dnrm2.f dscal.f dswap.f idamax.f</p>
+<p> in routines/calelm directory (authors INRIA):</p>
+<p>
+add.f ddif.f dmmul.f</p>
+<p> From LAPACK library : dlamch.f</p>
+</body>
+</html>

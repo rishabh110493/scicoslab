@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>strindex</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>strindex</b> -  search position of a character string in an other string.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>ind=strindex(str1,str2)  </tt></dd>
+<dd><tt>[ind,which]=strindex(str1,str2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str1</b></tt>: a character string. The string where to search occurrences of <tt><b>str2</b></tt>
+</li>
+<li>
+<tt><b>str2</b></tt>: a character string or character string vector . The string(s) to search in <tt><b>str1</b></tt>
+</li>
+<li>
+<tt><b>ind</b></tt>: vector of indexes</li>
+<li>
+<tt><b>which</b></tt>: vector of indexes</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>strindex</b></tt> searches indexes where <tt><b>str2(i)</b></tt> is found in
+      <tt><b>str1</b></tt></p>
+<p>
+      for each <tt><b>k</b></tt> it exist a <tt><b>i</b></tt> shuch that
+      <tt><b>part(str1,ind(k)+(0:length(str2(i))-1))</b></tt> is the same string than
+      <tt><b>str2(i)</b></tt>. If <tt><b>which</b></tt> argument is required it
+      contains these <tt><b>i</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+k=strindex('SCI/demos/scicos','/')
+k=strindex('SCI/demos/scicos','SCI/')
+k=strindex('SCI/demos/scicos','!')
+k=strindex('aaaaa','aa') 
+k=strindex('SCI/demos/scicos',['SCI','sci'])
+[k,w]=strindex('1+3*abc/2.33',['+','-','*','/'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/strings.htm"><tt><b>strings</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tangent</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tangent</b> -  linearization of a dynamical system at an equilibrium point</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[f,g,newm]=tangent(ff,xe,[ue])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ff</b></tt>: a string which gives the name of the Scilab function which  codes
+	    the system, or the fuunction itself.</li>
+<li>
+<tt><b>xe</b></tt>: column vector which gives the equilibrium point for the value ue of the parameter</li>
+<li>
+<tt><b>ue</b></tt>: real value.</li>
+<li>
+<tt><b>f, g</b></tt>: two matrices for the linearised  system  <tt><b>dxdot=f.dx + g.du</b></tt>
+</li>
+<li>
+<tt><b>newm</b></tt>: A new macro of type [y]=newm(t,x,u) which computes the field of the linearised system  (newm(t,xe,ue)=0)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    linearises around the equilibrium point <tt><b>(xe,ue)</b></tt> the vector field of 
+    the dynamical system given by a Scilab macro <tt><b>ff</b></tt>, <tt><b>xdot=ff(t,x,[u])</b></tt>.
+    The dynamical system is supposed to be autonomous.</p>
+</body>
+</html>

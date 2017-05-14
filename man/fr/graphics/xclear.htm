@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xclear</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xclear</b> -  efface une fenêtre graphique  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xclear([window-id])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>window-id  </b></tt>
+    : entier ou vecteur d'entiers
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sans argument, cette fonction efface la fenêtre courante.
+    Sinon elle efface les fenêtres graphiques dont les numéros sont donnés dans le vecteur <tt><b>window-id</b></tt>. Par exemple <tt><b>xclear(1:3)</b></tt> efface les fenêtres 1, 2 et 3.
+    Si une des fenêtres n'existe pas, elle est automatiquement créée.
+  </p>
+<p>
+    Attention : <tt><b>xclear</b></tt> efface la fenêtre, mais n'efface pas les ordres graphiques enregistrés. Pour cela utiliser plutôt <tt><b>xbasc</b></tt>.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

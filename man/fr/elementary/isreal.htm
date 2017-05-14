@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>isreal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>isreal</b> -   vérifie si une matrice a des éléments complexes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>t=isreal(x)  </tt></dd>
+<dd><tt>t=isreal(x,eps)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur ou matrice réelle ou complexe.
+</li>
+<li>
+<tt><b>eps  </b></tt>
+    : nombre réel positif.
+</li>
+<li>
+<tt><b>t  </b></tt>
+    : un booléen.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>isreal(x)</b></tt> renvoie <tt><b>%T</b></tt> (vrai) si  <tt><b>x</b></tt> est stockée comme une matrice réelle ou  <tt><b>%F</b></tt> (faux) si  <tt><b>x</b></tt> est stockée avec une partie imaginaire (même nulle).
+  </p>
+<p><tt><b>isreal(x,eps)</b></tt> renvoie <tt><b>%T</b></tt> (vrai) si  <tt><b>x</b></tt> est stockée comme une matrice réelle ou si les valeurs absolues des parties imaginaires des éléments de  <tt><b>x</b></tt> sont plus petites que  <tt><b>eps</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+isreal([1 2])
+isreal(1+0*%i)
+isreal(1+0*%i,0)
+isreal(1+%s)
+isreal(sprand(3,3,0.1))
+ </pre>
+</body>
+</html>

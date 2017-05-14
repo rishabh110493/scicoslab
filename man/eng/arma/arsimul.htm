@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arsimul</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arsimul</b> -  armax simulation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[z]=arsimul(a,b,d,sig,u,[up,yp,ep])  </tt></dd>
+<dd><tt>[z]=arsimul(ar,u,[up,yp,ep])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ar</b></tt>: an armax process. See armac.</li>
+<li>
+<tt><b>a</b></tt>: is the matrix  <tt><b>[Id,a1,...,a_r]</b></tt>     of dimension (n,(r+1)*n)</li>
+<li>
+<tt><b>b</b></tt>: is the matrix <tt><b>[b0,......,b_s]</b></tt>      of dimension (n,(s+1)*m)</li>
+<li>
+<tt><b>d</b></tt>: is the matrix <tt><b>[Id,d_1,......,d_t]</b></tt>  of dimension (n,(t+1)*n)</li>
+<li>
+<tt><b>u</b></tt>: is a matrix  (m,N), which gives the entry u(:,j)=u_j</li>
+<li>
+<tt><b>sig</b></tt>: is a  (n,n) matrix  e_{k} is an n-dimensional Gaussian process with variance I</li>
+<li>
+<tt><b>up, yp</b></tt>: optional parameter which describe the past.  <tt><b>up=[ u_0,u_{-1},...,u_{s-1}]</b></tt>; 
+          <tt><b>yp=[ y_0,y_{-1},...,y_{r-1}];</b></tt><tt><b>ep=[ e_0,e_{-1},...,e_{r-1}]</b></tt>; 
+          if they are omitted, the past value are supposed to be zero</li>
+<li>
+<tt><b>z</b></tt>: <tt><b>z=[y(1),....,y(N)]</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    simulation of an n-dimensional armax process 
+    <tt><b>A(z^-1) z(k)= B(z^-1)u(k) + D(z^-1)*sig*e(k)</b></tt></p>
+<pre>
+       A(z)= Id+a1*z+...+a_r*z^r;  ( r=0  =&gt; A(z)=Id)
+       B(z)= b0+b1*z+...+b_s z^s;  ( s=-1 =&gt; B(z)=[])
+       D(z)= Id+d1*z+...+d_t z^t;  ( t=0  =&gt; D(z)=Id)
+    </pre>
+<p>
+    z et e are in  <tt><b>R^n</b></tt> et u in <tt><b>R^m</b></tt></p>
+<h3><font color="blue">Method</font></h3>
+<dl><p>
+    a state-space representation is constructed and ode with the option  "discr" is used to compute z</p></dl>
+<h3><font color="blue">Author</font></h3>
+<p>J-Ph.C.</p>
+</body>
+</html>

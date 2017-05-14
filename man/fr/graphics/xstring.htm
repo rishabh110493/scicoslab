@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xstring</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xstring</b> -  dessine des chaînes de caractères  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xstring(x,y,str,[angle,box])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y  </b></tt>
+    : scalaires réels, coordonnées du point en bas à gauche des chaînes de caractères.
+</li>
+<li>
+<tt><b>str  </b></tt>
+    : matrice de chaînes de caractères.
+</li>
+<li>
+<tt><b>angle  </b></tt>
+    : réel, angle en degrés dans le sens horaire (0 par défaut).
+</li>
+<li>
+<tt><b>box  </b></tt>
+    : entier, 0 par défaut.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xstring</b></tt> dessine la matrice de chaînes de caractères <tt><b>str</b></tt> à la position <tt><b>x,y</b></tt>
+    (point en bas à gauche de la chaîne) dans l'échelle graphique courante : chaque ligne de la matrice
+    correspond à une ligne de texte et les éléments d'une ligne sont considérés comme des mots à séparer par un espace.  Si <tt><b>angle</b></tt> est donné, il définit l'angle en degrés
+    utilisé pour dessiner les chaînes de caractères. Si <tt><b>box</b></tt> vaut 1 et que <tt><b>angle</b></tt> vaut 0,
+    une boîte est dessinée autour des chaînes de caractères.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+plot2d([0;1],[0;1],0)
+xstring(0.5,0.5,["Scilab" "n''est ";"pas" "Matlab"])
+// autre exemple
+alphabet=["a" "b" "c" "d" "e" "f" "g" ..
+          "h" "i" "j" "k" "l" "m" "n" ..
+          "o" "p" "q" "r" "s" "t" "u" ..
+          "v" "w" "x" "y" "z"];
+xbasc()
+plot2d([0;1],[0;2],0)
+xstring(0.1,1.8,alphabet)     // alphabet
+xstring(0.1,1.6,alphabet,0,1) // alphabet dans une boîte
+xstring(0.1,1.4,alphabet,20)  // angle
+xset("font",1,1)              // police "symbol"
+xstring(0.1,0.1,alphabet)
+xset("font",1,3)              // changement de la taille de police
+xstring(0.1,0.3,alphabet)
+xset("font",1,24); xstring(0.1,0.6,"a") // un grand alpha
+xset("default")
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/titlepage.htm"><tt><b>titlepage</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xnumb.htm"><tt><b>xnumb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstringb.htm"><tt><b>xstringb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstringl.htm"><tt><b>xstringl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

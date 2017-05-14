@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_gsize</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_gsize</b> -   returns the number of members presently in the named group.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[nb] = pvm_gsize(group)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>group</b></tt>: string, string group name of an existing group.</li>
+<li>
+<tt><b>nb</b></tt>: integer, returning the number of members presently in the group.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_gsize</b></tt> returns the size of
+    the group named <tt><b>group</b></tt></p>
+<p>
+    The returned value <tt><b>nb</b></tt>will be &gt;= 0 if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<p>
+    Since groups can change dynamically in PVM 3.0,
+    this routine can only guarantee to return the instantaneous
+    size of a given group.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>evstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>evstr</b> -  évaluation d'une expression  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>H=evstr(Z)  </tt></dd>
+<dd><tt>[H,ierr]=evstr(Z)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Z  </b></tt>
+	    : matrice de chaînes de caractères <tt><b>M</b></tt> ou
+	    <tt><b>list(M,Subexp)</b></tt><ul>
+<li>
+<tt><b>M  </b></tt>
+		  : matrice de chaînes de caractères
+		</li>
+<li>
+<tt><b>Subexp  </b></tt>
+		  : vecteur de chaînes de caractères
+		</li>
+</ul>
+</li>
+<li>
+<tt><b>H  </b></tt>
+	    : matrice
+	  </li>
+<li>
+<tt><b>ierr  </b></tt>
+	    : entier, 0 ou numéro de l'erreur
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Renvoie le résultat de l'évaluation de la matrice de chaînes de
+      caractères <tt><b>M</b></tt>. Chaque élément de la matrice doit être une
+      expression Scilab valide.
+    </p>
+<p>
+      Si l'évaluation d'un terme de <tt><b>M</b></tt> conduit à une
+      erreur, la syntaxe habituelle <tt><b>H=evstr(M)</b></tt>, déclenche le
+      message d'erreur.
+      Dans la syntaxe <tt><b>[H,ierr]=evstr(M)</b></tt> aucun message
+      d'erreur n'est produit, mais le numéro de l'erreur est
+      renvoyé dans <tt><b>ierr</b></tt>.
+    </p>
+<p>
+      Si <tt><b>Z</b></tt> est une liste, <tt><b>Subexp</b></tt> est un vecteur de
+      chaînes de caractères  qui définit des sous-expressions qui sont évaluées
+      avant <tt><b>M</b></tt>. Ces sous-expressions doivent être référencées par
+      l'expression <tt><b>%(k)</b></tt> dans <tt><b>M</b></tt>, où
+      <tt><b>k</b></tt> est la position de la sous-expression dans la liste
+      <tt><b>Subexp</b></tt>.
+    </p>
+<p>
+      evstr('a=1') n'est pas valide (utiliser pour cela
+      <tt><b>execstr</b></tt>).
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    a=1; b=2; Z=['a','b'] ; evstr(Z) 
+
+    a=1; b=2; Z=list(['%(1)','%(1)-%(2)'],['a+1','b+1']);
+    evstr(Z)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

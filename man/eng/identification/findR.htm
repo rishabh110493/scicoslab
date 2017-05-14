@@ -1,0 +1,144 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>findR</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>findR</b> -  Preprocessor for estimating the matrices of a linear time-invariant dynamical system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[R,N [,SVAL,RCND]] = findR(S,Y,U,METH,ALG,JOBD,TOL,PRINTW)  </tt></dd>
+<dd><tt>[R,N] = findR(S,Y)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>S</b></tt>: the number of block rows in the block-Hankel matrices.</li>
+<li>
+<tt><b>Y</b></tt>:</li>
+<li>
+<tt><b>U</b></tt>:</li>
+<li>
+<tt><b>METH</b></tt>: an option for the method to use:<ul>
+<li>
+<tt><b>1</b></tt>:  MOESP method with past inputs and outputs;</li>
+<li>
+<tt><b>2</b></tt>:  N4SI15     0     1     1  1000D method.</li>
+</ul>
+<p>
+    Default:    METH = 1.
+  </p>
+</li>
+<li>
+<tt><b>ALG</b></tt>: an option for the algorithm to compute the triangular factor of the concatenated block-Hankel matrices built from the input-output data:<ul>
+<li>
+<tt><b>1</b></tt>:   Cholesky algorithm on the correlation matrix;</li>
+<li>
+<tt><b>2</b></tt>:   fast QR algorithm;</li>
+<li>
+<tt><b>3</b></tt>:   standard QR algorithm.</li>
+</ul>
+<p>
+    Default:    ALG = 1.
+  </p>
+</li>
+<li>
+<tt><b>JOBD</b></tt>: an option to specify if the matrices B and D should later be computed using the MOESP approach:<ul>
+<li>
+<tt><b>=  </b></tt>1 :  the matrices B and D should later be computed using the MOESP approach;</li>
+<li>
+<tt><b>=  </b></tt>2 :  the matrices B and D should not be computed using the MOESP approach.</li>
+</ul>
+<p>
+    Default: JOBD = 2. This parameter is not relevant for METH = 2.
+  </p>
+</li>
+<li>
+<tt><b>TOL</b></tt>: a vector of length 2 containing tolerances:<ul>
+<li>
+<tt><b>TOL</b></tt>(1) is the tolerance for estimating the rank of matrices. If  TOL(1) &gt; 0,  the given value of  TOL(1)  is used as a lower bound for the reciprocal condition number.<p>
+    Default:    TOL(1) = prod(size(matrix))*epsilon_machine where epsilon_machine is the relative machine precision.
+  </p>
+</li>
+<li>
+<tt><b>TOL</b></tt>(2) is the tolerance for estimating the system order. If  TOL(2) &gt;= 0,  the estimate is indicated by the index of the last singular value greater than or equal to  TOL(2).  (Singular values less than  TOL(2) are considered as zero.)<p>
+    When  TOL(2) = 0,  then  S*epsilon_machine*sval(1)  is used instead TOL(2),  where  sval(1)  is the maximal singular value. When  TOL(2) &lt; 0,  the estimate is indicated by the index of the singular value that has the largest logarithmic gap to its successor. Default:    TOL(2) = -1.
+  </p>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>PRINTW</b></tt>: a switch for printing the warning messages.<ul>
+<li>
+<tt><b>=  </b></tt>1: print warning messages;</li>
+<li>
+<tt><b>=  </b></tt>0: do not print warning messages.</li>
+</ul>
+<p>
+    Default:    PRINTW = 0.
+  </p>
+</li>
+<li>
+<tt><b>R</b></tt>:</li>
+<li>
+<tt><b>N</b></tt>: the order of the discrete-time realization</li>
+<li>
+<tt><b>SVAL</b></tt>: singular values SVAL, used for estimating the order.</li>
+<li>
+<tt><b>RCND</b></tt>: vector of length 2 containing the reciprocal condition numbers of the matrices involved in rank decisions or least squares solutions.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    findR   Preprocesses the input-output data for estimating the matrices 
+    of a linear time-invariant dynamical system, using Cholesky or
+    (fast) QR factorization and subspace identification techniques 
+    (MOESP or N4SID), and estimates the system order.</p>
+<p>
+    [R,N] = findR(S,Y,U,METH,ALG,JOBD,TOL,PRINTW)  returns the processed
+    upper triangular factor  R  of the concatenated block-Hankel matrices 
+    built from the input-output data, and the order  N  of a discrete-time
+    realization. The model structure is:</p>
+<pre>
+
+     x(k+1) = Ax(k) + Bu(k) + w(k),   k &gt;= 1,
+     y(k)   = Cx(k) + Du(k) + e(k).
+   
+    </pre>
+<p>
+    The vectors y(k) and u(k) are transposes of the k-th rows of Y and U,
+    respectively.</p>
+<p>
+    [R,N,SVAL,RCND] = findR(S,Y,U,METH,ALG,JOBD,TOL,PRINTW)  also returns
+    the singular values SVAL, used for estimating the order, as well as,
+    if meth = 2, the vector RCND of length 2 containing the reciprocal
+    condition numbers of the matrices involved in rank decisions or least
+    squares solutions.</p>
+<p>
+    [R,N] = findR(S,Y)  assumes U = [] and default values for the
+    remaining input arguments.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//generate data from a given linear system
+A = [ 0.5, 0.1,-0.1, 0.2;
+      0.1, 0,  -0.1,-0.1;      
+     -0.4,-0.6,-0.7,-0.1;  
+      0.8, 0,  -0.6,-0.6];      
+B = [0.8;0.1;1;-1];
+C = [1 2 -1 0];
+SYS=syslin(0.1,A,B,C);
+U=(ones(1,1000)+rand(1,1000,'normal')); 
+Y=(flts(U,SYS)+0.5*rand(1,1000,'normal'));
+// Compute R
+
+[R,N,SVAL] = findR(15,Y',U');
+SVAL
+N
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findABCD.htm"><tt><b>findABCD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findAC.htm"><tt><b>findAC</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBD.htm"><tt><b>findBD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBDK.htm"><tt><b>findBDK</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/sorder.htm"><tt><b>sorder</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/sident.htm"><tt><b>sident</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

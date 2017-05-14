@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>horner</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>horner</b> -  polynomial/rational evaluation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>horner(P,x)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: polynomial or rational matrix</li>
+<li>
+<tt><b>x</b></tt>: real number or polynomial or rational</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    evaluates the polynomial or rational 
+    matrix <tt><b>P = P(s)</b></tt> when the variable <tt><b>s</b></tt> of the 
+    polynomial is replaced by <tt><b>x</b></tt>:</p>
+<p><tt><b>horner(P,x)</b></tt>=<tt><b>P(x)</b></tt></p>
+<p>
+    Example (Bilinear transform): Assume <tt><b>P = P(s)</b></tt> is 
+    a rational matrix  then the rational matrix 
+    <tt><b>P((1+s)/(1-s))</b></tt> is obtained by <tt><b>horner(P,(1+s)/(1-s))</b></tt>.</p>
+<p>
+    To evaluate a rational matrix at given frequencies use 
+    preferably the <tt><b>freq</b></tt> primitive.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');M=[s,1/s];
+horner(M,1)
+horner(M,%i)
+horner(M,1/s)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

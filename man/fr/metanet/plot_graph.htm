@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plot_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot_graph</b> -  affichage général d'un graphe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>plot_graph(g,[rep,rep1])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>rep  </b></tt>
+    : vecteur ligne de 13 valeurs de paramètres pour l'affichage
+</li>
+<li>
+<tt><b>rep1  </b></tt>
+    : vecteur ligne de 4 valeurs définissant le rectangle d'affichage
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot_graph</b></tt> représente le graphe <tt><b>g</b></tt> dans une fenêtre graphique Scilab.
+    Les arguments optionnels <tt><b>rep</b></tt> et <tt><b>rep1</b></tt> définissent les paramètres d'affichage. S'ils ne sont pas fournis, une boîte de dialogue permet de les définir interactivement.
+  </p>
+<p><tt><b>rep</b></tt> doit être un vecteur ligne avec 13 nombres entiers égaux à 1 ou 2.
+    La signification des ces valeurs de <tt><b>rep</b></tt> est :
+  </p>
+<p>
+    Définition du cadre : 1 = Automatique
+                          2 = Donné (voir ci dessous)
+  </p>
+<p>
+    Affichage des flèches : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des sommets sources et puits : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des noms des sommet : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des labels des sommets : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des noms des arcs : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des labels des arcs : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des demandes des sommets : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des longueurs des arêtes : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des coûts des arêtes : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des capacités min des arêtes : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des capacités max des arêtes : 1 = oui, 2 = non
+  </p>
+<p>
+    Affichage des poids des arêtes : 1 = oui, 2 = non
+  </p>
+<p>
+    Si <tt><b>rep(1)</b></tt> vaut 2, la définition du cadre doit être donnée par
+    <tt><b>rep1</b></tt>. Sinon, <tt><b>rep1</b></tt> peut être omis.
+    <tt><b>rep1</b></tt> doit être un vecteur ligne <tt><b>[orx,ory,w,h]</b></tt> donnant respectivement les coordonnées du point en haut à gauche, la largeur et la hauteur du rectangle d'affichage.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// graphe simple avec différents choix pour l'affichage
+ta=[2 2 1 1 2 4 3 3 4];
+he=[2 2 3 2 3 2 1 2 1];
+g=make_graph('foo',1,4,ta,he);
+g('node_type')=[1 1 1 2];g('node_name')=string([1:4]);
+g('node_x')=[73 737 381 391]; g('node_y')=[283 337 458 142];
+g('node_color')=[3 3 3 11];
+g('node_diam')=[30 30 30 60];
+g('edge_color')=[10 0 2 6 11 11 0 0 11];
+rep=[2 2 1 1 2 2 2 2 2 2 2 2 2];
+rep1=[100 -400 650 300];
+xbasc(); plot_graph(g,rep,rep1);
+rep=[2 1 1 1 2 2 2 2 2 2 2 2 2];
+x_message('Represente le graphe avec differents parametres');
+xbasc(); plot_graph(g,rep,rep1);
+// Affichage avec une boîte de dialogue
+xbasc(); plot_graph(g);
+xset("thickness",4);
+xbasc();
+plot_graph(g);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/show_graph.htm"><tt><b>show_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

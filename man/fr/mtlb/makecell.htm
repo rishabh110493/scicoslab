@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>makecell</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>makecell</b> - creer une cell</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=makecell([dim1,dim2],cpnt1,cpnt2,
+    ...)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>[dim1,dim2]</b></tt>: dimensions de la cell (dim1: nombre de ligne, dim2: nombre de
+          colonnes)</li>
+<li>
+<tt><b>cpnt1, cpnt2, ...</b></tt>: composantes de la cell (des strings, des doubles, des
+          vecteurs, ...)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>La fonction <tt><b>makecell</b></tt> retourne une cell de taille
+    <tt><b>dim1</b></tt> x <tt><b>dim2</b></tt>. Ces composantes sont
+    <tt><b>cpnt1</b></tt>, <tt><b>cpnt2</b></tt>, ... (ils sont rangés par
+    ligne).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>y=makecell([2,3],10,'foo1',[1 2;3 4],'foo2',[6 7 8],'foo3');</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/cell.htm"><tt><b>cell</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

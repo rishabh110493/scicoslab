@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>printing</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>printing</b> -  impression des graphiques Scilab   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Blatexpr xscale yscale filename.ps  </tt></dd>
+<dd><tt>BEpsf filename.ps   </tt></dd>
+<dd><tt>Blpr "Title" filename1.ps filename2.ps ... filenamen.ps | lpr   </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Les graphiques peuvent être sauvegardés avec la commande <tt><b>xbasimp</b></tt>.
+      La commande :
+    </p>
+<pre>
+      xbasimp(xx,'des.ps',0)
+      </pre>
+<p>
+      sauve les graphiques enregistrés dans la fenêtre xx dans le fichier
+      <tt><b>des.ps.xx</b></tt>. Ce fichier ne peut pas être envoyé directement vers une imprimante Postscript
+      mais un ensemble de programmes Scilab ( dans le répertoire <tt><b>bin</b></tt> de Scilab ) sont 
+      à utiliser pour cela :
+    </p>
+<dl>
+<dd>
+<b>BEpsf</b>: La commande <tt><b>BEpsf</b></tt> crée un fichier epsf (PostScript
+	encapsulé) à partir du fichier <tt><b>des.ps.xx</b></tt> sous le nom
+	<tt><b>des.epsf</b></tt>, ce fichier epsf peut être imprimé directement ou
+	inclus dans un fichier PostScript.</dd>
+<dd>
+<b>Blatexpr</b>: La commande  <tt><b>Blatexpr</b></tt> crée un fichier epsf à partir du
+	  fichier <tt><b>des.ps.xx</b></tt><tt><b>des.ps.xx</b></tt><pre>
+	  mv des.ps.xx des.ps
+	  Blatexpr 1.0 1.0 des.ps
+	  </pre>
+<p>
+	  sous le nom <tt><b>des.epsf</b></tt> et un fichier LaTeX 
+	  <tt><b>des.tex</b></tt>. Le fichier <tt><b>des.tex</b></tt> peut être inséré dans un document LaTeX 
+	  pour inclure le fichier epsf ( le fichier postscript 
+	  est inclus avec la commande <tt><b>special</b></tt> de TeX )
+	</p>
+<pre>
+	  \input des.tex 
+	  \dessin{caption}{label}
+	  </pre>
+</dd>
+<dd>
+<b>Blpr</b>: La commande <tt><b>Blpr</b></tt> est utilisée pour imprimer un ensemble
+	de graphiques sur une même feuille de papier. Par exemple pour imprimer
+	deux graphiques sur une seule page :<pre>
+	Blpr "Deux graphiques" file1.ps.0 file2.ps.1 | lpr 
+	</pre>
+</dd>
+<dd>
+<b>Blatexprs</b>: La commande <tt><b>Blatexprs</b></tt> utilisée pour insérer dans une
+	figure LaTeX un ensemble de graphiques  Scilab<pre>
+	Blatexprs res file1.ps.0 file2.ps.1
+	</pre>
+<p>
+	crée deux fichiers <tt><b>res.ps</b></tt> et <tt><b>res.tex</b></tt>. Le fichier <tt><b>res.tex</b></tt>
+	est utilisé comme pour <tt><b>Blatexpr</b></tt> pour lire la figure.
+      </p>
+</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

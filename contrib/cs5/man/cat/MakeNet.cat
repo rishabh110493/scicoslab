@@ -1,0 +1,53 @@
+MakeNet                         Traffic-toolbox Function            MakeNet
+NAME
+   MakeNet  -  Makes a net list
+  
+CALLING SEQUENCE
+   
+  
+ net=MakeNet(nn,nx,ny,tl,hl,nf,lpp,td,hd,demand)
+PARAMETERS
+ nn         : integer, the number of nodes in the net
+            
+ nx         : row vector, x coordinates of the nodes
+            
+ ny         : row vector, y coordinates of the nodes
+            
+ tl         : row vector, tail nodes numbers of the links
+            
+ hl         : row vector, head nodes numbers of the links
+            
+ nf         : integer between 0 and 6, travel time function formula
+            
+ lpp        : 4 x nl matrix, travel time function parameters, where nl is
+            the number of links 
+            
+ td         : row vector, tail nodes numbers of the demands (its size is
+            the number of commodities)
+            
+ hd         : row vector, head nodes numbers of the demands
+            
+ demand     : row vector, demand flows
+            
+ net        : a NetList  
+            
+DESCRIPTION
+   MakeNet makes a net list according to its arguments.
+  
+EXAMPLES
+ // Coordinates for the nodes
+ nx=[500 10 500 900]
+ ny=[10 300 600 300]
+ // tail and head vectors for the links
+ tl=[1 2 3 1 1 3]
+ hl=[2 3 4 4 3 1]
+ // link-performance-function parameters
+ lpp=[1 1 1 1 1 1;1 3 5 2 7 1;1 2 1 2 1 2;2 2 2 2 2 2];
+ // Creation of the traffic net
+ %net=MakeNet(4,nx,ny,tl,hl,6,lpp,1,3,10);
+ // We can see it with
+ ShowNet()
+ 
+SEE ALSO
+   NetList, ShowNet     
+  

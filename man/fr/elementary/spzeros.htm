@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>spzeros</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spzeros</b> -   sparse zero matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>sp=spzeros(nrows,ncols)  </tt></dd>
+<dd><tt>sp=spzeros(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nrows</b></tt>: integer (number of rows)</li>
+<li>
+<tt><b>ncols</b></tt>: integer (number os columns)</li>
+<li>
+<tt><b>A</b></tt>: sparse matrix</li>
+<li>
+<tt><b>sp</b></tt>: sparse zero matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sp=spzeros(nrows,ncols)</b></tt> returns a sparse zero matrix <tt><b>sp</b></tt> 
+    with <tt><b>nrows</b></tt> rows, <tt><b>ncols</b></tt> columns. 
+    (Equivalent to <tt><b>sparse([],[],[nrow,ncols])</b></tt>)</p>
+<p><tt><b>sp=spzeros(A)</b></tt> returns a sparse zero matrix with same
+    dimensions as <tt><b>A</b></tt>. If <tt><b>[m,n]=size(A)</b></tt>, <tt><b>spzeros(m,n)</b></tt> and
+    <tt><b>spzeros(A)</b></tt> are equivalent. In particular <tt><b>spzeros(3)</b></tt> is not
+    equivalent to <tt><b>spzeros(3,3)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+sum(spzeros(1000,1000))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/speye.htm"><tt><b>speye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/spones.htm"><tt><b>spones</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

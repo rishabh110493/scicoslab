@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gcf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gcf</b> - Return handle of current graphic or GUI
+  window.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>h = gcf()</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>h</b></tt>: handle or integer.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>This routine returns the handle of the current graphic or GUI window.
+    If the current figure is a graphic one <tt><b>gcf()</b></tt> returns a handle
+    on it. If the current figure is a <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/uicontrol.htm"><tt><b>uicontrol</b></tt></a> one
+    <tt><b>gcf()</b></tt> returns it's figure number.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    set("figure_style","new") //create a figure
+    f=gcf()  
+    f.figure_size= [610,469]/2;
+    f.figure_name= "Foo";
+
+    f=figure(); // create a figure
+    h=uicontrol(f,'style','listbox','position', [10 10 150 160]);// create a listbox
+    set(h, 'string', "item 1|item 2|item3");// fill the list
+    set(h, 'value', [1 3]); // select item 1 and 3 in the list
+    gcf()
+
+    scf(0); //make graphic window 0 the current figure
+    gcf()  // return the graphic handle of the current figure
+
+    figure(f) //make GUI  window f the current figure
+    gcf()
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gce.htm"><tt><b>gce</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/uicontrol.htm"><tt><b>uicontrol</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer, INRIA</p>
+</body>
+</html>

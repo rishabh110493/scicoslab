@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gda</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gda</b> - Return handle of default
+  axes.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>a = gda()</tt></dd>
+<dd><tt>a = get("default_axes")</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>a</b></tt>: handle, the handle of the default axes.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>The default axes is a graphic entity which is never drawn. It is used
+    as a reference for the axes properties default values. These default
+    properties values are used to initialize new axes inside figures.</p>
+<p>The <tt><b>gda</b></tt> function returns the handle on the default axes.
+    The user can use this handle to set or get the axes properties default
+    values.</p>
+<p>Note that an equivalent default graphic entity exists for figure
+    entities too (see <tt><b>gdf</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+     
+    a=gda() // get the handle of the model axes 
+    // set its' properties
+    a.box="off";
+    a.foreground=2;
+    a.labels_font_size=3;
+    a.labels_font_color=5;
+    a.sub_tics=[5 5 3];
+    a.x_location="top";
+
+    //now used the model axes for drawing
+    set("figure_style","new")
+    subplot(211) //create an axes entity
+    plot2d() 
+
+   // set other model's properties
+    a.background=color('gray')
+    a.grid=[5 5 5];
+    subplot(212)
+    t=0:0.1:5*%pi; 
+    plot2d(sin(t),cos(t)) 
+
+ 
+    set(a,"default_values",1); // return to the  default values of the model
+                               // see sda() function
+    clf()
+    plot2d(sin(t),cos(t))
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gdf.htm"><tt><b>gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/sda.htm"><tt><b>sda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/sdf.htm"><tt><b>sdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

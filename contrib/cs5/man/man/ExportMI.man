@@ -1,0 +1,52 @@
+.TH ExportMI 1 " " " " "CiudadSim Function"
+.SH NAME
+ExportMI  - Scilab to MapInfo interface 
+.SH CALLING SEQUENCE
+.nf
+ok=ExportMI(net,name,nameout,disp_option)
+.fi
+.SH PARAMETERS
+.TP 10
+net
+Scilab variable containing the network
+.TP 10 
+name
+the name of the MI source file without extension
+.TP 10
+nameout
+the name of the MapInfo table where the results will be saved 
+.TP 10
+disp_option
+displaying options.
+
+.SH DESCRIPTION
+This command is meant to display in MapInfo the results obtained for
+a network already recovered from mapinfo. 
+It uses an existant MI file named name and creates two files : one .mif and one.mid.
+
+To see them in MI , they must be imported (table/import), then the values
+obtained in Scilab will be in the table associated with the file, and the
+width of the arcs will be proportional to the chosen magnitude, flow or time.
+
+The displaying option is used to specify the magnitude shown in the arcs.
+The values for disp_option are the strings 'flow' and 'time'. 
+
+
+.SH EXAMPLES
+.nf
+// Scilab to MapInfo translation
+// 1) Choose the example Versailles where the scilab network is obtained
+// from a MapInfo file
+%net=TrafficExample("Versailles");
+// 2) Make an assignment
+TrafficAssig()
+// 3) Translate to mapinfo
+ok=ExportMI(%net,CS_DIR+"/examples/SGL_Versailles",CS_DIR+"/examples/man_example")
+// 4) Look the content of the variable CS_DIR (you need it in MapInfo)
+// 5) Open MapInfo and import the tables man_example,
+// look for it in CS_DIR then in examples
+
+.SH SEE ALSO
+ImportMI
+
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>coff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coff</b> -  résolvante (méthode des cofacteurs)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[N,d]=coff(M [,var])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>M  </b></tt>
+    : matrice carrée réelle
+</li>
+<li>
+<tt><b>var  </b></tt>
+    : chaîne de caractères (indéterminée des polynômes)
+</li>
+<li>
+<tt><b>N  </b></tt>
+    : matrice de polynômes (de même taille que <tt><b>M</b></tt>)
+</li>
+<li>
+<tt><b>d  </b></tt>
+    : polynôme (polynôme caractéristique de M : <tt><b>poly(M,var)</b></tt>)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>coff</b></tt> calcule R=<tt><b>(s*eye()-M)^-1</b></tt> pour <tt><b>M</b></tt> une matrice réelle. 
+    R est donnée par <tt><b>N/d</b></tt>.
+  </p>
+<p><tt><b>N</b></tt> = matrice des numérateurs (polynômes).
+  </p>
+<p><tt><b>d</b></tt> = dénominateur commun.
+  </p>
+<p><tt><b>var</b></tt> chaîne de caractères (indéterminée des polynômes, '<tt><b>s</b></tt>' par défaut)
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+M=[1,2;0,3];
+[N,d]=coff(M)
+N/d
+inv(%s*eye()-M)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/nlev.htm"><tt><b>nlev</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

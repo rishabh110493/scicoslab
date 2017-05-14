@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xsetech</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xsetech</b> -  set the sub-window of a graphics window for plotting</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>xsetech(wrect,[frect,logflag])  </tt></dd>
+<dd><tt>xsetech(wrect=[...],frect=[..],logflag="..", arect=[...])   </tt></dd>
+<dd><tt>xsetech()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>wrect</b></tt>: vector of size 4, defining the sub-window to use.</li>
+<li>
+<tt><b>frect</b></tt>: vector of size 4.</li>
+<li>
+<tt><b>logflag</b></tt>: string of size 2 "xy", where x and y can be "n" or "l". "n" stands for  normal and "l" stands for logscale. x stands for the x-axis and y stands for the y-axis.</li>
+<li>
+<tt><b>arect</b></tt>: vector of size 4.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xsetech</b></tt> is mainly used to set the sub-window of the graphics
+    window which will be used for plotting. The sub-window is specified
+    with the parameter <tt><b>wrect=[x,y,w,h]</b></tt> (upper-left point, width,
+    height).  The values in <tt><b>wrect</b></tt> are specified using proportion of
+    the width or height of the current graphic window. For instance
+    <tt><b>wrect=[0,0,1,1]</b></tt> means that the whole graphics window will be
+    used, and <tt><b>wrect=[0.5,0,0.5,1]</b></tt> means that the graphics region
+    will be the right half of the graphics window.</p>
+<p><tt><b>xsetech</b></tt> also set the current graphics scales for 2D plotting and
+    can be used in conjunction with graphics routines which request the
+    current graphics scale (for instance <tt><b>strf="x0z"</b></tt>
+    or<tt><b>frameflag=0</b></tt> in <tt><b>plot2d</b></tt>).</p>
+<p><tt><b>frect=[xmin,ymin,xmax,ymax]</b></tt> is used to set the graphics scale
+    and is just like the <tt><b>rect</b></tt> argument of <tt><b>plot2d</b></tt>. If
+    <tt><b>frect</b></tt> is not given the current value of the graphic scale
+    remains unchanged. the default value of <tt><b>rect</b></tt> is <tt><b>[0,0,1,1]</b></tt>
+    (at window creation, when switching back to default value with
+    <tt><b>xset('default')</b></tt> or when clearing graphic recorded events
+    <tt><b>xbasc()</b></tt>).</p>
+<p><tt><b>arect=[x_left, x_right,y_up,y_down]</b></tt> is used to set the graphic
+    frame inside the subwindow. The graphic frame is specified (like
+    <tt><b>wrect</b></tt>) using proportion of the width or height of the current
+    graphic subwindow.  Default value is <tt><b>1/8*[1,1,1,1]</b></tt>. If
+    <tt><b>arect</b></tt> is not given, current value remains unchanged.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// To get a graphical explanation of xsetech parameters enter:
+exec('SCI/demos/graphics/xsetechfig.sce');
+
+
+// Here xsetech is used to split the graphics window in two parts 
+// first xsetech is used to set the first sub-window 
+// and the graphics scale 
+xsetech([0,0,1.0,0.5],[-5,-3,5,3])
+// we call plot2d with the "001" option to use the graphics scale 
+// set by xsetech 
+plot2d([1:10]',[1:10]',1,"001"," ")
+// then xsetech is used to set the second sub-window 
+xsetech([0,0.5,1.0,0.5])
+// the graphics scale is set by xsetech to [0,0,1,1] by default 
+// and we change it with the use of the rect argument in plot2d 
+plot2d([1:10]',[1:10]',1,"011"," ",[-6,-6,6,6])
+// Four plots on a single graphics window 
+xbasc()
+xset("font",2,0)
+xsetech([0,0,0.5,0.5]); plot3d()
+xsetech([0.5,0,0.5,0.5]); plot2d()
+xsetech([0.5,0.5,0.5,0.5]); grayplot()
+xsetech([0,0.5,0.5,0.5]); histplot()
+// back to default values for the sub-window 
+xsetech([0,0,1,1])
+// One plot with changed arect 
+xbasc()
+xset("default")
+xsetech(arect=[0,0,0,0]) 
+x=1:0.1:10;plot2d(x',sin(x)')
+xbasc()
+xsetech(arect=[1/8,1/8,1/16,1/4])
+x=1:0.1:10;plot2d(x',sin(x)')
+xbasc()
+xset("default")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xgetech.htm"><tt><b>xgetech</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/subplot.htm"><tt><b>subplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/isoview.htm"><tt><b>isoview</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/square.htm"><tt><b>square</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

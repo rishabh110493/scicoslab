@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mgetmgeti</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mget</b> -  reads  byte or word in a given binary format and convert to double</p>
+<p><b>mgeti</b> -  reads  byte or word in a given binary format return an int type</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>x=mget([n,type,fd])  </tt></dd>
+<dd><tt>x=mgeti([n,type,fd])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>:a positive scalar: The number of items to be read.</li>
+<li>
+<tt><b>fd</b></tt>: scalar. The <tt><b>fd</b></tt> parameter returned by the function
+	    <tt><b>mopen</b></tt>. -1 stands for last opened file. Default value
+	    is -1.</li>
+<li>
+<tt><b>type</b></tt>: a string. Give the binary format used to write all the entries of x.</li>
+<li>
+<tt><b>x</b></tt>: a vector of floating point or integer type numbers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      The <tt><b>mget</b></tt> function reads data in the input specified by the
+      stream parameter <tt><b>fd</b></tt> and returns a vector of floating point data.
+      The <tt><b>mgeti</b></tt> function reads data in the input specified by the
+      stream parameter <tt><b>fd</b></tt> and returns a vector of integer data.
+    </p>
+<p>
+      Data is read at the position at which the file pointer is currently
+      pointing and advances the indicator appropriately.
+    </p>
+<p>
+      The <tt><b>type</b></tt> parameter is a conversion specifier which may be set to any of the
+      following flag characters (with default value "l"):
+    </p>
+<p><b>WARNING</b>, when reading binary files under Windows to not forget to open
+      the file with the <tt><b>b</b></tt> option like
+      <tt><b>fd1=mopen(file1,'rb')</b></tt> if not the file will be interpreted as
+      text file and the bytes with value <tt><b>13</b></tt> will be interpreted as
+      newlines and ommitted. </p>
+<dl>
+<dd>
+<b>"l", "i", "s", "ul",  "ui", "us", "d", "f",  "c", "uc"</b>: for reading respectively a long, an int, a short, an unsigned
+	  long, an unsigned int, an unsigned short, a double, a float, a char
+	  and an unsigned char. The bytes which are read are automatically
+	  swapped if necessary (by checking little-endian status). This default
+	  swapping mode can be suppressed by adding a flag in the
+	  <tt><b>mopen</b></tt> function. Format "l", "d" and
+	  "f" are valid only with the <tt><b>mget</b></tt>
+	  function.</dd>
+<dd>
+<b>"..l" or "..b"</b>: It is also possible to read in little-endian or big-endian mode
+	  by adding a 'l' or 'b' character at the end of a type
+	  specification. For example "db" will read a double in
+	  big-endian mode.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    file1 = 'test1.bin';
+    file2 = 'test2.bin';
+    fd1=mopen(file1,'wb');
+    fd2=mopen(file2,'wb');
+    mput(1996,'ull',fd1);
+    mput(1996,'ull',fd2);
+    mclose(fd1);
+    mclose(fd2);
+
+    fd1=mopen(file1,'rb');
+    if 1996&lt;&gt;mget(1,'ull',fd1) ;write(%io(2),'Bug');end;
+    fd2=mopen(file2,'rb');
+    if 1996&lt;&gt;mget(1,'ull',fd2) ;write(%io(2),'Bug');end;
+    mclose(fd1);
+    mclose(fd2);
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/meof.htm"><tt><b>meof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mputstr.htm"><tt><b>mputstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mseek.htm"><tt><b>mseek</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mtell.htm"><tt><b>mtell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mdelete.htm"><tt><b>mdelete</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

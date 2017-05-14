@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>poly</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>poly</b> -  polynomial definition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p]=poly(a,"x", ["flag"])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: matrix or real number</li>
+<li>
+<tt><b>x</b></tt>: symbolic variable</li>
+<li>
+<tt><b>"flag"  </b></tt>: string ("roots", "coeff"), default value is "roots".</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>a</b></tt> is a matrix, <tt><b>p</b></tt> is the characteristic polynomial i.e.
+     <tt><b>determinant(x*eye()-a)</b></tt>, <tt><b>x</b></tt> being the symbolic variable.</p>
+<p>
+    If <tt><b>v</b></tt>  is a vector, <tt><b>poly(v,"x",["roots"])</b></tt>  is the polynomial
+    with <tt><b>roots</b></tt> the entries of <tt><b>v</b></tt> and <tt><b>"x"</b></tt> as formal variable.
+    (In this case,  <tt><b>roots</b></tt> and   <tt><b>poly</b></tt> are inverse functions).</p>
+<p><tt><b>poly(v,"x","coeff")</b></tt> creates the polynomial with symbol <tt><b>"x"</b></tt>
+    and with coefficients the entries of <tt><b>v</b></tt> (v(1) is the constant term of the polynomial). (Here <tt><b>poly</b></tt> and <tt><b>coeff</b></tt>
+    are inverse functions).</p>
+<p><tt><b>s=poly(0,"s")</b></tt> is the seed for defining polynomials with symbol
+    <tt><b>"s"</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,"s");p=1+s+2*s^2;
+A=rand(2,2);poly(A,"x")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coeff.htm"><tt><b>coeff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/matrices.htm"><tt><b>matrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/rational.htm"><tt><b>rational</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rational</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Objects  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rational</b> -  Objet Scilab, fraction rationnelle  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Une fraction rationnelle <tt><b>r</b></tt> est le quotient de deux polynômes <tt><b>r=num/den</b></tt>.
+    La représentation interne d'une fraction rationnelle est une liste :
+    <tt><b>r=tlist('['r','num','den','dt'],num,den,[])</b></tt> est identique à <tt><b>r=num/den</b></tt>.
+    Une matrice de fractions rationnelles peut être définie en utilisant la syntaxe habituelle :
+    <tt><b>[r11,r12;r21,r22]</b></tt> est une matrice 2x2 ou les <tt><b>rij</b></tt> sont des fractions rationnelles.
+    Une matrice de fractions rationnelles peut aussi être définie comme précédemment : <tt><b>tlist(['r','num','den','dt'],num,den,[])</b></tt> avec <tt><b>num</b></tt> et <tt><b>den</b></tt> deux matrices polynomiales.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+W=[1/s,1/(s+1)]
+W'*W
+Num=[s,s+2;1,s];Den=[s*s,s;s,s*s];
+tlist(['r','num','den','dt'],Num,Den,[])
+H=Num./Den
+syslin('c',Num,Den)
+syslin('c',H)
+[Num1,Den1]=simp(Num,Den)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

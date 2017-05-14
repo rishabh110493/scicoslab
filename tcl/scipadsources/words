@@ -1,0 +1,63 @@
+// words file for keywords recognition, colorization, indentation and completion
+// this file is part of Scipad
+//
+// this is currently used only for the Modelica scheme
+// the Scilab scheme words are retrieved dyanmically (see dynamickeywords.sce)
+//
+// words are according to the Modelica specification version 3.2
+//
+// syntax in this file (more details: see proc load_words):
+//   comments   : must be alone on their line
+//                must start with // followed by at least one space
+//                the rest of the line is ignored by the parser
+//   #MODE lines: name of the language scheme
+//                anything after this name is ignored
+//   #TAG lines : name of the sub-category in the language scheme
+//                anything after this name is ignored
+//   other regular lines: list of keywords
+//                        each line contains the keywords starting with the same initial letter
+//                        lines are ordered alphabetically (not mandatory for the parser, but
+//                        helps readability and error-checking)
+
+#MODE modelica
+
+#TAG Modelica_keyword    (Modelica spec. section 2.3.3)
+// and, or, not, der (even if listed in section 2.3.3) are operators, not keywords
+//   they are therefore recognized by the regexp pattern $Modelica_operatorREpat
+algorithm annotation assert
+block break
+class connect connector constant constrainedby
+discrete
+each else elseif elsewhen encapsulated end enumeration equation expandable extends external
+false final flow for function
+if import in initial inner input
+loop
+model
+operator outer output
+package parameter partial protected public
+record redeclare replaceable return
+stream
+then true type
+when while within
+
+#TAG Modelica_introp    (Modelica spec. section 3.7 and 10.3 - Built-in Intrinsic Operators with Function Syntax)
+// Subtask.decouple is left out because it contains a dot (non tcl_wordchar),
+//   which is not supported by the regexp matching for colorisation
+Integer
+String
+abs acos asin atan atan2
+cardinality ceil change cos cosh cross
+der delay diagonal div
+edge exp
+fill floor
+homotopy
+identity initial integer
+linspace log log10
+matrix max min mod
+ndims noEvent
+ones outerProduct
+pre product
+reinit rem
+sample scalar semiLinear sign sin sinh size skew smooth sqrt sum symmetric
+tan tanh terminal transpose
+zeros

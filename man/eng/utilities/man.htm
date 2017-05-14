@@ -1,0 +1,227 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>man</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Format</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>man</b> -  on line help XML file description format</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The on line help source files are written in XML.
+  </p>
+<p>
+    Source files (with extension .xml) can be found in the
+    <tt><b>&lt;SCIDIR&gt;/man/&lt;language&gt;/*</b></tt> directories. The file name is usually
+    associated to a keyword (corresponding to a function name most of the cases) it describes.
+  </p>
+<h3><font color="blue">A few words about XML</font></h3>
+<dl>
+<p>An XML file resembles to an HTML file but with both a more rigid and free syntax.
+     Free because you may build your own tags: the set of tags together with its rules
+     must be described somewhere, generally in another file (<tt><b>&lt;SCIDIR&gt;/man/manrev.dtd</b></tt> 
+     for scilab),
+     and rigid because, once the tags and rules are defined (which are called the Definition
+     Type Document: DTD) , you must respect its (in particular to every open tags 
+     <tt><b>&lt;MY_TAG&gt;</b></tt> must correspond a closed  <tt><b>&lt;/MY_TAG&gt;</b></tt>).</p>
+<p> 
+     The DTD manrev.dtd is written in SGML and precises the exact syntax required by a 
+     scilab XML help page. So if you know this language you may red this file. 
+     The following annotated example (see the next section) shows you some possibilities 
+     offered by this DTD and may be enough to write simple help pages.
+     </p>
+<p>
+     Once an XML page is written and conforms to the DTD, it may be transformed in
+     HTML to be red by your favorite browser or by the tcltk scilab browser
+     (see section browser choice in this page). The XML -&gt; HTML translation is controled
+     by a set of rules written in the (XML) file <tt><b>&lt;SCIDIR&gt;/man/language/html.xsl</b></tt>.
+     Those rules are currently more or less restricted to fit the tcltk scilab browser
+     features (which may display correctly only basic HTML): if you use a real HTML
+     browser and want a better appearance you have to modify this file.
+     </p>
+</dl>
+<h3><font color="blue">How to write a simple xml scilab help page: the lazzy way</font></h3>
+<dl><p>
+         If one want to write the xml file associated to a new scilab function
+	he or she may use the Scilab function <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help_skeleton.htm"><tt><b>help_skeleton</b></tt></a> to produce
+	the skeleton of the xml file. In most cases the user will not be
+	required to know xml syntax. 
+       </p></dl>
+<h3><font color="blue">How to write a simple xml scilab help page: an example</font></h3>
+<dl>
+<p>
+     Here is a simple annotated XML scilab help page which describes an hypothetic foo scilab
+     function. In the following, the XML file is displayed in a <tt>type writer font</tt>
+     and cut-out in several parts, each part being preceded by some associated explanations.
+     The entire XML file <tt><b>foo.xml</b></tt> is in the <tt><b>&lt;SCIDIR&gt;/man/eng/utility</b></tt>
+     directory and the result may be displayed by clicking on <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/foo.htm"><tt><b>foo</b></tt></a>.
+     (you may found others examples in the <tt><b>&lt;SCIDIR&gt;/examples/man-examples-xml</b></tt> 
+     directory). <b>Finally</b> note that some tag pairs <tt><b>&lt;TAG&gt;</b></tt>, 
+     <tt><b>&lt;/TAG&gt;</b></tt> have been renamed here <tt><b>&lt;ATAG&gt;</b></tt>, 
+     <tt><b>&lt;/ATAG&gt;</b></tt>. This is because some scilab scripts which do some work
+     on or from the xml files don't verify if a tag is inside a <tt><b>VERBATIM</b></tt> entry.
+     </p>
+<p>
+      The 3 first lines of the file are mandatory, the second precises the path to the
+      DTD file and the third, formed by the <tt><b>&lt;MAN&gt;</b></tt> tag, begin the 
+      hierarchical description (the file must finish with the <tt><b>&lt;/MAN&gt;</b></tt> tag). 
+      The 4 followings entries : <tt><b>LANGUAGE</b></tt>, <tt><b>TITLE</b></tt>, 
+      <tt><b>TYPE</b></tt> and  <tt><b>DATE</b></tt>, are also mandatory (in this order) the text 
+      corresponding to  <tt><b>&lt;TYPE&gt;</b></tt> being generally 'Scilab function' 
+      (most of the cases) but may be simply  'Scilab keyword' or 'Scilab data type', ..., 
+      depending of what explains the help page. 
+   </p>
+<pre>
+
+       &lt;?xml version="1.0" encoding="ISO-8859-1" standalone="no"?&gt; 
+       &lt;!DOCTYPE MAN SYSTEM "&lt;SCIDIR&gt;/man/manrev.dtd"&gt;
+       &lt;MAN&gt;
+          &lt;LANGUAGE&gt;eng&lt;/LANGUAGE&gt;
+          &lt;TITLE&gt;foo&lt;/TITLE&gt;
+          &lt;TYPE&gt;Scilab function&lt;/TYPE&gt;
+&lt;DATE&gt;29/02/2016&lt;/DATE&gt;
+   
+        </pre>
+<p>
+   The first of these 2 following entries (<tt><b>SHORT_DESCRIPTION</b></tt>)
+   is mandatory and important since the words of the short description text, are used by the
+   <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/apropos.htm"><tt><b>apropos</b></tt></a> command to search help pages from a keyword: the short description
+   is used to build the <tt><b>whatis.html</b></tt> file corresponding to your toolbox and 
+   the <tt><b>apropos keyword</b></tt> command looks in all the whatis files and then proposes
+   the links to every page containing the word <tt><b>keyword</b></tt> in its  short description
+   (in fact the actual associated tags are <tt><b>&lt;SHORT_DESCRIPTION&gt;</b></tt> and 
+   <tt><b>&lt;/SHORT_DESCRIPTION&gt;</b></tt> and not <tt><b>&lt;ASHORT_DESCRIPTION&gt;</b></tt>
+   and <tt><b>&lt;/ASHORT_DESCRIPTION&gt;</b></tt>).
+   The next entry (<tt><b>CALLING_SEQUENCE</b></tt>) must be used if you describe a function 
+   (but is not strictly mandatory). If your function have several calling sequences
+   use several <tt><b>CALLING_SEQUENCE_ITEM</b></tt> entries.
+   </p>
+<pre>
+
+          &lt;ASHORT_DESCRIPTION name="foo"&gt;foo short description&lt;/ASHORT_DESCRIPTION&gt;
+          &lt;CALLING_SEQUENCE&gt;
+              &lt;CALLING_SEQUENCE_ITEM&gt;[y] = foo(x)&lt;/CALLING_SEQUENCE_ITEM&gt;
+          &lt;/CALLING_SEQUENCE&gt;
+   
+        </pre>
+<p>
+   The following entry (<tt><b>PARAM</b></tt>) is not strictly mandatory but is
+   the good one to describe each parameters (input and output) in case of a function.
+   </p>
+<pre>
+
+          &lt;PARAM&gt;
+             &lt;PARAM_INDENT&gt;
+                &lt;PARAM_ITEM&gt;
+                   &lt;PARAM_NAME&gt;x&lt;/PARAM_NAME&gt;
+                   &lt;PARAM_DESCRIPTION&gt;
+                      &lt;SP&gt;: what may be x&lt;/SP&gt;
+                   &lt;/PARAM_DESCRIPTION&gt; 
+                &lt;/PARAM_ITEM&gt;
+                &lt;PARAM_ITEM&gt;
+                   &lt;PARAM_NAME&gt;y&lt;/PARAM_NAME&gt;
+                   &lt;PARAM_DESCRIPTION&gt;
+                      &lt;SP&gt;: what may be y&lt;/SP&gt;
+                   &lt;/PARAM_DESCRIPTION&gt; 
+                &lt;/PARAM_ITEM&gt;
+             &lt;/PARAM_INDENT&gt;
+          &lt;/PARAM&gt;
+   
+        </pre>
+<p>
+   The <tt><b>DESCRIPTION</b></tt> entry is perhaps the most significant one (but not strictly 
+   mandatory) and may be more sophisticated than in this example (for instance you may have    
+   <tt><b>DESCRIPTION_ITEM</b></tt> sub-entries). Here you see how to write several paragraphes
+   (each one enclosed between the <tt><b>&lt;P&gt;</b></tt> and <tt><b>&lt;/P&gt;</b></tt> tags),
+   how to emphasis a variable or a function name (by enclosing it between the 
+   <tt><b>&lt;VERB&gt;</b></tt> and <tt><b>&lt;/VERB&gt;</b></tt> tags), how to
+   emphasis a part of text (<tt><b>&lt;EM&gt;</b></tt> or <tt><b>&lt;BD&gt;</b></tt>
+   and <tt><b>&lt;TT&gt;</b></tt> to put it in a type writer font)), and finally, how to put a link onto 
+   another help page  (in fact the actual associated tags are <tt><b>&lt;LINK&gt;</b></tt> and 
+   <tt><b>&lt;/LINK&gt;</b></tt> and not <tt><b>&lt;ALINK&gt;</b></tt>
+   and <tt><b>&lt;/ALINK&gt;</b></tt>).
+   </p>
+<pre>
+
+         &lt;DESCRIPTION&gt;
+             &lt;P&gt;
+                A first paragraph which explains what computes the foo function.
+                If you want to emphasis a parameter name then you use the following
+                tag &lt;VERB&gt;x&lt;/VERB&gt;, if you want to emphasis a part of text
+                &lt;EM&gt;inclose it inside theses tags&lt;/EM&gt; and use theses ones
+                &lt;BD&gt;to have a bold font&lt;/BD&gt; and finally &lt;TT&gt;for a type writer style&lt;/TT&gt;.
+             &lt;/P&gt;
+             &lt;P&gt;
+                A second paragraph... Here is an example of a link to another page :
+                &lt;ALINK&gt;man&lt;/ALINK&gt;.
+             &lt;/P&gt;
+         &lt;/DESCRIPTION&gt;
+   
+        </pre>
+<p>
+  Here is how to write your own entry, for instance to describe some outside remarks
+  and/or notes about your wonderful function.  
+  </p>
+<pre>
+
+         &lt;SECTION label='Notes'&gt;
+             &lt;P&gt;
+                Here is a list of notes :
+             &lt;/P&gt;
+             &lt;ITEM label='first'&gt;&lt;SP&gt;blablabla...&lt;/SP&gt;&lt;/ITEM&gt;
+             &lt;ITEM label='second'&gt;&lt;SP&gt;toto is the french foo...&lt;/SP&gt;&lt;/ITEM&gt;
+         &lt;/SECTION&gt;
+   
+        </pre>
+<p>
+  An important entry is the <tt><b>EXAMPLE</b></tt> one which is reserved to show scilab
+  uses of your function (begin with simple ones !). Note that you must close this entry
+  with  <tt><b>]]&gt;&lt;/EXAMPLE&gt;</b></tt> and not like here with <tt><b>}}&gt;&lt;/EXAMPLE&gt;</b></tt>
+  (once again this is a bad trick to avoid some interpretation problems).</p>
+<pre>
+
+         &lt;EXAMPLE&gt;&lt;![CDATA[
+             deff("y=foo(x)","y=x"); // define the foo function as the identity function
+             foo("toto")
+      }}&gt;&lt;/EXAMPLE&gt;
+   
+        </pre>
+<p>
+  This last part explains how to put the links onto others related help pages 
+  (as said before the good tags are in fact <tt><b>&lt;LINK&gt;</b></tt> and 
+  <tt><b>&lt;/LINK&gt;</b></tt> and not <tt><b>&lt;ALINK&gt;</b></tt> and 
+  <tt><b>&lt;/ALINK&gt;</b></tt> ) and finally how to reveal your name if you want 
+  (use one <tt><b>AUTHOR_ITEM</b></tt> entry by author). Perhaps it is a good idea 
+  to put an email adress if you look for bug reports !</p>
+<pre>
+
+         &lt;SEE_ALSO&gt;
+           &lt;SEE_ALSO_ITEM&gt; &lt;ALINK&gt;man&lt;/ALINK&gt; &lt;/SEE_ALSO_ITEM&gt;
+           &lt;SEE_ALSO_ITEM&gt; &lt;ALINK&gt;apropos&lt;/ALINK&gt; &lt;/SEE_ALSO_ITEM&gt;
+         &lt;/SEE_ALSO&gt;
+
+         &lt;AUTHOR&gt;
+           &lt;AUTHOR_ITEM&gt;B. P.&lt;/AUTHOR_ITEM&gt;
+         &lt;/AUTHOR&gt;
+       &lt;/MAN&gt;
+   
+        </pre>
+</dl>
+<h3><font color="blue">How to create an help chapter</font></h3>
+<dl><p> Create a directory and write down a set of xml files build as described
+    above. Then start Scilab and execute <tt><b>xmltohtml(dir)</b></tt>, where
+      <tt><b>dir</b></tt> is a character string giving the path of the directory
+      (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/xmltohtml.htm"><tt><b>xmltohtml</b></tt></a> for more details) .</p></dl>
+<h3><font color="blue">How to make Scilab know a new help chapter</font></h3>
+<dl><p>This can be done by the function <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/add_help_chapter.htm"><tt><b>add_help_chapter</b></tt></a>.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    function y=foo(a,b,c),y=a+2*b+c,endfunction
+    path=help_skeleton('foo',TMPDIR)
+    scipad(path)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/apropos.htm"><tt><b>apropos</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help_skeleton.htm"><tt><b>help_skeleton</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

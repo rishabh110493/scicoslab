@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clipboard</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>clipboard</b> - Copy and paste strings to and from the
+  system clipboard (Windows).</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>clipboard('copy',data)</tt></dd>
+<dd><tt>str=clipboard('paste')</tt></dd>
+<dd><tt>clipboard('do','paste')</tt></dd>
+<dd><tt>clipboard('do','copy')</tt></dd>
+<dd><tt>clipboard('do','empty')</tt></dd>
+<dd><tt>clipboard(winnum,'EMF')</tt></dd>
+<dd><tt>clipboard(winnum,'DIB')</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>clipboard('copy',data)</b></tt> sets the clipboard contents to
+    data. If data is not a character array, the clipboard uses sci2exp to
+    convert it to a string.</p>
+<p><tt><b>str = clipboard('paste')</b></tt> returns the current contents of
+    the clipboard as a string or as an empty string (' '), if the current
+    clipboard contents cannot be converted to a string.</p>
+<p><tt><b>clipboard('do','paste')</b></tt>,
+    <tt><b>clipboard('do','copy')</b></tt>, <tt><b>clipboard('do','empty')</b></tt>
+    performs a paste, copy or empty clipboard.</p>
+<p>Note that <tt><b>clipboard(...) </b></tt>works only Windows platforms when
+    Scilab used in window mode.</p>
+<p><tt><b>clipboard(winnum,'EMF')</b></tt> copy a graphic windows identified
+    by his window's number in the clipboard to EMF format. </p>
+<p><tt><b>clipboard(winnum,'DIB') </b></tt>copy a graphic windows identified
+    by his window's number in the clipboard to DIB format.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C.</dd></dl>
+</body>
+</html>

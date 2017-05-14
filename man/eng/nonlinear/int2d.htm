@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>int2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>int2d</b> -  definite 2D integral by quadrature and cubature method</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[I,err]=int2d(X,Y,f [,params])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: a 3 by N array containing the abscissae of the vertices   of the N triangles.</li>
+<li>
+<tt><b>Y</b></tt>: a 3 by N array containing the ordinates of the vertices   of the N triangles.</li>
+<li>
+<tt><b>f</b></tt>: external (function or list or string) defining the integrand <tt><b>f(u,v)</b></tt>;</li>
+<li>
+<tt><b>params</b></tt>: real vector <tt><b>[tol, iclose, maxtri, mevals, iflag]</b></tt>. default value is <tt><b>[1.d-10, 1, 50, 4000, 1]</b></tt>.<ul>
+<li>
+<tt><b>tol</b></tt>:the desired bound on the error.  If <tt><b>iflag=0</b></tt>, <tt><b>tol</b></tt> is interpreted as a bound on the relative error; if <tt><b>iflag=</b></tt>1, the bound is on the absolute error.</li>
+<li>
+<tt><b>iclose</b></tt>:an integer parameter that determines the selection of LQM0 or LQM1 methods.  If <tt><b>iclose=1</b></tt> then LQM1 is used. Any other value of <tt><b>iclose</b></tt> causes LQM0 to be used. LQM0 uses function values only at interior points of the triangle.  LQM1 is usually more accurate than LQM0 but involves evaluating the integrand at more points including some on the boundary of the triangle.  It will usually be better to use LQM1 unless the integrand has singularities on the boundary of the triangle.</li>
+<li>
+<tt><b>maxtri</b></tt>:the maximum number of triangles in the final triangulation of the region</li>
+<li>
+<tt><b>mevals</b></tt>: the maximum number of function evaluations to be allowed.  This number will be effective in limiting the computation only if it is less than 94*<tt><b>maxtri</b></tt>  when LQM1 is specified or 56*<tt><b>maxtri</b></tt> when LQM0 is specified.</li>
+<li>
+<tt><b>iflag</b></tt>:</li>
+</ul>
+</li>
+<li>
+<tt><b>I</b></tt>: the integral value</li>
+<li>
+<tt><b>err</b></tt>: the estimated error</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>int2d</b></tt> computes the two-dimensional integral of a
+    function <tt><b>f</b></tt> over a region consisting of <tt><b>n</b></tt> triangles.
+    A total error estimate is obtained and compared with a
+    tolerance - <tt><b>tol</b></tt> - that is provided as input to the subroutine.
+    The error tolerance is treated as either relative or absolute
+    depending on the input value of <tt><b>iflag</b></tt>.  A 'Local Quadrature
+    Module' is applied to each input triangle and estimates of the
+    total integral and the total error are computed.  The local
+    quadrature module is either subroutine LQM0 or subroutine
+    LQM1 and the choice between them is determined by the
+    value of the input variable <tt><b>iclose</b></tt>.</p>
+<p>
+    If the total error estimate exceeds the tolerance, the triangle
+    with the largest absolute error is divided into two triangles
+    by a median to its longest side.  The local quadrature module
+    is then applied to each of the subtriangles to obtain new
+    estimates of the integral and the error.  This process is
+    repeated until either (1) the error tolerance is satisfied,
+    (2) the number of triangles generated exceeds the input
+    parameter <tt><b>maxtri</b></tt>, (3) the number of integrand evaluations
+    exceeds the input parameter <tt><b>mevals</b></tt>, or (4) the function
+    senses that roundoff error is beginning to contaminate
+    the result.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+X=[0,0;1,1;1,0];
+Y=[0,0;0,1;1,1];
+deff('z=f(x,y)','z=cos(x+y)')
+[I,e]=int2d(X,Y,f)
+// computes the integrand over the square [0 1]x[0 1]
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intc.htm"><tt><b>intc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intl.htm"><tt><b>intl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/int3d.htm"><tt><b>int3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intg.htm"><tt><b>intg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/mesh2d.htm"><tt><b>mesh2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Fortran routine twodq Authors: Kahaner,D.K.,N.B.S., Rechard,O.W.,N.B.S.,; Barnhill,Robert,Univ. of UTAH</p>
+</body>
+</html>

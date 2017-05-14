@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>segs_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>segs_properties</b> - description of the Segments entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Segs entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for a set of colored segments or colored
+    arrows.</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        segment entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>segs</b></tt> handles currently do not have
+        any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        By default, the segments are visibles, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the segments are not drawn on
+        the screen.</dd>
+<dd>
+<b>data: </b>This field is two column matrix <tt><b>[x,y,[z]]</b></tt> which gives
+        the coordinates of the segments boundary. If
+        <tt><b>xv=matrix(x,2,-1)</b></tt> and <tt><b>yv=matrix(y,2,-1)</b></tt> then
+        <tt><b>xv(:,k)</b></tt> and <tt><b>yv(:,k)</b></tt> are the boundary
+        coordinates of the segment numbered <tt><b>k</b></tt>.</dd>
+<dd>
+<b>line_mode: </b>This field contains the default <tt><b>line_mode</b></tt> property
+        value for the segs. Its value should be <tt><b>"on" </b></tt>(line drawn)
+        or <tt><b>"off"</b></tt> (no line drawn).</dd>
+<dd>
+<b>line_style: </b>The <tt><b>line_style</b></tt> property value should be an integer in
+        [0 6]. 0 stands for solid the other value stands for a selection of
+        dashes. This property applies to all segments.</dd>
+<dd>
+<b>thickness: </b>This field contains the <tt><b>thickness</b></tt> property for all
+        segments. Its value should be a non negative integer..</dd>
+<dd>
+<b>arrow_size: </b>Factor that specify the size of a arrowheads. With a negative
+        value, the size is also dependent of the arrows length. TO draw
+        segment, the value must be set to 0.</dd>
+<dd>
+<b>segs_color: </b>This field contains the vector of colors to use to draw each
+        segment. Each element is a color index relative to the current
+        colormap.</dd>
+<dd>
+<b>mark_mode: </b>This field contains the default <tt><b>mark_mode</b></tt> property
+        value for the polyline. Its value should be <tt><b>"on"</b></tt> (marks
+        drawn) or <tt><b>"off"</b></tt> (no marks drawn).</dd>
+<dd>
+<b>mark_style: </b>The <tt><b>mark_style</b></tt> property value is used to select the
+        type of mark to use when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. The value should be an integer in [0 14] which
+        stands for: dot, plus, cross, star, filled diamond, diamond, triangle
+        up, triangle down, diamond plus, circle, asterisk, square, triangle
+        right, triangle left and pentagram.</dd>
+<dd>
+<b>mark_size_unit: </b>This field contains the default <tt><b>mark_size_unit</b></tt>
+        property value. If <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"point"</b></tt>, then the <tt><b>mark_size</b></tt> value is
+        directly given in points. When <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"tabulated"</b></tt>, <tt><b>mark_size</b></tt> is computed relative
+        to the font size array: therefore, its value should be an integer in
+        [0 5] which stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt. Note that
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> and pure scilab functions use
+        <tt><b>tabulated</b></tt> mode as default ; when using <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>
+        function, the <tt><b>point</b></tt> mode is automatically enabled.</dd>
+<dd>
+<b>mark_size: </b>The <tt><b>mark_size</b></tt> property is used to select the type of
+        size of the marks when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. Its value should be an integer between 0 and 5
+        whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>mark_foreground: </b>This field contains the <tt><b>mark_foreground</b></tt> property
+        value which is the marks' edge color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>mark_background: </b>This field contains the <tt><b>mark_background</b></tt> property
+        value which is the marks' face color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value for
+        the segments. It should be :<dl>
+<dd>
+<b></b><tt><b>"off"</b></tt> this means that the segments is not
+            clipped.</dd>
+<dd>
+<b></b><tt><b>"clipgrf"</b></tt> this means that the segments is clipped
+            outside the Axes box.</dd>
+<dd>
+<b></b><tt><b>"on"</b></tt> this means that the segments is clipped
+            outside the rectangle given by the property
+            <tt><b>clip_box</b></tt>.</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field contains the <tt><b>clip_box</b></tt> property. By default
+        segment are not clipped, clip_state is "off", so the value should be
+        an empty matrix .Other cases the vector <tt><b>[x,y,w,h]</b></tt>
+        (upper-left point width height) defines the portions of the segments
+        to display, however <tt><b>clip_state</b></tt> property value will be
+        changed.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the segs
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  set("figure_style","new") //create a figure
+   a=get("current_axes");//get the handle of the newly created axes
+   a.data_bounds=[-10,-10;10,10];
+   x=2*%pi*(0:7)/8;
+   xv=[2*sin(x);9*sin(x)];
+   yv=[2*cos(x);9*cos(x)];
+   xsegs(xv,yv,1:8)
+
+   s=a.children
+   s.arrow_size=1;
+    s.segs_color=15:22;
+    for j=1:2
+      for i=1:8
+        h=s.data(i*2,j);
+        s.data(i*2,j)=s.data(i*2-1,j);
+        s.data(i*2-1,j)=  h;
+       end
+    end
+
+   s.segs_color=5; //set all the colors to 5
+
+   s.clip_box=[-4,4,8,8];
+   a.thickness=4;
+   xrect(s.clip_box);
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsegs.htm"><tt><b>xsegs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDMOUCHE</p>
+</body>
+</html>

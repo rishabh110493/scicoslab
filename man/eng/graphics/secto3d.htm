@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>secto3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>secto3d</b> -  3D surfaces conversion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[m[,x]]=secto3d(seclist,npas)  </tt></dd>
+<dd><tt>[m]=secto3d(seclist ,x)   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>seclist</b></tt>: a list whose elements are (2,.) matrices</li>
+<li>
+<tt><b>npas</b></tt>: an integer</li>
+<li>
+<tt><b>m</b></tt>: a matrix</li>
+<li>
+<tt><b>x</b></tt>: a vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Considering a surface given through a list <tt><b>seclist</b></tt> of sections in the 
+    <tt><b>(x,z)</b></tt> plane  <tt><b>[m [,x]]=secto3d(seclist [,npas])</b></tt> returns a matrix <tt><b>m</b></tt>
+    which contains a regular discretization of the surface.
+  </p>
+<dl>
+<dd>
+<b>-</b>The i-th row of the matrix m corresponds to the i-th section</dd>
+<dd>
+<b>-</b>The j-th column of m corresponds to the x(j)</dd>
+</dl>
+<p>
+    Each section <tt><b>seclist(i)</b></tt> is described by a (2,.) matrix which gives respectively the x 
+    and z coordinates of points.</p>
+<p><tt><b>[m]=secto3d(seclist ,x)</b></tt> : in that case the x-vector gives the discretization 
+    of the x-axis for all the sections</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.; ;   </p>
+</body>
+</html>

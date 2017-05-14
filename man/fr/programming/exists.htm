@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>exists</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>exists</b> -  teste l'existence d'une variable  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>exists(name [,where])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name  </b></tt>
+    : chaîne de caractères
+</li>
+<li>
+<tt><b>where  </b></tt>
+    : une chaîne de caractères optionnelle valant par défaut <tt><b>'all'</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>exists(name)</b></tt> renvoie <tt><b>1</b></tt> si la variable nommée <tt><b>name</b></tt>
+    existe et <tt><b>0</b></tt> sinon. 
+  </p>
+<p>
+    Mise en garde : une fonction utilisant <tt><b>exists</b></tt> peut renvoyer un résultat dépendant de l'environnement courant !
+  </p>
+<p><tt><b>exists(name,'local')</b></tt> renvoie <tt><b>1</b></tt> si la variable nommée
+    <tt><b>name</b></tt> existe dans l'environnement de la fonction courante et
+    <tt><b>0</b></tt> sinon.  
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+deff('foo(x)',..
+['disp([exists(''a12''),exists(''a12'',''local'')])'
+ 'disp([exists(''x''),exists(''x'',''local'')])'])
+foo(1)
+a12=[];foo(1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/isdef.htm"><tt><b>isdef</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/whereis.htm"><tt><b>whereis</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/macrovar.htm"><tt><b>macrovar</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

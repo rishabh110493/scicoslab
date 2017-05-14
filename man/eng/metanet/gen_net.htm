@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gen_net</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gen_net</b> -  interactive or random generation of a network</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>g = gen_net(name,directed,v)  </tt></dd>
+<dd><tt>g = gen_net()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: string, the name of the graph</li>
+<li>
+<tt><b>directed</b></tt>:  integer, 0 (undirected graph) or 1 (directed graph)</li>
+<li>
+<tt><b>v</b></tt>: row vector with 12 values for defining the network</li>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gen_net</b></tt> generates a network <tt><b>g</b></tt>.
+    The arguments are the name of the graph, a flag equal to 0
+    (undirected graph) or  to 1 (directed graph) and a vector describing
+    the network (see below).</p>
+<p>
+    If no argument are given, a dialog box for the definition
+    of all the arguments is opened.</p>
+<p><tt><b>v</b></tt> must be a row vector with 12 values.
+    The meaning of the values are:</p>
+<p>
+    Seed for random: used for initialization of random generation</p>
+<p>
+    Number of nodes</p>
+<p>
+    Number of sources</p>
+<p>
+    Number of sinks</p>
+<p>
+    Minimum cost</p>
+<p>
+    Maximum cost</p>
+<p>
+    Input supply</p>
+<p>
+    Output supply</p>
+<p>
+    Minimum capacity</p>
+<p>
+    Maximum capacity</p>
+<p>
+    Percentage of edges with costs: between 0 and 100</p>
+<p>
+    Percentage of edges with capacities: between 0 and 100</p>
+<p>
+    The cost of edges without cost are put to minimum cost.
+    The maximum capacity of edges without capacity are put to maximum upply</p>
+<p>
+    The result is a network <tt><b>g</b></tt> built on a planar connected graph, by using a
+    triangulation method. Moreover, computations are made in order to have
+    a coherent network. Values of costs and maximum capacities are
+    put on the edges. Minimum capacities are reduced to 0.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+v=[1,10,2,1,0,10,100,100,0,100,50,50];
+g=gen_net('foo',1,v);
+show_graph(g)
+// generating using dialogs
+g=gen_net();
+show_graph(g)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/mesh2d.htm"><tt><b>mesh2d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

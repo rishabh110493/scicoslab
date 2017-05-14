@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>interp1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>interp1</b> - one_dimension interpolation
+  function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[yp]=interp1(x, y,xp [,
+    method,[extrapolation]])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xp</b></tt>: reals scalar, vector or matrix (or hypermatrix)</li>
+<li>
+<tt><b>x</b></tt>: reals vector</li>
+<li>
+<tt><b>method</b></tt>: (optional) string defining the interpolation method</li>
+<li>
+<tt><b>extrapolation</b></tt>: (optional) string, or real value defining the yp(j) components
+          for xp(j) values outside [x1,xn] interval.</li>
+<li>
+<tt><b>yp</b></tt>: vector, or matrix (or hypermatrix)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Given <tt><b>(x,y,xp)</b></tt>, this function performs the yp components
+    corresponding to xp by the interpolation(linear by default) defined by x
+    and y.</p>
+<p>If <tt><b>yp</b></tt> is a vector then the length of xp is equal to the
+    length of <tt><b>yp,</b></tt> if <tt><b>yp</b></tt> is a matrix then
+    <tt><b>xp</b></tt> have the same length than the length of each columns of
+    yp, if <tt><b>yp</b></tt> is a hypermatrix then the length of <tt><b>xp</b></tt>
+    have the same length than the first dimension of <tt><b>yp. </b></tt></p>
+<p>If size(y)=[C,M1,M2,M3,...,Mj] and size(xp)=[N1,N2,N3,...,Nk] then
+    size(yp)=[N1,N2,..,Nk,M1,M2,...Mj] and length of x must be equal to
+    size(y,1)</p>
+<p>The <tt><b>method</b></tt> parameter sets the evaluation rule for
+    interpolation</p>
+<dd>
+<li>
+<b><font color="maroon">"linear"</font></b>: the interpolation is defined by linear method (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interpln.htm"><tt><b>interpln</b></tt></a>)</li>
+<li>
+<b><font color="maroon">"spline"</font></b>: the interpolation is defined by cubic spline interpolation ( see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/splin.htm"><tt><b>splin</b></tt></a> , <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interp.htm"><tt><b>interp</b></tt></a>)</li>
+<li>
+<b><font color="maroon">"nearest"</font></b>: for each value xp(j), yp(j) takes the value or y(i)
+        corresponding to x(i) the nearest neighbor of xp(j)<p></p>
+</li>
+</dd>
+<p>The <tt><b>extrapolation</b></tt> parameter sets the evaluation rule for
+    extrapolation, i.e for <tt><b>xp(i) </b></tt>not in [x1,xn] interval</p>
+<dd>
+<li>
+<b><font color="maroon">"extrap"</font></b>: the extrapolation is performed by the defined method.
+        yp=interp1(x,y,xp,method,"extrap")</li>
+<li>
+<b><font color="maroon">real value</font></b>: you can choose a real value for extrapolation, in this way yp(i)
+        takes this value for xp(i) not in [x1,xn] interval, for example 0 (but
+        also nan or inf). yi=interp1(x,y,xp,method, 0)</li>
+<li>
+<b><font color="maroon">by default</font></b>: the extrapolation is performed by the defined method (for spline
+        method), and by nan for linear and nearest methods.
+        yp=interp1(x,y,xp,method)</li>
+</dd>
+<h3><font color="blue">Examples</font></h3>
+<pre>x=linspace(0,3,20);
+y=x^2;
+xx=linspace(0,3,100);
+yy1=interp1(x,y,xx,'linear');
+yy2=interp1(x,y,xx,'spline');
+yy3=interp1(x,y,xx,'nearest');
+plot(xx,[yy1;yy2;yy3],x,y,'*')
+xtitle('interpolation of square function')
+legend(['linear','spline','nearest'],a=2)
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interp.htm"><tt><b>interp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interpln.htm"><tt><b>interpln</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/splin.htm"><tt><b>splin</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.B</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xbasc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xbasc</b> -  efface une fenêtre graphique et efface les graphiques enregistrés  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xbasc([window-id])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>window-id  </b></tt>
+	    : entier ou vecteur d'entiers
+	  </li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Sans argument, cette fonction efface la fenêtre graphique courante et 
+      les graphiques enregistrés.
+      Sinon elle efface les fenêtres graphiques dont les numéros sont donnés 
+      dans le vecteur <tt><b>window-id</b></tt>, et efface les graphiques enregistrés. Par exemple 
+      <tt><b>xbasc(1:3)</b></tt> efface les fenêtres 1, 2 et 3. Si une des
+      fenêtres n'existe pas, elle est automatiquement créée.
+    </p>
+<p>
+      Avec le nouveau mode graphique, utilisez <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a> au lieu de
+      <tt><b>xbasc</b></tt>.
+    </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xclear.htm"><tt><b>xclear</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

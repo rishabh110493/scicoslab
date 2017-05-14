@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>simul </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>simul </b> -    maxplus linear system simulation  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=simul(S,u)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>S  </b></tt>
+    : maxplus linear system
+  </li>
+<li>
+<tt><b>u  </b></tt>
+    : input
+  </li>
+<li>
+<tt><b>y  </b></tt>
+    : output 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computes the output y of a maxplus linear system S when the input is u.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+S=mpsyslin([%0,1;10,%0],[%1;%1],[%1,%1])
+simul(S,[1:10])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

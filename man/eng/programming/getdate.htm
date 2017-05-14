@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getdate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getdate</b> - get date and time information</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>dt=getdate()</tt></dd>
+<dd><tt>x=getdate("s")</tt></dd>
+<dd><tt>dt=getdate(x)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dt</b></tt>: an integer vector with 10 entries (see below)</li>
+<li>
+<tt><b>x</b></tt>: an integer containing a date coded in second from 1 Jan 1970</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>dt=getdate()</b> returns the current date in format given below:<dl>
+<dd>
+<b>dt(1)</b>: The year  as a number (with the century) between 0000 and 9999.</dd>
+<dd>
+<b>dt(2)</b>: The month of the year as a number between 01 and 12.</dd>
+<dd>
+<b>dt(3)</b>: The ISO 8601  week  number  as  a   number between 01 and 53.</dd>
+<dd>
+<b>dt(4)</b>: The Julian day of the year  as a number between 001 and 366.</dd>
+<dd>
+<b>dt(5)</b>: Specifies the weekday as a decimal number [1,7], with 1 representing Sunday.</dd>
+<dd>
+<b>dt(6)</b>: The day of the month as a number between 01 and 31.</dd>
+<dd>
+<b>dt(7)</b>: The hour of the day is output as a number between 00 and 23.</dd>
+<dd>
+<b>dt(8)</b>: The minute is output as a number between 00 and 59.</dd>
+<dd>
+<b>dt(9)</b>: The second is output as a number between 00 and 59.</dd>
+<dd>
+<b>dt(10)</b>: The millisecond is output as a number between 000 and 999.</dd>
+</dl>
+</dd>
+<dd>
+<b>x=getdate("s")</b> returns a scalar with the number of seconds since Jan 1, 1970, 00:00 UTC (Unix Time Convention)</dd>
+<dd>
+<b>dt=getdate(x)</b> formats the date given by x (number of seconds since Jan 1, 1970, 00:00 UTC) in format given above. 
+	In this case dt(10) is always equal to 0.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+w=getdate()
+mprintf("Year:%d,Month:%d,Day:%d",w(1),w(2),w(6));
+
+x=getdate("s")
+getdate(x)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/date.htm"><tt><b>date</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/timer.htm"><tt><b>timer</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>chain_struct</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chain_struct</b> -  structure chaînée à partir d'une liste d'adjacence d'un graphe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[fe,che,fn,chn] = chain_struct(g)  </tt></dd>
+<dd><tt>[fe,che,fn,chn] = chain_struct(lp,la,ls)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>lp  </b></tt>
+    : vecteur ligne de pointeurs de la description du graphe sous  forme de liste d'adjacence (sa taille est le nombre de sommets du graphe +  1) 
+</li>
+<li>
+<tt><b>la  </b></tt>
+    : vecteur ligne, tableau d'arcs de la description du graphe sous forme de  liste d'adjacence (sa taille est le nombre d'arêtes du graphe) 
+</li>
+<li>
+<tt><b>ls  </b></tt>
+    : vecteur ligne, tableau de sommets de la description du graphe sous forme  de liste d'adjacence (sa taille est le nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>fe  </b></tt>
+    : vecteur ligne des numéros des premières arêtes partant des sommets (sa taille est le nombre de sommets du graphe)
+</li>
+<li>
+<tt><b>che  </b></tt>
+    : vecteur ligne des numéros des arêtes chaînées (sa taille est le nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>fn  </b></tt>
+    : vecteur ligne des numéros des premiers sommets atteints par les arêtes  de  <tt><b>fe</b></tt> (sa taille est le nombre de sommets du graphe)
+</li>
+<li>
+<tt><b>chn  </b></tt>
+    : vecteur ligne des sommets atteints par les arêtes de <tt><b>che</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>chain_struct</b></tt> calcule les vecteurs lignes de la description par 
+    structure chaînée d'arêtes du graphe <tt><b>g</b></tt>.
+    Il est aussi possible de donner directement <tt><b>chain_struct</b></tt>, la liste 
+    d'adjacence du graphe. Ceci est plus efficace si la liste d'adjacence est 
+    déjà disponible puisque <tt><b>chain_struct</b></tt> l'utilise pour faire les 
+    calculs.
+  </p>
+<p>
+    Les vecteurs <tt><b>fe</b></tt>, <tt><b>che</b></tt>, <tt><b>fn</b></tt> et <tt><b>chn</b></tt> décrivent la
+    structure chaînée de la manière suivante :
+  </p>
+<p><tt><b>fe(i))</b></tt> est le numéro de la première arête partant du sommet i,
+  </p>
+<p><tt><b>che(fe(i))</b></tt> est le numéro de la deuxième arête partant du sommet i, 
+    <tt><b>che(che(fe(i)))</b></tt> est le numéro de la troisième arête partant du 
+    sommet i et ainsi de suite jusqu'à ce que la valeur soit égale à 0.
+  </p>
+<p><tt><b>fn(i)</b></tt> est le numéro du premier sommet atteint à partir du sommet i
+  </p>
+<p><tt><b>ch(i)</b></tt> est le numéro du sommet atteint par l'arête <tt><b>che(i)</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 3 5 4 6 7 7 3 3 8 8 5];
+he=[2 3 5 4 6 6 7 4 3 2 8 1 7 4];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[116 231 192 323 354 454 305 155];
+g('node_y')=[118 116 212 219 117 185 334 316];
+show_graph(g);
+[fe,che,fn,chn] = chain_struct(g)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/adj_lists.htm"><tt><b>adj_lists</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph_2_mat.htm"><tt><b>graph_2_mat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

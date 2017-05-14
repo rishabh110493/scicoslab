@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>solve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>solve</b> -  symbolic linear system solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=solve(A,b)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>A,b,x</b></tt>: matrix (resp. vectors) of character strings</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    solves <tt><b>A*x = b</b></tt> when <tt><b>A</b></tt> is an upper triangular matrix
+    made of character strings.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=['1','a';'0','2'];   //Upper triangular 
+b=['x';'y'];
+w=solve(A,b)
+a=1;x=2;y=5;
+evstr(w)
+inv([1,1;0,2])*[2;5]
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/trianfml.htm"><tt><b>trianfml</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

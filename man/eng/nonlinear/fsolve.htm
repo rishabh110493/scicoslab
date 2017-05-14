@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fsolve</b> -  find a zero of a system of n nonlinear functions</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x [,v [,info]]]=fsolve(x0,fct [,fjac] [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x0</b></tt>: real vector (initial value of function argument).</li>
+<li>
+<tt><b>fct</b></tt>: external (i.e function or list or string).</li>
+<li>
+<tt><b>fjac</b></tt>: external (i.e function or list or string).</li>
+<li>
+<tt><b>tol</b></tt>: real scalar. precision tolerance: termination occurs when the algorithm estimates that the relative error between x and the solution is at most tol. (<tt><b>tol=1.d-10</b></tt> is the default value).</li>
+<li>
+<tt><b>x :  </b></tt>real vector (final value of function argument, estimated zero).</li>
+<li>
+<tt><b>v :  </b></tt>real vector (value of function at x).</li>
+<li>
+<tt><b>info</b></tt>:  termination indicator<ul>
+<li>
+<tt><b>0</b></tt>: improper input parameters.</li>
+<li>
+<tt><b>1</b></tt>: algorithm estimates that the relative error between x and the solution  is at most tol.</li>
+<li>
+<tt><b>2</b></tt>: number of calls to fcn reached</li>
+<li>
+<tt><b>3</b></tt>: tol is too small. No further improvement in the approximate solution  x is possible.</li>
+<li>
+<tt><b>4</b></tt>: iteration is not making good progress.</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    find a zero of a system of
+    n nonlinear functions in n variables by a modification
+    of the powell hybrid method. Jacobian may be provided.</p>
+<pre>
+
+0 = fct(x) w.r.t x.
+   
+    </pre>
+<p><tt><b>fct</b></tt> is an "external".
+    This external returns <tt><b>v=fct(x)</b></tt> given <tt><b>x</b></tt>.</p>
+<p>
+    The simplest calling sequence for <tt><b>fct</b></tt> is:</p>
+<pre>
+
+[v]=fct(x).
+   
+    </pre>
+<p>
+    If <tt><b>fct</b></tt> is a character string, it refers to a C or Fortran routine
+    which must be linked to Scilab. Fortran calling sequence must be</p>
+<pre>
+
+fct(n,x,v,iflag)
+integer n,iflag
+double precision x(n),v(n)
+   
+    </pre>
+<p>
+    and C Calling sequence must be</p>
+<pre>
+
+fct(int *n, double x[],double v[],int *iflag)
+   
+    </pre>
+<p>
+    Incremental  link is possible (help <tt><b>link</b></tt>).</p>
+<p><tt><b>jac</b></tt> is an "external".
+    This external returns <tt><b>v=d(fct)/dx (x)</b></tt> given <tt><b>x</b></tt>.</p>
+<p>
+    The simplest calling sequence for <tt><b>jac</b></tt> is:</p>
+<pre>
+
+[v]=jac(x).
+   
+    </pre>
+<p>
+    If <tt><b>jac</b></tt> is a character string, it refers to a to a C or Fortran routine
+    which must be linked to Scilab calling sequences are the same as those
+    for fct. Note however that v must be a nxn array.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// A simple example with fsolve 
+a=[1,7;2,8];b=[10;11];
+deff('[y]=fsol1(x)','y=a*x+b');
+deff('[y]=fsolj1(x)','y=a');
+[xres]=fsolve([100;100],fsol1);
+a*xres+b
+[xres]=fsolve([100;100],fsol1,fsolj1);
+a*xres+b
+// See routines/default/Ex-fsolve.f
+[xres]=fsolve([100;100],'fsol1','fsolj1',1.e-7);
+a*xres+b
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/quapro.htm"><tt><b>quapro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/linpro.htm"><tt><b>linpro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

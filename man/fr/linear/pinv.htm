@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pinv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pinv</b> -  pseudo-inverse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>pinv(A,[tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice réelle ou complexe
+	  </li>
+<li>
+<tt><b>tol  </b></tt>
+	    : nombre réel
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>X = pinv(A)</b></tt>  renvoie une matrice <tt><b>X</b></tt> de mêmes dimensions que <tt><b>A'</b></tt> telle que :
+    </p>
+<p><tt><b>A*X*A = A, X*A*X = X</b></tt> avec
+      <tt><b>A*X</b></tt> et <tt><b>X*A</b></tt> Hermitiennes.
+    </p>
+<p>
+      Le calcul est basé sur une décomposition en valeurs singulières et
+      les valeurs singulières plus petites qu'une tolérance donnée
+      sont considérées comme nulles : pour cela utiliser la syntaxe
+      <tt><b>X=pinv(A,tol)</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(5,2)*rand(2,4);
+    norm(A*pinv(A)*A-A,1)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>La fonction <tt><b>pinv</b></tt> est basée sur la decomposition en valeurs
+      singulières (fonction Scilab  <tt><b>svd</b></tt>).</body>
+</html>

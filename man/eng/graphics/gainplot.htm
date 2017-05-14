@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gainplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gainplot</b> - magnitude plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>gainplot(sl,fmin,fmax [,step] [,comments]
+    )</tt></dd>
+<dd><tt>gainplot(frq,db,phi
+    [,comments])</tt></dd>
+<dd><tt>gainplot(frq, repf
+    [,comments])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: list (<tt><b>syslin</b></tt> SIMO linear system).</li>
+<li>
+<tt><b>fmin,fmax</b></tt>: real scalars (frequency interval).</li>
+<li>
+<tt><b>step</b></tt>: real (discretization step (logarithmic scale))</li>
+<li>
+<tt><b>comments</b></tt>: string</li>
+<li>
+<tt><b>frq</b></tt>: matrix (row by row frequencies)</li>
+<li>
+<tt><b>db,phi</b></tt>: matrices (magnitudes and phases corresponding to
+          <tt><b>frq</b></tt>)</li>
+<li>
+<tt><b>repf</b></tt>: complex matrix. One row for each frequency response.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Same as Bode but plots only the magnitude.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s')
+h=syslin('c',(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01))
+gainplot(h,0.01,100,'(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01)')
+clf()
+h1=h*syslin('c',(s^2+2*0.1*15.1*s+228.01)/(s^2+2*0.9*15*s+225))
+gainplot([h1;h],0.01,100,['h1';'h'])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/bode.htm"><tt><b>bode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/black.htm"><tt><b>black</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/nyquist.htm"><tt><b>nyquist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/g_margin.htm"><tt><b>g_margin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/p_margin.htm"><tt><b>p_margin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

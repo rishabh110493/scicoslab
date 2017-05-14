@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ScicosLab
+Comment=Scientific Computing using Scilab-Gtk
+TryExec=/usr/bin/scilab
+Exec=/usr/bin/scilab
+Icon=/usr/lib/scilab-gtk-4.2/config/puffin-gtk48.png
+Terminal=false
+Type=Application
+Categories=Development;Math;Science;
+StartupNotify=false
+

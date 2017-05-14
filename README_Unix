@@ -1,0 +1,29 @@
+                         ScicosLab version 4.4
+                         *********************
+
+ ******************************************************************************
+ INSTALLATION GUIDE
+ ******************************************************************************
+
+ 0 - COPYRIGHT NOTICE
+ ********************
+
+ Scilab is free software.
+ See the included license: "license.txt" in English
+                           "licence.txt" in French
+
+ ******************************************************************************
+
+
+ I - TO INSTALL SCILAB
+ *********************
+
+  A - IF YOU HAVE A COMPILED VERSION
+  ----------------------------------
+
+    Simply do "make", in scicoslab-4.4 directory
+
+  B - SOURCE VERSION WILL BE MADE AVAILABLE SOON
+  ----------------------------------------------
+
+  

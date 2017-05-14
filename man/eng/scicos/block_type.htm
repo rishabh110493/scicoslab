@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>block_type</TITLE>
+<META NAME="description" CONTENT="block_type">
+<META NAME="keywords" CONTENT="block_type">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="block_type.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Programming scicos blocks
+<BR><A NAME="tex2html1"
+  HREF="../../fr/scicos/block_type.htm">fr</A> - <A NAME="tex2html2"
+  HREF="./block_type.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="block_type"></A>
+<BR>
+<b>block_type</b> - Scicos block type
+
+<BR>
+
+<H3><font color="blue"><A NAME="SECTION00020000000000000000">
+Contents</A>
+</font></H3>
+<!--Table of Contents-->
+
+<UL CLASS="TofC">
+<LI><A NAME="tex2html4"
+  HREF="block_type.htm#SECTION00010000000000000000">block_type - Scicos block type</A>
+<UL>
+<LI><A NAME="tex2html5"
+  HREF="block_type.htm#SECTION00021000000000000000">Module</A>
+<LI><A NAME="tex2html6"
+  HREF="block_type.htm#SECTION00022000000000000000">Description</A>
+<LI><A NAME="tex2html7"
+  HREF="block_type.htm#SECTION00023000000000000000">Authors</A>
+</UL></UL>
+<!--End of Table of Contents-->
+<H3><font color="blue"><A NAME="SECTION00021000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+<H3><font color="blue"><A NAME="SECTION00022000000000000000">
+Description</A>
+</font></H3>
+Scicos has the possibility to handle and to call many different sorts of blocks.
+Some blocks in Scicos palettes are special and are only used
+internally by Scicos, such as synchro blocks and the Debug block, but
+most blocks are regular blocks which the user can get inspired by to
+construct new blocks.
+The following table gives the known Scicos
+block types, and is followed by the report of the type of the computational function
+with its associated calling sequence by block type.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57><B>Type</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312><B>Description</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><B>Function type</B></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85><B>Simulator call</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>-2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Event select block (synchro block).</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>-</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Never called.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>-1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>If Then Else block (synchro block).</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>-</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Never called.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>0</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C, Fortran or Scilab block. Calling sequence fixed. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 0.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 0.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>1</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C or Fortran block. Varying calling sequence. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>2</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C block. Calling sequence fixed. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 2.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 2.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>3</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Scilab block. Calling sequence fixed. Used but obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 3.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 2.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>4</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C block. Calling sequence fixed. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>5</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Scilab block. Calling sequence fixed. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 5.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>1001</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Fortran block. Dynamically linked. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>2001</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C block. Dynamically linked. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 1.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>2004</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>C block. Dynamically linked. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>10001</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Implicit C or Fortran block. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10001.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10001.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>10002</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Implicit C block. Obsolete.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10002.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10002.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>10004</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Implicit C block. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10004.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>10005</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Implicit Scilab block. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10005.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>30004</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Generic Modelica block. Dynamically linked. In use.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 10004.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=57>99</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=312>Debug block.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 5.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=85>Type 4.</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+Note that even if type 0, 1 and 2  are obsolete, they are still supported
+in Scicos; some blocks in the standard palettes of Scicos are still of
+these types. Block type 3 is still used by scifunc block (Scilab
+block) but users should prefer the type 5 when constructing a
+computational function in Scilab because it takes full advantage of new data
+structures. In fact it has all the the functionalities implemented for
+block type 4. 
+
+<P>
+
+<UL>
+<LI><b>Calling sequence of computational function type 0</b>
+<BR>
+void myfun(flag,nevrt,t,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,u,nu,y,ny)
+</LI>
+<LI><b>Calling sequence of computational function type 1</b>
+<BR>
+void myfun(flag,nevrt,t,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,u1,nu1,u2,nu2,...,y1,ny1,y2,ny2,...)
+</LI>
+<LI><b>Calling sequence of computational function type 10001 (type 1 implicit)</b>
+<BR>
+void myfun(flag,nevrt,t,res,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,u1,nu1,u2,nu2,...,y1,ny1,y2,ny2,...)
+</LI>
+<LI><b>Calling sequence of computational function type 2</b>
+<BR>
+void myfun(flag,nevrt,t,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,inptr,insz,nin,outptr,outsz,nout)
+</LI>
+<LI><b>Calling sequence of computational function type 2 (zero crossing)</b>
+<BR>
+void myfun(flag,nevrt,t,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,inptr,insz,nin,outptr,outsz,nout,g,ng)
+</LI>
+<LI><b>Calling sequence of computational function type 10002 (type 2 implicit)</b>
+<BR>
+void myfun(flag,nevrt,t,res,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,inptr,insz,nin,outptr,outsz,nout)
+</LI>
+<LI><b>Calling sequence of computational function type 10002 (type 2 implicit with zero crossing)</b>
+<BR>
+void myfun(flag,nevrt,t,res,xd,x,nx,z,nz,tvec,ntvec,rpar,nrpar,ipar,nipar,inptr,insz,nin,outptr,outsz,nout,g,ng)
+</LI>
+<LI><b>Calling sequence of computational function type 3</b>
+<BR>[x,y,z,tvec,xd]=myfun(flag,nevprt,t,x,z,rpar,ipar,u)
+</LI>
+<LI><b>Calling sequence of computational function type 4</b>
+<BR>
+void myfun(scicos_block *block,int flag)
+</LI>
+<LI><b>Calling sequence of computational function type 5</b>
+<BR>[block]=myfun(block,flag)
+</LI>
+</UL>
+<H3><font color="blue"><A NAME="SECTION00023000000000000000">
+Authors</A>
+</font></H3>
+<b>Alan Layec</b> INRIA
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

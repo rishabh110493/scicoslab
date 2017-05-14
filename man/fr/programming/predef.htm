@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>predef</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>predef</b> -  protection de variables  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>n=predef()  </tt></dd>
+<dd><tt>oldnew=predef(n)  </tt></dd>
+<dd><tt>oldnew=predef('all')  </tt></dd>
+<dd><tt>oldnew=predef('clear')  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+			Function utilitaire permettant de déclarer comme "protégées"
+			les variables "les plus anciennes". Les variables protégées ne
+			peuvent pas être effacées. Elles ne sont pas non plus sauvées par la
+			commande <tt><b>'save'</b></tt>. Les variables "les plus
+			anciennes" sont celles qui apparaissent avec la commande
+			<tt><b>who('get')</b></tt>.
+		</p>
+<p><tt><b>predef()</b></tt> renvoie le nombre de variables protégées.
+		</p>
+<p><tt><b>predef('a[ll]')</b></tt> protège toutes les variables et
+			renvoie l'ancien et le nouveau nombre de variables protégées.
+		</p>
+<p><tt><b>predef('c[lear]')</b></tt> enlève la protection de toutes
+			les variables sauf les 7 définies dernièrement. Renvoie l'ancien et
+			le nouveau nombre de variables protégées.
+		</p>
+<p><tt><b>predef(n)</b></tt> protège les <tt><b>max(n,7)</b></tt> variables
+			définies dernièrement. Renvoie l'ancien et le nouveau nombre de
+			variables protégées.
+		</p>
+<h3><font color="blue">Remarques</font></h3>
+<dl>
+<p>
+			Le nombre de variables protégées est défini dans le fichier de démarrage
+			<tt><b>SCI/scilab.star</b></tt>. L'utilisateur a la possibilité de
+			définir ses propres variables protégées dans les fichiers de démarrage
+			<tt><b>SCIHOME/.scilab</b></tt> et <tt><b>SCIHOME/scilab.ini</b></tt>.
+		</p>
+<p>
+			Définition de SCIHOME : 
+			Sous Windows : C:/Documents and Settings/&lt;User&gt;/ScicosLab/&lt;ScicosLab-Version&gt;
+			Sous Linux/Unix : /home/&lt;User&gt;/.ScicosLab/&lt;ScicosLab-Version&gt;
+		</p>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/clear.htm"><tt><b>clear</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

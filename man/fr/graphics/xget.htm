@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xget</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xget</b> - récupère des valeurs du contexte graphique de
+  la fenêtre courante</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x1]=xget(str,[flag])</tt></dd>
+<dd><tt>xget()</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: chaîne de caractères.</li>
+<li>
+<tt><b>flag</b></tt>: optionnel. Choisir 1 pour le mode "bavard".</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Remarque Importante : </b></tt>Les versions Scilab 4.x seront les
+    dernières à  fonctionner avec l'ancien mode graphique.</p>
+<p>Cette fonction est utilisée pour récupérer des valeurs du contexte
+    graphique de la fenêtre courante, sur le sujet précisé par la chaîne de
+    caractères <tt><b>str</b></tt>. Sans argument, cette fonction affiche une
+    boîte de dialogue montrant les valeurs courantes et des changements
+    peuvent être effectués à  l'aide de boutons.</p>
+<dl>
+<dd>
+<b>number=xget("alufunction")</b>: Opérateur logique utilisé pour les dessins Voir
+        <tt><b>xset</b></tt>.</dd>
+<dd>
+<b>str=xget("auto clear")</b>: donne le mode d'effacement automatique (<tt><b>"on"</b></tt> ou
+        <tt><b>"off"</b></tt>).</dd>
+<dd>
+<b>color=xget("background")</b>: donne la couleur d'arrière plan</dd>
+<dd>
+<b>rect=xget("clipping")</b>: donne la zone de clipping sous forme d'un rectangle
+        rect=[x,y,w,h] (point en haut à  gauche, largeur, hauteur).</dd>
+<dd>
+<b>c=xget("color")</b>: donne la couleur par défaut pour le tracé de ligne, le texte ou
+        le remplissage. <tt><b>c</b></tt> est l'indice de la couleur dans la
+        table de couleurs de la fenêtre.</dd>
+<dd>
+<b>cmap=xget("colormap")</b>: donne la table de couleurs de la fenêtre graphique (matrice m x
+        3 d'intensités R,V,B)</dd>
+<dd>
+<b>dash=xget("dashes")</b>: obsolète</dd>
+<dd>
+<b>font=xget("font")</b>: donne le code et la taille de la police par défaut
+        font=[fontid,fontsize],</dd>
+<dd>
+<b>fontsize=xget("font size")</b>: donne la taille par défaut des polices</dd>
+<dd>
+<b>color=xget("foreground")</b>: donne la couleur de premier plan</dd>
+<dd>
+<b>str=xget("fpf")</b>: donne le format d'affichage des nombres pour les fonctions
+        dessinant des courbes de niveau (voir contour). <tt><b>str=""</b></tt>
+        désigne le format par défaut.</dd>
+<dd>
+<b>color=xget("hidden3d")</b>: donne la couleur du dessous des facettes pour le dessin des
+        surfaces en 3D.</dd>
+<dd>
+<b>pat=xget("lastpattern")</b>: donne le dernier indice de couleur disponible dans la table des
+        couleurs. En fait <tt><b>pat+1</b></tt> et <tt><b>pat+2</b></tt> sont
+        toujours disponibles et correspondent toujours au noir et au
+        blanc.</dd>
+<dd>
+<b>type=xget("line mode")</b>: donne le mode de tracé des lignes. type=1 : absolu, type=0 :
+        relatif (le mode type=0 est buggé)</dd>
+<dd>
+<b>xget("line style")</b>: donne le style de ligne par défaut (1 : plein, &gt;1 :
+        pointillés).</dd>
+<dd>
+<b>mark=xget("mark")</b>: donne le numéro et la taille du marqueur par défaut
+        <tt><b>mark=[markid,marksize]</b></tt>.</dd>
+<dd>
+<b>marksize=xget("mark size")</b>: donne la taille de marqueur par défaut</dd>
+<dd>
+<b>pat=xget("pattern")</b>: obsolète</dd>
+<dd>
+<b>value=xget("thickness")</b>: donne la largeur des lignes en pixels (0 et 1 = 1 pixel
+        d'épaisseur).</dd>
+<dd>
+<b>flag=xget("use color")</b>: 0 (mode noir et blanc) ou 1 (mode en couleurs). Voir
+        <tt><b>xset</b></tt>.</dd>
+<dd>
+<b>[x,y]=xget("viewport")</b>: donne la position de la partie visible des graphiques dans la
+        fenêtre glissante.</dd>
+<dd>
+<b>dim=xget("wdim")</b>: donne la largeur et la hauteur de la fenêtre graphique
+        dim=[width,height].</dd>
+<dd>
+<b>win=xget("window")</b>: donne le numéro de la fenêtre <tt><b>win</b></tt>.</dd>
+<dd>
+<b>pos=xget("wpos");</b>: donne la position du point en haut à  gauche de la fenêtre
+        graphique pos=[x,y].</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

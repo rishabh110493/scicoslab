@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>parents ( )</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>parents ( )</b> -  parenthèses droite et gauche  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>(expression)  </tt></dd>
+<dd><tt>[...]=func(e1,e2,...)  </tt></dd>
+<dd><tt>[x1,x2,...]=(e1,e2,...)  </tt></dd>
+<dd><tt>x(i,j)  </tt></dd>
+<dd><tt>v(i)  </tt></dd>
+<dd><tt>[...]=l(i)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice de tout type 
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur ligne ou colonne de tout type
+</li>
+<li>
+<tt><b>l  </b></tt>
+    : liste
+</li>
+<li>
+<tt><b>func  </b></tt>
+    : nom de fonction
+</li>
+<li>
+<tt><b>e1,e2,...  </b></tt>
+    : expression de type quelconque
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Les parenthèses droite et gauche sont utilisées pour : 
+  </p>
+<p>
+     *
+    Spécifier l'ordre d'évaluation dans des expressions, 
+  </p>
+<p>
+     *
+    Former la liste des arguments d'entrée d'une fonction. Les arguments multiples sont séparés par des virgules. 
+  </p>
+<p>
+     *
+    Sélectionner des éléments dans les vecteurs, matrices et listes.
+  </p>
+<p>
+    Voir <tt><b>extraction</b></tt> et <tt><b>insertion</b></tt> pour de plus amples précisions.
+  </p>
+<p>
+     *
+    [x1,x2,...]=(e1,e2,...) est équivalent aux commandes préalables %t_1 = e1,
+    %t_2 = e2, ..., suivies de x1 = %t_1, x2 = %t_2, ..., où les
+    variables %t_i, i = 1, 2, ... sont "invisibles" pour l'utilisateur.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+3^(-1)
+x=poly(0,"x");
+//
+(x+10)/2
+i3=eye(3,3)
+//
+a=[1 2 3;4 5 6;7 8 9],a(1,3),a([1 3],:),a(:,3)
+a(:,3)=[]
+a(1,$)=33
+a(2,[$ $-1])
+a(:,$+1)=[10;11;12]
+//
+w=ssrand(2,2,2);ssprint(w)
+ssprint(w(:,1))
+ss2tf(w(:,1)) 
+//
+l=list(1,2,3,4)
+[a,b,c,d]=l(:)
+l($+1)='new'
+//
+v=%t([1 1 1 1 1])
+//
+[x,y,z]=(1,2,3)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/colon.htm"><tt><b>colon</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/comma.htm"><tt><b>comma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/brackets.htm"><tt><b>brackets</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>grep</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>grep</b> -  find matches of a string in a vector of strings</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>row=grep(str1,str2)  </tt></dd>
+<dd><tt>[row,which]=grep(str1,str2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str1</b></tt>: a vector of strings.</li>
+<li>
+<tt><b>str2</b></tt>: a character string or character string vector . The string(s) to search in <tt><b>str1</b></tt>
+</li>
+<li>
+<tt><b>row</b></tt>: vector of  indices: row where a match has been found or an empty matrix if no match found.</li>
+<li>
+<tt><b>which</b></tt>: vector of indices: index of str2 string found or an empty matrix if no match found.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Foreach entry of <tt><b>str1</b></tt>,   <tt><b>grep</b></tt> searches if at least a string in
+    <tt><b>str2</b></tt> matches a substring. <tt><b>str1</b></tt>  entries index where  at least a match has been
+    found are returned in the <tt><b>row</b></tt> argument. while optionnal
+    <tt><b>which</b></tt> argument gives the index of first string of  <tt><b>str2</b></tt> found.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+txt=['find matches of a string in a vector of strings'
+     'search position of a character string in an other string'
+     'Compare Strings'];
+
+grep(txt,'strings')
+grep(txt,['strings' 'Strings'])
+
+[r,w]=grep(txt,['strings' 'Strings'])
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/strindex.htm"><tt><b>strindex</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

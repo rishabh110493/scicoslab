@@ -1,0 +1,57 @@
+.TH AON  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+AON  -  All or Nothing traffic assignment algorithm 
+.SH CALLING SEQUENCE
+.nf
+[F]=AON(net)
+[F]=AON(net,t0)
+[F]=AON(tl,hl,t0,nn,origins,td,hd,dd)
+.fi
+.SH PARAMETERS
+.TP 10
+net
+: a NetList, 
+.TP 10
+t0
+: row vector, the link travel time (if not given in net)
+.TP 10
+tl, hl
+: row vectors, tail and head nodes numbers of the links 
+.TP 10
+nn
+: node number
+.TP 10
+origins
+: origins of the OD pairs
+.TP 10
+td, hd, dd
+: row vectors, tail and head nodes numbers of the demands, and demands values
+.TP 10
+F
+: assigned flow
+
+
+.SH DESCRIPTION
+Assigns the flow with the All or Nothing algorithm. For each OD-pair
+it looks for the minimum travel time path and assigns all the demand to this
+path. The travel time of the links are given by t0 or by the corresponding field in net.
+The non feasible OD pairs are ignored.
+
+.SH EXAMPLES
+.nf
+net=TrafficExample('Small');
+F=AON(net)
+.fi
+
+.SH SEE ALSO
+AONd,
+IA,
+IAON,
+FW,
+CAPRES,
+TrafficAssig
+
+
+
+
+

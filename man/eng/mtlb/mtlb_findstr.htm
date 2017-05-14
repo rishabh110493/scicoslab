@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_findstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_findstr</b> - Matlab findstr emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>There is no Scilab equivalent for Matlab <tt><b>findstr</b></tt>.</p>
+<p>
+    The function <tt><b>mtlb_findstr(A,B)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>findstr(A,B)</b></tt> when it was not
+    possible to know what were the operands/inputs[CUSTOM] while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_findstr</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is always longer than <tt><b>B</b></tt>
+	(i.e. <tt><b>findstr</b></tt> can be replaced by <tt><b>strfind</b></tt> in Matlab,
+        <tt><b>mtlb_findstr(A,B)</b></tt> may be replaced by <tt><b>strindex(A,B)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_findstr</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

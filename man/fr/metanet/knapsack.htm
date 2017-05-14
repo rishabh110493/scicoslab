@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>knapsack</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>knapsack</b> -  résout un problème du sac à dos 0-1 multiple   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[earn,ind] = knapsack(profit,weight,capa,[bck])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>profit  </b></tt>
+    : vecteur ligne d'entiers 
+</li>
+<li>
+<tt><b>weight  </b></tt>
+    : vecteur ligne d'entiers 
+</li>
+<li>
+<tt><b>capa  </b></tt>
+    : vecteur ligne d'entiers
+</li>
+<li>
+<tt><b>bck  </b></tt>
+    : entier
+</li>
+<li>
+<tt><b>earn  </b></tt>
+    : entier 
+</li>
+<li>
+<tt><b>ind  </b></tt>
+    : vecteur ligne d'entiers 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>knapsack</b></tt> résout un problème du sac à dos 0-1 multiple avec n (n &gt;= 2)
+    objets et m sacs à dos (m &gt;= 1).
+    <tt><b>profit</b></tt> est le vecteur des profits (entiers) des n objets et
+    <tt><b>weight</b></tt> est le vecteur des poids correspondants (entiers).
+    <tt><b>capa</b></tt> est le vecteur des capacités (entières) des m sacs à dos. 
+    <tt><b>bck</b></tt> est un entier optionnel : le nombre maximum de backtrackings à 
+    effectuer, si une solution heuristique est exigée. Si la solution 
+    exacte est exigée <tt><b>bck</b></tt> peut être omis ou avoir une valeur négative.
+    <tt><b>earn</b></tt> est la valeur du critère pour la solution "optimale" et 
+    <tt><b>ind</b></tt> est un vecteur donnant les positions optimales : <tt><b>ind(i)</b></tt> 
+    donne le numéro du sac à dos où l'objet i est mis et cette valeur est 0 si 
+    l'objet i n'est pas dans la solution optimale.
+  </p>
+<p>
+    Rappelons que le problème à résoudre est le suivant :
+    <tt><b>p(i)</b></tt> et <tt><b>w</b></tt> désignent respectivement le profit et le poids de
+    l'objet <tt><b>i</b></tt> 1=1,...,n; 
+    <tt><b>c(j)</b></tt> désigne la capacité du sac à dos <tt><b>j</b></tt> j=1,...,m;  
+    <tt><b>q(j,i)</b></tt> désigne la quantité d'objets <tt><b>i</b></tt> dans le sac à dos <tt><b>j</b></tt> 
+    (en fait 0 ou 1).
+  </p>
+<p>
+    On cherche à maximiser le profit global <tt><b>E</b></tt> :
+     <tt><b>E=p(1)*[x(1,1)+...+x(m,1)]+...+p(n)*[x(1,n)+...+x(m,n)]</b></tt></p>
+<p>
+    sous les contraintes :
+     <tt><b>[w(1)*x(j,1)+...+w(n)*x(j,m)] &lt;= c(j) ; j=1,...,m</b></tt><tt><b>[x(1,i)+...+x(m,i)] &lt;= 1 ; i=1,...,n</b></tt><tt><b>x(j,i)= 0 ou 1 </b></tt><tt><b>p(),w(),c()</b></tt> sont des entiers positifs.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+weight=ones(1,15).*.[1:4];
+profit=ones(1,60);
+capa=[15 45 30 60];
+[earn,ind]=knapsack(profit,weight,capa)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/qassign.htm"><tt><b>qassign</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

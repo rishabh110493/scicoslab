@@ -1,0 +1,53 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>LogitB </title></head><body bgcolor="FFFFFF"><CENTER>CiudadSim Function  </CENTER><p><b>LogitB  -  Logit equilibrium ( Bell Method )  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[F]=LogitB(A,D,theta)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>A  </b></tt>
+    : nxn nodesxnodes matrix of travel times
+  </li>
+  <li><tt><b>D  </b></tt>
+    : nxn nodesxnodes matrix of demand flows 
+  </li>
+  <li><tt><b>theta  </b></tt>
+    : stochasticity parameter 
+  </li>
+  <li><tt><b>F  </b></tt>
+    : nxn nodesxnodes assigned flow matrix
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Compute the logit traffic assignment by the Bell
+    method where all the routes are considered not
+    only the efficient ones (see LogitD).
+  </p>
+  <p>
+    To each route r on the graph defined by the 
+    matrix A is associated a weight exp(-theta*l) 
+    where l denotes the the total travel time on
+    the route r. The flow for each demand defined by the matrix D
+    is assigned on a route proportionnaly to its wheight.
+  </p>
+  <p>
+    The graph must be strongly connected.
+    If it is not the case we can add artificial 
+    arcs with large travel time in such a way that
+    the new graph becomes strongly connected.
+  </p>
+  <p>
+    theta must be large enough to insure that the
+    weight of routes with an infinite number of links
+    are finite.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+// Graph generation (the graph must be stongly connected),
+// n is the number of nodes, m the number of arcs.
+n=10; m=40; 
+c1=m/(n*n);
+A=sprand(n,n,c1)+diag(sparse(ones(n-1,1)),1);
+A(n,1)=1;A=A-diag(diag(A));
+// Demand generation, p is the number of demand.
+p=30; c2=p/(n*n);D=sprand(n,n,c2);D=D-diag(diag(D));
+//theta definition (almost determinsitic)
+theta=10;
+// Flow calculation
+FD=LogitB(A,D,theta)
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="LogitD.htm"><tt><b>LogitD</b></tt></a>&nbsp;&nbsp;<a href="LogitMB.htm"><tt><b>LogitMB</b></tt></a>&nbsp;&nbsp;<a href="LogitMD.htm"><tt><b>LogitMD</b></tt></a>&nbsp;&nbsp;<a href="LogitN.htm"><tt><b>LogitN</b></tt></a>&nbsp;&nbsp;<a href="LogitNE.htm"><tt><b>LogitNE</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

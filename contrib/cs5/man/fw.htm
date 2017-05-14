@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>FW </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>FW  -   Frank-Wolfe traffic assignment algorithm  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[F,ta,ben]=FW(net,kmax,tol)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList 
+  </li>
+  <li><tt><b>kmax  </b></tt>
+    : maximum number of iterations
+  </li>
+  <li><tt><b>tol  </b></tt>
+    : precision
+  </li>
+  <li><tt><b>F  </b></tt>
+    : assigned flow 
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : link travel time for the assigned flow F
+  </li>
+  <li><tt><b>ben  </b></tt>
+    : ni x 5 matrix (ni number of performed general iterations) benchmark information  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow with the Frank-Wolfe algorithm.
+    After an initial AON assignment the link costs are updated
+    and a new assignment is computed. The new assignment is combined
+    with the previous one in a way that minimizes the global cost.
+    The algorithm terminates when the number of iterations kmax is reached
+    or the change in link costs is less than tol.
+    When they are not given tol and kmax have the default values 1e-6 and
+    20.
+  </p>
+  <p>
+    The matrix ben contains intermediary informations on the
+    algorithm. For each iteration it gives the iteration number, time
+    spent, cost, memory used and an convergence error evaluation.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample("Small");
+/// generates a network with 4 nodes, 9 arcs and 2 OD-pairs
+[F,ta,ben]=FW(net);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="IAON.htm"><tt><b>IAON</b></tt></a>&nbsp;&nbsp;<a href="CAPRES.htm"><tt><b>CAPRES</b></tt></a>&nbsp;&nbsp;<a href="DSD.htm"><tt><b>DSD</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

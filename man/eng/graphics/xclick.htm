@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xclick</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xclick</b> -  wait for a mouse click</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[c_i,c_x,c_y,c_w,c_m]=xclick([flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>c_i</b></tt>: integer, mouse button number.</li>
+<li>
+<tt><b>c_x,c_y</b></tt>: real scalars, position of the mouse.</li>
+<li>
+<tt><b>c_w</b></tt>: integer, window number.</li>
+<li>
+<tt><b>c_m</b></tt>: string, menu callback.</li>
+<li>
+<tt><b>flag</b></tt>: integer. If present, the click event queue is not cleared when entering  xclick.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xclick</b></tt> waits for a mouse click in the graphics window.
+  </p>
+<p>
+    If it is called with 3 left hand side arguments, it waits for a mouse click 
+    in the current graphics window.
+  </p>
+<p>
+    If it is called with 4 or 5 left hand side arguments, it waits for a mouse 
+    click in any graphics window.
+  </p>
+<p>
+    The returned values are described below.
+  </p>
+<dl>
+<dd>
+<b>c_i</b>: an integer which gives the number of the mouse button or key that was
+	  pressed  .<dl>
+<dd>
+<b>ibutton==0</b>: Left mouse button has been pressed</dd>
+<dd>
+<b>ibutton==1</b>: Middle mouse button has been pressed</dd>
+<dd>
+<b>ibutton==2</b>: Right mouse button has been pressed<p></p>
+</dd>
+<dd>
+<b>ibutton==3</b>: Left mouse button has been clicked</dd>
+<dd>
+<b>ibutton==4</b>: Middle mouse button has been clicked</dd>
+<dd>
+<b>ibutton==5</b>: Right mouse button has been clicked<p></p>
+</dd>
+<dd>
+<b>ibutton==10</b>: Left mouse button has been double-clicked</dd>
+<dd>
+<b>ibutton==11</b>: Middle mouse button has been double-clicked</dd>
+<dd>
+<b>ibutton==12</b>: Right mouse button has been double-clicked<p></p>
+</dd>
+<dd>
+<b>ibutton &gt; =32</b>: key with ascii code ascii(ibutton) has been pressed</dd>
+<dd>
+<b>ibutton &gt; =1000+32</b>: key with ascii code ascii(ibutton-1000) has been pressed while CTRL
+	    key pressed</dd>
+<dd>
+<b>ibutton==-100</b>: graphic window has been closed</dd>
+<dd>
+<b>ibutton==-2</b>: a dynamic menu has been selected</dd>
+</dl>
+</dd>
+<dd>
+<b>c_x,c_y</b>: the coordinates of the position of the mouse click in the current graphics  scale.</dd>
+<dd>
+<b>c_w</b>: the window number where the click has occurred.</dd>
+<dd>
+<b>c_m</b>: string associated with a dynamic menu. If xclick returns due to a click on a menu, <tt><b>c_i</b></tt>, <tt><b>c_x</b></tt>, <tt><b>c_y,</b></tt> and <tt><b>c_w</b></tt> take arbitrary values.</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/locate.htm"><tt><b>locate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/seteventhandler.htm"><tt><b>seteventhandler</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sci2for</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sci2for</b> -  scilab function to Fortran routine conversion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=sci2for(fun,nam,vtps [,lvtps])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: Scilab function</li>
+<li>
+<tt><b>nam</b></tt>: character string, the name of generated subroutine</li>
+<li>
+<tt><b>vtps</b></tt>: list</li>
+<li>
+<tt><b>lvtps</b></tt>: list</li>
+<li>
+<tt><b>txt</b></tt>: string, text of the subroutine Fortran code</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p></p>
+<p>
+    The elements of the list <tt><b>vtps</b></tt> give the type and dimensions 
+    of the input variables of the calling sequence and <tt><b>lvtps</b></tt>
+    optionally gives the type and dimensions of the output variables. This
+    last parameter is usefull if type and/or dimension inference cannot be
+    able to determine the desired values.
+  </p>
+<p>
+    These lists are  structured as described below:
+  </p>
+<pre>
+
+vtps(i)=list(typ,row_dim,col_dim)
+   
+    </pre>
+<p>
+    where :
+  </p>
+<dl>
+<dd>
+<b>typ</b>: is a character string giving the type of the variable :</dd>
+<dd>
+<b>"0"</b>: constant,integer vector or matrix</dd>
+<dd>
+<b>"1"</b>: constant,double precision vector or matrix</dd>
+<dd>
+<b>"10"</b>: character string</dd>
+<dd>
+<b>row_dim</b>: character string (row dimension)</dd>
+<dd>
+<b>col_dim</b>: character string (column dimension)</dd>
+<dd>
+<b>txt</b>: Fortran code<p>
+    Generated code may use routines of scilab libraries and some others
+    whose source code may be found in &lt;SCIDIR&gt;/util/sci2for.f</p>
+</dd>
+</dl>
+<h3><font color="blue">Remarks</font></h3>
+<dl>
+<p>
+    This function is just a try. Only simple function may be translated. Many function calls have not  yet Fortran equivalent, to add the translation of a new function call you may define a scilab function. whose name is f_&lt;name of function&gt;. see &lt;SCIDIR&gt;/macros/sci2for/f_*.sci files for examples.</p>
+<p>
+    The following keywords :</p>
+<pre>
+
+ work,iwork,ierr
+ iw*  iiw*      
+ ilbN   (N integer)          
+   
+    </pre>
+<p>
+    may not appear in the function code.</p>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>legends</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>legends</b> - dessine des légendes de courbes
+  2D</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>legends(strings,style
+    [,opt])</tt></dd>
+<dd><tt>legends(strings,style,xy)</tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>strings</b></tt>: vecteur de chaînes de caractères, strings(i) est la légende de
+          la ième courbe</li>
+<li>
+<tt><b>style :</b></tt>vecteur ligne entier de taille n (les styles de dessin de chaque
+          courbe, troisième paramètre de plot2d) ou une matrice d'entiers 2 x
+          n, style(1,k) contenant le style pour la k-ième courbe et style(2,k)
+          contient le style de ligne (si style(1,k)&gt;0) ou la couleur du
+          marqueur (si style(1,k)&lt;0).</li>
+<li>
+<tt><b>opt</b></tt><ul>
+<li>
+<tt><b>1</b></tt>= coin en haut à  droite 2 = coin en haut à  gauche</li>
+<li>
+<tt><b>3</b></tt>= coin en bas à  gauche</li>
+<li>
+<tt><b>4</b></tt>= coin en bas à  droite</li>
+<li>
+<tt><b>5</b></tt>= placement interactif avec la souris (par défaut)</li>
+</ul>
+</li>
+<li>
+<tt><b>xy</b></tt>: un vecteur [x,y] donnant les coordonnées du coin en haut à 
+          gauche de la boîte contenant la légende</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Dessine des légendes sur le dessin courant en utilisant des chaînes de
+    caractères données.</p>
+<p>En cas de placement interactif (opt=5) déplacer la boîte de la légende
+    avec la souris et presser bouton de gauche pour la fixer.</p>
+<p>Cette fonction permet de placer les légendes avec plus de liberté que
+    l'argument leg de plot2d.</p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=0:0.1:2*%pi;
+plot2d(t,[cos(t'),cos(2*t'),cos(3*t')],[-1,2 3]);  
+legends(['cos(t)';'cos(2*t)';'cos(3*t)'],[-1,2 3],opt="lr")
+xset("line style",2);plot2d(t,cos(t),style=5);
+xset("line style",4);plot2d(t,sin(t),style=3);
+legends(["sin(t)";"cos(t)"],[[5;2],[3;4]], with_box=%f, opt="?")
+
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

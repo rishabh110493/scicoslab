@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fec</b> -  pseudo-color plot of a function defined on a triangular mesh</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>fec(x,y,triangles,func,&lt;opt_args&gt;)  </tt></dd>
+<dd><tt>fec(x,y,triangles,func,[strf,leg,rect,nax,zminmax,colminmax,colout,mesh])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two vectors of size <tt><b>n</b></tt>, <tt><b>(x(i),y(i))</b></tt> gives the coordinates of 
+                node  <tt><b>i</b></tt>
+</li>
+<li>
+<tt><b>func</b></tt>: a vector of size <tt><b>n</b></tt> : <tt><b>func(i)</b></tt> gives the value at node <tt><b>i</b></tt>
+                of the function for which we want the pseudo-color plot.</li>
+<li>
+<tt><b>triangles</b></tt>: is a <tt><b>[Ntr,5]</b></tt> matrix. Each line of <tt><b>triangles</b></tt> specifies a triangle 
+                of the  mesh <tt><b>triangle(j) = [number,node1,node2,node3,flag]</b></tt>. 
+                <tt><b>node1,node2,node3</b></tt> are the number of the nodes which constitutes 
+                the triangle. number is the number of the triangle and flag is an integer 
+                not used in the fec function</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: strf, leg, rect, nax, zminmax, colminmax, colout, mesh
+          (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> for the 4 first ones).</li>
+<li>
+<tt><b>strf,leg,rect,nax</b></tt>: see plot2d</li>
+<li>
+<tt><b>zminmax</b></tt>: vector with 2 components [zmin zmax] (useful in particular for animation)</li>
+<li>
+<tt><b>colminmax</b></tt>: vector of 2 positives integers [colmin colmax]</li>
+<li>
+<tt><b>colout</b></tt>: vector of 2 integers [under_min_col upper_max_col]</li>
+<li>
+<tt><b>mesh</b></tt>: boolean scalar, default value %f (must be true if you want also display the mesh)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function is the good one to draw linear triangular finite element solutions 
+       or simply to display a function defined on a triangulation. The color interpolation
+      is done through software computation and so it is not too fast.</p>
+<p>The function <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colorbar.htm"><tt><b>colorbar</b></tt></a> may be used to see the color scale (see the example
+       section).</p>
+<p>    
+    The <tt><b>zminmax</b></tt> argument gives the z values associated with the first and the last 
+    color (of the current colormap). More exactly if the colormap have nc colors and if we note 
+    <em>dz = (zmax-zmin)/nc</em>, then the part of the triangulation where  
+    <em>zmin + (i-1)dz &lt;= z &lt; zmin + i dz</em> is filled with the color <em>i</em>). 
+    By default <em>zmin = min(func)</em> and <em>zmax = max(func)</em>. If you want to do 
+    an animation with func values that varie in time, take for zmin and zmax the global 
+    minimum and maximum or something close.
+    </p>
+<p>
+    The <tt><b>colout</b></tt> argument lets the user choosing the colors for the 2 extremes
+    regions <em>{func &lt; zmin}</em> and <em>{func &gt; zmax}</em>, <tt><b>under_min_col</b></tt> and 
+    <tt><b>upper_max_col</b></tt> may be equal (independantly) to:
+    </p>
+<dd>
+<li>
+<b><font color="maroon">-1</font></b>: in this case the same color than in the neighbouring zone is used (CAUTION: 
+                  you don't see that the corresponding limit is crossed), this is the
+                  default case.</li>
+<li>
+<b><font color="maroon">0</font></b>: in this case the extreme region is not painting at all.</li>
+<li>
+<b><font color="maroon">k</font></b>: (k being a valid index to a color of the current colormap) the extreme region
+                  is painting in color k.</li>
+</dd>
+<p>If you don't want to use the complete colormap you may use the <tt><b>colminmax</b></tt>
+    argument with <em>1 &lt;= colmin &lt; colmax &lt;= nc</em> (nc being the number of colors 
+    of the current colormap) so as to use only the [colmin,colmax]  sub-part of the colormap.
+    (by default all the colors of the colormap are used).
+    </p>
+<p>
+    See the demo files <tt><b>demos/fec</b></tt>:</p>
+<p><tt><b>fec.ex1</b></tt> is a simple demo file in which a mesh and a function 
+    on that mesh is completely built in Scilab syntax</p>
+<p><tt><b>fec.ex2</b></tt> is an example for which the mesh and the function value where 
+    computed by an external mesh builder (amdba type mesh) and an external program.
+    A set of macros ( provided in file <tt><b>macros.sci</b></tt>) can be used to read the 
+    data files in Scilab and plot the results.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// define a mini triangulation (4 vertices, 2 triangles)
+x = [0 1 0 -1];
+y = [0 0 1  1];
+T = [1 1 2 3 1;
+     2 3 4 1 1];
+z = [0 1 0 -1];  // values of the func at each vertices
+xbasc()
+xset("colormap",jetcolormap(64))
+subplot(1,2,1)
+   colorbar(-1,1)
+   fec(x,y,T,z,strf="040",mesh=%t)
+   xtitle("fec example (with the mesh)")
+subplot(1,2,2)
+   colorbar(-1,1)
+   fec(x,y,T,z,strf="040")  // rmq: mesh=%f by default
+   xtitle("fec example (without the mesh)")
+xselect()
+
+
+// this example shows the effect of zminmax and uses the
+// previous example datas (you have to execute the it before)
+xbasc()
+xset("colormap",jetcolormap(64))
+colorbar(-0.5,0.5)  // be careful colorbar must be set by hands !
+fec(x,y,T,z,strf="040", zminmax=[-0.5 0.5], mesh=%t)
+xtitle("fec example : using zminmax argument")
+xselect()
+
+
+// this example shows the effect of zminmax and colout. It uses
+// also the datas of the first example (you have to execute the it before)
+xbasc()
+xset("colormap",jetcolormap(64))
+subplot(2,2,1)
+   colorbar(-0.5,0.5)
+   fec(x,y,T,z,strf="040", zminmax=[-0.5 0.5], colout=[0 0], mesh=%t)
+   xtitle("fec example : using zminmax and colout =[0 0]")
+subplot(2,2,2)
+   colorbar(-0.5,0.5)
+   fec(x,y,T,z,strf="040", zminmax=[-0.5 0.5], colout=[32 32], mesh=%t)
+   xtitle("fec example : using zminmax and colout =[32 32]")
+subplot(2,2,3)
+   colorbar(-0.5,0.5)
+   fec(x,y,T,z,strf="040", zminmax=[-0.5 0.5], colout=[-1 0], mesh=%t)
+   xtitle("fec example : using zminmax and colout =[-1 0]")
+subplot(2,2,4)
+   colorbar(-0.5,0.5)
+   fec(x,y,T,z,strf="040", zminmax=[-0.5 0.5], colout=[0 -1], mesh=%t)
+   xtitle("fec example : using zminmax and colout =[0 -1]")
+xselect()
+
+
+// this example shows a feature from colminmax:
+// playing with 2 colormaps for 2 subplots. It
+// uses also the data of the first example.
+xbasc()
+xset("colormap",[hotcolormap(64);jetcolormap(64)])
+subplot(1,2,1)
+   colorbar(-1,1,[1 64])
+   fec(x,y,T,z,strf="040", colminmax=[1 64], mesh=%t)
+   xtitle("fec using the hot colormap")
+subplot(1,2,2)
+   colorbar(-1,1,[65 128])
+   fec(x,y,T,z,strf="040", colminmax=[65 128], mesh=%t)
+   xtitle("fec using the jet colormap")
+xselect()
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colorbar.htm"><tt><b>colorbar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Sfgrayplot.htm"><tt><b>Sfgrayplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/Sgrayplot.htm"><tt><b>Sgrayplot</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

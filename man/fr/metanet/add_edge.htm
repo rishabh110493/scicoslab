@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>add_edge</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>add_edge</b> -  ajoute une arête ou un arc entre deux sommets  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g1 = add_edge(i,j,g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>i  </b></tt>
+    : entier, numéro du sommet origine
+</li>
+<li>
+<tt><b>j  </b></tt>
+    : entier, numéro du sommet extrémité
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>g1  </b></tt>
+    : nouveau graphe avec la nouvelle arête (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>add_edge</b></tt> renvoie le graphe <tt><b>g1</b></tt> avec une nouvelle arête du numéro de sommet 
+    <tt><b>i</b></tt> au numéro de sommet <tt><b>j</b></tt>. Si le graphe est orienté, l'arête est un arc. Le nombre d'arêtes plus 1 est pris comme nom de la nouvelle arête.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+g=add_edge(1,7,g);
+g('edge_color')=[ones(ta) 11];
+show_graph(g);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/add_node.htm"><tt><b>add_node</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/delete_arcs.htm"><tt><b>delete_arcs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/delete_nodes.htm"><tt><b>delete_nodes</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

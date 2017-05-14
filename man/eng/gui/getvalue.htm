@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getvalue</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getvalue</b> -  xwindow dialog for data acquisition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[ok,x1,..,x14]=getvalue(desc,labels,typ,ini)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>desc</b></tt>: column vector of strings, dialog general comment</li>
+<li>
+<tt><b>labels</b></tt>: n column vector of strings, <tt><b>labels(i)</b></tt> is the label of  the ith required value</li>
+<li>
+<tt><b>typ</b></tt>: <tt><b>list(typ_1,dim_1,..,typ_n,dim_n)</b></tt><ul>
+<li>
+<tt><b>typ_i</b></tt>: defines the type of the ith value, may have the following values:<ul>
+<li>
+<tt><b>"mat"  </b></tt>: for constant matrix</li>
+<li>
+<tt><b>"col"  </b></tt>: for constant column vector</li>
+<li>
+<tt><b>"row"  </b></tt>: for constant row vector</li>
+<li>
+<tt><b>"vec"  </b></tt>: for  constant vector</li>
+<li>
+<tt><b>"str"  </b></tt>: for string</li>
+<li>
+<tt><b>"lis"  </b></tt>: for list</li>
+</ul>
+</li>
+<li>
+<tt><b>dim_i</b></tt>: defines the size of the ith value it must be a integer or a 2-vector of integer, -1 stands for undefined dimension</li>
+</ul>
+</li>
+<li>
+<tt><b>ini</b></tt>: n column vector of strings, <tt><b>ini(i)</b></tt> gives the suggested response for the ith required value</li>
+<li>
+<tt><b>ok</b></tt>: boolean ,%t if ok button pressed, %f if cancel button pressed</li>
+<li>
+<tt><b>xi</b></tt>: contains the ith value if ok=%t. If left hand side has one more <tt><b>xi</b></tt> than required values the last  <tt><b>xi</b></tt> contains the vector of answered strings.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function encapsulate <tt><b>x_mdialog</b></tt> function with error checking,
+    evaluation of numerical response, ...</p>
+<h3><font color="blue">Remarks</font></h3>
+<dl><p>
+    All valid expressions can be used as answers; for matrices  and vectors <tt><b>getvalues</b></tt> automatically adds [ ] around the given answer before numeric evaluation.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+labels=["magnitude";"frequency";"phase    "];
+[ok,mag,freq,ph]=getvalue("define sine signal",labels,...
+     list("vec",1,"vec",1,"vec",1),["0.85";"10^2";"%pi/3"])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_matrix.htm"><tt><b>x_matrix</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer ; ;   </p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>norm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>norm</b> -  normes matricielles  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=norm(x [,flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur ou matrice (réelle ou complexe, pleine ou creuse)
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : chaîne de caractères (type de la norme, 2 par défaut)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Pour les matrices
+  </p>
+<dl>
+<dd>
+<b>norm(x)</b>: où <tt><b>norm(x,2)</b></tt> est la plus grande valeur singulière de <tt><b>x</b></tt> (<tt><b>max(svd(x))</b></tt>). </dd>
+<dd>
+<b>norm(x,1) renvoie</b>: la norme l_1 de <tt><b>x</b></tt> (la plus grande somme suivant les colonnes :  <tt><b>maxi(sum(abs(x),'r'))</b></tt>  ). </dd>
+<dd>
+<b>norm(x,'inf'),norm(x,%inf)</b>: la norme infinie de <tt><b>x</b></tt> (la plus grande somme suivant les lignes :  <tt><b>maxi(sum(abs(x),'c'))</b></tt>  ). </dd>
+<dd>
+<b>norm(x,'fro')</b>: la norme de Frobenius de <tt><b>x</b></tt> c'est à dire <tt><b>sqrt(sum(diag(x'*x)))</b></tt>
+</dd>
+</dl>
+<p>
+    Pour les vecteurs
+  </p>
+<dl>
+<dd>
+<b>norm(v,p)</b>: norme l_p (<tt><b>sum(v(i)^p))^(1/p)</b></tt> .</dd>
+<dd>
+<b>norm(v)</b>: <tt><b>=norm(v,2)</b></tt> : norme euclidienne</dd>
+<dd>
+<b>norm(v,'inf')</b>: <tt><b>max(abs(v(i)))</b></tt>.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2,3];
+norm(A,1)
+norm(A,'inf')
+A=[1,2;3,4]
+max(svd(A))-norm(A)
+
+A=sparse([1 0 0 33 -1])
+norm(A)
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h_norm.htm"><tt><b>h_norm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/dhnorm.htm"><tt><b>dhnorm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h2norm.htm"><tt><b>h2norm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/abs.htm"><tt><b>abs</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

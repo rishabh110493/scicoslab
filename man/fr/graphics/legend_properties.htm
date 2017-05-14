@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>legend_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>legend_properties</b> - description of the Legend entity
+  properties. <b>Warning</b>: This object will be rebuild in the next
+  version.</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Legend entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for legends drawn below <tt><b>plot2dx</b></tt>
+    graphs. For each line plotted, the legend shows a sample of the line type,
+    marker symbol, and color.</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        legend entity should be of the type <tt><b>"Compound"</b></tt>. This
+        Compound entity contains also the remainder of the graph's
+        entities.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>legend</b></tt> handles currently do not have
+        any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>line_mode: </b>This field contains the default <tt><b>line_mode</b></tt> property
+        value for the segs. Its value should be <tt><b>"on" </b></tt>(line drawn)
+        or <tt><b>"off"</b></tt> (no line drawn).</dd>
+<dd>
+<b>mark_mode: </b>This field contains the default <tt><b>mark_mode</b></tt> property
+        value for the polyline. Its value should be <tt><b>"on"</b></tt> (marks
+        drawn) or <tt><b>"off"</b></tt> (no marks drawn).</dd>
+<dd>
+<b>mark_foreground: </b>This field contains the <tt><b>mark_foreground</b></tt> property
+        value which is the marks' edge color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>mark_background: </b>This field contains the <tt><b>mark_background</b></tt> property
+        value which is the marks' face color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>foreground: </b>This field contains the color index used to draw legend. Its value
+        should be a color index (relative to the current colormap).</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        If <tt><b>"on"</b></tt> the legend is drawn , If <tt><b>"off"</b></tt> the
+        legend is not displayed on the screen.</dd>
+<dd>
+<b>text: </b>This field is the character string vector which contains the
+        legend.</dd>
+<dd>
+<b>font_size: </b>The <tt><b>font_size</b></tt> property is used to select the type of
+        size of the text. Its value should be an integer in between 0 and 5
+        which stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>font_style: </b>Seven differents fonts are available : "Courrier", "Symbol",
+        "Times", "Times Italic", "Times Bold", "User defined". The
+        <tt><b>font_style</b></tt> property is an index in [0 6] which is
+        associated to the previous font names.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   
+set("figure_style","new") //create a figure
+// x initialisation 
+x=[0:0.1:2*%pi]';
+plot2d(x,[sin(x) sin(2*x) sin(3*x)],..
+  [1,2,3],leg="L1@L2@L3")
+a=get("current_axes");
+l=a.children.children(1)
+l.text="sin(x)@sin(2*x)@sin(3*x)";
+l.visible="off"; // invisible
+l.font_size = 2;
+l.font_style = 5;
+l.visible='on';
+
+    
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

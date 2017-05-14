@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>power</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>power</b> -  élévation à la puissance (^,.^)   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>t=A^b  </tt></dd>
+<dd><tt>t=A**b  </tt></dd>
+<dd><tt>t=A.^b  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,t  </b></tt>
+    : matrice réelle, complexe, polynomiale ou rationnelle
+</li>
+<li>
+<tt><b>b  </b></tt>
+    : matrice réelle, complexe, polynomiale ou rationnelle
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>(A:matrice carrée)^(b:scalaire)</b>
+    : Si <tt><b>A</b></tt> est une matrice carrée et <tt><b>b</b></tt> un scalaire alors  <tt><b>A^b</b></tt> est la matrice <tt><b>A</b></tt> élevée à la puissance <tt><b>b</b></tt>.
+</dd>
+<dd>
+<b>(A:matrice).^(b:scalaire)</b>
+    : Si <tt><b>b</b></tt> est un un scalaire et <tt><b>A</b></tt> une matrice alors <tt><b>A.^b</b></tt>  est la matrice formée par les éléments de <tt><b>A</b></tt> élevés à la puissance <tt><b>b</b></tt> (puissance élément par élément). Si <tt><b>A</b></tt> est un vecteur et <tt><b>b</b></tt> un scalaire alors  <tt><b>A^b</b></tt> et <tt><b>A.^b</b></tt> donnent le même résultat (puissance élément par élément).
+</dd>
+<dd>
+<b>(A:scalaire).^(b:matrice)</b>
+    Si <tt><b>A</b></tt> est un scalaire et <tt><b>b</b></tt> est une matrice <tt><b>A^b</b></tt> et <tt><b>A.^b</b></tt> sont deux matrices de même taille que b dont les termes sont égaux à <tt><b> a^(b(i,j))</b></tt>.
+</dd>
+<dd>
+<b>(A:matrice).^(b:matrice)</b>
+    Si <tt><b>A</b></tt> et <tt><b>b</b></tt> sont des matrices de même taille <tt><b>A.^b</b></tt> est la matrice dont les termes sont égaux à <tt><b>A(i,j)^b(i,j)</b></tt>.
+</dd>
+</dl>
+<p>
+    Notes :
+  </p>
+<p>
+     -
+    Pour les matrices carrées <tt><b>A^p</b></tt> est calculé par multiplications successives si <tt><b>p</b></tt> est un entier positif, et par diagonalisation sinon.
+  </p>
+<p>
+     -
+    Les opérateurs <tt><b>**</b></tt> et <tt><b>^</b></tt> sont synonymes.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1 2;3 4];
+A^2.5,
+A.^2.5
+(1:10)^2
+(1:10).^2
+
+s=poly(0,'s')
+s^(1:10)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/exp.htm"><tt><b>exp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

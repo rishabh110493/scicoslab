@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>LogitB  </TITLE>
+  <TYPE>CiudadSim Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="LogitB "> Logit equilibrium ( Bell Method )  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>[F]=LogitB(A,D,theta)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>A  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : nxn nodesxnodes matrix of travel times
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>D  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : nxn nodesxnodes matrix of demand flows 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>theta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : stochasticity parameter 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>F  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : nxn nodesxnodes assigned flow matrix
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Compute the logit traffic assignment by the Bell
+    method where all the routes are considered not
+    only the efficient ones (see LogitD).
+  </P>
+  <P>
+    To each route r on the graph defined by the 
+    matrix A is associated a weight exp(-theta*l) 
+    where l denotes the the total travel time on
+    the route r. The flow for each demand defined by the matrix D
+    is assigned on a route proportionnaly to its wheight.
+  </P>
+  <P>
+    The graph must be strongly connected.
+    If it is not the case we can add artificial 
+    arcs with large travel time in such a way that
+    the new graph becomes strongly connected.
+  </P>
+  <P>
+    theta must be large enough to insure that the
+    weight of routes with an infinite number of links
+    are finite.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+// Graph generation (the graph must be stongly connected),
+// n is the number of nodes, m the number of arcs.
+n=10; m=40; 
+c1=m/(n*n);
+A=sprand(n,n,c1)+diag(sparse(ones(n-1,1)),1);
+A(n,1)=1;A=A-diag(diag(A));
+// Demand generation, p is the number of demand.
+p=30; c2=p/(n*n);D=sprand(n,n,c2);D=D-diag(diag(D));
+//theta definition (almost determinsitic)
+theta=10;
+// Flow calculation
+FD=LogitB(A,D,theta)
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>LogitD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitN</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

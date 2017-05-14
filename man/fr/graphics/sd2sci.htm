@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sd2sci</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sd2sci</b> -  conversion des sorties de gr_menu vers des instructions Scilab  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=sd2sci(sd [,sz [,orig]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sd  </b></tt>
+    : structure de données renvoyée par gr_menu.
+</li>
+<li>
+<tt><b>sz  </b></tt>
+    : vecteur de nombres ou chaînes de caractères avec deux composantes, donnant les facteurs de zoom en x et y.
+</li>
+<li>
+<tt><b>orig  </b></tt>
+    : vecteur de nombres ou chaînes de caractères avec deux composantes, donnant un vecteur de translation de l'origine 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Etant donné une liste <tt><b>sd</b></tt> générée par <tt><b>gr_menu</b></tt><tt><b>sd2sci</b></tt> fabrique un vecteur d'instructions Scilab correspondant au graphique
+    contenu dans sd.
+  </p>
+<p>
+    Les paramètres optionnels <tt><b>sz</b></tt> et <tt><b>orig</b></tt> permettent de changer l'échelle ou de décaler
+    le graphique initial.
+  </p>
+<p>
+    Si <tt><b>sz</b></tt> ou <tt><b>orig</b></tt> sont donnés sous forme de chaînes de caractères, les instructions
+    générées les utilisent de façon formelle.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gr_menu.htm"><tt><b>gr_menu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer INRIA 1988   </p>
+</body>
+</html>

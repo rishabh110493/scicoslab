@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rowinout</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowinout</b> -  inner-outer factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Inn,X,Gbar]=rowinout(G)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: linear system (<tt><b>syslin</b></tt> list) <tt><b>[A,B,C,D]</b></tt>
+</li>
+<li>
+<tt><b>Inn</b></tt>:  inner factor (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>Gbar</b></tt>:  outer factor (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>X</b></tt>:  row-compressor of <tt><b>G</b></tt> (<tt><b>syslin</b></tt> list)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Inner-outer factorization (and row compression) of (<tt><b>l</b></tt>x<tt><b>p</b></tt>) <tt><b>G =[A,B,C,D]</b></tt> with <tt><b>l&gt;=p</b></tt>.</p>
+<p><tt><b>G</b></tt> is assumed to be tall (<tt><b>l&gt;=p</b></tt>) without zero on the imaginary axis
+    and with a <tt><b>D</b></tt> matrix which is full column rank.</p>
+<p><tt><b>G</b></tt> must also be stable for having <tt><b>Gbar</b></tt> stable.</p>
+<p><tt><b>G</b></tt> admits the following inner-outer factorization:</p>
+<pre>
+
+         G = [ Inn ] | Gbar |
+                     |  0   |
+   
+    </pre>
+<p>
+    where <tt><b>Inn</b></tt> is square and inner (all pass and stable) and <tt><b>Gbar</b></tt> 
+    square and outer i.e:
+    Gbar is square bi-proper and bi-stable (Gbar inverse is also proper 
+    and stable);</p>
+<p>
+    Note that:</p>
+<pre>
+
+         [ Gbar ]
+   X*G = [  -   ]
+         [  0   ]
+   
+    </pre>
+<p>
+    is a row compression of <tt><b>G</b></tt> where <tt><b>X</b></tt> = <tt><b>Inn</b></tt> inverse is all-pass i.e:</p>
+<pre>
+
+ T
+X (-s) X(s) = Identity
+   
+    </pre>
+<p>
+    (for the continous time case).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/colinout.htm"><tt><b>colinout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

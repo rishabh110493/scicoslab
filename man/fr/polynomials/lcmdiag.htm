@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lcmdiag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lcmdiag</b> -  factorisation diagonale par le plus petit commun multiple  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N,D]=lcmdiag(H)  </tt></dd>
+<dd><tt>[N,D]=lcmdiag(H,flag)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>N  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>D  </b></tt>
+    : matrice diagonale de polynômes
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : chaîne de caractères : <tt><b>'row'</b></tt> ou <tt><b>'col'</b></tt> (par défaut)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[kN,D]=lcmdiag(H,'row')</b></tt> calcule une factorisation <tt><b>D*H=N</b></tt>,
+    i.e.  H=D^(-1)*N  où D est une matrice diagonale avec D(k,k)=ppcm de la 
+    k-ième ligne de H.den .
+  </p>
+<p><tt><b>[N,D]=lcmdiag(H)</b></tt> ou <tt><b>[N,D]=lcmdiag(H,'col)</b></tt> renvoie
+    H=N*D^(-1) avec D diagonale et D(k,k)=ppcm de ma k-ième colonne de H.den .
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+H=[1/s,(s+2)/s/(s+1)^2;1/(s^2*(s+2)),2/(s+2)];
+[N,D]=lcmdiag(H);
+N/D-H
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/lcm.htm"><tt><b>lcm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/gcd.htm"><tt><b>gcd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/bezout.htm"><tt><b>bezout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

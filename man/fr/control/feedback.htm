@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>feedback</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>feedback</b> -  feedback operation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>Sl=Sl1/.Sl2</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl1,Sl2</b></tt>: linear systems (<tt><b>syslin</b></tt> list) in state-space or transfer form, or ordinary gain matrices.</li>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list) in state-space or transfer form</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The feedback operation is denoted by <tt><b> /. </b></tt> (slashdot).
+    This command returns <tt><b>Sl=Sl1*(I+Sl2*Sl1)^-1</b></tt>, i.e the (negative) 
+    feedback of <tt><b>Sl1</b></tt> and <tt><b>Sl2</b></tt>. <tt><b>Sl</b></tt> is the transfer
+    <tt><b> v -&gt; y</b></tt> for <tt><b> y = Sl1 u</b></tt>, <tt><b>u = v - Sl2 y</b></tt>.</p>
+<p>
+    The result is the same as <tt><b>Sl=LFT([0,I;I,-Sl2],Sl1)</b></tt>.</p>
+<p>
+    Caution: do not use with decimal point (e.g. <tt><b>1/.1</b></tt> is ambiguous!)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+S1=ssrand(2,2,3);S2=ssrand(2,2,2);
+W=S1/.S2;
+ss2tf(S1/.S2)
+//Same operation by LFT:
+ss2tf(lft([zeros(2,2),eye(2,2);eye(2,2),-S2],S1))
+//Other approach: with constant feedback
+BigS=sysdiag(S1,S2); F=[zeros(2,2),eye(2,2);-eye(2,2),zeros(2,2)];
+Bigclosed=BigS/.F;
+W1=Bigclosed(1:2,1:2);   //W1=W (in state-space).
+ss2tf(W1)
+//Inverting
+ss2tf(S1*inv(eye()+S2*S1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sysdiag.htm"><tt><b>sysdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/augment.htm"><tt><b>augment</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obscont.htm"><tt><b>obscont</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

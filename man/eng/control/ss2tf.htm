@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ss2tf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ss2tf</b> -  conversion from state-space to transfer function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[h]=ss2tf(sl)   </tt></dd>
+<dd><tt>[Ds,NUM,chi]=ss2tf(sl)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>[h]=ss2tf(sl,"b")   </tt></dd>
+<dd><tt>[Ds,NUM,chi]=ss2tf(sl,"b")  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>[h]=ss2tf(sl,rmax)   </tt></dd>
+<dd><tt>[Ds,NUM,chi]=ss2tf(sl,rmax)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>h</b></tt>: transfer matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Called with three outputs <tt><b>[Ds,NUM,chi]=ss2tf(sl)</b></tt> returns 
+    the numerator polynomial matrix <tt><b>NUM</b></tt>, the characteristic
+    polynomial <tt><b>chi</b></tt> and the polynomial part <tt><b>Ds</b></tt> separately i.e.:</p>
+<pre>
+
+h=NUM/chi + Ds
+   
+    </pre>
+<p>
+    Method:</p>
+<p>
+    One uses the characteristic polynomial and 
+    <tt><b>det(A+Eij)=det(A)+C(i,j)</b></tt> where <tt><b>C</b></tt> is the adjugate 
+    matrix of <tt><b>A</b></tt>.</p>
+<p>
+    With <tt><b>rmax</b></tt> or <tt><b>"b"</b></tt> argument uses a block diagonalization of
+    sl.A matrix and applies "Leverrier" algorithm on blocks.
+    If given, <tt><b>rmax</b></tt> controls the conditionning (see bdiag).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+h=[1,1/s;1/(s^2+1),s/(s^2-2)]
+sl=tf2ss(h);
+h=clean(ss2tf(sl))
+[Ds,NUM,chi]=ss2tf(sl)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/nlev.htm"><tt><b>nlev</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dir</b> -  get file list </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>dir path</tt></dd>
+<dd><tt>S=dir([path]) </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: a string matrix giving a directory pathname (eventually  ended
+	    by a pattern built with <tt><b>*</b></tt>). Default value is <tt><b>.</b></tt>
+</li>
+<li>
+<tt><b>S</b></tt>: a <tt><b>tlist</b></tt> of type <tt><b>dir</b></tt> with fields :
+	    <tt><b>name</b></tt>, <tt><b>date</b></tt> and <tt><b>isdir</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>dir</b></tt> can be used to get the files which match 
+      the patterns given by the path argument. 
+      Patterns are given to the unix <tt><b>ls</b></tt> or to the windows
+      <tt><b>dir</b></tt> commands in order to get information on files. 
+      Thus in order to write portable Scilab script valid wildcard patterns 
+      for both os are to be given. Note that Pathname conversion is
+      performed and for example <tt><b>SCI/macros/util/*.sci</b></tt> is a valid 
+      pattern for both unix and windows.
+    </p>
+<p>
+      The <tt><b>name</b></tt> field of the returned variable is the column vector
+      of the file names.
+    </p>
+<p>
+      The <tt><b>date</b></tt> field of the returned variable is the column vector
+      of integers containing a last modification date coded in second from 1 Jan 1970).
+    </p>
+<p>
+      The <tt><b>isdir</b></tt> field of the returned variable is the column vector
+      of boolean true if the corresponding name is a directory.
+    </p>
+<p>
+      The  default display of the returned structure is a column formatted list
+      of files. It can be changed redefining the function <tt><b>%dir_p</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    dir
+    dir SCI/macros/util/base*.sci
+    x=dir('SCI/macros/util/base*.sci')
+    dt=getdate(x.date);
+    mprintf("%s: %d-%d-%d %d:%d:%d\n",x.name,dt(:,[3 2 1 7:9]))
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/listfiles.htm"><tt><b>listfiles</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/ls.htm"><tt><b>ls</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/date.htm"><tt><b>date</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>prod</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>prod</b> -  product</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=prod(x)  </tt></dd>
+<dd><tt>y=prod(x,'r') or y=prod(x,1)  </tt></dd>
+<dd><tt>y=prod(x,'c') or y=prod(x,2)
+    </tt></dd>
+<dd><tt>y=prod(x,'m') </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: real or complex scalar or matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> For a vector or a matrix <tt><b>x</b></tt>, <tt><b>y=prod(x)</b></tt>
+      returns in the scalar <tt><b>y</b></tt> the prod of all the entries of
+      <tt><b>x</b></tt>, , e.g. <tt><b>prod(1:n)</b></tt> is n!</p>
+<p><tt><b>y=prod(x,'r')</b></tt> (or, equivalently,
+      <tt><b>y=prod(x,1)</b></tt>)computes the rows elementwise product of
+      <tt><b>x</b></tt>. <tt><b>y</b></tt> is the row vector:
+      <tt><b>y(1,j)=prod(x(:,j))</b></tt>.</p>
+<p><tt><b>y=prod(x,'c')</b></tt> (or, equivalently, <tt><b>y=prod(x,2)</b></tt>)
+      computes the columns elementwise product of
+      <tt><b>x</b></tt>. <tt><b>y</b></tt> is the column vector:
+      <tt><b>y(i,1)=prod(x(i,:))</b></tt>.</p>
+<p><tt><b>y=prod(x,'m')</b></tt>  is the product along the first non singleton
+      dimension of <tt><b>x</b></tt> (for compatibility with Matlab).</p>
+<p><tt><b>prod</b></tt> is not implemented for sparse matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;0,100];
+prod(A)
+prod(A,'c')
+prod(A,'r')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cumprod.htm"><tt><b>cumprod</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ind2sub</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ind2sub</b> - linear index to matrix subscript values</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[i1,i2,..] =ind2sub(dims,I)</tt></dd>
+<dd><tt>Mi = ind2sub(dims,I)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims</b></tt>: vector: the matrix dimensions</li>
+<li>
+<tt><b>I</b></tt>: vector: the given linear index</li>
+<li>
+<tt><b>i1,i2,..</b></tt>: the subscript values (same matrix shape as <tt><b>I</b></tt>)</li>
+<li>
+<tt><b>Mi</b></tt>: matrix whose columns contains the subscript values.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>ind2sub</b></tt> is used to determine the equivalent subscript values
+  corresponding to a given single index into an array.
+
+  <tt><b>[i1,i2,..] = ind2sub(dims,I)</b></tt> returns the arrays
+  <tt><b>i1</b></tt>, <tt><b>i2</b></tt>, ... containing the equivalent row,
+  column, ... subscripts corresponding to the index matrix
+  <tt><b>I</b></tt> for a matrix of size <tt><b>dims</b></tt>.
+  
+  <tt><b>Mi=ind2sub(dims,I)</b></tt> returns a matrix <tt><b>Mi</b></tt>
+  whose columns are the arrays <tt><b>i1(:)</b></tt>, <tt><b>i2(:)</b></tt>,
+  ...</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   ind2sub([2,3,2],1:12)
+   [i,j,k]=ind2sub([2,3,2],1:12)
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sub2ind.htm"><tt><b>sub2ind</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Serge Steer, INRIA
+  </p>
+</body>
+</html>

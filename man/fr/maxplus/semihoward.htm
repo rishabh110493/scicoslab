@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>semihoward</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>semihoward</b> -  generalized maxplus eigenvalue eigenvector ( Howard algorithm )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[l,v,p,c,n]=semihoward(T,N)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>T  </b></tt>
+    : maxplus square full or sparse matrix (times)
+  </li>
+<li>
+<tt><b>N  </b></tt>
+    : maxplus square full or sparse matrix (tokens or marking)
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : eigenvalues
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    : eigenvectors
+  </li>
+<li>
+<tt><b>p  </b></tt>
+    : optimal policy (indices of the saturating entries)
+  </li>
+<li>
+<tt><b>n  </b></tt>
+    : number of iterations of the Howard algorithm
+  </li>
+<li>
+<tt><b>c  </b></tt>
+    : number of connected components of the optimal policy
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Generalized right maxplus eigenvalues and eigenvectors of a timed event graph
+    represented by a pair (T,N) of full or sparse maxplus matrices computed
+    by a generalized Howard algorithm for delayed dynamic programming. That is
+    the solutions (l,v) of <tt><b> max_j[(T_ij -N_ij x l_j)+v_j] = v_i </b></tt> .
+    The matrices N and T must have the same nonzero entries. When 
+    T is irreducible l is constant.
+  </p>
+<p>
+    The optimal policy p satisfies <tt><b> A_ip(i) v_p(i)= v_i </b></tt> where
+    A denotes the matrix <tt><b> T-Nxdiag(l) </b></tt>  in the standard algebra sense.
+  </p>
+<p>
+    For performance evaluation of an event graph,
+    N contains the numbers of tokens (initial marking) and T the minimal time
+    that a token has to spend in a place.
+      
+    The eigenvalues l are interpreted as the average cost
+    per time unit for the corresponding delayed dynamic programming
+    problem and are computed by the Howard algorithm.
+  </p>
+<p>
+    The values taken by the entries of l are the eigenvalues.
+    If N is irreducible, l is constant: it is the eigenvalue and
+    v is a corresponding eigenvector (in this case, there exits only one
+    eigenvalue but there may exist more than one eigenvectors). If A can be
+    decomposed into irreducible components (block diagonal with
+    irreducible blocks), then, in  each component, l is constant 
+    and this constant is the
+    eigenvalue, the corresponding entries of v, completed by -inf, yields a
+    corresponding eigenvector. For the block triangular case see howard
+    command.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// irreducible case, matrices without zero terms :
+//------------------------------------------------
+T=[1,2;3,4];N=[2,2;2,2];[l,v]=semihoward(#(T),#(N))
+// simple verification
+#(T-N*plustimes(l(1)))*v==v
+
+
+
+
+
+// irreducible case, matrices with zero terms :
+//---------------------------------------------
+T=[%0,1;3,%0];N=[%0,1;1,%0];[l,v]=semihoward(#(T),#(N))
+// verification needs the maxplus minus operator
+(T-#(plustimes(N)*plustimes(l(1))))*v==v
+
+// sparse matrices, irreducible case :
+//------------------------------------
+T=sparse([%0,1;3,%0]);N=sparse([%0,1;1,%0]);[l,v]=semihoward(T,N)
+#(plustimes(T)-plustimes(N)*plustimes(l(1)))*v==v
+
+// general case :
+//---------------
+T=#([1,%0;%0,2])
+N=%eye(2,2)*1
+[l,v]=semihoward(T,N)
+
+// 1) vectorial verification : 
+(#(full(T))-full(#(plustimes(N)*diag(plustimes(sparse(l))))))*v==v
+
+// 2) verification irreducible block by irreducible block : 
+//   --- block 1:
+(T(1,1)-#(plustimes(N(1,1))*plustimes(l(1))))*v(1)==v(1)
+//   --- block 2:
+(T(2,2)-#(plustimes(N(2,2))*plustimes(l(2))))*v(2)==v(2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/minus.htm"><tt><b>minus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>strcat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>strcat</b> -  catenate character strings</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=strcat(vstr [,strp])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>vstr</b></tt>: vector of strings</li>
+<li>
+<tt><b>strp</b></tt>: string, default value is the emptystr <tt><b>""</b></tt>
+</li>
+<li>
+<tt><b>txt</b></tt>: string</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>txt=strcat(vstr)</b></tt>
+    catenates character strings : <tt><b>txt=vstr(1)+...+vstr(n)</b></tt></p>
+<p><tt><b>txt=strcat(vstr,strp)</b></tt> 
+    returns <tt><b>txt=strs(1)+strp+...+strp+strs(n)</b></tt>.
+    The plus symbol does the same:
+    <tt><b>"a"+"b"</b></tt> is the same as <tt><b>strcat(["a","b"])</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+strcat(string(1:10),',')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/strings.htm"><tt><b>strings</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

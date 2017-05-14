@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xgetfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xgetfile</b> -  dialog to get a file path</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>path=xgetfile([title='string'])  </tt></dd>
+<dd><tt>path=xgetfile(file_mask,[title='string'])  </tt></dd>
+<dd><tt>path=xgetfile(file_mask,dir,[title='string'])  </tt></dd>
+<dd><tt>path=xgetfile(file_mask,dir,'string')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_mask</b></tt>: a character string which gives the file mask to use for file selection. <tt><b>file_mask</b></tt> is written with Unix convention. the default value is '*'.</li>
+<li>
+<tt><b>dir</b></tt>: a character string which gives the initial directory used for file search. by default xgetfile uses the previously selected directory.</li>
+<li>
+<tt><b>path</b></tt>: is the user selected file path if user answers "Ok" or the " " string if user answers "Cancel"</li>
+<li>
+<tt><b>title='string'  </b></tt>:Optional arguments which gives the title for the xgetfile window.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates a dialog window for file selection</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+xgetfile()
+xgetfile('*.sci','SCI/macros/xdess')
+xgetfile(title='Choose a file name ')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

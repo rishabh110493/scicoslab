@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>datafit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>datafit</b> -  Parameter identification based on measured data</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[p,err]=datafit([imp,] G [,DG],Z [,W],[contr],p0,[algo],[df0,[mem]],  </tt></dd>
+<dd><tt>     [work],[stop],['in'])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>imp</b></tt>: scalar argument used to set the trace mode. <tt><b>imp=0</b></tt> nothing (execpt errors) is reported, <tt><b>imp=1</b></tt> initial and final reports, <tt><b>imp=2</b></tt> adds a report per iteration, <tt><b>imp&gt;2</b></tt> add reports on linear search. Warning, most of these reports are written on the Scilab standard output.</li>
+<li>
+<tt><b>G</b></tt>: function descriptor (e=G(p,z), e: ne x 1, p: np x 1, z: nz x 1)</li>
+<li>
+<tt><b>DG</b></tt>: partial of G wrt p function descriptor (optional; S=DG(p,z), S: ne x np)</li>
+<li>
+<tt><b>Z</b></tt>: matrix [z_1,z_2,...z_n] where z_i (nz x 1) is the ith measurement</li>
+<li>
+<tt><b>W</b></tt>: weighting matrix of size ne x ne (optional; defaut no ponderation)</li>
+<li>
+<tt><b>contr</b></tt>: <tt><b>'b',binf,bsup</b></tt>  with <tt><b>binf</b></tt> and <tt><b>bsup</b></tt> real vectors with same dimension as <tt><b>p0</b></tt>. <tt><b>binf</b></tt> and <tt><b>bsup</b></tt> are lower and upper bounds on <tt><b>p</b></tt>.</li>
+<li>
+<tt><b>p0</b></tt>: initial guess (size np x 1)</li>
+<li>
+<tt><b>algo</b></tt>: <tt><b>'qn'</b></tt> or <tt><b>'gc'</b></tt> or <tt><b>'nd'</b></tt> . This string stands for quasi-Newton (default),  conjugate gradient or non-differentiable respectively.  Note that <tt><b>'nd'</b></tt> does not accept bounds on <tt><b>x</b></tt> ).</li>
+<li>
+<tt><b>df0</b></tt>: real scalar. Guessed decreasing of <tt><b>f</b></tt> at first iteration. (<tt><b>df0=1</b></tt> is the default value).</li>
+<li>
+<tt><b>mem :  </b></tt>integer, number of variables used to approximate the  Hessian, (<tt><b>algo='gc' or 'nd'</b></tt>). Default value is around 6.</li>
+<li>
+<tt><b>stop</b></tt>:  sequence of optional parameters controlling the  convergence of the algorithm. <tt><b> stop=  'ar',nap, [iter [,epsg [,epsf [,epsx]]]]</b></tt><ul>
+<li>
+<tt><b>"ar"  </b></tt>: reserved keyword for stopping rule selection defined as follows:</li>
+<li>
+<tt><b>nap</b></tt>: maximum number of calls to <tt><b>fun</b></tt> allowed.</li>
+<li>
+<tt><b>iter</b></tt>: maximum number of iterations allowed.</li>
+<li>
+<tt><b>epsg</b></tt>: threshold on gradient norm.</li>
+<li>
+<tt><b>epsf</b></tt>: threshold controlling decreasing of <tt><b>f</b></tt>
+</li>
+<li>
+<tt><b>epsx</b></tt>: threshold controlling variation of <tt><b>x</b></tt>. This vector (possibly matrix) of same size as <tt><b>x0</b></tt> can be used to scale <tt><b>x</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>"in"  </b></tt>: reserved  keyword for initialization of parameters used when <tt><b>fun</b></tt> in given as a Fortran routine (see below).</li>
+<li>
+<tt><b>p</b></tt>: Column vector, optimal solution found</li>
+<li>
+<tt><b>err</b></tt>: scalar, least square error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>datafit</b></tt> is used for fitting data to a model.
+    For a given function <tt><b>G(p,z)</b></tt>, this function finds the best vector 
+    of parameters <tt><b>p</b></tt> for approximating <tt><b>G(p,z_i)=0</b></tt> for a set of measurement
+    vectors <tt><b>z_i</b></tt>. Vector <tt><b>p</b></tt> is found by minimizing
+    <tt><b>G(p,z_1)'WG(p,z_1)+G(p,z_2)'WG(p,z_2)+...+G(p,z_n)'WG(p,z_n)</b></tt></p>
+<p><tt><b>datafit</b></tt> is an improved version of <tt><b>fit_dat</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//generate the data
+function y=FF(x,p),y=p(1)*(x-p(2))+p(3)*x.*x,endfunction
+X=[];Y=[];
+pg=[34;12;14] //parameter used to generate data
+for x=0:.1:3, Y=[Y,FF(x,pg)+100*(rand()-.5)];X=[X,x];end
+Z=[Y;X];
+
+
+//The criterion function
+function e=G(p,z),
+   y=z(1),x=z(2);
+   e=y-FF(x,p),
+endfunction
+
+//Solve the problem
+p0=[3;5;10]	
+[p,err]=datafit(G,Z,p0);
+
+scf(0);clf()
+plot2d(X,FF(X,pg),5) //the curve without noise
+plot2d(X,Y,-1)  // the noisy data
+plot2d(X,FF(X,p),12) //the solution
+
+
+//the gradient of the criterion function
+function s=DG(p,z),
+   a=p(1),b=p(2),c=p(3),y=z(1),x=z(2),
+   s=-[x-b,-a,x*x]
+endfunction
+
+[p,err]=datafit(G,DG,Z,p0);
+scf(1);clf()
+plot2d(X,FF(X,pg),5) //the curve without noise
+plot2d(X,Y,-1)  // the noisy data
+plot2d(X,FF(X,p),12) //the solution
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/lsqrsolve.htm"><tt><b>lsqrsolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/leastsq.htm"><tt><b>leastsq</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

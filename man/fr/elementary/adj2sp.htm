@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>adj2sp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>adj2sp</b> -  converts adjacency form into  sparse matrix.  </p>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xadj</b></tt>:  integer vector of length (n+1).</li>
+<li>
+<tt><b>adjncy</b></tt>:  integer vector of length nz containing the row indices     for the corresponding elements in anz</li>
+<li>
+<tt><b>anz</b></tt>:  column vector of length nz, containing the non-zero     elements of A</li>
+<li>
+<tt><b>mn</b></tt>: row vector with 2 entries, <tt><b>mn=size(A)</b></tt> (optional).</li>
+<li>
+<tt><b>A</b></tt>:  real or complex sparse matrix (nz non-zero entries)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+
+sp2adj converts an adjacency form representation of a matrix
+into its standard Scilab representation (utility fonction).
+xadj, adjncy, anz = adjacency representation of A i.e:
+
+    </p>
+<p><tt><b>xadj(j+1)-xadj(j)</b></tt> = number of non zero entries in row j.
+    <tt><b>adjncy</b></tt> = column index of the non zeros entries 
+    in row 1, row 2,..., row n.
+    <tt><b>anz</b></tt> = values of non zero entries in row 1, row 2,..., row n.
+    <tt><b>xadj</b></tt> is a (column) vector of size n+1 and 
+    <tt><b>adjncy</b></tt> is an integer (column) vector of size <tt><b>nz=nnz(A)</b></tt>.
+    <tt><b>anz</b></tt> is a real vector of size <tt><b>nz=nnz(A)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A = sprand(100,50,.05);
+[xadj,adjncy,anz]= sp2adj(A);
+[n,m]=size(A);
+p = adj2sp(xadj,adjncy,anz,[n,m]);
+A-p,
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sp2adj.htm"><tt><b>sp2adj</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/spcompack.htm"><tt><b>spcompack</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

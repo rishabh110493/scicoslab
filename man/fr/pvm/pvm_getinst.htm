@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_getinst</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_getinst</b> -  returns the instance number in a group of a PVM process.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[inum] = pvm_getinst(group, tid)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>group</b></tt>: string, string group name of an existing group.</li>
+<li>
+<tt><b>tid</b></tt>: integer, task identifier of a PVM process.</li>
+<li>
+<tt><b>inum</b></tt>: integer, instance number returned by the routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_getinst</b></tt> takes a group name <tt><b>group</b></tt> and
+    a PVM task identifier <tt><b>tid</b></tt>
+    and returns the unique instance number that corresponds to the input.
+    It can be called by any task whether in the group or not.</p>
+<p>
+    The returned value <tt><b>inum</b></tt>will be &gt;= 0 if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_gettid.htm"><tt><b>pvm_gettid</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

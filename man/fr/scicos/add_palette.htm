@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>add_palette</TITLE>
+<META NAME="description" CONTENT="add_palette">
+<META NAME="keywords" CONTENT="add_palette">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="add_palette.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Fonction Scilab
+<BR><A NAME="tex2html1"
+  HREF="./add_palette.htm">fr</A> - <A NAME="tex2html2"
+  HREF="../../eng/scicos/add_palette.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="add_palette"></A>
+<BR>
+<b>add_palette</b> - Ajout de palettes Scicos
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00012000000000000000">
+Description</A>
+</font></H3>
+
+<P>
+Cette fonction ajoute une palette à la fin de la liste des palettes intiales Scicos. Si une palette avec un même chemin existe déjà alors rien n'est fait. Si une palette avec un nom identique mais avec un chemin différent est détecté, alors la palette est ajoutée avec un suffixe x. Il faut noter que la variable scicos_pal est re-crée locallement dans la fonction et est passée à l'environnment supérieur par la commande scicos_pal=resume(scicos_pal).  
+<BR>
+<H3><font color="blue"><A NAME="SECTION00013000000000000000">
+Séquence d'appel</A>
+</font></H3>
+<PRE>
+add_palette(Title,path)
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00014000000000000000">
+Paramètres</A>
+</font></H3>
+
+<UL>
+<LI><B>Title</B>
+<BR>
+Le nom de la palette.
+</LI>
+<LI><B>path</B>
+<BR>
+Le chemin de la palette.
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00015000000000000000">
+Contenu du fichier</A>
+</font></H3>
+
+<UL>
+<LI>SCI/macros/util/add_palette.sci <A NAME="tex2html4"
+  HREF="add_palette_scifunc.htm">[voir code]</A>
+</LI>
+</UL>
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

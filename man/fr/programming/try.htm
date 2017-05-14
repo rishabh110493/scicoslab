@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>trycatch</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>try</b> -  mot clé de début du block try dans une
+    instruction de contrôle try-catch </p>
+<p><b>catch</b> -   mot clé de début du block catch dans une
+    instruction de contrôle try-catch </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>try </tt></dd>
+<dd><tt>  statements</tt></dd>
+<dd><tt>catch </tt></dd>
+<dd><tt>  statements</tt></dd>
+<dd><tt>end</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>L'instruction de contrôle <tt><b>try</b></tt>-<tt><b>catch</b></tt> peut être
+      utilisée pour controler les conséquence d'une erreur d'éxécution en permettant
+      l'éxécution de code spécifique en cas d'erreur.</p>
+<p>Quand une instruction de contrôle <tt><b>try</b></tt>-<tt><b>catch</b></tt>
+      est exécutée, normalement seules les instructions comprises entre les mots
+      clés  <tt><b>try</b></tt> et <tt><b>catch</b></tt> sont exécutées. Cependant,
+      si une erreur se produit pendant l'exécution de ces instructions,
+      l'erreur est mémorisée, les instructions restantes jusqu'au mot clé
+      <tt><b>catch</b></tt> sont ignorées et les instructions comprises entre les
+      mots clés  <tt><b>catch</b></tt> et  <tt><b>end</b></tt> sont exécutées en
+      utilisant le mode de gestion des erreurs par défaut (voir: <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>. </p>
+<p>L'erreur mémorisé peut être retrouvée en utilisant la fonction <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>.</p>
+<p>Les intructions comprises entre les mots clés  <tt><b>catch</b></tt> et
+      <tt><b>end</b></tt> peuvent être omises ainsi que le mot clé
+      <tt><b>catch</b></tt> si aucun code alternatif n'est fourni.</p>
+<p>Notez que l'on peut aussi utiliser la fonction  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>
+      avec l'argument <tt><b>'errcatch'</b></tt> pour gérer les erreurs et tout 
+      particulièrement pour gérer les erreurs de syntaxe.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ file_path=TMPDIR+'/wrong'
+ try
+    u=mopen(file_path,'r')
+    x=mget(10,'c',u)
+  catch
+    disp(['le fichier '+file_path+ 'ne peut pas être lu', 
+          'on utilise la valeur  par défaut de x'])
+    x=1:10
+  end 
+  [error_message,error_number]=lasterror(%t) 
+ 
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/error.htm"><tt><b>error</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/if.htm"><tt><b>if</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Serge Steer, INRIA</p>
+</body>
+</html>

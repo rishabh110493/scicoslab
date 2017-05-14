@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>typeof</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>typeof</b> -   object type  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[t]=typeof(object)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>object  </b></tt>
+    : Scilab object
+  </li>
+<li>
+<tt><b>t  </b></tt>
+    : string
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>t=typeof(object)</b></tt> returns one of the following strings:
+  </p> 
+    if object is a real or complex constant matrix
+   
+    if object is a polynomial matrix
+   
+    if object is a function
+   
+    if object is a matrix made of character strings
+   
+    if object is a boolean matrix
+   
+    if object is a list
+   
+    if object is a rational matrix (transfer matrix)
+   
+    if object is a state-space model (see <tt><b>syslin</b></tt>)
+   
+    if object is a (real) sparse matrix.
+   
+    if object is a boolean sparse matrix.
+   
+    if object is a full maxplus matrix.
+   
+    if object is a sparse maxplus matrix.
+  <h3><font color="blue">Examples</font></h3>
+<pre>
+typeof(1)
+typeof(poly(0,'x'))
+typeof(1/poly(0,'x'))
+typeof(%t)
+w=sprand(100,100,0.001);
+typeof(w)
+typeof(w==w)
+deff('y=f(x)','y=2*x');
+typeof(f)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>listvarinfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>listvarinfile</b> - list the contents of a saved data file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>listvarinfile(filename)</tt></dd>
+<dd><tt>[nams,typs,dims,vols]=listvarinfile(filename)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>
+       : character string, the pathname of the file to be inspected
+       </li>
+<li>
+<tt><b>nams</b></tt>
+       : character array, names of the variables saved in the file
+       </li>
+<li>
+<tt><b>dims</b></tt>
+       : list, dimensions of the variables saved in the file
+       </li>
+<li>
+<tt><b>typs</b></tt>
+       : numeric array, types of the variables saved in the file
+       </li>
+<li>
+<tt><b>vols</b></tt>
+       : numeric array, size in bytes of the variables saved in the file 
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl><dd>
+<b></b><p>
+      This utility function lists "a la <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/whos.htm"><tt><b>whos</b></tt></a>" the variables contained in
+      a Scilab data file produced by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>.
+     </p>
+<p>
+     Remark: hypermatrices are reported as plain mlists;
+     rationals and state-spaces are reported as plain tlists;
+     graphic handles are not recognized.
+     </p>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   a=eye(2,2); b=int16(ones(a)); c=rand(2,3,3);
+   save("vals.dat",a,b,c)
+   listvarinfile("vals.dat")
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/whos.htm"><tt><b>whos</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save_format.htm"><tt><b>save_format</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b>Serge Steer</b>
+    31 Jan 2001; reediting by Enrico Segre
+    </dd></dl>
+</body>
+</html>

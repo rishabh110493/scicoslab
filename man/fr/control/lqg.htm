@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lqg</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lqg</b> -  LQG compensator</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[K]=lqg(P,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list (augmented plant) in state-space form</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector = (number of measurements, number of inputs)  (dimension of  the 2,2 part of <tt><b>P</b></tt>)</li>
+<li>
+<tt><b>K</b></tt>: <tt><b>syslin</b></tt> list (controller)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lqg</b></tt>  computes the linear optimal LQG (H2) controller for the 
+    "augmented" plant <tt><b>P=syslin('c',A,B,C,D)</b></tt> (continuous time) or 
+    <tt><b>P=syslin('d',A,B,C,D)</b></tt> (discrete time).</p>
+<p>
+    The function <tt><b>lqg2stan</b></tt> returns <tt><b>P</b></tt> and <tt><b>r</b></tt> given the
+    nominal plant, weighting terms and variances of noises.</p>
+<p><tt><b>K</b></tt> is given by the following ABCD matrices: 
+    <tt><b>[A+B*Kc+Kf*C+Kf*D*Kc,-Kf,Kc,0]</b></tt> where <tt><b>Kc=lqr(P12)</b></tt>
+    is the controller gain and <tt><b>Kf=lqe(P21)</b></tt> is the filter gain.
+    See example in <tt><b>lqg2stan</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg2stan.htm"><tt><b>lqg2stan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqe.htm"><tt><b>lqe</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/h_inf.htm"><tt><b>h_inf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obscont.htm"><tt><b>obscont</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

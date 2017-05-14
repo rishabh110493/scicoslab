@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fullrf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fullrf</b> -  full rank factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Q,M,rk]=fullrf(A,[tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>tol</b></tt>: real number (threshold for rank determination)</li>
+<li>
+<tt><b>Q,M</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>rk</b></tt>: integer (rank of <tt><b>A</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Full rank factorization : <tt><b>fullrf</b></tt> returns <tt><b>Q</b></tt> and <tt><b>M</b></tt> such
+    that <tt><b>A = Q*M</b></tt>
+    with range(<tt><b>Q</b></tt>)=range(<tt><b>A</b></tt>) and ker(<tt><b>M</b></tt>)=ker(<tt><b>A</b></tt>),
+    <tt><b>Q</b></tt> full column rank , <tt><b>M</b></tt> full row rank,
+    <tt><b>rk = rank(A) = #columns(Q) = #rows(M)</b></tt>.</p>
+<p><tt><b>tol</b></tt> is an optional real parameter (default value is <tt><b>sqrt(%eps)</b></tt>).
+    The rank <tt><b>rk</b></tt> of <tt><b>A</b></tt> is defined as the number of singular values
+    larger than <tt><b>norm(A)*tol</b></tt>.</p>
+<p>
+    If A is symmetric, <tt><b>fullrf</b></tt> returns <tt><b>M=Q'</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,2)*rand(2,5);
+[Q,M]=fullrf(A);
+norm(Q*M-A,1)
+[X,d]=rowcomp(A);Y=X';
+svd([A,Y(:,1:d),Q])        //span(Q) = span(A) = span(Y(:,1:2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.;   </p>
+</body>
+</html>

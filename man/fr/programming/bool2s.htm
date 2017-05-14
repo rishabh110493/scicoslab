@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bool2s</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bool2s</b> -  convertit une matrice booléenne en une matrice 0-1  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>bool2s(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x  </b></tt>
+    : matrice réelle, complexe ou booléenne
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Si <tt><b>x</b></tt> est une matrice booléenne,
+    <tt><b>bool2s(x)</b></tt> renvoie une matrice où les valeurs %T (true=vrai) sont remplacées par des 1 et les %F (faux) par des 0.
+  </p>
+<p>
+    Si <tt><b>x</b></tt> n'est pas une matrice booléenne,
+    <tt><b>bool2s(x)</b></tt> renvoie une matrice où les valeurs non-nulles sont remplacées par des 1.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+bool2s([%t %t %f %t])
+bool2s([2.3 0 10 -1])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

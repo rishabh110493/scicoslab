@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>macrovar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>macrovar</b> -  variables of function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>vars=macrovar(function)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>vars</b></tt>: list  <tt><b>list(in,out,globals,called,locals)</b></tt>
+</li>
+<li>
+<tt><b>function</b></tt>: name of a function</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns in a list the set of variables used by a function.
+    <tt><b>vars</b></tt> is a list made of five column vectors of character strings</p>
+<p><tt><b>in</b></tt> : input variables (<tt><b>vars(1)</b></tt>)</p>
+<p><tt><b>out</b></tt> : output variables (<tt><b>vars(2)</b></tt>)</p>
+<p><tt><b>globals</b></tt> : global variables (<tt><b>vars(3)</b></tt>)</p>
+<p><tt><b>called</b></tt> : names of functions called (<tt><b>vars(4)</b></tt>)</p>
+<p><tt><b>locals</b></tt> : local variables (<tt><b>vars(5)</b></tt>)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('y=f(x1,x2)','loc=1;y=a*x1+x2-loc')
+vars=macrovar(f)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/macr2lst.htm"><tt><b>macr2lst</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

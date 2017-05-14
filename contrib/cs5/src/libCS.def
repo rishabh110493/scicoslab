@@ -1,0 +1,17 @@
+LIBRARY    libCS.dll
+EXPORTS
+	iCosto
+	iDH
+	iFBPV
+	iFlujo
+	iFlujoT
+	isimplify
+	iqksp
+	Costo
+	DH
+	FBPV
+	Flujo
+	FlujoT
+	simplify
+	qksp
+	libCS_

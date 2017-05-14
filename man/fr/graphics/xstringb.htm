@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xstringb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xstringb</b> -  dessine des chaînes de caractères dans une boîte  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xstringb(x,y,str,w,h,[option])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,w,h  </b></tt>
+    : vecteur de 4 scalaires définissant la boîte
+</li>
+<li>
+<tt><b>str  </b></tt>
+    : matrice de chaînes de caractères.
+</li>
+<li>
+<tt><b>option  </b></tt>
+    : chaîne de caractères.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xstringb</b></tt> dessine la matrice de chaînes de caractères <tt><b>str</b></tt> centrée dans le 
+    le rectangle <tt><b>rect=[x,y,w,h]</b></tt> (point en haut à gauche, largeur, hauteur) dans l'échelle graphique courante.
+    Si <tt><b>option</b></tt> est donné avec la valeur <tt><b>"fill"</b></tt>, la taille de la police est calculée 
+    de manière à remplir le rectangle au maximum.
+  </p>
+<p>
+    Taper <tt><b>xstringb()</b></tt> pour voir une démonstration de la fonction.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+str=["Scilab" "n''est ";"pas" "Matlab"];
+plot2d(0,0,[-1,1],"010"," ",[0,0,1,1]);
+r=[0,0,1,0.5];
+xstringb(r(1),r(2),str,r(3),r(4),"fill");
+xrect(r(1),r(2)+r(4),r(3),r(4))
+r=[r(1),r(2)+r(4)+0.01,r(3),r(4)/2];
+xrect(r(1),r(2)+r(4),r(3),r(4))
+xstringb(r(1),r(2),str,r(3),r(4),"fill");
+r=[r(1),r(2)+r(4)+0.01,r(3),r(4)/2];
+xrect(r(1),r(2)+r(4),r(3),r(4))
+xstringb(r(1),r(2),str,r(3),r(4),"fill");
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/titlepage.htm"><tt><b>titlepage</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstringl.htm"><tt><b>xstringl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

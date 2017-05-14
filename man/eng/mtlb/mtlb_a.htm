@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_a</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_a</b> - Matlab addition emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab addition behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With character string operands: The <tt><b>+</b></tt> 
+        operator is used into Scilab to catenate character strings, while
+        Matlab realizes the sum of the operands ASCII codes.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+	With empty matrix: In Scilab, if one of the
+      	operands is an empty matrix the result of the addition is the
+      	other operand. In Matlab if one of the operand is an empty
+      	matrix the result of the addition should be an error or an empty
+      	matrix.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_a(A,B)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>A+B</b></tt> when it was not
+    possible to know what were the operands while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_a</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	If <tt><b>A</b></tt> and <tt><b>B</b></tt> are character strings, 
+	<tt><b>mtlb_a(A,B)</b></tt> may be replaced by <tt><b>asciimat(A)+asciimat(B)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	If both <tt><b>A</b></tt> and <tt><b>B</b></tt> are not empty matrices
+	<tt><b>mtlb_a(A,B)</b></tt> may be replaced by <tt><b>A+B</b></tt>,
+	else <tt><b>mtlb_a(A,B)</b></tt> may be replaced by
+	<tt><b>[]</b></tt>.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+	If mtlb_mode==%T, then <tt><b>mtlb_a(A,B)</b></tt>
+	may be replaced by <tt><b>A+B</b></tt> in any case where
+	<tt><b>A</b></tt> and <tt><b>B</b></tt> are not character string matrices.
+         </li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_a</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mtlb_mode.htm"><tt><b>mtlb_mode</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

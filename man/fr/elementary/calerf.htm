@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>calerf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>calerf</b> -   calcule différentes fonctions d'erreur.  </p>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur réel
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : un entier 
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur réel (de même taille que x)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>calerf(x,0)</b></tt> calcule la fonction erreur :<tt><b>erf(x)</b></tt></p>
+<p><tt><b>calerf(x,1)</b></tt> calcule la fonction erreur complémentaire :<tt><b>erfc(x)</b></tt></p>
+<p><tt><b>calerf(x,2)</b></tt> calcule la fonction erreur complémentaire normalisée :<tt><b>erfcx(x)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+deff('y=f(t)','y=exp(-t^2)');
+calerf(1,0)
+2/sqrt(%pi)*intg(0,1,f)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/erf.htm"><tt><b>erf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/erfc.htm"><tt><b>erfc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/calerf.htm"><tt><b>calerf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>W. J. Cody (code from Netlib (specfun))</p>
+</body>
+</html>

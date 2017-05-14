@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>whereami</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>whereami</b> -  display current instruction calling tree</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>whereami()  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Displays calling tree to instruction which contain whereami(). May be
+    used within pause levels.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('y=test(a)',['y=sin(a)+1';
+                  'y=t1(y)';
+                  'y=y+1'])
+deff('y=t1(y)',['y=y^2';'whereami()'])
+test(1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/where.htm"><tt><b>where</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pause</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pause</b> -  mode de pause, attente clavier  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Passage en mode de <tt><b>pause</b></tt>;
+    inséré dans le code d'une fonction, <tt><b>pause</b></tt> fait une pause dans l'exécution
+    de la fonction : un symbole d'invite de commande est affiché à l'utilisateur indiquant le "niveau" de la <tt><b>pause</b></tt> (e.g. <tt><b>-1-&gt;</b></tt>). L'utilisateur se trouve dans un environnement dans lequel toutes les variables du niveau correspondant sont accessibles (en particulier les variables locales de la fonction).
+    Pour reprendre l'exécution taper <tt><b>"return"</b></tt>.
+  </p>
+<p>
+    Dans ce mode, <tt><b>[...]=return(...) </b></tt>
+    renvoie les variables de l'argument <tt><b>(...)</b></tt> dans l'environnement appelant 
+    sous les noms précisés dans <tt><b> [...]</b></tt>. Sinon, les variables de l'environnement interrompu sont protégées et non modifiables.
+  </p>
+<p>
+    L'instruction <tt><b>pause</b></tt> est très utile en phase de mise au point ou de déboggage.
+  </p>
+<p>
+    Il est possible de sortir du mode de pause en mettant fin à l'exécution en tapant <tt><b>"abort"</b></tt>.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/halt.htm"><tt><b>halt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/abort.htm"><tt><b>abort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/quit.htm"><tt><b>quit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/whereami.htm"><tt><b>whereami</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/where.htm"><tt><b>where</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

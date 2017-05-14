@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>varargin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>varargin</b> -   variable numbers of arguments in an input argument list</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A function whose input argument list contains  <tt><b>varargin</b></tt> can be
+    called with more input arguments than indicated in the input argument
+    list. The calling arguments passed form <tt><b>varargin</b></tt> keyword onwards
+    may then be retrieved within the function in a list named
+    <tt><b>varargin</b></tt>.</p>
+<p>
+    Suppose that <tt><b>varargin</b></tt> keyword is the <tt><b>n</b></tt> th argument of the
+    formal input argument list, then if the function is called with less
+    than <tt><b>n-1</b></tt> input arguments the <tt><b>varargin</b></tt> list is not defined,
+    if the function is called with <tt><b>n-1</b></tt> arguments then <tt><b>varargin</b></tt>
+    list is an empty list.</p>
+<p><tt><b>y = function ex(varargin)</b></tt> may be called with any number of input
+    arguments. Within function  <tt><b>ex</b></tt> input arguments may be retrieved
+    in <tt><b>varargin(i)</b></tt> ,<tt><b>i=1:length(varargin)</b></tt></p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    Named argument syntax like <tt><b>foo(...,key=value) </b></tt> is incompatible with the use of varargin.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('exampl(a,varargin)',['[lhs,rhs]=argn(0)'
+                          'if rhs&gt;=1 then disp(varargin),end'])
+exampl(1)
+exampl()
+exampl(1,2,3)
+l=list('a',%s,%t);
+exampl(1,l(2:3))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/varargout.htm"><tt><b>varargout</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

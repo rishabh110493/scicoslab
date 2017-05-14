@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=ScicosLab
+Comment=Scientific Computing using ScicosLab
+TryExec=/usr/bin/scicoslab
+Exec=/usr/bin/scicoslab
+Icon=/usr/lib/scicoslab-gtk-svn/config/puffin-gtk48.png
+Terminal=false
+Type=Application
+Categories=Education;Science;Math;
+StartupNotify=false
+X-Desktop-File-Install-Version=0.15
+

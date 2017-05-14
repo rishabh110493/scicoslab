@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_repmat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_repmat</b> - Fonction d'émulation de la fonction Matlab repmat</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas de fonction Scilab équivalente à la fonction Matlab <tt><b>repmat</b></tt> mais il existe des instructions équivalents.</p>
+<p>
+    La fonction <tt><b>mtlb_repmat(M,m[,n])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>repmat(M,m[,n])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_repmat</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type Double et que <tt><b>m</b></tt> est un scalaire,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>ones(m,m).*.M</b></tt> et 
+	<tt><b>mtlb_repmat(M,m,n)</b></tt> peut être remplacé par <tt><b>ones(m,n).*.M</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type Booléen et que <tt><b>m</b></tt> est un scalaire,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>ones(m,m).*..bool2s(M)</b></tt> et 
+	<tt><b>mtlb_repmat(M,m,n)</b></tt> peut être remplacé par <tt><b>ones(m,n).*..bool2s(M)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type String et que <tt><b>m</b></tt> est un scalaire,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>asciimat(ones(m,m).*.asciimat(M))</b></tt> et 
+	<tt><b>mtlb_repmat(M,m,n)</b></tt> peut être remplacé par <tt><b>asciimat(ones(m,n).*.asciimat(M))</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type Double et que <tt><b>m</b></tt> est un vecteur,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>ones(m(1),m(2),...).*.M</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type Booléen et que <tt><b>m</b></tt> est un vecteur,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>ones(m(1),m(2),...).*..bool2s(M)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est de type String et que <tt><b>m</b></tt> est un vecteur,
+	<tt><b>mtlb_repmat(M,m)</b></tt> peut être remplacé par <tt><b>asciimat(ones(m(1),m(2),...).*.asciimat(M))</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_repmat</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/kron.htm"><tt><b>kron</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

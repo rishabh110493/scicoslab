@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>bar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bar</b> - bar histogram</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>bar(y)</tt></dd>
+<dd><tt>bar(x,y)</tt></dd>
+<dd><tt>bar([h],x,y [,width [,color [,style]]])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: an axes handle, (default: h=gca() ).</li>
+<li>
+<tt><b>y</b></tt>: a real scalar, vector of size N, or a matrice N*M.</li>
+<li>
+<tt><b>x</b></tt>: a real scalar or a vector of size N, (default: if y is a
+					vector then x is a vector and x length equals to y length. If y is a
+					matrix then x is a vector and x length equals to the lines number of
+					y.</li>
+<li>
+<tt><b>width</b></tt>: (optional), a real scalar, defines the width (a percentage of
+					the available room) for the bar (default: 0.8, i.e 80%).</li>
+<li>
+<tt><b>color</b></tt>: (optional), a string (default: 'blue'), specifing the inside
+					color bar.</li>
+<li>
+<tt><b>style:</b></tt>a string, 'grouped' or 'stacked' (default: 'grouped').</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>bar(y,...) :</b></tt> if y is a vector then bar function draws a
+		polyline which has the <tt><b>polyline_style</b></tt> type 6. If y is a
+		vector, bar draws vector y versus vector 1:size(y,'*') . If y is a matrix
+		N*M, bar draws M polylines (type 6), each polyline corresponds to a column
+		of y versus vector x=1:size(y,1).</p>
+<p><tt><b>bar(x,y,...) :</b></tt> if y is a vector then bar function draws a
+		polyline which has the <tt><b>polyline_style</b></tt> type 6, where x length
+		= y length.If y is a matrix NxM then bar function draws M polylines which
+		have the type 6. Each polyline corresponds to a column of y versus vector
+		x.</p>
+<p><tt><b>bar(h,...) :</b></tt> defines the current axes where the drawing is
+		performed.</p>
+<p><tt><b>bar(...,width,...) :</b></tt> defines the width of the bar(s) in
+		percentage (generally: 0&lt;width&lt;=1).</p>
+<p><tt><b>bar(...,style,...) :</b></tt> defines how the bar is drawn. If y is
+		a matrix N*M (so M polylines of type 6) then there are two ways to draw
+		the M bars. the style option = 'grouped' allows to center the M polylines
+		versus each components of x, and the style option 'stacked' allows to
+		stack them.</p>
+<p><tt><b>bar(...,color,...) : </b></tt>defines the bar color. Bar functions
+		uses the same colormap than in the <tt><b>plot</b></tt> function.</p>
+<p>If there are several bar calls, the <tt><b>barhomogenize</b></tt> function
+		allows to homegenize the width and style of all bars (i.e polylines of
+		type 6) included in the current working axes.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// First example: draw a bar (i.e a polyline with polyline_style type =6) with
+// width=0.5 and color='yellow' and default style='grouped', x=1:length(y).
+scf(0);
+y=[1 -3 5];
+bar(y,0.5,'yellow');
+
+// Second example: draw 3 bars (i.e 3 polylines with polyline_style type =6),default style='grouped'
+scf(1);
+x=[1 2 5]; y=[1  -5 6;3 -2 7;4  -3 8];
+bar(x,y);
+
+// Third example : style='stacked'.
+scf(2);
+x=[1 2 5]; y=[1 4 7;2 5 8;3 6  9];
+bar(x,y,'stacked');
+
+// Fourth example: width=0.2;color='green', default style='grouped'
+scf(3);
+x=[1 2 5]; y=[1 4 7;2 5 8;3 6 9];
+bar(x,y,0.2,'green');
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/barh.htm"><tt><b>barh</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/barhomogenize.htm"><tt><b>barhomogenize</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Farid Belahcene</p>
+</body>
+</html>

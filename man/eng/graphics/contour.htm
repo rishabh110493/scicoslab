@@ -1,0 +1,179 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>contour</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>contour</b> -  level curves on a 3D surface</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>contour(x,y,z,nz,[theta,alpha,leg,flag,ebox,zlev])</tt></dd>
+<dd><tt>contour(x,y,z,nz,&lt;opt_args&gt;)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two real row vectors of size n1 and n2.</li>
+<li>
+<tt><b>z</b></tt>: real matrix of size (n1,n2), the values of the function or  a
+	    Scilab function which defines the surface  <tt><b>z=f(x,y)</b></tt>. </li>
+<li>
+<tt><b>nz</b></tt>: the level values or the number of levels.<ul>
+<li>
+<tt><b>-  </b></tt>If <tt><b>nz</b></tt> is an integer, its value gives the number of
+  level curves  equally spaced from zmin to zmax as follows:<pre>
+
+ z= zmin + (1:nz)*(zmax-zmin)/(nz+1)
+   
+                </pre> Note that the <tt><b>zmin</b></tt> and
+                <tt><b>zmax</b></tt> levels are not drawn  (generically
+                they are reduced to points) but they can be added
+                with<pre>
+
+ [im,jm] = find(z == zmin);     // or zmax 
+ plot2d(x(im)',y(jm)',-9,"000")
+   
+                </pre>
+</li>
+<li>
+<tt><b>-  </b></tt>If <tt><b>nz</b></tt> is a vector,
+              <tt><b>nz(i)</b></tt> gives the value of the ith level
+              curve. Note that it can be useful in order to see
+              <tt><b>zmin</b></tt> and   <tt><b>zmax</b></tt> level curves
+              to add an epsilon tolerance: <tt><b>nz=[zmin+%eps,..,zmax-%eps]</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>&lt;opt_args&gt;  </b></tt>: a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,
+  ... where keys may be
+  <tt><b>theta</b></tt>,<tt><b>alpha</b></tt>,<tt><b>leg</b></tt>,<tt><b>flag</b></tt>, <tt><b>ebox</b></tt>,<tt><b>zlev</b></tt> (see below). In
+  this case, the order has no special meaning.</li>
+<li>
+<tt><b>theta, alpha</b></tt>: real values giving in degree the spherical coordinates of  the observation point.</li>
+<li>
+<tt><b>leg</b></tt>: string defining the captions for each axis with @ as a field separator, for example "X@Y@Z".</li>
+<li>
+<tt><b>flag</b></tt>: a real vector of size three <tt><b>flag=[mode,type,box]</b></tt>.<ul>
+<li>
+<tt><b>mode</b></tt>: string representation mode.<ul>
+<li>
+<tt><b>mode=0: </b></tt>the level curves are drawn on the surface defined by
+			(x,y,z).</li>
+<li>
+<tt><b>mode=1: </b></tt>the level curves are drawn on a 3D plot and
+			on the plan defined by  the equation z=zlev.</li>
+<li>
+<tt><b>mode=2:</b></tt>the level curves are drawn on a 2D plot.</li>
+</ul>
+</li>
+<li>
+<tt><b>type</b></tt>: an integer (scaling).<ul>
+<li>
+<tt><b>type=0</b></tt>the plot is made using the current 3D scaling (set by
+			a previous call to <tt><b>param3d</b></tt>,
+			<tt><b>plot3d</b></tt>, <tt><b>contour</b></tt> or
+			<tt><b>plot3d1</b></tt>).</li>
+<li>
+<tt><b>type=1</b></tt>rescales automatically 3d boxes with extreme aspect
+			ratios, the boundaries are specified by the value of
+			the optional argument <tt><b>ebox</b></tt>.</li>
+<li>
+<tt><b>type=2</b></tt>rescales automatically 3d boxes with extreme aspect
+			ratios, the boundaries are computed using the given
+			data.</li>
+<li>
+<tt><b>type=3</b></tt>3d isometric with box bounds given by optional
+			<tt><b>ebox</b></tt>, similarily to
+			<tt><b>type=1</b></tt>
+</li>
+<li>
+<tt><b>type=4</b></tt>3d isometric bounds  derived from the data, to
+			similarily<tt><b>type=2</b></tt>
+</li>
+<li>
+<tt><b>type=5</b></tt>3d expanded isometric bounds  with box bounds given
+			by optional <tt><b>ebox</b></tt>, similarily to
+			<tt><b>type=1</b></tt>
+</li>
+<li>
+<tt><b>type=6</b></tt>3d expanded isometric bounds  derived from the data,
+			similarily to <tt><b>type=2</b></tt>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>box</b></tt>: an integer (frame around the plot).<ul>
+<li>
+<tt><b>box=0</b></tt>nothing is drawn around the plot.</li>
+<li>
+<tt><b>box=1</b></tt>unimplemented (like box=0).</li>
+<li>
+<tt><b>box=2</b></tt>only the axes behind the surface are drawn.</li>
+<li>
+<tt><b>box=3</b></tt>a box surrounding the surface is drawn and captions are added.</li>
+<li>
+<tt><b>box=4</b></tt>a box surrounding the surface is drawn, captions and axes are added.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ebox</b></tt>: used when <tt><b>type</b></tt> in <tt><b>flag</b></tt> is 1. It
+	    specifies the boundaries of the plot as the vector
+	    <tt><b>[xmin,xmax,ymin,ymax,zmin,zmax]</b></tt>.</li>
+<li>
+<tt><b>zlev</b></tt>: real number.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>contour</b></tt> draws level curves of a surface z=f(x,y). The level curves are
+    drawn on a 3D surface. The optional arguments are the same as for the function 
+    <tt><b>plot3d</b></tt> (except <tt><b>zlev</b></tt>) and their meanings are the same. 
+    They control the drawing of level curves on a 3D plot.
+    Only <tt><b>flag(1)=mode</b></tt> has a special meaning.
+  </p>
+<dl>
+<dd>
+<b>mode=0</b>: the level curves are drawn on the surface defined by (x,y,z).</dd>
+<dd>
+<b>mode=1</b>: the level curves are drawn on a 3D plot and on the plan defined
+	  by  the equation z=zlev.</dd>
+<dd>
+<b>mode=2</b>: the level curves are drawn on a 2D plot.</dd>
+</dl>
+<p>
+    You can change the format of the floating point number printed on the levels
+    by using <tt><b>xset("fpf",string)</b></tt> where <tt><b>string</b></tt> gives the 
+    format in C format syntax (for example <tt><b>string="%.3f"</b></tt>). Use 
+    <tt><b>string=""</b></tt> to switch back to default format and Use 
+    <tt><b>string=" "</b></tt> to suppress printing.</p>
+<p>
+    Usually we use <tt><b>contour2d</b></tt> to draw levels curves on a 2D plot.</p>
+<p>
+    Enter the command <tt><b>contour()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=linspace(-%pi,%pi,30);
+function z=my_surface(x,y),z=x*sin(x)^2*cos(y),endfunction
+
+contour(t,t,my_surface,10)
+// changing the format of the printing of the levels
+xset("fpf","%.1f")
+xbasc()
+contour(t,t,my_surface,10)
+// 3D
+xbasc()
+z=feval(t,t,my_surface);
+plot3d(t,t,z);contour(t,t,z+0.2*abs(z),20,flag=[0 2 4]);
+//
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/contour2d.htm"><tt><b>contour2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

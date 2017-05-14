@@ -1,0 +1,57 @@
+.TH IAON  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+IAON  -  Iterated All or Nothing traffic assignment algorithm
+.SH CALLING SEQUENCE
+.nf
+[f,ta,ben]=IAON(net,k)
+.fi
+.SH PARAMETERS
+.TP 10
+net
+: a NetList
+.TP 10
+k
+: number of iterations of the algorithm
+.TP 10
+f
+: assigned flow (disaggregated by commodity)
+.TP 10
+ta 
+: row vector of reals, current time for the assigned flow
+.TP 10
+ben 
+: a kx5 matrix benchmark information.
+
+
+.SH DESCRIPTION
+Assigns the flow with the Iterated All or Nothing heuristic.
+Starting with a feasible flow assigned with AON the link costs
+are calculated with the travel time functions. The AON assignment
+is made now with the computed costs and then the costs are recomputed
+for the new assignment. This process is repeated until there is
+no change in the recalculated costs or the number of iterations
+k is reached.
+
+The matrix ben contains intermediary informations on the
+algorithm. For each iteration it gives the iteration number, time
+spent, cost, memory used and an convergence error evaluation.
+
+
+.SH EXAMPLES
+.nf
+net=TrafficExample('Small');
+[f,ta,ben]=IAON(net,10)
+.fi
+
+.SH SEE ALSO
+AON,
+IA,
+FW,
+CAPRES,
+TrafficAssig
+
+
+
+
+
+

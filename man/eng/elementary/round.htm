@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>round</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>round</b> -  rounding</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=round(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>y</b></tt>: integer or complex (with integer real and imag) matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>round(x)</b></tt> rounds the elements of <tt><b>x</b></tt> to the nearest integers.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+round([1.9 -2.5])-[2,-3]
+round(1.6+2.1*%i)-(2+2*%i)
+round(-%inf)
+x=rand()*10^20;round(x)-x
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/int.htm"><tt><b>int</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/floor.htm"><tt><b>floor</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/ceil.htm"><tt><b>ceil</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

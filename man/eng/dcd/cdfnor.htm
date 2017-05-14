@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cdfnor</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfnor</b> -  cumulative distribution function normal distribution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfnor("PQ",X,Mean,Std)  </tt></dd>
+<dd><tt>[X]=cdfnor("X",Mean,Std,P,Q)  </tt></dd>
+<dd><tt>[Mean]=cdfnor("Mean",Std,P,Q,X)  </tt></dd>
+<dd><tt>[Std]=cdfnor("Std",P,Q,X,Mean)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,X,Mean,Std</b></tt>: six real vectors of the same size.</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>: The integral from -infinity to X of the normal density. Input range: (0,1].</li>
+<li>
+<tt><b>X</b></tt>:Upper limit of integration of the normal-density. Input range: ( -infinity, +infinity)</li>
+<li>
+<tt><b>Mean</b></tt>:  The mean of the normal density. Input range: (-infinity, +infinity)</li>
+<li>
+<tt><b>Sd</b></tt>:  Standard Deviation of the normal density. Input range: (0, +infinity).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates any one parameter of the normal
+    distribution given values for the others.</p>
+<p>
+    A slightly modified version of ANORM from
+    Cody, W.D. (1993). "ALGORITHM 715: SPECFUN - A Portabel FORTRAN
+    Package of Special Function Routines and Test Drivers"
+    acm Transactions on Mathematical Software. 19, 22-32.
+    is used to calulate the  cumulative standard normal distribution.</p>
+<p>
+    The rational functions from pages  90-95  of Kennedy and Gentle,
+    Statistical  Computing,  Marcel  Dekker, NY,  1980 are  used  as
+    starting values to Newton's Iterations which compute the inverse
+    standard normal.  Therefore no  searches  are necessary for  any
+    parameter.</p>
+<p>
+    For X &lt; -15, the asymptotic expansion for the normal is used  as
+    the starting value in finding the inverse standard normal.
+    This is formula 26.2.12 of Abramowitz and Stegun.</p>
+<p>
+    The normal density is proportional to
+    exp( - 0.5 * (( X - MEAN)/SD)**2)</p>
+<p>
+    From DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.</p>
+</body>
+</html>

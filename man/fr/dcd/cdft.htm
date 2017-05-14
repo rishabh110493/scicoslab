@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdft</b> -  fonction de répartition de la distribution de Student  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdft("PQ",T,Df)  </tt></dd>
+<dd><tt>[T]=cdft("T",Df,P,Q)  </tt></dd>
+<dd><tt>[Df]=cdft("Df",P,Q,T)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,T,Df  </b></tt>
+    : six vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    : l'intégrale de -infini à T de la densité de Student. comprise entre : (0,1].
+</li>
+<li>
+<tt><b>T  </b></tt>
+    : borne d'intégration supérieure. En entrée : ( -infini, +infini). En recherche : [ -1E150, 1E150 ]
+</li>
+<li>
+<tt><b>DF:  </b></tt>
+    Degrés de libertés de la distribution. En entrée : (0 , +infini). En recherche : [1e-300, 1E10]
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution de Student.
+  </p>
+<p>
+    La formule  26.5.27  de   Abramowitz  et  Stegun,   Handbook   of
+    Mathematical Functions  (1966) est utilisée pour réduire le calcul de la fonction de répartition de la distribution à celle d'une loi beta incomplète.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+</body>
+</html>

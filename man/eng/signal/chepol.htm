@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chepol</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chepol</b> -  Chebychev polynomial</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Tn]=chepol(n,var)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer : polynomial order</li>
+<li>
+<tt><b>var</b></tt>: string : polynomial variable</li>
+<li>
+<tt><b>Tn</b></tt>: polynomial in the variable <tt><b>var</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Recursive implementation of Chebychev polynomial.
+    <tt><b>Tn=2*poly(0,var)*chepol(n-1,var)-chepol(n-2,var)</b></tt> with
+    <tt><b>T0=1</b></tt> and <tt><b>T1=poly(0,var)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+chepol(4,'x')
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

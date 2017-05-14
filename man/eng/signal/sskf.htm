@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sskf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sskf</b> -  steady-state Kalman filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xe,pe]=sskf(y,f,h,q,r,x0)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: data in form <tt><b>[y0,y1,...,yn]</b></tt>, <tt><b>yk</b></tt> a column vector</li>
+<li>
+<tt><b>f</b></tt>: system matrix dim(NxN)</li>
+<li>
+<tt><b>h</b></tt>: observations matrix dim(MxN)</li>
+<li>
+<tt><b>q</b></tt>: dynamics noise matrix dim(NxN)</li>
+<li>
+<tt><b>r</b></tt>: observations noise matrix dim(MxM)</li>
+<li>
+<tt><b>x0</b></tt>: initial state estimate</li>
+<li>
+<tt><b>xe</b></tt>: estimated state</li>
+<li>
+<tt><b>pe</b></tt>: steady-state error covariance</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    steady-state Kalman filter</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

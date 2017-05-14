@@ -1,0 +1,10 @@
+analyse_bbl_file
+analyse_tex_file
+change_capt_tex_file
+change_equa_tex_file2
+change_equa_tex_file
+get_head_tex
+get_makefile_fig
+get_makefile_tex
+latexsubst
+xmlsubst

@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Net2Par </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>Net2Par  -    Parameters from net  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[g,d,lpp,nf]=Net2Par(net)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><p>
+    
+  </p><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList
+  </li>
+  <li><tt><b>g  </b></tt>
+    : graph-list, graph of the network
+  </li>
+  <li><tt><b>d  </b></tt>
+    : 3 x nd matrix, tail, head and value of the demands
+  </li>
+  <li><tt><b>lpp  </b></tt>
+    : 4 x na matrix, data for the link performance functions
+  </li>
+  <li><tt><b>nf  </b></tt>
+    : integer between 0 and 6, travel time function formula  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Net2Par  -  Recovers the data fields from a NetList.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Sioux Falls');
+[g,d,lpp,nf]=Net2Par(net);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;<a href="Par2Net.htm"><tt><b>Par2Net</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

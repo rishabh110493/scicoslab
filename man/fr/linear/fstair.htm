@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fstair</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fstair</b> -  computes  pencil  column echelon form by qz transformations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[AE,EE,QE,ZE,blcks,muk,nuk,muk0,nuk0,mnei]=fstair(A,E,Q,Z,stair,rk,tol)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: m x n matrix with real  entries.</li>
+<li>
+<tt><b>tol</b></tt>: real positive scalar.</li>
+<li>
+<tt><b>E</b></tt>: column echelon form matrix</li>
+<li>
+<tt><b>Q</b></tt>: m x m unitary matrix</li>
+<li>
+<tt><b>Z</b></tt>: n x n unitary matrix</li>
+<li>
+<tt><b>stair</b></tt>: vector of indexes (see ereduc)</li>
+<li>
+<tt><b>rk</b></tt>: integer, estimated rank of the matrix</li>
+<li>
+<tt><b>AE</b></tt>: m x n matrix with real  entries.</li>
+<li>
+<tt><b>EE</b></tt>: column echelon form matrix</li>
+<li>
+<tt><b>QE</b></tt>: m x m unitary matrix</li>
+<li>
+<tt><b>ZE</b></tt>: n x n unitary matrix</li>
+<li>
+<tt><b>nblcks</b></tt>:is the number of submatrices having full row rank &gt;= 0  detected in matrix  <tt><b>A</b></tt>.</li>
+<li>
+<tt><b>muk:  </b></tt>integer array of dimension (n). Contains the column dimensions mu(k)  (k=1,...,nblcks) of the submatrices having full column  rank in the pencil sE(eps)-A(eps)</li>
+<li>
+<tt><b>nuk:  </b></tt>integer array of dimension (m+1). Contains the row dimensions nu(k)  (k=1,...,nblcks) of the submatrices having full row  rank in the pencil sE(eps)-A(eps)</li>
+<li>
+<tt><b>muk0:  </b></tt>integer array of dimension (n). Contains the column dimensions mu(k)  (k=1,...,nblcks) of the submatrices having full column  rank in the pencil sE(eps,inf)-A(eps,inf)</li>
+<li>
+<tt><b>nuk:  </b></tt>integer array of dimension (m+1). Contains the row dimensions nu(k)  (k=1,...,nblcks) of the submatrices having full row  rank in the pencil sE(eps,inf)-A(eps,inf)</li>
+<li>
+<tt><b>mnei:  </b></tt>integer array of dimension (4). mnei(1) = row dimension of sE(eps)-A(eps)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given a pencil <tt><b>sE-A</b></tt> where matrix <tt><b>E</b></tt> is in column echelon form the
+    function  <tt><b>fstair</b></tt> computes according to the wishes of the user a
+    unitary transformed pencil <tt><b>QE(sEE-AE)ZE</b></tt> which is more or less similar
+    to the generalized Schur form of the pencil <tt><b>sE-A</b></tt>.
+    The function  yields also part of the Kronecker structure of
+    the given pencil.</p>
+<p><tt><b>Q,Z</b></tt> are the unitary matrices used to compute the pencil where E
+    is in column echelon form (see ereduc)</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/quaskro.htm"><tt><b>quaskro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/ereduc.htm"><tt><b>ereduc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Th.G.J. Beelen (Philips Glass Eindhoven). SLICOT</p>
+</body>
+</html>

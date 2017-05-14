@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Compound_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Compound_properties</b> - description of the Compound
+  entity properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Compound entity is a third of the graphics entities hierarchy. This
+    entity defines interdependencies of the various graphics entities and
+    their global visibility property.</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        text entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>A vector containing the handles of all graphics objects children
+        of the Compound These graphics objects can be of type
+        <tt><b>"Compound"</b></tt>, <tt><b>"Rectangle"</b></tt>,
+        <tt><b>"Polyline"</b></tt>, <tt><b>"Patch"</b></tt>, <tt><b>"Segs"</b></tt>,
+        <tt><b>"Arc"</b></tt>, <tt><b>"Grayplot"</b></tt>,..</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt>. By
+        default, value is <tt><b>"on" </b></tt> where graphics entities children
+        of the Compound are drawn according to their visibility property. If
+        <tt><b>"off"</b></tt> all children of Compound are not displayed on the
+        screen.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the figure
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/glue.htm"><tt><b>glue</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/unglue.htm"><tt><b>unglue</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

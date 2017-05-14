@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>log1p</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>log1p</b> -  computes with accuracy the natural logarithm of its argument added by one</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=log1p(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real scalar, vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: real scalar, vector or matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>logp1(x)</b></tt> is the "element-wise" log(1+x) function. <tt><b>y(i,j)=log(1 + x(i,j))</b></tt>.
+    This function, defined for x &gt; -1, must be used if we want to compute log(1+x) with
+    accuracy for |x| &lt;&lt; 1.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+format("e",24)
+log(1.001)
+log1p(0.001)
+log(1 + 1.e-7)
+log1p(1.e-7)
+log(1 + 1.e-20)
+log1p(1.e-20)
+format("v") //reset default format
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/log.htm"><tt><b>log</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>B.P.;   </p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+.TH MSA  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+MSA  -  Method of successive averages
+.SH CALLING SEQUENCE
+.nf
+[F,ta,ben]=MSA(net,kmax,tol)
+.fi
+
+.SH PARAMETERS
+.TP 10
+net
+: a NetList
+.TP 10
+kmax
+: maximum number of iterations
+.TP 10
+tol
+: precision
+.TP 10
+F
+: assigned flow
+.TP 10
+ta
+: link travel time for the assigned flow f
+.TP 10
+ben
+: ni x 5 matrix (ni number of performed general iterations) benchmark
+information
+
+.SH DESCRIPTION
+Assigns the flow with a MSA heuristic. After an initial AON
+assignment the links costs are updated and a new AON assignment is
+computed. The new flow, f^k+1=(1-lk)*f^k+lk*y^k, where lk=1/k, is computed as a
+combination of the previous flow f^k and an AON assignment y^K.
+This is repeated iteratively until iteration kmax or until the
+precision is reached.
+
+The matrix ben contains intermediary informations on the
+algorithm. For each iteration it gives the iteration number, time
+spent, cost, memory used and an convergence error evaluation.
+
+.SH EXAMPLES
+.nf
+net=TrafficExample("Steenbrink");
+[f,s,ben]=MSA(net,15,1e-3);
+
+.fi
+.SH SEE ALSO
+AON,
+IAON,
+CAPRES,
+FW,
+TrafficAssig
+
+
+
+
+

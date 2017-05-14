@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>boucle</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>boucle</b> -  phase portrait of a dynamical system with observer</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[]=boucle(fch,[abruit,xdim,npts,farrow])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fch</b></tt>: Scilab macro. <tt><b>fch</b></tt> is supposed to be an observed-controlled system with  noisy output of state dimension 4 ( [x;xchap] is of dimension 4). <tt><b>fch</b></tt> can be created with the macro <tt><b>obscont1</b></tt> or can be set to one of the two following string which gives pre computed examples<ul>
+<li>
+<tt><b>"bcomp"  </b></tt>: for a non-linear competition model.</li>
+<li>
+<tt><b>"lcomp"  </b></tt>: for a linear example.</li>
+</ul>
+</li>
+<li>
+<tt><b>abruit</b></tt>: give the noise variance.</li>
+<li>
+<tt><b>xdim,npts,farrow</b></tt>: See portrait</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Phase portrait of dynamical systems.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/portrait.htm"><tt><b>portrait</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/obscont1.htm"><tt><b>obscont1</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

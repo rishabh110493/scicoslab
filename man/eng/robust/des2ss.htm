@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>des2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>des2ss</b> -  descriptor to state-space</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Sl]=des2ss(A,B,C,D,E [,tol])  </tt></dd>
+<dd><tt>[Sl]=des2ss(Des)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B,C,D,E</b></tt>: real matrices of appropriate dimensions</li>
+<li>
+<tt><b>Des</b></tt>: list</li>
+<li>
+<tt><b>Sl</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>tol</b></tt>: real parameter (threshold) (default value <tt><b>100*%eps</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Descriptor to state-space transform.</p>
+<p><tt><b>Sl=des2ss(A,B,C,D,E)</b></tt> returns 
+    a linear system <tt><b>Sl</b></tt> equivalent to the descriptor system 
+    <tt><b>(E,A,B,C,D)</b></tt>.</p>
+<p>
+    For index one <tt><b>(E,A)</b></tt> pencil, explicit formula is used and
+    for higher index pencils <tt><b>rowshuff</b></tt> is used.</p>
+<p><tt><b>Sl=des2ss(Des)</b></tt> with <tt><b>Des=list('des',A,B,C,D,E)</b></tt> returns
+    a linear system <tt><b>Sl</b></tt> in state-space form with possibly 
+    a polynomial <tt><b>D</b></tt> matrix.</p>
+<p>
+    A generalized Leverrier algorithm is used.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');G=[1/(s-1),s;1,2/s^3];
+S1=tf2des(G);S2=tf2des(G,"withD");
+W1=des2ss(S1);W2=des2ss(S2);
+clean(ss2tf(W1))
+clean(ss2tf(W2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/des2tf.htm"><tt><b>des2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowshuff.htm"><tt><b>rowshuff</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

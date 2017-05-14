@@ -1,0 +1,247 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>overloading</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>overloading</b> -  display, functions and operators overloading capabilities</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    In scilab, variable display, functions and operators may be defined
+    for new objects using  functions (scilab coded or primitives).
+  </p>
+<dl>
+<dd>
+<b>Display</b>: The display of new objects defined by <tt><b>tlist</b></tt> structure may be overloaded (the default display is similar to <tt><b>list</b></tt>'s one). The overloading function must have no output argument a single input argument. It's name is formed as follow <tt><b>%&lt;tlist_type&gt;_p</b></tt> where <tt><b>%&lt;tlist_type&gt;</b></tt> stands for the first entry of the <tt><b>tlist</b></tt> type component.</dd>
+<dd>
+<b>Operators</b>: Each operator which is not defined for given operands type may be defined. The overloading function must have a single output argument and one or two inputs according to the number of operands. The function name is formed as follow:</dd>
+</dl>
+<p>
+    for binary operators:
+    <tt><b>%&lt;first_operand_type&gt;_&lt;op_code&gt;_&lt;second_operand_type&gt;</b></tt></p>
+<p>
+    for unary operators:
+    <tt><b>%&lt;operand_type&gt;_&lt;op_code&gt;</b></tt></p>
+<p>
+    extraction and insertion operators which are n-nary operators are
+    described below.
+  </p>
+<p><tt><b>&lt;operand_type&gt;</b></tt>, <tt><b>&lt;first_operand_type&gt;</b></tt>,
+    <tt><b>&lt;second_operand_type&gt;</b></tt>  are sequence of characters associated
+    with each data type as described in the following table:
+  </p>
+<div align="center"><table border="2">
+<tr align="center">
+<td>data type</td>
+<td>char code</td>
+<td>data type</td>
+<td>char code</td>
+</tr>
+<tr align="center">
+<td>constant</td>
+<td>s</td>
+<td>boolean</td>
+<td>b</td>
+</tr>
+<tr align="center">
+<td>string</td>
+<td>c</td>
+<td>library</td>
+<td>f</td>
+</tr>
+<tr align="center">
+<td>function pointer</td>
+<td>fptr</td>
+<td>handle</td>
+<td>h</td>
+</tr>
+<tr align="center">
+<td>integer</td>
+<td>i</td>
+<td>list</td>
+<td>l</td>
+</tr>
+<tr align="center">
+<td>function</td>
+<td>m</td>
+<td>compiled function</td>
+<td>mc</td>
+</tr>
+<tr align="center">
+<td>polynomial</td>
+<td>p</td>
+<td>sparse</td>
+<td>sp</td>
+</tr>
+<tr align="center">
+<td>boolean sparse</td>
+<td>spb</td>
+<td>tlist</td>
+<td><tt><b>tlist_type</b></tt></td>
+</tr>
+</table></div>
+<p><tt><b>&lt;op_code&gt;</b></tt> is a single character associated with each operator as
+    described in the following table:
+  </p>
+<div align="center"><table border="2">
+<tr align="center">
+<td>      op</td>
+<td>char code</td>
+<td>      op</td>
+<td>char code</td>
+</tr>
+<tr align="center">
+<td><tt><b>'</b></tt></td>
+<td>    t</td>
+<td>    +        </td>
+<td>    a</td>
+</tr>
+<tr align="center">
+<td>    -        </td>
+<td>    s</td>
+<td>    *        </td>
+<td>    m</td>
+</tr>
+<tr align="center">
+<td><tt><b>/</b></tt></td>
+<td>    r</td>
+<td>    \        </td>
+<td>    l</td>
+</tr>
+<tr align="center">
+<td><tt><b>^</b></tt></td>
+<td>    p</td>
+<td>   .*        </td>
+<td>    x</td>
+</tr>
+<tr align="center">
+<td>   ./        </td>
+<td>    d</td>
+<td>   .\        </td>
+<td>    q</td>
+</tr>
+<tr align="center">
+<td>   .*.       </td>
+<td>    k</td>
+<td>   ./.       </td>
+<td>    y</td>
+</tr>
+<tr align="center">
+<td><tt><b>.\.</b></tt></td>
+<td>    z</td>
+<td>    :        </td>
+<td>    b</td>
+</tr>
+<tr align="center">
+<td>    *.       </td>
+<td>    u</td>
+<td>    /.       </td>
+<td>    v</td>
+</tr>
+<tr align="center">
+<td><tt><b>\.</b></tt></td>
+<td>    w</td>
+<td>   [a,b]     </td>
+<td>    c</td>
+</tr>
+<tr align="center">
+<td>   [a;b]     </td>
+<td>    f</td>
+<td>() extraction</td>
+<td>    e</td>
+</tr>
+<tr align="center">
+<td>() insertion</td>
+<td>    i</td>
+<td>    ==       </td>
+<td>    o</td>
+</tr>
+<tr align="center">
+<td>      &lt;&gt;     </td>
+<td>    n</td>
+<td>    |        </td>
+<td>    g</td>
+</tr>
+<tr align="center">
+<td>    &amp;        </td>
+<td>    h</td>
+<td><tt><b>.^</b></tt></td>
+<td>    j</td>
+</tr>
+<tr align="center">
+<td>    ~        </td>
+<td>    5</td>
+<td>    .'       </td>
+<td>    0</td>
+</tr>
+<tr align="center">
+<td>    &lt;        </td>
+<td>    1</td>
+<td>    &gt;        </td>
+<td>    2</td>
+</tr>
+<tr align="center">
+<td>   &lt;=        </td>
+<td>    3</td>
+<td>   &gt;=        </td>
+<td>    4</td>
+</tr>
+<tr align="center">
+<td></td>
+<td></td>
+<td>    iext</td>
+<td>    6</td>
+</tr>
+</table></div>
+<p>
+    The overloading function for extraction syntax <tt><b>b=a(i1,...,in)</b></tt>
+    has the following calling sequence: <tt><b>b=%&lt;type_of_a&gt;_e_(i1,...,in,a)</b></tt></p>
+<p>
+    and the syntax
+    <tt><b>[x1,..,xm]=a(i1,...,in)</b></tt> has the following calling sequence: 
+    <tt><b>[x1,..,xm]=%&lt;type_of_a&gt;_e_(i1,...,in,a)</b></tt></p>
+<p></p>
+<p>
+    The overloading function associated to the insertion syntax
+    <tt><b>a(i1,...,in)=b</b></tt>  has the following calling sequence: 
+    <tt><b>a=%&lt;type_of_b&gt;_i_&lt;type_of_a&gt;(i1,...,in,b,a)</b></tt>.
+  </p>
+<p></p>
+<p>
+    The <tt><b>6</b></tt> char code may be  used for some complex
+    insertion algorithm like <tt><b>x.b(2)=33</b></tt> where <tt><b>b</b></tt> field is
+    not defined in the structure <tt><b>x</b></tt>. The insertion is
+    automatically decomposed into <tt><b>temp=x.b;</b></tt><tt><b>temp(2)=33;</b></tt><tt><b>x.b=temp</b></tt>. The <tt><b>6</b></tt>
+    char code is used for the first step of this algorithm. The <tt><b>6</b></tt>
+    overloading function is very similar to the <tt><b>e</b></tt>'s one.
+   </p>
+<dl><dd>
+<b>Functions :</b>Some basic primitive function<p>
+    may also be overloaded for new data type. When such a function
+    is undefined for a particular data types the function
+    <tt><b>%&lt;type_of_an_argument&gt;_&lt;function_name&gt;</b></tt> is
+    called. User may add in this called function the definition
+    associated with the input data types.</p>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//DISPLAY
+deff('[]=%tab_p(l)','disp([['' '';l(3)] [l(2);string(l(4))]])')
+tlist('tab',['a','b'],['x';'y'],rand(2,2))
+
+//OPERATOR
+deff('x=%c_a_s(a,b)','x=a+string(b)')
+'s'+1
+
+//FUNCTION
+deff('x=%c_sin(a)','x=''sin(''+a+'')''')
+sin('2*x')
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/disp.htm"><tt><b>disp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/symbols.htm"><tt><b>symbols</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

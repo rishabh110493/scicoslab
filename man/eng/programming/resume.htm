@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>resume</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>resume</b> -  return or resume execution and copy some local variables</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>resume</tt></dd>
+<dd><tt>[x1,..,xn]=resume(a1,..,an)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>...</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    In a function <tt><b>resume</b></tt> stops the execution of the function,
+    <tt><b>[..]=resume(..)</b></tt> stops the execution of the function and put the
+    local variables <tt><b>ai</b></tt> in calling environnement under names
+    <tt><b>xi</b></tt>.</p>
+<p>
+    In <tt><b>pause</b></tt> mode, it allows to return to lower level
+    <tt><b>[..]=resume(..)</b></tt> returns to lower level and put the local variables
+    <tt><b>ai</b></tt> in calling environnement under names <tt><b>xi</b></tt>.</p>
+<p>
+    In an <tt><b>execstr</b></tt> called by a function <tt><b>[..]=resume(..)</b></tt> stops
+    the execution of the function and put the local variables 
+    <tt><b>ai</b></tt> in calling environnement under names <tt><b>xi</b></tt>.</p>
+<p><tt><b>resume</b></tt> is equivalent to <tt><b>return</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/abort.htm"><tt><b>abort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/break.htm"><tt><b>break</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

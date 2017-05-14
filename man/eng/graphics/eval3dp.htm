@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eval3dp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eval3dp</b> -  compute facets of a 3D parametric surface</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Xf,Yf,Zf]=eval3dp(fun,p1,p2)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Xf,Yf,Zf</b></tt>: matrices of size (4,n-1*m-1). <tt><b>Xf(:,i)</b></tt> ,<tt><b>Yf(:,i)</b></tt> and <tt><b>Zf(:,i)</b></tt>  are respectively the x-axis, y-axis and z-axis coordinates of the 4 points of  the ith four sided facet.</li>
+<li>
+<tt><b>fun</b></tt>: a Scilab function.</li>
+<li>
+<tt><b>p1</b></tt>: a vector of size <tt><b>n</b></tt>.</li>
+<li>
+<tt><b>p2</b></tt>: a vector of size <tt><b>m</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>eval3dp</b></tt> computes a four sided facets representation of a 3D parametric surface 
+    defined by the function <tt><b>fun</b></tt>. <tt><b>fun(p1,p2)</b></tt> computes the 
+    x-axis ,y-axis and z-axis coordinates of the corresponding points on the 
+    surface, as [x(i),y(i),z(i)]=fun(p1(i),p2(i)). This is used for efficiency.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+p1=linspace(0,2*%pi,10);
+p2=linspace(0,2*%pi,10);
+deff("[x,y,z]=scp(p1,p2)",["x=p1.*sin(p1).*cos(p2)";..
+                            "y=p1.*cos(p1).*cos(p2)";..
+                            "z=p1.*sin(p2)"])
+[Xf,Yf,Zf]=eval3dp(scp,p1,p2);
+plot3d(Xf,Yf,Zf)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/genfac3d.htm"><tt><b>genfac3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

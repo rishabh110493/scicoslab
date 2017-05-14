@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arl2</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arl2</b> -  SISO model realization by L2 transfer approximation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>h=arl2(y,den0,n [,imp])  </tt></dd>
+<dd><tt>h=arl2(y,den0,n [,imp],'all')  </tt></dd>
+<dd><tt>[den,num,err]=arl2(y,den0,n [,imp])  </tt></dd>
+<dd><tt>[den,num,err]=arl2(y,den0,n [,imp],'all')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: real vector or polynomial in <tt><b>z^-1</b></tt>, it contains the coefficients of the Fourier's series of the rational system to approximate (the impulse response)</li>
+<li>
+<tt><b>den0</b></tt>: a polynomial which gives an initial guess of the solution, it may be <tt><b>poly(1,'z','c')</b></tt>
+</li>
+<li>
+<tt><b>n</b></tt>: integer, the degree of approximating transfer function (degree of den)</li>
+<li>
+<tt><b>imp</b></tt>: integer in <tt><b>(0,1,2)</b></tt> (verbose mode)</li>
+<li>
+<tt><b>h</b></tt>: transfer function <tt><b>num/den</b></tt> or transfer matrix (column vector) when flag <tt><b>'all'</b></tt> is given.</li>
+<li>
+<tt><b>den</b></tt>: polynomial or vector of polynomials, contains the denominator(s) of the solution(s)</li>
+<li>
+<tt><b>num</b></tt>: polynomial or vector of polynomials, contains the numerator(s) of the solution(s)</li>
+<li>
+<tt><b>err</b></tt>: real constant or vector , the l2-error achieved for each solutions</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[den,num,err]=arl2(y,den0,n [,imp]) </b></tt> finds a pair of polynomials
+    <tt><b>num</b></tt> and <tt><b>den</b></tt> such that the transfer function <tt><b>num/den</b></tt>
+    is stable and its impulse response approximates (with a minimal l2
+    norm) the vector <tt><b>y</b></tt> assumed to be completed by an infinite number
+    of zeros.</p>
+<p>
+    If <tt><b>y(z)  =  y(1)(1/z)+y(2)(1/z^2)+ ...+ y(ny)(1/z^ny)</b></tt></p>
+<p>
+    then l2-norm of <tt><b>num/den - y(z)</b></tt> is <tt><b>err</b></tt>.</p>
+<p><tt><b>n</b></tt> is the degree of the polynomial <tt><b>den</b></tt>.</p>
+<p>
+    The <tt><b>num/den</b></tt>  transfer function is a L2 approximant of the
+    Fourier's series of the rational system.</p>
+<p>
+    Various intermediate results are printed according to <tt><b>imp</b></tt>.</p>
+<p><tt><b>[den,num,err]=arl2(y,den0,n [,imp],'all') </b></tt>  returns in the
+    vectors of polynomials <tt><b>num</b></tt> and <tt><b>den</b></tt>  a set of local
+    optimums for the problem. The solutions are sorted with increasing
+    errors <tt><b>err</b></tt>. In this case <tt><b>den0</b></tt> is already assumed to be 
+    <tt><b>poly(1,'z','c')</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+v=ones(1,20);
+xbasc();
+plot2d1('enn',0,[v';zeros(80,1)],2,'051',' ',[1,-0.5,100,1.5])
+
+[d,n,e]=arl2(v,poly(1,'z','c'),1)
+plot2d1('enn',0,ldiv(n,d,100),2,'000')
+[d,n,e]=arl2(v,d,3)
+plot2d1('enn',0,ldiv(n,d,100),3,'000')
+[d,n,e]=arl2(v,d,8)
+plot2d1('enn',0,ldiv(n,d,100),5,'000')
+
+[d,n,e]=arl2(v,poly(1,'z','c'),4,'all')
+plot2d1('enn',0,ldiv(n(1),d(1),100),10,'000')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/ldiv.htm"><tt><b>ldiv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/imrep2ss.htm"><tt><b>imrep2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/time_id.htm"><tt><b>time_id</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>typename</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>typename</b> -  associe un nom à un type de variable  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[types [ [,names]]=typename()  </tt></dd>
+<dd><tt>typename(name,type)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>types  </b></tt>
+    : vecteur colonne d'entiers, les codes des types de variables
+</li>
+<li>
+<tt><b>names  </b></tt>
+    : vecteur colonne de chaînes de caractères, les noms associés à chaque code
+</li>
+<li>
+<tt><b>type  </b></tt>
+    : entier, le code d'un nouveau type de variable 
+</li>
+<li>
+<tt><b>name  </b></tt>
+    : chaîne de caractères, le nom associé au nouveau type 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    La surcharge des opérateurs et primitives utilise des noms formels associés à
+    chaque type de variable pour former les noms des fonctions de surcharge
+    (voir <tt><b>overloading</b></tt>). <tt><b>typename</b></tt> peut être utilisé pour gérer ces noms pour les types natifs de variables (les noms formels pour les types <tt><b>tlist</b></tt> ou <tt><b>mlist</b></tt> sont définis autrement, pour ceci voir <tt><b>overloading</b></tt>).
+  </p>
+<p>
+    Sans argument d'entrée, <tt><b>typename</b></tt> renvoie les informations associées aux types de données déjà définis.
+  </p>
+<p>
+    Avec les arguments d'entrée, <tt><b>typename</b></tt> associe un nom à un code de type de variable.
+  </p>
+<p><tt><b>typename('',type)</b></tt> supprime le type de donnée défini par le code passé dans <tt><b>type</b></tt> dans la table des types de variables connus.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mlist.htm"><tt><b>mlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

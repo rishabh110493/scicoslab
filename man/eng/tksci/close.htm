@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>close</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>close</b> -  close a figure</p>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>o</b></tt>h : integer Handle of the window to close</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This routine close a tksci figure (toplevel window). If a handle is 
+    given, the figure corresponding to this handle is closed. 
+    Otherwise, the current (active) figure is closed.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+h=figure();
+// creates  figure number 1.  
+uicontrol( h, 'style','text', ...
+ 'string','scilab is great', ...
+ 'position',[50 70 100 100], ...
+ 'fontsize',15);
+// put a clever text in figure 1
+figure();
+// create figure 2
+uicontrol( 'style','text', ...
+ 'string','Really great', 'position',[50 70 100 100], 'fontsize',15);
+// put a text in figure 2
+close();
+// close the current graphic window (ie fig. 2)
+close(h);
+// close figure 1
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/figure.htm"><tt><b>figure</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Bertrand Guiheneuf</p>
+</body>
+</html>

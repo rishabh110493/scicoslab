@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mkdir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mkdir</b> - Crée un nouveau   répertoire</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mkdir('dirname')</tt></dd>
+<dd><tt>mkdir('parentdir','newdir')</tt></dd>
+<dd><tt>status=mkdir( ... )</tt></dd>
+<dd><tt>[status,msg]=mkdir( ... )</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>mkdir('dirname') crée le repertoire <tt><b>dirname</b></tt> dans le répertoire
+    courant.</p>
+<p>mkdir('parentdir','dirname') crée le répertoire <tt><b>dirname</b></tt> dans le
+    répertoire existant <tt><b>parentdir</b></tt>, ou <tt><b>parentdir</b></tt> est un chemin relatif ou
+    absolu.</p>
+<p>[status,message] = mkdir(...,'dirname') crée le répertoire <tt><b>dirname</b></tt> dans
+    le répertoire existant <tt><b>parentdir</b></tt>, retourne le status, et un message. Ici,
+    <tt><b>status</b></tt> vaut 1 si tout c'est bien passé, 2 si le repertoire existe déjà, 0
+    dans un autre cas.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+rmdir(SCI + '/Directory'); //détruit le répertoire s'il existe
+mkdir(SCI,'Directory')
+status=mkdir(SCI,'Directory')
+[status,msg] = mkdir(SCI,'Directory')
+rmdir(SCI+'/Directory')
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/chdir.htm"><tt><b>cd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/dir.htm"><tt><b>dir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/rmdir.htm"><tt><b>rmdir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C</dd></dl>
+</body>
+</html>

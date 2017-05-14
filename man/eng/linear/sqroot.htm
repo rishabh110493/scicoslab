@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sqroot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sqroot</b> -  W*W' hermitian factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sqroot(X)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X</b></tt>: symmetric non negative definite real or complex matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns W such that  <tt><b>X=W*W'</b></tt> (uses SVD).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+X=rand(5,2)*rand(2,5);X=X*X';
+W=sqroot(X)
+norm(W*W'-X,1)
+//
+X=rand(5,2)+%i*rand(5,2);X=X*X';
+W=sqroot(X)
+norm(W*W'-X,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/chol.htm"><tt><b>chol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

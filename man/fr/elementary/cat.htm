@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cat</b> - concatenate several arrays</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=cat(dims,A1,A2,...,An)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims</b></tt>: a positive real scalar.</li>
+<li>
+<tt><b>A1,A2,..An</b></tt>: scalars, vectors, matrices or mutlti-arrays, or cells arrays.
+          A1,A2,...,An must have the same size (excluding the dimension number
+          dims). size(A1,i)=size(A2,i)=...=size(An,i) for i different of dims
+          and size(A1,dims), size(A2,dims),...,size(An,dims) can be
+          different.</li>
+<li>
+<tt><b>y</b></tt>: a scalar, vector, matrix or mutlti-array, y has the same type
+          than A1,A2,...,An.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=cat(dims,A1,A2,...,An) :</b></tt> y is the result of the
+    concatenation of the input arguments A1,A2,...,An. if dims=1then the
+    concatenation is done according to the rows : if dims=2 then concatenation
+    is done according to the columns of the input arguments,...</p>
+<p>if dims=1, then the concatenation is done according to the rows</p>
+<p>A1=[1 2 3 ; 4 5 6]; A2=[7 8 9 ; 10 11 12]; y=cat(1,A1,A2) =&gt; y=[1 2
+    3 ; 4 5 61 ;7 8 9; 10 11 12]</p>
+<p>if dims=2, then the concatenation is done according to the columns of
+    the input arguments</p>
+<p>A1=[1 2 3;4 5 6]; A2=[7 8 9 ;10 11 12]; y=cat(2,A1,A2) =&gt; y=[1 2 3 7
+    8 9 ; 4 5 6 10 11 12]</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// first example : concatenation according to the rows 
+dims=1; A1=[1 2 3]; A2=[4 5 6 ; 7 8 9]; A3=[10 11 12]; y=cat(dims,A1,A2,A3)
+// second example :  concatenation according to the columns
+dims=2; A1=[1 2 3]'; A2=[4 5;7 8;9 10]; y=cat(dims,A1,A2)
+// third example : concatenation according to the 3th dimension 
+dims=3; A1=matrix(1:12,[2,2,3]); A2=[13 14;15 16]; A3=matrix(21:36,[2,2,4]); y=cat(dims,A1,A2,A3)
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/permute.htm"><tt><b>permute</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/matrix.htm"><tt><b>matrix</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Farid Belahcene</p>
+</body>
+</html>

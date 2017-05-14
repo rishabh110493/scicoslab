@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TCL_UnsetVar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>TCL_UnsetVar</b> - Remove a tcl
+  variable</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>OK=TCL_UnsetVar(varname
+    [,interp])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>varname</b></tt>: character string. Contains the name of the tcl/tk variable to
+          unset.</li>
+<li>
+<tt><b>interp</b></tt>: optional character string parameter. Name of the slave tcl
+          interpreter in which the operation has to be performed. If not
+          provided, it defaults to the main tcl interpreter created by
+          Scilab.</li>
+<li>
+<tt><b>ok</b></tt>: boolean. %T if varname was deleted.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This routine allows to unset a tcl variable.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+TCL_SetVar("Scilab","OK")
+TCL_GetVar("Scilab")
+TCL_UnsetVar("Scilab")
+TCL_ExistVar("Scilab")
+
+TCL_CreateSlave('InterpSlave');
+TCL_SetVar("Scilab","Good",'InterpSlave')
+TCL_GetVar("Scilab",'InterpSlave')
+TCL_UnsetVar("Scilab",'InterpSlave')
+TCL_ExistVar("Scilab",'InterpSlave')
+TCL_DeleteInterp('InterpSlave')
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/ScilabEval.htm"><tt><b>ScilabEval</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TK_EvalFile.htm"><tt><b>TCL_EvalFile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TK_EvalStr.htm"><tt><b>TCL_EvalStr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_GetVar.htm"><tt><b>TCL_GetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_SetVar.htm"><tt><b>TCL_SetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_ExistVar.htm"><tt><b>TCL_ExistVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_UpVar.htm"><tt><b>TCL_UpVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_CreateSlave.htm"><tt><b>TCL_CreateSlave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/TCL_DeleteInterp.htm"><tt><b>TCL_DeleteInterp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

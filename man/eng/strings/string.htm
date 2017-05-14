@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>string</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>string</b> -  conversion to string</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>string(x)  </tt></dd>
+<dd><tt>[out,in,text]=string(x)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real matrix or function</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    converts a matrix into a matrix of strings.</p>
+<p>
+    If <tt><b>x</b></tt> is a function  <tt><b>[out,in,text]=string(x)</b></tt>  returns
+    three vectors strings : <tt><b>out</b></tt> is the vector of output variables,
+    <tt><b>in</b></tt> is the vector of input variables, and <tt><b>text</b></tt> is
+    the (column) vector of the source code of the function.</p>
+<p>
+    If  <tt><b>x</b></tt> is a <tt><b>lib</b></tt> variable, text is a character string column
+    vector. The first element contains the path of library file and the 
+    other the name of functions it defines.</p>
+<p>
+    Character strings are defined as <tt><b>'string'</b></tt> (between quotes) or
+    <tt><b>"string"</b></tt> (between doublequotes);
+    matrices of strings are defined as usual constant matrices.</p>
+<p>
+    Concatenation of strings is made by the <tt><b>+</b></tt> operation.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+string(rand(2,2))
+deff('y=mymacro(x)','y=x+1')
+[out,in,text]=string(mymacro)
+x=123.356; 'Result is '+string(x)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/part.htm"><tt><b>part</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/quote.htm"><tt><b>quote</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/strsubst.htm"><tt><b>strsubst</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/strcat.htm"><tt><b>strcat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/strindex.htm"><tt><b>strindex</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/sci2exp.htm"><tt><b>sci2exp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

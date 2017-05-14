@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>emptystr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>emptystr</b> -  zero length string</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s=emptystr()   </tt></dd>
+<dd><tt>s=emptystr(a)   </tt></dd>
+<dd><tt>s=emptystr(m,n)   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: any type of matrix</li>
+<li>
+<tt><b>s</b></tt>: character string matrix</li>
+<li>
+<tt><b>m,n</b></tt>: integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns a matrix of zero length character strings</p>
+<p>
+    With no input argument returns a zero length character string.</p>
+<p>
+    With a matrix for input argument returns  a zero length character strings 
+    matrix of the same size.</p>
+<p>
+    With two integer arguments returns a mxn zero length character strings 
+    matrix</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=emptystr();for k=1:10, x=x+','+string(k);end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/part.htm"><tt><b>part</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

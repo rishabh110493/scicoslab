@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cdfchi</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfchi</b> -  cumulative distribution function chi-square distribution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfchi("PQ",X,Df)  </tt></dd>
+<dd><tt>[X]=cdfchi("X",Df,P,Q);  </tt></dd>
+<dd><tt>[Df]=cdfchi("Df",P,Q,X)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,Xn,Df</b></tt>: four real vectors of the same size.</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>:  The integral from 0 to X of the chi-square distribution. Input range: [0, 1].</li>
+<li>
+<tt><b>X</b></tt>: Upper limit of integration of the non-central chi-square distribution. Input range: [0, +infinity). Search range: [0,1E300]</li>
+<li>
+<tt><b>Df</b></tt>:  Degrees of freedom of the chi-square distribution. Input range: (0, +infinity). Search range: [ 1E-300, 1E300]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates any one parameter of the chi-square
+    distribution given values for the others.</p>
+<p>
+    Formula    26.4.19   of Abramowitz  and     Stegun, Handbook  of
+    Mathematical Functions   (1966) is used   to reduce the chi-square
+    distribution to the incomplete distribution.</p>
+<p>
+    Computation of other parameters involve a seach for a value that
+    produces  the desired  value  of P.   The search relies  on  the
+    monotinicity of P with the other parameter.</p>
+<p>
+    From DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.</p>
+</body>
+</html>

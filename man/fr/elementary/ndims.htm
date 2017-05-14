@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ndims</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ndims</b> -  number of dimensions of an array</p>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: an array</li>
+<li>
+<tt><b>n</b></tt>: integer, the number of dimensions of the array</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>n=ndims(A)</b></tt> return the number of dimension of the array <tt><b>A</b></tt>.
+    <tt><b>n</b></tt> is greater than or equal to 2.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(2,3);
+ndims(A)
+
+A=rand(2,3,2);
+size(A),ndims(A)
+
+H=[1/%s,1/(%s+1)]
+ndims(H)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/size.htm"><tt><b>size</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer</p>
+</body>
+</html>

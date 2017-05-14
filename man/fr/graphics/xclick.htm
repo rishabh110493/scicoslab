@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xclick</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xclick</b> -  attend un appui sur un bouton de la souris  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[c_i,c_x,c_y,c_w,c_m]=xclick([flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>c_i  </b></tt>
+	    : entier, numéro de bouton
+	  </li>
+<li>
+<tt><b>c_x,c_y  </b></tt>
+	    : scalaire réel, position du pointeur de la souris
+	  </li>
+<li>
+<tt><b>c_w  </b></tt>
+	    : entier, numéro de fenêtre.
+	  </li>
+<li>
+<tt><b>c_m  </b></tt>
+	    : chaîne de caractères, callback de menu
+	  </li>
+<li>
+<tt><b>flag  </b></tt>
+	    : entier. S'il est présent, la queue d'évènements des clics de souris n'est pas vidée préalablement. 
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xclick</b></tt> attend l'appui sur un bouton de la souris.
+    </p>
+<p>
+      Appelée avec 3 arguments en sortie, cette fonction attend qu'un bouton de la souris soit pressé avec le pointeur dans la fenêtre graphique courante.
+    </p>
+<p>
+      Avec 4 ou 5 arguments en sortie, l'appui sur un bouton de la souris est attendu dans toutes les fenêtres graphiques.
+    </p>
+<p>
+      Les valeurs renvoyées par xclick sont décrites ci-dessous :
+    </p>
+<dl>
+<dd>
+<b>c_i</b>: un entier donnant le numéro du bouton ou de la touche pressé. <dl>
+<dd>
+<b>c_i==0</b>:Le bouton gauche a été pressé</dd>
+<dd>
+<b>c_i==1</b>: Le bouton central a été pressé</dd>
+<dd>
+<b>c_i==2</b>:  Le bouton droit a été pressé<p></p>
+</dd>
+<dd>
+<b>c_i==3</b>: Le bouton gauche a été cliqué</dd>
+<dd>
+<b>c_i==4</b>: Le bouton central a été cliqué</dd>
+<dd>
+<b>c_i==5</b>:  Le bouton droit a été cliqué<p></p>
+</dd>
+<dd>
+<b>c_i==10</b>: Le bouton gauche a été double-cliqué</dd>
+<dd>
+<b>c_i==11</b>:  Le bouton central a été double-cliqué</dd>
+<dd>
+<b>c_i==12</b>: Le bouton droit a été double-cliqué<p></p>
+</dd>
+<dd>
+<b>c_i &gt; =32</b>: La touche de code ascii ascii(c_i)  a été cliqué </dd>
+<dd>
+<b>c_i &gt; =1000+32</b>: La touche de code ascii ascii(c_i-1000) a été cliqué avec la
+	      touche CTRL enfoncée.</dd>
+<dd>
+<b>c_i==-100</b>: La fenêtre graphique </dd>
+<dd>
+<b>c_i==-2</b>: Un menu dynamique a été selectionné</dd>
+</dl>
+</dd>
+<dd>
+<b>c_x,c_y</b>: les coordonnées de la position du curseur au moment du clic, à
+	  l'échelle graphique courante.  </dd>
+<dd>
+<b>c_w</b>: le numéro de la fenêtre ou le clic s'est produit. </dd>
+<dd>
+<b>c_m</b>: chaîne de caractères associée à un menu dynamique. Si xclick se
+	  termine à cause d'un clic sur l'article d'un menu,
+	  <tt><b>c_i</b></tt>, <tt><b>c_x</b></tt>, <tt><b>c_y,</b></tt> et
+	  <tt><b>c_w</b></tt> prennent des valeurs arbitraires </dd>
+</dl>
+<h3><font color="blue">PROBLÈMES CONNUS</font></h3>
+<dl><p><tt><b>xclick</b></tt> peut renvoyer le message  "Can't grab the pointer" si la fenêtre graphique courante est iconifiée au moment de l'appel.
+    </p></dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/locate.htm"><tt><b>locate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

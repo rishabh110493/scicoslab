@@ -1,0 +1,900 @@
+
+                               ScicosLab 4.4
+                              ===============
+
+
+New/improved functionalities of Scicos:
+---------------------------------------
+
+Here is a partial list of changes with respect to Scicos 4.3:
+
+  Graphical editor :
+
+  - Improved block dialog boxes with XML import/export
+  - Addition of Bus links (experimental for the moment)
+  - Introduction of new facilities for constructing nice diagrams (automatic adjustment of block
+    locations to obtain horizontal and vertical links, gridding)
+  - Addition of an option to use fixed size fonts in block icons to obtain a more 
+    uniform look, and bug corrections in particular in the Masking and Atomic operations.
+
+  Scicos/Modelica compilers :
+
+  - Better integration of the latest version of the Modelica compiler and some minor bug corrections
+    in the Scicos compiler.
+  - In this version, the Scicos compiler can also call the interfacing
+    functions of Scicos and Modelica blocks with the job 'compile' during 
+    the compilation process to improve checks/sets of some block parameters 
+    (like input/output sizes and types...)
+
+  Simulator :
+
+  - Important architectural changes and the addition of a new solver.
+
+  Code Generator :
+
+  - It includes major improvements allowing in particular its application to models with asynchronous
+    dynamics and Modelica components. Its usage via the 'Atomic' operation allows separate compilation
+    of non-directly-communicating Modelica parts within the same Scicos diagram.
+  - Default properties of the code generator for each Super block can now be 
+    set using a GUI.
+  - Standalone code generation now works for all Scicos diagrams (except for diagrams that use Scilab
+    blocks) including diagrams with continuous-time dynamics requiring ODE/DAE solvers.
+
+  Library blocks :
+
+  - A new palette (Iterators) has been added and many improvements have been made in existing blocks,
+    in particular the delay blocks and the scopes.
+  - The main scope blocks can now function by inheritance in most situations so their activation input
+    port is no longer present by default.
+  - An interactively editable Scilab block of type 5 has been added.
+
+  Modelica initialization tool :
+
+  - The graphical interface has been improved and additional numerical solvers are used.
+
+
+New/improved functionalities of Scipad:
+---------------------------------------
+
+Scipad 8.x is dedicated to the Scicoslab environment.
+
+  - The debugger is fully working in the Scicoslab-4.4 environment, and a few minor debugger
+    bugs were fixed
+
+  - Implemented request in bug 3726 (do not exit when the last file gets closed), with a saved
+    preference for selecting the behaviour
+
+  - Logical line numbers can now be displayed in the margin (this is implementation of bug/request 4399)
+
+  - Implemented request 675 - completion and colorization of variable names.
+    Bonus: variables type, size and values are retrieved from Scilab and shown
+    in a tooltip when hovering their name with the mouse
+
+  - Selection of the file encoding is now possible through a new option menu,
+    with a list of most recently used encodings, and auto-detection of encoding for XML files
+
+  - Added capability of saving files with a selectable line ending character (CR, CR/LF or LF)
+
+  - Performance improvements in colorization, keywords recognization
+    and environment (functions around) detection within Scipad
+
+  - Scipad localization in Catalan from Oriol González
+
+  - Scipad localization in Japanese from Hiroshi Saito
+
+  - Several miscellaneous added features: toggle comments, show pruned directory paths,
+    Scipad detects when an opened file vanishes from the disk, better context menu,
+    new commands "Close all..." with their sub menues, and more
+
+  - Fixed bugs: 2998, 3407, 3781, 3782, 3793, 3806, 3882, 3978,
+    3997, 3998, 4011, 4038, 4305, 4368, 4399 and many other
+    bugs not reported to the bugzilla (see files changelog.txt and BUGS for details)
+
+
+Expat XML parser ScicosLab interfacing functions
+------------------------------------------------
+
+
+                               ScicosLab 4.3
+                              ===============
+
+ScicosLab is the new name of ScilabGTK. This change of name has been decided 
+in order to avoid all confusion with Scilab, which is no longer developed at 
+INRIA. ScicosLab is developed by some of the researchers who originally developed 
+Scilab at INRIA and ENPC. ScicosLab is used in particular for hosting the new 
+developments of Scicos.  
+
+The main changes in this version concern Scicos. The Scicos version included is Scicos 4.3.
+
+This release of Scicos includes:
+
+	- a better coverage of the Modelica language (Modelica functionalities in Scicos are developed in collaboration with LMS-Imagine)
+	- a user interface for assistance in finding consistent initial conditions for large Modelica models
+	- a new more efficient Scicos compiler
+	- improved masking operations
+	- hierarchical palette structures
+	- major improvement in the C code generator allowing in particular code generation for a wider class of sub-systems.
+	- Efficient XML format for load and save (to be used for model exchange with other programs)
+	- Many bugs have been fixed ; and new ones introduced ;-)
+
+
+
+                               Scilabgtk 4.2
+                              ==============
+
+This version is based on Scilab 4.1.2 but it also contains some code imported
+from Scilabgtk, in particular the Maxplus toolbox. The most important novelties 
+are in the Scicos toolbox.
+
+New/improved functionalities of Scicos:
+---------------------------------------
+
+	- Improved Modelica support (new Modelica compiler)
+	- Extended functionality for masking operation and To and From
+	  Workspace operations
+	- Many bug fixes
+
+
+
+
+                              Scilab 4.1.2
+                              ============
+
+Please note that the Scilab 4.1.2 is mainly released to update Scicos and Scipad
+
+New/improved functionalities of Scicos:
+---------------------------------------
+
+ Editor :
+
+  - Windows style editing: basic operations implemented.
+  - Multi-diagram editing: for example copy and paste from any window to any
+    other.
+  - Documentation: fairly complete on-line help and supporting documentation.
+  - Active Scilab prompt: menu activated.
+  - Undo operation: one step per window.
+  - Diagram browser: a much nicer replacement for the old navigator.
+  - From/To workspace blocks: support vector Scilab variables of various
+    types but not matrices.
+  - Palette operations: New Palette browser.
+  - Palettes: enriched Palettes of elementary blocks (Modelica blocks,
+    Matrix operation blocks, Integer operation blocks).
+  - Modelica blocks: on-line Modelica code editing and more.
+  - Inspection of available parameters: available in every window.
+  - Block Masking: create, delete, customize, and save Block GUI.
+  - From/Goto blocks: available in every sub-system.
+  - Block/Diagram data inspection: Details menu.
+  - General data types: vector and matrix of double (real and complex),
+    int8, int16, int32, signed and unsigned, for block input/outputs,
+    discrete states and parameters.
+
+ Compiler :
+
+  - New compiler algorithm: fixing some errors.
+  - Support for extended data types.
+  - Improved error message handling.
+  - Implicitly defined multi-frequency event clocks.
+
+ Simulator :
+
+  - Use of the numerical solvers of SUNDIALS.
+  - Support for extended data types.
+  - Improved error message handling.
+  - Scope graphics based on Scilab's new graphics library: possible to
+    edit simulation results a posteriori.
+
+ Code generator :
+
+  - New algorithm adapted to the new compiler: avoids recursive calls.
+  - Support for extended data types.
+  
+  
+New/improved functionalities of Scipad (6.129.BP2):
+---------------------------------------------------
+
+  - A lot (really a lot!) of bugs were corrected (see
+    SCI/tcl/scipadsources/changelog.txt for full details)
+  - Step-by-step debugging available, with step into, step over, and step out
+  - Debugging of .sce scripts
+  - Scilab errors trapping during the debug
+  - Automatic watch of variables and evaluation of arbitrary expressions during
+    debug
+  - Column mode block selection, cut/copy/paste/drag\'n\'drop
+  - Performance improvements in many areas, especially in colorizing files
+  - Robustness of the Scilab/Scipad interface increased
+  - Many small improvements in Find/Replace
+  - Overall look and feel and ergonomics improved (bindings, shortcuts, 
+    localization dependent widgets sizes, better information displayed
+    in the watch window, underlined numbers in the Windows menu, watch
+    window docking, sorting in the Windows menu, smart indentation, more
+    tooltips, horizontal scrollbars hide automatically, optional line numbers
+    sidebar...)
+  - Tcl/Tk 8.5 is used by Scipad if available, providing peer text widgets,
+    hence the capability to display different parts of the same file at 
+    one time
+    
+    
+
+                              Scilab 4.1.1
+                              ============
+
+Please note that the Scilab 4.1.1 is released for two main reasons :
+- to have a HP-UX Scilab 4.1.1 release available for Scilab users,
+- to provide a Scilab version running with the Scilab - LabVIEW Gateway release 1.0
+
+The Scilab 4.1.1 release is built from the Scilab 4.1 source with added
+code to take into account the HP-UX machine and the Scilab - LabVIEW Gateway.
+If you already use the Scilab 4.1 release and if the above reasons do not
+concern your use of Scilab, no needs to download the 4.1.1 release.
+
+Notice that the workaround we have added in the 4.1 release to avoid
+the major bug of gfortran compiler is improved in the 4.1.1 release
+(because it did not work under some platform).
+
+For more details see our wiki page (http://wiki.scilab.org/Scilab_under_Linux_and_Unix?highlight=%28gfortran%29 )
+and the GCC bugzilla page ( http://gcc.gnu.org/bugzilla/show_bug.cgi?id=28354 )
+
+
+                     Main Changes Scilab 3.0 -> 4.x
+                     ==============================
+
+Bugs fixed :
+============
+
+Since Scilab-4.0 :
+http://www.scilab.org/cgi-bin/bugzilla_bug_II/buglist.cgi?bug_status=RESOLVED&resolution=FIXED&chfieldfrom=2006-02-15&chfieldto=2006-12-11
+
+Since Scilab-3.0 :
+http://www.scilab.org/cgi-bin/bugzilla_bug_II/buglist.cgi?bug_status=RESOLVED&resolution=FIXED&chfieldfrom=2004-07-10&chfieldto=2006-12-11
+
+Graphics:
+=========
+
+  - Plotframe syntax has been extended for optionnal argument (<optional_args>).
+
+  - Maximal length of figure names has been increased
+
+  - Graphical entities (objects) have been extended with a particular effort on:
+    + The Axes entity with respect to change of coordinates (logscale enable,
+      axes inversion in 2D and 3D) and graduation display.
+    + Versatile Title and labels entities in 2D and 3D.
+    + 3D object merge and zoom.
+    + Rotation of text entities.
+    + Save and load of all graphical entities.
+
+  - New functions have been defined to mimic their Matlab equivalent:
+    + plot.
+    + surf.
+    + mesh.
+    + bar, barh and barhomogenize.
+    + pie.
+
+  - Graphical Environment improved and extended:
+    + Manipulation of the hierachy of the entities has been made easier thanks 
+      to a hierachy browser.
+
+  - Graphic window Events (mouse, keyboard,...) handling have been improved and 
+    extended:
+    + click, double_click, press, release ,move.
+    + key press and release, with or without Shift and Ctrl modifiers.
+
+  - xs2bmp xs2emf functions added to export graphics under bmp and EMF
+    (Enhanced Meta File) formats. These functions are only available under
+    Windows.
+
+  - Colorbar function added. Thanks to Bruno Pincon.
+
+  - Under Windows a toolbar  has been added to the graphic windows, the 
+    function toolbar can be used to set or unset it.
+
+
+Numerical computation:
+======================
+
+  - Sparse operations and functions like real, imag, matrix, spones revisited to 
+    improve efficiency. Thanks to Bruno Pincon.
+
+  - Bessel functions extended to work in the complex case (using Slatec routines)
+    Incompatibilities: The semantics of besseli, besselj, besselk and bessely 
+    functions has been changed and extended.
+    The oldbesseli, oldbesselj, oldbesselk and oldbessely correspond to the old
+    obsolete semantics.
+
+  - New version of linpro and quapro. Thanks to Cecilia Pola.
+
+  - bvodeS function added to solve differential equation with boundary value. 
+    Thanks to Rainer Von Seggern.
+
+  - detrend function added to remove constant, linear or piecewise linear trend 
+    from a vector. Thanks to Bruno Pincon.
+
+  - Interface with Excel (Functions to read Excel files).
+
+
+
+Matlab to Scilab converter:
+===========================
+
+  - translatepaths function improved to allow conversion on an entire toolbox 
+    agating inference throught toolbox functions.
+
+  - The set of translated function has been extented in particular with the 
+    basic graphic functions.
+
+  - Scilab function sum, prod,... extented to the "first non singleton" matlab
+    semantics to improve readability and efficiency of translated code.
+
+  - Try catch construct added to Scilab for a better translation.
+
+
+Scipad editor:
+==============
+
+  - A debugging tool is now available.
+
+  - Drag'n'drop is now supported.
+
+  - Split a Scipad window.
+
+  - Print file from Scipad is now available.
+
+  - Scipad is easily localized (See "Adding translations..." in the Scipad Help
+    Menu). Today English, German, French, Swedish, Polish, Norwegian and Italian 
+    languages are supported.
+
+  - User settings and text colors are now configurable and save across editing 
+    sessions.
+
+  - Colorization of strings rewritten - now supports strings on continued lines.
+
+  - Colorization of files launched in the background, with progressbar.
+
+  - Miscellaneous file management improvements: readonly flag, 
+    absolute pathnames to files, pruned pathnames display, revert to 
+    saved feature, MRU (Most Recently Used) list.
+
+  - Quick access in the file menu for recently opened/saved files.
+
+  - Identification of Scilab predefined variables and library functions in 
+    scilab scripts.
+
+  - Keyword completion added, keyword list now completely dynamical.
+
+  - Undo/Redo rewritten.
+
+  - Go to... functions rewritten and expanded.
+
+  - Find/Replace rewritten, includes find files, find in files, find in multiple 
+    buffers, find in selection only, find full word.
+
+  - Creation of XML help page templates and xmltohtml compilation available from 
+    within Scipad.
+
+Syntax:
+=======
+
+  - try-catch instruction added to improve programming with error control.
+
+
+Other Improvements:
+===================
+
+  - Change Linux console theme to a more standard one.
+
+  - Configure adapted to linux 64bit architectures.
+
+  - Use tcltk 8.4.13 - TCL interface has been totally rewritten (for better
+    error detection and better data transfert). ScilabEval improve to handle
+    synchronism.
+
+  - Memory improvements under Windows platforms (particularly the management 
+    of virtual memory or swap file).
+
+  - Exception management added under Windows version.
+
+  - Windows platforms with:
+    + Intel C Compiler 9.1.
+    + Intel Fortran 9.1.
+
+  - The source files have been updated to optimise the compiled version built
+    with VC6 tool. Please note that the Windows binary version provided on 
+    our Web site is built with .NET 2003
+
+  - Improvement of the integration of Visual Studio Compiler to the dynamic 
+    links: findmsvccompiler() and configure_msvc() macros have been added.
+    Update detection "Microsoft Platform SDK for Windows Server 2003 R2"
+    for dynamic link with VC 2k5 Express.
+
+  - Integration of the ATLAS library (specific Windows version).
+    During the installation of Scilab, dynamic library (Atlas.dll) is 
+    automatically chosen according to the CPU detected.
+    See details in the Atlas.spec file under scilab\bin directory.
+
+    Scilab can be used with Atlas library on all platforms by:
+
+    + downloading Atlas library sources.
+    + compiling Atlas sources.
+    + compiling scilab sources with the following configure option : 
+         --with-atlas-library=ATLAS_LIB_DIRECTORY
+
+      (see <SCI>/configure --help).
+
+  - Java interface written to allow calling Scilab computational engine from Java.
+    Scilab 4.1 :
+    add SciComplex , SciComplexArray classes add new methods for Scilab object
+    public static native boolean ExistVar(String VarName); /* Detect if Variable name exists in Scilab */
+    public static native int TypeVar(String VarName); /* Get Scilab type of a variable */
+    public static native int GetLastErrorCode(); /* Get Last Error Code */ /* 0 no error */
+    add a example implements java.io.Serializable
+
+  - Font rotation is now possible under Xwindow.
+
+  - SCI and HOME are redefined if not correct ( Bug 1488 Only for Windows ).
+
+  - HOME variable (%HOME%) defined under Windows: c:/Documents and Setting/USER.
+
+  - New environment variable SCIHOME:
+    + Under Windows: %HOME%\scilab\SCILAB_VERSION
+    + Under Linux: $HOME/USER/.scilab/SCILAB_VERSION
+
+  - Function what() has been rewritten : alphabetical sort, print modified.
+
+  - mkdir, rmdir, copyfile, toprint functions added for handling files and
+    directories from Scilab.
+
+  - getshortpathname, getlongpathname, winqueryreg (Registers), console, 
+    mcisendstring (MCI device), clipboard, functions added for a better 
+    interaction with Windows environment.
+
+  - getos, setenv, getmemory, sleep, functions added for a better interaction 
+    with the operating system (Unix and Windows).
+
+  - The perl function as been added to allow execution of Perl scripts from 
+    Scilab.
+
+  - The calendar function has been added.
+
+  - Optimisations disabled for calelm/icopy.f calelm/unsfdcopy.f on every plateform,
+    routines/system/getsym.f on Solaris 
+
+  - add scilex -nogui mode no window, no interactive, no gui, no events.
+    %gui variable in scilab to detect this mode.
+
+  - Add 2 keys in registry to detect scilab (Windows): 
+    On Windows XP 32 bits 
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Scilab] "LASTINSTALL"="Scilab-4.1" 
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Scilab\Scilab-4.1] "SCIPATH"="\"C:\\Program Files\\scilab-4.1\"" 
+
+    On Windows XP 64 bits 
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Scilab] "LASTINSTALL"="Scilab-4.1" 
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Scilab\Scilab-4.1] "SCIPATH"="\"C:\\Program Files (x86)\\scilab-4.1\"" 
+
+
+New primitives:
+===============
+
+  - clipboard (specific Windows)
+  - perl
+  - calendar
+  - mkdir
+  - rmdir
+  - copyfile
+  - sleep
+  - getos
+  - setenv
+  - toprint("file")
+  - getmemory()
+  - getshortpathname (specific Windows)
+  - getlongpathname (specific Windows)
+  - toolbar (specific Windows)
+  - hidetoolbar (specific Windows)
+  - console (specific Windows)
+  - mcisendstring (specific Windows)
+  - banner
+  - winqueryreg (specific Windows)
+  - xls_open
+  - xls_read
+  - scicos_debug_count
+
+
+Please note:
+============
+
+  - "xgetmouse", "eventhandler" event set extended to click, double-click, <Ctrl> Key. 
+    See more details in xclick and xgetmouse on line help.
+    Warning: Because of distinction of click events, some users' scripts can 
+    have a different behavior.
+    To make it work as before please check and modified test on events as follow:
+    supposing that button contains the value returned by xclick (left most argument) 
+    or xgetmouse (third componant of returned vector) then replace test like:
+      button==0 by or(button==[0,3])
+      button==1 by or(button==[1,4])
+      button==2 by or(button==[2,5])
+
+
+
+                     Main Changes Scilab 3.0 -> 3.1
+                     ==============================
+NEW FUNCTIONALITIES
+===================
+xsave and xload function now work for new graphic mode
+A Scilab code debugger is now available under scipad (thanks to F Vogel)
+
+OTHERS IMPROVEMENTS
+===================
+Graphic editor has been extended
+
+Graphic entity proterties have been extended
+
+the besseli, besselj, besselk and bessely functions have been extended
+to the complex case and to non regularily spaced alpha
+
+
+INCOMPATIBLITIES
+================
+The semantics of besseli, besselj, besselk and bessely functions has been changed and extended. The 
+oldbesseli, oldbesselj, oldbesselk and oldbessely correspond to the old obsolete semantics.
+
+
+                     Main Changes Scilab 2.7 -> 3.0
+                     ==============================
+NEW FUNCTIONALITIES
+===================
+ NUMERICAL ALGORITHMS
+  - arpack algorithms for sparse matrix eigenvalues/eigenvectors computation added 
+  - Levenberg-Marquardt algorithm of Minpack used to define function lsqrsolve
+  - beta and legendre function added (thanks to Bruno Pincon)
+  - New 1D 2D 3D interpolation functions  (thanks to Bruno Pincon)
+ GRAPHICS and GUI
+  - graphical editor available
+  - demoplayer, variable browser, variable editor GUI added (thanks to Jaime Urzua Grez)
+ MISC
+  - Scicos has been extended to handle non causal systems description (supported by RNTL)
+  - Matlab to Scilab translator has been re-written, and extended to current Matlab syntax.
+OTHERS IMPROVEMENTS
+===================
+ SCICOS
+  - Better discontinuities handling in Scicos
+  - An enlarged set of blocks
+  - A new API for simulation functions
+ GRAPHICS
+  - New graphic mode has been debugged and extended. It is now the default mode
+  - More efficient 3D Zoom (thanks to E Segre)
+  - Helvetica (Arial on Windows) fonts added (corresponding font identifiers are
+    from 6 to 9) (thanks to B Pincon)
+  - Graphic windows refresh improved under Windows
+  - figure sizes can now be taken into account in Postscript export 
+ GUI
+  - Improved scipad, shortcuts, language handling, colorization, bug fixes.. 
+    (thanks to Enrico Segre and Francois Vogel)
+   - New imbedded help and html browser  (thanks to Jaime Urzua Grez)
+   - Main Scilab window improvedunder  Windows (standard editing facilities, menus,...)
+ SYNTAX
+  - continue instruction added
+  - [a(i,j),b(..),..]=foo(..) syntax is now handled
+  - for loop variable is no more removed at the end of the loops
+  - logical expressions shortcuts handled in if and while
+  - functions with no argument can be called without () if called as a command
+  - More efficient number parsing (thanks to Bruno Pincon)
+ MISC
+  - N dimensionnal matrices efficiency improved (thanks to Bruno Pincon)
+  - cd, ls, clc, clf, tohome functions added
+  - Elementary functions evaluation in the complex plane revisited  (thanks to Bruno Pincon)
+  - History of commands rewritten to make it persistant between calls to Scilab
+
+
+ PORTS
+ - Scilab has been adapated to IA64 architecture
+
+INCOMPATIBLITIES
+================
+- returned arguments f1 f2 f3 of interp have been transposed
+- variable named cd, ls, color,... should be renamed  to avoid run time warnings
+- The instructions <function_name>; used to load the sub-functions of the file 
+  <function_name>.sci within a function have to be rewritten <function_name>=<function_name>;
+
+                     Main Changes Scilab 2.6 -> 2.7
+                     ==============================
+THANKS
+======
+Scilab group wants to thank the increasing number of people who have
+contributed to this new version of Scilab, with special mention to 
+Anders Blomdell, Stéphane Mottelet, Dan McMahill
+Ton van Overbeek, Bruno Pincon and Enrico Segre.
+
+
+NEW FUNCTIONALITIES
+===================
+Slicot based control routines (www.win.tue.nl/wgs/slicot.html)
+have been introduced with a special attention 
+to identification functions, lyapunov, sylvester and riccati equation solvers.
+
+Interface with TeXmacs (www.texmacs.org) a high level scientific text editor. 
+The editor allows you to write structured documents via a wysiwyg interface 
+including Scilab sessions and results.
+
+An embedded text editor scipad derived from TkNotepad 
+(www.mindspring.com/~joeja/programs.html) as been developped.
+
+C Code generation from Scicos discrete models 
+
+Blocks defining DAE are now usable in Scicos.
+
+Statistic toolbox added (labostat).
+
+A new graphics version based on objects and entities has been developped
+(beta version). It allows to edit the properties of graphics
+objects. By default, the old graphics version is used. Tu use the new graphics
+version see the help of "graphics_entities".
+
+OTHERS IMPROVEMENTS
+===================
+Linear algebra primitives now based on Lapack instead of Linpack/Eispack.
+
+Basic functions revised (thanks to B Pincon).
+
+stacksize use is no more restricted.
+
+Hypertext, xml based, online help.
+
+Binary Matlab file .mat loader (loadmatfile) added.
+
+Possibility to customize graphics window event handlers (seteventhandler).
+
+PVM interface now also works with Windows versions.
+
+edit_graph, a graph editor for Metanet toolbox, written in Scilab, replaces
+xmetanet. It works on both Unix and Windows.
+
+INCOMPATIBLITIES
+================
+It is higly recommended to rebuild user's scilab functions libraries. This 
+can be done as follow:
+predef(0);genlib('mylib','mylib_path',%t)
+
+gschur and gspec functions are now obsolete and replaced by schur and spec.
+
+Geci and the communication library have been removed. Use PVM interface instead.
+
+Metanet graph editor has been rewritten. Use edit_graph instead.
+
+man pages have to be written in HTML or better in XML but chapters 
+written in the old ascii files are still handled.
+
+Scicos internal data structure have been changed. Automatic translation 
+is made when  old diagrams are loaded.
+
+                     Main Changes Scilab 2.5 -> 2.6
+                     ==============================
+THANKS
+======
+Scilab group wants to thank the increasing number of people who have
+contributed to this new version of Scilab, with special mention to 
+Anders Blomdell, Lydia Ellen van Dijk, Stephane Mottelet, Dan McMahill
+Ton van Overbeek, Bruno Pincon and Enrico Segre.
+
+
+NEW FUNCTIONALITIES
+===================
+Automatic graphic rescaling when combining 2D plots, axis handling
+
+Isometric 3D plots. Thanks to Enrico Segre
+
+3D plots shading. Thanks to Stephane MOTTELET
+
+Error messages handling
+
+Grep function added
+
+Modeless message box added
+
+Profiling of functions execution added
+
+Real time simulation in Scicos. Thanks to Anders Blomdell
+
+Scicos diagram linearization and fixed point computation
+
+OTHERS IMPROVEMENTS
+===================
+A more professional licence
+
+Input/Output improved (carriage return at the end of the file are not
+required anymore, OS independent ascii file input, handling of opened
+files )
+
+More complete mexlib for MatlabV mex interface.
+
+Many bug corrected in integer types manipulation
+
+API improved, many examples given
+
+A better window management under KDE
+
+A better plugin interface (help, demos,...) and new Scilab functions for
+building and loading interfaces.
+
+Interactive demos for ODE and DAE solving added
+
+Scicos' GUI improved, customizable keyboard shortcuts added
+
+Default list, tlist and mlist display can be overloaded
+
+It is now possible to draw dashed lines in color. Background now work
+with postscript driver. Easiest argument passing to plot2d, plot3d,...
+GIF driver bugs fixed.
+
+INCOMPATIBLITY
+==============
+help and scicos palettes handling have changed.
+
+Fraclab toolbox has been moved to the contributions part and is no
+more  included in the package 
+
+The Communication Toolbox (geci) is now obsolete. It will be removed in 
+next release. Use PVM instead.
+
+		     Main Changes Scilab 2.4.1 -> 2.5
+		     ================================
+
+NEW FUNCTIONALITIES
+===================
+Global variables have been introduced
+
+New graphic mode has been added to allow scrollbar handling (panner
+for X Window and scrollbars for Windows). 
+GIF export format is now available for Scilab graphic windows.
+
+Keyboard events and window closing within graphical windows can now be
+captured.
+
+Scicos graphical user interface has been made more intuitive and
+keyboard shortcuts have been added.
+
+Scilab Binary files created by "save" are now system-independent so
+they can be exchanged. In particular (compiled macros) *.bin files and
+*.cos (scicos diagrams) can be exchanged.
+
+It is now possible to dynamically link C++ procedures with Scilab.
+
+A new data type "mlist" has been added.
+
+A new function "genlib" allows users to compile the .sci files in a
+given directory, generate associated library and load it. This
+function is particularly useful under windows if VC++ is not
+available. 
+
+C formatted input output functions (printf, scanf, ..) have been
+interfaced to scilab.
+
+OTHERS IMPROVEMENTS
+===================
+Efficiency has been improved using reference argument passing when
+possible instead of value passing.
+
+Hypermatrix opreations have been accelerated.
+
+On X Window systems 3D Athena Widgets are preferably used instead of
+standard  Athena Widgets for a better look.
+
+The "Matlab 4" to Scilab translator has been completed and considerably
+improved.
+
+
+
+NEW TOOLBOXES
+=============
+True integer data types (1,2 and 4 bytes) with associated operations
+and some functions acting on them have been added. 
+
+A library of procedures has been added to allow the use of Matlab
+mex-files under Scilab.
+
+PORTS
+=====
+Scilab has been successfully compiled with Windows ABSOFT development
+environment.
+
+INCOMPATIBILITIES
+=================
+New Scilab "save"d files cannot be loaded by earlier Scilab versions.
+A new function "oldsave" has been added to save in old format.
+
+Scilab help mechanism has changed. The $MANCHAPTERS/Chapter is no more
+used, instead a Scilab variable "helps" is used.
+
+
+
+
+
+		     Main Changes Scilab 2.4 -> 2.4.1
+		     ================================
+
+Many bugs fixed.
+
+Option "--without-pvm" added to configure to compile Scilab 
+  without PVM library.
+
+NEW MACHINES
+============
+
+Scilab runs now on MAC Mklinux and DEC Alpha Linux.
+
+NEW FUNCTIONALITIES
+===================
+
+The Matlab to Scilab translator has been considerably improved.
+
+After fixing a number of bugs, Scicos is no longer considered a beta release.
+
+Metanet toolbox: Function "netclose" for closing a Metanet window 
+                 has been added.
+
+                     Main Changes Scilab 2.3 -> 2.4
+                     ==============================
+
+WINDOWS 95/NT
+=============
+
+This version is no longer a beta version. Incremental link is now possible.
+
+PVM interface and Xmetanet do not work yet.
+
+NEW TOOLBOXES
+=============
+
+m2sci: beta version of a Matlab to Scilab translator.
+
+Fraclab: fractal and wavelet analysis.
+
+Tksci: beta Tcl/Tk interface.
+
+PVM: beta PVM interface (not yet available on Windows).
+
+dcd: cumulative distribution functions and inverses...
+
+grand: random number generators.
+
+NEW FUNCTIONALITIES
+===================
+
+Metanet toolbox: Function "pipe_network" for solving the pipe network problem 
+                 has been added.
+
+Scicos toolbox: - New and improved formalism
+                - Faster Compiler 
+                - Improved GUI
+
+Maple toolbox: The Maple to Scilab interface (maple/maple2scilab.mpl)
+               has been improved. Sparse matrices are handled. There is
+               now the choice between C and Fortran code generation.
+
+Nonlinear toolbox: Addition of 2D and 3D definite integrals int2d et int3d.
+
+Data types: N dimensional arrays have been introduced (see hypermatrices).
+
+chdir and getcwd functions added to change and get working directory.
+
+Floating points exception handling may be set by "ieee" function.
+
+Overloading: It is now possible to overload display of tlist data
+             structure. It is also possible to extend basic primitive
+             function definition to new data types. To avoid possible
+             ambiguity overloading function names have been
+             changed. Old names still work, but for efficiency it
+             desirable to change it. See overloading help.
+
+Syntax: Functions with strings arguments may be called as commands.
+        For instance "exec('foo.sce')" can be entered as "exec foo.sce".
+
+        It is now possible to define functions with unbounded number
+        of input and output arguments (see varargin help).
+
+INCOMPATIBILITIES
+=================
+
+Some old Scicos diagrams may not be translated properly into Scilab 2.4.
+
+Binary files created by "save" in Scilab 2.4 cannot be read by Scilab 2.3.
+
+Scicos diagrams created by "save" in Scilab 2.4 cannot be read by Scilab 2.3.
+

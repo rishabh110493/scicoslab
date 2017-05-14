@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>contourf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>contourf</b> -  courbes de niveaux 2D remplies d'une surface 3D  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>contourf(x,y,z,nz,[style,strf,leg,rect,nax])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y  </b></tt>
+    : deux vecteurs lignes de taille n1 et n2.
+</li>
+<li>
+<tt><b>z  </b></tt>
+    : matrice réelle de taille (n1,n2), les valeurs de la fonction.
+</li>
+<li>
+<tt><b>nz  </b></tt>
+    : valeurs des niveaux ou nombre de niveaux
+<ul>
+<li>
+<tt><b>-  </b></tt>
+    Si <tt><b>nz</b></tt> est un entier, sa valeur définit le nombre de courbes de niveaux espacées régulièrement entre zmin et zmax :
+<pre>
+ z= zmin + (1:nz)*(zmax-zmin)/(nz+1)
+   </pre>
+<p>
+    Noter que les niveaux <tt><b>zmin</b></tt> et <tt><b>zmax</b></tt> ne sont pas dessinés (génériquement ils sont réduits à des points) mais peuvent être ajoutés avec
+  </p>
+<pre>
+ [im,jm] = find(z == zmin);     // ou zmax 
+ plot2d(x(im)',y(jm)',-9,"000")
+   </pre>
+</li>
+<li>
+<tt><b>-  </b></tt>
+    Si <tt><b>nz</b></tt> est un vecteur, <tt><b>nz(i)</b></tt> donne la valeur du ième niveau.  Noter qu'il peut être utile pour voir les niveaux <tt><b>zmin</b></tt> et   <tt><b>zmax</b></tt> d'ajouter une tolérance de l'ordre de %eps : <tt><b>nz=[ zmin+%eps,..,zmax-%eps]</b></tt>.
+</li>
+</ul>
+</li>
+<li>
+<tt><b>style,strf,leg,rect,nax  </b></tt>
+    : voir <tt><b>plot2d</b></tt>. L'argument <tt><b>style</b></tt> définit les styles de pointillés ou les couleurs utilisés pour dessiner les courbes. Il doit être de même taille que le nombre de niveaux.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>contourf</b></tt> remplit l'espace entre deux courbes de niveaux consécutives d'une surface <tt><b>z=f(x,y)</b></tt> sur un dessin 2D.
+    Les valeurs de <tt><b>f(x,y)</b></tt> sont données par la matrice <tt><b>z</b></tt> aux points du plan définis dans <tt><b>x</b></tt> et <tt><b>y</b></tt>.
+  </p>
+<p>
+    Il est possible de changer le format des nombres affichés sur les courbes de niveau en utilisant <tt><b>xset("fpf",string)</b></tt> où <tt><b>string</b></tt> précise le
+    format comme en langage C (par exemple <tt><b>string="%.3f"</b></tt>). Utiliser 
+    <tt><b>string=""</b></tt> pour revenir au format par défaut.
+  </p>
+<p>
+    Taper <tt><b>contour2d()</b></tt> pour voir une démonstration de la fonction.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+contourf(1:10,1:10,rand(10,10),5,1:5,"011"," ",[0,0,11,11])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/contour.htm"><tt><b>contour</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/fcontour.htm"><tt><b>fcontour</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/fcontour2d.htm"><tt><b>fcontour2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/contour2di.htm"><tt><b>contour2di</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

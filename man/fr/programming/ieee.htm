@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ieee</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ieee</b> -  détermine le mode d'exception IEEE pour les calculs  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mod=ieee()  </tt></dd>
+<dd><tt>ieee(mod)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mod  </b></tt>
+	    : un entier valant 0,1 ou 2
+	  </li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>ieee()</b></tt> renvoie le mode d'exception IEEE courant pour les calculs en virgule flottante.
+    </p>
+<dl>
+<dd>
+<b>0</b>
+	  : les exceptions produisent une erreur
+	</dd>
+<dd>
+<b>1</b>
+	  : les exceptions produisent un warning
+	</dd>
+<dd>
+<b>2</b>
+	  :  les exceptions produisent Inf ou Nan
+	</dd>
+</dl>
+<p><tt><b>ieee(mod)</b></tt> choisit le mode d'exception ieee courant pour les calculs en virgule flottante.
+    </p>
+<p>
+      La valeur initiale au lancement de Scilab est 0.
+    </p>
+<h3><font color="blue">REMARQUES</font></h3>
+<dl></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    ieee(1);1/0
+    ieee(2);1/0,log(0)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

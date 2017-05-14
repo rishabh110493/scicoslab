@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>matrix</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>matrix</b> -  remise en forme d'une matrice  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=matrix(v,n,m)  </tt></dd>
+<dd><tt>y=matrix(v,[sizes])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v  </b></tt>
+    : un vecteur, une matrice ou une hypermatrice 
+</li>
+<li>
+<tt><b>n,m  </b></tt>
+    : entiers
+</li>
+<li>
+<tt><b>sizes  </b></tt>
+    : vecteur d'entiers
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : un vecteur, une matrice ou une hypermatrice
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Pour un vecteur ou une matrice de taille <tt><b>n</b></tt> x <tt><b>m</b></tt>, la commande
+    <tt><b>y=matrix(v,n,m)</b></tt> ou <tt><b>y=matrix(v,[n,m])</b></tt>
+    transforme le vecteur (ou la matrice) <tt><b>v</b></tt> en une matrice <tt><b>nxm</b></tt> en parcourant les éléments colonne par colonne <tt><b>v</b></tt>.
+  </p>
+<p>
+    Si l'une des dimensions m ou n est égale à -1 elle est remplacée par le quotient de  size(v,'*') par l'autre dimension.
+  </p>
+<p></p>
+<p>
+    Pour une hypermatrice telle que <tt><b>prod(size(v))==prod(sizes)</b></tt>, la commande <tt><b>y=matrix(v,sizes)</b></tt> (ou de façon équivalente, <tt><b>y=matrix(v,n1,n2,...nm)</b></tt>) transforme <tt><b>v</b></tt> en une matrice ou une hypermatrice
+    en parcourant les éléments de <tt><b>v</b></tt> (parcourus tel que le premier indice varie en premier). <tt><b>y=matrix(v,sizes)</b></tt> renvoie une matrice ou un vecteur si <tt><b>sizes</b></tt> est un scalaire ou un vecteur à deux composantes.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=[1 2 3;4 5 6]
+matrix(a,1,6)
+matrix(a,1,-1)
+matrix(a,3,2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/matrices.htm"><tt><b>matrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/hypermatrices.htm"><tt><b>hypermatrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/zeros.htm"><tt><b>zeros</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/rand.htm"><tt><b>rand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/empty.htm"><tt><b>empty</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mopen</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mopen</b> -  open a file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[fd,err]=mopen(file [, mode,  swap ])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file</b></tt>: a character string. The pathname of the file to open.</li>
+<li>
+<tt><b>mode</b></tt>: a character string that controls whether the file is opened for reading (r), writing (w), or appending (a) and whether the file is opened for updating (+).  The mode can also include a b parameter to indicate a binary file.</li>
+<li>
+<tt><b>swap</b></tt>: a scalar. If <tt><b>swap</b></tt> is present and <tt><b>swap=0</b></tt> then automatic bytes swap is disabled.</li>
+<li>
+<tt><b>err</b></tt>: a scalar. Error indicator</li>
+<li>
+<tt><b>fd</b></tt>: scalar. The <tt><b>fd</b></tt> parameter returned by the function <tt><b>mopen</b></tt> is used as a file descriptor (it's a positive integer).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>mopen</b></tt> may be used to open a file in a way compatible with the C
+    <tt><b>fopen</b></tt> procedure. Without swap argument the file is supposed to
+    be coded in "little endian IEEE format" and data are swaped if
+    necessary to match the IEEE format of the processor. 
+  </p>
+<p>
+    The mode parameter controls the access allowed to the stream. The
+    parameter can have one of the following values. In this list of
+    values, the b character indicates a binary file
+  </p>
+<dl>
+<dd>
+<b>r or rb</b>: Opens the file for reading.</dd>
+<dd>
+<b>w or wb</b>: Creates a new file for writing, or opens and truncates a file to zero length.</dd>
+<dd>
+<b>a or ab</b>: Appends (opens a file for writing at the end of the file, or creates a file for writing).</dd>
+<dd>
+<b>r+ or r+b</b>: Opens a file for update (reading and writing).</dd>
+<dd>
+<b>w+ or w+b</b>: Truncates to zero length or creates a file for update.</dd>
+<dd>
+<b>a+ or a+b</b>:Appends (opens a file for update, writing at the end of the file, or creates a file for writing).</dd>
+</dl>
+<p>
+    When you open a file for update, you can perform both input and output
+    operations on the resulting stream. However, an output operation
+    cannot be directly followed by an input operation without a
+    file-positioning operation (mseek() function). Also, an input
+    operation cannot be directly followed by an output operation without
+    an intervening file positioning operation, unless the input operation
+    encounters the end of the file.</p>
+<p>
+    When you open a file for append (that is, when the mode parameter is a
+    or a+), it is impossible to overwrite information already in the
+    file. You can use the fseek() function to reposition the file pointer
+    to any position in the file, but when output is written to the file,
+    the current file pointer is ignored.  All output is written at the end
+    of the file and the file pointer is repositioned to the end of the
+    output.</p>
+<p>
+    To open files in a way compatible with Fortran like functions use
+    function <tt><b>file</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/meof.htm"><tt><b>meof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mputstr.htm"><tt><b>mputstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mseek.htm"><tt><b>mseek</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mtell.htm"><tt><b>mtell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mdelete.htm"><tt><b>mdelete</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>oldload</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>oldload</b> -  load saved variable in 2.4.1 and previous formats</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>oldload('file-name' [,x1,...,xn])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-name</b></tt>: character string</li>
+<li>
+<tt><b>xi</b></tt>: arbitrary Scilab variable name(s) given as strings.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>oldload</b></tt> function is obsolete and is retained only for
+    compatibility purpose.</p>
+<p>
+    The <tt><b>oldload</b></tt> command can be used to reload in the Scilab session
+    variables previously saved in a file with the <tt><b>save</b></tt> command.</p>
+<p><tt><b>oldload('file-name')</b></tt> loads the variables saved in file <tt><b>'file-name'</b></tt>.</p>
+<p><tt><b>oldload('file-name','x','y',...,'z')</b></tt> loads only variables <tt><b>x,y,...,z</b></tt>
+    stored in file <tt><b>'file-name'</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=eye(2,2);b=ones(a);
+oldsave(TMPDIR+'/vals.dat',a,b);
+clear a
+clear b
+oldload(TMPDIR+'/vals.dat','a','b');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

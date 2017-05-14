@@ -1,0 +1,31 @@
+mode(-1)
+// Copyright INRIA
+path=get_absolute_file_path('signal.dem');
+
+demolist=['Spectral Estimation',                'spect.dem'
+          'IIR filter design ',                 'iir.dem'
+          'Minimax FIR filter design',          'remezfilt.dem'
+	  'Wiegner filter',                     'wiener.dem'
+	  'Bode plots',                         'bode.dem'
+	  'Arma simulation and identification'  'arma/arma1.dem'
+	  'Arma, bidimensional version'         'arma/arma2.dem'
+	  'Arma, Spectral power estimation'     'arma/arma3.dem' 
+	  'Sound',                              'sound/sound.dem'];
+
+deff('[]=demoex(num)','exec(path+demolist(num,2),-1)')
+
+xbasc();
+while %t then
+  num=tk_choose(demolist(:,1),'Choose a demo');
+  if num==0 then 
+     lines(oldln(1))
+     return
+  else
+     demoex(num)
+  end,
+end
+
+
+
+
+

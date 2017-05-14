@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>range</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>range</b> -  Image de A^k  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X,dim]=range(A,k)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>: matrice réelle carrée</li>
+<li>
+<tt><b>k  </b></tt>: entier non négatif, La valeur par défaut est 1</li>
+<li>
+<tt><b>X  </b></tt>: matrice réelle orthonormale.</li>
+<li>
+<tt><b>dim</b></tt>: entier (dimension du sous-espace image)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> Calcul de l'image de <tt><b>A^k</b></tt>; les <tt><b>dim</b></tt>
+      premières colonnes de <tt><b>X</b></tt> forment une base de
+      <tt><b>A^k</b></tt>. Les dernières lignes de  <tt><b>X</b></tt> forment une
+      base de l'orthogonal de l'image. </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    A=rand(4,2)*rand(2,4);   // Matrice de rang 2.
+    [X,dim]=range(A,1);dim   // Calcul de l'image
+
+    y1=A*rand(4,1);          // un vecteur dans l'image de A
+    y2=rand(4,1);            // un vecteur qui n'est pas dans l'image
+    norm(X(dim+1:$,:)*y1)    // les derniéres composante sont nulles, y1 est
+    dans l'image
+    norm(X(dim+1:$,:)*y2)    // Les dernieres composantes ne sont pas nulles
+
+    I=X(1:dim,:)'            // I une base de l'image
+    coeffs=X(1:dim,:)*y1     // les composante de y1 dans la base I
+
+    norm(I*coeffs-y1)        // test
+
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; INRIA ;   </p>
+<h3><font color="blue">Used Function</font></h3>La fonction <tt><b>range</b></tt> est basée sue la fonction <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>
+      qui utilise la décomposition <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>.</body>
+</html>

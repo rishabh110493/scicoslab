@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>x_choose</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_choose</b> -  interactive Xwindow choice</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[num]=x_choose(items,title [,button])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>items</b></tt>: column vector of string,  items to choose</li>
+<li>
+<tt><b>title</b></tt>: column vector of string, comment for the dialog</li>
+<li>
+<tt><b>button</b></tt>:  string, text to appear in the button. Default value is 'Cancel'</li>
+<li>
+<tt><b>num</b></tt>: integer, choosen item number or 0 if dialog resumed with "Cancel" button</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns in <tt><b>num</b></tt> the number of the chosen item.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+n=x_choose(['item1';'item2';'item3'],['that is a comment';'for the dialog'])
+n=x_choose(['item1';'item2';'item3'],['that is a comment'],'Return')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_choices.htm"><tt><b>x_choices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/getvalue.htm"><tt><b>getvalue</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_g.htm"><tt><b>unix_g</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

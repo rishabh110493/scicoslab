@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rank</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rank</b> -  rank</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[i]=rank(X)  </tt></dd>
+<dd><tt>[i]=rank(X,tol)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>tol</b></tt>: nonnegative real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rank(X)</b></tt> is the numerical rank of <tt><b>X</b></tt>
+    i.e. the number of singular values of X that are larger than
+    <tt><b>norm(size(X),'inf') * norm(X) * %eps</b></tt>.</p>
+<p><tt><b>rank(X,tol)</b></tt> is the number of singular values of
+    <tt><b>X</b></tt> that are larger than <tt><b>tol</b></tt>.</p>
+<p>
+    Note that the default value of <tt><b>tol</b></tt> is proportional to
+    <tt><b>norm(X)</b></tt>. As a consequence
+    <tt><b>rank([1.d-80,0;0,1.d-80])</b></tt> is 2 !.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rank([1.d-80,0;0,1.d-80])
+rank([1,0;0,1.d-80])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lu.htm"><tt><b>lu</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

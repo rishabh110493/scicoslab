@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>resume</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>resume</b> -   sortie d'une fonction ou reprise d'exécution, avec récupération de variables locales  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>resume  </tt></dd>
+<dd><tt>[x1,..,xn]=resume(a1,..,an)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li><tt><b>x  </b></tt></li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Dans une fonction <tt><b>resume</b></tt> termine son exécution et
+    <tt><b>[..]=resume(..)</b></tt> renvoie les variables locales
+    <tt><b>ai</b></tt> dans l'environnement appelant sous les noms <tt><b>xi</b></tt>.
+  </p>
+<p></p>
+<p>
+    En mode de <tt><b>pause</b></tt>, cela permet de reprendre l'exécution et
+    <tt><b>[..]=resume(..)</b></tt> renvoie les variables locales
+    <tt><b>ai</b></tt> dans l'environnement appelant sous les noms <tt><b>xi</b></tt>.
+  </p>
+<p>
+    Utilisé dans l'argument de <tt><b>execstr</b></tt> appelé dans une fonction <tt><b>[..]=resume(..)</b></tt> termine l'exécution de la fonction et renvoie les variables locales <tt><b>ai</b></tt> dans l'environnement appelant sous les noms <tt><b>xi</b></tt>.
+  </p>
+<p><tt><b>resume</b></tt> est équivalent à <tt><b>return</b></tt>.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/abort.htm"><tt><b>abort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/break.htm"><tt><b>break</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>wiener</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>wiener</b> -   Wiener estimate</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xs,ps,xf,pf]=wiener(y,x0,p0,f,g,h,q,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f, g, h</b></tt>: system matrices in the interval <tt><b>[t0,tf]</b></tt><ul>
+<li>
+<tt><b>f</b></tt>=<tt><b>[f0,f1,...,ff]</b></tt>, and <tt><b>fk</b></tt> is a nxn matrix</li>
+<li>
+<tt><b>g</b></tt>=<tt><b>[g0,g1,...,gf]</b></tt>, and <tt><b>gk</b></tt> is a nxn matrix</li>
+<li>
+<tt><b>h</b></tt>=<tt><b>[h0,h1,...,hf]</b></tt>, and <tt><b>hk</b></tt> is a mxn matrix</li>
+</ul>
+</li>
+<li>
+<tt><b>q, r</b></tt>: covariance matrices of dynamics and observation noise<ul>
+<li>
+<tt><b>q</b></tt>=<tt><b>[q0,q1,...,qf]</b></tt>, and <tt><b>qk</b></tt> is a nxn matrix</li>
+<li>
+<tt><b>r</b></tt>=<tt><b>[r0,r1,...,rf]</b></tt>, and <tt><b>gk</b></tt> is a mxm matrix</li>
+</ul>
+</li>
+<li>
+<tt><b>x0, p0</b></tt>: initial state estimate and error variance</li>
+<li>
+<tt><b>y</b></tt>: observations in the interval <tt><b>[t0,tf]</b></tt>. <tt><b>y=[y0,y1,...,yf]</b></tt>, and <tt><b>yk</b></tt> is a column m-vector</li>
+<li>
+<tt><b>xs</b></tt>: Smoothed state estimate <tt><b>xs= [xs0,xs1,...,xsf]</b></tt>, and <tt><b>xsk</b></tt> is a column n-vector</li>
+<li>
+<tt><b>ps</b></tt>: Error covariance of smoothed estimate <tt><b>ps=[p0,p1,...,pf]</b></tt>, and <tt><b>pk</b></tt> is a nxn matrix</li>
+<li>
+<tt><b>xf</b></tt>: Filtered state estimate <tt><b>xf= [xf0,xf1,...,xff]</b></tt>, and <tt><b>xfk</b></tt> is a column n-vector</li>
+<li>
+<tt><b>pf</b></tt>: Error covariance of filtered estimate <tt><b>pf=[p0,p1,...,pf]</b></tt>, and <tt><b>pk</b></tt> is a nxn matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    function which gives the Wiener estimate using
+    the forward-backward Kalman filter formulation</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>find_freq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>find_freq</b> -  parameter compatibility for elliptic filter design</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[m]=find_freq(epsilon,A,n)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>epsilon</b></tt>: passband ripple</li>
+<li>
+<tt><b>A</b></tt>: stopband attenuation</li>
+<li>
+<tt><b>n</b></tt>: filter order</li>
+<li>
+<tt><b>m</b></tt>: frequency needed for construction of elliptic filter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Search for m such that <tt><b>n=K(1-m1)K(m)/(K(m1)K(1-m))</b></tt>
+    with</p>
+<p><tt><b>m1=(epsilon*epsilon)/(A*A-1)</b></tt>;</p>
+<p>
+    If <tt><b>m = omegar^2/omegac^2</b></tt>, the parameters
+    <tt><b>epsilon,A,omegac,omegar</b></tt> and <tt><b>n</b></tt> are then
+    compatible for defining a prototype elliptic filter.
+    Here, <tt><b>K=%k(m)</b></tt> is the complete elliptic integral with parameter <tt><b>m</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/percentk.htm"><tt><b>%k</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

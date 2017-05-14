@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>findAC</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>findAC</b> -  discrete-time system subspace identification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[A,C] = findAC(S,N,L,R,METH,TOL,PRINTW)  </tt></dd>
+<dd><tt>[A,C,RCND] = findAC(S,N,L,R,METH,TOL,PRINTW)   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>S</b></tt>: integer, the number of block rows in the block-Hankel matrices</li>
+<li>
+<tt><b>N</b></tt>: integer</li>
+<li>
+<tt><b>L</b></tt>: integer</li>
+<li>
+<tt><b>R</b></tt>: matrix, relevant part of the  R factor of the concatenated block-Hankel matrices computed by a call to findr.</li>
+<li>
+<tt><b>METH</b></tt>: integer, an option for the method to use<ul>
+<li>
+<tt><b>= 1</b></tt>:  MOESP method with past inputs and outputs;</li>
+<li>
+<tt><b>= 2</b></tt>:  N4SID method;</li>
+</ul>
+<p>
+    Default:    METH = 3.
+  </p>
+</li>
+<li>
+<tt><b>TOL</b></tt>: the tolerance used for estimating the rank of matrices.  If  TOL &gt; 0,  then the given value of  TOL  is used as a lower bound for the reciprocal condition number. Default: prod(size(matrix))*epsilon_machine where epsilon_machine is the relative machine precision.</li>
+<li>
+<tt><b>PRINTW</b></tt>: integer, switch for printing the warning messages.<ul>
+<li>
+<tt><b>PRINTW</b></tt>= 1: print warning messages;</li>
+<li>
+<tt><b>= 0</b></tt>: do not print warning messages.</li>
+</ul>
+<p>
+    Default:    PRINTW = 0.
+  </p>
+</li>
+<li>
+<tt><b>A</b></tt>: matrix, state system matrix</li>
+<li>
+<tt><b>C</b></tt>: matrix, output system matrix</li>
+<li>
+<tt><b>RCND</b></tt>: vector of length 4,  condition numbers of the matrices involved in rank decision</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    finds the system matrices A and C of a discrete-time system, given the
+    system order and the relevant part of the R factor of the concatenated
+    block-Hankel matrices, using subspace identification techniques (MOESP 
+    or N4SID).
+  </p>
+<dl>
+<dd>
+<b>*</b>[A,C] = findAC(S,N,L,R,METH,TOL,PRINTW)  computes the system matrices A and C. The model structure is:       x(k+1) = Ax(k) + Bu(k) + Ke(k),   k &gt;= 1,      y(k)   = Cx(k) + Du(k) + e(k),  where x(k) and y(k) are vectors of length N and L, respectively.</dd>
+<dd>
+<b>*</b>[A,C,RCND] = findAC(S,N,L,R,METH,TOL,PRINTW)  also returns the vector RCND of length 4 containing the condition numbers of the matrices involved in rank decisions.</dd>
+</dl>
+<p>
+    Matrix R, computed by findR, should be determined with suitable arguments
+    METH and JOBD.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//generate data from a given linear system
+A = [ 0.5, 0.1,-0.1, 0.2;
+      0.1, 0,  -0.1,-0.1;      
+     -0.4,-0.6,-0.7,-0.1;  
+      0.8, 0,  -0.6,-0.6];      
+B = [0.8;0.1;1;-1];
+C = [1 2 -1 0];
+SYS=syslin(0.1,A,B,C);
+nsmp=100;
+U=prbs_a(nsmp,nsmp/5);
+Y=(flts(U,SYS)+0.3*rand(1,nsmp,'normal'));
+
+// Compute R
+S=15;L=1;
+[R,N,SVAL] = findR(S,Y',U');
+
+N=3;
+METH=3;TOL=-1;
+[A,C] = findAC(S,N,L,R,METH,TOL);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findABCD.htm"><tt><b>findABCD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBD.htm"><tt><b>findBD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBDK.htm"><tt><b>findBDK</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findR.htm"><tt><b>findR</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/sorder.htm"><tt><b>sorder</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/sident.htm"><tt><b>sident</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

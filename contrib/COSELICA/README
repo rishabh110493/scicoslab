@@ -1,0 +1,75 @@
+Coselica Toolbox for ScicosLab (Version 0.4.8)
+==============================================
+
+Coselica Toolbox provides about 200 basic Sci[cos] Mod[elica] blocks for
+modeling and simulation of electrical (analog), mechanical (1D-translational,
+1D-rotational, and 2D-planar) and thermodynamical (0/1D-heattransfer) systems
+in ScicosLab. Almost all of these blocks have been derived from the Modelica
+Standard Library.
+
+WARNING: This toolbox is in an early stage of development! It is incomplete,
+undocumented, not well tested and it may contain numerous and severe bugs!
+
+Author:   Dirk Reusch, Kybernetik Dr. Reusch
+Download: http://www.kybdr.de/software
+
+Requirements
+============
+
+- Linux/Windows
+- ScicosLab 4.4
+- C Compiler
+
+Installation
+============
+
+To Install this toolbox:
+
+We Suppose here that <PATH> stands for  the path of the directory
+containing this readme.txt file.
+
+- On Unix/Linux systems
+     * Administrator
+        Has to execute, once and for all, the following instruction 
+        within Scilab:
+        exec <PATH>/builder.sce 
+        This operation requires permission write in 
+        - <PATH>/macros to generate *.bin, names and lib files
+     * User
+        Should execute the following instruction within Scilab:
+        exec <PATH>/loader.sce 
+        before using the toolbox, he  can also put it  in his
+        .scilab startup file for automatic loading.
+
+- On Windows systems
+     * Administrator
+        Has to execute, once and for all, the following instruction 
+        within Scilab:
+        exec <PATH>\builder.sce 
+        This operation requires permission write in 
+         - <PATH>\macros to generate *.bin, names and lib files 
+     * User
+        Should execute the following instruction within Scilab:
+        exec <PATH>\loader.sce
+        before using the toolbox, he  can also put it  in his
+        .scilab startup file for automatic loading.
+
+Contents
+========
+BUGS               : list of bugs
+CHANGES            : log of changes
+COPYING            : license GPLv3
+README             : this file
+VERSION            : version number
+loader.sce         : installation script
+builder.sce        : script for buliding library
+macros             : directory of Scilab macros, Scicos palette, Modelica library
+     Coselica.cosf : Scicos palette
+     Coselica.mo   : Modelica library
+     */*.sci       : source versions
+     */*.bin       : precompiled binary versions (generated)
+     */names       : table of functions (generated)
+     */lib         : scilab library binary save (generated)
+     */gif_icons   : directory of icon images of Scicos blocks
+examples           : directory of examples
+     *.cosf        : example Scicos diagrams

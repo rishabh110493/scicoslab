@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>integrate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>integrate</b> -  integration by quadrature</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=integrate(expr,v,x0,x1 [,ea [,er]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>expr</b></tt>: external Scilab</li>
+<li>
+<tt><b>v</b></tt>: string (integration variable)</li>
+<li>
+<tt><b>x0,x1</b></tt>: real numbers (bounds of integration)</li>
+<li>
+<tt><b>ea,er</b></tt>: real numbers (absolute  error bound) Default value: 0</li>
+<li>
+<tt><b>er</b></tt>: real number, (relative error bound) Default value: 1.d-8</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes :</p>
+<pre>
+                       /x1
+                      [
+                  x = I  f(v)dv
+                      ]
+                     /x0
+      </pre>
+<p>
+    The evaluation hopefully satisfies following claim for accuracy:
+    <tt><b>abs(I-x)&lt;= max(ea,er*abs(I))</b></tt> where I stands for the
+    exact value of the integral.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+integrate('sin(x)','x',0,%pi)
+integrate(['if x==0 then 1,';
+           'else sin(x)/x,end'],'x',0,%pi)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intg.htm"><tt><b>intg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/inttrap.htm"><tt><b>inttrap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/intsplin.htm"><tt><b>intsplin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

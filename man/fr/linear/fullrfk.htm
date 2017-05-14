@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fullrfk</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fullrfk</b> -  factorisation de rang plein de A^k  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Q,M]=fullrfk(A,k)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice réelle ou complexe
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : entier
+</li>
+<li>
+<tt><b>Q,M  </b></tt>
+    : matrices réelles ou complexes
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cette fonction calcule la factorisation de rang plein de <tt><b>A^k</b></tt> : <tt><b>fullrfk</b></tt> renvoie <tt><b>Q</b></tt> et <tt><b>M</b></tt> telles que <tt><b>A^k = Q*M</b></tt>
+    avec Im(<tt><b>Q</b></tt>)=Im(<tt><b>A^k</b></tt>) et ker(<tt><b>M</b></tt>)=ker(<tt><b>A^k</b></tt>),
+    <tt><b>Q</b></tt> de rang maximal, et les lignes de <tt><b>M</b></tt> sont linéairement indépendantes, 
+  </p>
+<p>
+    Pour <tt><b>k=1</b></tt>, <tt><b>fullrfk</b></tt> est équivalent à <tt><b>fullrf</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=rand(5,2)*rand(2,5);[Bk,Ck]=fullrfk(A,3);
+norm(Bk*Ck-A^3,1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/range.htm"><tt><b>range</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D (1990);   </p>
+</body>
+</html>

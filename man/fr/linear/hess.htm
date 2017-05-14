@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hess</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hess</b> -  Forme de Hessenberg  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>H = hess(A)  </tt></dd>
+<dd><tt>[U,H] = hess(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice carrée réelle ou complexe
+	  </li>
+<li>
+<tt><b>H  </b></tt>
+	    : matrice carrée réelle ou complexe
+	  </li>
+<li>
+<tt><b>U  </b></tt>
+	    : matrice carrée unitaire
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[U,H] = hess(A)</b></tt> Calcule une matrice unitaire <tt><b>U</b></tt>
+      et une matrice de Hessenberg <tt><b>H</b></tt> telles que <tt><b>A =
+	U*H*U'</b></tt> et <tt><b>U'*U</b></tt> = Identité. La syntaxe
+      <tt><b>H=hess(A)</b></tt> ne renvoie que la matrice de Hessenberg.
+    </p>
+<p>
+      Les coefficients d'une matrice sous forme de Hessenberg sont nuls
+      sous la première sous-diagonale. Si la matrice est symétrique ou
+      hermitienne, la forme est tridiagonale.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(3,3);[U,H]=hess(A);
+    and( abs(U*H*U'-A)&lt;1.d-10 )
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+      Le calcul de la forme de Hessenberg determinant est basé sur les routines Lapack :
+      DGEHRD, DORGHR  pour les matrices réelles et ZGEHRD, ZORGHR pour le cas complexe.
+    </p>
+</body>
+</html>

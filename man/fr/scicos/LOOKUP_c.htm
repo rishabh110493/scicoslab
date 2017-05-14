@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>LOOKUP_c</TITLE>
+<META NAME="description" CONTENT="LOOKUP_c">
+<META NAME="keywords" CONTENT="LOOKUP_c">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="LOOKUP_c.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Bloc Scicos
+<BR><A NAME="tex2html1"
+  HREF="./LOOKUP_c.htm">fr</A> - <A NAME="tex2html2"
+  HREF="../../eng/scicos/LOOKUP_c.htm">eng</A>
+
+</DIV>
+<H2><A NAME="SECTION00010000000000000000"></A><A NAME="LOOKUP_c"></A>
+<BR>
+1D Lookup table
+</H2>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ $\epsfig{file=LOOKUP_c.eps,height=90pt}$
+ -->
+<IMG
+ WIDTH="135" HEIGHT="143" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_blk.gif"
+ ALT="\epsfig{file=LOOKUP_c.eps,height=90pt}">
+</DIV>
+<BR>
+
+<H3><font color="blue"><A NAME="SECTION00020000000000000000">
+Contenu</A>
+</font></H3>
+<!--Table of Contents-->
+
+<UL CLASS="TofC">
+<LI><A NAME="tex2html7"
+  HREF="LOOKUP_c.htm#SECTION00010000000000000000">1D Lookup table</A>
+<UL>
+<LI><A NAME="tex2html8"
+  HREF="LOOKUP_c.htm#SECTION00021000000000000000">Palette</A>
+<LI><A NAME="tex2html9"
+  HREF="LOOKUP_c.htm#SECTION00022000000000000000">Description</A>
+<LI><A NAME="tex2html10"
+  HREF="LOOKUP_c.htm#SECTION00023000000000000000">Boîte de dialogue</A>
+<LI><A NAME="tex2html11"
+  HREF="LOOKUP_c.htm#SECTION00024000000000000000">Propriétés par défaut</A>
+<LI><A NAME="tex2html12"
+  HREF="LOOKUP_c.htm#SECTION00025000000000000000">Fonction d'interface</A>
+<LI><A NAME="tex2html13"
+  HREF="LOOKUP_c.htm#SECTION00026000000000000000">Fonction de calcul</A>
+<LI><A NAME="tex2html14"
+  HREF="LOOKUP_c.htm#SECTION00027000000000000000">Voir aussi</A>
+<LI><A NAME="tex2html15"
+  HREF="LOOKUP_c.htm#SECTION00028000000000000000">Auteurs</A>
+</UL></UL>
+<!--End of Table of Contents-->
+<H3><font color="blue"><A NAME="SECTION00021000000000000000">
+Palette</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="Lookup_Tables_pal.htm">Lookup_Tables - Palette Lookup Tables</A>
+</LI>
+</UL>
+<H3><font color="blue"><A NAME="SECTION00022000000000000000">
+Description</A>
+</font></H3>
+
+<P>
+Lookup Table block realizes a non-linear function defined using a graphical editor.  This block computes an approximation to some function y=f(x) given data vectors x and y.  
+<BR>
+The table is defined by specifying the Vector of input values parameter as a 1-by-n vector and the Table data parameter as a 1-by-n vector. The block generates output based on the input values using one of methods selected from the Lookup method parameter list. The length of the x and y data vectors provided to this block must be identical. Furthermore, the x data vector must be strictly monotonically increasing.  
+<BR>
+<H3><font color="blue"><A NAME="SECTION00023000000000000000">
+Boîte de dialogue</A>
+</font></H3>
+
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="503" HEIGHT="298" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_gui.gif"
+ ALT="\begin{figure}\begin{center}
+\epsfig{file=LOOKUP_c_gui.eps,width=300pt}
+\end{center}\end{figure}">
+</DIV>
+
+<P>
+
+<UL>
+<LI><B>Spline Interpolation method (0..9) :</B> accepted values are
+      <B>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</B>.
+
+<P>
+This parameter defines the spline method for interpolating the
+  points. The Signal builder block computes a linear or a cubic
+  spline or sub-spline <B>S</B> which interpolates the <B>(x_i,y_i)</B>
+  points, i.e., we have : 
+  <P><!-- MATH
+ \begin{displaymath}
+S(x_i) = y_i\;\; {\rm for\;\; all}\;\; i=1,..,n.
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="229" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img3_fr.gif"
+ ALT="$\displaystyle S(x_i) = y_i\;\; {\rm for\;\; all}\;\; i=1,..,n.$">
+</DIV><P></P>
+Several kind of splines may be computed by selecting the appropriate
+  spline method:
+
+<P>
+
+<UL>
+<LI><B>0 : "Zero order method (Use Input Below)"</B>.  This method
+        does not interpolate or extrapolate. Instead, the element in x
+        nearest and below the current input is found, i.e.,
+        <P><!-- MATH
+ \begin{displaymath}
+{\rm for} \;\; t_{i} \leq t < t_{i+1},\;\; y(t)=y_{i}.
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="217" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img4_fr.gif"
+ ALT="$\displaystyle {\rm for} \;\; t_{i} \leq t &lt; t_{i+1},\;\; y(t)=y_{i}.$">
+</DIV><P></P>
+The corresponding element in y is then used as the output.
+        If there is no element in x below the current input,
+        then the nearest element is found.
+
+<P>
+</LI>
+<LI><B>1 : "Linear interpolation method"</B>.  This is the default
+        method; it performs linear interpolation of the inputs. If a value
+        matches the block's input, the output is the corresponding element in
+        the output vector. If no value matches the block's input, then the
+        block performs linear interpolation between the two appropriate
+        elements of the table to determine an output value, i.e.,
+        <P><!-- MATH
+ \begin{displaymath}
+{\rm for}\;\; t_{i} \leq t < t_{i+1}, \;\; y(t)=y_i+(t-t_i)(y_{i+1}-y_i)/(t_{i+1}-t_i).
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="455" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img5_fr.gif"
+ ALT="$\displaystyle {\rm for}\;\; t_{i} \leq t &lt; t_{i+1}, \;\; y(t)=y_i+(t-t_i)(y_{i+1}-y_i)/(t_{i+1}-t_i).$">
+</DIV><P></P>
+If the block input is less than the first or greater than the last input
+        vector element, then the block extrapolates using the first two or
+        last two points.
+
+<P>
+</LI>
+<LI><B>2 : "Order 2 method"</B>. The interpolation is done by passing
+        2-order polynomials between <B>(x_i,y_i)</B> and
+        <B>(x_i+1, y_i+1)</B>. The Derivative at <B>(x_i,y_i)</B> is identical
+        for two adjacent polynomials. The derivative at <B>(x_1,y_1)</B>
+        can be selected arbitrary, so it is selected such that the sum of
+        derivatives at all points be minimum. This condition provides a
+        less fluctuated signal.
+
+<P>
+</LI>
+<LI><B>3 : "not_a_knot"</B>. The cubic spline is computed by using the
+        following conditions (considering <B>n</B> points <B>x_1,...,x_n</B>) : 
+        <P><!-- MATH
+ \begin{displaymath}
+S^{(3)}(x_2^-) = S^{(3)}(x_2^+),
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="162" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img6_fr.gif"
+ ALT="$\displaystyle S^{(3)}(x_2^-) = S^{(3)}(x_2^+),$">
+</DIV><P></P>
+        <P><!-- MATH
+ \begin{displaymath}
+S^{(3)}(x_{n-1}^-) = S^{(3)}(x_{n-1}^+).
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="191" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img7_fr.gif"
+ ALT="$\displaystyle S^{(3)}(x_{n-1}^-) = S^{(3)}(x_{n-1}^+).$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI><B>4 : "periodic"</B>. A periodic cubic spline is computed (<B>y</B>
+        must verify <B>y_1=y_n</B>) by using the conditions :
+        <P><!-- MATH
+ \begin{displaymath}
+S^{'}(x_1) = S^{'}(x_n),
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="129" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img8_fr.gif"
+ ALT="$\displaystyle S^{'}(x_1) = S^{'}(x_n),$">
+</DIV><P></P> 
+        <P><!-- MATH
+ \begin{displaymath}
+S^{''}(x_1) = S^{''}(x_n).
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="136" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img9_fr.gif"
+ ALT="$\displaystyle S^{''}(x_1) = S^{''}(x_n).$">
+</DIV><P></P>
+In this case the value of <B>y_n</B> is ignored and <B>y_1</B> is used instead.
+        Note that in order to generate a periodic signal, <I>Periodic</I> flag should be
+        activated.
+
+<P>
+</LI>
+<LI><B>5 : "monotone"</B>. In this case a sub-spline (<B>S</B> is only one
+        continuously differentiable) is computed such that <B>S</B> is monotone
+        on each interval :
+        <P><!-- MATH
+ \begin{displaymath}
+{\rm if}\;\; y_i \le y_{i+1},\;\; S\;\; {\rm is\;\; increasing\;\; on}\;\; [x_i, x_{i+1}].
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="338" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img10_fr.gif"
+ ALT="$\displaystyle {\rm if}\;\; y_i \le y_{i+1},\;\; S\;\; {\rm is\;\; increasing\;\; on}\;\; [x_i, x_{i+1}].$">
+</DIV><P></P>
+        <P><!-- MATH
+ \begin{displaymath}
+{\rm if}\;\; y_i > y_{i+1},\;\; S\;\; {\rm is\;\; decreasing\;\; on}\;\; [x_i, x_{i+1}].
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="341" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img11_fr.gif"
+ ALT="$\displaystyle {\rm if}\;\; y_i &gt; y_{i+1},\;\; S\;\; {\rm is\;\; decreasing\;\; on}\;\; [x_i, x_{i+1}].$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI><B>6 : "clamped"</B>. In this case the cubic spline is computed by
+        using the end points derivatives which are set to zero, i.e.,
+        <P><!-- MATH
+ \begin{displaymath}
+S^{'}(x_1) = S^{'}(x_n)=0.
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="161" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img12_fr.gif"
+ ALT="$\displaystyle S^{'}(x_1) = S^{'}(x_n)=0.$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI><B>7 : "fast"</B>. In this case a sub-spline is computed by using a
+        simple local scheme for the derivative at <B>x_i</B> of the
+        interpolation polynomial of <B>(x_i-1,y_i-1)</B>, <B>(x_i,y_i)</B>,
+        <B>(x_i+1,y_i+1)</B>, except for the end points (derivative at
+        these points are computed from the 3 left most points and the 3
+        right most points).
+
+<P>
+</LI>
+<LI><B>8 : "Zero order method (Use Input-above)"</B>. 
+        This method does not interpolate or extrapolate. Instead, the element
+        in x nearest and above the current input is found, i.e.,
+        <P><!-- MATH
+ \begin{displaymath}
+{\rm for}\;\; t_{i} \leq t < t_{i+1},\;\; y(t)=y_{i+1}.
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<IMG
+ WIDTH="234" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="../../images/scicos/LOOKUP_c_img13_fr.gif"
+ ALT="$\displaystyle {\rm for}\;\; t_{i} \leq t &lt; t_{i+1},\;\; y(t)=y_{i+1}.$">
+</DIV><P></P>
+The corresponding element in <B>y</B> is then used as the output.
+        If there is no element in <B>x</B> above the current input,
+        then the nearest element is found.
+
+<P>
+</LI>
+<LI><B>9 : "Zero order method (Use Input-nearest)"</B>. This method
+        does not interpolate or extrapolate. Instead, the element in <B>x</B>
+        nearest the current input is found.
+        The corresponding element in <B>y</B> is then used as the output.
+
+<P>
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI><B>x :</B> Abscisse data vector (X-axis). This vector can be
+   either a row or a column vector of double data. Further mor it
+   should be monotonic increasing. This vector can be also defined
+   in the Scicos context. The data vector can be specified by
+   mathematical formula.
+
+<P>
+</LI>
+<LI><B>y :</B> Ordinate data vector (Y-axis). This vector can be
+   either a row or a column vector of double data. Not that the size
+   of X and Y vector should be the same. This vector can be also
+   defined in the Scicos context. The data vector can also be
+   specified by formula.
+
+<P>
+</LI>
+<LI><B>Extrapolate method (0,1) :</B> 
+  If the block input is less than the first or greater than the last
+  input vector element, then 
+
+<P>
+
+<UL>
+<LI>: <B>0</B> the block uses the first  or last  point as output.
+</LI>
+<LI>: <B>1</B> the block extrapolates using the first two or last two points.
+  
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI><B>Launch graphic window(y/n)? :</B> If <B>y</B> is selected, by
+   clicking on <B>OK</B> button, a graphical window is launched. In
+   this 2D graphical window, the user can edit data points.
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00024000000000000000">
+Propriétés par défaut</A>
+</font></H3>
+
+<UL>
+<LI><b>toujours actif:</b> non
+</LI>
+<LI><b>direct-feedthrough:</b> oui
+</LI>
+<LI><b>détection de passage à zéro:</b> non
+</LI>
+<LI><b>mode:</b> non
+</LI>
+<LI><b>entrée régulières:</b>
+<BR>   <b>   - port 1 : taille [-1,-2] / type 1</b>
+<BR></LI>
+<LI><b>sorties régulières:</b>
+<BR>   <b>   - port 1 : taille [-1,-2] / type -1</b>
+<BR></LI>
+<LI><b>nombre des entrées évènementielles:</b> 0
+</LI>
+<LI><b>nombre des sorties évènementielles:</b> 0
+</LI>
+<LI><b>possède un état continu:</b> non
+</LI>
+<LI><b>possède un état discret:</b> non
+</LI>
+<LI><b>possède un état objet:</b> non
+</LI>
+<LI><b>nom de la fonction de calcul:</b> <EM>lookup_c</EM>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00025000000000000000">
+Fonction d'interface</A>
+</font></H3>
+
+<UL>
+<LI>SCI/macros/scicos_blocks/NonLinear/LOOKUP_c.sci <A NAME="tex2html4"
+  HREF="LOOKUP_c_intfunc.htm">[voir code]</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00026000000000000000">
+Fonction de calcul</A>
+</font></H3>
+
+<UL>
+<LI>SCI/routines/scicos/lookup_c.c (Type 4) <A NAME="tex2html5"
+  HREF="lookup_c_routcos.htm">[voir code]</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00027000000000000000">
+Voir aussi</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html6"
+  HREF="LOOKUP2D.htm">LOOKUP2D - 2D Lookup table (Bloc Scicos)</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00028000000000000000">
+Auteurs</A>
+</font></H3>
+<b>Masoud Najafi</b> INRIA
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

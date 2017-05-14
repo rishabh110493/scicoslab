@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hsvcolormap</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hsvcolormap</b> -   Hue-saturation-value colormap</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>cmap = hsvcolormap(n)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>
+       :  integer &gt;= 1, the colormap size.
+       </li>
+<li>
+<tt><b>cmap</b></tt>
+       : matrix with 3 columns <tt><b>[R,G,B]</b></tt>.
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<tt><b>hsvcolormap</b></tt> computes a colormap with
+      <tt><b>n</b></tt>colors. This colormap  varies the hue component of the
+      hsv color model.  The colors begin with red, pass through yellow, green,
+    cyan, blue, magenta, and return to red.  The map is particularly
+    useful for displaying periodic functions. <h3><font color="blue">Examples</font></h3>
+<pre>
+    t=[0:0.1:2*%pi]'; z=sin(t)*cos(t'); 
+    f=gcf();f.color_map=hsvcolormap(64);
+     plot3d1(t,t,z,35,45,"X@Y@Z",[-2,2,2])
+  </pre>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b>Serge Steer</b>
+      INRIA
+    </dd></dl>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hist3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hist3d</b> -  représentation 3D d'un histogramme  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>hist3d(f,[theta,alpha,leg,flag,ebox])  </tt></dd>
+<dd><tt>hist3d(list(f,x,y),[theta,alpha,leg,flag,ebox])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f  </b></tt>
+    : matrice de taille (m,n) définissant l'histogramme <tt><b>f(i,j)=F(x(i),y(j))</b></tt>,  où <tt><b>x</b></tt> et <tt><b>y</b></tt> sont considérés égaux à <tt><b>0:m</b></tt> et <tt><b>0:n</b></tt>.
+</li>
+<li>
+<tt><b>list(f,x,y)  </b></tt>
+    : où f est une matrice de taille (m,n) définissant l'histogramme  <tt><b>f(i,j)=F(x(i),y(j))</b></tt>, avec <tt><b>x</b></tt> et <tt><b>y</b></tt> deux vecteurs de tailles respectives (1,n+1)  et (1,m+1).
+</li>
+<li>
+<tt><b>theta,alpha,leg,flag,ebox  </b></tt>
+    : voir <tt><b>plot3d</b></tt>.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>hist3d</b></tt> représente un histogramme 2D dans l'espace. Les valeurs sont associées aux intervalles 
+    <tt><b>[x(i) x(i+1)[ X [y(i) y(i+1)[</b></tt>.
+  </p>
+<p>
+    Taper <tt><b>hist3d()</b></tt> pour voir une démonstration de la fonction.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/histplot.htm"><tt><b>histplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S. &amp; JPhilippe C.  </p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+.TH LogitNE 1 " " " " "CiudadSim Function"
+.SH NAME
+LogitNE  - Net Logit Equilibrium 
+.SH CALLING SEQUENCE
+.nf
+bench=LogitNE(theta,method,eps,Niter,Num)
+.fi
+.SH PARAMETERS
+.TP 10
+theta
+: stochasticity parameter 
+.TP 10
+method
+: macro among LogitB, LogitD, LogitMB, LogitMD
+.TP 10
+eps
+: convergence error test 
+.TP 10
+Niter
+: maximal number of iteration 
+.TP 10
+Num
+: number of iteration already done
+.TP 10
+bench
+: niter x 5  matrix
+.TP 10
+%net global variable NetList  
+
+.SH DESCRIPTION
+Compute the logit traffic equilibrium using a
+logit method among LogitB, LogitD, LogitMB, LogitMD
+the travel time is taken in %net.links.time
+and the assigned fow is put in the field
+%net.links.flow of the variable %net which
+is a NetList which must be declared global.
+
+The equilibrium is computed by a divergent series
+method F[n+1]=F[n]*(1-rho[n])+rho[n]*f
+where f is the new assigned flow computed with the
+travelling time associated to the flow F[n],
+with rho[n]=1/(n+1). 
+
+If %net.gp.verbose=%T  convergence informations are displayed.
+These informations are returned by the function in the variable %net.gp.bench.
+
+.SH EXAMPLES
+.nf
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost determinsitic)
+theta=10
+// Flow calculation
+LogitNE(theta,LogitMD,1.e-6,30,0)
+ShowNet()
+.SH SEE ALSO
+LogitD,
+LogitB,
+LogitMB,
+LogitMD,
+LogitN,
+LogitNELS,
+TrafficAssig

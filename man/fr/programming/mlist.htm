@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mlist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mlist</b> - Objet Scilab, définition d'une liste
+  typée</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>mlist(typ,a1,....an )</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>typ</b></tt>: vecteur de chaînes de caractères</li>
+<li>
+<tt><b>ai</b></tt>: objet Scilab (<tt><b>matrice, liste, chaîne...</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Les objets de type <tt><b>mlist</b></tt> sont très similaires aux objets
+    de type <tt><b>tlist</b></tt>. Si <tt><b>M</b></tt> est de type mlist, pour tout
+    indice <tt><b>i</b></tt> qui n'est pas le nom d'un champ de la liste,
+    <tt><b>M(i)</b></tt> n'est pas le <tt><b>i</b></tt>-ème champ de la liste mais
+    est interprété comme le <tt><b>i</b></tt>-ème terme de <tt><b>M</b></tt> vu
+    comme un vecteur. C'est la seule différence entre <tt><b>mlist</b></tt> et
+    <tt><b>tlist</b></tt>.</p>
+<p></p>
+<p>Les champs des mlist doivent donc être manipulés par leur noms. Il
+    peuvent aussi être manipulés avec les fonctions <tt><b>getfield</b></tt> et
+    <tt><b>setfield</b></tt>.</p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+M=mlist(['V','name','value'],['a','b','c'],[1 2 3]);
+// définition de la fonction d'affichage
+deff('%V_p(M)','disp(M.name+'':''+string(M.value))')
+// définition de la fonction d'extraction
+deff('r=%V_e(i,M)',..
+'r=mlist([''V'',''name'',''value''],M.name(i),M.value(i))')
+M(2) // Le deuxième terme du vecteur M
+M.value 
+
+// définition de M comme une tlist
+M=tlist(['V','name','value'],['a','b','c'],[1 2 3]);
+M(2)
+
+M('name')
+
+// avec deux indices
+M=mlist(['V','name','value'],['a','b';'c' 'd'],[1 2;3 4]);
+deff('r=%V_e(varargin)',[
+    'M=varargin($)';
+    'H=[''V'',''name'',''value'']'
+    'r=mlist(H,M.name(varargin(1:$-1)),M.value(varargin(1:$-1)))'])
+
+M(:,2)
+// tableau multidimensionnel
+str=['a','b','c','d','e','f','g','h'];
+n=hypermat([2,2,2],str);
+v=hypermat([2,2,2],1:8);
+M=mlist(['V','name','value'],n,v);
+M(1,1:2,2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/getfield.htm"><tt><b>getfield</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/setfield.htm"><tt><b>setfield</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

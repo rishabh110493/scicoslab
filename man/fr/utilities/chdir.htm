@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>chdircd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chdir</b> - change le répertoire courant de
+  Scilab</p>
+<p><b>cd</b> - change le répertoire courant de
+  Scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>chdir(path)</tt></dd>
+<dd><tt>realpath=cd(path)</tt></dd>
+<dd><tt>cd path</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: une chaîne de caractères fournissant le chemin du
+          répertoire.</li>
+<li>
+<tt><b>realpath</b></tt>: une chaîne de caractères, le chemin effectif après conversion
+          (voir ci-dessous)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>Change le répertoire courrant de Scilab par celui donné par la
+    variable <tt><b>path</b></tt>. Notez que le chemin fourni est converti. Ainsi
+    <tt><b>SCI/macros/util</b></tt> est un chemin valide pour Unix et Windows. Si
+    path est vide , le chemin de destination est alors "home".<h3><font color="blue">Examples</font></h3>
+<pre>
+    chdir(TMPDIR);
+    pwd
+    cd 
+    cd SCI
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pwd.htm"><tt><b>getcwd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pwd.htm"><tt><b>pwd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

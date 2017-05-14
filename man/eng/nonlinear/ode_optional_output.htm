@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ode_optional_output</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ode_optional_output</b> -  ode solvers optional outputs description</p>
+<h3><font color="blue">Description</font></h3>
+      This page describes the the most important values returned in the
+      optional lhs <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a> function arguments <tt><b>w</b></tt> and
+      <tt><b>iw</b></tt>.
+      These are valid only for the <tt><b>lsode</b></tt><tt><b>lsoda</b></tt> and  <tt><b>lsodar</b></tt> ode solver.
+	For more details, one can look at the solvers fortran code comments in <tt><b>routines/integ/lsod*.f</b></tt>.
+      <dl>
+<dd>
+<b>w(11)</b> the step size in t last used (successfully).</dd>
+<dd>
+<b>w(12)</b> the step size to be attempted on the next step.</dd>
+<dd>
+<b>w(13)</b> the current value of the independent variable
+	    which the solver has actually reached, i.e. the
+	    current internal mesh point in t.  on output, tcur
+	    will always be at least as far as the argument
+	    t, but may be farther (if interpolation was done).</dd>
+<dd>
+<b>w(14)</b> a tolerance scale factor, greater than 1.0,
+	    computed when a request for too much accuracy was
+	    detected (istate = -3 if detected at the start of
+	    the problem, istate = -2 otherwise).  if itol is
+	    left unaltered but rtol and atol are uniformly
+	    scaled up by a factor of <tt><b>tolsf=w(14)</b></tt> for the next call,
+	    then the solver is deemed likely to succeed.
+	    (the user may also ignore <tt><b>tolsf</b></tt> and alter the
+	    tolerance parameters in any other way appropriate.)</dd>
+<dd>
+<b>w(15)</b> the value of t at the time of the last method
+	    switch, if any. This value is not significant with
+	    <tt><b>lsode</b></tt> solver. </dd>
+<dd>
+<b>iw(10)</b> the number of <tt><b>g</b></tt>  evaluations for the problem so
+	    far. This value is only significant for <tt><b>lsodar</b></tt> solver.</dd>
+<dd>
+<b>iw(11)</b> the number of steps taken for the problem so far.</dd>
+<dd>
+<b>iw(12)</b> the number of f evaluations for the problem so far.</dd>
+<dd>
+<b>iw(13)</b> the number of jacobian evaluations (and of matrix
+	    lu decompositions) for the problem so far.</dd>
+<dd>
+<b>iw(14)</b> the method order last used (successfully).</dd>
+<dd>
+<b>iw(15)</b> the order to be attempted on the next step.</dd>
+<dd>
+<b>iw(16)</b> the index of the component of largest magnitude in
+	    the weighted local error vector ( e(i)/ewt(i) ),
+	    on an error return with istate = -4 or -5.</dd>
+<dd>
+<b>iw(17)</b> the length of <tt><b>w</b></tt> actually required, assuming
+	    that the length of rwork is to be fixed for the
+	    rest of the problem, and that switching may occur.
+	    this is defined on normal returns and on an illegal
+	    input return for insufficient storage.</dd>
+<dd>
+<b>iw(18)</b> the length of <tt><b>iw</b></tt> actually required, assuming
+	    that the length of <tt><b>iw</b></tt> is to be fixed for the
+	    rest of the problem, and that switching may occur.
+	    this is defined on normal returns and on an illegal
+	    input return for insufficient storage.</dd>
+<dd>
+<b>iw(19)</b> the method indicator for the last successful step..
+	    1 means adams (nonstiff), 2 means bdf (stiff). This value is not significant with
+	    <tt><b>lsode</b></tt> solver.</dd>
+<dd>
+<b>iw(20)</b> the current method indicator..
+	    1 means adams (nonstiff), 2 means bdf (stiff).
+	    this is the method to be attempted
+	    on the next step.  thus it differs from <tt><b>iw(19)</b></tt>
+	    only if a method switch has just been made. This value is not significant with
+	    <tt><b>lsode</b></tt> solver.</dd>
+</dl>
+</body>
+</html>

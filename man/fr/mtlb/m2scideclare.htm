@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>m2scideclare</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>m2scideclare</b> - Donner des indices pour aider M2SCI...</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+  La principale difficulté de M2SCI (<tt><b>mfile2sci</b></tt>) est de trouver
+  ce que sont les variables : dimensions, type...  
+  </p>
+<p>
+  Pour aider cet outil, il suffit d'ajouter des commentaires commencant par
+  <tt><b>%m2scideclare</b></tt> dans le fichier Matlab à convertir,
+  (<tt><b>%m2sciassume</b></tt> était utilisée dans les versions précédentes
+  de Scilab mais est maintenant obsolète).
+  </p>
+<p>
+  La syntaxe de cette commande est :
+  </p>
+<p><tt><b>%m2scideclare nom_de_variable|dimensions|type_de_données|propriété</b></tt></p>
+<p>
+  avec :
+  </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+      nom_de_variable : nom de la variable déclarée. Ce nom peut être
+      un champ de Struct (e.g. <tt><b>x(1,2).nom</b></tt>)
+      ou décrire le contenu d'une Cell en utilisant la syntaxe
+      <tt><b>x(1,2).entries</b></tt>. NOTEZ que pour les Cells et les
+      Structs <tt><b>*</b></tt> peut être utilisé comme index.
+      </li>
+<li>
+<b><font color="maroon"></font></b>
+      dimensions : dimensions de la variable déclarée séparées par des espaces,
+      si une dimension est inconnue, remplacez la par <tt><b>?</b></tt>. NOTEZ que
+      les dimensions des chaînes de caractère doivent être identiques aux dimensions
+      Matlab e.g. <tt><b>1 6</b></tt> pour la chaîne de caractères 'chaine'.
+      </li>
+<li>
+<b><font color="maroon"></font></b>
+      type_de_données: le type de donnée de la variable qui peut être :
+      <div align="center"><table border="2">
+<tr align="center">
+<td>Type de donnée m2scideclare</td>
+<td>Type Scilab "équivalent"</td>
+</tr>
+<tr align="center">
+<td>Double</td>
+<td>1</td>
+</tr>
+<tr align="center">
+<td>Boolean</td>
+<td>4</td>
+</tr>
+<tr align="center">
+<td>Sparse</td>
+<td>5</td>
+</tr>
+<tr align="center">
+<td>Int</td>
+<td>8</td>
+</tr>
+<tr align="center">
+<td>Handle</td>
+<td>9</td>
+</tr>
+<tr align="center">
+<td>String</td>
+<td>10</td>
+</tr>
+<tr align="center">
+<td>Struct</td>
+<td>Struct Matlab (16)</td>
+</tr>
+<tr align="center">
+<td>Cell</td>
+<td>Cell Matlab (17)</td>
+</tr>
+<tr align="center">
+<td>Void</td>
+<td>Sans type (0)</td>
+</tr>
+<tr align="center">
+<td>?</td>
+<td>Type inconnu</td>
+</tr>
+</table></div>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+      propriété : propriété de la variable qui peut être : 
+      <div align="center"><table border="2">
+<tr align="center">
+<td>Propriété m2scideclare</td>
+<td>"Equivalent" Scilab</td>
+</tr>
+<tr align="center">
+<td>Real</td>
+<td>Donnée réelle</td>
+</tr>
+<tr align="center">
+<td>Complex</td>
+<td>Donnée complexe</td>
+</tr>
+<tr align="center">
+<td>?</td>
+<td>Property inconnue</td>
+</tr>
+</table></div>Ce champ est ignoré pour les types de données suivants : <tt><b>Cell</b></tt>,
+      <tt><b>Struct</b></tt>, <tt><b>String</b></tt> et <tt><b>Boolean</b></tt>.</li>
+</dd>
+</dd></dl>
+<p>
+  Toutes les informations données par <tt><b>m2scideclare</b></tt> sont comparées avec
+  les données inférées, en cas de conflit, les données inférées sont conservées et
+  un warning est affiché. Si vous êtes sûrs de vos informations, rapportez ce bug.
+  </p>
+<p>Voici quelques exemples :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var1|2 3|Double|Real</b></tt>
+      : var1 est déclarée comme une matrice de Doubles de taille 2x3
+      et contenant des données réelles</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var2|2 3 10|Double|Complex</b></tt>
+      : var2 est déclarée comme une hypermatrice de Doubles de taille 2x3x10
+      et contenant des données complexes</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var3(1,2).name|1 10|String|?</b></tt>
+      : var3 est déclarée comme un tableau de Structs contenant une chaîne de
+      caractères de taille 1x10 dans le champ 'name' de la Struct à l'indice (1,2) </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var4(1,5).entries|1 ?|Boolean|?</b></tt>
+      : var4 est déclarée comme un tableau de Cells contenant
+      un vecteur ligne de booléens à l'indice (1,5)</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var4(1,6).entries|? ?|Int|?</b></tt>
+      : var4 est déclarée comme un tableau de Cells contenant
+      un vecteur ligne de booléens à l'indice (1,5)
+      et des données entières à l'indice (1,6)</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var5(*,*).name|1 ?|String|?</b></tt>
+      : var5 est déclarée comme un tableau de Structs contenant une
+      chaîne de caractères de taille 1xn dans chaque champ 'name'</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var6(2,*).entries|1 3|Double|Real</b></tt>
+      : var6 est déclarée comme un tableau de Cells contenant un
+      veteur de Doubles de taille 1x3 dans chaque élement de sa
+      seconde ligne.</li>
+</dd>
+</dd></dl>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

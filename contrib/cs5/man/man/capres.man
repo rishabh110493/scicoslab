@@ -1,0 +1,45 @@
+.TH CAPRES  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+CAPRES  -  CAPRES traffic assignment algorithm
+.SH CALLING SEQUENCE
+.nf
+[f,ta]=CAPRES(net)
+.fi
+.SH PARAMETERS
+.TP 10
+f
+: assigned flow (disaggregated by commodity)
+.TP 10
+ta
+: times for the current assigned flow
+.TP 10
+ben 
+: a 2x4 matrix composed by the computation time and total cost row vectors
+.TP 10
+net
+: a NetList
+
+.SH DESCRIPTION
+Assigns the flow with the CAPRES algorithm.
+As in the IAON successive AON assignments are made,
+but the number of iterations
+is fixed to 4 and instead of using the current
+travel times, the old travel times are combined
+in the same way the flows are.
+
+.SH EXAMPLES
+.nf
+net=TrafficExample('Small');
+[f,t]=CAPRES(net);
+.fi
+.SH SEE ALSO
+AON,
+IAON,
+IA,
+FW,
+TrafficAssig
+
+
+
+
+

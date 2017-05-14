@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_kill</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_kill</b> -   Terminates a specified PVM process.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[infos] = pvm_kill(tids)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>tids</b></tt>: row of integer, task identifier of the PVM process to be killed (not yourself).</li>
+<li>
+<tt><b>infos</b></tt>: row of integer, status code returned by the routine. Values less than zero indicate an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_kill</b></tt> 
+    sends a terminate (<tt><b>SIGTERM</b></tt>) signal
+    to the PVM process identified by <tt><b>tids</b></tt>.</p>
+<p>
+    In the case of multiprocessors the terminate signal is replaced
+    with a host dependent method for killing a process.</p>
+<p>
+    The array <tt><b>infos</b></tt>
+    can be checked to determine the status for each process.
+    Values less than zero indicate an error,
+    while zero values indicate a success.</p>
+<p><tt><b>pvm_kill</b></tt> is not designed to kill the calling process.
+    To kill yourself in C call <tt><b>pvm_exit()</b></tt> 
+    followed by <tt><b>quit()</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_exit.htm"><tt><b>pvm_exit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

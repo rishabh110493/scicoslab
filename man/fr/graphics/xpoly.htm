@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xpoly</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xpoly</b> - dessine une ligne brisée ou un
+  polygone</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xpoly(xv,yv [,dtype
+    [,close]])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xv,yv</b></tt>: matrices de même taille (points de la ligne brisée).</li>
+<li>
+<tt><b>dtype</b></tt>: chaîne de caractères (style de dessin, valeur par défaut :
+          "lines").</li>
+<li>
+<tt><b>close</b></tt>: entier. Si close=1, la ligne brisée est fermée (valeur par
+          défaut : 0).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xpoly</b></tt> dessine une ligne brisée décrite par les vecteurs de
+    coordonnées <tt><b>xv</b></tt> et <tt><b>yv</b></tt>. Si <tt><b>xv</b></tt> et
+    <tt><b>yv</b></tt> sont des matrices elles sont considérées comme des
+    vecteurs (par concaténation de leurs colonnes). Si close=1 un segment
+    supplémentaire est ajouté entre le premier et le dernier point de la ligne
+    brisée. <tt><b>dtype</b></tt> peut être égal à   <tt><b>"lines"</b></tt>
+    pour utiliser le style de ligne courant ou <tt><b>"marks"</b></tt> pour
+    utiliser des marqueurs.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=sin(2*%pi*(0:4)/5);
+y=cos(2*%pi*(0:4)/5);
+
+plot2d(0,0,-1,"010"," ",[-2,-2,2,2])
+xset("color",5)
+xpoly(x,y,"lines",1) // by default closed
+
+// News graphics only
+e=gce(); // get the current entity (the last created: here the polyline)
+e.closed = 'off' // the polyline is now open
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfpoly.htm"><tt><b>xfpoly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfpolys.htm"><tt><b>xfpolys</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xpolys.htm"><tt><b>xpolys</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

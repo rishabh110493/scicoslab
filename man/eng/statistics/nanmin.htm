@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nanmin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nanmin</b> -   min  (ignoring Nan's) </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[m,index]=nanmin(x)  </tt></dd>
+<dd><tt>[m,index]=nanmin(x,'r')  </tt></dd>
+<dd><tt>[m,index]=nanmin(x,'c')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function gives for a real or a numerical matrix <tt><b>x</b></tt> 
+    his largest element <tt><b>   m</b></tt> (but ignoring the
+    NANs).</p>
+<p>
+    For    <tt><b> x</b></tt>,   a  numerical   vector  or matrix, 
+    <tt><b> m=nanmin(x) </b></tt>  returns in scalar  <tt><b> m</b></tt> the largest
+    element of <tt><b> x</b></tt> (ignoring  the  NANs). The form  
+    <tt><b>[m,index] =nanmin(x,orient) </b></tt> gives  in addition of  the
+    value of the largest  element of <tt><b>  x</b></tt> (ignoring  the
+    NANs) in scalar  <tt><b> m</b></tt>, the index  of  this element in
+    <tt><b> x</b></tt>, as a 2-vector.</p>
+<p><tt><b>m=nanmin(x,'r') </b></tt> gives in the 1xsize(x,2) matrix 
+    <tt><b>m</b></tt> the largest elements  (ignoring  the NANs) of  each
+    column  of     <tt><b>    x</b></tt>.     If  the  form      
+    <tt><b> [m,index]=nanmin(x,'r') </b></tt> is  used, the  elements of the
+    1xsize(x,2) matrix  index are  the indexes of  the largest
+    elements (ignoring the NANs)  of each column  of x  in the
+    corresponding column.</p>
+<p>
+    m=nanmin(x,'c')  gives  in  the size(x,2)x1  matrix  m the
+    largest elements (ignoring the NANs) of each row of x.  If
+    the form  [m,index]=nanmin(x,'c') is used, the elements of
+    the size(x,2)x1   matrix  index are   the  indexes  of the
+    largest elements  (ignoring the NANs) of  each row of x in
+    the corresponding row.</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 %nan 0.6653811;0.7560439 0.3303271 0.6283918]
+m=nanmin(x)
+m=nanmin(x,'r')
+m=nanmin(x,'c')
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

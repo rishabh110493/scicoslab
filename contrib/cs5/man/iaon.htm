@@ -1,0 +1,41 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>IAON </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>IAON  -   Iterated All or Nothing traffic assignment algorithm  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[f,ta,ben]=IAON(net,k)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList
+  </li>
+  <li><tt><b>k  </b></tt>
+    : number of iterations of the algorithm
+  </li>
+  <li><tt><b>f  </b></tt>
+    : assigned flow (disaggregated by commodity)
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : row vector of reals, current time for the assigned flow
+  </li>
+  <li><tt><b>ben  </b></tt>
+    : a kx5 matrix benchmark information.  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow with the Iterated All or Nothing heuristic.
+    Starting with a feasible flow assigned with AON the link costs
+    are calculated with the travel time functions. The AON assignment
+    is made now with the computed costs and then the costs are recomputed
+    for the new assignment. This process is repeated until there is
+    no change in the recalculated costs or the number of iterations
+    k is reached.
+  </p>
+  <p>
+    The matrix ben contains intermediary informations on the
+    algorithm. For each iteration it gives the iteration number, time
+    spent, cost, memory used and an convergence error evaluation.
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Small');
+[f,ta,ben]=IAON(net,10)
+   </pre><p>
+    
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="IA.htm"><tt><b>IA</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="CAPRES.htm"><tt><b>CAPRES</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

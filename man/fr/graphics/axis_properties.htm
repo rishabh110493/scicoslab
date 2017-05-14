@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>axis_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>axis_properties</b> - description of the axis entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Axis entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for axis scaling and appearance.</p>
+<dl><dd>
+<b>Axis properties</b><dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of
+            the axis entity should be of the type <tt><b>"Axes"</b></tt> or
+            <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value
+            for the entity . It should be <tt><b>"on" </b></tt> or
+            <tt><b>"off"</b></tt> . By default, the axis entity is visible, the
+            value's property is <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt>, the
+            axis is not drawn on the screen.</dd>
+<dd>
+<b>tics_direction: </b>Specify the direction of the tics drawn under the horizontal
+            axis and the vertical axis. The possible values of this property
+            are:<dl>
+<dd>
+<b></b><p><tt><b>"top"</b></tt>. In this case, tics are drawn at the top
+                of the horizontal axis.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"bottom"</b></tt>. In this case, tics are drawn at the
+                bottom of the horizantal axis.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"left"</b></tt>. In this case, tics are going left on
+                the vertical axis.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"right"</b></tt>. In this case, tics are going right on
+                the vertical axis.</p>
+</dd>
+</dl>
+<p>The defaults values are <tt><b>"top"</b></tt> for the horizontal
+            axis and <tt><b>"right"</b></tt> for vertical axis.</p>
+</dd>
+<dd>
+<b>xtics_coord: </b>This field represent the x-coordinate of the axis. It is a row
+            vector containing values increasing from left to right which give
+            tics positions for a horizontal axis. Other case, the entity is a
+            vertical axis, this property contain a scale which defines the
+            x-origin of the axis.</dd>
+<dd>
+<b>ytics_coord: </b>This field represent the y-coordinate of the axis. It is a row
+            vector containing values increasing from bottom to top which give
+            tics positions for a vertical axis. Other case, the entity is a
+            horizantal axis, this property contain a scale which defines the
+            y-origin of the axis.</dd>
+<dd>
+<b>tics_color: </b>The value of this properties is index of the color used to
+            draw the axis'lines and tics.</dd>
+<dd>
+<b>tics_segment: </b>This field contains a flag which controls the display of the
+            base segment of the axis. The default is <tt><b>"on"</b></tt>, else
+            if to not display it, the property takes <tt><b>"off"</b></tt> as
+            value.</dd>
+<dd>
+<b>tics_style: </b>This property describes how the tics are given. It is a string
+            flag which can have these possible values:<dl>
+<dd>
+<b></b><p><tt><b>"v"</b></tt>. It's the default value, In this case,
+                tics positions are given by the row factor
+                <tt><b>xtics_coord</b></tt> for horizontal axis
+                (<tt><b>ytics_coord</b></tt> for the vertical one).</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"r"</b></tt>. In this case, tics positions are given by
+                the vector <tt><b>[min,max,n] </b></tt> where n is the number of
+                intervals.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"i"</b></tt>. In this case the vector given tics
+                positions is of size 4, <tt><b>[k1,k2,a,n]</b></tt> then values
+                are increasing between <tt><b>k1*10^a</b></tt> and
+                <tt><b>k2*10^a</b></tt>, n is the number of intervals.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>sub_tics: </b>This field sets the number of tics to draw between two main
+            tics.</dd>
+<dd>
+<b>tics_labels: </b>This filed is a string matrix, which contains the strings to
+            be drawn along the axis at tics positions.</dd>
+<dd>
+<b>labels_font_color: </b>This property determines the color of the tics labels.</dd>
+<dd>
+<b>labels_font_size: </b>An integer specifying the font size used to draw the tics
+            labels.</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value
+            for the arc. Clip_state value should be :<dl>
+<dd>
+<b></b><p><tt><b>"off"</b></tt> this means that the axis is not
+                clipped</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"clipgrf"</b></tt> this means that the axis is clipped
+                outside the Axes box.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"on"</b></tt> this means that the axis is clipped
+                outside the arc given by property clip_box.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field is to determinate the <tt><b>clip_box</b></tt>
+            property. By Default its value should be an empty matrix if
+            clip_state is "off". Other cases the vector <tt><b>[x,y,w,h]</b></tt>
+            (upper-left point width height) defines the portions of the axis
+            to display, however <tt><b>clip_state</b></tt> property value will be
+            changed.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the axis
+            data structure, and to retreive it.</dd>
+</dl>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+  set("figure_style","new") //create a figure
+   a=get("current_axes");//get the handle of the newly created axes
+   a.data_bounds=[-1,-1;10,10];
+
+  drawaxis(x=2:7,y=4,dir='u');
+  a1=a.children(1)
+  a1.xtics_coord=[1 4 5  8 10];
+  a1.tics_color=2;
+  a1.labels_font_size=3;
+  a1.tics_direction="bottom";
+  a1.tics_labels= [" February" "May"  "june" "August"  "October"];
+  
+  drawaxis(x=1.2:1:10,y=5,dir='u',textcolor=13);
+  a2=get("hdl")
+  a2.sub_tics=0;
+  a2.tics_segment="off";
+  a2.ytics_coord=4;
+  
+  drawaxis(x=-1,y=0:1:7,dir='r',fontsize=10,textcolor=5,ticscolor=6,sub_int=10)
+  a3=get("hdl");
+  a3.tics_labels= 'B'  +string(0:7);
+  a3.tics_direction="left";
+
+   
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/drawaxis.htm"><tt><b>drawaxis</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

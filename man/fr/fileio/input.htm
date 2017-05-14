@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>input</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>input</b> -  prompt for user input</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=input(message [, "string"])     </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>message</b></tt>: character string</li>
+<li>
+<tt><b>"string"  </b></tt>: the character string <tt><b>"string"</b></tt> (may be
+	    abbreviated to <tt><b>"s"</b></tt>)</li>
+<li>
+<tt><b>x</b></tt>: real number (or character string if
+	    <tt><b>"string"</b></tt> is in the calling sequence)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>input(message)</b></tt> gives the user the prompt in the text string and 
+    then waits for input from the keyboard. 
+    The input can be expression which is evaluated by <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>.
+    If nothing but a carriage return is
+    entered at the prompt <tt><b>input(message)</b></tt> returns an empty matrix
+    </p>
+<p>
+    Invoked with two arguments, the output is a character string which is the
+    expression entered at keyboard.  If nothing but a carriage return is
+    entered at the prompt <tt><b>input(message)</b></tt> returns  a single white
+      space  <tt><b>" "</b></tt>. 
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//x=input("How many iterations?")
+//x=input("What is your name?","string")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

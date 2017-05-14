@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>union</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>union</b> -  extrait les composantes distinctes issues de l'union de deux vecteurs  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[v, [ka,kb]]=union(a,b)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a, b, v  </b></tt>
+    : vecteurs réels ou vecteurs de chaînes de caractères
+</li>
+<li>
+<tt><b>ka, kb  </b></tt>
+    : vecteurs lignes d'entiers 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>union(a,b)</b></tt> renvoie un vecteur contenant les valeurs distinctes (classées par ordre croissant) contenues dans les termes de <tt><b>[a(:);b(:)]</b></tt>.
+  </p>
+<p><tt><b>[v,ka,kb]=union(a,b)</b></tt> renvoie aussi les vecteurs d'indices <tt><b>ka</b></tt> et
+    <tt><b>kb</b></tt> tels que <tt><b>v</b></tt> est une combinaison triée des termes de
+    <tt><b>a(ka)</b></tt> et <tt><b>b(kb)</b></tt>.
+  </p>
+<p></p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=round(5*rand(10,1));
+B=round(5*rand(7,1));
+
+union(A,B)
+[N,ka,kb]=union(A,B)
+
+union('a'+string(A),'b'+string(B))
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/unique.htm"><tt><b>unique</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

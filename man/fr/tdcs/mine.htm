@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mine</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mine</b> -  a mining problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[cout,feed]=mine(n1,n2,uvect)  </tt></dd>
+<dd><tt>[]=showcost(n1,n2,teta,alpha)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n1</b></tt>: Number of discrete point for the state.</li>
+<li>
+<tt><b>n2</b></tt>: Number of time step</li>
+<li>
+<tt><b>uvect</b></tt>: a row vector which gives the possible control value ( integer values ). for example <tt><b>u=[-1,0,1]</b></tt> means that at each step we come down one step or stay at the same level or rise one step ).</li>
+<li>
+<tt><b>cout(n1,n2)  </b></tt>: The Bellman values.</li>
+<li>
+<tt><b>feed(n1,n2)  </b></tt>: The feedback Law.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Dynamic programming applied to an optimal extraction of ore in an opencast mine. 
+    The extraction is done as follows : the steam shovel move forward for (k=1,2,...,n2) 
+    at each step it takes the ore, then move up or down (or stay at the same level)
+    according to the control value to reach another level at next step. 
+    The extraction process must maximise the following cost :</p>
+<pre>
+
+   -- n2-1
+   \
+   /        f(x(k),k) + V_F(x,n2)
+   -- k=1
+   
+    </pre>
+<p>
+    with <tt><b>x(k+1)=x(k) + u</b></tt>. <tt><b>x(k)</b></tt> is the trajectory depth at step 
+    <tt><b>k</b></tt> (<tt><b>x=1</b></tt> is the ground level).
+     
+    The instantaneous  cost <tt><b>f(i,k)</b></tt> stands for the benefit
+    of digging at depth <tt><b>i</b></tt> at position <tt><b>k</b></tt>. 
+    It must be given as a Scilab macro <tt><b>ff_o</b></tt></p>
+<pre>
+
+[y]=ff_o(x,k)
+   
+    </pre>
+<p>
+    and for efficiency <tt><b>ff_o</b></tt> must accept and return  column vectors for 
+    <tt><b>x</b></tt> and <tt><b>y</b></tt>.</p>
+<p><tt><b>V_F(i,n2)</b></tt> is a final cost which is set so as to impose the steam shovel to be at ground level 
+    at position <tt><b>n2</b></tt></p>
+<p><tt><b>showcost</b></tt> Shows a 3D representation of the instantaneous
+  cost.</p>
+</body>
+</html>

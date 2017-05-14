@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>check_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>check_graph</b> -  vérifie un graphe Scilab  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>check_graph(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>g  </b></tt>
+    : graphe (liste) à vérifier
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>check_graph</b></tt> vérifie si <tt><b>g</b></tt> est un
+    graphe. La vérification est non seulement syntaxique (nombre d'éléments de la liste, tailles compatibles des vecteurs), mais aussi sémantique au sens où
+    <tt><b>check_graph</b></tt> vérifie que les éléments <tt><b>node_number</b></tt>, <tt><b>tail</b></tt> et
+    <tt><b>head</b></tt> de la liste représentent vraiment un graphe.
+  </p>
+<p>
+    De plus, les noms des sommets doivent être différents. En fait, cela ne donne pas d'erreur dans Scilab, mais un comportement étrange peut en résulter dans la fenêtre Metanet. Ceci n'est pas vérifié par <tt><b>check_graph</b></tt> 
+    car cela prendrait trop de temps. Cela est seulement vérifié lors de la visualisation, sauvegarde ou chargement du graphe.
+  </p>
+<p></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph-list.htm"><tt><b>graph-list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

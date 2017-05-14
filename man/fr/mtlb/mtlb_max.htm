@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_max</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_max</b> - Fonction d'émulation de la fonction Matlab max</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>max</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec des valeurs complexes : La fonction Matlab <tt><b>max</b></tt> peut être utilisée
+	avec des complexes mais pas la fonction Scilab.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec deux paramètres d'entrée : La fonction Matlab <tt><b>max</b></tt> traite les valeurs
+	suivant la première dimension qui n'est pas 1 alors que Scilab traite l'ensemble des valeurs de l'entrée.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec deux paramètres d'entrée : si l'une d'elles est une matrice vide, Scilab
+	retourne un message d'erreur alors que Matlab renvoie [].
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec trois paramètres d'entrée : si le paramètre <tt><b>dim</b></tt> est plus grand que
+	le nombre de dimensions de le première entrée, Scilab retourne un message d'erreur alors que Matlab
+	retourne le premier paramètre.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>[r[,k]] = mtlb_max(A[,B[,dim]])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>[r[,k]] = max(A[,B[,dim]])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_max</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée, si <tt><b>A</b></tt> est un scalaire ou un vecteur
+        <tt><b>[r[,k]] = mtlb_max(A)</b></tt> peut être remplacé par <tt><b>max(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée, si <tt><b>A</b></tt> est une matrice
+        <tt><b>[r[,k]] = mtlb_max(A)</b></tt> peut être remplacé par <tt><b>max(A,"r")</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec deux paramètres d'entrée, si <tt><b>A</b></tt> et <tt><b>B</b></tt> 
+	sont des matrices réelles et ne sont pas des matrices vides,
+        <tt><b>[r[,k]] = mtlb_max(A,B)</b></tt> peut être remplacé par <tt><b>max(A,B)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec trois paramètres d'entrée, si <tt><b>dim</b></tt> est inférieur
+	au nombre de dimensions de <tt><b>A</b></tt>,
+        <tt><b>[r[,k]] = mtlb_max(A,[],dim)</b></tt> peut être remplacé par <tt><b>max(A,dim)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_max</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

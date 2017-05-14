@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nehari</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nehari</b> -  Nehari approximant</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=nehari(R [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>R</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>x</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>tol</b></tt>: optional threshold</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[x]=nehari(R [,tol])returns</b></tt> the Nehari approximant of <tt><b>R</b></tt>.</p>
+<p><tt><b>R</b></tt> = linear system in state-space representation (<tt><b>syslin</b></tt> list).</p>
+<p><tt><b>R</b></tt> is strictly proper and <tt><b>- R~</b></tt> is stable 
+    (i.e. <tt><b>R</b></tt> is anti stable).</p>
+<pre>
+
+    || R - X ||oo = min || R - Y ||oo
+                  Y in Hoo
+   
+    </pre>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gr_menu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gr_menu</b> -  petit éditeur graphique interactif  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sd1]=gr_menu([sd,flag,no_frame])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sd  </b></tt>
+    : liste (sortie de <tt><b>gr_menu</b></tt>), ou vecteur de longueur 4 <tt><b>[xmin,ymin,xmax,ymax]</b></tt> donnant les bornes du dessin). 
+</li>
+<li>
+<tt><b>sd1  </b></tt>
+    : liste (objets graphiques créés avec <tt><b>gr_menu</b></tt>
+</li>
+<li>
+<tt><b>flag, noframe  </b></tt>
+    : entiers valant 0 ou 1. Utiliser <tt><b>flag=1</b></tt> pour le mode non-interactif  (i.e. pour redessiner des graphiques déjà créés avec <tt><b>gr_menu</b></tt>) et <tt><b>no_frame=1</b></tt> pour supprimer le cadre autour des graphiques faits avec <tt><b>gr_menu</b></tt>. 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gr_menu</b></tt> est petit éditeur graphique interactif.
+    Quand on exécute <tt><b>gr_menu()</b></tt>, 3 nouveaux menus, <tt><b>Objects</b></tt>, 
+    <tt><b>Settings</b></tt> et <tt><b>Edit</b></tt> sont ajoutés à la fenêtre graphique courante.
+    Utiliser l'article <tt><b>Exit</b></tt> du menu <tt><b>Edit</b></tt> pour sortir de <tt><b>gr_menu</b></tt>.
+  </p>
+<p>
+    Les graphiques sont sauvés sous forme d'une liste pouvant être 
+    donnée en entrée de <tt><b>gr_menu</b></tt>.
+  </p>
+<dl>
+<dd>
+<b>[sd]=gr_menu([xmin,ymin,xmax,ymax])</b>: lance <tt><b>gr_menu</b></tt> avec un cadre donné</dd>
+<dd>
+<b>[sd]=gr_menu();</b>: lance <tt><b>gr_menu</b></tt> avec le cadre par défaut [0 0 100 100].</dd>
+<dd>
+<b>[sd]=gr_menu(sd)</b>: redessine les graphiques stockés dans sd et entre en mode interactif.</dd>
+<dd>
+<b>[sd]=gr_menu(sd,1)</b>: redessine uniquement les graphiques stockés dans <tt><b>sd</b></tt>. </dd>
+<dd>
+<b>[sd]=gr_menu(sd,1,1)</b> : redessine uniquement les graphiques stockés dans <tt><b>sd</b></tt> et aucun cadre n'est dessiné. </dd>
+</dl>
+<h3><font color="blue">Author</font></h3>
+<p>S.S. &amp; J.Ph.C.; ; ; ; ;   </p>
+</body>
+</html>

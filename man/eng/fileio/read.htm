@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>read</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>read</b> -  matrices read</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x]=read(file-desc,m,n,[format])     </tt></dd>
+<dd><tt>[x]=read(file-desc,m,n,k,format)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-desc</b></tt>: character string specifying the file name or integer value specifying logical unit (see file).</li>
+<li>
+<tt><b>m, n</b></tt>: integers (dimensions of the matrix x). Set m=-1 if you do not know the numbers of rows, so the whole file is read.</li>
+<li>
+<tt><b>format : character string, specifies a "Fortran" format. This</b></tt>character string must begin with a right parenthesis and end with a left parenthesis.  Formats cannot mix floating point or character edition modes.</li>
+<li>
+<tt><b>k</b></tt>: integer or vector of integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    reads row after row
+    the <tt><b>mxn</b></tt> matrix <tt><b>x</b></tt> (<tt><b>n=1</b></tt> for character chain) in the
+    file <tt><b>file-desc</b></tt> (string or integer).  Each row of the matrix <tt><b>x</b></tt>
+    begin in a new line of <tt><b>file-desc</b></tt> file. Depending on <tt><b>format</b></tt>, a
+    given row of the <tt><b>x</b></tt> matrix may be read from more than one line
+    of <tt><b>file-desc</b></tt> file.</p>
+<p>
+    The type of the result will depend on the specified format. 
+    If format contains only <tt><b>(d,e,f,g)</b></tt>  descriptors the function
+    tries to read numerical data (the result is matrix of real numbers).</p>
+<p>
+    If format contains only  <tt><b>a</b></tt> descriptors the function tries to
+    read character strings (the result is a character string column
+    vector). In this case n must be equal to 1. Warning: The character strings are
+      truncated when they are longuer than 4093.</p>
+<p>
+    Examples for <tt><b>format</b></tt>:</p>
+<pre>
+
+(1x,e10.3,5x,3(f3.0))
+(10x,a20) 
+   
+    </pre>
+<p>
+    When format is omitted datas are read using numerical free format: 
+    blank, comma and slash may be used as data separators, n*v may be use
+    to represent n occurrences of value n.</p>
+<p>
+    A direct access file can be used if using the parameter <tt><b>k</b></tt> which is 
+    is the vector of record numbers to be read (one record per row),
+    thus <tt><b>m</b></tt> must be <tt><b>m=prod(size(k))</b></tt>.</p>
+<p>
+    To read on the keyboard use <tt><b>read(%io(1),...)</b></tt>.</p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    Last line of data files must be terminated by a newline to be taken into account.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+if MSDOS then unix('del foo');
+else unix('rm -f foo'); end
+A=rand(3,5); write('foo',A);
+B=read('foo',3,5)
+B=read('foo',-1,5)
+read(%io(1),1,1,'(a)')  // waits for user's input
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/readb.htm"><tt><b>readb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>msscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

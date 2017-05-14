@@ -1,0 +1,37 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>AON </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>AON  -   All or Nothing traffic assignment algorithm   </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[F]=AON(net)  </tt></dd><dd><tt>[F]=AON(net,t0)  </tt></dd><dd><tt>[F]=AON(tl,hl,t0,nn,origins,td,hd,dd)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList, 
+  </li>
+  <li><tt><b>t0  </b></tt>
+    : row vector, the link travel time (if not given in net)
+  </li>
+  <li><tt><b>tl, hl  </b></tt>
+    : row vectors, tail and head nodes numbers of the links 
+  </li>
+  <li><tt><b>nn  </b></tt>
+    : node number
+  </li>
+  <li><tt><b>origins  </b></tt>
+    : origins of the OD pairs
+  </li>
+  <li><tt><b>td, hd, dd  </b></tt>
+    : row vectors, tail and head nodes numbers of the demands, and demands values
+  </li>
+  <li><tt><b>F  </b></tt>
+    : assigned flow  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow with the All or Nothing algorithm. For each OD-pair
+    it looks for the minimum travel time path and assigns all the demand to this
+    path. The travel time of the links are given by t0 or by the corresponding field in net.
+    The non feasible OD pairs are ignored.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Small');
+F=AON(net)
+   </pre><p>
+    
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AONd.htm"><tt><b>AONd</b></tt></a>&nbsp;&nbsp;<a href="IA.htm"><tt><b>IA</b></tt></a>&nbsp;&nbsp;<a href="IAON.htm"><tt><b>IAON</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="CAPRES.htm"><tt><b>CAPRES</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

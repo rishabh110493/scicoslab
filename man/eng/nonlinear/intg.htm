@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>intg</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>intg</b> -  definite integral</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,err]=intg(a,b,f [,ea [,er])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a,b</b></tt>: real numbers</li>
+<li>
+<tt><b>f</b></tt>: external (function or list or string)</li>
+<li>
+<tt><b>ea, er</b></tt>: real numbers</li>
+<li>
+<tt><b>ea</b></tt>: absolute error required on the result. Default value: 1.d-14</li>
+<li>
+<tt><b>er</b></tt>: relative error required on the result. Default value: 1.d-8</li>
+<li>
+<tt><b>err</b></tt>: estimated absolute error on the result.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>intg(a,b,f)</b></tt> evaluates the definite integral  from <tt><b>a</b></tt> to
+    <tt><b>b</b></tt> of <tt><b>f(t)dt</b></tt>. The function <tt><b>f(t)</b></tt>
+      should be continuous.</p>
+<p>The evaluation hopefully satisfies following claim for accuracy:
+    <tt><b>abs(I-v)&lt;= max(ea,er*abs(I))</b></tt> where I stands for the
+    exact value of the integral.</p>
+<p><tt><b>f</b></tt> is an external :</p>
+<p>
+    If <tt><b>f</b></tt> is function its definition must be as follows
+    <tt><b> y = f(t) </b></tt></p>
+<p>
+    If <tt><b>f</b></tt> is a list the list must be as follows:
+    <tt><b> list(f,x1,x2,...)</b></tt> where <tt><b>f</b></tt> is a function with calling
+    sequence <tt><b>f(t,x1,x2,...)</b></tt>.</p>
+<p>If <tt><b>f</b></tt> is a string it refers to a the name
+    of a Fortran function or a C prodedure with a given calling sequence: </p>
+<p>In the fortran case the calling sequence should be 
+	<tt><b>double precision function f(x)</b></tt> where <tt><b>x</b></tt> is
+      also a double precision number. </p>
+<p>In the C case the calling sequence should be 
+	<tt><b>double f(double *x)</b></tt>. </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Scilab function case
+function y=f(x),y=x*sin(30*x)/sqrt(1-((x/(2*%pi))^2)),endfunction
+exact=-2.5432596188;
+I=intg(0,2*%pi,f)
+abs(exact-I)
+
+//Scilab function case with parameter
+function y=f1(x,w),y=x*sin(w*x)/sqrt(1-((x/(2*%pi))^2)),endfunction
+I=intg(0,2*%pi,list(f1,30))
+abs(exact-I)
+
+
+// Fortran code case (Fortran compiler required)
+// write down the fortran code
+F=['      double precision function ffun(x)'
+   '      double precision x,pi'
+   '      pi=3.14159265358979312d+0'
+   '      ffun=x*sin(30.0d+0*x)/sqrt(1.0d+0-(x/(2.0d+0*pi))**2)'
+   '      return'
+   '      end'];
+mputl(F,TMPDIR+'/ffun.f')
+// compile the fortran code
+l=ilib_for_link('ffun','ffun.o',[],'f',TMPDIR+'/Makefile');
+// incremental linking
+link(l,'ffun','f')
+//integrate the function
+I=intg(0,2*%pi,'ffun')
+abs(exact-I)
+
+// C code case (C compiler required)
+// write down the C code
+C=['#include &lt;math.h&gt;'
+   'double cfun(double *x)'
+   '{'
+   '  double y,pi=3.14159265358979312;'
+   '  y=*x/(2.0e0*pi);'
+   '  return *x*sin(30.0e0**x)/sqrt(1.0e0-y*y);'
+   '}'];
+mputl(C,TMPDIR+'/cfun.c')
+// compile the C code
+l=ilib_for_link('cfun','cfun.o',[],'c',TMPDIR+'/Makefile');
+// incremental linking
+link(l,'cfun','c')
+//integrate the function
+I=intg(0,2*%pi,'cfun')
+abs(exact-I)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intc.htm"><tt><b>intc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intl.htm"><tt><b>intl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/inttrap.htm"><tt><b>inttrap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/intsplin.htm"><tt><b>intsplin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>The associated routines can be found in  routines/integ directory :</p>
+<p>dqag0.f and dqags.f from quadpack </p>
+</body>
+</html>

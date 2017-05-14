@@ -1,0 +1,64 @@
+ShowNet                         Traffic-toolbox Function            ShowNet
+   
+  
+NAME
+   ShowNet  -  Show a net using Metanet or Scigraph 
+  
+CALLING SEQUENCE
+ ShowNet()
+ ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax)
+ ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax,d)
+   
+  
+PARAMETERS
+ %net       : the global NetList varaible databasis
+            
+ nodes      : string or row vector of integers (nodes)
+            
+ arcs       : string or row vector of integers (arcs)
+            
+ fmin,fmax  : reals, minimum and maximum flow
+            
+ tmin,tmax  : reals, minimum and maximum time
+            
+ demands    : string or row vector of integers (demands)
+            
+ dmin,dmax  : reals, minimum and maximum demand 
+            
+ d          : integer, a demand number 
+            
+DESCRIPTION
+    ShowNet shows the state of the NetList with the flow and the travel time
+  if they are already assigned. The conventions are that the non used arcs
+  are light blue, the used arcs are black with their width proportional to
+  the flow. The demands are magenta with their width proportional to the
+  demand flow. The orientation of the demand arcs is from origin to
+  destination.    It is possible to give a list of nodes, arcs and demands
+  to be shown or a predefined string   - For the nodes the strings
+  available are : "all" representing all the nodes, and "used" representing
+  the nodes used by some route.   - For the arcs the options are "all" or
+  "between" in this case  the flow limits are the parameters fmin, fmax and
+  the travel time limits are tmin, tmax.  - For the demands the options are
+  "all" or "between" in this case the demand limits are dmin,dmax.    It is
+  also possible to choose a demand in order to show the disaggregated flow 
+  corresponding to a specific commodity. In this case the limits on the
+  flow given by fmin and fmax corresponds to the total flow but the width
+  and the colors of the arcs correspond to the disaggregated flow. 
+  
+EXAMPLES
+ %net=TrafficExample('Steenbrink');
+ %net.gp.algorithm='DSDisaggregated';
+ TrafficAssig();
+ ShowNet() // Shows the net
+ ShowNet('used','between',1000,2000,0,0,3,0,10000,3)
+ // Shows the net with the flow corresponding to demand 3, 
+ // the light blue arcs are not used by the commodity 3
+ // but by other commodities. The width corresponds to
+ // the flow of the commodity 3. The arcs not shown have
+ // total flow less than 1000 or greater than 2000.
+   
+  
+SEE ALSO
+   ShowLinks, ShowDemands, TrafficExample, TrafficAssig, IntroTrfAsg,
+  NetList   
+  

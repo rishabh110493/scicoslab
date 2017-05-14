@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>scilab</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>scilab</b> -  Major unix script to execute ScicosLab and miscellaneous tools  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>scilab &lt;Options&gt; </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>-args Arguments</b>: if this option is present arguments are passed to
+	  ScicosLab. They can then be got by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/sciargs.htm"><tt><b>sciargs</b></tt></a> function. For
+	  multi arguments passing use a quoted, blank separated
+	  sequence of words like: 
+	  <tt><b>scilab -args 'foo1 foo2'</b></tt>
+</dd>
+<dd>
+<b>-display Display</b>: for use under Xwindow systems only to set a specific X server
+	  display. Default display is unix:0.0<p><tt><b>-display</b></tt> can be abbreviated by <tt><b>-d</b></tt></p>
+</dd>
+<dd>
+<b>-debug</b>: Start ScicosLab under the debugguer gdb (Unix/linux only).</dd>
+<dd>
+<b>-e Instruction</b>: if this option is present then Scilab instruction
+	  <tt><b>Instruction</b></tt> is executed first (just after startup file
+	  execution) into ScicosLab. <tt><b>-e</b></tt> and <tt><b>-f</b></tt>
+	  options are mutually exclusive.</dd>
+<dd>
+<b>-f file</b>: if this option is present then Scilab script
+	  <tt><b>file</b></tt> is executed first (just after startup file
+	  execution) into ScicosLab. <tt><b>-e</b></tt> and <tt><b>-f</b></tt>
+	  options are mutually exclusive.</dd>
+<dd>
+<b>-l lang</b>:if this option is present it fixes the user
+	  language. The possible <tt><b>lang</b></tt> values are
+	  <tt><b>'fr'</b></tt> for french and <tt><b>'eng'</b></tt> for
+	  english. The default language is english. This default
+	  value is fixed the <tt><b>scilab.star</b></tt> file.</dd>
+<dd>
+<b>scilab -link &lt;objects&gt;</b>: Is used to produce a local <tt><b>scilex</b></tt>
+	  (executable code of ScicosLab) linked with the additional files
+	  given by the user in <tt><b>&lt;objects&gt;</b></tt>. This command also produces a
+	  <tt><b>scilab</b></tt> script, which when called will ran the
+	  new generated scilex file.<p>
+	  For example:</p>
+<pre>
+	  
+	  scilab -link  C/interf.o C/evol.o C/bib.a
+	  
+	</pre>
+<p>will create a new <tt><b>scilex</b></tt> file in which the default <tt><b>interf.o</b></tt> 
+	  file will be replaced by <tt><b>C/interf.o</b></tt>.</p>
+<p><tt><b>-link</b></tt> option cannot be used with any of the other options.</p>
+</dd>
+<dd>
+<b>-mem N</b>:set the initial stacksize, for use with -ns option. Without
+	  -ns option the initial stacksize is set by scilab.star script.</dd>
+<dd>
+<b>-nb</b>:if this option is present then  the scilab welcome banner
+	  is not displayed.</dd>
+<dd>
+<b>-ns</b>
+				:if this option is  present the startup file
+				<tt><b>SCI/scilab.star</b></tt> and the user startup files
+				<tt><b>SCIHOME/.scilab</b></tt>, <tt><b>SCIHOME/scilab.ini</b></tt> are not executed.
+			</dd>
+<dd>
+<b>-nouserstartup</b>
+				:if this option is  present the user startup files
+				<tt><b>SCIHOME/.scilab</b></tt>, <tt><b>SCIHOME/scilab.ini</b></tt> are not executed.
+			</dd>
+<dd>
+<b>-nw</b>:if this option is present then ScicosLab is not run in an specific window.</dd>
+<dd>
+<b>-nwni</b>:if this option is present then ScicosLab is not run in an
+	  specific window and does not accept user interaction. This option
+	  may be used with -f or -e options.</dd>
+<dd>
+<b>--texmacs</b>:This option is reserved for TeXMacs.</dd>
+</dl>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+			SCIHOME definition: 
+			On Windows : C:/Documents and Settings/&lt;User&gt;/ScicosLab/&lt;ScicosLab-Version&gt;
+			On Linux/Unix : /home/&lt;User&gt;/.ScicosLab/&lt;ScicosLab-Version&gt;
+		</p></dl>
+</body>
+</html>

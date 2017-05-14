@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>max_flow</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>max_flow</b> -  maximum flow between two nodes</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,phi,flag] = max_flow(i,j,g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>i</b></tt>: integer, number of start node</li>
+<li>
+<tt><b>j</b></tt>: integer, number of end node</li>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>v</b></tt>: value of the maximum flow it is exists</li>
+<li>
+<tt><b>phi</b></tt>: row vector of the value of the flow on the arcs</li>
+<li>
+<tt><b>flag</b></tt>: feasible problem flag (0 or 1)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>max_flow</b></tt> returns the value of maximum flow <tt><b>v</b></tt> from node number
+    <tt><b>i</b></tt> to node number <tt><b>j</b></tt> if it exists, and the value of the flow 
+    on each arc as a row vector <tt><b>phi</b></tt>. All the computations are made with 
+    integer numbers. The graph must be directed. If the problem is not 
+    feasible, <tt><b>flag</b></tt> is equal to 0, otherwise it is equal to 1.</p>
+<p>
+    The bounds of the flow are given by the elements <tt><b>edge_min_cap</b></tt> and
+    <tt><b>edge_max_cap</b></tt> of the graph list. 
+    The value of the maximum capacity must be greater than or equal to the 
+    value of the minimum capacity.
+    If the value of <tt><b>edge_min_cap</b></tt> or <tt><b>edge_max_cap</b></tt> is not given (empty
+    row vector <tt><b>[]</b></tt>), it is assumed to be equal to 0 on each edge.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 3 3 4 4 5 5 5 5 6 6 6 7 7 15 15 15 15 15 15];
+ta=[ta, 15 8 9 10 11 12 13 14];
+he=[10 13 9 14 8 11 9 11 8 10 12 13 8 9 12 8 11 1 2 3 4];
+he=[he, 5 6 7 16 16 16 16 16 16 16];
+n=16;
+g=make_graph('foo',1,n,ta,he);
+g('node_x')=[42 615 231 505 145 312 403 233 506 34 400 312 142 614 260 257];
+g('node_y')=[143 145 154 154 147 152 157 270 273 279 269 273 273 274 50 376];
+ma=edge_number(g);
+g('edge_max_cap')=ones(1,ma);
+g('edge_min_cap')=zeros(1,ma);
+source=15; sink=16;
+nodetype=0*ones(1,n); nodetype(source)=2; nodetype(sink)=1;
+g('node_type')=nodetype;
+nodecolor=0*ones(1,n); nodecolor(source)=11; nodecolor(sink)=11;
+g('node_color')=nodecolor;
+show_graph(g);
+[v,phi,ierr]=max_flow(source,sink,g);
+ii=find(phi&lt;&gt;0); edgecolor=phi; edgecolor(ii)=11*ones(ii);
+g('edge_color')=edgecolor;
+edgefontsize=8*ones(1,ma); edgefontsize(ii)=18*ones(ii);
+g('edge_font_size')=edgefontsize;
+g('edge_label')=string(phi);
+show_graph(g);
+ 
+  </pre>
+</body>
+</html>

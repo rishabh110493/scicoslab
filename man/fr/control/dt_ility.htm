@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dt_ility</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dt_ility</b> -  detectability test</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[k, [n [,U [,Sld ] ] ]]=dt_ility(Sl [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>n</b></tt>: dimension of unobservable subspace</li>
+<li>
+<tt><b>k</b></tt>: dimension of unstable, unobservable subspace (<tt><b> k&lt;=n</b></tt>).</li>
+<li>
+<tt><b>U</b></tt>: orthogonal matrix</li>
+<li>
+<tt><b>Sld</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>tol</b></tt>: threshold for controllability test.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Detectability test for <tt><b>sl</b></tt>, a linear system in state-space
+    representation. 
+    <tt><b>U</b></tt> is a basis whose <tt><b>k</b></tt> first columns span the
+    unstable, unobservable subspace of <tt><b>Sl</b></tt> (intersection
+    of unobservable subspace of <tt><b>(A,C)</b></tt> and unstable subspace
+    of <tt><b>A</b></tt>). Detectability means <tt><b>k=0</b></tt>.</p>
+<p><tt><b>Sld = (U'*A*U,U'*B,C*U,D)</b></tt> displays the "detectable part"
+    of <tt><b>Sl=(A,B,C,D)</b></tt>, i.e.</p>
+<pre>
+
+         [*,*,*]
+U'*A*U = [0,*,*]
+         [0,0,*]
+ 
+C*U = [0,0,*]
+   
+    </pre>
+<p>
+    with <tt><b>(A33,C3)</b></tt> observable (dimension <tt><b>nx-n</b></tt>), <tt><b>A22</b></tt> stable 
+    (dimension <tt><b>n-k</b></tt>) and <tt><b>A11</b></tt> unstable (dimension <tt><b>k</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[2,1,1;0,-2,1;0,0,3];
+C=[0,0,1];
+X=rand(3,3);A=inv(X)*A*X;C=C*X;
+W=syslin('c',A,[],C);
+[k,n,U,W1]=dt_ility(W);
+W1("A")
+W1("C")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/st_ility.htm"><tt><b>st_ility</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/unobs.htm"><tt><b>unobs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/stabil.htm"><tt><b>stabil</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

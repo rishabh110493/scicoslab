@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>load_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>load_graph</b> -  loads a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g = load_graph(name)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: string, the path of the graph to load</li>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>name</b></tt> is the name of a graph file which contains the ASCII 
+    description of a graph. Such a file must have the <tt><b>"graph"</b></tt> extension.
+    <tt><b>name</b></tt> can be the name or the pathname of the file; if the 
+    <tt><b>"graph"</b></tt> extension is missing in <tt><b>name</b></tt>, it is assumed.
+    <tt><b>load_graph</b></tt> returns the corresponding graph list.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+g=load_graph(SCI+'/demos/metanet/mesh100.graph');
+show_graph(g);
+g=load_graph(SCI+'/demos/metanet/colored');
+show_graph(g,'new');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/save_graph.htm"><tt><b>save_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

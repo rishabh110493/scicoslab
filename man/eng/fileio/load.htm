@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>load</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>load</b> -  load saved variable</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>load(filename [,x1,...,xn])  </tt></dd>
+<dd><tt>load(fd [,x1,...,xn])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: character string containing the path of the file</li>
+<li>
+<tt><b>fd</b></tt>: a file descriptor given by a call to mopen</li>
+<li>
+<tt><b>xi</b></tt>: arbitrary Scilab variable name(s) given as strings.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>The <tt><b>load</b></tt> command can be used to reload in the Scilab session
+    variables previously saved in a file with the <tt><b>save</b></tt> command. If
+    the file contains graphic handle variables, the corresponding
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a> are drawn.</p>
+<p><tt><b>load(filename)</b></tt> loads the variables saved in file given by its
+    path <tt><b>filename</b></tt>.</p>
+<p><tt><b>load(fd)</b></tt> loads the variables saved in file given by its
+    descriptor <tt><b>fd</b></tt>.</p>
+<p><tt><b>load(filename,'x','y')</b></tt> or <tt><b>load(fd,'x','y')</b></tt> loads only
+    variables <tt><b>x,y</b></tt>.</p>
+<p>Even if the binary file format has changed with 2.5 version,
+      <tt><b>load(filename,...)</b></tt> is able to read old format
+      files. Previous file format can be accessed for a while using function
+      oldsave ans oldload.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=eye(2,2);b=ones(a);
+save('vals.dat',a,b);
+clear a
+clear b
+load('vals.dat','a','b');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/listvarinfile.htm"><tt><b>listvarinfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save_format.htm"><tt><b>save_format</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

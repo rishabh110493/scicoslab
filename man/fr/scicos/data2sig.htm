@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>data2sig</TITLE>
+<META NAME="description" CONTENT="data2sig">
+<META NAME="keywords" CONTENT="data2sig">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="data2sig.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Fonction Scilab
+<BR><A NAME="tex2html1"
+  HREF="./data2sig.htm">fr</A> - <A NAME="tex2html2"
+  HREF="../../eng/scicos/data2sig.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="data2sig"></A>
+<BR>
+<b>data2sig</b> - Données Scilab vers structure signal Scicos
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00012000000000000000">
+Description</A>
+</font></H3>
+
+<P>
+Met des données dans une structure signal scicos. Si A est un vecteur, alors elle sera comprise comme un scalaire qui évolue dans le temps. Si A est une matrice, alors elle sera comprise comme un scalaire qui évolue dans le temps. Si A est une hypermatrice, alors elle sera comprise comme une matrice qui évolue dans le temps.  
+<BR>
+<H3><font color="blue"><A NAME="SECTION00013000000000000000">
+Séquence d'appel</A>
+</font></H3>
+<PRE>
+B=data2sig(A[,step])
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00014000000000000000">
+Paramètres</A>
+</font></H3>
+
+<UL>
+<LI><b>A :</b>
+   vecteur/matrice ou hypermatrice(à 3 dimensions) de nombres réels/complexes ou entiers.
+</LI>
+<LI><b>step :</b>
+   un argument optionnel qui donne le pas temporel pour le champ de sortie "time". Si celui-ci n'est pas donné, alors le pas temporel est égal à 1.
+</LI>
+<LI><b>B :</b>
+   une structure scilab qui définit un signal :
+
+<UL>
+<LI><b>B.values :</b>
+   L'entrée A.
+</LI>
+<LI><b>B.time :</b>
+   Les instants d'échantillons sous la forme d'un vecteur colonne. La taille du vecteur est donnée par l'entrée A.
+</LI>
+</UL>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00015000000000000000">
+Exemple</A>
+</font></H3>
+<PRE>
+--&gt;a(:,:,4)=([7 8 9;10 11 12]);
+--&gt;b=data2sig(a,0.1)
+b  =
+values: [2x3x4 hypermat]
+time: [4x1 constant]
+--&gt;b.time
+ans  =
+0.
+0.1.
+0.2.
+0.3.
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00016000000000000000">
+Voir aussi</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html4"
+  HREF="sig2data.htm">sig2data - Structure signal Scicos vers données Scilab (Fonction Scilab)</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00017000000000000000">
+Auteurs</A>
+</font></H3>
+<b>Alan Layec</b> INRIA
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

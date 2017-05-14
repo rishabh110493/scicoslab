@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>empty</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>empty</b> -  ([]) empty matrix</p>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b> [] </b></tt> denotes the empty matrix. It is uniquely defined
+    and has 0 row and 0 column, i.e. <tt><b> size([]) =[0,0] </b></tt>.
+    The following convenient conventions are made:</p>
+<p><tt><b> [] * A = A * [] = [] </b></tt></p>
+<p><tt><b> [] + A = A + [] = A</b></tt></p>
+<p>
+    [ [], A] = [A, []] = A
+    <tt><b> inv([]) =[] </b></tt></p>
+<p><tt><b> det([])=cond([])=rcond([])=1, rank([])=0</b></tt></p>
+<p>
+    Matrix functions return <tt><b>[]</b></tt> or an error message
+    when there is no obvious answer. Empty linear systems 
+    (<tt><b> syslin</b></tt> lists) may have several rows or columns.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s'); A = [s, s+1]; 
+A+[], A*[]
+A=rand(2,2); AA=A([],1), size(AA)
+svd([])
+w=ssrand(2,2,2); wr=[]*w; size(wr), w1=ss2tf(wr), size(w1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/matrices.htm"><tt><b>matrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/rational.htm"><tt><b>rational</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

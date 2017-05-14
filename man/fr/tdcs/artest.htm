@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>artest</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>artest</b> -  arnold dynamical system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>artest(f_l,[odem,xdim,npts])  </tt></dd>
+<dd><tt>arnold(t,x)  </tt></dd>
+<dd><tt>iarf([a])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f_l</b></tt>: can be "arnold" or arnold. It is the name of the external for the arnold system. If  <tt><b>f_l</b></tt> is set to "arnold" a Fortran coded version of the arnold system where a(1:6)=1  will be used and if <tt><b>f_l</b></tt> is set to arnold a Scilab coded version will be used .  <tt><b>arnold</b></tt> is a Scilab macro coding the Arnold system. This macro is loaded when calling <tt><b>artest</b></tt>.</li>
+<li>
+<tt><b>iarf</b></tt>: is used to fix the values of <tt><b>a</b></tt> in the Scilab coded case. <tt><b>a</b></tt> is a vector of size 6.</li>
+<li>
+<tt><b>odem,xdim,npts</b></tt>: are optional arguments. Their meaning and syntax can be found in the <tt><b>portr3d</b></tt>  help</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A call to the function <tt><b>artest()</b></tt> will interactively 
+    display a phase portrait of  a the following dynamical system :</p>
+<pre>
+
+      ydot(1)=a(1)*cos(y(2)) +a(2)*sin(y(3))
+      ydot(2)=a(3)*cos(y(3)) +a(4)*sin(y(1))
+      ydot(3)=a(5)*cos(y(1)) +a(6)*sin(y(2))
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/portr3d.htm"><tt><b>portr3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/chaintest.htm"><tt><b>chaintest</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/lotest.htm"><tt><b>lotest</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

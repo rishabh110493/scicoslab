@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>and</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>and</b> -  (&amp;) logical and</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>b=and(A),  b=and(A,'*')  </tt></dd>
+<dd><tt>b=and(A,'r'), b=and(A,1)  </tt></dd>
+<dd><tt>b=and(A,'c'), b=and(A,2)  </tt></dd>
+<dd><tt>A&amp;B</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>and(A)</b></tt> is the logical AND of elements of 
+    the boolean matrix <tt><b>A</b></tt>. <tt><b>and(A)</b></tt> returns <tt><b>%T</b></tt> ("true")  iff 
+    all entries of <tt><b>A</b></tt> are <tt><b>%T</b></tt>.</p>
+<p><tt><b>y=and(A,'r')</b></tt> (or, equivalently, <tt><b>y=and(A,1)</b></tt>) is the rowwise and. It returns in each 
+    entry of the row vector <tt><b>y</b></tt> the and of the rows of <tt><b>x</b></tt> (The and is performed on the 
+    row index : <tt><b>y(j)= and(A(i,j),i=1,m)</b></tt>).</p>
+<p><tt><b>y=and(A,'c')</b></tt> (or, equivalently, <tt><b>y=and(A,2)</b></tt>) is the columnwise and. It returns 
+    in each entry of the column vector <tt><b>y</b></tt> the and of the columns of <tt><b>x</b></tt> 
+    (The and is performed on the column index:  <tt><b>y(i)= and(A(i,j),j=1,n)</b></tt>)).</p>
+<p><tt><b>A&amp;B</b></tt>  gives the element-wise logical <tt><b>and</b></tt> of the booleans matrices
+     <tt><b>A</b></tt> and  <tt><b>B</b></tt> .<tt><b>A</b></tt> and  <tt><b>B</b></tt> must be matrices with the same
+     dimensions or one from them must be a single boolean.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/not.htm"><tt><b>not</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/or.htm"><tt><b>or</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

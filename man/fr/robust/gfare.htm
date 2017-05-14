@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gfare</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gfare</b> -  filter Riccati equation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Z,H]=gfare(Sl)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>Z</b></tt>: symmetric matrix</li>
+<li>
+<tt><b>H</b></tt>: real matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Generalized Filter Algebraic Riccati Equation (GFARE).
+    <tt><b>Z</b></tt> = solution, <tt><b>H</b></tt> = gain.</p>
+<p>
+    The GFARE for <tt><b>Sl=[A,B,C,D]</b></tt> is:</p>
+<pre>
+
+(A-B*D'*Ri*C)*Z+Z*(A-B*D'*Ri*C)'-Z*C'*Ri*C*Z+B*Si*B'=0
+   
+    </pre>
+<p>
+    where <tt><b>S=(eye()+D'*D)</b></tt>, <tt><b>Si=inv(S)</b></tt>, <tt><b>R=(eye()+D*D')</b></tt>, <tt><b>Ri=inv(R)</b></tt>
+    and <tt><b>H=-(B*D'+Z*C')*Ri</b></tt> is such that <tt><b>A+H*C</b></tt> is stable.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/gcare.htm"><tt><b>gcare</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

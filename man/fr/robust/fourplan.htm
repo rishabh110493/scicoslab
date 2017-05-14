@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fourplan</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fourplan</b> -  augmented plant to four plants</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P11,P12,P21,P22]=fourplan(P,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list (linear system)</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector, dimension of <tt><b>P22</b></tt>
+</li>
+<li>
+<tt><b>P11,P12,P21,P22</b></tt>: <tt><b>syslin</b></tt> lists.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function.</p>
+<p><tt><b>P</b></tt> being partitioned as follows:</p>
+<pre>
+
+P=[ P11 P12;
+    P21 P22]  
+   
+    </pre>
+<p>
+    with <tt><b>size(P22)=r</b></tt> this function returns the four linear systems <tt><b>P11,P12,P21,P22</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg.htm"><tt><b>lqg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg2stan.htm"><tt><b>lqg2stan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqe.htm"><tt><b>lqe</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>riccati</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>riccati</b> -  Riccati equation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X=riccati(A,B,C,dom,[typ])  </tt></dd>
+<dd><tt>[X1,X2]=riccati(A,B,C,dom,[typ])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B,C</b></tt>: real matrices nxn, <tt><b>B</b></tt> and  <tt><b>C</b></tt> symetric.</li>
+<li>
+<tt><b>dom</b></tt>: <tt><b>'c'</b></tt> or <tt><b>'d'</b></tt> for the time domain (continuous or discrete)</li>
+<li>
+<tt><b>typ</b></tt>: string : <tt><b>'eigen'</b></tt> for block diagonalization or <tt><b>schur'</b></tt> for  Schur method.</li>
+<li>
+<tt><b>X1,X2,X</b></tt>: square real matrices (X2 invertible), X symmetric</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>X=riccati(A,B,C,dom,[typ])</b></tt> solves the Riccati equation:</p>
+<pre>
+
+A'*X+X*A-X*B*X+C=0 
+   
+    </pre>
+<p>
+    in continuous time case, or:</p>
+<pre>
+
+ A'*X*A-(A'*X*B1/(B2+B1'*X*B1))*(B1'*X*A)+C-X
+   
+    </pre>
+<p>
+     with <tt><b>B=B1/B2*B1'</b></tt> in the discrete time case.
+    If called with two output arguments, <tt><b>riccati</b></tt> returns <tt><b>X1,X2</b></tt>
+    such that <tt><b>X=X1/X2</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ricc.htm"><tt><b>ricc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/ric_desc.htm"><tt><b>ric_desc</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

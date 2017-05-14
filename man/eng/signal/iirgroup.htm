@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iirgroup</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>iirgroup</b> -  group delay Lp IIR filter optimization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[lt,grad]=iirgroup(p,r,theta,omega,wt,td)  </tt></dd>
+<dd><tt>[cout,grad,ind]=iirlp(x,ind,p,[flag],lambda,omega,ad,wa,td,wt)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>r</b></tt>: vector of the module of the poles and the zeros of the filters</li>
+<li>
+<tt><b>theta</b></tt>: vector of the argument of the poles and the zeros of the filters</li>
+<li>
+<tt><b>omega</b></tt>: frequencies where the filter specifications are given</li>
+<li>
+<tt><b>wt</b></tt>: weighting function for and the group delay</li>
+<li>
+<tt><b>td</b></tt>: desired group delay</li>
+<li>
+<tt><b>lt, grad</b></tt>: criterium and gradient values</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    optimization of IIR filters for the Lp criterium for the
+    the group delay. (Rabiner &amp; Gold pp270-273).</p>
+</body>
+</html>

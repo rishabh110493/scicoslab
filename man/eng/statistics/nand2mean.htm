@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nand2mean</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nand2mean</b> -  difference of the means of
+  two independent samples</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[dif]=nand2mean(sample1,sample2)  </tt></dd>
+<dd><tt>[dif]=nand2mean(sample1,sample2,conf)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sample1</b></tt>real or complex vector or matrix</li>
+<li>
+<tt><b>sample2</b></tt>real or complex vector or matrix</li>
+<li>
+<tt><b>conf</b></tt>real scalar between 0 and 1</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This  function computes   an  estimate  (dif(1)) for   the
+    difference of the means of two independent samples (arrays
+    sample1  and sample2) and gives  the half amplitude of the
+    range of variability of dif  with an indicated  confidence
+    level (dif(2)). The choice of the normal or t fonctions as
+    the  probability fonction depends on  the sizes of sample1
+    and sample2.  We suppose that  the underlying variances of
+    both populations are equal. NAN values are not counted.</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<p>
+    In absence of the confidence  parameter a confidence level
+    of 95% is assumed.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Wonacott,  T.H. &amp; Wonacott, R.J.; Introductory Statistics, 5th edition, J.Wiley &amp; Sons, 1990.</p></dl>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>obscont</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>obscont</b> -  observer based controller</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[K]=obscont(P,Kc,Kf)  </tt></dd>
+<dd><tt>[J,r]=obscont(P,Kc,Kf)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list (nominal plant) in state-space form, continuous  or discrete time</li>
+<li>
+<tt><b>Kc</b></tt>: real matrix, (full state) controller gain</li>
+<li>
+<tt><b>Kf</b></tt>: real matrix, filter gain</li>
+<li>
+<tt><b>K</b></tt>: <tt><b>syslin</b></tt> list (controller)</li>
+<li>
+<tt><b>J</b></tt>: <tt><b>syslin</b></tt> list (extended controller)</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>obscont</b></tt>  returns the observer-based controller associated with a 
+    nominal plant <tt><b>P</b></tt> with matrices <tt><b>[A,B,C,D]</b></tt> (<tt><b>syslin</b></tt> list).</p>
+<p>
+    The full-state control gain is <tt><b>Kc</b></tt> and the filter gain is <tt><b>Kf</b></tt>.
+    These gains can be computed, for example, by pole placement.</p>
+<p><tt><b>A+B*Kc</b></tt> and <tt><b>A+Kf*C</b></tt> are (usually) assumed stable.</p>
+<p><tt><b>K</b></tt> is a state-space representation of the 
+    compensator <tt><b> K: y-&gt;u</b></tt> in:</p>
+<p><tt><b> xdot = A x + B u,  y=C x + D u, zdot= (A + Kf C)z -Kf y +B u, u=Kc z</b></tt></p>
+<p><tt><b>K</b></tt> is a linear system (<tt><b>syslin</b></tt> list) with matrices given by:
+     <tt><b>K=[A+B*Kc+Kf*C+Kf*D*Kc,Kf,-Kc]</b></tt>.</p>
+<p>
+    The closed loop feedback system <tt><b> Cl: v -&gt;y</b></tt> with
+    (negative) feedback <tt><b>K</b></tt> (i.e. <tt><b>y = P u, u = v - K y</b></tt>, or  </p>
+<pre>
+       xdot = A x + B u, 
+       y = C x + D u, 
+       zdot = (A + Kf C) z - Kf y + B u, 
+       u = v -F z
+    </pre>
+<p>) is given by <tt><b>Cl = P/.(-K)</b></tt></p>
+<p>
+    The poles of <tt><b>Cl</b></tt> (<tt><b> spec(cl('A')) </b></tt>) are located at the eigenvalues of <tt><b>A+B*Kc</b></tt>
+    and <tt><b>A+Kf*C</b></tt>.</p>
+<p>
+    Invoked with two output arguments <tt><b>obscont</b></tt> returns a
+    (square) linear system <tt><b>K</b></tt> which parametrizes all the stabilizing
+    feedbacks via a LFT.</p>
+<p>
+    Let <tt><b>Q</b></tt> an arbitrary stable linear system of dimension <tt><b>r(2)</b></tt>x<tt><b>r(1)</b></tt>
+    i.e. number of inputs x number of outputs in <tt><b>P</b></tt>.
+    Then any stabilizing controller <tt><b>K</b></tt> for <tt><b>P</b></tt> can be expressed as
+    <tt><b>K=lft(J,r,Q)</b></tt>. The controller which corresponds to <tt><b>Q=0</b></tt> is
+    <tt><b>K=J(1:nu,1:ny)</b></tt> (this <tt><b>K</b></tt> is returned by <tt><b>K=obscont(P,Kc,Kf)</b></tt>).
+    <tt><b>r</b></tt> is <tt><b>size(P)</b></tt> i.e the vector [number of outputs, number of inputs];</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ny=2;nu=3;nx=4;P=ssrand(ny,nu,nx);[A,B,C,D]=abcd(P);
+Kc=-ppol(A,B,[-1,-1,-1,-1]);  //Controller gain
+Kf=-ppol(A',C',[-2,-2,-2,-2]);Kf=Kf';    //Observer gain
+cl=P/.(-obscont(P,Kc,Kf));spec(cl('A'))   //closed loop system
+[J,r]=obscont(P,Kc,Kf);
+Q=ssrand(nu,ny,3);Q('A')=Q('A')-(maxi(real(spec(Q('A'))))+0.5)*eye(Q('A')) 
+//Q is a stable parameter
+K=lft(J,r,Q);
+spec(h_cl(P,K))  // closed-loop A matrix (should be stable);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ppol.htm"><tt><b>ppol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqg.htm"><tt><b>lqg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqe.htm"><tt><b>lqe</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/h_inf.htm"><tt><b>h_inf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/feedback.htm"><tt><b>feedback</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/observer.htm"><tt><b>observer</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D. ; ;   </p>
+</body>
+</html>

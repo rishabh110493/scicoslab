@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_num2str</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_num2str</b> - Fonction d'émulation de la fonction Matlab num2str</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction Matlab <tt><b>num2str</b></tt> et ses équivalents Scilab
+    (<tt><b>string</b></tt>, <tt><b>msprintf</b></tt>) se comportent différemment :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux paramètres d'entrée, le second donnant une précision : Il n'y a pas de fonction Scilab équivalente 
+	mais <tt><b>msprintf</b></tt> peut être utilisée pour émuler ce cas.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux paramètres d'entrée, le second donnant un format : l'équivalent Scilab pour l'expression Matlab 
+	<tt><b>num2string(a,format)</b></tt> est <tt><b>msprintf(format,a)</b></tt>.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_num2str(x,f)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>num2str(x,f)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_num2str</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>f</b></tt> est une chaîne de caractères,
+        <tt><b>mtlb_num2str(x,f)</b></tt> peut être remplacé par <tt><b>msprintf(f,x)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_num2str</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>msprintf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

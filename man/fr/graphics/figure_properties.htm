@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>figure_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>figure_properties</b> - description of the graphics
+  figure entity properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The figure entity is the top level of the graphics entities hierarchy.
+    This entity contain a number of properties designed to control many
+    aspects of displaying Scilab graphics objects. These properties fall into
+    two categories. Properties that contain information about figure itself
+    and others related to set default values for the children creation.</p>
+<dl>
+<dd>
+<b>Figure properties: </b><dl>
+<dd>
+<b>children: </b>This handles represent the vector of the figure's children .
+            Note that all figure children are of type <tt><b>"Axes"</b></tt>.
+            Also keep in mind that, when creating a figure entity (using
+            <tt><b>scf</b></tt> command), an <tt><b>Axes</b></tt> entity is
+            simultaneously built too.</dd>
+<dd>
+<b>figure_style: </b>The value of this field defines the figure style, it should be
+            <tt><b>"old"</b></tt> or <tt><b>"new"</b></tt>. The <tt><b>"new"</b></tt>
+            value sets the entity based style. The <tt><b>"old"</b></tt> value
+            represents the old Scilab graphic mode. In this case
+            <tt><b>figure_style</b></tt> is the only defined property.</dd>
+<dd>
+<b>figure_position: </b>This field contains the position in pixel of the graphic
+            window on the screen. The size is the vector <tt><b>[x,y]</b></tt>.
+            The point <tt><b>[0,0]</b></tt> if the upper-left corner of the
+            screen.</dd>
+<dd>
+<b>figure_size: </b>This property controls the size in pixel of the screen's
+            graphics window. The size is the vector
+            <tt><b>[width,height]</b></tt>.</dd>
+<dd>
+<b>axes_size: </b>Used to Specifies the size in pixel of the virtual graphics
+            window. The size is the vector <tt><b>[width,height] </b></tt>. The
+            virtual graphic window should be bigger than the part really
+            visible on the screen.</dd>
+<dd>
+<b>auto_resize: </b>This property determines if graphics window is resized. If the
+            value is <tt><b>"on"</b></tt> then the <tt><b>axes_size</b></tt>
+            property is equaled to the <tt><b>figure_size</b></tt> and the axes
+            children are zoomed accordingly. If the value is
+            <tt><b>"off"</b></tt> that indicate that <tt><b>axes_size</b></tt>
+            cannot be resized when <tt><b>figure_size</b></tt> is changed.</dd>
+<dd>
+<b>figure_name: </b>This field contains the name of the figure. This name is a
+            character string displayed at the top of the graphics_window. The
+            name can contain a single substring <tt><b>%d</b></tt> which will be
+            replaced by the <tt><b>figure_id</b></tt>. No other instance of the
+            <tt><b>%</b></tt> character is allowed inside the name.</dd>
+<dd>
+<b>figure_id: </b>This field contains the identifier of the figure. This is an
+            integer number which is set at figure creation and cannot be
+            changed after.</dd>
+<dd>
+<b>color_map: </b>Property which defines the colormap used by this figure. The
+            colormap is a <tt><b>m</b></tt> by <tt><b>3</b></tt> matrix.
+            <tt><b>m</b></tt> is the number of colors. Color number i is given as
+            a 3-uple <tt><b>R</b></tt>, <tt><b>G</b></tt>, <tt><b>B</b></tt>
+            corresponding respectively to red, green and blue intensity
+            between 0 and 1.</dd>
+<dd>
+<b>pixmap: </b>This property controls the pixmap status of a Graphic Window.
+            If this property value is <tt><b>"off"</b></tt> the graphics are
+            directly displayed on the screen. If it is <tt><b>"on"</b></tt> the
+            graphics are done on a pixmap and are sent to the graphics window
+            with the command <tt><b>show_pixmap()</b></tt>.</dd>
+<dd>
+<b>pixel_drawing_mode: </b>This field defines the bitwise operation used to draw the
+            pixel on the screen. The default mode is <tt><b>copy</b></tt> what is
+            to say the pixel is drawn as required. More generally the bitwise
+            operation is performed between the color of the source pixel and
+            the color of the pixel already present on the screen. Operations
+            are : <tt><b>"clear"</b></tt>, <tt><b>"and"</b></tt>,
+            <tt><b>"andReverse"</b></tt> , <tt><b>"copy"</b></tt>,
+            <tt><b>"andInverted"</b></tt> , <tt><b>"noop"</b></tt> ,
+            <tt><b>"xor"</b></tt> , <tt><b>"or"</b></tt> , <tt><b>"nor"</b></tt> ,
+            <tt><b>"equiv"</b></tt> , <tt><b>"invert"</b></tt> ,
+            <tt><b>"orReverse"</b></tt> , <tt><b>"copyInverted"</b></tt> ,
+            <tt><b>"orInverted"</b></tt> , <tt><b>"nand"</b></tt> ,
+            <tt><b>"set"</b></tt> ,</dd>
+<dd>
+<b>immediate_drawing: </b>This property controls the figure display. Its value can be
+            <tt><b>"on"</b></tt> (default mode) or <tt><b>"off"</b></tt>. It is used
+            to delay a huge succession of graphics commands (implying several
+            drawings or redrawings). Note that, when using
+            <tt><b>drawlater</b></tt> or <tt><b>drawnow</b></tt> commands, it
+            affects the property value of the current figure (which is
+            respectively turned to <tt><b>'off'</b></tt> or
+            <tt><b>'on'</b></tt>).</dd>
+<dd>
+<b>background: </b>This property controls the figure window background color. It
+            takes as value an index relative to the current colormap.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the
+            figure data structure, and to retreive it.</dd>
+</dl>
+</dd>
+<dd>
+<b>Children's default values: </b><dl>
+<dd>
+<b>visible: </b>This field rules if the contents of the figure as to be
+            redrawn. Its value should be <tt><b>"on"</b></tt> or
+            <tt><b>"off"</b></tt>.</dd>
+<dd>
+<b>rotation_style: </b>This field is related to the "3D Rot" button. It takes
+            <tt><b>unary</b></tt> as value (default) in the aim to rotate only
+            selected 3D plot. In the other case its value can be
+            <tt><b>multiple</b></tt> : all 3D plots are rotated.</dd>
+</dl>
+</dd>
+<dd>
+<b>Note on default values :</b><dl><dd>
+<b></b>All these listed properties and fields inherit from default
+            values stored in a figure model. These default values can be seen
+            and changed. To do so, use the <tt><b>get("default_figure")</b></tt>
+            command : it returns a graphic handle on the figure model. Note
+            that no graphic window is created by this command. The next
+            created figures will inherit from this model (see example 2
+            below).</dd></dl>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   lines(0) // disables vertical paging 
+  //Example 1
+   set("figure_style","new") //create a figure and set the figure as the current selected one
+   f=get("current_figure") //get the handle of the current figure : 
+                                           //if none exists, create a figure and return the corresponding handle
+   f.figure_position
+   f.figure_size=[200,200]
+   f.background=2
+   f.children  // man can see that an Axes entity already exists
+   delete(f);
+   f=gcf(); // macro shortcut &lt;=&gt; f=get("current_figure")
+   f.pixmap = "on" // set pixmap status to on
+   plot2d() // nothing happens on the screen...
+   show_pixmap() // ...display the pixmap on screen
+   //Example 2 : default_figure settings
+   df=get("default_figure") // get the default values (shortcut is gdf() )
+   // Let's change the defaults...
+   df.color_map=hotcolormap(128)
+   df.background= 110 // set background toa kind of yellow (Note that we are using a color index inside the color_map previously redefined)
+   scf(122); // creates new figure number 122 with the new default
+   plot2d()
+   scf(214);
+   t=-%pi:0.3:%pi;
+   plot3d(t,t,sin(t)'*cos(t),35,45,'X@Y@Z',[15,2,4]);
+     </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/lines.htm"><tt><b>lines</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gdf.htm"><tt><b>gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gda.htm"><tt><b>gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/show_pixmap.htm"><tt><b>show_pixmap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clear_pixmap.htm"><tt><b>clear_pixmap</b></tt></a>,&nbsp;&nbsp;,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/hotcolormap.htm"><tt><b>hotcolormap</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ScicosLab
+Comment=Scientific Computing using Scicoslab-Gtk
+TryExec=/usr/bin/scicoslab
+Exec=/usr/bin/scicoslab
+Icon=/usr/lib/scicoslab-gtk/config/puffin-gtk48.png
+Terminal=false
+Type=Application
+Categories=Education;Development;Math;Science;X-Fedora;
+StartupNotify=false
+X-Desktop-File-Install-Version=0.12

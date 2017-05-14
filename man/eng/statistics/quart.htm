@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>quart</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>quart</b> -  computation of quartiles
+  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s=quart(x)  </tt></dd>
+<dd><tt>s=quart(x,'r') or m=quart(x,1)  </tt></dd>
+<dd><tt>s=quart(x,'c') or m=quart(x,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+For a vector  or a matrix x,  [q]=quart(x,y)
+returns in the vector q the quartiles of x.
+
+[q]=quart(x,'r')        (or,         equivalently,
+[q]=quart(x,1)) are the   rowwise percentiles.  It
+returns in  each  column of    the matrix  q   the
+quartiles  of   data   in the   corresponding column  of
+x.</p>
+<p>
+[q]=quart(x,'c')        (or,         equivalently,
+[q]=quart(x,2)) are the  columnwise quartiles.  It
+returns in each row of  the matrix q the quartiles
+of data in the corresponding row of x.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+x=[6 7 0 7 10 4 2 2 7 1;
+   6 0 5 5 5 2 0 6 8 10;
+   8 6 4 3 5 9 8 3 4 7;
+   1 3 2 7 6 1 1 4 8 2;
+   6 3 5 1 6 5 9 9 5 5;
+   1 6 4 4 5 4 0 8 1 8;
+   7 1 3 7 8 0 2 8 10 8;
+   3 6 1 9 8 5 5 3 2 1;
+   5 7 6 2 10 8 7 4 0 8;
+   10 3 3 4 8 6 9 4 8 3]
+q=quart(x)
+q=quart(x,'r')
+q=quart(x,'c')
+
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

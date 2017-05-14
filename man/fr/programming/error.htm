@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>error</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>error</b> - envoi de message
+  d'erreur</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>error(message [,n])</tt></dd>
+<dd><tt>error(n)</tt></dd>
+<dd><tt>error(n,pos)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>message</b></tt>: une chaîne de caractères. Le message à  visualiser.</li>
+<li>
+<tt><b>n</b></tt>: Un entier, le nombre associé à  l'erreur.</li>
+<li>
+<tt><b>pos</b></tt>: Un entier, paramétrant le message (voir
+          <tt><b>error_table</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>La fonction <tt><b>error</b></tt> permet d'envoyer à  l'utilisateur un
+    message d'erreur et de gérer cette erreur. Par défaut <tt><b>error</b></tt>
+    termine l'éxecution courante et revient au niveau du prompt. Ce défaut
+    peut être changé en utilisant les fonctions <tt><b>errcatch</b></tt> et
+    <tt><b>execstr(...,'errcatch')</b></tt>.</p>
+<p><tt><b>error(message)</b></tt> envoie à  l'utilisateur le message d'erreur
+    donné par la chaîne de caractères <tt><b>message</b></tt>. Le nombre associé
+    à  l'erreur est assigné à 10000.</p>
+<p><tt><b>error(message,n)</b></tt> envoie à  l'utilisateur le message
+    d'erreur donné par la chaîne de caractères <tt><b>message</b></tt>. Le nombre
+    associé à  l'erreur est donné par <tt><b>n</b></tt>.</p>
+<p>Certains messages d'erreur prédéfinis requièrent un paramètre entier,
+    (position de l'argument dans la liste d'appel de la fonction,...) (voir
+    <tt><b>error_table</b></tt>). Dans ce cas l'argument <tt><b>pos</b></tt> doit
+    contenir ce nombre entier : <tt><b>error(n,pos)</b></tt>. Dans les autres cas
+    l'argument <tt><b>pos</b></tt> est ignoré.</p>
+<p>Voir la table des erreurs dans <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/error_table.htm"><tt><b>error_table</b></tt></a> .</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+error('Mon message')
+error(43)
+error(52,3)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/warning.htm"><tt><b>warning</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_addhosts</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_addhosts</b> -  add hosts to the virtual machine.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[infos] = pvm_addhosts(hosts)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>hosts</b></tt>: row of strings, naming the hosts to be added.</li>
+<li>
+<tt><b>infos</b></tt>: row of integer, corresponding to the status for each host.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_addhosts</b></tt>
+    adds the computers named in the row matrix <tt><b>hosts</b></tt>
+    to the configuration of computers making up the virtual machine.
+    The names should have the same syntax as lines of a pvmd hostfile: 
+    i.e a hostname followed by options of the form xx=y 
+    (see man page for pvmd3).</p>
+<p>
+    The row matrix <tt><b>info</b></tt> will contain for each added host 
+    its status. Values less than zero indicate an error,
+    while positive values are TIDs of the new hosts.</p>
+<p>
+    The status of hosts can be requested by the application using
+     <tt><b>pvm_config</b></tt>.
+    If a host fails it will be automatically deleted from the configuration.
+    Using pvm_addhosts a replacement host can be added by the application,
+    however it is the responsibility of the
+    application developer to make his application tolerant of host failure.
+    Another use of this feature would be to add more hosts
+    as they become available, for example on a weekend, or if the
+    application dynamically determines it could use more computational power.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_delhosts.htm"><tt><b>pvm_delhosts</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_config.htm"><tt><b>pvm_config</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

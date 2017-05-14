@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>iirlp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>iirlp</b> -  Lp IIR filter optimization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[cost,grad,ind]=iirlp(x,ind,p,[flag],lambda,omega,ad,wa,td,wt)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: 1X2 vector of the module and argument of the poles and the zeros of the filters</li>
+<li>
+<tt><b>flag</b></tt>: string : <tt><b>'a'</b></tt>  for amplitude, 'gd' for group delay; default case for amplitude and group delay.</li>
+<li>
+<tt><b>omega</b></tt>: frequencies where the filter specifications are given</li>
+<li>
+<tt><b>wa,wt</b></tt>: weighting functions for the amplitude and the group delay</li>
+<li>
+<tt><b>lambda</b></tt>: weighting (with <tt><b>1-lambda</b></tt>) of the costs (<tt><b>'a'</b></tt> and <tt><b>'gd'</b></tt> for getting the global cost.</li>
+<li>
+<tt><b>ad, td</b></tt>: desired amplitude and group delay</li>
+<li>
+<tt><b>cost, grad</b></tt>: criterium and gradient values</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    optimization of IIR filters for the Lp criterium for the
+    amplitude and/or the group delay. (Rabiner &amp; Gold pp270-273).</p>
+</body>
+</html>

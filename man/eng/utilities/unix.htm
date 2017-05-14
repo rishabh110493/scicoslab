@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unix</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unix</b> - shell (sh) command
+  execution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>stat=unix(command-name)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>command-name</b></tt>: A character string containing Unix sh instruction</li>
+<li>
+<tt><b>stat</b></tt>: An integer flag</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Sends a string <tt><b>command-name</b></tt> to Unix for execution by the
+    sh shell. Standard output and standard errors of the shell command are
+    written in the calling shell. <tt><b>stat</b></tt> gives -1 if unix can't be
+    called (Not enough system memory available) or the sh return code.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+if ~MSDOS then
+  unix("ls $SCI/demos");
+end
+
+deff('wd=directory()','if MSDOS then unix(''cd&gt;''+TMPDIR+''\path'');..
+                else unix(''pwd&gt;''+TMPDIR+''/path'');end..
+      wd=read(TMPDIR+''/path'',1,1,''(a)'')')
+wd=directory()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/manedit.htm"><tt><b>manedit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_g.htm"><tt><b>unix_g</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_s.htm"><tt><b>unix_s</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_w.htm"><tt><b>unix_w</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/unix_x.htm"><tt><b>unix_x</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/host.htm"><tt><b>host</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

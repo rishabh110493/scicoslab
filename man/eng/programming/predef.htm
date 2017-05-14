@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>predef</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>predef</b> -  variable protection</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>n=predef()  </tt></dd>
+<dd><tt>oldnew=predef(n)</tt></dd>
+<dd><tt>oldnew=predef('all')</tt></dd>
+<dd><tt>oldnew=predef('clear')</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+			Utility function used for defining "oldest" variables as "protected".
+			Protected variables  cannot be killed. They are not saved 
+			by the <tt><b>'save'</b></tt> command. The "oldest" are those appearing last in
+			the <tt><b>who('get')</b></tt>.</p>
+<p><tt><b>predef()</b></tt> gets the number of protected variables</p>
+<p><tt><b>predef('a[ll]')</b></tt> sets all the  variables protected, it also return
+			the old and new value of protected variables number.</p>
+<p><tt><b>predef('c[lear]')</b></tt> unprotect all but the last 7 variables, it also return
+			the old and new value of protected variables number.</p>
+<p><tt><b>predef(n)</b></tt> sets the <tt><b>max(n,7)</b></tt> last defined variables as protected, it also return
+			the old and new value of protected variables number.
+		</p>
+<h3><font color="blue">Remark</font></h3>
+<dl>
+<p>
+			A number of protected variables are set in the start-up file <tt><b>SCI/scilab.star</b></tt>.
+			User may in particular set its own predefined variables in user's startup files 
+			<tt><b>SCIHOME/.scilab</b></tt> and <tt><b>SCIHOME/scilab.ini</b></tt></p>
+<p>
+			SCIHOME definition : 
+			On Windows : C:/Documents and Settings/&lt;User&gt;/ScicosLab/&lt;ScicosLab-Version&gt;
+			On Linux/Unix : /home/&lt;User&gt;/.ScicosLab/&lt;ScicosLab-Version&gt;
+		</p>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/clear.htm"><tt><b>clear</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

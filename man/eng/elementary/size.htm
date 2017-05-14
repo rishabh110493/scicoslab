@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>size</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>size</b> -  size of objects</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=size(x [,sel])  </tt></dd>
+<dd><tt>[nr,nc]=size(x)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: matrix (including transfer matrix) or list or linear system (<tt><b>syslin</b></tt>)</li>
+<li>
+<tt><b>y</b></tt>: <tt><b> 1x2</b></tt> integer vector or integer number</li>
+<li>
+<tt><b>sel</b></tt>: a scalar or a character string</li>
+<li>
+<tt><b>nr,nc</b></tt>: two integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>Applied to :</b>a matrix (constant, polynomial, string, boolean, rational)
+    <tt><b>x</b></tt>, with only one lhs argument <tt><b>size</b></tt>
+    returns a <tt><b>1</b></tt>x<tt><b>2</b></tt> vector [number of rows,
+    number of columns].  Called with LHS=2, returns <tt><b>nr,nc</b></tt>
+    = [number of rows, number of columns].  <tt><b>sel</b></tt> may be
+    used to specify what dimension to get:</dd>
+<dd>
+<b>1 or 'r'</b>: to get the number of rows</dd>
+<dd>
+<b>2 or 'c'</b>: to get the number of columns</dd>
+<dd>
+<b>'*'</b>: to get the product of rows and column numbers</dd>
+<dd>
+<b>Applied to:</b>a list it returns the number of elements. In this case only   <tt><b>y=size(x)</b></tt> syntax can be used</dd>
+<dd>
+<b>Applied to:</b><p>
+     a linear system, <tt><b>y=size(x)</b></tt> returns in <tt><b>y</b></tt>
+     the (row) vector [number of outputs, number if inputs] i.e. the
+     dimension of the corresponding transfer matrix. The syntax
+     <tt><b>[nr,nc]=size(x)</b></tt> is also valid (with
+     <tt><b>(nr,nc)=(y(1),y(2)</b></tt>).  If <tt><b>x</b></tt> is a linear
+     system in state-space form, then <tt><b>[nr,nc,nx]=size(x)</b></tt> 
+     returns in addition the dimension <tt><b>nx</b></tt> of the
+     <tt><b>A</b></tt> matrix of <tt><b>x</b></tt>.</p>
+</dd>
+<dd>
+<b></b><p>label='Applied to:'&gt; 
+    an hypermatrix <tt><b> y=size(x) </b></tt> returns the vector of
+    hypermatrix dimensions. <tt><b> [n1,n2,...nn]=size(x) </b></tt>
+    returns the hypermatrix dimensions. <tt><b> ni=size(x,i) </b></tt>
+    returns the ith dimension and <tt><b>size(x,'*') </b></tt>
+    returns the product of dimensions.</p>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[n,m]=size(rand(3,2))
+[n,m]=size(['a','b';'c','d'])
+x=ssrand(3,2,4);[ny,nu]=size(x)
+[ny,nu]=size(ss2tf(x))
+[ny,nu,nx]=size(x)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

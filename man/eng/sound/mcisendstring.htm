@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mcisendstring</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mcisendstring</b> - sends a command string to an MCI
+  device (Windows only).</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mcisendstring(mcistring)</tt></dd>
+<dd><tt>bOK=mcisendstring(mcistring)</tt></dd>
+<dd><tt>[bOK,CodeError]=mcisendstring(mcistring)</tt></dd>
+<dd><tt>[bOK,CodeError,StringError]=mcisendstring(mcistring)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mcistring</b></tt> : a command string to send to an MCI device</li>
+<li>
+<tt><b>bOK</b></tt> : returns %T or %F</li>
+<li>
+<tt><b>CodeError</b></tt> : returns error code (0 --&gt; if bOK == %T)</li>
+<li>
+<tt><b>StringError</b></tt> : returns MCI interpreter message ('OK' --&gt; if bOK ==
+          %T)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>The mciSendString primitive sends a command string to an MCI device.
+    The device that the command is sent to is specified in the command
+    string.</p>
+<p>see on http://msdn.microsoft.com/library/default.asp and search
+    "Windows Multimedia SDK open"</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>mcisendstring("open ""d:\audio.mp3"" type MPEGVideo alias MP3_Device") 
+mcisendstring("play MP3_Device") 
+mcisendstring("close MP3_Device") 
+  
+
+mcisendstring("open ""d:\video.avi"" type avivideo alias AVI_Device") 
+mcisendstring("play AVI_Device from 0") 
+mcisendstring("close AVI_Device") 
+
+</pre>
+<h3><font color="blue">Author</font></h3>
+<p>Allan Cornet</p>
+</body>
+</html>

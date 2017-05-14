@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ScilabEval</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>TCL Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ScilabEval</b> - tcl instruction : Evaluate a string
+  with scilab interpreter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>ScilabEval instruction</tt></dd>
+<dd><tt>ScilabEval instruction
+    "seq"</tt></dd>
+<dd><tt>ScilabEval instruction
+    "sync"</tt></dd>
+<dd><tt>ScilabEval instruction "sync"
+    "seq"</tt></dd>
+<dd><tt>ScilabEval "flush"</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>instruction</b></tt>: tcl string character contains a Scilab instruction to evaluate
+          with the current Scilab interpreter.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function must be called in a tcl/tk script executed from Scilab.
+    It allows to associate Scilab actions to tcl/tk widgets (graphic objects)
+    or to use Scilab to perform some computations within a tcl script.</p>
+<p></p>
+<dd>
+<li>
+<b><font color="maroon">ScilabEval instruction</font></b><p>If the <tt><b>ScilabEval instruction </b></tt> syntax is used, the
+        <tt><b>instruction</b></tt> is first stored in a FIFO queue,
+        <tt><b>ScilabEval</b></tt> returns immediately. Scilab executes the
+        queued <tt><b>instructions</b></tt> when possible (it should be at the
+        prompt but also at the end of each instructions of the currently
+        running function) in the order they were submitted. This syntax can be
+        used to associate Scilab actions to tcl/tk widgets but not into a tcl
+        script executed by <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalFile.htm"><tt><b>TCL_EvalFile</b></tt></a> or <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalStr.htm"><tt><b>TCL_EvalStr</b></tt></a>
+        because in this situation the Scilab interpreter is blocked up to the
+        end of the script. Note that with the<tt><b>ScilabEval
+        instruction</b></tt> syntax, if there are many <tt><b>ScilabEval</b></tt>
+        commands stored in the queue the execution of the second one can be
+        started in the middle of the execution of the first one (in particular
+        if the first one contains more than a simple expression).</p>
+<p>If the <tt><b>"seq"</b></tt> option is added, the associated
+        instruction evaluation should be finished (or paused) before the next
+        queued instruction evaluation can be started. The next callback stored
+        in the command queue will only be taken into account when the current
+        one will be finished or paused.</p>
+<p></p>
+</li>
+<li>
+<b><font color="maroon">ScilabEval instruction "sync"</font></b><p>If the <tt><b>ScilabEval instruction "sync"</b></tt> syntax is used,
+        the instruction is executed immediately (not queued) and the
+        <tt><b>ScilabEval</b></tt>returns when the <tt><b>instruction
+        </b></tt>evaluation is finished. The scilab <tt><b>instruction</b></tt>
+        evaluation may be interrupted by new or queued commands.</p>
+<p>If the <tt><b>"seq"</b></tt> option is added, the associated
+        instruction evaluation should be finished (or paused) before any
+        queued instruction evaluation can be started. The scilab
+        <tt><b>instruction</b></tt> evaluation may not be interrupted by new or
+        queued commands (except if it is paused).</p>
+<p></p>
+</li>
+<li>
+<b><font color="maroon">ScilabEval "flush"</font></b><p>If the <tt><b>ScilabEval "flush"</b></tt> syntax is used, all the
+        previously queued <tt><b>instructions</b></tt> are executed immediately
+        and the ScilabEval returns when the execution is finished. Each
+        <tt><b>instruction</b></tt> is executed with the option used at the time
+        of queuing up (i.e. <tt><b>seq</b></tt> or no option).</p>
+</li>
+</dd>
+<p>The evaluation context of all these cases is the current Scilab context
+    when the<tt><b>instruction</b></tt> evaluation starts.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Callbacks and "seq" option usage
+
+//create tcl instructions
+tcl_script=['toplevel .w1'
+'button .w1.b -text ""Click here to execute without seq option""  -command WithoutSeq'
+'button .w1.b1 -text ""Click here to execute with seq option""  -command  WithSeq'
+'pack .w1.b .w1.b1'
+'proc  WithoutSeq {} { ';
+'  ScilabEval ""cont=%f;;cont=%t;"" '
+'  ScilabEval ""if cont then disp(''ok''),else disp(''wrong'');end;cont=%f;"" '
+'}'
+'proc WithSeq {} { ';
+'  ScilabEval ""cont=%f;;cont=%t;""  ""seq""'
+'  ScilabEval ""if cont then disp(''ok''),else disp(''wrong'');end;cont=%f;"" '
+'}'];
+mputl(tcl_script,TMPDIR+'/test.tcl') //write them to a file
+// Execute the tcl script
+cont=%f;
+TCL_EvalFile(TMPDIR+'/test.tcl');;
+
+//scripts and "sync" option usage
+
+//----------------without "sync"----------------
+tcl_script=['  set t ""0""'
+    '  while {$t != ""10""} {'
+    '     ScilabEval ""a=$t;mprintf(''%d '',a);""'
+    '     incr t'
+    '  }'];
+
+mputl(tcl_script,TMPDIR+'/test.tcl') //write them to a file
+// Execute the tcl script
+TCL_EvalFile(TMPDIR+'/test.tcl');mprintf('TCL_EvalFile finished\n');
+// The ScilabEval are executed  after the and of TCL_EvalFile
+
+//----------------with "sync"----------------
+tcl_script=['  set t ""0""'
+    '  while {$t != ""10""} {'
+    '     ScilabEval ""a=$t;mprintf(''%d '',a);"" ""sync""'
+    '     incr t'
+    '  }'];
+
+mputl(tcl_script,TMPDIR+'/test.tcl') //write them to a file
+// Execute the tcl script
+TCL_EvalFile(TMPDIR+'/test.tcl');mprintf('TCL_EvalFile finished\n');
+// The ScilabEval are executed  synchronously with TCL_EvalFile
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalFile.htm"><tt><b>TCL_EvalFile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalStr.htm"><tt><b>TCL_EvalStr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_GetVar.htm"><tt><b>TCL_GetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_SetVar.htm"><tt><b>TCL_SetVar</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Bertrand Guiheneuf</p>
+</body>
+</html>

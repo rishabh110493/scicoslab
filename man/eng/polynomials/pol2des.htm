@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pol2des</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pol2des</b> -  polynomial matrix to descriptor form</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[N,B,C]=pol2des(Ds)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Ds</b></tt>: polynomial matrix</li>
+<li>
+<tt><b>N, B, C</b></tt>: three real matrices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the polynomial matrix <tt><b>Ds=D_0 +D_1 s +D_2 s^2 +... +D_k s^k</b></tt>,
+    <tt><b>pol2des</b></tt> returns three  matrices <tt><b>N, B, C</b></tt>, with <tt><b>N</b></tt> nilpotent 
+    such that:</p>
+<p><tt><b>Ds = C (s*N-eye())^-1 B</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+G=[1,s;1+s^2,3*s^3];[N,B,C]=pol2des(G);
+G1=clean(C*inv(s*N-eye())*B),G2=numer(G1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2des.htm"><tt><b>ss2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/tf2des.htm"><tt><b>tf2des</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.;   </p>
+</body>
+</html>

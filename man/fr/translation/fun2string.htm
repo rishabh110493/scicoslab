@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fun2string</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fun2string</b> -  generates ascii definition of a scilab function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=fun2string(fun,name)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: a function type variable</li>
+<li>
+<tt><b>name</b></tt>: a character string, the generated function name</li>
+<li>
+<tt><b>txt</b></tt>: a column vector of strings, the text giving the scilab instructions</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given a loaded Scilab function pseudo-code fun2string allow to
+    re-generate the the code. The generated
+    code is indented and beautified.</p>
+<p>
+    The mechanism is similar, but simpler than the mfile2sci one. It may
+    be adapted for syntax translations.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+txt=fun2string(asinh,'foo');
+write(%io(2),txt,'(a)')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/macrovar.htm"><tt><b>macrovar</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

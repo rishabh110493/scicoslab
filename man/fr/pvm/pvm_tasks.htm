@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_tasks</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_tasks</b> -  information about the tasks running on the virtual machine.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>res  = pvm_tasks([where])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>where</b></tt>: (optional) integer, specifying what tasks to return information about. The options are:<pre>
+
+ 0(default) for all the tasks on the virtual machine
+ pvmd tid for all tasks on a given host
+   tid  for a specific task
+   
+          </pre>
+</li>
+<li>
+<tt><b>res</b></tt>:  list of 7 elements such that:<ul>
+<li>
+<tt><b>res(1)  </b></tt>:  integer returning task ID of one task</li>
+<li>
+<tt><b>res(2)  </b></tt>:  integer returning parent task ID</li>
+<li>
+<tt><b>res(3)  </b></tt>:  integer returning pvmd task ID of host task is on</li>
+<li>
+<tt><b>res(4)  </b></tt>:  integer returning status of task</li>
+<li>
+<tt><b>res(5)  </b></tt>:  string returning the name of spawned task. Manually started tasks return blank.</li>
+<li>
+<tt><b>res(6)  </b></tt>:  integer returning the number of tasks being reported on.</li>
+<li>
+<tt><b>res(7)  </b></tt>:  integer status code returned by the routine.</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_tasks</b></tt> 
+    returns information about
+    tasks presently running on the virtual machine.
+    The information returned is the same as
+    that available from the console command</p>
+<p>
+    The <tt><b>pvm_tasks</b></tt> function returns information about the entire
+    virtual machine in one call.</p>
+<p>
+    If pvm_tasks is successful,</p>
+<p>
+    will be 0.
+    If some error occurs then</p>
+<p>
+    will be &lt; 0.</p>
+<p>
+    for example:</p>
+<pre>
+
+--&gt;res = pvm_tasks()
+ res  =
+ 
+       res(1)
+ 
+!   262148.    262151.    262152. !
+ 
+       res(2)
+ 
+!   262147.    0.    262151. !
+ 
+       res(3)
+ 
+!   262144.    262144.    262144. !
+ 
+       res(4)
+ 
+!   6.    4.    6. !
+ 
+       res(5)
+ 
+!pvmgs    /home/ubeda/SCILAB/scilab-2.4/bin/scilex  !
+ 
+       res(6)
+ 
+    3.  
+ 
+       res(7)
+ 
+    0. 
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_config.htm"><tt><b>pvm_config</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_tidtohost.htm"><tt><b>pvm_tidtohost</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

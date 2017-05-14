@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>penlaur</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>penlaur</b> -  Laurent coefficients of matrix pencil</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Si,Pi,Di,order]=penlaur(Fs)  </tt></dd>
+<dd><tt>[Si,Pi,Di,order]=penlaur(E,A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Fs</b></tt>: a regular pencil <tt><b>s*E-A</b></tt>
+</li>
+<li>
+<tt><b>E, A</b></tt>: two real square matrices</li>
+<li>
+<tt><b>Si,Pi,Di</b></tt>: three real square matrices</li>
+<li>
+<tt><b>order</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>penlaur</b></tt> computes the first Laurent coefficients of <tt><b>(s*E-A)^-1</b></tt> at
+    infinity.</p>
+<p><tt><b>(s*E-A)^-1 = ... + Si/s - Pi - s*Di + ...</b></tt> at <tt><b>s</b></tt> = infinity.</p>
+<p><tt><b>order</b></tt> = order of the singularity (order=index-1).</p>
+<p>
+    The matrix pencil <tt><b>Fs=s*E-A</b></tt> should be invertible.</p>
+<p>
+    For a index-zero pencil, <tt><b>Pi, Di,...</b></tt> are zero and <tt><b>Si=inv(E)</b></tt>.</p>
+<p>
+    For a index-one pencil (order=0),<tt><b>Di</b></tt> =0.</p>
+<p>
+    For higher-index pencils, the terms <tt><b> -s^2 Di(2), -s^3
+    Di(3),... </b></tt> are given by:</p>
+<p><tt><b> Di(2)=Di*A*Di</b></tt>, <tt><b> Di(3)=Di*A*Di*A*Di</b></tt> (up
+    to <tt><b>Di(order)</b></tt>).</p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    Experimental version: troubles when bad conditioning of <tt><b>so*E-A</b></tt></p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+F=randpencil([],[1,2],[1,2,3],[]);
+F=rand(6,6)*F*rand(6,6);[E,A]=pen2ea(F);
+[Si,Pi,Di]=penlaur(F);
+[Bfs,Bis,chis]=glever(F);
+norm(coeff(Bis,1)-Di,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pencan.htm"><tt><b>pencan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowshuff.htm"><tt><b>rowshuff</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque INRIA(1988,1990) ;   </p>
+</body>
+</html>

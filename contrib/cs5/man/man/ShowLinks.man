@@ -1,0 +1,60 @@
+.TH ShowLinks  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+ShowLinks  -  Shows the links of a net using Metanet or Scigraph
+.SH CALLING SEQUENCE
+.nf
+ShowLinks()
+ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx)
+ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx,d)
+.fi
+
+.SH PARAMETERS
+.TP 10
+%net 
+: the global NetList variable databasis
+.TP 10
+nodes
+: string or row vector of integers (nodes)
+.TP 10
+arcs
+: string or row vector of integers (arcs)
+.TP 10
+fmin,fmax
+: reals, minimum and maximum flow
+.TP 10
+tmin,tmax
+: reals, minimum and maximum time 
+.TP 10
+d
+: integer, a specific demand 
+
+.SH DESCRIPTION
+ Similar to ShowNet but it doesn't show the demands, it  only shows the
+links of %net  that verify the conditions given by the
+parameters (see ShowNet). If a demand is indicated, then the flow
+shown is the corresponding to that demand.
+
+.SH EXAMPLES 
+.nf
+%net=TrafficExample('Steenbrink');
+%net.gp.algorithm='AON';
+TrafficAssig();
+ShowLinks() // Shows the net
+ShowLinks('used','between',3000,6000,0,0,3)
+// Shows the net with the flow corresponding to demand 3, 
+// the light blue arcs are not used by the commodity 3
+// but by other commodities. The width corresponds to
+// the flow of the commodity 3. The arcs not shown have
+// total flow less than 3000 or greater than 6000.
+.fi
+
+.SH SEE ALSO
+ShowNet,
+ShowDemands,
+TrafficExample,
+TrafficAssig,
+IntroTrfAsg,
+NetList
+
+
+

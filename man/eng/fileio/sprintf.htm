@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sprintf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sprintf</b> -  Emulator of C language sprintf function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>str=sprintf(format,value_1,..,value_n)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>format</b></tt>: a Scilab string. Specifies a character string combining literal characters with conversion specifications.</li>
+<li>
+<tt><b>value_i</b></tt>: Specifies the data to be converted according to the format parameter.</li>
+<li>
+<tt><b>str</b></tt>: column vector of character strings</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>sprintf</b></tt> function converts, formats, and stores its
+    <tt><b>value</b></tt> parameters, under control of the <tt><b>format</b></tt> parameter.
+  </p>
+<p>
+    The <tt><b>format</b></tt> parameter is a character string that contains two
+    types of objects:
+  </p>
+<dl>
+<dd>
+<b>Literal characters</b>: which are copied to the output stream.</dd>
+<dd>
+<b>Conversion specifications</b>: each of which causes zero or more items to be fetched from the <tt><b>value</b></tt> parameter list. see <tt><b>printf_conversion</b></tt> for details</dd>
+</dl>
+<p>
+    If there are not enough items for <tt><b>format</b></tt> in the
+    <tt><b>value</b></tt> parameter list, <tt><b>sprintf</b></tt> generate an error.
+    If any <tt><b>value</b></tt>s remain after the entire <tt><b>format</b></tt> has been
+    processed, they are ignored.</p>
+<p>
+    Note: <tt><b>sprintf</b></tt> is obsolete, use <tt><b>msprintf</b></tt> instead.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+fahr=120
+sprintf('%3d Fahrenheit = %6.1f Celsius',fahr,(5/9)*(fahr-32)) 
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/print.htm"><tt><b>print</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/format.htm"><tt><b>format</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/disp.htm"><tt><b>disp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/printf.htm"><tt><b>printf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fprintf.htm"><tt><b>fprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>msprintf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

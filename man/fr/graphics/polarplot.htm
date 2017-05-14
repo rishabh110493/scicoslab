@@ -1,0 +1,135 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>polarplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>polarplot</b> - Plot polar
+  coordinates</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>polarplot(theta,rho,[style,strf,leg,rect])</tt></dd>
+<dd><tt>polarplot(theta,rho,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rho</b></tt>: a vector, the radius values</li>
+<li>
+<tt><b>theta</b></tt>: a vector with same size than rho, the angle values.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>, ... where keys may be
+          <tt><b>style</b></tt>,<tt><b>leg</b></tt>,<tt><b>rect</b></tt>,<tt><b>strf</b></tt>
+          or <tt><b>frameflag</b></tt>
+</li>
+<li>
+<tt><b>style</b></tt>: is a real row vector of size nc. The style to use for curve
+          <tt><b>i</b></tt> is defined by <tt><b>style(i)</b></tt>. The default
+          style is <tt><b>1:nc</b></tt> (1 for the first curve, 2 for the second,
+          etc.).<ul>
+<li>
+<tt><b>-</b></tt>if <tt><b>style(i)</b></tt> is negative, the curve is plotted
+                using the mark with id <tt><b>abs(style(i))+1</b></tt>; use
+                <tt><b>xset()</b></tt> to see the mark ids.</li>
+<li>
+<tt><b>-</b></tt>if <tt><b>style(i)</b></tt> is strictly positive, a plain
+                line with color id <tt><b>style(i)</b></tt> or a dashed line with
+                dash id <tt><b>style(i)</b></tt> is used; use <tt><b>xset()</b></tt>
+                to see the color ids.</li>
+<li>
+<tt><b>-</b></tt>When only one curve is drawn, <tt><b>style</b></tt> can be
+                the row vector of size 2 <tt><b>[sty,pos]</b></tt> where
+                <tt><b>sty</b></tt> is used to specify the style and
+                <tt><b>pos</b></tt> is an integer ranging from 1 to 6 which
+                specifies a position to use for the caption. This can be
+                useful when a user wants to draw multiple curves on a plot by
+                calling the function <tt><b>plot2d</b></tt> several times and
+                wants to give a caption for each curve.</li>
+</ul>
+</li>
+<li>
+<tt><b>strf</b></tt>: is a string of length 3 <tt><b>"xy0"</b></tt>.<ul>
+<li>
+<tt><b>default</b></tt>The default is <tt><b>"030"</b></tt>.</li>
+<li>
+<tt><b>x</b></tt>: controls the display of captions,<ul>
+<li>
+<tt><b>x=0</b></tt>: no captions.</li>
+<li>
+<tt><b>x=1</b></tt>: captions are displayed. They are given by the
+                      optional argument <tt><b>leg</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>y</b></tt>: controls the computation of the frame. same as
+                frameflag<ul>
+<li>
+<tt><b>y=0</b></tt>: the current boundaries (set by a previous call to
+                      another high level plotting function) are used. Useful
+                      when superposing multiple plots.</li>
+<li>
+<tt><b>y=1</b></tt>: the optional argument <tt><b>rect</b></tt> is used to
+                      specify the boundaries of the plot.</li>
+<li>
+<tt><b>y=2</b></tt>: the boundaries of the plot are computed using min
+                      and max values of <tt><b>x</b></tt> and
+                      <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>y=3</b></tt>: like <tt><b>y=1</b></tt> but produces isoview
+                      scaling.</li>
+<li>
+<tt><b>y=4</b></tt>: like <tt><b>y=2</b></tt> but produces isoview
+                      scaling.</li>
+<li>
+<tt><b>y=5</b></tt>: like <tt><b>y=1</b></tt> but <tt><b>plot2d</b></tt> can
+                      change the boundaries of the plot and the ticks of the
+                      axes to produce pretty graduations. When the zoom button
+                      is activated, this mode is used.</li>
+<li>
+<tt><b>y=6</b></tt>: like <tt><b>y=2</b></tt> but <tt><b>plot2d</b></tt> can
+                      change the boundaries of the plot and the ticks of the
+                      axes to produce pretty graduations. When the zoom button
+                      is activated, this mode is used.</li>
+<li>
+<tt><b>y=7</b></tt>: like <tt><b>y=5</b></tt> but the scale of the new
+                      plot is merged with the current scale.</li>
+<li>
+<tt><b>y=8</b></tt>: like <tt><b>y=6</b></tt> but the scale of the new
+                      plot is merged with the current scale.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>leg</b></tt>: a string. It is used when the first character x of argument
+          <tt><b>strf</b></tt> is 1. <tt><b>leg</b></tt> has the form
+          <tt><b>"leg1@leg2@...."</b></tt> where <tt><b>leg1</b></tt>,
+          <tt><b>leg2</b></tt>, etc. are respectively the captions of the first
+          curve, of the second curve, etc. The default is <tt><b>"
+          "</b></tt>.</li>
+<li>
+<tt><b>rect</b></tt>: This argument is used when the second character y of argument
+          <tt><b>strf</b></tt> is 1, 3 or 5. It is a row vector of size 4 and
+          gives the dimension of the frame:
+          <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>polarplot creates a polar coordinate plot of the angle theta versus the
+    radius rho. theta is the angle from the x-axis to the radius vector
+    specified in radians; rho is the length of the radius vector specified in
+    dataspace units.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t= 0:.01:2*%pi;
+clf();polarplot(sin(7*t),cos(8*t))
+
+clf();polarplot([sin(7*t') sin(6*t')],[cos(8*t') cos(8*t')],[1,2])
+
+ 
+  </pre>
+</body>
+</html>

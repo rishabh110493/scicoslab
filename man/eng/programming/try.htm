@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>trycatch</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>try</b> -  beginning of try block in try-catch control instruction</p>
+<p><b>catch</b> -  beginning of catch block in try-catch control instruction </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>try </tt></dd>
+<dd><tt>  statements</tt></dd>
+<dd><tt>catch </tt></dd>
+<dd><tt>  statements</tt></dd>
+<dd><tt>end</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>The <tt><b>try</b></tt>-<tt><b>catch</b></tt> control instruction can be used
+      to manage codes that could possibly generate errors.</p>
+<p>When a <tt><b>try</b></tt>-<tt><b>catch</b></tt> control instruction is
+      executed, normally only the statements between the <tt><b>try</b></tt> and 
+      <tt><b>catch</b></tt> keywords are executed. However, if an error occurs
+      during execution of any of these statements, the error is recorded, the
+      remaining statements up to the <tt><b>catch</b></tt> keyword 
+      are skipped and the statements between the <tt><b>catch</b></tt> and
+      <tt><b>end</b></tt> keywords are executed using the default error handling
+      mode (see: <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>. </p>
+<p>The recorded error can be retreived using the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>
+      function.</p>
+<p>The <tt><b>catch</b></tt> statements as well as the <tt><b>catch</b></tt>
+      keyword can be omitted if no alternative statements are given.</p>
+<p>Note that one can also use the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a> function with
+      <tt><b>'errcatch'</b></tt> argument for error handling. This can be
+      particularily useful for handling syntactical errors.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ file_path=TMPDIR+'/wrong'
+ try
+    u=mopen(file_path,'r')
+    x=mget(10,'c',u)
+  catch
+    disp(['file '+file_path+ 'cannot be read',
+          'using default values for x'])
+    x=1:10
+  end 
+  [error_message,error_number]=lasterror(%t) 
+
+ 
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/error.htm"><tt><b>error</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/if.htm"><tt><b>if</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Serge Steer, INRIA</p>
+</body>
+</html>

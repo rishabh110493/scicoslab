@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>wavwrite</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>wavwrite</b> -  writes .wav sound file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>wavwrite(y,wavfile)  </tt></dd>
+<dd><tt>wavwrite(y,Fs,wavfile)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: real vector or matrix with entries in [-1,1].</li>
+<li>
+<tt><b>wavfile</b></tt>: string (The .wav extension is appended if no extension is given)</li>
+<li>
+<tt><b>Fs</b></tt>: integer, frequency sampling in Hz.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function to save <tt><b>.wav</b></tt> sound file.
+    <tt><b>wavwrite(y,wavfile)</b></tt> writes a sound file specified by the
+    string wavfile.  The data should be arranged with one channel
+    per column.  Amplitude values outside the range [-1,+1] are
+    ignored.
+    </p>
+<p><tt><b>wavwrite(y,Fs,wavfile)</b></tt> specifies in <tt><b>Fs</b></tt> the sample rate of the data
+    in Hertz.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  A=matrix(1:6,2,3);
+  wavwrite(A/6,TMPDIR+'/foo.wav');
+  B=wavread(TMPDIR+'/foo.wav');
+  maxi(abs(A- round(B*6)))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/auread.htm"><tt><b>auread</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/wavread.htm"><tt><b>wavread</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/savewave.htm"><tt><b>savewave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/analyze.htm"><tt><b>analyze</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/mapsound.htm"><tt><b>mapsound</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

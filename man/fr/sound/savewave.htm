@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>savewave</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>savewave</b> -  save data into a sound wav file.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>savewave(filename,x [, rate ]);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: a string. The path of the output wav file</li>
+<li>
+<tt><b>x</b></tt>: vector</li>
+<li>
+<tt><b>rate</b></tt>: a scalar. 22050 is the default value.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    save x into a  wav sound file. you can transform other sound files
+    into wav file with the <tt><b>sox</b></tt> program.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// At first we create 0.5 seconds of sound parameters.
+t=soundsec(0.5);
+// Then we generate the sound.
+s=sin(440*t)+sin(220*t)/2+sin(880*t)/2;
+[nr,nc]=size(t);
+s(nc/2:nc)=sin(330*t(nc/2:nc));
+savewave(TMPDIR+'/foo.wav',s);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/loadwave.htm"><tt><b>loadwave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/analyze.htm"><tt><b>analyze</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/mapsound.htm"><tt><b>mapsound</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

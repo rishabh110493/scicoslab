@@ -1,0 +1,178 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>systems</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>systems</b> -  a collection of dynamical system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[]=systems()  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A call to this function will load into Scilab a set of macros which
+    describes dynamical systems. Their parameters can be initiated by 
+    calling the routine tdinit().
+  </p>
+<h3><font color="blue">Bioreact</font></h3>
+<dl>
+<pre>
+
+[ydot]=biorecat(t,x)
+   
+    </pre>
+<p>
+    a bioreactor model, 
+  </p>
+<dd>
+<li>
+<b><font color="maroon">x(1)</font></b>is the biomass concentration</li>
+<li>
+<b><font color="maroon">x(2)</font></b>is the sugar concentration</li>
+</dd>
+<pre>
+
+                    xdot(1)=mu_td(x(2))*x(1)- debit*x(1);
+                    xdot(2)=-k*mu_td(x(2))*x(1)-debit*x(2)+debit*x2in;
+   
+    </pre>
+<p>
+    where mu_td is given by 
+  </p>
+<pre>
+
+                    mu_td(x)=x/(1+x);
+   
+    </pre>
+</dl>
+<h3><font color="blue">Compet</font></h3>
+<dl>
+<pre>
+
+[xdot]=compet(t,x [,u])
+   
+    </pre>
+<p>
+    a competition model. <tt><b>x(1),x(2)</b></tt> stands for two populations which  grows on a same resource. <tt><b>1/u</b></tt> is the level of that resource ( 1 is the default value).
+  </p>
+<pre>
+
+xdot=0*ones(2,1);
+xdot(1) = ppr*x(1)*(1-x(1)/ppk) - u*ppa*x(1)*x(2) ,
+xdot(2) = pps*x(2)*(1-x(2)/ppl) - u*ppb*x(1)*x(2) ,
+   
+    </pre>
+<p>
+     "The macro <tt><b>[xe]=equilcom(ue)</b></tt>" computes an equilibrium point of the competition model and a fixed  level of the resource ue ( default value is 1)
+  </p>
+<p>
+     "The macro <tt><b>[f,g,h,linsy]=lincomp([ue])</b></tt>" gives the linearisation of the competition model ( with output y=x) around the equilibrium point xe=equilcom(ue). This macro returns [f,g,h] the three matrices of the linearised system. and linsy which is a Scilab macro [ydot]=linsy(t,x) which computes the  dynamics of the linearised system
+  </p>
+</dl>
+<h3><font color="blue">Cycllim</font></h3>
+<dl>
+<pre>
+
+[xdot]=cycllim(t,x)
+   
+    </pre>
+<p>
+    a model with a limit cycle 
+  </p>
+<pre>
+
+  xdot=a*x+qeps(1-||x||**2)x
+   
+    </pre>
+</dl>
+<h3><font color="blue">Linear</font></h3>
+<dl>
+<pre>
+
+[xdot]=linear(t,x)
+   
+    </pre>
+<p>
+    a linear system 
+  </p>
+</dl>
+<h3><font color="blue">Blinper</font></h3>
+<dl>
+<pre>
+
+[xdot]=linper(t,x)
+   
+    </pre>
+<p>
+    a linear system with quadratic perturbations.
+  </p>
+</dl>
+<h3><font color="blue">Pop</font></h3>
+<dl>
+<pre>
+
+[xdot]=pop(t,x)
+   
+    </pre>
+<p>
+    a fish population model
+  </p>
+<pre>
+
+xdot= 10*x*(1-x/K)- peche(t)*x
+   
+    </pre>
+</dl>
+<h3><font color="blue">Proie</font></h3>
+<dl>
+<p>
+    a Predator prey model with external insecticide.
+  </p>
+<pre>
+
+[xdot]=p_p(t,x,[u]
+   
+    </pre>
+<dd>
+<li>
+<b><font color="maroon">x(1)</font></b>The prey ( that we want to kill )</li>
+<li>
+<b><font color="maroon">x(2)</font></b>the predator ( that we want to preserve )</li>
+<li>
+<b><font color="maroon">u</font></b>mortality rate due to insecticide which  destroys both prey and predator ( default value u=0)</li>
+</dd>
+<pre>
+
+xdot(1) = ppr*x(1)*(1-x(1)/ppk) - ppa*x(1)*x(2) - u*x(1);
+xdot(2) = -ppm*x(2)             + ppb*x(1)*x(2) - u*x(2);
+   
+    </pre>
+<p>
+     The macro <tt><b>[xe]=equilpp([ue])</b></tt> computes the equilibrium point of the <tt><b>p_p</b></tt> system for the value <tt><b>ue</b></tt> of the command. The default value for <tt><b>ue</b></tt> is 0.</p>
+<pre>
+
+                    xe(1) =  (ppm+ue)/ppb;
+                    xe(2) =  (ppr*(1-xe(1)/ppk)-ue)/ppa;
+   
+    </pre>
+</dl>
+<h3><font color="blue">Lincom</font></h3>
+<dl>
+<pre>
+
+[xdot]=lincom(t,x,k)
+   
+    </pre>
+<p>
+    linear system with a feedback</p>
+<pre>
+
+ xdot= a*x +b*(-k*x)
+   
+    </pre>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tdcs/tdinit.htm"><tt><b>tdinit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

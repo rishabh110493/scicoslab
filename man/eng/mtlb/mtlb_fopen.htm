@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_fopen</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_fopen</b> - Matlab fopen emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab <tt><b>fopen</b></tt> and Scilab <tt><b>mopen</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Scilab function returns no usable error message
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Scilab file identified does not exist in case of error but Matlab one is set to <tt><b>-1</b></tt>.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Matlab function can work with inputs which do not exist in Scilab such as permission options...
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_fopen(filename,permission)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>mopen(filename,permission)</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_fopen</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        If error message is not used and no error can occurs,
+        <tt><b>mtlb_fopen(filename,permission)</b></tt> may be replaced by <tt><b>mopen(filename,permission,0)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_fopen</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

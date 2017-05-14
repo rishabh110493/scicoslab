@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_close</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_close</b> - Matlab close emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Scilab equivalent for Matlab <tt><b>close</b></tt> is different according to the current figure type (uicontrol or graphic one).</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        When current figure is a uicontrol one: Scilab equivalent for Matlab <tt><b>close</b></tt> is <tt><b>close</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        When current figure is a graphic one: Scilab equivalent for Matlab <tt><b>close</b></tt>
+	is <tt><b>xdel</b></tt> or <tt><b>delete</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	In Scilab we do not get an error status.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_close([h])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>close([h])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_close</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>h</b></tt> is a uicontrol figure
+        <tt><b>mtlb_close(h)</b></tt> may be replaced by <tt><b>close(h)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>h</b></tt> is a graphic figure
+        <tt><b>mtlb_close(h)</b></tt> may be replaced by <tt><b>delete(h)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_close</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xdel.htm"><tt><b>xdel</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/winsid.htm"><tt><b>winsid</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/tksci/close.htm"><tt><b>close</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

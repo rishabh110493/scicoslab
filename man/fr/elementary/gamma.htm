@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gamma</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gamma</b> -   The gamma function.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> y = gamma(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: real vector or matrix with same size than x.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gamma(x)</b></tt> evaluates the gamma function at all the elements of <tt><b>x</b></tt>.
+    The gamma function is defined by :</p>
+<pre>
+
+                     /+oo
+                     |   x-1  -t
+         gamma(x) =  |  t    e    dt
+                     /0
+     
+    </pre>
+<p>
+     and generalizes the factorial function for real numbers (<tt><b>gamma(n+1) = n!</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// simple examples
+gamma(0.5)
+gamma(6)-prod(1:5)
+
+// the graph of the Gamma function on [a,b]
+a = -3; b = 5;
+x = linspace(a,b,40000)';
+y = gamma(x);
+xbasc()
+c=xget("color")
+xset("color",2)
+plot2d(x, y, style=0, axesflag=5, rect=[a, -10, b, 10])
+xset("color",c)
+xtitle("The gamma function on ["+string(a)+","+string(b)+"]")
+xselect()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/gammaln.htm"><tt><b>gammaln</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/dlgamma.htm"><tt><b>dlgamma</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>W. J. Cody and L. Stoltz (code from Netlib (specfun))</p>
+</body>
+</html>

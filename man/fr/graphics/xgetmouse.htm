@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xgetmouse</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xgetmouse</b> -  get the mouse events and current position</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rep=xgetmouse([flag], [sel])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>flag</b></tt>: integer. If present, the mouse click event queue is not cleared when entering  xgetmouse.</li>
+<li>
+<tt><b>sel</b></tt>: boolean vector <tt><b>[getmotion, getrelease]</b></tt>. default
+  value is <tt><b>[%t, %f]</b></tt>
+</li>
+<li>
+<tt><b>rep</b></tt>: vector of size 3, [x,y,ibutton].</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If the mouse pointer is located in the current graphics window, <tt><b>xgetmouse</b></tt> returns
+    in <tt><b>rep</b></tt> the current pointer position (x,y) and the value <tt><b>ibutton</b></tt>.
+     
+    The <tt><b>ibutton</b></tt> value indicates the event type:
+  </p>
+<dl>
+<dd>
+<b>ibutton==0</b>: Left mouse button has been pressed</dd>
+<dd>
+<b>ibutton==1</b>: Middle mouse button has been pressed</dd>
+<dd>
+<b>ibutton==2</b>: Right mouse button has been pressed<p></p>
+</dd>
+<dd>
+<b>ibutton==3</b>: Left mouse button has been clicked</dd>
+<dd>
+<b>ibutton==4</b>: Middle mouse button has been clicked</dd>
+<dd>
+<b>ibutton==5</b>: Right mouse button has been clicked<p></p>
+</dd>
+<dd>
+<b>ibutton==10</b>: Left mouse button has been double-clicked</dd>
+<dd>
+<b>ibutton==11</b>: Middle mouse button has been double-clicked</dd>
+<dd>
+<b>ibutton==12</b>: Right mouse button has been double-clicked<p></p>
+</dd>
+<dd>
+<b>ibutton==-5</b>: Left mouse button has been released</dd>
+<dd>
+<b>ibutton==-4</b>: Middle mouse button has been released</dd>
+<dd>
+<b>ibutton==-3</b>: Right mouse button has been released<p></p>
+</dd>
+<dd>
+<b>ibutton==-1</b>: pointer has moved<p></p>
+</dd>
+<dd>
+<b>ibutton &gt; =32</b>: key with ascii code ascii(ibutton) has been pressed</dd>
+<dd>
+<b>ibutton &lt; =-32</b>: key with ascii code ascii(-ibutton)   has been released<p></p>
+</dd>
+<dd>
+<b>ibutton &gt; =1000+32</b>: key with ascii code ascii(ibutton-1000) has been pressed while CTRL
+	    key pressed</dd>
+<dd>
+<b>ibutton==-1000</b>: graphic window has been closed</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//  rectangle selection
+clf();  // erase/create window
+a=gca();a.data_bounds=[0 0;100 100];//set user coordinates
+xtitle(" drawing a rectangle ") //add a title
+xselect(); //put the window on the top
+
+[b,xc,yc]=xclick(); //get a point
+xrect(xc,yc,0,0) //draw a rectangle entity
+r=gce();// the handle of the rectangle
+rep=[xc,yc,-1];first=%f;
+
+while rep(3)==-1 do // mouse just moving ...
+  if first then rep=xgetmouse();else rep=xgetmouse(0);end
+  xc1=rep(1);yc1=rep(2);
+  ox=mini(xc,xc1);
+  oy=maxi(yc,yc1);
+  w=abs(xc-xc1);h=abs(yc-yc1);
+  r.data=[ox,oy,w,h]; //change the retangle origin, width an height
+  first=%f;
+end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/locate.htm"><tt><b>locate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/seteventhandler.htm"><tt><b>seteventhandler</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer</p>
+</body>
+</html>

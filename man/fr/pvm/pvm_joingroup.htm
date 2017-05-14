@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_joingroup</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_joingroup</b> -  enrolls the calling process in a named group.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[inum] = pvm_joingroup(group)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>group</b></tt>: string, string group name of an existing group.</li>
+<li>
+<tt><b>inum</b></tt>: integer, instance number returned by the routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_joingroup</b></tt> 
+    enrolls the calling task in
+    the group named <tt><b>group</b></tt>
+    and returns the instance number
+    of this task in this group.</p>
+<p>
+    The returned value will be &gt;= 0 if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<p>
+    Instance numbers start at 0 and count up.
+    When using groups a (group, inum) pair uniquely identifies a
+    PVM process.
+    This is consistent with the PVM 2.4 naming schemes.
+    If a task leaves a group by calling pvm_lvgroup
+    and later rejoins the same group,
+    the task is not guaranteed to get the same instance number.
+    PVM attempts to reuse old instance numbers, so when a task
+    joins a group it will get the lowest available instance number.
+    A task can be a member of multiple groups simultaneously.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_lvgroup.htm"><tt><b>pvm_lvgroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

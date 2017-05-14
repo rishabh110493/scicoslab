@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mucomp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mucomp</b> -  mu (structured singular value) calculation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[BOUND, D, G] = mucomp(Z, K, T)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Z</b></tt>: the complex n-by-n matrix for which the structured singular value is to be computed</li>
+<li>
+<tt><b>K</b></tt>: the vector of length m containing the block structure of the uncertainty.</li>
+<li>
+<tt><b>T</b></tt>: the vector of length m indicating the type of each block. T(I) = 1 if the corresponding block is real T(I) = 2 if the corresponding block is complex.</li>
+<li>
+<tt><b>BOUND</b></tt>: the upper bound on the structured singular value.</li>
+<li>
+<tt><b>D, G</b></tt>: vectors of length n containing the diagonal entries of the diagonal matrices D and G, respectively, such that the matrix  Z'*D^2*Z + sqrt(-1)*(G*Z-Z'*G) - bound^2*D^2 is negative semidefinite.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+     To compute an upper bound on the structured singular value for a given square complex matrix and given block structure of the uncertainty.</p>
+<h3><font color="blue">Reference</font></h3>
+<dl><p>
+    Slicot routine AB13MD.</p></dl>
+</body>
+</html>

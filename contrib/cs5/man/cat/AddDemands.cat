@@ -1,0 +1,30 @@
+AddDemands                     Traffic-toolbox Function          AddDemands
+NAME
+   AddDemands  -  Add demands to a net list
+  
+CALLING SEQUENCE
+   
+  
+ AddDemands(td,hd,demand)
+PARAMETERS
+ %net       : global variable Netlist databasis
+            
+ td         : row vector, tail nodes numbers of the added demands
+            
+ hd         : row vector, head nodes numbers of the added demands
+            
+ demand     : row vector, the values of the added demands
+            
+DESCRIPTION
+   AddDemands adds demands to a net list.
+  
+EXAMPLES
+ %net=TrafficExample('Diamond');
+ ShowNet()
+ // Add a new demand from node 3 to node 2 with value 10 in the same net
+ AddDemands(3,2,10);
+ // We can see the modifications with
+ ShowNet()
+SEE ALSO
+   IntroTrfAsg, NetList, AddLinks, AddNodes, MakeNet, ShowNet     
+  

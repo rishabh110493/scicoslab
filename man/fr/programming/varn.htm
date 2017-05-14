@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>varn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>varn</b> -  indéterminée d'un polynôme  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[symb]=varn(p)  </tt></dd>
+<dd><tt>[pm]=varn(x,var)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p  </b></tt>
+    : polynôme (ou matrice de polynômes)
+</li>
+<li>
+<tt><b>symb  </b></tt>
+    : chaîne de caractères
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : polynôme (ou matrice de polynômes)
+</li>
+<li>
+<tt><b>var  </b></tt>
+    : indéterminée du polynôme
+</li>
+<li>
+<tt><b>pm  </b></tt>
+    : polynôme (ou matrice de polynômes)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>symb=varn(p)</b></tt> renvoie dans <tt><b>symb</b></tt> l'indéterminée du polynôme <tt><b>p</b></tt>
+    (par exemple <tt><b>varn(poly(0,'x'))</b></tt> est égal à <tt><b>'x'</b></tt>).
+  </p>
+<p><tt><b>varn(x,'s')</b></tt> renvoie une matrice polynomiale de même taille que <tt><b>x</b></tt> mais avec <tt><b>'s'</b></tt> comme indéterminée.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');p=[s^2+1,s];
+varn(p)
+varn(p,'x')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/horner.htm"><tt><b>horner</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

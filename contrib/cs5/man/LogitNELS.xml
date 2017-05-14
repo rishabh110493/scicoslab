@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>LogitNELS  </TITLE>
+  <TYPE>CiudadSim Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="LogitNELS "> Net Logit Equilibrium (Linear Search)  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>bench=LogitNELS(theta,method,eps,Niter)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>theta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : stochasticity parameter 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>method  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : macro among LogitB, LogitD, LogitMB, LogitMD
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>eps  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : convergence error test 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>Niter  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : maximal number of iteration 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>bench  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : niter x 5  matrix
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : global variable NetList 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Compute the logit traffic equilibrium using a
+    logit method among LogitB, LogitD, LogitMB, LogitMD
+    the travel time is taken in %net.links.time
+    and the assigned fow is put in the field
+    %net.links.flow of the variable %net which
+    is a NetList which must be declared global.
+  </P>
+  <P>
+    The equilibrium is computed using a linear search based
+    on the corresponding deterministic criterium as approximated
+    Lyapounov function. This method is valid at least for
+    large theta.
+  </P>
+  <P>
+    If %net.gp.verbose=%T  convergence informations are displayed.
+    These informations are returned by the function in the variable %net.gp.bench.
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost deterministic)
+theta=10
+// Flow calculation
+LogitNELS(theta,LogitMD,1.e-6,40);
+ShowNet()
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>LogitD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitN</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

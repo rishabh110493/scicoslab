@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>st_deviationstdev</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>st_deviation</b> -  standard deviation (row or
+    column-wise) of vector/matrix entries</p>
+<p><b>stdev</b> -  standard deviation (row or column-wise) of vector/matrix entries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=st_deviation(x)  </tt></dd>
+<dd><tt>y=st_deviation(x,'r')  </tt></dd>
+<dd><tt>y=st_deviation(x,'c')  </tt></dd>
+<dd><tt>y=stdev(x)  </tt></dd>
+<dd><tt>y=stdev(x,'r')  </tt></dd>
+<dd><tt>y=stdev(x,'c')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: scalar or vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    st_deviation computes the "sample" standard deviation, that
+    is, it is normalized by N-1, where N is the sequence length.</p>
+<p>
+    For a vector or a matrix <tt><b>x</b></tt>, <tt><b>y=st_deviation(x)</b></tt>  returns in the
+    scalar <tt><b>y</b></tt> the standard deviation of all the entries of <tt><b>x</b></tt>.</p>
+<p><tt><b>y=st_deviation(x,'r')</b></tt> (or, equivalently,
+    <tt><b>y=st_deviation(x,1)</b></tt>) is the rowwise standard deviation. It returns in each 
+    entry of the column vector <tt><b>y</b></tt> the standard deviation of each row of <tt><b>x</b></tt>.</p>
+<p><tt><b>y=st_deviation(x,'c')</b></tt> (or, equivalently, <tt><b>y=st_deviation(x,2)</b></tt>) is the columnwise st_deviation. It returns in each entry of the row vector 
+    <tt><b>y</b></tt> the standard deviation of each column  of <tt><b>x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2,10;7,7.1,7.01];
+st_deviation(A)
+st_deviation(A,'r')
+st_deviation(A,'c')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/median.htm"><tt><b>median</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/mean.htm"><tt><b>mean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/nanstdev.htm"><tt><b>nanstdev</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/stdevf.htm"><tt><b>stdevf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

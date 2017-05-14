@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nansum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nansum</b> -   Sum of values ignoring NAN's</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>s = nansum(x,orient)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: numerical vector or matrix.</li>
+<li>
+<tt><b>orient</b></tt>: nothing or '*'.
+         'r' or 1.
+         'c' or 2.</li>
+<li>
+<tt><b>s</b></tt> : Numerical scalar or vector containig the value of the adding operation.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   This function returns in s the sum of the values (ignoring
+   the NAN's) of a numerical vector or matrix x.
+   </p>
+<p>
+   For a vector or matrix x, s=nansum(x) (or s=nansum(x,'*'))
+   returns in  scalar s the sum of values of all entries 
+   (ignoring the NAN's) of a vector or matrix x.
+   </p>
+<p>
+   s=nansum(x,'r')(or,  equivalently,  s=nansum(x,1)) returns
+   in each  entry of the  row vector s of  type 1xsize(x,'c')
+   the sum of each column of x (ignoring the NANs).
+</p>
+<p>
+   s=nansum(x,'c')(or,  equivalently,  s=nansum(x,2)) returns
+   in each entry of the column vector s of type size(x,'c')x1
+   the sum of each row of x (ignoring the NANs).
+</p>
+<p>
+   For the  last two cases,  if a row  or column is  in whole
+   composed of NAN, the corresponding place of s will contain
+   a NAN.
+</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    x=[0.2113249 %nan 0.6653811;0.7560439 0.3303271 0.6283918]
+    m=nansum(x)
+    m=nansum(x,1)
+    m=nansum(x,2)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/nancumsum.htm"><tt><b>nancumsum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Carlos Klimann
+  </p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott,  T.H. and  Wonacott, R.J.; Introductory Statistics,
+    5th edition, J.Wiley and Sons, 1990.</p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>speye</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>speye</b> -   matrice identité creuse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Isp=speye(nrows,ncols)  </tt></dd>
+<dd><tt>Isp=speye(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nrows  </b></tt>
+    : entier (nombre de lignes)
+</li>
+<li>
+<tt><b>ncols  </b></tt>
+    : entier (nombre de colonnes)
+</li>
+<li>
+<tt><b>A  </b></tt>
+    : matrice creuse
+</li>
+<li>
+<tt><b>sp  </b></tt>
+    : matrice identité creuse
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Isp=speye(nrows,ncols)</b></tt> renvoie une matrice identité creuse <tt><b>Isp</b></tt> 
+    avec <tt><b>nrows</b></tt> lignes et <tt><b>ncols</b></tt> colonnes.
+  </p>
+<p><tt><b>Isp=speye(A)</b></tt> renvoie une matrice identité creuse de même taille que <tt><b>A</b></tt>. Si <tt><b>[m,n]=size(A)</b></tt>, les commandes <tt><b>speye(m,n)</b></tt> et
+    <tt><b>speye(A)</b></tt> sont équivalentes. En particulier <tt><b>speye(3)</b></tt> n'est pas 
+    équivalent à <tt><b>speye(3,3)</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+eye(3,3)-full(speye(3,3))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/spzeros.htm"><tt><b>spzeros</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/spones.htm"><tt><b>spones</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

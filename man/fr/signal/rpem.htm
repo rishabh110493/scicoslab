@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rpem</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rpem</b> -  RPEM estimation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[w1,[v]]=rpem(w0,u0,y0,[lambda,[k,[c]]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a,b,c</b></tt>: <tt><b>a=[a(1),...,a(n)], b=[b(1),...,b(n)], c=[c(1),...,c(n)]</b></tt>
+</li>
+<li>
+<tt><b>w0</b></tt>: <tt><b>list(theta,p,phi,psi,l)</b></tt> where:<ul>
+<li>
+<tt><b>theta</b></tt>: [a,b,c] is a real vector of order <tt><b>3*n</b></tt>
+</li>
+<li>
+<tt><b>p</b></tt>: (3*n x 3*n) real matrix.</li>
+<li>
+<tt><b>phi,psi,l</b></tt>: real vector of dimension <tt><b>3*n</b></tt>
+</li>
+</ul>
+<p>
+    During the first call on can take:
+  </p>
+<pre>
+
+theta=phi=psi=l=0*ones(1,3*n). p=eye(3*n,3*n)
+   
+          </pre>
+</li>
+<li>
+<tt><b>u0</b></tt>: real vector of inputs (arbitrary size) (if no input take <tt><b>u0=[ ]</b></tt>).</li>
+<li>
+<tt><b>y0</b></tt>: vector of outputs (same dimension as <tt><b>u0</b></tt> if <tt><b>u0</b></tt> is not empty). (<tt><b>y0(1)</b></tt> is not used by rpem).<p>
+    If the time domain is <tt><b>(t0,t0+k-1)</b></tt> the <tt><b>u0</b></tt> vector contains the inputs 
+  </p>
+<p><tt><b>u(t0),u(t0+1),..,u(t0+k-1)</b></tt> and <tt><b>y0</b></tt> the outputs 
+  </p>
+<p><tt><b>y(t0),y(t0+1),..,y(t0+k-1)</b></tt></p>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Recursive estimation of parameters in an ARMAX model.
+    Uses Ljung-Soderstrom recursive prediction error method.
+    Model considered is the following:
+  </p>
+<pre>
+
+y(t)+a(1)*y(t-1)+...+a(n)*y(t-n)=
+b(1)*u(t-1)+...+b(n)*u(t-n)+e(t)+c(1)*e(t-1)+...+c(n)*e(t-n)
+   
+    </pre>
+<p></p>
+<p>
+    The effect of this command is to update the estimation of
+    unknown parameter <tt><b>theta=[a,b,c]</b></tt> with
+  </p>
+<p><tt><b>a=[a(1),...,a(n)], b=[b(1),...,b(n)], c=[c(1),...,c(n)]</b></tt>.
+  </p>
+<h3><font color="blue">Optional parameters</font></h3>
+<dl><dd><li>
+<b><font color="maroon">lambda</font></b>: optional parameter (forgetting constant) choosed close to 1 as convergence occur:<p><tt><b>lambda=[lambda0,alfa,beta]</b></tt> evolves according to :</p>
+<pre>
+
+lambda(t)=alfa*lambda(t-1)+beta 
+   
+        </pre>
+<p>
+    with <tt><b>lambda(0)=lambda0</b></tt></p>
+<p><tt><b>k</b></tt> : contraction factor to be chosen close to 1 as convergence occurs.</p>
+<p><tt><b>k=[k0,mu,nu]</b></tt> evolves according to:</p>
+<pre>
+
+k(t)=mu*k(t-1)+nu 
+   
+        </pre>
+<p>
+    with <tt><b>k(0)=k0</b></tt>.</p>
+<p><tt><b>c</b></tt> : large parameter.(<tt><b>c=1000</b></tt> is the default value).</p>
+</li></dd></dl>
+<h3><font color="blue">Output parameters:</font></h3>
+<dl>
+<p><tt><b>w1</b></tt>: update for <tt><b>w0</b></tt>.</p>
+<p><tt><b>v</b></tt>: sum of squared prediction errors on <tt><b>u0, y0</b></tt>.(optional).</p>
+<p>
+    In particular <tt><b>w1(1)</b></tt> is the new estimate of <tt><b>theta</b></tt>. If a new sample <tt><b>u1, y1</b></tt> is available the update is obtained by:</p>
+<p><tt><b>[w2,[v]]=rpem(w1,u1,y1,[lambda,[k,[c]]])</b></tt>. Arbitrary large series can thus be treated.</p>
+</dl>
+</body>
+</html>

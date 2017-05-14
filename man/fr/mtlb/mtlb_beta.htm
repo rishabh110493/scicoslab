@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_legendre</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_legendre</b> - Fonction d'émulation de la fonction
+  Matlab legendre</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>P=mtlb_legendre(n,X)</tt></dd>
+<dd><tt>P=mtlb_legendre(n,X[,normflag])
+    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: un scalaire, un vecteur, une matrice ou hypermatrice
+          d'elements compris dans [-1 1]</li>
+<li>
+<tt><b>n</b></tt>: un entier positif</li>
+<li>
+<tt><b>normflag</b></tt>: une chaine de caracteres (<tt><b>'sch'</b></tt> ou
+          <tt><b>'norm'</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>legendre</b></tt> se
+    comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>L'appel de fonction Scilab <tt><b>legendre(m,n,X)</b></tt> évalue
+            la fonction de legendre de degré <tt><b>n </b></tt> et d'ordre
+            <tt><b>m </b></tt>pour tous les éléments de <tt><b>X</b></tt>. Par
+            contre l'appel de fonction Scilab <tt><b>legendre(m,n,X)</b></tt>
+            évalue la fonction de legendre de degré <tt><b>n</b></tt> et d'ordre
+            <tt><b>m=0,1,...,n </b></tt>pour tous les éléments de
+            <tt><b>X</b></tt>.</li>
+<li>
+<b><font color="maroon"></font></b>Le mode <tt><b>normflag='sch'</b></tt> n'est pas implémenté avec
+            Scilab</li>
+<li>
+<b><font color="maroon"></font></b>La fonction legendre de Scilab ne fonctionne pas si
+            <tt><b>X</b></tt> est une hypermatrice</li>
+</dd>
+</dd></dl>
+<p>La fonction <tt><b>mtlb_legendre(n,X[,normflag])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer
+    <tt><b>legendre(n,X[,normflag])</b></tt> quand il n'était pas possible de
+    savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un
+    code Matlab vers Scilab. Cette fonction va déterminer la sémantique
+    correcte pendant l'exécution. Pour obtenir un code plus performant on peut
+    remplacer les appels à  <tt><b>mtlb_legendre</b></tt> :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>If X is a scalar, a vector or a matrix
+            <tt><b>mtlb_legendre(n,X[,'norm']) </b></tt> may be replaced by
+            <tt><b>legendre(n,0:n,X[,'norm'])</b></tt>
+</li></dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_legendre</b></tt> ne doit pas être utilisée pour
+    une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>F.B.</dd></dl>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>add_palette_scifunc</TITLE>
+<META NAME="description" CONTENT="add_palette_scifunc">
+<META NAME="keywords" CONTENT="add_palette_scifunc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="add_palette_scifunc.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Scilab Function
+<BR><A NAME="tex2html1"
+  HREF="./add_palette_scifunc.htm">eng</A>
+
+</DIV>
+<H2><A NAME="SECTION00010000000000000000"></A><A NAME="add_palette_scifunc"></A>
+<BR>
+add_palette
+</H2>
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+File content</A>
+</font></H3>
+<BR>
+<PRE  CLASS="verbatim">function add_palette(Title,path)
+//## Add a palette to the end of the list of the scicos palette.
+//## If the palette exists with same Title and same path
+//## noting is done. If a palette with same name but
+//## different path exist then the palette is added
+//## with a suffixe (x)
+//## Note that scicos_pal variable is locally recreated
+//## and passed to the upper environnement via
+//## scicos_pal=resume(scicos_pal)
+//##
+//## Inputs :
+//## Title : the title of the palette
+//## path  : the path + name of the cos or cosf file
+//##         that contains the palette
+
+  if exists('scicos_pal') then
+    scicos_pal=scicos_pal
+  else
+    scicos_pal=[]
+  end
+  path=pathconvert(path,%f,%t)
+  if fileinfo(path)==[] then
+    error('File: '+path+' do not exist')
+  end
+  if or(fileparts(path,'extension')==['.cos','.cosf']) then
+    //############################
+    k=find(scicos_pal(:,1)==Title)
+    if k==[] then
+      scicos_pal=[scicos_pal;Title,path]
+    else //## if a palette with same title exist
+      k1=find(scicos_pal(k,2)==path)
+      if k1==[] then //## not the same path
+        indt=1;
+        while (find(scicos_pal(:,1)==Title+' ('+string(indt)+')')&lt;&gt;[]) then
+          indt=indt+1
+        end
+        kk=find(scicos_pal(:,1)==Title+' ('+string(indt-1)+')')
+        kk1=find(scicos_pal(kk,2)==path)
+        if kk1==[] then
+          scicos_pal=[scicos_pal;Title+' ('+string(indt)+')',path]
+        end
+      end
+    end
+    //############################
+    scicos_pal=resume(scicos_pal)
+  else
+    error('Second argument should be a path to a .cos or .cosf file.')
+  end
+endfunction
+</PRE>
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

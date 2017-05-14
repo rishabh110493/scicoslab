@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>remezb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>remezb</b> -  Minimax approximation of magnitude response</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[an]=remezb(nc,fg,ds,wt)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nc</b></tt>: Number of cosine functions</li>
+<li>
+<tt><b>fg</b></tt>: Grid of frequency points in [0,.5)</li>
+<li>
+<tt><b>ds</b></tt>: Desired magnitude on grid <tt><b>fg</b></tt>
+</li>
+<li>
+<tt><b>wt</b></tt>: Weighting function on error on grid <tt><b>fg</b></tt>
+</li>
+<li>
+<tt><b>an</b></tt>: Cosine filter coefficients</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Minimax approximation of a frequency domain
+    magnitude response. The approximation takes
+    the form <tt><b>h = sum[a(n)*cos(wn)]</b></tt>
+    for n=0,1,...,nc. An FIR, linear-phase filter
+    can be obtained from the the output of the function
+    by using the following commands</p>
+<pre>
+
+         hn(1:nc-1)=an(nc:-1:2)/2;
+         hn(nc)=an(1);
+         hn(nc+1:2*nc-1)=an(2:nc)/2;
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Choose the number of cosine functions and create a dense grid 
+// in [0,.24) and [.26,.5)
+nc=21;ngrid=nc*16;
+fg=.24*(0:ngrid/2-1)/(ngrid/2-1);
+fg(ngrid/2+1:ngrid)=fg(1:ngrid/2)+.26*ones(1:ngrid/2);
+// Specify a low pass filter magnitude for the desired response
+ds(1:ngrid/2)=ones(1:ngrid/2);
+ds(ngrid/2+1:ngrid)=zeros(1:ngrid/2);
+// Specify a uniform weighting function
+wt=ones(fg);
+// Run remezb
+an=remezb(nc,fg,ds,wt)
+// Make a linear phase FIR filter 
+hn(1:nc-1)=an(nc:-1:2)/2;
+hn(nc)=an(1);
+hn(nc+1:2*nc-1)=an(2:nc)/2;
+// Plot the filter's magnitude response
+plot(.5*(0:255)/256,frmag(hn,256));
+//////////////
+// Choose the number of cosine functions and create a dense grid in [0,.5)
+nc=21; ngrid=nc*16;
+fg=.5*(0:(ngrid-1))/ngrid;
+// Specify a triangular shaped magnitude for the desired response
+ds(1:ngrid/2)=(0:ngrid/2-1)/(ngrid/2-1);
+ds(ngrid/2+1:ngrid)=ds(ngrid/2:-1:1);
+// Specify a uniform weighting function
+wt=ones(fg);
+// Run remezb
+an=remezb(nc,fg,ds,wt)
+// Make a linear phase FIR filter 
+hn(1:nc-1)=an(nc:-1:2)/2;
+hn(nc)=an(1);
+hn(nc+1:2*nc-1)=an(2:nc)/2;
+// Plot the filter's magnitude response
+plot(.5*(0:255)/256,frmag(hn,256));
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/eqfir.htm"><tt><b>eqfir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

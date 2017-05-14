@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_sum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_sum</b> - Fonction d'émulation de la fonction Matlab sum</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>sum</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée : La fonction Matlab <tt><b>sum</b></tt> traite
+	les valeurs en suivant la première dimension qui n'est pas 1 alors que la fonction Scilab
+	<tt><b>sum</b></tt> traite toutes les valeurs de l'entrée.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec deux paramètres d'entrée : La fonction Matlab <tt><b>sum</b></tt> peut être
+	utilisée avec le second paramètre donnant une dimension du premier paramètre qui n'existe pas
+	alors que la fonction Scilab <tt><b>sum</b></tt> retourne un message d'erreur.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_sum(A[,dim])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>sum(A[,dim])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_sum</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée, si <tt><b>A</b></tt> est une matrice vide, un scalaire ou un vecteur,
+        <tt><b>mtlb_sum(A)</b></tt> peut être remplacé par <tt><b>sum(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée, si <tt><b>A</b></tt> est une matrice non-vide,
+        <tt><b>mtlb_sum(A)</b></tt> peut être remplacé par <tt><b>sum(A,1)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec un paramètre d'entrée, si <tt><b>A</b></tt> est hypermatrice,
+        <tt><b>mtlb_sum(A)</b></tt> peut être remplacé par <tt><b>sum(A,firstnonsingleton(A))</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        En cas d'appel avec deux paramètres d'entrée, si <tt><b>dim</b></tt> est inférieure au nombre
+	de dimensions de <tt><b>A</b></tt><tt><b>mtlb_sum(A,dim)</b></tt> peut être remplacé par <tt><b>sum(A,dim)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_sum</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

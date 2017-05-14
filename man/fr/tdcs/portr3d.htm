@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>portr3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>portr3d</b> -  3 dimensional phase portrait.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[]=portr3d(f,[odem,xdim,npts,pinit])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f</b></tt>: a Scilab external which gives the field of the dynamical system. Hence  it can be a macro name which computes the field at time t and point x [y]=f(t,x,[u]) or a list list(f1,u1) where f1 is a macro of type [y]=f1(t,x,u) or a character string</li>
+<li>
+<tt><b>.I rest</b></tt>: The other parameters are optional. If omitted they will be asked interactively<ul>
+<li>
+<tt><b>odem</b></tt>: gives the integration method to use. The value "default" can be used,  otherwise see ode for a complete set of possibilities</li>
+<li>
+<tt><b>npts</b></tt>:  a vector of size (2,10) [number-of-points,step] gives the step for integration  and the number of requested points. The solution will be calculated and drawn  for time=0:step:(step*[number-of-points])</li>
+<li>
+<tt><b>xdim</b></tt>: [xmin,xmax,ymin,ymax,zmin,zmax] the boundaries of the graphic frame.</li>
+<li>
+<tt><b>pinit</b></tt>: initial values for integration. A set of initial points can be given in a matrix<pre>
+
+      pinit = [x0(1), x1(1),...., xn(1)
+               x0(2), x1(2),...., xn(2)
+               x0(3), x1(3),...., xn(3)].
+   
+                </pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Interactive integration and display of a 3 dimensional phase portrait
+    of a dynamical system  dx/dt=f(t,x,[u]) (where u is an optional parameter )</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

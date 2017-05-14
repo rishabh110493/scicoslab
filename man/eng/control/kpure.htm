@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>kpure</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>kpure</b> -  continuous SISO system limit feedback gain</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g=kpure(sys)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sys</b></tt>: SISO linear system (syslin)</li>
+<li>
+<tt><b>g</b></tt>: constant</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>kpure(sys)</b></tt> computes the gains <tt><b>g</b></tt> such that the system
+    <tt><b>sys</b></tt> feedback by g (<tt><b>sys/.g</b></tt>) has  poles on imaginary axis.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+h=syslin('c',(s-1)/(1+5*s+s^2+s^3))
+xbasc();evans(h)
+g=kpure(h)
+hf=h/.g(1)
+roots(denom(hf))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/evans.htm"><tt><b>evans</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/krac2.htm"><tt><b>krac2</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

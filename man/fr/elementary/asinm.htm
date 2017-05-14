@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>asinm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>asinm</b> -  sinus matriciel inverse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=asinm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice carrée complexe ou réelle
+</li>
+<li>
+<tt><b>t  </b></tt>
+    : matrice carrée complexe ou réelle
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>t</b></tt> est le sinus matriciel inverse de la matrice <tt><b>x</b></tt>. La méthode de diagonalisation est utilisée. Pour les matrices non symétriques le résultat peut être peu fiable.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;3,4]
+sinm(asinm(A))
+asinm(A)+%i*logm(%i*A+sqrtm(eye()-A*A))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/asin.htm"><tt><b>asin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sinm.htm"><tt><b>sinm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

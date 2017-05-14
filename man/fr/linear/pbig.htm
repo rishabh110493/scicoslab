@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pbig</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pbig</b> -  projection sur des sous-espaces propres   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Q,M]=pbig(A,thres,flag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice réelle carrée
+	  </li>
+<li>
+<tt><b>thres  </b></tt>
+	    : nombre réel
+	  </li>
+<li>
+<tt><b>flag  </b></tt>
+	    : chaîne de caractères (<tt><b>'c'</b></tt> ou <tt><b>'d'</b></tt>)
+	  </li>
+<li>
+<tt><b>Q,M  </b></tt>
+	    : matrices réelles
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Projection sur des sous-espaces propres de A associés aux valeurs
+      propres avec partie réelle &gt;= <tt><b>thres</b></tt>
+      (<tt><b>flag='c'</b></tt>) ou avec module &gt;=
+      <tt><b>thres</b></tt> (<tt><b>flag='d'</b></tt>).
+    </p>
+<p>
+      La projection est définie par <tt><b>Q*M</b></tt>, où <tt><b>Q</b></tt>
+      est de rang maximal, les lignes de <tt><b>M</b></tt> sont
+      linéairement indépendantes et <tt><b>M*Q=eye</b></tt>.
+    </p>
+<p>
+      Si <tt><b>flag='c'</b></tt>, les valeurs propres de
+      <tt><b>M*A*Q</b></tt> = valeurs propres de <tt><b>A</b></tt> avec partie
+      réelle &gt;= <tt><b>thres</b></tt>.
+    </p>
+<p>
+      Si <tt><b>flag='d'</b></tt>, les valeurs propres de
+      <tt><b>M*A*Q</b></tt> = valeurs propres de <tt><b>A</b></tt> avec module
+      &gt;= <tt><b>thres</b></tt>.
+    </p>
+<p>
+      Si <tt><b>flag='c'</b></tt> et si <tt><b>[Q1,M1]</b></tt> =
+      factorisation de rang maximal (<tt><b>fullrf</b></tt>) de
+      <tt><b>eye()-Q*M</b></tt> alors les valeurs propres de
+      <tt><b>M1*A*Q1</b></tt> = valeurs propres de <tt><b>A</b></tt> avec
+      partie réelle &lt; <tt><b>thres</b></tt>.
+    </p>
+<p>
+      Si <tt><b>flag='d'</b></tt> et si <tt><b>[Q1,M1]</b></tt> =
+      factorisation de rang maximal (<tt><b>fullrf</b></tt>) de
+      <tt><b>eye()-Q*M</b></tt> alors les valeurs propres de
+      <tt><b>M1*A*Q1</b></tt> = valeurs propres de <tt><b>A</b></tt> avec
+      module &lt; <tt><b>thres</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=diag([1,2,3]);X=rand(A);A=inv(X)*A*X;
+    [Q,M]=pbig(A,1.5,'d');
+    spec(M*A*Q)
+    [Q1,M1]=fullrf(eye()-Q*M);
+    spec(M1*A*Q1)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/psmall.htm"><tt><b>psmall</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/projspec.htm"><tt><b>projspec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque, INRIA (1988); ;   </p>
+<h3><font color="blue">Used Function</font></h3>
+<tt><b>pbig</b></tt> est basée sur la forme de Schur ordonnée
+    (fonction Scilab <tt><b>schur</b></tt>).</body>
+</html>

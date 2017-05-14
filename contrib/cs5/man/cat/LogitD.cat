@@ -1,0 +1,41 @@
+LogitD                             CiudadSim Function                LogitD
+NAME
+   LogitD  - Logit equilibrium ( Dial Method )
+  
+CALLING SEQUENCE
+ [F]=LogitD(A,D,theta)
+PARAMETERS
+ A          : nxn nodesxnodes matrix of travel times
+            
+ D          : nxn nodesxnodes matrix of demand flows 
+            
+ theta      : stochasticity parameter 
+            
+ F          : nxn nodesxnodes assigned flow matrix
+            
+DESCRIPTION
+   Compute the logit traffic assignment by the Dial method where efficient
+  routes are the ones which never go back towards the origine.  To each
+  efficient route r on the graph defined by the  matrix A is associated a
+  weight exp(-theta*l)  where l denotes the the total travel time on the
+  route r. The flow for each demand defined by the matrix D is assigned on
+  a route proportionnaly to its wheight.  The graph must be strongly
+  connected. If it is not the case we can add artificial  arcs with large
+  travel time in such a way that the new graph becomes strongly connected. 
+  
+EXAMPLES
+ // Graph generation (the graph must be stongly connected),
+ // n is the number of nodes, m the number of arcs.
+ n=10; m=40; 
+ c1=m/(n*n);
+ A=sprand(n,n,c1)+diag(sparse(ones(n-1,1)),1);
+ A(n,1)=1;A=A-diag(diag(A));
+ // Demand generation, p is the number of demand.
+ p=30; c2=p/(n*n);D=sprand(n,n,c2);D=D-diag(diag(D));
+ //theta definition (almost determinsitic)
+ theta=10
+ // Flow calculation
+ FD=LogitD(A,D,theta)
+SEE ALSO
+   LogitB, LogitMB, LogitMD, LogitN, LogitNE, TrafficAssig
+  

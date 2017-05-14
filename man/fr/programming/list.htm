@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>list</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>list</b> -  Objet Scilab, Définition d'une liste  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>list(a1,....an)    </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+		Crée une <tt><b>liste</b></tt> avec les éléments <tt><b>ai</b></tt> 
+		qui sont des objets Scilab arbitraires (<tt><b>matrice, 
+		liste, ...</b></tt>). Le numéro de type des objets <em>liste</em> 
+		(renvoyé par la fonction <tt><b>type</b></tt>) est 15.
+		</p>
+<p><tt><b>list()</b></tt> crée une liste vide (0 élément).
+		</p>
+<h3><font color="blue">Operations sur les listes</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">extraction</font></b>: <tt>[x,y,z...]=L(v)</tt> où <tt>v</tt> est un vecteur d'indices; 
+				<tt>[x,y,z]=L(:)</tt>  extrait tous les éléments.</li>
+<li>
+<b><font color="maroon">insertion en position i</font></b>:  <tt>L(i)=a</tt> . Remarque : l'opération <tt>L(i)=a</tt>
+				avec <em>i &gt; 1 + size(L)</em> ne génère pas d'erreur les
+				entrées en position  <em>1 + size(L), ..., i-1</em> étant
+				alors <em>indéfinies</em>. Par contre l'extraction d'un élément
+				<em>indéfini</em> en génère une.</li>
+<li>
+<b><font color="maroon">ajouter un élément en queue de liste</font></b>:  <tt>L($+1)=e</tt>.</li>
+<li>
+<b><font color="maroon">ajouter un élément en tête de liste</font></b>:  <tt>L(0)=e</tt>. (remarque : après cette opération <tt>e</tt> est
+				en position 1, la position des éléments initiaux de la liste étant 
+				décalée vers la droite).</li>
+<li>
+<b><font color="maroon">suppression</font></b>: <tt>L(i)=null()</tt> supprime l'élément en position i de la liste <tt>L</tt>.</li>
+<li>
+<b><font color="maroon">concaténation de deux listes</font></b>: <tt>L3 = lstcat(L1,L2)</tt>.</li>
+<li>
+<b><font color="maroon">nombre d'éléments d'une liste</font></b>:  vous pouvez utiliser <tt>nb_elm = size(L)</tt> 
+				ou encore <tt>nb_elm = length(L)</tt>.</li>
+<li>
+<b><font color="maroon">itérer avec une liste</font></b>:  il est possible d'utiliser une liste <tt>L</tt> pour piloter une boucle <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/for.htm"><tt><b>for</b></tt></a> : 
+				<tt>for e=L,...,end</tt> est une boucle avec <tt>length(L)</tt> 
+				itérations, la variable <tt>e</tt> de la boucle prenant la valeur <tt>L(i)</tt>
+				à l'itération i.</li>
+</dd></dl>
+<h3><font color="blue">Remarques</font></h3>
+<dl>
+<p>Scilab propose deux autres sortes de liste, les <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a> (pour listes typées)
+			et les <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mlist.htm"><tt><b>mlist</b></tt></a> qui sont très utiles pour définir de nouveaux types de 
+			données avec possibilité de surcharge des opérateurs classiques (voir <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/overloading.htm"><tt><b>overloading</b></tt></a>).
+			Les tableaux multidimensionnels de scilab (les <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/hypermatrices.htm"><tt><b>hypermatrices</b></tt></a>) sont en fait
+			codés comme des <em>mlist</em>.
+		</p>
+<p>Les structures Matlab (<em>struct</em>) sont aussi utilisables.</p>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+l = list(1,["a" "b"])
+l(0) = "foo"
+l($+1) = "hello"
+l(2) = "toto"
+l(3) = rand(1,2)
+l(3) = null()
+lbis = list("gewurtz", "caipirina" ,"debug")
+lter = lstcat(l,lbis)
+size(lter) - size(lbis) - size(l)  // doit être nul
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/null.htm"><tt><b>null</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lstcat.htm"><tt><b>lstcat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/size.htm"><tt><b>size</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

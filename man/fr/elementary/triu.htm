@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>triu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>triu</b> -  partie triangulaire supérieure d'une matrice  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>triu(x [,k])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice de tout type
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : entier (0 par défaut)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Partie triangulaire supérieure d'une matrice.
+    <tt><b>triu(x,k)</b></tt> est composée des termes au dessus d'une diagonale :
+    k&gt;0 (diagonale supérieure) et k&lt;0 (diagonale sous la diagonale principale).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+triu([s,s;s,1])
+triu([1/s,1/s;1/s,1])
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/tril.htm"><tt><b>tril</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/diag.htm"><tt><b>diag</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

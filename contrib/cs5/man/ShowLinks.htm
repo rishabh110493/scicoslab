@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>ShowLinks </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>ShowLinks  -   Shows the links of a net using Metanet or Scigraph  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>ShowLinks()  </tt></dd><dd><tt>ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx)  </tt></dd><dd><tt>ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx,d)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>%net  </b></tt>
+    : the global NetList variable databasis
+  </li>
+  <li><tt><b>nodes  </b></tt>
+    : string or row vector of integers (nodes)
+  </li>
+  <li><tt><b>arcs  </b></tt>
+    : string or row vector of integers (arcs)
+  </li>
+  <li><tt><b>fmin,fmax  </b></tt>
+    : reals, minimum and maximum flow
+  </li>
+  <li><tt><b>tmin,tmax  </b></tt>
+    : reals, minimum and maximum time 
+  </li>
+  <li><tt><b>d  </b></tt>
+    : integer, a specific demand  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     Similar to ShowNet but it doesn't show the demands, it  only shows the
+    links of %net  that verify the conditions given by the
+    parameters (see ShowNet). If a demand is indicated, then the flow
+    shown is the corresponding to that demand.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample('Steenbrink');
+%net.gp.algorithm='AON';
+TrafficAssig();
+ShowLinks() // Shows the net
+ShowLinks('used','between',3000,6000,0,0,3)
+// Shows the net with the flow corresponding to demand 3, 
+// the light blue arcs are not used by the commodity 3
+// but by other commodities. The width corresponds to
+// the flow of the commodity 3. The arcs not shown have
+// total flow less than 3000 or greater than 6000.
+   </pre><p>
+    
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="TrafficExample.htm"><tt><b>TrafficExample</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;<a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

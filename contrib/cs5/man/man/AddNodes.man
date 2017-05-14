@@ -1,0 +1,44 @@
+.TH AddNodes  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+AddNodes  -  Add nodes to a net list
+.SH CALLING SEQUENCE
+.nf
+AddDemands(nx,ny)
+.fi
+.SH PARAMETERS
+.TP 10
+%net
+: The global Netlist variable databasis
+.TP 10
+nx
+: row vector, x coordinates of the added nodes
+.TP 10
+ny
+: row vector, y coordinates of the added nodes
+.TP 10
+net2
+: the resulting net list
+
+.SH DESCRIPTION
+AddNodes adds nodes to a net list.
+.SH EXAMPLES
+.nf
+%net=TrafficExample('Diamond');
+ShowNet()
+// Add 2 new nodes with coordinates x=[346,346] and y=[559,-50]
+AddNodes([346,346],[559,-50]);
+// We can see the modifications with
+ShowNet()
+.fi
+.SH SEE ALSO
+IntroTrfAsg,
+NetList,
+AddDemands,
+AddLinks,
+MakeNet,
+ShowNet
+
+
+
+
+

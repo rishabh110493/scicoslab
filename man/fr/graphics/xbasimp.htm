@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xbasimp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xbasimp</b> - envoie des graphiques vers une imprimante
+  ou un fichier Postscript</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xbasimp(win_num,[filen,printer])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>win_num</b></tt>: entier ou vecteur d'entiers</li>
+<li>
+<tt><b>filen</b></tt>: chaîne de caractères, nom du fichier Postscript (la valeur par
+          défaut est "file"). Le numéro de fenêtre est ajouté à 
+          <tt><b>filen</b></tt>.</li>
+<li>
+<tt><b>printer</b></tt>: chaîne de caractères, nom de l'imprimante. Si
+          <tt><b>printer</b></tt> est présent ou s'il n'y a qu'un seul argument
+          d'entrée dans la séquence d'appel, le fichier est directement
+          imprimé sur l'imprimante <tt><b>printer</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xbasimp</b></tt> envoie les graphiques enregistrés dans la fenêtre
+    <tt><b>win_num</b></tt> dans le fichier Postscript <tt><b>filen.</b></tt> Le
+    fichier créé ne contient pas d'entête. Pour le visualiser, il est
+    nécessaire d'ajouter l'entête, par exemple avec les commandes
+    <tt><b>Blpr</b></tt> ou <tt><b>BEpsf</b></tt> ou d'utiliser directement la
+    fonction <tt><b>xs2eps</b></tt>. Si une imprimante est spécifiée, le fichier
+    Postscript est imprimé avec la commande <tt><b>Blpr</b></tt>. Cette fonction
+    n'est utilisable qu'avec le pilote <tt><b>"Rec"</b></tt>.</p>
+<p>Si <tt><b>win_num</b></tt> est un vecteur, plusieurs fichiers sont
+    générés, un pour chaque fenêtre (avec les noms <tt><b>filenxx</b></tt>), et
+    les fichiers sont imprimés sur une seule page avec la commande
+    <tt><b>Blpr</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/printing.htm"><tt><b>printing</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2eps.htm"><tt><b>xs2eps</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ps.htm"><tt><b>xs2ps</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

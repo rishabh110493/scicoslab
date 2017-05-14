@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_get_timer</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_get_timer</b> -  Gets the  system's notion  of  the current time.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[time] = pvm_get_timer()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>time</b></tt>: scalar</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_get_timer</b></tt> returns the  time elapsed since the last call of
+    <tt><b>pvm_get_timer</b></tt> or the last call of
+    <tt><b>pvm_set_timer</b></tt>.  The  time   is
+    expressed in elapsed microseconds.  The resolution of the system clock
+    is  hardware  dependent; the  time may  be  updated continuously or in
+    clock ticks.</p>
+<p>
+    The returned value <tt><b>time</b></tt>will be &gt;= 0 if 
+    the call is successful and will be 
+    will be -1 if some error occurs.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+B = rand(100,100);
+A = rand(100,100);
+pvm_set_timer();C=A*B;t=pvm_get_timer()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_set_timer.htm"><tt><b>pvm_set_timer</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

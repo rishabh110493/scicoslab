@@ -1,0 +1,70 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>TrafficExample</title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>TrafficExample -   Traffic network example  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>net=TrafficExample("name",p1,p2,p3,p4)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : NetList of the traffic network
+  </li>
+  <li><tt><b>name  </b></tt>
+    : string to choose among "Braess", "Diamond", "Empty", "Nguyen Dupuis", "Normal Random City", "Random City", "Regular City",  "Sioux Falls", "Small", "Steenbrink", "Triangle".
+  </li>
+  <li><tt><b>p1, p2,  </b></tt>
+    
+  </li>
+  <li><tt><b>p3, p4  </b></tt>
+    : reals needed for examples: Regular City, Random City and Normal Random City 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     Generates a net-list choosing among many traffic network
+    examples:
+  </p>
+  <p>
+    -"Braess" -&gt; 4 nodes, 5 links and 1 demand. Linear travel time
+    functions.
+  </p>
+  <p>
+    -"Chicago" -&gt; 546 nodes, 2176 links and 93135 demands. Real large example.
+  </p>
+  <p>
+    -"Diamond" -&gt; 8 nodes, 14 links and 1 demand, diamond shaped network.
+  </p>
+  <p>
+    -"Empty" -&gt;  2 nodes and 1 link graph.
+  </p>
+  <p>
+    -"Nguyen Dupuis" -&gt; 13 nodes, 19 links and 4 demands network. Linear travel
+    time functions.
+  </p>
+  <p>
+    -"Normal Random City" -&gt; A net is generated using RandomNNet(p1,p2,p3,p4).
+  </p>
+  <p>
+    -"Random City" -&gt; A net is generated using RandomNet(p1,p2,p3,p4).
+  </p>
+  <p>
+    -"Regular City" -&gt;  A net is generated using Regular(p1,p2,p3).
+  </p>
+  <p>
+    -"Sioux Falls" -&gt; 24 nodes, 76 links and 528 demands network. Travel time
+    functions of power 4.
+  </p>
+  <p>
+    -"Small" -&gt; 4 nodes, 9 links and 2 demands network. Quadratic travel time
+    functions.
+  </p>
+  <p>
+    -"Steenbrink" -&gt; 9 nodes, 36 links and 12 demands network. Linear travel time
+    functions.
+  </p>
+  <p>
+    -"Triangle" -&gt;  3 nodes and 6 links network
+  </p>
+  <p>
+  </p>
+  <p>
+    These examples can be used as starting point to make different networks.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+%net=TrafficExample("Sioux Falls");
+ShowNet()
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="RandomNet.htm"><tt><b>RandomNet</b></tt></a>&nbsp;&nbsp;<a href="RandomNNet.htm"><tt><b>RandomNNet</b></tt></a>&nbsp;&nbsp;<a href="Regular.htm"><tt><b>Regular</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

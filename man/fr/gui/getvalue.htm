@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getvalue</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getvalue</b> -  boîte de dialogue de saisie de paramètres   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[ok,x1,..,x14]=getvalue(desc,labels,typ,ini)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>desc  </b></tt>
+	    : vecteur colonne de chaînes de caractères, 
+	  </li>
+<li>
+<tt><b>labels  </b></tt>
+	    : vecteur colonne de n chaînes de caractères, <tt><b>labels(i)</b></tt> est l'entête du i-ème paramètre
+	  </li>
+<li>
+<tt><b>typ  </b></tt>
+	    : <tt><b>list(typ_1,dim_1,..,typ_n,dim_n)</b></tt><ul>
+<li>
+<tt><b>typ_i  </b></tt>
+		  : définit le type de la ième valeur. typ_i peut prendre l'une des valeurs :
+		<ul>
+<li>
+<tt><b>"mat"  </b></tt>
+			: matrice
+		      </li>
+<li>
+<tt><b>"col"  </b></tt>
+			: vecteur colonne
+		      </li>
+<li>
+<tt><b>"row"  </b></tt>
+			: vecteur ligne
+		      </li>
+<li>
+<tt><b>"vec"  </b></tt>
+			: vecteur
+		      </li>
+<li>
+<tt><b>"str"  </b></tt>
+			: chaîne de caractères
+		      </li>
+<li>
+<tt><b>"lis"  </b></tt>
+			: liste
+		      </li>
+</ul>
+</li>
+<li>
+<tt><b>dim_i  </b></tt>
+		  : définit les dimensions de la i-ème valeur. Ce doit être un entier
+		  ou un vecteur de deux entiers. -1 signifie que les dimensions ne sont
+		  pas définies.
+		</li>
+<li>
+<tt><b>ini  </b></tt>
+		  : vecteur colonne de n chaînes de caractères, <tt><b>ini(i)</b></tt>
+		  donne la valeur par défaut du i-ème paramètre
+		</li>
+<li>
+<tt><b>ok  </b></tt>
+		  : booléen, %t (vrai) si le bouton "Ok" a été pressé, %f
+		  (faux) pour le bouton "Cancel"
+		</li>
+<li>
+<tt><b>xi  </b></tt>
+		  : contient le i-ème paramètre si ok=%t. Si la liste des arguments de
+		  sortie contient un <tt><b>xi</b></tt> de plus que nécessaire, la valeur
+		  du dernier <tt><b>xi</b></tt> contient le vecteur des chaînes de
+		  caractères correspondant aux paramètres choisis.
+		</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Cette fonction est une interface vers la fonction <tt><b>x_mdialog</b></tt>
+      avec contrôle d'erreur, vérification de taille et de type des
+      paramètres, évaluation des expressions Scilab, etc.
+    </p>
+<h3><font color="blue">REMARQUES</font></h3>
+<dl><p>
+      Toute expression Scilab valide peut être utilisée pour entrer un
+      paramètre; pour les matrices  et les vecteurs <tt><b>getvalues</b></tt>
+      ajoute [ ] autour des valeurs rentrées avant leur évaluation.
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    labels=["module";"frequence";"phase    "];
+    [ok,mag,freq,ph]=getvalue("signal sinusoidal",labels,...
+    list("vec",1,"vec",1,"vec",1),["0.85";"10^2";"%pi/3"])
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_mdialog.htm"><tt><b>x_mdialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_matrix.htm"><tt><b>x_matrix</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer ; ;   </p>
+</body>
+</html>

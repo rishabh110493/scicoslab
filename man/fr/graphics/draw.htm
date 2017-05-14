@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>draw</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>draw</b> - draw an entity.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>draw()</tt></dd>
+<dd><tt>draw(h)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>h</b></tt>: a handle, the handle on an entity to draw. <tt><b>h</b></tt> can
+          be a vector of handles, in which case all objects identified by h(i)
+          will be drawn.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function can be used to draw entities specified by <tt><b>h</b></tt>
+    even if its parent figure <tt><b>immediate_drawing</b></tt> property is
+    <tt><b>"off"</b></tt>. If no argument is specified, the <tt><b>current
+    object</b></tt> is drawn. Note that the window must not be resized ; if not,
+    those objects are hidden back.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>   subplot(212)
+   a=gca();
+    plot2d
+   drawlater
+
+    subplot(211)
+    plot2d1 // default drawing mode
+
+    e=gce();
+    draw(e.children(2)) // draw a single polyline of the second axes
+
+    e.children(1).visible='off'; // We can choose to make a line invisible
+
+    draw(e) // draw Compound and its children &lt;=&gt; draw all the visible polylines
+    
+    
+  
+
+    drawnow // ...now!
+
+    e.children(1).visible='on';
+
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/drawnow.htm"><tt><b>drawnow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/drawlater.htm"><tt><b>drawlater</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE, F.Leray</p>
+</body>
+</html>

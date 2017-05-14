@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>detrend</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>detrend</b> - remove constant, linear or piecewise linear trend from a vector</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y = detrend(x)</tt></dd>
+<dd><tt>y = detrend(x,flag)</tt></dd>
+<dd><tt>y = detrend(x,flag,bp)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>
+       : vector or matrix of real or complex numbers (the signal to treat)
+       </li>
+<li>
+<tt><b>flag</b></tt>
+       : a string equal to "linear" (or "l") for linear or piecewise linear treatment  
+         or "constant" (or "c") for constant treatment.
+       </li>
+<li>
+<tt><b>bp</b></tt>
+       : the breakpoints to provide if you want a piecewise linear treatment. 
+       </li>
+<li>
+<tt><b>y</b></tt>
+       : output, the signal x with the trend removed from it.
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      This function removes the constant or linear or
+      piecewise linear trend from a vector <tt><b>x</b></tt>. In general
+      this can be useful before a fourier analysis. If <tt><b>x</b></tt> is
+      matrix this function removes the trend of each column of x.
+      </p>
+<p>
+     When <tt><b>flag</b></tt> = "constant" or "c"  <tt><b>detrend</b></tt> removes the constant trend 
+     (simply the mean of the signal) and when <tt><b>flag</b></tt> = "linear" or "l" the function
+     removes the linear trend. By adding a third argument <tt><b>bp</b></tt> it is possible to
+     remove a continuous <em>piecewise linear</em> trend. Note that the "instants" of the signal 
+     <tt><b>x</b></tt> goes from 0 to m-1  (m = length(x) if x is a vector and m = size(x,1) in case
+     x is a matrix). So the breakpoints <tt><b>bp(i)</b></tt> must be reals in <em>[0 m-1]</em> 
+     (breakpoints outside are simply removed from <tt><b>bp</b></tt> vector). 
+     </p>
+<p>
+     The trend is got by a least square fit of <tt><b>x</b></tt> on the appropriate function space. 
+     </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// example #1
+t = linspace(0,16*%pi,1000)';
+x = -20 + t + 0.3*sin(0.5*t) + sin(t) + 2*sin(2*t) + 0.5*sin(3*t); 
+y = detrend(x);
+xbasc()
+plot2d(t,[x y],style=[2 5])
+legend(["before detrend","after detrend"]);
+xgrid()
+
+// example #2
+t = linspace(0,32*%pi,2000)';
+x = abs(t-16*%pi) + 0.3*sin(0.5*t) + sin(t) + 2*sin(2*t) + 0.5*sin(3*t); 
+y = detrend(x,"linear",1000);
+xbasc()
+plot2d(t,[x y],style=[2 5])
+legend(["before detrend","after detrend"]);
+xgrid()
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Bruno Pincon
+  </p>
+</body>
+</html>

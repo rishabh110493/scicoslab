@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>svd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>svd</b> -   singular value decomposition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s=svd(X)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X,0) (obsolete)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X,"e")  </tt></dd>
+<dd><tt>[U,S,V,rk]=svd(X [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: a real or complex matrix</li>
+<li>
+<tt><b>s</b></tt>: real vector (singular values)</li>
+<li>
+<tt><b>S</b></tt>: real diagonal matrix (singular values)</li>
+<li>
+<tt><b>U,V</b></tt>: orthogonal or unitary square matrices (singular vectors).</li>
+<li>
+<tt><b>tol</b></tt>: real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[U,S,V] = svd(X)</b></tt> produces a diagonal matrix
+    <tt><b>S</b></tt> , of the same dimension as <tt><b>X</b></tt> and with
+    nonnegative diagonal elements in decreasing order, and unitary
+    matrices <tt><b>U</b></tt> and <tt><b>V</b></tt> so that <tt><b>X = U*S*V'</b></tt>.</p>
+<p><tt><b>[U,S,V] = svd(X,0)</b></tt> produces the "economy
+    size" decomposition. If <tt><b>X</b></tt> is m-by-n with m &gt;
+    n, then only the first n columns of <tt><b>U</b></tt> are computed
+    and <tt><b>S</b></tt> is n-by-n.</p>
+<p><tt><b>s = svd(X)</b></tt> by itself, returns a vector <tt><b>s</b></tt>
+    containing the singular values.</p>
+<p><tt><b>[U,S,V,rk]=svd(X,tol)</b></tt> gives in addition <tt><b>rk</b></tt>, the numerical rank of <tt><b>X</b></tt> i.e. the number of 
+    singular values larger than <tt><b>tol</b></tt>.</p>
+<p>
+    The default value of <tt><b>tol</b></tt> is the same as in <tt><b>rank</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+X=rand(4,2)*rand(2,4)
+svd(X)
+sqrt(spec(X*X'))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/sva.htm"><tt><b>sva</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+   svd decompositions are based on  the Lapack routines DGESVD for
+   real matrices and  ZGESVD for the complex case.</p>
+</body>
+</html>

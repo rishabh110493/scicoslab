@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_imp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_imp</b> - Fonction d'émulation de l'opérateur "deux points" de Matlab</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, l'opérateur "deux points" se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+	Avec des matrices vides : L'opérateur <tt><b>:</b></tt> doit être utilisé avec des scalaires dans Scilab
+	et retourne un message d'erreur quand on l'utilise avec des matrices vides alors que Matlab renvoie []
+	dans tous ces cas.
+        </li></dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_imp(A,B[,C])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>A:B[:C]</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_imp</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt>, <tt><b>B</b></tt> et <tt><b>C</b></tt> ne sont pas des matrices vides
+	<tt><b>mtlb_imp(A,B[,C])</b></tt> peut être remplacé par <tt><b>A:B[:C]</b></tt>
+</li></dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_imp</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

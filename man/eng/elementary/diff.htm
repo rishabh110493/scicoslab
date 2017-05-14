@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>diff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>diff</b> -  Difference and discrete derivative</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=diff(x)  </tt></dd>
+<dd><tt>y=diff(x [,n [,dim]])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vector or matrix (real, complex, sparse or polynomial)</li>
+<li>
+<tt><b>n</b></tt>: integer the order of differentiation</li>
+<li>
+<tt><b>dim</b></tt>: integer or character string with values "r","c" and "*"</li>
+<li>
+<tt><b>y</b></tt>: scalar or vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=diff(x)</b></tt>  compute the difference function y=x(2:$)-x(1:$-1)</p>
+<p><tt><b>diff(x,n,dim)</b></tt> is the <tt><b>n</b></tt> th difference function along
+    dimension <tt><b>dim</b></tt>.</p>
+<p><tt><b>diff(x,n,"*")</b></tt> is equivalent to diff(x(:),n).</p>
+<p>
+    Default value for <tt><b>n</b></tt> is 1.  Default value for
+    <tt><b>dim</b></tt> is <tt><b>"*"</b></tt>.</p>
+<p><tt><b>dim='r'</b></tt> is equivalent to <tt><b>dim=1</b></tt> and <tt><b>dim='c'</b></tt> is
+    equivalent to <tt><b>dim=2</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+v=(1:8)^3;
+diff(v)
+diff(v,3)
+
+A=[(1:8)^2
+   (1:8)^3
+   (1:8)^4];
+
+diff(A,3,2)
+
+//approximate differentiation
+step=0.001
+t=0:step:10;
+y=sin(t);
+dy=diff(sin(t))/step; //approximate differentiation of sine function
+norm(dy-cos(t(1:$-1)),%inf)
+ 
+  </pre>
+</body>
+</html>

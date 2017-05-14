@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plus (+)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Operator  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plus (+)</b> -   opérateur d'addition  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X+Y  </tt></dd>
+<dd><tt>str1+str2  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X,Y  </b></tt>
+    : matrice réelle, complexe, polynomiale, rationnelle ou liste de type <tt><b>syslin</b></tt>
+</li>
+<li>
+<tt><b>str1,str2  </b></tt>
+    : chaîne de caractères ou matrice de chaînes de caractères
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Addition. 
+  </p>
+<p>
+    Pour des opérandes numériques l'addition a la signification habituelle.
+    Si l'un des opérandes est une matrice et l'autre un scalaire, ce dernier est ajouté à tous les termes de la matrice. Si l'un des opérandes est une matrice vide, le résultat est égal à l'autre opérande (ce comportement par défaut peut être modifié avec <tt><b>mtlb_mode</b></tt>). 
+  </p>
+<p>
+    Pour les chaînes de caractères <tt><b>+</b></tt> désigne la concaténation.
+  </p>
+<p>
+    L'addition peut être redéfinie pour de nouveaux types d'objets en utilisant la surcharge d'opérateurs (voir <tt><b>overloading</b></tt>).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[1,2]+1
+[]+2
+s=poly(0,"s");
+s+2
+1/s+2
+"conca"+"tener"
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/addf.htm"><tt><b>addf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mtlb_mode.htm"><tt><b>mtlb_mode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

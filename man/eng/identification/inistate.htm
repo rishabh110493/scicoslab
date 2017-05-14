@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>inistate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inistate</b> -  Estimates the initial state of a discrete-time system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X0 = inistate(SYS,Y,U,TOL,PRINTW)   </tt></dd>
+<dd><tt>X0 = inistate(A,B,C,Y,U);  </tt></dd>
+<dd><tt>X0 = inistate(A,C,Y);  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>[x0,V,rcnd] = inistate(SYS,Y,U,TOL,PRINTW)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>SYS</b></tt>: given system, syslin(dt,A,B,C,D)</li>
+<li>
+<tt><b>Y</b></tt>: the output of the system</li>
+<li>
+<tt><b>U</b></tt>: the input of the system</li>
+<li>
+<tt><b>TOL</b></tt>: TOL is the tolerance used for estimating the rank of matrices.  If  TOL &gt; 0,  then the given value of  TOL  is used as a lower bound for the reciprocal condition number.<p>
+    Default:    prod(size(matrix))*epsilon_machine where epsilon_machine is the relative machine precision. 
+  </p>
+</li>
+<li>
+<tt><b>PRINTW</b></tt>: PRINTW is a switch for printing the warning messages.<ul>
+<li>
+<tt><b>=  </b></tt>1: print warning messages;</li>
+<li>
+<tt><b>=  </b></tt>0: do not print warning messages.</li>
+</ul>
+<p>
+    Default:    PRINTW = 0.
+  </p>
+</li>
+<li>
+<tt><b>X0</b></tt>: the estimated initial state vector</li>
+<li>
+<tt><b>V</b></tt>: orthogonal matrix which reduces the system state matrix A to  a real Schur form</li>
+<li>
+<tt><b>rcnd</b></tt>: estimate of the reciprocal condition number of the coefficient matrix of the least squares problem solved.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    inistate  Estimates the initial state of a discrete-time system, given the 
+    (estimated) system matrices, and a set of input/output data.</p>
+<p>
+    X0 = inistate(SYS,Y,U,TOL,PRINTW)  estimates the initial state X0 of 
+    the discrete-time system SYS = (A,B,C,D), using the output data Y
+    and the input data U. The model structure is :</p>
+<pre>
+
+     x(k+1) = Ax(k) + Bu(k),   k &gt;= 1,
+     y(k)   = Cx(k) + Du(k),
+   
+    </pre>
+<p>
+    The vectors y(k) and u(k) are transposes of the k-th rows of Y and U,
+    respectively.</p>
+<p>
+    Instead of the first input parameter SYS (an syslin object), equivalent
+    information may be specified using matrix parameters, for instance,
+    X0 = inistate(A,B,C,Y,U);   or   X0 = inistate(A,C,Y);</p>
+<p>
+    [x0,V,rcnd] = inistate(SYS,Y,U,TOL,PRINTW) returns, besides x0, 
+    the orthogonal matrix V which reduces the system state matrix A to 
+    a real Schur form, as well as an estimate of the reciprocal condition
+    number of the coefficient matrix of the least squares problem solved.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findBD.htm"><tt><b>findBD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/identification/findx0BD.htm"><tt><b>findx0BD</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

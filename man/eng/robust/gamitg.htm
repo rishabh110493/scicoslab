@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gamitg</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gamitg</b> -  H-infinity gamma iterations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[gopt]=gamitg(G,r,prec [,options]);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: <tt><b>syslin</b></tt> list (plant realization )</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector (dimension of <tt><b>G22</b></tt>)</li>
+<li>
+<tt><b>prec</b></tt>: desired relative accuracy on the norm</li>
+<li>
+<tt><b>option</b></tt>: string <tt><b>'t'</b></tt>
+</li>
+<li>
+<tt><b>gopt</b></tt>: real scalar, optimal H-infinity gain</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gopt=gamitg(G,r,prec [,options])</b></tt>
+    returns the H-infinity optimal gain <tt><b>gopt</b></tt>.</p>
+<p><tt><b>G</b></tt> contains the state-space matrices <tt><b>[A,B,C,D]</b></tt> of
+    the plant with the usual partitions:</p>
+<pre>
+
+   B = ( B1 , B2 ) ,    C = ( C1 ) ,    D = ( D11  D12)
+                            ( C2 )          ( D21  D22)
+   
+    </pre>
+<p>
+    These partitions are implicitly given in <tt><b>r</b></tt>: <tt><b>r(1)</b></tt>
+    and <tt><b>r(2)</b></tt> are the dimensions of <tt><b>D22</b></tt> (rows x columns)</p>
+<p>
+    With <tt><b>option='t'</b></tt>, <tt><b>gamitg</b></tt> traces each bisection step, i.e., 
+    displays the lower and upper bounds and the current test point.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/ccontrg.htm"><tt><b>ccontrg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/h_inf.htm"><tt><b>h_inf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>P. Gahinet</p>
+</body>
+</html>

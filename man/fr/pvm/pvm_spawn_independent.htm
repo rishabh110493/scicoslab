@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_spawn_independent</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_spawn_independent</b> -  Starts new PVM processes.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[tids, numt] = pvm_spawn_independent(task,  ntask, [where])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>task:  </b></tt>string, which is the executable file name of the PVM process to be started. The executable must already reside on the host on which it is to be started.  The name may be a file in the PVM search path or an absolute path.  The default PVM search path is $HOME/pvm3/bin/$PVM_ARCH/ .</li>
+<li>
+<tt><b>ntask:  </b></tt>integer, specifying the number of copies of the executable file to start.</li>
+<li>
+<tt><b>where:  </b></tt>string (optional), can be a host name such as ``tequila.ens-lyon.fr'' or a PVM architecture class such as ``SUN4''.</li>
+<li>
+<tt><b>numt:  </b></tt>integer, the actual number of tasks started.  Values less than zero indicate a system error.</li>
+<li>
+<tt><b>tids</b></tt>row of integers, array of the tids of the PVM processes started by this pvm_spawn_independent call.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_spawn_independent</b></tt> 
+    starts <tt><b>ntask</b></tt> copies of the executable named 
+    <tt><b>task</b></tt>.</p>
+<p>
+    On systems that support environment variables, 
+    <tt><b>pvm_spawn_independent</b></tt> passes selected variables
+    from parent environment to children tasks.  If set, the envar
+    <tt><b>PVM_EXPORT</b></tt> is passed.  If <tt><b>PVM_EXPORT</b></tt> contains other names
+    (separated by ':') they will be passed too.  This is useful for e.g.:</p>
+<pre>
+
+ setenv DISPLAY myworkstation:0.0
+ setenv MYSTERYVAR 13
+ setenv PVM_EXPORT DISPLAY:MYSTERYVAR
+   
+    </pre>
+<p>
+    The hosts on which the PVM processes are started are determined by the
+     <tt><b>where</b></tt> arguments. On return the array
+    <tt><b>tids</b></tt> contains the PVM task identifiers for each process started.
+    If <tt><b>pvm_spawn_independent</b></tt> starts one or more tasks,
+    <tt><b>numt</b></tt>
+    will be the actual number of tasks started.  If a system error occurs
+    then <tt><b>numt</b></tt> will be &lt; 0.
+    If <tt><b>numt</b></tt> is les than  <tt><b>ntask</b></tt>
+    then some executables have failed to start. 
+    The last locations in the <tt><b>tids</b></tt> array 
+    will contain error codes (see below for meaning). Note that the 
+    first tids in the array are always valid.</p>
+<p>
+    When the argument  <tt><b>where</b></tt> 
+    is omitted  an heuristic (round-robin assignment) is used to
+    distribute the <tt><b>ntask</b></tt> 
+    processes across the virtual machine.</p>
+<p>
+    In the special case where a multiprocessor is specified by
+    <tt><b>where</b></tt>. 
+    <tt><b>pvm_spawn_independent</b></tt> will start all
+    copies on this single machine using the vendor's underlying routines.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm.htm"><tt><b>pvm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_spawn.htm"><tt><b>pvm_spawn</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

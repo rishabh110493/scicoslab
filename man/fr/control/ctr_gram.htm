@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ctr_gram</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ctr_gram</b> -  controllability gramian</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Gc]=ctr_gram(A,B [,dom])  </tt></dd>
+<dd><tt>[Gc]=ctr_gram(sl)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B</b></tt>: two real matrices of appropriate dimensions</li>
+<li>
+<tt><b>dom</b></tt>: character string (<tt><b>'c'</b></tt> (default value) or <tt><b>'d'</b></tt>)</li>
+<li>
+<tt><b>sl</b></tt>: linear system, <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Controllability gramian of <tt><b>(A,B)</b></tt> or <tt><b>sl</b></tt> (a <tt><b>syslin</b></tt> 
+    linear system).</p>
+<p><tt><b>dom</b></tt> character string giving the time domain : <tt><b>"d"</b></tt> for a
+    discrete time system and <tt><b>"c"</b></tt> for continuous time (default case).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2,-3]);B=rand(3,2);
+Wc=ctr_gram(A,B)
+U=rand(3,3);A1=U*A/U;B1=U*B;
+Wc1=ctr_gram(A1,B1)    //Not invariant!
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obs_gram.htm"><tt><b>obs_gram</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/cont_mat.htm"><tt><b>cont_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/cont_frm.htm"><tt><b>cont_frm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer INRIA 1988</p>
+</body>
+</html>

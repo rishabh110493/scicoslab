@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sysdiag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sysdiag</b> -  block diagonal system connection</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>r=sysdiag(a1,a2,...,an)</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns the block-diagonal system made with subsystems put in the main
+    diagonal
+  </p>
+<dl><dd>
+<b>ai</b>: subsystems (i.e. gains, or linear systems in state-space or transfer form)</dd></dl>
+<p>
+    Used in particular for system interconnections.</p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    At most 17 arguments.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ s=poly(0,'s')
+ sysdiag(rand(2,2),1/(s+1),[1/(s-1);1/((s-2)*(s-3))])
+ sysdiag(tf2ss(1/s),1/(s+1),[1/(s-1);1/((s-2)*(s-3))])
+
+ s=poly(0,'s')
+ sysdiag(rand(2,2),1/(s+1),[1/(s-1);1/((s-2)*(s-3))])
+ sysdiag(tf2ss(1/s),1/(s+1),[1/(s-1);1/((s-2)*(s-3))])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/brackets.htm"><tt><b>brackets</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/feedback.htm"><tt><b>feedback</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

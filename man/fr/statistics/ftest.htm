@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ftest</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ftest</b> -  Fischer ratio</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>f=ftest(samples)  </tt></dd>
+<dd><tt>[f,p]=ftest(samples)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>samples</b></tt>: real or complex matrix of type nr X nc</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b> f=ftest(samples) </b></tt> computes the Fischer ratio of the
+    nc samples whose  values are in the columns  of the matrix
+    <tt><b>samples</b></tt>. Each one of these samples is composed of nr
+    values. (The  Fischer ratio is the ratio  between nr times
+    the  variance of  the means  of  samples and  the mean  of
+    variances of each sample)</p>
+<p><tt><b> [f,p]=ftest(samples) </b></tt> gives in p the p-value of the
+    computed Fischer ratio f.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Wonacott, T.H. &amp;  Wonacott, R.J.; Introductory Statistics, J.Wiley &amp; Sons, 1990.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+samples=[46 55 54;
+         53 54 50; 
+         49 58 51;
+         50 61 51;
+         46 52 49]
+[f,p]=ftest(samples)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/ftuneq.htm"><tt><b>ftuneq</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

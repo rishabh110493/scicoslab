@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_axis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_axis</b> - Matlab axis emulation
+  function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mtlb_axis(X)</tt></dd>
+<dd><tt>mtlb_axis(st)</tt></dd>
+<dd><tt>mtlb_axis(axeshandle, ...)</tt></dd>
+<dd><tt>[mode,visibility,direction]=mtlb_axis('state')</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X</b></tt>: a vector of reals ([xmin xmax ymin ymax] or [xmin xmax ymin
+          ymax zmin zmax])</li></ul>
+<ul><li>
+<tt><b>st</b></tt>: a string ('auto', 'manual', 'tight', 'ij', 'xy', 'equal',
+          'square', 'vis3d', 'off', 'on')</li></ul>
+<ul><li>
+<tt><b>axeshandle</b></tt>: handle of the current axes entity</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab <tt><b>axis</b></tt> have not a Scilab equivalent function.</p>
+<p>The function <tt><b>mtlb_axis(...)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>axis(...)</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab.
+    This function will determine the correct semantic at run time (axis
+    <tt><b>fill</b></tt>, axis <tt><b>image</b></tt> and axis <tt><b>normal</b></tt>
+    are not implemented). If you want to have a more efficient code it is
+    possible to replace <tt><b>mtlb_axis</b></tt> call by <tt><b>get(axeshandle,
+    prop)</b></tt> call (prop is a axes property, see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axis_properties.htm"><tt><b>axis_properties</b></tt></a>)</p>
+<p>Caution: <tt><b>mtlb_axis</b></tt> has not to be used for hand coded
+    functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>F.B.</dd></dl>
+</body>
+</html>

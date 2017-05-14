@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>number_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>number_properties</b> -  determine floating-point parameters</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>pr = number_properties(prop)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>prop</b></tt>: string</li>
+<li>
+<tt><b>pr</b></tt>: real or boolean scalar</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function may be used to get the characteristic
+    numbers/properties of the floating point set denoted here by
+    <tt><b>F(b,p,emin,emax)</b></tt> (usually the 64 bits float numbers set prescribe 
+    by IEEE 754). Numbers of <tt><b>F</b></tt> are of the form :
+  </p>
+<pre>
+
+     sign * m * b^e
+   
+    </pre>
+<p><tt><b>e</b></tt> is the exponent and <tt><b>m</b></tt> the mantissa :
+  </p>
+<pre>
+
+     m = d_1 b^(-1) + d_2 b^(-2) + .... + d_p b^(-p)
+   
+    </pre>
+<p><tt><b>d_i</b></tt> the digits are in <tt><b>[0, b-1]</b></tt> and <tt><b>e</b></tt> in 
+    <tt><b>[emin, emax]</b></tt>, the number
+    is said "normalised" if <tt><b>d_1 ~= 0</b></tt>. The following may be gotten : 
+  </p>
+<dl>
+<dd>
+<b>prop = "radix"</b>-&gt; pr is the radix <tt><b>b</b></tt> of the set <tt><b>F</b></tt>
+</dd>
+<dd>
+<b>prop = "digits"</b>-&gt; pr is the number of digits <tt><b>p</b></tt>
+</dd>
+<dd>
+<b>prop = "huge"</b>-&gt; pr is the max positive float of <tt><b>F</b></tt>
+</dd>
+<dd>
+<b>prop = "tiny"</b>-&gt; pr is the min positive normalised float of <tt><b>F</b></tt>
+</dd>
+<dd>
+<b>prop = "denorm"</b>-&gt; pr is a boolean : %t if denormalised numbers are used</dd>
+<dd>
+<b>prop = "tiniest"</b>-&gt; if denorm = %t, pr is the min positive denormalised number else pr = tiny</dd>
+<dd>
+<b>prop = "eps"</b>-&gt; pr is the epsilon machine ( generally (<tt><b>b^(1-p))/2</b></tt> ) which is the 
+    relative max error between a real <tt><b>x</b></tt> (such than <tt><b>|x|</b></tt> in 
+    <tt><b>[tiny, huge]</b></tt>) and <tt><b>fl(x)</b></tt>, its floating  point 
+    approximation in <tt><b>F</b></tt>.</dd>
+<dd>
+<b>prop = "minexp"</b>-&gt; pr is <tt><b>emin</b></tt>
+</dd>
+<dd>
+<b>prop = "maxexp"</b>-&gt; pr is <tt><b>emax</b></tt>
+</dd>
+</dl>
+<h3><font color="blue">Remarks</font></h3>
+<dl><p>
+    This function uses the lapack routine dlamch to get the machine parameters (the names 
+    (radix, digit, huge, etc...) are those recommended  by the LIA 1 standard and are different 
+    from the corresponding lapack's  ones) ; CAUTION : sometimes you can see the following 
+    definition for the epsilon machine : <tt><b>eps =  b^(1-p)</b></tt> but in this function we 
+    use the traditionnal one (see prop = "eps" before) and so 
+    <tt><b>eps = (b^(1-p))/2</b></tt> if  normal rounding occurs and <tt><b>eps = b^(1-p)</b></tt> 
+    if not.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+b = number_properties("radix")
+eps = number_properties("eps")
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/nearfloat.htm"><tt><b>nearfloat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/frexp.htm"><tt><b>frexp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Bruno Pincon</p>
+</body>
+</html>

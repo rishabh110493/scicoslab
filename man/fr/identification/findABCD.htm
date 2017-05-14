@@ -1,0 +1,133 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>findABCD</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>findABCD</b> -  discrete-time system subspace identification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[SYS,K] = findABCD(S,N,L,R,METH,NSMPL,TOL,PRINTW)   </tt></dd>
+<dd><tt>SYS = findABCD(S,N,L,R,METH)   </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>[SYS,K,Q,Ry,S,RCND] = findABCD(S,N,L,R,METH,NSMPL,TOL,PRINTW)   </tt></dd>
+<dd><tt>[SYS,RCND] = findABCD(S,N,L,R,METH)   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>S</b></tt>: integer, the number of block rows in the block-Hankel matrices</li>
+<li>
+<tt><b>N</b></tt>: integer, the system order</li>
+<li>
+<tt><b>L</b></tt>: integer, the number of output</li>
+<li>
+<tt><b>R</b></tt>: matrix, relevant part of the  R factor of the concatenated block-Hankel matrices computed by a call to findr.</li>
+<li>
+<tt><b>METH</b></tt>: integer, an option for the method to use<ul>
+<li>
+<tt><b>= 1</b></tt>:  MOESP method with past inputs and outputs;</li>
+<li>
+<tt><b>= 2</b></tt>:  N4SID method;</li>
+<li>
+<tt><b>= 3</b></tt>:  combined method: A and C via MOESP, B and D via N4SID.</li>
+</ul>
+<p>
+    Default:    METH = 3.
+  </p>
+</li>
+<li>
+<tt><b>NSMPL</b></tt>: integer, the total number of samples used for calculating the covariance matrices and the Kalman predictor gain. This parameter is not needed if the covariance matrices and/or the Kalman predictor gain matrix are not desired. If NSMPL = 0, then K, Q, Ry, and S are not computed. Default:    NSMPL = 0.</li>
+<li>
+<tt><b>TOL</b></tt>: the tolerance used for estimating the rank of matrices.  If  TOL &gt; 0,  then the given value of  TOL  is used as a lower bound for the reciprocal condition number. Default: prod(size(matrix))*epsilon_machine where epsilon_machine is the relative machine precision.</li>
+<li>
+<tt><b>PRINTW</b></tt>: integer, switch for printing the warning messages.<ul>
+<li>
+<tt><b>PRINTW</b></tt>= 1: print warning messages;</li>
+<li>
+<tt><b>PRINTW</b></tt>= 0: do not print warning messages.</li>
+</ul>
+<p>
+    Default:    PRINTW = 0.
+  </p>
+</li>
+<li>
+<tt><b>SYS</b></tt>: computes a state-space realization SYS = (A,B,C,D) (an syslin object)</li>
+<li>
+<tt><b>K</b></tt>: the Kalman predictor gain K (if NSMPL &gt; 0)</li>
+<li>
+<tt><b>Q</b></tt>:  state covariance</li>
+<li>
+<tt><b>Ry</b></tt>: output covariance</li>
+<li>
+<tt><b>S</b></tt>: state-output cross-covariance</li>
+<li>
+<tt><b>RCND</b></tt>: vector, reciprocal condition numbers of the matrices involved in rank decisions, least squares or Riccati equation solutions</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Finds the system matrices and the Kalman gain of a discrete-time 
+    system, given the system order and the relevant part of the 
+    R factor of the concatenated block-Hankel matrices, using subspace 
+    identification techniques (MOESP and/or N4SID).
+  </p>
+<dl>
+<dd>
+<b>*</b>[SYS,K] = findABCD(S,N,L,R,METH,NSMPL,TOL,PRINTW)  computes a state- space realization SYS = (A,B,C,D) (an ss object), and the Kalman predictor gain K (if NSMPL &gt; 0). The model structure is:<pre>
+
+     x(k+1) = Ax(k) + Bu(k) + Ke(k),   k &gt;= 1,
+     y(k)   = Cx(k) + Du(k) + e(k),
+   
+        </pre>
+<p>
+    where x(k) and y(k) are vectors of length N and L, respectively.
+  </p>
+</dd>
+<dd>
+<b>*</b>[SYS,K,Q,Ry,S,RCND] = findABCD(S,N,L,R,METH,NSMPL,TOL,PRINTW)  also returns the state, output, and state-output (cross-)covariance matrices Q, Ry, and S (used for computing the Kalman gain), as well as the vector RCND of length lr containing the reciprocal condition numbers of the matrices involved in rank decisions, least squares or Riccati equation solutions, where</dd>
+</dl>
+<pre>
+
+   lr = 4,  if Kalman gain matrix K is not required, and
+   lr = 12, if Kalman gain matrix K is required.
+   
+    </pre>
+<p>
+    Matrix R, computed by findR, should be determined with suitable arguments
+    METH and JOBD.  METH = 1 and JOBD = 1 must be used in findR, for METH = 1 
+    in findABCD;  METH = 1 must be used in findR, for METH = 3 in findABCD.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//generate data from a given linear system
+A = [ 0.5, 0.1,-0.1, 0.2;
+      0.1, 0,  -0.1,-0.1;      
+     -0.4,-0.6,-0.7,-0.1;  
+      0.8, 0,  -0.6,-0.6];      
+B = [0.8;0.1;1;-1];
+C = [1 2 -1 0];
+SYS=syslin(0.1,A,B,C);
+nsmp=100;
+U=prbs_a(nsmp,nsmp/5);
+Y=(flts(U,SYS)+0.3*rand(1,nsmp,'normal'));
+
+
+// Compute R
+S=15;
+[R,N1,SVAL] = findR(S,Y',U');
+N=3;
+SYS1 = findABCD(S,N,1,R) ;SYS1.dt=0.1;
+
+SYS1.X0 = inistate(SYS1,Y',U');
+
+Y1=flts(U,SYS1);
+xbasc();plot2d((1:nsmp)',[Y',Y1'])
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/findAC.htm"><tt><b>findAC</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/findBD.htm"><tt><b>findBD</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/findBDK.htm"><tt><b>findBDK</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/findR.htm"><tt><b>findR</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/sorder.htm"><tt><b>sorder</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/identification/sident.htm"><tt><b>sident</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tf2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tf2ss</b> -  transfer to state-space</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sl=tf2ss(h [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: rational matrix</li>
+<li>
+<tt><b>tol</b></tt>: may be the constant rtol or the 2 vector <tt><b>[rtol atol]</b></tt><ul>
+<li>
+<tt><b>rtol</b></tt>:tolerance used when evaluating observability.</li>
+<li>
+<tt><b>atol</b></tt>:absolute tolerance used when evaluating observability.</li>
+</ul>
+</li>
+<li>
+<tt><b>sl</b></tt>: linear system (<tt><b>syslin</b></tt> list <tt><b>sl=[A,B,C,D(s)]</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    transfer to state-space conversion:</p>
+<p><tt><b>h=C*(s*eye()-A)^-1*B+D(s)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+H=[2/s,(s+1)/(s^2-5)];
+Sys=tf2ss(H)
+clean(ss2tf(Sys))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/tf2des.htm"><tt><b>tf2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/des2tf.htm"><tt><b>des2tf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

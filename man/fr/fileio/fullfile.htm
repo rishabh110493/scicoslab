@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fullfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fullfile</b> - Construit un nom de fichier complet</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>f = fullfile(varargin)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>varargin</b></tt>: tous les répertoires et le nom de fichier utilisés pour créer le nom de fichier complet (au moins un répertoire et un nom de fichier)</li>
+<li>
+<tt><b>f</b></tt> : nom de fichier complet</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>f = fullfile(varargin)</b></tt> construit un nom de fichier complet en prenant en compte la plateforme actuelle et en gérant les cas où les noms de répertoires commencent ou finissent par un séparateur de répertoire.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   f=fullfile("/home/","\scilab","macros","\util","fullfile.sci")
+   f=fullfile("C:","\scilab","macros","\util","fullfile.sci")
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/pathconvert.htm"><tt><b>pathconvert</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileparts.htm"><tt><b>fileparts</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

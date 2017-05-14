@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mad</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mad</b> -   mean absolute deviation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s2=mad(x)  </tt></dd>
+<dd><tt>s2=mad(x,'r') or s2=mad(x,1)  </tt></dd>
+<dd><tt>s2=mad(x,'c') or s2=mad(x,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes   the mean absolute deviation of  a
+    real or complex vector or matrix <tt><b> x</b></tt>.</p>
+<p>
+    For  a  vector  or matrix  <tt><b>   x</b></tt>, <tt><b> s2=mad(x)  </b></tt>
+    returns in scalar <tt><b> s2</b></tt> the mean absolute  deviation
+    of all the entries of <tt><b> x</b></tt>.</p>
+<p><tt><b> s2=mad(x,'r')  </b></tt> (or, equivalently,  <tt><b> s2=mad(x,1)</b></tt>) 
+    returns in each entry of the column vector <tt><b> s2</b></tt>
+    the mean absolute deviation of each column of <tt><b> x</b></tt>.</p>
+<p><tt><b> s2=mad(x,'c')  </b></tt> (or, equivalently,  <tt><b> s2=mad(x,2)</b></tt>) 
+    returns in each entry of the column vector <tt><b> s2</b></tt>
+    the mean absolute deviation of each row of <tt><b> x</b></tt>.</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Reference: Wonacott  T.H.&amp; Wonacott  R.J. .-  Introductory Statistics, 5th edition, John Wiley, 1990.</p>
+</body>
+</html>

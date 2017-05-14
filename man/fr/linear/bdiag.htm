@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bdiag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bdiag</b> -  bloc-diagonalisation, vecteurs propres généralisés  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ab [,X [,bs]]]=bdiag(A [,rmax])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice carrée réelle ou complexe
+</li>
+<li>
+<tt><b>rmax  </b></tt>
+    : nombre réel
+</li>
+<li>
+<tt><b>Ab  </b></tt>
+    : matrice carrée réelle ou complexe
+</li>
+<li>
+<tt><b>X  </b></tt>
+    : matrice régulière, réelle ou complexe
+</li>
+<li>
+<tt><b>bs  </b></tt>
+    : vecteur d'entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<pre>
+[Ab [,X [,bs]]]=bdiag(A [,rmax]) 
+   </pre>
+<p><tt><b>[Ab [,X [,bs]]]=bdiag(A [,rmax])</b></tt> calcule la forme
+    bloc-diagonale de <tt><b>A</b></tt>.  bs précise la structure des
+    blocs (tailles respectives des blocs).  <tt><b>X</b></tt> est la
+    matrice de changement de base, c'est à dire que <tt><b>Ab =
+    inv(X)*A*X </b></tt> est bloc-diagonale.
+  </p>
+<p><tt><b>rmax</b></tt> contrôle le conditionnement de <tt><b>X</b></tt>;
+    la valeur par défaut est la norme l1 de <tt><b>A</b></tt>.
+  </p>
+<p>
+    Pour obtenir une forme diagonale (si celle-ci existe) choisissez
+    une valeur élevée de <tt><b>rmax</b></tt> (<tt><b>rmax=1/%eps</b></tt>
+    par exemple).  Pour une matrice réelle quelconque, les blocs sont
+    de taille (1x1) ou (2x2) et <tt><b>X</b></tt> est la matrice des
+    vecteurs propres.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// Cas réel: blocs 1x1 et 2x2
+a=rand(5,5);[ab,x,bs]=bdiag(a);ab
+// Cas complexe : blocs complexes 1x1
+[ab,x,bs]=bdiag(a+%i*0);ab
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/sylv.htm"><tt><b>sylv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

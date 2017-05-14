@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>trans</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>trans</b> -  low-pass to other filter transform</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>hzt=trans(hz,tr_type,frq)  </tt></dd>
+<dd><tt>hzt=trans(pd,zd,gd,tr_type,frq)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>hz</b></tt>: given fiter transfert function</li>
+<li>
+<tt><b>pd</b></tt>: Vector of given fiter poles</li>
+<li>
+<tt><b>zd</b></tt>: Vector of given fiter zeros</li>
+<li>
+<tt><b>gd</b></tt>: scalar: the given fiter gain</li>
+<li>
+<tt><b>tr_type</b></tt>: string, the type of transformation, see description for possible values </li>
+<li>
+<tt><b>frq</b></tt>: 2-vector of discrete cut-off frequencies (i.e.,<tt><b>0&lt;frq&lt;.5</b></tt>). For lp and hp filters only frq(1) is used. For bp and sb filters frq(1) is the lower cut-off frequency and frq(2) is the upper cut-off frequency. </li>
+<li>
+<tt><b>hzt</b></tt>: transformed filter transfert function.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    function for transforming standardized low-pass filter given its
+      poles-zeros_gain representation into
+    one of the following filters:
+    </p>
+<p>
+      low-pass ('lp'), the cutoff frequency is given by the first entry of frq,
+      the second one is ignored
+    </p>
+<p>
+      high-pass ('hp'),  the cutoff frequency is given by the first entry of frq,
+      the second one is ignored
+    </p>
+<p>
+      
+      band-pass ('bp'), the frequency range is given by frq(1) and frq(2)
+    </p>
+<p>
+      stop-band ('sb') , the frequency range is given by frq(1) and frq(2).
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+clf()
+
+Hlp=iir(3,'lp','ellip',[0.1 0],[.08 .03]);
+subplot(311)
+gainplot(Hlp,1d-3,0.48)
+legend('original low pass')
+
+
+Hbp=trans(Hlp,'bp',[0.01 0.1]);
+subplot(312)
+gainplot(Hbp,1d-3,0.48)
+legend('band pass')
+
+
+Hsb=trans(Hlp,'sb',[0.01 0.1])
+subplot(313)
+gainplot(Hsb,1d-3,0.48)
+legend('stop band')
+
+
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>C. Bunks ;   </p>
+</body>
+</html>

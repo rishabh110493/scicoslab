@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>trimmean</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>trimmean</b> -  trimmed mean of a vector or a matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>m=trimmean(x)  </tt></dd>
+<dd><tt>m=trimmean(x,discard,'r') or m=trimmean(x,discard,1)  </tt></dd>
+<dd><tt>m=trimmean(x,discard,'c') or m=trimmean(x,discard,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>real or complex vector or matrix</li>
+<li>
+<tt><b>discard</b></tt>number: The discarding percentage</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A  trimmed mean  is calculated  by discarding  a certain
+    percentage of the lowest and the highest scores and then
+    computing  the  mean   of  the  remaining  scores.   For
+    example, a  mean trimmed  50% is computed  by discarding
+    the lower  and higher 25%  of the scores and  taking the
+    mean of the remaining scores.</p>
+<p>
+    The median  is the mean trimmed 100%  and the arithmetic
+    mean is the mean trimmed 0%.</p>
+<p>
+    A  trimmed mean  is  obviously less  susceptible to  the
+    effects of  extreme scores than is  the arithmetic mean.
+    It is therefore less susceptible to sampling fluctuation
+    than the mean for  extremely skewed distributions. It is
+    less  efficient (The  efficiency of  a statistic  is the
+    degree to  which the statistic is stable  from sample to
+    sample.    That  is,  the   less  subject   to  sampling
+    fluctuation  a  statistic  is,  the  more  efficient  it
+    is. The efficiency of statistics is measured relative to
+    the  efficiency  of other  statistics  and is  therefore
+    often called the relative efficiency. If statistic A has
+    a  smaller   standard  error  than   statistic  B,  then
+    statistic  A is  more efficient  than statistic  B.  The
+    relative efficiency of two  statistics may depend on the
+    distribution involved.   For instance, the  mean is more
+    efficient than  the median for  normal distributions but
+    not  for  some   extremely  skewed  distributions.   The
+    efficiency of a statistic can  also be thought of as the
+    precision  of  the  estimate:  The  more  efficient  the
+    statistic,  the  more precise  the  statistic  is as  an
+    estimator         of         the         parameter.[from
+    http://davidmlane.com/hyperstat/A12977.html])  than  the
+    mean for normal distributions.</p>
+<p>
+    Trimmed  means  are often  used  in  Olympic scoring  to
+    minimize the effects  of extreme ratings possibly caused
+    by            biased            judges.            [from
+    http://davidmlane.com/hyperstat/A11971.html]</p>
+<p>
+    For      a      vector      or     matrix      <tt><b>x</b></tt>,
+    <tt><b>t=trimmean(x,discard)</b></tt>  returns in  scalar <tt><b>t</b></tt>
+    the  mean   of  all  the  entries   of  <tt><b>x</b></tt>,  after
+    discarding    <tt><b>discard/2</b></tt>   highest    values   and
+    <tt><b>discard/2</b></tt> lowest values.</p>
+<p><tt><b>t=trimmean(x,discard,'r')</b></tt>    (or,   equivalently,
+    <tt><b>t=trimmean(x,discard,1)</b></tt>) returns in each entry of
+    the row vector <tt><b>t</b></tt>  the trimmed mean of each column
+    of <tt><b>x</b></tt>.</p>
+<p><tt><b>t=trimmean(x,discard,'c')</b></tt>    (or,   equivalently,
+    <tt><b>t=trimmean(x,discard,2)</b></tt>) returns in each entry of
+    the column vector <tt><b>t</b></tt>  the trimmed mean of each row
+    of <tt><b>x</b></tt>.</p>
+<p>
+    This function computes the  trimmed mean of a vector or
+    matrix <tt><b> x</b></tt>.</p>
+<p>
+    For a vector or matrix <tt><b> x</b></tt>, <tt><b> m=trimmean(x) </b></tt>
+    returns in scalar <tt><b> m</b></tt> the trimmedmean of all the
+    entries of <tt><b> x</b></tt>.</p>
+<p><tt><b>   m=trimmean(x,'r')  </b></tt>  (or,   equivalently,  
+    <tt><b> m=trimmean(x,1) </b></tt>)  returns in each entry  of the row
+    vector <tt><b> m</b></tt> the trimmed mean of each column of <tt><b> x</b></tt>.</p>
+<p>
+    q<tt><b>  m=trimmean(x,'c')   </b></tt>  (or,  equivalently,  
+    <tt><b> m=trimmean(x,2)  </b></tt>)  returns  in  each entry  of  the
+    column vector <tt><b> m</b></tt> the trimmed mean of each row of
+    <tt><b> x</b></tt>.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+     Luis  Angel   Garcia-Escudero  and  Alfonso  Gordaliza, Robustness Properties of Means and Trimmed Means, JASA, Volume 94, Number 447, Sept 1999, pp956-969</p></dl>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

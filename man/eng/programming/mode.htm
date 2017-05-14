@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mode</b> -  select a mode in exec file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mode(k)  </tt></dd>
+<dd><tt>k=mode()   </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Used exclusively inside an exec-file or a scilab function <tt><b>mode(k)</b></tt> allows to change the information displayed during the execution, depending on
+    the value of <tt><b>k</b></tt>:
+  </p>
+<dl>
+<dd>
+<b>k=0</b>: The new variable values are displayed if required (see help on semi or comma).</dd>
+<dd>
+<b>k=-1</b>: the exec file or scilab function executes silently. (this is the default value for scilab functions)</dd>
+<dd>
+<b>k=1 or k=3</b>: each line of instructions is echoed preceded of the prompt(if
+	  possible). The new variable values are displayed if required. This is
+	  the default for exec files.</dd>
+<dd>
+<b>k=7</b>: The new variable values are displayed if required, each line of
+	  instructions is echoed (if possible) and a prompt (&gt;&gt;) is
+	  issued after each line waiting for a carriage return .If  carriage return follows character "p"  the execution is paused
+	  (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a>).</dd>
+</dl>Line display is disabled for compiled scilab function (see getf or
+      comp). By default, Scilab functions are executed using the silent ("-1") mode.<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/semi.htm"><tt><b>semi</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/comma.htm"><tt><b>comma</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

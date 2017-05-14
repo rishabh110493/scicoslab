@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xload</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xload</b> - load a saved graphics</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xload(file_name,[win_num])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_name</b></tt>: string, name of the file.</li>
+<li>
+<tt><b>win_num</b></tt>: integer, the graphics window number. If not given, the current
+          graphics window is used.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xload</b></tt> reloads the graphics contained in the file
+    <tt><b>file_name</b></tt> in the graphics window <tt><b>win_num</b></tt>.</p>
+<p>For files containing new graphics, the <tt><b>load</b></tt> function can
+    be used instead of <tt><b>xload</b></tt>. <tt><b>xload</b></tt> does not restore
+    the window number, the window size nor the window dimensions.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+    //new style
+    set figure_style new
+    t=0:0.01:10;
+    subplot(211),plot2d(t,sin(t))
+    subplot(212),plot2d(t,sin(3*t))
+    save(TMPDIR+'/foo.scg',gcf())
+    clf()
+    load(TMPDIR+'/foo.scg')
+    
+    a=gca();
+    curve=a.children.children; //handle on the curve
+    save(TMPDIR+'/foo.scg',curve)
+    delete(curve)
+    load(TMPDIR+'/foo.scg')
+    
+
+    //old style
+    set figure_style old
+    t=0:0.01:10;
+    subplot(211),plot2d(t,sin(t))
+    subplot(212),plot2d(t,sin(3*t))
+    xsave(TMPDIR+'/foo.scg')
+    xbasc()
+    set figure_style old
+    xload(TMPDIR+'/foo.scg')
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsave.htm"><tt><b>xsave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/loadplots.htm"><tt><b>loadplots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

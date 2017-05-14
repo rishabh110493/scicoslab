@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>specfact</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>specfact</b> -  spectral factor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[W0,L]=specfact(A,B,C,D)  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given a spectral density matrix <tt><b>phi(s)</b></tt>:</p>
+<pre>
+
+                 -1                   -1
+     R + C*(s*I-A) * B  +  B'*(-s*I-A') * C'  with R=D+D' &gt; 0
+   
+    </pre>
+<p><tt><b>specfact</b></tt> computes  <tt><b>W0</b></tt> and <tt><b>L</b></tt> such 
+    that  <tt><b>W(s)=W0+L*(s*I-A)^-1*B</b></tt>  is a
+    spectral factor of of <tt><b>PHI(s)</b></tt>, i.e.</p>
+<p><tt><b>phi(s)=W'(-s)*W(s)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2]);B=[1;1];C=[1,1];D=1;s=poly(0,'s');
+W1=syslin('c',A,B,C,D);
+phi=gtild(W1,'c')+W1;
+phis=clean(ss2tf(phi))
+clean(phis-horner(phis,-s)');   //check this is 0...
+[A,B,C,D]=abcd(W1);
+[W0,L]=specfact(A,B,C,D);
+W=syslin('c',A,B,L,W0)
+Ws=ss2tf(W);
+horner(Ws,-s)*Ws
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/gtild.htm"><tt><b>gtild</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/sfact.htm"><tt><b>sfact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/fspecg.htm"><tt><b>fspecg</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.   </p>
+</body>
+</html>

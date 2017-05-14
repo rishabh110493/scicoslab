@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>factorial</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>factorial</b> - returns factorial</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=factorial(n)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: a scalar, vector, matrix or hypermatrix of positives integers
+          </li>
+<li>
+<tt><b>y</b></tt>: a scalar, vector, matrix or hypermatrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function returns the factorial n, if dimension of n is more than
+    <tt><b>1</b></tt> then it returns the element wise factorial (<tt><b>x</b></tt>
+    and <tt><b>y</b></tt> have the same size).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// n scalar
+n=4
+y=factorial(n)
+// n matrix 
+n=[2 6 8;5 4 3]
+y=factorial(n)
+//n hypermatrix
+n=matrix(1:12,[2 2 3])
+y=factorial(n)
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p>,&nbsp;&nbsp;</p>
+</body>
+</html>

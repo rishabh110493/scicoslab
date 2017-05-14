@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tk_getfile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tk_getfile</b> - dialog to get one or more file
+  paths</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>path=tk_getfile([Title="string"])</tt></dd>
+<dd><tt>path=tk_getfile([multip="1"])</tt></dd>
+<dd><tt>path=tk_getfile(file_mask[,Title="string"][,multip="1"])</tt></dd>
+<dd><tt>path=tk_getfile(file_mask,dir[,Title="string"])</tt></dd>
+<dd><tt>path=tk_getfile(file_mask,dir[,Title="string"][,multip="1"])</tt></dd>
+<dd><tt>path=tk_getfile(file_mask,dir,"string"[,"multip"])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_mask</b></tt>: a character string which gives the file mask to use for file
+          selection. <tt><b>file_mask</b></tt> is written with Unix convention.
+          The default value is '*'.</li>
+<li>
+<tt><b>dir</b></tt>: a character string which gives the initial directory used for
+          file search. By default tk_getfile uses the previously selected
+          directory.</li>
+<li>
+<tt><b>path</b></tt>: is the user selected file path(s) if user answers "Ok" or the
+          " " string if user answers "Cancel".</li>
+<li>
+<tt><b>Title="string"</b></tt>: Optional argument which gives the title for the tk_getfile
+          window. <tt><b>Warning</b></tt>: use the variable name
+          <tt><b>Title</b></tt> instead of <tt><b>title</b></tt>.</li>
+<li>
+<tt><b>multip</b></tt>: Optional argument which allows to select more than one file at
+          once in the tk_getfile window. If given, it must be the string "1".
+          Otherwise, or if not given, this argument defaults to "0" i.e. only
+          one file can be selected in the dialog.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Creates a dialog window for file selection.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+tk_getfile()
+tk_getfile("*.sci","SCI/macros/xdess")
+tk_getfile(Title="Choose a file name")
+tk_getfile(Title="Choose many file names at once",multip="1")
+tk_getfile(multip="1")
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/xgetfile.htm"><tt><b>xgetfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/tk_getdir.htm"><tt><b>tk_getdir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

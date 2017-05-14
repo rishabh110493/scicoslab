@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>simp_mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>simp_mode</b> -  mode de simplification des fractions rationnelles  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mod=simp_mode()  </tt></dd>
+<dd><tt>simp_mode(mod)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mod  </b></tt>
+    : un booléen
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Une simplification rationnelle est effectuée après chaque opération sur les fractions rationnelles. Il est possible de changer cela avec la fonction <tt><b>simp_mode</b></tt>.
+  </p>
+<p><tt><b>simp_mod(%t)</b></tt> passe en mode de simplification systématique.
+  </p>
+<p><tt><b>simp_mod(%f)</b></tt> empêche les simplifications.
+  </p>
+<p><tt><b>mod=simp_mod()</b></tt> renvoie dans mod le mode de simplification courant.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+mod=simp_mode()
+simp_mode(%f);hns=s/s
+simp_mode(%t);hns=s/s
+simp_mode(mod);
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

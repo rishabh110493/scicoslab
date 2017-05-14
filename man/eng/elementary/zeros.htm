@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>zeros</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zeros</b> -  matrix made of zeros</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=zeros()  </tt></dd>
+<dd><tt>y=zeros(x)  </tt></dd>
+<dd><tt>y=zeros(m1,m2,..)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: matrices</li>
+<li>
+<tt><b>m1, m2,..  </b></tt>: integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates matrix of zeros  (same as <tt><b>0*ones</b></tt>).
+  </p>
+<dl>
+<dd>
+<b>zeros(m1,m2)</b>: for an <tt><b>(m1,m2)</b></tt> matrix.</dd>
+<dd>
+<b>zeros(m1,m2,..,mn)</b>: creates a <tt><b>(m1,m2,..,mn)</b></tt> matrix filled with zeros</dd>
+<dd>
+<b>zeros(A)</b>: for a matrix of same size of <tt><b>A</b></tt>.</dd>
+<dd>
+<b>zeros(3)</b>: is <tt><b>zeros(a)</b></tt> with <tt><b>a=3</b></tt> i.e it is NOT a 3x3 matrix!</dd>
+<dd>
+<b>zeros()</b>: returns a single zero</dd>
+</dl>
+<p>
+    If <tt><b>x</b></tt> is a <tt><b>syslin</b></tt> list (linear system in state-space or transfer
+    form), <tt><b>zeros(x)</b></tt> is also valid and returns a zero matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+zeros(3)
+zeros(3,3)
+zeros(2,3,2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/spzeros.htm"><tt><b>spzeros</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

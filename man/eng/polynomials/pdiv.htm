@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pdiv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pdiv</b> -  polynomial division</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[R,Q]=pdiv(P1,P2)  </tt></dd>
+<dd><tt>[Q]=pdiv(P1,P2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P1</b></tt>: polynomial matrix</li>
+<li>
+<tt><b>P2</b></tt>: polynomial or polynomial matrix</li>
+<li>
+<tt><b>R,Q</b></tt>: two polynomial matrices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Element-wise euclidan division of the polynomial matrix <tt><b>P1</b></tt>
+    by the polynomial <tt><b>P2</b></tt> or by the polynomial matrix <tt><b>P2</b></tt>.
+    <tt><b>Rij</b></tt> is the matrix of remainders, <tt><b>Qij</b></tt> is the matrix
+    of quotients and <tt><b>P1ij = Qij .* P2 + Rij</b></tt> or <tt><b>P1ij = Qij .* P2ij + Rij</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=poly(0,'x');
+p1=(1+x^2)*(1-x);p2=1-x;
+[r,q]=pdiv(p1,p2)
+p2*q-p1
+p2=1+x;
+[r,q]=pdiv(p1,p2)
+p2*q+r-p1
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/ldiv.htm"><tt><b>ldiv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/gcd.htm"><tt><b>gcd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

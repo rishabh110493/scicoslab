@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sub2ind</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sub2ind</b> - matrix  subscript values to linear index</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>I = sub2ind(dims,i1,i2,...)</tt></dd>
+<dd><tt>J = sub2ind(dims,Mi)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims</b></tt>: vector: the matrix dimensions</li>
+<li>
+<tt><b>i1,i2,...</b></tt>: the subscript value arrays(same matrix shape as <tt><b>I</b></tt>)</li>
+<li>
+<tt><b>Mi</b></tt>: matrix whose columns contains the subscript values.</li>
+<li>
+<tt><b>I</b></tt>:  the  linear index array</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sub2ind</b></tt> is used to determine the equivalent single index
+corresponding to a given set of subscript values.
+
+<tt><b>I = sub2ind(dims,i1,i2,..)</b></tt> returns the linear index equivalent to the
+row,  column, ... subscripts in the arrays <tt><b>i1</b></tt>, <tt><b>i2</b></tt>,..  for an matrix of
+size <tt><b>dims</b></tt>. In this case <tt><b>i1</b></tt>, <tt><b>i2</b></tt>,.. must have the same shape and the
+result <tt><b>I</b></tt> has the same matrix shape.
+
+<tt><b>I = sub2ind(dims,Mi)</b></tt> returns the linear index
+equivalent to the subscripts in the columns of the matrix <tt><b>Mi</b></tt> for a matrix
+of size <tt><b>dims</b></tt>. in this case <tt><b>I</b></tt> is a column vector</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+i=[1 2 1 1 2 1 1];
+j=[1 2 3 1 2 3 3];
+k=[1 2 1 2 1 2 1];
+sub2ind([2,3,2],i,j,k)
+
+sub2ind([2,3,2],[i',j',k'])
+&lt;/EXAMPLE&gt;  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ind2sub.htm"><tt><b> ind2sub</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b> extraction</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/insertion.htm"><tt><b> insertion</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Serge Steer, INRIA
+  </p>
+</body>
+</html>

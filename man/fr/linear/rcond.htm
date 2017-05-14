@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rcond</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rcond</b> -   estimation de l'inverse du conditionnement  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rcond(X)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X  </b></tt>
+    : matrice carrée réelle ou complexe
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rcond(X)</b></tt> est une estimation de l'inverse du conditionnement de <tt><b>X</b></tt> pour la norme l_1.
+  </p>
+<p>
+    Si <tt><b>X</b></tt> est bien conditionnée, <tt><b>rcond(X)</b></tt> est proche 1.
+    Sinon, <tt><b>rcond(X)</b></tt> est proche de 0.
+  </p>
+<p><tt><b>[r,z]=rcond(X)</b></tt> renvoie <tt><b>rcond(X)</b></tt> dans
+    <tt><b>r</b></tt> et renvoie aussi <tt><b>z</b></tt> tel que <tt><b>norm(X*z,1) = r*norm(X,1)*norm(z,1)</b></tt></p>
+<p>
+    Ainsi,  si <tt><b>rcond</b></tt> est très petit <tt><b>z</b></tt> est un vecteur se trouvant dans le noyau de X.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=diag([1:10]);
+rcond(A)
+A(1,1)=0.000001;
+rcond(A)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/cond.htm"><tt><b>cond</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>m_circle</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>m_circle</b> -  M-circle plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt> m_circle()  </tt></dd>
+<dd><tt> m_circle(gain)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>gain</b></tt>: vector of gains (in DB). The default value is<ul><li>
+<tt><b>gain</b></tt>=[-12 -8 -6 -5 -4 -3 -2 -1.4 -1 -.5 0.25 0.5 0.7 1 1.4 2 2.3 3 4 5 6 8 12]</li></ul>
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>m_circle</b></tt> is used with <tt><b>nyquist</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Example 1 :
+  s=poly(0,'s')
+  h=syslin('c',(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01))
+  nyquist(h,0.01,100,'(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01)')
+  m_circle();
+//Example 2:
+  xbasc();
+  h1=h*syslin('c',(s^2+2*0.1*15.1*s+228.01)/(s^2+2*0.9*15*s+225))
+  nyquist([h1;h],0.01,100,['h1';'h'])
+  m_circle([-8 -6 -4]);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/nyquist.htm"><tt><b>nyquist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/chart.htm"><tt><b>chart</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/black.htm"><tt><b>black</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S.Steer.;   </p>
+</body>
+</html>

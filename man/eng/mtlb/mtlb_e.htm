@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_e</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_e</b> - Matlab extraction emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab extraction behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	When extracting data from a matrix with a vector as index: Matlab returns
+	a row vector and Scilab returns a column vector.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+	When extracting data from a character string matrix: due to the fact that character string matrices
+	in Matlab can be adressed as any other matrix (each character can be adressed), extraction in such a type of
+	matrix does not differ from other. But in Scilab it can't be done so and <tt><b>part</b></tt>
+	function has to be used. 
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_e(B,k)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>A=B(k)</b></tt> when it was not
+    possible to know what were the operands while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_e</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>    
+	If <tt><b>B</b></tt> is a vector
+	<tt><b>A=mtlb_e(B,k)</b></tt> may be replaced by <tt><b>A=B(k)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>    
+	If <tt><b>B</b></tt> is a matrix
+	<tt><b>A=mtlb_e(B,k)</b></tt> may be replaced by <tt><b>A=B(k).'</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>    
+	If <tt><b>B</b></tt> is a character string matrix and
+	k is a scalar or a vector
+	<tt><b>A=mtlb_e(B,k)</b></tt> may be replaced by <tt><b>A=part(B,k)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_e</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/mtlb/Matlab-Scilab_character_strings.htm"><tt><b>Matlab-Scilab_character_strings</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/part.htm"><tt><b>part</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

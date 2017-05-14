@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_all</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_all</b> - Fonction d'émulation de la fonction Matlab all</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, les fonctions <tt><b>all</b></tt> de Matlab et
+    <tt><b>and</b></tt> de Scilab se comportent différemment :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+	Avec un argument d'entrée (<tt><b>all(A)</b></tt>), la fonction <tt><b>all</b></tt> de Matlab traite
+	les valeurs selon la première dimension de A qui n'est pas 1 comme un vecteur
+	alors que Scilab traite toutes les valeurs de A.
+	</li>
+<li>
+<b><font color="maroon"></font></b>
+	Avec deux arguments d'entrée (<tt><b>all(A,dim)</b></tt>), Matlab
+	tolère une valeur de <tt><b>dim</b></tt> supérieure au
+	nombre de dimensions de A alors que Scilab renvoie un message d'erreur dans ce cas.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_all(A[,dim])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>all(A[,dim])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_all</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>    
+	Si <tt><b>A</b></tt> est un scalaire ou un vecteur
+	<tt><b>R = mtlb_all(A)</b></tt> peut être remplacé par <tt><b>R = and(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est une matrice
+	<tt><b>R = mtlb_all(A)</b></tt> peut être remplacé par <tt><b>R = and(A,1)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>A</b></tt> est une hypermatrice
+	<tt><b>R = mtlb_all(A)</b></tt> peut être remplacé par <tt><b>R = and(A,firstnonsingleton(A))</b></tt>
+	ou par <tt><b>R = and(A,user_defined_value)</b></tt> si la première dimension non-égale à 1 de A est connue.
+	</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>dim</b></tt> est inférieur ou égal au nombre de dimensions de A
+	<tt><b>R = mtlb_all(A,dim)</b></tt> peut être remplacé par <tt><b>R = and(A,dim)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Si <tt><b>dim</b></tt> est supérieur au nombre de dimensions de A
+	<tt><b>R = mtlb_all(A,dim)</b></tt> peut être remplacé par <tt><b>R = A&lt;&gt;0</b></tt> si A n'est pas
+	une matrice vide ou par <tt><b>R = A</b></tt> si A est une matrice vide.
+	</li>
+</dd>
+</dd></dl>
+<p>Attention: <tt><b>mtlb_all</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/firstnonsingleton.htm"><tt><b>firstnonsingleton</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

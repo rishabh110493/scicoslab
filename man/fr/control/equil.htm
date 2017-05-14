@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>equil</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>equil</b> -  balancing of pair of symmetric matrices</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>T=equil(P,Q)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P, Q</b></tt>: two positive definite symmetric matrices</li>
+<li>
+<tt><b>T</b></tt>: nonsingular matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>equil</b></tt> returns <tt><b>t</b></tt> such that:</p>
+<p><tt><b>T*P*T'</b></tt> and  <tt><b>inv(T)'*Q*inv(T)</b></tt>  are both equal to a same 
+    diagonal and positive matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+P=rand(4,4);P=P*P';
+Q=rand(4,4);Q=Q*Q';
+T=equil(P,Q)
+clean(T*P*T')
+clean(inv(T)'*Q*inv(T))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/balanc.htm"><tt><b>balanc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ctr_gram.htm"><tt><b>ctr_gram</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

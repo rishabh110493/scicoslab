@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cycle_basis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cycle_basis</b> -  base des cycles d'un graphe simple non-orienté  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>spc = cycle_basis(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>spc  </b></tt>
+    : matrice creuse
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Tout d'abord un arbre couvrant est trouvé avec <tt><b>min_weight_tree</b></tt> et est 
+    ensuite utilisé pour trouver tous les cycles fondamentaux par rapport à 
+    cet arbre. Ils sont renvoyés sous forme d'un 
+    ensemble de cycles, chaque cycle étant représenté par un ensemble d'arêtes.
+    Ces cycles sont renvoyés dans une matrice creuse<tt><b>spc</b></tt> : chaque ligne 
+    de cette matrice correspond à un cycle.
+  </p>
+<p>
+    Le graphe <tt><b>g</b></tt> est supposé simple, non-orienté et connecté
+    (<tt><b>cycle_basis</b></tt> ne vérifie pas que le graphe est simple, utiliser 
+    <tt><b>graph_simp</b></tt>m avant l'appel si nécessaire).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 13 13 15 12 13 9 10 14 11 16 1 17 14 15];
+gt=make_graph('foo',1,17,ta,he);
+gt('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+gt('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+gt('edge_color')=modulo([1:(edge_number(gt))],15)+1;
+gt('node_diam')=[1:(gt('node_number'))]+20;
+show_graph(gt);
+g=graph_simp(gt);
+g('edge_color')=modulo([1:(edge_number(g))],15)+1;
+g('node_diam')=gt('node_diam');
+g('default_edge_hi_width')=12;
+show_graph(g);
+spc=cycle_basis(g);
+for kk=1:(size(spc,1)),
+  aaa=spc(kk,:);aaa=full(aaa);aaa(aaa==0)=[];
+  show_arcs(aaa);
+end;
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/min_weight_tree.htm"><tt><b>min_weight_tree</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph_simp.htm"><tt><b>graph_simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

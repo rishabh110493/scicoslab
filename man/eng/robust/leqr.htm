@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>leqr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>leqr</b> -  H-infinity LQ gain (full state)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[K,X,err]=leqr(P12,Vx)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P12</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>Vx</b></tt>: symmetric nonnegative matrix (should be small enough)</li>
+<li>
+<tt><b>K,X</b></tt>: two real matrices</li>
+<li>
+<tt><b>err</b></tt>: a real number (l1 norm of LHS of Riccati equation)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>leqr</b></tt>  computes the linear suboptimal H-infinity LQ full-state gain
+    for the plant <tt><b>P12=[A,B2,C1,D12]</b></tt> in continuous or discrete time.</p>
+<p><tt><b>P12</b></tt> is a <tt><b>syslin</b></tt> list (e.g. <tt><b>P12=syslin('c',A,B2,C1,D12)</b></tt>).</p>
+<pre>
+
+      [C1' ]               [Q  S]
+      [    ]  * [C1 D12] = [    ]
+      [D12']               [S' R]
+   
+    </pre>
+<p><tt><b>Vx</b></tt> is related to the variance matrix of the noise <tt><b>w</b></tt> perturbing <tt><b>x</b></tt>;
+    (usually <tt><b>Vx=gama^-2*B1*B1'</b></tt>).</p>
+<p>
+    The gain <tt><b>K</b></tt> is such that <tt><b>A + B2*K</b></tt> is stable.</p>
+<p><tt><b>X</b></tt> is the stabilizing solution of the Riccati equation.</p>
+<p>
+    For a continuous plant:</p>
+<pre>
+
+(A-B2*inv(R)*S')'*X+X*(A-B2*inv(R)*S')-X*(B2*inv(R)*B2'-Vx)*X+Q-S*inv(R)*S'=0
+   
+    </pre>
+<pre>
+
+K=-inv(R)*(B2'*X+S)
+   
+    </pre>
+<p>
+    For a discrete time plant:</p>
+<pre>
+
+X-(Abar'*inv((inv(X)+B2*inv(R)*B2'-Vx))*Abar+Qbar=0
+   
+    </pre>
+<pre>
+
+K=-inv(R)*(B2'*inv(inv(X)+B2*inv(R)*B2'-Vx)*Abar+S')
+   
+    </pre>
+<p>
+    with <tt><b>Abar=A-B2*inv(R)*S'</b></tt> and <tt><b>Qbar=Q-S*inv(R)*S'</b></tt></p>
+<p>
+    The 3-blocks matrix pencils associated with these Riccati equations are:</p>
+<pre>
+
+               discrete                        continuous
+   |I  -Vx  0|   | A    0    B2|       |I   0   0|   | A    Vx    B2|
+  z|0   A'  0| - |-Q    I    -S|      s|0   I   0| - |-Q   -A'   -S |
+   |0   B2' 0|   | S'   0     R|       |0   0   0|   | S'   -B2'   R|
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.;   </p>
+</body>
+</html>

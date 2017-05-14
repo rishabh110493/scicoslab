@@ -1,0 +1,4 @@
+function [majver,minver]=gettkversion()
+  majver='@TK_MAJOR_VERSION@'
+  minver='@TK_MINOR_VERSION@'
+endfunction

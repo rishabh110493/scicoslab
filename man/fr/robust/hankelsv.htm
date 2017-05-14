@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hankelsv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hankelsv</b> -  Hankel singular values</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[nk2,W]=hankelsv(sl [,tol])  </tt></dd>
+<dd><tt>[nk2]=hankelsv(sl [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list representing the linear system (state-space).</li>
+<li>
+<tt><b>tol</b></tt>: tolerance parameter for detecting imaginary axis modes (default value is <tt><b>1000*%eps</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns <tt><b>nk2</b></tt>, the squared Hankel singular values of <tt><b>sl</b></tt>
+    and <tt><b>W = P*Q</b></tt> = controllability gramian times observability
+    gramian.</p>
+<p><tt><b>nk2</b></tt> is the vector of eigenvalues of <tt><b>W</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2,-3]);
+sl=syslin('c',A,rand(3,2),rand(2,3));[nk2,W]=hankelsv(sl)
+[Q,M]=pbig(W,nk2(2)-%eps,'c');
+slr=projsl(sl,Q,M);hankelsv(slr)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/balreal.htm"><tt><b>balreal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/equil.htm"><tt><b>equil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>equal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>equal</b> -  (=) affectation, comparison equal sign</p>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>-</b>Equal sign is used to denote a value affectation to a variable.</dd>
+<dd>
+<b>-</b><tt><b> a == b</b></tt>  denotes equality comparison between  expressions <tt><b> a</b></tt> and <tt><b> b</b></tt>:</dd>
+<dd>
+<b>With</b>matrix objects,</dd>
+<dd>
+<b>If</b><tt><b> a</b></tt> and <tt><b> b</b></tt> are matrices with same types and identical dimensions, the comparison is performed element by element and the result is a matrix of booleans.</dd>
+<dd>
+<b>If</b><tt><b> a</b></tt> and <tt><b> b</b></tt> are matrices with same types, but <tt><b> a</b></tt> or <tt><b> b</b></tt> is a 1 by 1 matrix the scalar is compared with each element of the matrix. The result is a matrix of booleans.</dd>
+<dd>
+<b>In</b>The others cases the result is the boolean <tt><b> %f</b></tt>
+</dd>
+<dd>
+<b>With</b>list objects,</dd>
+<dd>
+<b>If</b><tt><b> a</b></tt> and <tt><b> b</b></tt> are lists with  identical sizes, the comparison is performed element by element and and recursively. The result is a row vector of booleans.</dd>
+<dd>
+<b>If</b><tt><b> a</b></tt> and <tt><b> b</b></tt> are lists with non equal sizes the result is the boolean <tt><b> %f</b></tt>.</dd>
+<dd>
+<b>With</b>tlist and mlist object. If no overloading function is defined the <tt><b> list</b></tt> comparison method is used.</dd>
+<dd>
+<b>With</b>other data types (functions, libraries,...) , the result is <tt><b> %t</b></tt> if the objects are identical and <tt><b> %f</b></tt> in the other case.</dd>
+</dl>
+<p>
+    Comparison between different data types returns <tt><b> %f</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=sin(3.2)
+[u,s]=schur(rand(3,3))
+[1:10]==4
+1~=2
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/less.htm"><tt><b>less</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/isequal.htm"><tt><b>isequal</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getfont</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getfont</b> -  dialog to select font</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[fId,fSize]=getfont()  </tt></dd>
+<dd><tt>[fId,fSize]=getfont(str)  </tt></dd>
+<dd><tt>fnt=getfont()  </tt></dd>
+<dd><tt>fnt=getfont(str)  </tt></dd>
+<dd><tt>fnt=getfont(S=str,font=[fId,fSize])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: character (e.g. "a")</li>
+<li>
+<tt><b>fId</b></tt>: integer, the number of the selected font</li>
+<li>
+<tt><b>fSize</b></tt>: integer, the size of the selected font</li>
+<li>
+<tt><b>fnt</b></tt>: vector [fId,fSize]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>getfont</b></tt> opens a graphic window to select a font.
+    User has to select a font and a size clicking on the corresponding
+    displayed character. Killing a keyboard key changes the displayed
+    character.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[fId,fSize]=getfont();
+xset("font",fId,fSize)
+plot2d(0,0,rect=[0 0 10 10],axesflag=0)
+xstring(5,5,"string")
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getmark.htm"><tt><b>getmark</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xlfont.htm"><tt><b>xlfont</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+lpf                             Traffic-toolbox Function                lpf
+NAME
+   lpf  -  Travel time functions
+  
+CALLING SEQUENCE
+   
+  
+ [ta,dta,cta]=lpf(F,lpp,nf)
+PARAMETERS
+ F          : row vector of flows in each arc
+            
+ lpp        : parameters of the travel time functions (ttf) for each arc
+            
+ nf         : model for the ttf
+            
+ ta         : travel time of each arc for the given flow
+            
+ dta        : derivate of the ttf for the given arc flow
+            
+ cta        : integral of the ttf for the given arc flow
+            
+DESCRIPTION
+   Computes the travel time of each arc for the given flow using the travel
+  time functions with parameters lpp and formula nf. Each colum of lpp is
+  of the form [t0;ca;ma;ba] where the coefficients t0 and ca have the
+  meanings:
+  
+ t0    : free-flow travel time
+       
+ ca    : practical capacity of the link 
+       
+ The different formulae for the ttf are:
+        
+       
+ nf=6 -> c=t0+ca*F+ma*F^ba, with ba>1
+        
+       
+EXAMPLES
+ net=TrafficExample('Small');
+ [g,d,lpp,nf]=Net2Par(net);
+ F=rand(1,9);
+ [ta,dta,cta]=lpf(F,lpp,nf) 
+ // shows the function with the different parameters
+ dlpf(0.1,.01,5,lpp,6);
+SEE ALSO
+   IntroTrfAsg, TrafficExample, dlpf    
+  

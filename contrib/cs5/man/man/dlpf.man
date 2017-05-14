@@ -1,0 +1,47 @@
+.TH dlpf  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+dlpf  -  Plot the travel time functions
+.SH CALLING SEQUENCE
+.nf
+c=dlpf(f0,inc,f1,lpp,nf)
+.fi
+.SH PARAMETERS
+.TP 10
+f0
+: minimal flow
+.TP 10
+inc
+: increment
+.TP 10
+f1
+: maximal flow
+.TP 10
+lpp
+: matrix of travel time function parameters
+.TP 10
+nf
+: ttf formula
+.TP 10
+c
+: matrix of the computed costs
+
+.SH DESCRIPTION
+Plot the travel time functions for the given parameters (lpp) between the minimal flow f0
+and the maximal flow f1 using a step of inc and the formula nf
+
+.SH EXAMPLES
+.nf
+net=TrafficExample('Small');
+[g,d,lpp]=Net2Par(net);
+dlpf(0.1,.01,2,lpp,6); // show the function with the different parameters
+.fi
+
+.SH SEE ALSO
+IntroTrfAsg,
+TrafficExample,
+lpf
+
+
+
+
+

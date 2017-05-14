@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>glever</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>glever</b> -  inverse d'un faisceau de matrices  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Bfs,Bis,chis]=glever(E,A [,s])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>E, A  </b></tt>
+	    : matrices carrées réelles de même dimensions
+	  </li>
+<li>
+<tt><b>s  </b></tt>
+	    : chaîne de caractères (indéterminée des polynômes, '<tt><b>s</b></tt>' par défaut )
+	  </li>
+<li>
+<tt><b>Bfs,Bis  </b></tt>
+	    : deux matrices polynomiales
+	  </li>
+<li>
+<tt><b>chis  </b></tt>
+	    : polynôme
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Calcul de 
+    </p>
+<p>
+      (s*E-A)^-1
+    </p>
+<p>
+      par l'algorithme généralisé de Leverrier pour un faisceau de matrices.
+    </p>
+<pre>
+      (s*E-A)^-1 = (Bfs/chis) - Bis.
+      </pre>
+<p><tt><b>chis</b></tt> = polynôme caractéristique (à une constante multiplicative près).
+    </p>
+<p><tt><b>Bfs</b></tt>  = matrice polynomiale de numérateurs
+    </p>
+<p><tt><b>Bis</b></tt>
+      = matrice polynomiale ( - développement de <tt><b>(s*E-A)^-1</b></tt> à l'infini).
+    </p>
+<p>
+      Noter le signe - devant <tt><b>Bis</b></tt>.
+    </p>
+<p></p>
+<h3><font color="blue">Attention</font></h3>
+<dl><p>
+      Cette fonction utilise <tt><b>cleanp</b></tt> pour simplifier <tt><b>Bfs,Bis</b></tt> et <tt><b>chis</b></tt>.
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    s=%s;F=[-1,s,0,0;0,-1,0,0;0,0,s-2,0;0,0,0,s-1];
+    [Bfs,Bis,chis]=glever(F)
+    inv(F)-((Bfs/chis) - Bis)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowshuff.htm"><tt><b>rowshuff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/det.htm"><tt><b>det</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/invr.htm"><tt><b>invr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pencan.htm"><tt><b>pencan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/penlaur.htm"><tt><b>penlaur</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D. (1988)  </p>
+</body>
+</html>

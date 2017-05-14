@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>paramfplot2d </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>paramfplot2d </b> -  animation dans le plan d'une courbe définie par une fonction  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>paramfplot2d(f,x,theta)  </tt></dd>
+<dd><tt>paramfplot2d(f,x,theta,flag)  </tt></dd>
+<dd><tt>paramfplot2d(f,x,theta,flagrect)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : valeurs réelles.
+</li>
+<li>
+<tt><b>f  </b></tt>
+    : fonction <tt><b>y=f(x,t)</b></tt>. f est une fonction Scilab ou une routine externe liée dynamiquement (sous forme d'une chaîne de caractères).
+</li>
+<li>
+<tt><b>theta  </b></tt>
+    : valeurs réelles (ensemble des paramètres).
+</li>
+<li>
+<tt><b>flag  </b></tt>
+    : chaîne de caractères <tt><b>'no'</b></tt> ou <tt><b>'yes'</b></tt>: si "yes" l'écran est effacé entre deux dessins consécutifs.
+</li>
+<li>
+<tt><b>rect  </b></tt>
+    : "rectangle" [xmin, xmax, ymin, ymax] (vecteur 1 x 4 de valeurs réelles),
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Dessin animé de la fonction x--&gt;f(x,t) pour t=theta(1),theta(2), etc.
+    f peut être une fonction Scilab ou une routine externe liée dynamiquement puisque
+    y=f(x,t) est évaluée comme y=feval(x(:),t,f) (voir feval).
+  </p>
+<p>
+    f: fonction x,t -&gt; f(x,t) = à valeur dans R^N pour x = vecteur de R^N
+    et t = nombre réel. x est un N-vecteur de valeurs de x et pour chaque t dans theta, f(x,t) = N-vecteur de valeurs de y.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+deff('y=f(x,t)','y=t*sin(x)')
+x=linspace(0,2*%pi,50);theta=0:0.05:1;
+paramfplot2d(f,x,theta);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/feval.htm"><tt><b>feval</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/fplot2d.htm"><tt><b>fplot2d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

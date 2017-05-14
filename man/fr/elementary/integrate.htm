@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>integrate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>integrate</b> -  intégration numérique  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=integrate(expr,v,x0,x1 [,ea [,er]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>expr  </b></tt>
+    : chaîne de caractères (expression scilab)
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : chaîne de caractères (variable d'intégration)
+</li>
+<li>
+<tt><b>x0,x1  </b></tt>
+    : nombres réels (bornes d'intégration)
+</li>
+<li>
+<tt><b>ea  </b></tt>
+    : nombre réel (borne sur l'erreur absolue) par défaut : 0
+</li>
+<li>
+<tt><b>er  </b></tt>
+    : nombre réel, (borne sur l'erreur relative) par défaut : 1.d-8
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    calcule :
+  </p>
+<pre>
+                       /x1
+                      [
+                  x = I  f(v)dv
+                      ]
+                     /x0
+</pre>
+<p>
+    L'approximation satisfait (on l'espère) l'affirmation suivante sur l'erreur :
+    <tt><b>abs(I-x)&lt;= max(ea,er*abs(I))</b></tt> où I représente la valeur exacte de l'intégrale.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+integrate('sin(x)','x',0,%pi)
+integrate(['if x==0 then 1,';
+           'else sin(x)/x,end'],'x',0,%pi)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/intg.htm"><tt><b>intg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/inttrap.htm"><tt><b>inttrap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/intsplin.htm"><tt><b>intsplin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

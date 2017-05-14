@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sci2exp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sci2exp</b> -  converts an expression to a string</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=sci2exp(a [,nam] [,lmax])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: a scilab expression, may be<ul>
+<li>
+<tt><b>-    </b></tt>constant,</li>
+<li>
+<tt><b>-    </b></tt>polynomial</li>
+<li>
+<tt><b>-    </b></tt>string matrix</li>
+<li>
+<tt><b>-    </b></tt>list</li>
+<li>
+<tt><b>-    </b></tt>boolean matrix</li>
+</ul>
+</li>
+<li>
+<tt><b>nam</b></tt>: character string</li>
+<li>
+<tt><b>t</b></tt>: vector of string, contains the expression or the affectation instruction</li>
+<li>
+<tt><b>lmax</b></tt>: integer, contains the maximum line length. default value is 90, <tt><b>lmax=0</b></tt> indicate  no line length control a single string is returned</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sci2exp</b></tt> converts expression to an instruction string if <tt><b>nam</b></tt> is
+    given or to an expression string.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  a=[1 2;3 4]
+  sci2exp(a,'aa')
+  sci2exp(a,'aa',0)
+  sci2exp(ssrand(2,2,2))
+  sci2exp(poly([1 0 3 4],'s'),'fi')
+ 
+  </pre>
+</body>
+</html>

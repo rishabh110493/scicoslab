@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>macr2tree</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>macr2tree</b> - conversion d'une fonction en arbre</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=macr2tree(nom-de-fonction)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nom-de-fonction</b></tt>: une macro Scilab</li>
+<li>
+<tt><b>t</b></tt>: un "arbre" Scilab</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cette primitive convertit une fonction compilée de Scilab <tt><b>nom-de-fonction</b></tt>
+    en arbre (tlists imbriquées) qui code la représentation interne de la fonction. 
+    A utiliser avec <tt><b>tree2code</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+tree=macr2tree(cosh);
+txt=tree2code(tree,%T);
+write(%io(2),txt,'(a)');
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/tree2code.htm"><tt><b>tree2code</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

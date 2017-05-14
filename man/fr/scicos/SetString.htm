@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SetString</TITLE>
+<META NAME="description" CONTENT="SetString">
+<META NAME="keywords" CONTENT="SetString">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="SetString.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Fonction Scilab
+<BR><A NAME="tex2html1"
+  HREF="./SetString.htm">fr</A> - <A NAME="tex2html2"
+  HREF="../../eng/scicos/SetString.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="SetString"></A>
+<BR>
+<b>SetString</b> - Convertion de chaîne de caractères ScicosLab en ascii
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00012000000000000000">
+Description</A>
+</font></H3>
+
+<P>
+Cette fonction peut-être utilisée pour convertir une chaîne de caractères Scilab en un vecteur de nombre entier (int8) correspond au code ascii de cette chaîne.  
+<BR>
+<P>
+Cela est utile, par exemple, pour passer une chaîne, comme un nom de fichier, à une fonction de calcul Scicos par l'intermédiaire d'une fonction d'interfaçage en utilisant le paramètre 'opar'.  
+<BR>
+<P>
+La section 'Exemple' donne un exemple avec une fonction de calcul en C.  
+<BR>
+<H3><font color="blue"><A NAME="SECTION00013000000000000000">
+Séquence d'appel</A>
+</font></H3>
+<PRE>
+myint8 = SetString(str)
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00014000000000000000">
+Paramètres</A>
+</font></H3>
+
+<UL>
+<LI><b>str :</b>
+   : la chaine de caractères Scilab à convertir en code ascii.
+</LI>
+<LI><b>myint8 :</b>
+   : le code ascii correspondant à la chaîne de caracères. Le résultat est dans un vecteur de type int8.
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00015000000000000000">
+Exemple</A>
+</font></H3>
+<PRE>
+//In interfacing function -set case-
+fil1='/home/user/data_1.dat'
+fil2='/home/user/data_2.dat'
+...
+model.opar=list(SetString(fil1),SetString(fil2))
+/* In a C computational function */
+#include "scicos_block4.h"
+....
+void myFunc(scicos_block *block,int flag)
+{
+SCSINT8_COP *fil1;
+SCSINT8_COP *fil2;
+....
+fil1=Getint8OparPtrs(block,1);
+fil2=Getint8OparPtrs(block,2);
+...
+}
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00016000000000000000">
+Contenu du fichier</A>
+</font></H3>
+
+<UL>
+<LI>SCI/macros/scicos/SetString.sci <A NAME="tex2html4"
+  HREF="SetString_scifunc.htm">[voir code]</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00017000000000000000">
+Auteurs</A>
+</font></H3>
+<b>Alan Layec</b> METALAU Project-Team
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>scilab </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>scilab </b> -  script principal d'exécution de ScicosLab et de divers outils  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>scilab &lt;Options&gt; </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>-args arguments</b>: si cette option est présente des arguments sont passés à ScicosLab. Ils
+	  peuvent être récupérés par la fonction <tt><b>sciargs</b></tt>. Les
+	  arguments multiples doivent être passés dans chaîne de caractères les
+	  contenant, séparés par des espaces  <tt><b>scilab -args 'foo1 foo2';</b></tt>
+</dd>
+<dd>
+<b>-display Display</b>: Cette option n'est valide que pour les version basées sur
+	  Xwindow, elle peut alors être utilisée pour specifier un server X. La
+	  valeur par défaut est  unix:0.0<p><tt><b>-display</b></tt> peut être remplacé par <tt><b>-d</b></tt></p>
+</dd>
+<dd>
+<b>-debug</b>: Lance ScicosLab sous  gdb (Unix/linux seulement).</dd>
+<dd>
+<b>-e Instruction</b>: si cette option est présente l'instruction
+	  <tt><b>Instruction</b></tt> est exécutée dans ScicosLab immédiatement
+	  après les fichiers startup. </dd>
+<dd>
+<b>-f File</b>: si cette option est présente le script <tt><b>File</b></tt> est
+	  exécuté dans ScicosLab mmédiatement après les fichiers startup.</dd>
+<dd>
+<b>-l lang</b>: Cette option permet de sélectionner la langue de
+	l'utilisateur. Les valeurs possible pour sont <tt><b>-l fr</b></tt>
+	pour sélectionner le francais et <tt><b>-l eng</b></tt>
+	pour sélectionner l'anglais. La langue par défaut est l'anglais,
+	ce défaut est fixé dans le fichier <tt><b>scilab.star</b></tt>.</dd>
+<dd>
+<b>scilab -link &lt;objects&gt;</b>: est utilisé pour générer un <tt><b>scilex</b></tt> local (exécutable de
+	  ScicosLab) lié avec les fichiers additionnels donnés dans
+	  <tt><b>&lt;objects&gt;</b></tt>.   Cette commande
+	  produit aussi un script <tt><b>scilab</b></tt>, qui lance
+	  l'exécution du nouveau <tt><b>scilex</b></tt>.<p>Par exemple :</p>
+<pre>
+	  scilab -link  C/interf.o C/evol.o C/bib.a
+	  </pre>
+<p> crée un nouveau <tt><b>scilex</b></tt> dans le quel le fichier
+	  <tt><b>interf.o</b></tt>  par défaut sera remplacé par
+	  <tt><b>C/interf.o</b></tt>.</p>
+</dd>
+<dd>
+<b>-mem N</b>: Spécifie la valeur initiale de la stacksize, cette option est a
+	  utiliser avec l'option -ns. Lorsque ScicosLab est appelé sans l'option
+	  -ns  la valeur initiale de la stacksize est définie par le script
+	  scilab.star.</dd>
+<dd>
+<b>-nb</b>:  si cette option est présente la bannière d'acceuil de ScicosLab
+	n'est pas affichée.</dd>
+<dd>
+<b>-ns</b>
+			: si cette option est présente le script de démarrage "principal"
+			<tt><b>SCI/scilab.star</b></tt> ainsi que les fichiers de démarrage
+			"utilisateur" <tt><b>SCIHOME/.scilab</b></tt> et <tt><b>SCIHOME/scilab.ini</b></tt>
+			ne sont pas pas exécutés.
+		</dd>
+<dd>
+<b>-nouserstartup</b>
+			: Si cette option est fournie, les fichiers de démarrage "utilisateur"  
+			<tt><b>SCIHOME/.scilab</b></tt>, <tt><b>SCIHOME/scilab.ini</b></tt> ne sont
+			pas éxécutés.
+		</dd>
+<dd>
+<b>-nw</b>: si cette option est présente Scilab n'est pas exécuté dans
+	  une fenêtre spécifique mais sur la ligne de commande.  </dd>
+<dd>
+<b>-nwni</b>: si cette option est présente ScicosLab n'est pas exécuté dans
+	  une fenêtre spécifique et n'accepte pas d'interaction avec
+	  l'utilisateur. Cette option doit être utilisée avec l'option -e ou
+	  -f .  </dd>
+<dd>
+<b>--texmacs</b>: Cette option est réservée pour TeXMacs.</dd>
+</dl>
+</body>
+</html>

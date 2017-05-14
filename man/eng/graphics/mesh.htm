@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mesh</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mesh</b> - 3D mesh plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mesh(Z)</tt></dd>
+<dd><tt>mesh(X,Y,Z)</tt></dd>
+<dd><tt>mesh(...,&lt;GlobalProperty&gt;)</tt></dd>
+<dd><tt>mesh(...,&lt;color&gt;,&lt;GlobalProperty&gt;)</tt></dd>
+<dd><tt>mesh(&lt;axes_handle&gt;,...)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Z</b></tt>: a real matrix defining the surface height. It can not be
+          omitted. The Z data is a<tt><b> m</b></tt>x<tt><b>n</b></tt> matrix.</li>
+<li>
+<tt><b>X,Y</b></tt>: two real matrices : always set together, these data defines a
+          new standard grid. This new <tt><b>X</b></tt> and <tt><b>Y</b></tt>
+          components of the grid must match <tt><b>Z</b></tt> dimensions (see
+          description below).</li>
+<li>
+<tt><b>color</b></tt>: an optional real matrix defining a color value for each
+          <tt><b>(X(j),Y(i))</b></tt> point of the grid (see description
+          below).</li>
+<li>
+<tt><b>&lt;GlobalProperty&gt;</b></tt>: This optional argument represents a sequence of couple
+          statements <tt><b>{PropertyName,PropertyValue}</b></tt> that defines
+          global objects' properties applied to all the curves created by this
+          plot. For a complete view of the available properties (see
+          <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/GlobalProperty.htm"><tt><b>GlobalProperty</b></tt></a>).</li>
+<li>
+<tt><b>&lt;axes_handle&gt;</b></tt>: This optional argument forces the plot to appear inside the
+          selected axes given by <tt><b>axes_handle</b></tt> rather than the
+          current axes (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gca.htm"><tt><b>gca</b></tt></a>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>mesh</b></tt> draws a parametric surface using a rectangular grid
+    defined by <tt><b>X</b></tt> and <tt><b>Y</b></tt> coordinates (if
+    <tt><b>{X,Y}</b></tt> are not specified, this grid is determined using the
+    dimensions of the <tt><b>Z</b></tt> matrix) ; at each point of this grid, a Z
+    coordinate is given using the <tt><b>Z</b></tt> matrix. <tt><b>mesh</b></tt> is
+    based on the <tt><b>surf</b></tt> command with default option
+    <tt><b>color_mode</b></tt> = white index (inside the current colormap) and
+    <tt><b>color_flag</b></tt> = 0.</p>
+<p>Data entry specification :</p>
+<p>In this paragraph and to be more clear, we won't mention
+    <tt><b>GlobalProperty</b></tt> optional arguments as they do not interfer
+    with entry data (except for <tt><b>"Xdata"</b></tt>, <tt><b>"Ydata"</b></tt> and
+    <tt><b>"Zdata"</b></tt> property, see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/GlobalProperty.htm"><tt><b>GlobalProperty</b></tt></a>). It is
+    assumed that all those optional arguments could be present too.</p>
+<p>If <tt><b>Z</b></tt> is the only matrix specified, (Z) plots the matrix
+    <tt><b>Z</b></tt> versus the grid defined by <tt><b>1:size(Z,2)</b></tt> along
+    the x axis and <tt><b>1:size(Z,1)</b></tt> along the y axis.</p>
+<h3><font color="blue">Remarks</font></h3>
+<dl><p>To enable the tranparency mode you should set the <tt><b>color_mode
+    </b></tt>option to 0.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[X,Y]=meshgrid(-1:.1:1,-1:.1:1);
+Z=X.^2-Y.^2;
+xtitle('z=x2-y ^2');
+mesh(X,Y,Z);
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surf.htm"><tt><b>surf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/meshgrid.htm"><tt><b>meshgrid</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/LineSpec.htm"><tt><b>LineSpec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/GlobalProperty.htm"><tt><b>GlobalProperty</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Belahcene</p>
+</body>
+</html>

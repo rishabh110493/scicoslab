@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sylm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sylm</b> -  matrice de Sylvester  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[S]=sylm(a,b)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a,b  </b></tt>
+    : deux polynômes
+</li>
+<li>
+<tt><b>S  </b></tt>
+    : matrice
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sylm(a,b)</b></tt> renvoie la matrice de Sylvester associée aux polynômes
+    <tt><b>a</b></tt> et <tt><b>b</b></tt>, i.e. la matrice <tt><b>S</b></tt> telle que :
+  </p>
+<p><tt><b>coeff( a*x + b*y )' = S * [coeff(x)';coeff(y)']</b></tt>.
+  </p>
+<p>
+    La dimension de <tt><b>S</b></tt> est égale à <tt><b>degree(a)+degree(b)</b></tt>.
+  </p>
+<p>
+    Si <tt><b>a</b></tt> et <tt><b>b</b></tt> sont premiers entre eux alors
+  </p>
+<p><tt><b>rank(sylm(a,b))=degree(a)+degree(b))</b></tt> et les instructions
+  </p>
+<pre>
+  u = sylm(a,b) \ eye(na+nb,1)
+  x = poly(u(1:nb),'z','coeff')
+  y = poly(u(nb+1:na+nb),'z','coeff')
+   </pre>
+<p>
+    calculent les facteurs de Bezout <tt><b>x</b></tt> ainsi que <tt><b>y</b></tt> de degré minimum tels que 
+    <tt><b>a*x+b*y = 1</b></tt></p>
+<p></p>
+<p></p>
+<p></p>
+</body>
+</html>

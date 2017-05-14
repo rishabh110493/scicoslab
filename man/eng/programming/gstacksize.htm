@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gstacksize</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gstacksize</b> -  set/get scilab global stack size</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>gstacksize(n)  </tt></dd>
+<dd><tt>sz=gstacksize()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer, the required global stack size given in number of double precision words</li>
+<li>
+<tt><b>sz</b></tt>: 2-vector [total used]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Scilab stores gobal variables in a stack</p>
+<p><tt><b>gstacksize(n)</b></tt> allows the user to increase or decrease the size of
+    this stack. The maximum allowed size depends on the amount of
+    free memory and swap space available at the time. Note that Scilab can
+    increase automatically the global stacksize when needed</p>
+<p><tt><b>sz=gstacksize()</b></tt> returns a 2-vector which contains  the current
+    total and used global stack size.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/stacksize.htm"><tt><b>stacksize</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

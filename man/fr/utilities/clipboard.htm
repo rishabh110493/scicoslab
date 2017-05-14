@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>clipboard</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>clipboard</b> - Copie ou colle une chaine de caracteres
+  dans le presse-papier (Windows).</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>clipboard('copy',data)</tt></dd>
+<dd><tt>str=clipboard('paste')</tt></dd>
+<dd><tt>clipboard('do','paste')</tt></dd>
+<dd><tt>clipboard('do','copy')</tt></dd>
+<dd><tt>clipboard('do','empty')</tt></dd>
+<dd><tt>clipboard(winnum,'EMF')</tt></dd>
+<dd><tt>clipboard(winnum,'DIB')</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>clipboard('copy',data)</b></tt> copie le contenu de data dans le
+    presse-papier. Si data n'est pas une chaine de caracteres, sci2exp est
+    utilisé pour convertir data en chaine de caracteres.</p>
+<p><tt><b>str = clipboard('paste') </b></tt>retourne le contenu du
+    presse-papier dans la variable str, ou [] si le contenu du presse-papier
+    ne peut etre converti en chaine de caracteres.</p>
+<p><tt><b>clipboard('do','paste') , clipboard('do','copy') ,
+    clipboard('do','empty')</b></tt> effectue l'action equivalente au menu
+    Coller, Copier et Vider le presse-papier.</p>
+<p>Note : <tt><b>clipboard(...) </b></tt>ne fonctionne que pour Windows et
+    qu'en mode interface graphique.</p>
+<p><tt><b>clipboard(winnum,'EMF')</b></tt> copie, au format EMF, dans le
+    presse papier le graphe correspondant au numero de la fenetre
+    associée.</p>
+<p><tt><b>clipboard(winnum,'DIB')</b></tt>copie, au format DIB, dans le
+    presse papier le graphe correspondant au numero de la fenetre
+    associée.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C.</dd></dl>
+</body>
+</html>

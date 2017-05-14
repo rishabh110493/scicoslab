@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>XML_Parse</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>ScicosLab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>XML_Parse</b> - Parse XML strings</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>XML_Parse(%ptr,txt)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>%ptr</b></tt> : a Scilab pointer pointing to an Expat object.</li>
+<li>
+<tt><b>txt</b></tt> : a vector of strings that encloses an XML text.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function run the XML parser.
+    The XML pointer must be created with XML_ParserCreate.
+    </p>
+<p>
+     Note that :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        When an error is encountered during the parsing, the XML pointer is automatically free.
+       </li>
+<li>
+<b><font color="maroon"></font></b>
+        When the parsing is successful, the XML pointer is automatically free.
+       </li>
+</dd>
+</dd></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   txt = mgetl('SCI/man/eng/expatsci/XML_Parse.xml');
+   data = struct('store',%f,'tag','PARAM_NAME','str',[]);
+   
+   function [data]=char_handl(data,txt)
+     if data.store then
+       data.str=[data.str;
+                 txt]
+     end
+   endfunction
+
+   function [data]=start_handl(data,el,attr)
+     if el==data.tag then
+       data.store=%t
+     end
+   endfunction
+
+   function [data]=end_handl(data,el)
+     if el==data.tag then
+       data.store=%f
+     end
+   endfunction
+
+   %ptr=XML_ParserCreate();
+   XML_SetUserData(%ptr,'data');
+   XML_SetElementHandler(%ptr,'start_handl','end_handl');
+   XML_SetCharDataHandler(%ptr,'char_handl');
+   XML_Parse(%ptr, txt);
+ 
+   //display the value enclosed in xml tag 'PARAM_NAME'
+   data.str
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_ParserCreate.htm"><tt><b>XML_ParserCreate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_ParserFree.htm"><tt><b>XML_ParserFree</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_SetUserData.htm"><tt><b>XML_SetUserData</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_SetElementHandler.htm"><tt><b>XML_SetElementHandler</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_SetCharDataHandler.htm"><tt><b>XML_SetCharDataHandler</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_Conv2Latin.htm"><tt><b>XML_Conv2Latin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_StopParser.htm"><tt><b>XML_StopParser</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/expatsci/XML_ResumeParser.htm"><tt><b>XML_ResumeParser</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b>METALAU project-team, INRIA</b>
+    A.Layec
+    </dd></dl>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+   'The Expat XML Parser', Available: http://expat.sourceforge.net/
+   </p>
+</body>
+</html>

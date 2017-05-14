@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>slash (/)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>slash (/)</b> -  division à droite et feedback  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Division à droite.  <tt><b>x=A / b</b></tt> est la solution de <tt><b>x*b=A</b></tt> .
+  </p>
+<p><tt><b>b/a = (a' \ b')'</b></tt> .
+  </p>
+<p><tt><b>a ./  b</b></tt> est la matrice dont les termes sont égaux à <tt><b>a(i,j)/ b(i,j)</b></tt>.
+    Si <tt><b>b</b></tt> est un scalaire (matrice 1x1) cette opération est la même que <tt><b> a./b*ones(a)</b></tt> (même convention si <tt><b>a</b></tt> est un scalaire).
+  </p>
+<p>
+    Notez que <tt><b>123./b</b></tt> est interprété comme <tt><b>(123.)/b</b></tt>. Dans un tel cas le point fait partie du nombre et non pas de l'opérateur.
+  </p>
+<p>
+    L'anti-slash ("contre-barre" ou backslash) signifie quant à lui la division à gauche (voir <tt><b>backslash</b></tt>).
+  </p>
+<p>
+    Feedback de systèmes dynamiques. <tt><b>S=G/.K</b></tt> évalue <tt><b>S=G*(eye()+K*G)^(-1)</b></tt>. Cet opérateur évite des problèmes de simplification.
+  </p>
+<p>
+    Notez aussi que <tt><b>G/.5</b></tt> est interprété comme <tt><b>G/(.5)</b></tt>. Dans un tel cas le point fait partie du nombre et non pas de l'opérateur.
+  </p>
+<p></p>
+<p>
+    La suite de symboles <tt><b>//</b></tt> met une ligne en commentaire, c'est à dire, les lignes commençant par <tt><b>//</b></tt> sont ignorées par l'interpréteur.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/percent.htm"><tt><b>percent</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/ieee.htm"><tt><b>ieee</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

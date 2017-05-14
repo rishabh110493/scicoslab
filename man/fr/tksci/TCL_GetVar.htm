@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TCL_GetVar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>TCL_GetVar</b> - Get a tcl/tk variable
+  value</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>value=TCL_GetVar(Varname
+    [,interp])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>varname</b></tt>: character string. Contains the name of the tcl/tk
+          variable.</li>
+<li>
+<tt><b>interp</b></tt>: optional character string parameter. Name of the slave tcl
+          interpreter in which the operation has to be performed. If not
+          provided, it defaults to the main tcl interpreter created by
+          Scilab.</li>
+<li>
+<tt><b>value</b></tt>: may be a character string or a strings matrix. Contains the
+          value of the tcl/tk variable <tt><b>varname</b></tt> in the interpreter
+          <tt><b>interp</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>When tcl/tk support is enabled in Scilab, this routine can be used to
+    retreive the value of a tcl/tk variable.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>//----------------------------------------------------
+TCL_EvalStr("toplevel .tst1");
+// creates a toplevel TK window. 
+TCL_EvalStr("entry .tst1.e -textvariable tvar");
+// create an editable entry
+TCL_EvalStr("set tvar foobar");
+// set the entry value
+TCL_EvalStr("pack .tst1.e");
+// pack the entry widget. It appears on the screen.
+text=TCL_GetVar("tvar")
+// retrieve the variable value
+// change the entry text and repeat the last command ...
+//delete the toplevel TK window.
+TCL_EvalStr("destroy .tst1")
+//----------------------------------------------------
+a=["A","B","C";"D","E","F"];
+TCL_SetVar("A",a)
+AfromTCL=TCL_GetVar("A")
+//----------------------------------------------------
+b=[6,4,1;2,3,5];
+TCL_SetVar("B",b)
+BfromTCL=TCL_GetVar("B")
+//----------------------------------------------------
+TCL_SetVar("StringTCL","string")
+StringFromTCL=TCL_GetVar("StringTCL")
+//----------------------------------------------------
+TCL_SetVar("ScalarTCL",1.22)
+ScalarFromTCL=TCL_GetVar("ScalarTCL")
+//----------------------------------------------------
+// Examples with a slave interpreter
+//----------------------------------------------------
+a=['AA','BB','CC';'DD','EE','FF'];
+TCL_CreateSlave('SlaveInterp')
+TCL_SetVar("A_slave",a,'SlaveInterp')
+AfromTCL_slave=TCL_GetVar('A_slave','SlaveInterp')
+TCL_DeleteInterp('SlaveInterp')
+//----------------------------------------------------
+b=[66,44,11;22,33,55];
+TCL_CreateSlave('SlaveInterp1')
+TCL_SetVar("B_slave",b,'SlaveInterp1')
+BfromTCL_slave=TCL_GetVar('B_slave','SlaveInterp1')
+TCL_DeleteInterp('SlaveInterp1')
+//----------------------------------------------------
+TCL_CreateSlave('SlaveInterp2')
+TCL_SetVar("StringTCL_slave","string in slave interpreter",'SlaveInterp2')
+StringFromTCL_slave=TCL_GetVar("StringTCL_slave",'SlaveInterp2')
+TCL_DeleteInterp('SlaveInterp2')
+//----------------------------------------------------
+TCL_CreateSlave('SlaveInterp3')
+TCL_SetVar("ScalarTCL_slave",1.22,'SlaveInterp3')
+ScalarFromTCL_slave=TCL_GetVar("ScalarTCL_slave",'SlaveInterp3')
+TCL_DeleteInterp('SlaveInterp3')
+//----------------------------------------------------</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/ScilabEval.htm"><tt><b>ScilabEval</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalFile.htm"><tt><b>TCL_EvalFile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TK_EvalStr.htm"><tt><b>TCL_EvalStr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_SetVar.htm"><tt><b>TCL_SetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_ExistVar.htm"><tt><b>TCL_ExistVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_UnsetVar.htm"><tt><b>TCL_UnsetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_UpVar.htm"><tt><b>TCL_UpVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_CreateSlave.htm"><tt><b>TCL_CreateSlave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_DeleteInterp.htm"><tt><b>TCL_DeleteInterp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>disp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>disp</b> -  displays variables</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>disp(x1,[x2,...xn])   </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    displays <tt><b>xi</b></tt> with the current format. <tt><b>xi</b></tt>'s are arbitrary
+    objects (matrices of constants, strings, functions, lists, ...)</p>
+<p>
+    Display of objects defined by <tt><b>tlist</b></tt> may be overloaded by the
+    definition of a function. This function must have no output argument a
+    single input argument ant it's name is formed as follow
+    <tt><b>%&lt;tlist_type&gt;_p</b></tt> where <tt><b>%&lt;tlist_type&gt;</b></tt> stands for the first
+    entry of the tlist type component.</p>
+<p>
+      The <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/lines.htm"><tt><b>lines</b></tt></a> function may be used to control the ouput.
+      </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+disp([1 2],3)
+deff('[]=%t_p(l)','disp(l(3),l(2))')
+disp(tlist('t',1,2))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/lines.htm"><tt><b>lines</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/print.htm"><tt><b>print</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

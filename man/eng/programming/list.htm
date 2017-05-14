@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>list</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>list</b> -  Scilab object and list function definition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>list(a1,....an)    </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+		Creates a <tt><b>list</b></tt> with elements <tt><b>ai</b></tt>'s which are arbitrary Scilab 
+		objects (<tt><b>matrix, list,...</b></tt>). Type of <tt><b>list</b></tt> objects is 15.
+		<tt>list()</tt> creates the empty <tt><b>list</b></tt> (0 element).
+		</p>
+<h3><font color="blue">Operations on lists</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">extraction</font></b>: <tt>[x,y,z...]=L(v)</tt> where <tt>v</tt> is a vector of indices; 
+				<tt>[x,y,z]=L(:)</tt> extracts all the elements.</li>
+<li>
+<b><font color="maroon">insertion at index i</font></b>:  <tt>L(i)=a</tt> (note that it is not an error to use <tt>L(i)=a</tt>
+				with <em>i &gt; 1 + size(L)</em> but some list entries are then undefined
+				and their extraction gives raise to an error).</li>
+<li>
+<b><font color="maroon">append an element in queue</font></b>:  <tt>L($+1)=e</tt>.</li>
+<li>
+<b><font color="maroon">append an element in head</font></b>:  <tt>L(0)=e</tt>. (note that after this operation <tt>e</tt> is
+				at index 1, the initial elements being shifted on the right).</li>
+<li>
+<b><font color="maroon">deletion</font></b>: <tt>L(i)=null()</tt> removes the i-th element of the list <tt>L</tt>.</li>
+<li>
+<b><font color="maroon">concatenation of two lists</font></b>: <tt>L3 = lstcat(L1,L2)</tt>.</li>
+<li>
+<b><font color="maroon">number of elements of a list</font></b>:  you can use either <tt>nb_elm = size(L)</tt> 
+				or <tt>nb_elm = length(L)</tt>.</li>
+<li>
+<b><font color="maroon">iterations with a list</font></b>:  it is possible to use a list <tt>L</tt> with a <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/for.htm"><tt><b>for</b></tt></a> loop: 
+				<tt>for e=L,...,end</tt> is a loop with <tt>length(L)</tt> 
+				iterations, the loop variable <tt>e</tt> being equal to <tt>L(i)</tt>
+				at the i th iteration.</li>
+</dd></dl>
+<h3><font color="blue">Remarks</font></h3>
+<dl>
+<p>Scilab provides also other kinds of list, the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a> type (typed list) and
+			the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mlist.htm"><tt><b>mlist</b></tt></a> type which are useful to define a new data type with operator 
+			<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/overloading.htm"><tt><b>overloading</b></tt></a> facilities (<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/hypermatrices.htm"><tt><b>hypermatrices</b></tt></a> which are 
+			multi-dimensionnal arrays in scilab are in fact <em>mlist</em>).
+		</p>
+<p>Matlab <em>struct</em> are also available.</p>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+l = list(1,["a" "b"])
+l(0) = "foo"
+l($+1) = "hello"
+l(2) = "toto"
+l(3) = rand(1,2)
+l(3) = null()
+lbis = list("gewurtz", "caipirina" ,"debug")
+lter = lstcat(l,lbis)
+size(lter) - size(lbis) - size(l)  // must be zero
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/null.htm"><tt><b>null</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lstcat.htm"><tt><b>lstcat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/size.htm"><tt><b>size</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

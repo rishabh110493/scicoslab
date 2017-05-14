@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hypermat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hypermat</b> -  initialize an  N dimensional matrices</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>M=hypermat(dims [,v])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims</b></tt>: vector of hypermatrix dimensions</li>
+<li>
+<tt><b>v</b></tt>: vector of hypermatrix entries (default value <tt><b>zeros(prod(dims),1)</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Initialize an hypermatrix whose dimensions are given in the vector dims
+    and entries are given in optional argument <tt><b>v</b></tt></p>
+<p>
+    M data structure contains the vector of matrix dimensions
+    <tt><b>M('dims')</b></tt> and the vector of entries <tt><b>M('entries')</b></tt> such as
+    the leftmost subcripts vary first
+    <tt><b>[M(1,1,..);..;M(n1,1,..);...;M(1,n2,..);..;M(n1,n2,..);...]</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+M=hypermat([2 3 2 2],1:24)
+ 
+  </pre>
+</body>
+</html>

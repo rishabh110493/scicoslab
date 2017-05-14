@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>freson</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>freson</b> -  peak frequencies</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>fr=freson(h)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>fr</b></tt>: vector of peak frequencies in Hz</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns the vector of peak frequencies in Hz for the SISO plant
+    <tt><b>h</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+h=syslin('c',-1+%s,(3+2*%s+%s^2)*(50+0.1*%s+%s^2))
+fr=freson(h)
+bode(h)
+g=20*log(abs(repfreq(h,fr)))/log(10)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/zgrid.htm"><tt><b>zgrid</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/h_norm.htm"><tt><b>h_norm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cont_frm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cont_frm</b> -  transfer to controllable state-space</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sl]=cont_frm(NUM,den)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>NUM</b></tt>: polynomial matrix</li>
+<li>
+<tt><b>den</b></tt>: polynomial</li>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list, <tt><b>sl=[A,B,C,D]</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    controllable state-space form of the transfer <tt><b>NUM/den</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');NUM=[1+s,s];den=s^2-5*s+1;
+sl=cont_frm(NUM,den); 
+slss=ss2tf(sl);       //Compare with NUM/den
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/canon.htm"><tt><b>canon</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

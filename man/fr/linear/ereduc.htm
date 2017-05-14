@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ereduc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ereduc</b> -  computes  matrix column echelon form by qz transformations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[E,Q,Z [,stair [,rk]]]=ereduc(X,tol)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: m x n matrix with real  entries.</li>
+<li>
+<tt><b>tol</b></tt>: real positive scalar.</li>
+<li>
+<tt><b>E</b></tt>: column echelon form matrix</li>
+<li>
+<tt><b>Q</b></tt>: m x m unitary matrix</li>
+<li>
+<tt><b>Z</b></tt>: n x n unitary matrix</li>
+<li>
+<tt><b>stair</b></tt>: vector of indexes,<ul>
+<li>
+<tt><b>*  </b></tt><tt><b>ISTAIR(i) = + j</b></tt>  if the boundary element <tt><b>E(i,j)</b></tt> is a   corner point.</li>
+<li>
+<tt><b>*  </b></tt><tt><b>ISTAIR(i) = - j</b></tt>   if the boundary element <tt><b>E(i,j)</b></tt> is not a corner point.</li>
+</ul>
+<p><tt><b>(i=1,...,M)</b></tt></p>
+</li>
+<li>
+<tt><b>rk</b></tt>: integer, estimated rank of the matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given an <tt><b>m x n</b></tt> matrix <tt><b>X</b></tt> (not necessarily regular) the function 
+    ereduc computes a unitary transformed matrix <tt><b>E=Q*X*Z</b></tt> which is in 
+    column echelon form (trapezoidal form). Furthermore the rank of
+    matrix <tt><b>X</b></tt> is determined.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+X=[1 2 3;4 5 6]
+[E,Q,Z ,stair ,rk]=ereduc(X,1.d-15)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fstair.htm"><tt><b>fstair</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Th.G.J. Beelen (Philips Glass Eindhoven). SLICOT</p>
+</body>
+</html>

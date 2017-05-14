@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>typeof</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>typeof</b> -  object type</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[t]=typeof(object)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>object</b></tt>: Scilab object</li>
+<li>
+<tt><b>t</b></tt>: string</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>t=typeof(object)</b></tt> returns one of the following strings:
+  </p>
+<dl>
+<dd>
+<b>"constant"</b>if object is a real or complex constant matrix</dd>
+<dd>
+<b>"polynomial"</b>if object is a polynomial matrix</dd>
+<dd>
+<b>"function"</b>if object is a function</dd>
+<dd>
+<b>"handle"</b>if object is an handle</dd>
+<dd>
+<b>"string"</b>if object is a matrix made of character strings</dd>
+<dd>
+<b>"boolean"</b>if object is a boolean matrix</dd>
+<dd>
+<b>"list"</b>if object is a list</dd>
+<dd>
+<b>"rational"</b>if object is a rational matrix (transfer matrix)</dd>
+<dd>
+<b>"state-space"</b>if object is a state-space model (see <tt><b>syslin</b></tt>)</dd>
+<dd>
+<b>"sparse"</b>if object is a (real) sparse matrix.</dd>
+<dd>
+<b>"boolean sparse"</b>if object is a boolean sparse matrix.</dd>
+<dd>
+<b>if object is a  tlist or mlist,  t is the first</b>string in the first list entry.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+typeof(1)
+typeof(poly(0,'x'))
+
+typeof(1/poly(0,'x'))
+typeof(%t)
+
+w=sprand(100,100,0.001);
+typeof(w)
+typeof(w==w)
+
+deff('y=f(x)','y=2*x');
+typeof(f)
+
+L=tlist(['V','a','b'],18,'Scilab');
+typeof(L)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/strings.htm"><tt><b>strings</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

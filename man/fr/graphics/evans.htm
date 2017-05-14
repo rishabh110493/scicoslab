@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>evans</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>evans</b> - Evans root locus</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>evans(H [,kmax])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H</b></tt>: list (linear system <tt><b>syslin</b></tt>)</li>
+<li>
+<tt><b>kmax</b></tt>: real (maximum gain desired for the plot )</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Gives the Evans root locus for a linear system in state-space or
+    transfer form H(s) (<tt><b>syslin</b></tt> list). This is the locus of the
+    roots of <tt><b>1+k*H(s)=1+k*N(s)/D(s)</b></tt>, in the complex plane. For a
+    selected sample of gains <tt><b>k &lt;= kmax</b></tt>, the imaginary part of
+    the roots of <tt><b>D(s)+k*N(s)</b></tt> is plotted vs the real part.</p>
+<p>To obtain the gain at a given point of the locus you can simply execute
+    the following instruction :
+    <tt><b>k=-1/real(horner(h,[1,%i]*locate(1)))</b></tt> and click the desired
+    point on the root locus. If the coordinates of the selected point are in
+    the real 2 x 1 vector <tt><b>P=locate(1)</b></tt> this <tt><b>k</b></tt> solves
+    the equation <tt><b> k*N(w) + D(w) =0</b></tt> with
+    <tt><b>w=P(1)+%i*P(2)=[1,%i]*P</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+H=syslin('c',352*poly(-5,'s')/poly([0,0,2000,200,25,1],'s','c'));
+evans(H,100)
+P=3.0548543 - 8.8491842*%i;    //P=selected point
+k=-1/real(horner(H,P));
+Ns=H('num');Ds=H('den');
+roots(Ds+k*Ns)     //contains P as particular root
+// Another one
+clf();s=poly(0,'s');n=1+s;
+d=real(poly([-1 -2 -%i %i],'s'));
+evans(n,d,100);
+//
+clf();n=real(poly([0.1-%i 0.1+%i,-10],'s'));
+evans(n,d,80);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/kpure.htm"><tt><b>kpure</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/krac2.htm"><tt><b>krac2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/locate.htm"><tt><b>locate</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

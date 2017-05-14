@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plzr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plzr</b> -  pole-zero plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>plzr(sl)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>sl</b></tt>: list ( <tt><b>syslin</b></tt>)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    produces a pole-zero plot of the linear system
+    <tt><b>sl</b></tt> (<tt><b>syslin</b></tt> list)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+n=[1+s   2+3*s+4*s^2        5; 0        1-s             s];
+d=[1+3*s   5-s^3           s+1;1+s     1+s+s^2      3*s-1];
+h=syslin('c',n./d); 
+plzr(h);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/trzeros.htm"><tt><b>trzeros</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/roots.htm"><tt><b>roots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

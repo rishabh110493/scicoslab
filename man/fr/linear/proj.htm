@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>proj</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>proj</b> -  projection  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>P = proj(X1,X2)    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X1,X2  </b></tt>
+    : deux matrices réelles avec un nombre identique de colonnes.
+</li>
+<li>
+<tt><b>P  </b></tt>
+    : matrice réelle de projection (<tt><b>P^2=P</b></tt>)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>P</b></tt> est la projection sur <tt><b>X2</b></tt> parallèlement à <tt><b>X1</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+X1=rand(5,2);X2=rand(5,3);
+P=proj(X1,X2);
+norm(P^2-P,1)
+trace(P)    // il s'agit de dim(X2)
+[Q,M]=fullrf(P);
+svd([Q,X2])   // Im(Q) = Im(X2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/projspec.htm"><tt><b>projspec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/orth.htm"><tt><b>orth</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

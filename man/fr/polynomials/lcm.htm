@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lcm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lcm</b> -  Plus petit commun multiple (PPCM) de polynômes
+  ou d'entiers</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pp,fact]=lcm(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p  </b></tt>
+    : vecteur de polynômes ou d'entiers (type égal à 8)
+</li>
+<li>
+<tt><b>fact  </b></tt>
+    : vecteur de polynômes ou d'entiers
+</li>
+<li>
+<tt><b>pp  </b></tt>
+    : polynôme ou un entier
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pp=lcm(p)</b></tt> calcule le PPCM <tt><b>pp</b></tt>  du vecteur
+      <tt><b>p</b></tt> au sens des polynômes ou des entiers.
+  </p>
+<p><tt><b>[pp,fact]=lcm(p)</b></tt> calcule de plus le vecteur <tt><b>fact</b></tt> tel que :
+  </p>
+<p><tt><b>p.*fact=pp*ones(p)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+//cas des polynomes
+s=poly(0,'s');
+p=[s,s*(s+1)^2,s^2*(s+2)];
+[pp,fact]=lcm(p);
+p.*fact, pp
+//cas des entiers
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+lcm(V)
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/gcd.htm"><tt><b>gcd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/bezout.htm"><tt><b>bezout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

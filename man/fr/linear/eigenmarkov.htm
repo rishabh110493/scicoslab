@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>eigenmarkov</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eigenmarkov</b> -  normalized left and right Markov eigenvectors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[M,Q]=eigenmarkov(P)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: real N x N Markov matrix. Sum of entries in each row should add to one.</li>
+<li>
+<tt><b>M</b></tt>: real matrix with N columns.</li>
+<li>
+<tt><b>Q</b></tt>: real matrix with N rows.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns normalized left and right eigenvectors
+    associated with the eigenvalue 1 of the Markov transition matrix P.
+    If the multiplicity of this eigenvalue is m and P
+    is N x N, M is a m x N matrix and Q a N x m matrix.
+    M(k,:) is the probability distribution vector associated with the kth
+    ergodic set (recurrent class). M(k,x) is zero if x is not in the
+    k-th recurrent class.
+    Q(x,k) is the probability to end in the k-th recurrent class starting
+    from x. If <tt><b>P^k</b></tt> converges for large <tt><b>k</b></tt> (no eigenvalues on the
+    unit circle except 1), then the limit is <tt><b>Q*M</b></tt> (eigenprojection).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//P has two recurrent classes (with 2 and 1 states) 2 transient states
+P=genmarkov([2,1],2) 
+[M,Q]=eigenmarkov(P);
+P*Q-Q
+Q*M-P^20
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/genmarkov.htm"><tt><b>genmarkov</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/classmarkov.htm"><tt><b>classmarkov</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

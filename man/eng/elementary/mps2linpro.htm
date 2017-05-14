@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mps2linpro</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mps2linpro</b> -  convert lp problem given in MPS format to linpro format</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>lp = mps2linpro(mps)  </tt></dd>
+<dd><tt>[p,C,b,ci,cs,mi] = mps2linpro(mps)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mps</b></tt>: either a character string, path of the MPS file, or an mps data structure returned by <tt><b>readmps</b></tt>
+</li>
+<li>
+<tt><b>lp</b></tt>: a linpro data tlist with following fields:<ul>
+<li>
+<tt><b>p</b></tt>: real (column) vector (dimension <tt><b> n</b></tt>)</li>
+<li>
+<tt><b>C</b></tt>: real matrix (dimension <tt><b> (mi + md) x n</b></tt>) (If no constraints are given, you can set <tt><b>C = []</b></tt>)</li>
+<li>
+<tt><b>b</b></tt>: RHS vector (dimension <tt><b>1 x (mi + md)</b></tt>)</li>
+<li>
+<tt><b>ci</b></tt>: (column) vector of lower-bounds (dimension <tt><b> n</b></tt>). If there are no lower bound constraints, put <tt><b>ci = []</b></tt>. If some components of <tt><b>x</b></tt> are bounded from below, set the other (unconstrained) values of <tt><b>ci</b></tt> to a very  large negative  number (e.g. <tt><b>ci(j) = -(% eps)^(-1)</b></tt>.</li>
+<li>
+<tt><b>cs</b></tt>: (column) vector of upper-bounds. (Same remarks as above).</li>
+<li>
+<tt><b>mi</b></tt>: number of equality constraints (i.e. <tt><b>C(1:mi,:)*x = b(1:mi)</b></tt>)</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    mps2linpro forms Linear programing data compatible with linpro out of
+    MPS data format.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/linpro.htm"><tt><b>linpro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/readmps.htm"><tt><b>readmps</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

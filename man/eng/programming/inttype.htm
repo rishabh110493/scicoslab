@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>inttype</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inttype</b> -   type integers used in integer data types</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[i]=inttype(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: an matrix of integers (see int8,..)</li>
+<li>
+<tt><b>i</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>inttype(x)</b></tt>  returns an integer which is the type of the entries
+    of <tt><b>x</b></tt> as following :</p>
+<p>
+     1 
+    :  one byte integer representation</p>
+<p>
+     2 
+    :  two bytes integer representation</p>
+<p>
+     4 
+    :  four bytes integer representation</p>
+<p>
+     11 
+    :  one byte unsigned integer representation</p>
+<p>
+     12 
+    :  two bytes unsigned integer representation</p>
+<p>
+     14 
+    :  four bytes unsigned integer representation</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=uint16(1:10);
+inttype(x)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/int8.htm"><tt><b>int8</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

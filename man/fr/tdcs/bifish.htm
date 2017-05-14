@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bifish</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bifish</b> -  shows a bifurcation diagram in a fish population discrete time model</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>bifish([f_ch])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>f_ch</b></tt>: can be one of <tt><b>fish</b></tt>, <tt><b>fishr</b></tt> and <tt><b>fishr2</b></tt>. This option selects the population model.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The dynamical system <tt><b>fish</b></tt> is the following :</p>
+<pre>
+
+           y=b*exp(-0.1*(x(k)_1+x(k)_2));
+           x(k+1)=[ y 2*y ; s 0.0]*x(k);
+   
+    </pre>
+<p>
+    and the parameters <tt><b>s</b></tt> evolves to show the bifurcation diagram.
+    <tt><b>fishr</b></tt> and <tt><b>fishr2</b></tt> are constructed as above but with added white noises.</p>
+<pre>
+
+ fishr
+ y=b*exp(-0.1*(xk(1)+xk(2))) 
+ xkp1=[ y 2*y ; s*(1+0.1*(rand()-0.5)) 0.0]*xk
+
+ fishr2
+ z=exp(-0.1*(xk(1)+xk(2))) 
+ xkp1=[ b*z**(1+0.1*(rand()-0.5)) 2*b*z**(1+0.1*(rand()-0.5)) ; s 0.0]*xk
+   
+    </pre>
+<p>
+    The three macros <tt><b>fish, fishr, fishr2</b></tt> are loaded in Scilab when calling <tt><b>bifish</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

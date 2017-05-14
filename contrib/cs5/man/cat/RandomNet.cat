@@ -1,0 +1,32 @@
+RandomNet                     Traffic-toolbox Function            RandomNet
+NAME
+   RandomNet  -  Random generation of traffic network data
+  
+CALLING SEQUENCE
+   
+  
+ net=RandomNet(nn,na,nd,nf)
+PARAMETERS
+ nn         : number of nodes
+            
+ na         : number of arcs
+            
+ nd         : number of OD-pairs (origin-destination)
+            
+ nf         : model chosen for the computation of the travel time
+            
+ net        : the resulting Netlist 
+            
+DESCRIPTION
+   Generates randomly a strongly connected network with nn nodes, 
+  (approximately) na links and (approximately) nd OD pairs. The value of nf
+  indicates the formula chosen for the computation of the travel time, by
+  default it is 6.   
+  
+EXAMPLES
+ %net=RandomNet(3,5,2);
+ // generates a network with 3 nodes, 5 arcs and 2 OD-pairs
+ ShowNet();
+SEE ALSO
+   IntroTrfAsg, RandomNNet, Regular, ShowNet    
+  

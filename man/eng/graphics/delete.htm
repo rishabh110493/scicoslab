@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>delete</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>delete</b> -  
+   delete  a graphic entity and its children.
+  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>delete(h) </tt></dd>
+<dd><tt>delete(h,"callback") </tt></dd>
+<dd><tt>delete() </tt></dd>
+<dd><tt>delete("all") </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: a handle, the handle of the entity  to delete. <tt><b>h</b></tt> can be a vector of
+     handles, in which case all objects identified by h(i) will be deleted.</li>
+<li>
+<tt><b>"all"  </b></tt>: string keyword (optional).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This routine can be used to delete a graphics entity identified
+    by the handle given as argument. In this case, All children of 
+    this graphics entity will be deleted. 
+    Without any argument <tt><b>delete</b></tt> removes the
+    current entity. With <tt><b>"all"</b></tt> argument it deletes
+    all the entities of the current figure.</p>
+<p> 
+    The <tt><b>"callback"</b></tt> argument is not yet handled.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+  set("figure_style","new") // select entity based graphics  
+  subplot(211);
+  t=1:10;plot2d(t,t.^2),
+  subplot(223);
+  plot3d();
+  subplot(224);
+  plot2d();
+  xfrect(1,0,3,1);
+  a=get("current_axes") 
+  delete(); //delete the graphics object newly created
+  delete(a.children); //delete all children of the current axes
+  delete(a); //delete the axes
+  delete("all"); //delete all the graphics objects of the figure
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/copy.htm"><tt><b>copy</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/move.htm"><tt><b>move</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Djalel ABDEMOUCHE</p>
+</body>
+</html>

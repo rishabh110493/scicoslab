@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_mytid</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_mytid</b> -  returns the tid of the calling process.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[tid] = pvm_mytid()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>tid</b></tt>: integer, the task identifier of the calling PVM process. Values less than zero indicate an error.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_mytid</b></tt> 
+    enrolls this process
+    into PVM on its first call. It also generates a unique 
+     <tt><b>tid</b></tt></p>
+<p>
+    if this process was not created by <tt><b>pvm_spawn</b></tt>.
+    pvm_mytid returns the <tt><b>tid</b></tt> 
+    of the calling process
+    and can be called multiple times in an application.</p>
+<p>
+    Any PVM system call (not just pvm_mytid) will enroll a task in PVM
+    if the task is not enrolled before the call.</p>
+<p>
+    The tid is a 32 bit positive integer created by the local pvmd.
+    The 32 bits are divided into fields that encode various
+    information about this process such as its location in
+    the virtual machine (i.e. local pvmd address),
+    the CPU number in the case where the process is on
+    a multiprocessor, and a process ID field. This information
+    is used by PVM and is not expected to be used by applications.
+    Applications should not attempt to predict or interpret the tid with
+    the exception of calling tidtohost()</p>
+<p>
+    If PVM has not been started before an application calls 
+    <tt><b>pvm_mytid</b></tt>, the returned value will be 
+    will be &lt; 0.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_tidtohost.htm"><tt><b>pvm_tidtohost</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_parent.htm"><tt><b>pvm_parent</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>zpch1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zpch1</b> -  Chebyshev analog filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[poles,gain]=zpch1(n,epsilon,omegac)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer (filter order)</li>
+<li>
+<tt><b>epsilon</b></tt>: real : ripple in the pass band (<tt><b>0&lt;epsilon&lt;1</b></tt>)</li>
+<li>
+<tt><b>omegac</b></tt>: real : cut-off frequency in Hertz</li>
+<li>
+<tt><b>poles</b></tt>: resulting filter poles</li>
+<li>
+<tt><b>gain</b></tt>: resulting filter gain</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Poles of a Type 1 Chebyshev analog filter. The transfer function is given by :</p>
+<pre>
+
+ H(s)=gain/poly(poles,'s')
+   
+    </pre>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

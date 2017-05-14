@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>polar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>polar</b> -  forme polaire  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ro,Theta]=polar(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice carrée réelle ou complexe
+</li>
+<li>
+<tt><b>Ro, Theta  </b></tt>
+    : matrices réelles
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[Ro,Theta]=polar(A)</b></tt> renvoie la forme polaire de
+    <tt><b>A</b></tt> c'est à dire :<tt><b>A=Ro*expm(%i*Theta)</b></tt><tt><b>Ro</b></tt> symétrique &gt;=0 et <tt><b>Theta</b></tt>
+    hermitienne &gt;=0.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=rand(5,5);
+[Ro,Theta]=polar(A);
+norm(A-Ro*expm(%i*Theta),1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/expm.htm"><tt><b>expm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque INRIA   </p>
+</body>
+</html>

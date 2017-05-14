@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>kron</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>kron</b> -  Kronecker product (.*.)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>kron(A,B)   </tt></dd>
+<dd><tt>A.*.B</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>kron(A,B)</b></tt> or  <tt><b>A.*.B</b></tt> returns the Kronecker tensor 
+    product of two matrices <tt><b>A</b></tt> and <tt><b>B</b></tt>. The resulting
+    matrix has the following block form:
+    </p>
+<pre>
+              | A(1,1) B ..... A(1,n) B |
+              |   .              .      |
+    A .*. B = |   .              .      |   
+              |   .              .      |
+              | A(m,1) B ..... A(m,n) B |
+    </pre>
+<p> If <tt><b>A</b></tt> is a  <tt><b>m x n</b></tt> matrix and  <tt><b>B</b></tt> a  
+       <tt><b>p x q</b></tt> matrix then <tt><b>A.*.B</b></tt> is a  
+       <tt><b>(m*p) x (n*q)</b></tt> matrix.
+    </p>
+<p><tt><b>A</b></tt> and <tt><b>B</b></tt> can be sparse matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4];
+kron(A,A)
+A.*.A
+sparse(A).*.sparse(A)
+A(1,1)=%i;
+kron(A,A)
+ 
+  </pre>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_grid</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_grid</b> - Fonction d'émulation de la fonction Matlab grid</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas de fonction Scilab equivalente à la fonction Matlab <tt><b>grid</b></tt> mais il existe des instructions équivalentes</p>
+<p>
+    La fonction <tt><b>mtlb_grid(flag_or_handle[,flag])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>grid(flag_or_handle[,flag])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_grid</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec un paramètre d'entrée, si <tt><b>flag</b></tt> est égal à "on"
+        <tt><b>mtlb_grid(flag)</b></tt> peut être remplacé par <tt><b>set(gca(),"grid",[1 1])</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec un paramètre d'entrée, si <tt><b>flag</b></tt> est égal à "off"
+        <tt><b>mtlb_grid(flag)</b></tt> peut être remplacé par <tt><b>set(gca(),"grid",[-1 -1])</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux paramètres d'entrée, si <tt><b>flag</b></tt> est égal à "on"
+        <tt><b>mtlb_grid(axes_handle,flag)</b></tt> peut être remplacé par <tt><b>axes_handle.grid=[1 1]</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec un paramètre d'entrée, si <tt><b>flag</b></tt> est égal à "off"
+        <tt><b>mtlb_grid(axes_handle,flag)</b></tt> peut être remplacé par <tt><b>axes_handle.grid=[-1 -1]</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_grid</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

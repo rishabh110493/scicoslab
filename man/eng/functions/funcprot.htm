@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>funcprot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>funcprot</b> -  switch scilab functions protection mode</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>prot=funcprot()  </tt></dd>
+<dd><tt>funcprot(prot)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>prot</b></tt>: integer with possible values 0,1,2</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Scilab functions are variable, funcprot allows the user to specify
+    what scilab do when such  variables are redefined.
+  </p>
+<dl>
+<dd>
+<b>*</b>If prot==0  nothing special is done</dd>
+<dd>
+<b>*</b>If prot==1  scilab issues a warning message when a function is redefined (default mode)</dd>
+<dd>
+<b>*</b>If prot==2 scilab issues an error when a function is redefined</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+funcprot(1)
+deff('[x]=foo(a)','x=a')
+deff('[x]=foo(a)','x=a+1')
+foo=33
+funcprot(0)
+deff('[x]=foo(a)','x=a')
+deff('[x]=foo(a)','x=a+1')
+foo=33
+ 
+  </pre>
+</body>
+</html>

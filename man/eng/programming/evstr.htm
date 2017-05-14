@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>evstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>evstr</b> -  evaluation of expressions</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>H=evstr(Z)  </tt></dd>
+<dd><tt>[H,ierr]=evstr(Z)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Z</b></tt>: matrix of character strings <tt><b>M</b></tt> or <tt><b>list(M,Subexp)</b></tt><ul>
+<li>
+<tt><b>M</b></tt>: matrix of character strings</li>
+<li>
+<tt><b>Subexp</b></tt>: vector of character strings</li>
+</ul>
+</li>
+<li>
+<tt><b>H</b></tt>: matrix</li>
+<li>
+<tt><b>ierr</b></tt>: integer, error indicator</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns the result of the evaluation of the matrix of character
+    strings <tt><b>M</b></tt>.  Each element of the matrix must define a valid
+    Scilab expression.</p>
+<p>
+    If the evaluation of <tt><b>M</b></tt> expression leads to an error, the single
+    return value version, <tt><b>H=evstr(M)</b></tt>, raises the error as usual.
+    The two return values version, <tt><b>[H,ierr]=evstr(M)</b></tt>, on the other
+    hand, produces no error, but returns the error number in <tt><b>ierr</b></tt>.</p>
+<p>
+    If <tt><b>Z</b></tt> is a list, <tt><b>Subexp</b></tt> is a vector of character strings,
+    that defines sub_expressions which are evaluated before evaluating
+    <tt><b>M</b></tt>.  These sub_expressions must be referred to as <tt><b>%(k)</b></tt> in
+    <tt><b>M</b></tt>, where <tt><b>k</b></tt> is the sub-expression's index in <tt><b>Subexp</b></tt>.</p>
+<p>
+    evstr('a=1') is not valid (use <tt><b>execstr</b></tt> instead).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=1; b=2; Z=['a','b'] ; evstr(Z) 
+
+a=1; b=2; Z=list(['%(1)','%(1)-%(2)'],['a+1','b+1']);
+evstr(Z)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

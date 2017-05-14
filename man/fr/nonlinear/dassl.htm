@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dassl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dassl</b> -  differential algebraic equation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[r [,hd]]=dassl(x0,t0,t [,atol,[rtol]],res [,jac] [,info] [,hd])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x0</b></tt>: is either <tt><b>y0</b></tt> (<tt><b>ydot0</b></tt> is estimated by
+    <tt><b>dassl</b></tt> with zero as first estimate) or the matrix
+    <tt><b>[y0 ydot0]</b></tt>.  <tt><b>g(t,y0,ydot0)</b></tt> must be equal
+    to zero. If you only know an estimate  of <tt><b>ydot0</b></tt> set
+    <tt><b>info(7)=1</b></tt><ul>
+<li>
+<tt><b>y0</b></tt>: real column vector  of initial conditions.</li>
+<li>
+<tt><b>ydot0</b></tt>: real column vector of the time derivative of <tt><b>y</b></tt> at <tt><b>t0</b></tt> (may be an estimate).</li>
+</ul>
+</li>
+<li>
+<tt><b>t0</b></tt>: real number is the initial instant.</li>
+<li>
+<tt><b>t</b></tt>: real scalar or vector. Gives instants for which you want the
+  solution. Note that you can get solution at each dassl's step
+  point by setting <tt><b>info(2)=1</b></tt>.</li>
+<li>
+<tt><b>atol,rtol</b></tt>: real scalars or column vectors of same size as <tt><b>y</b></tt>. <tt><b>atol,rtol</b></tt> give respectively  absolute and relative error tolerances of solution.  If vectors the tolerances are specified for each component of <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>res</b></tt>: external (function or list or string). Computes the  value of <tt><b>g(t,y,ydot)</b></tt>.<ul>
+<li>
+<tt><b>function</b></tt><p>
+    : Its calling sequence must be <tt><b>[r,ires]=res(t,y,ydot)</b></tt>
+  and <tt><b>res</b></tt> must return the residue
+  <tt><b>r=g(t,y,ydot)</b></tt>  and error flag
+  <tt><b>ires</b></tt>. <tt><b>ires = 0</b></tt> if <tt><b>res</b></tt>
+  succeeds to compute <tt><b>r</b></tt>, <tt><b>=-1</b></tt>  if residue is
+  locally not defined for <tt><b>(t,y,ydot)</b></tt>, <tt><b>=-2</b></tt> if
+  parameters are out of admissible range. </p>
+</li>
+<li>
+<tt><b>list</b></tt>: it must be as follows:<pre>
+
+list(res,x1,x2,...)
+   
+                </pre>
+<p>
+    where the calling sequence of the function <tt><b>res</b></tt> is now
+  </p>
+<pre>
+
+r=res(t,y,ydot,x1,x2,...)
+   
+                </pre>
+<p><tt><b>res</b></tt> still returns <tt><b>r=g(t,y,ydot)</b></tt> as a function of <tt><b>(t,y,ydot,x1,x2,...)</b></tt>.
+  </p>
+</li>
+<li>
+<tt><b>string</b></tt>: it must refer to the name of a fortran subroutine (see source code of of <tt><b>Ex-dassl.f</b></tt> in routines/defaut/).</li>
+</ul>
+</li>
+<li>
+<tt><b>jac</b></tt>: external (function or list or string). Computes the  value  of <tt><b>dg/dy+cj*dg/dydot</b></tt> for a given value of parameter <tt><b>cj</b></tt><ul>
+<li>
+<tt><b>function</b></tt>: Its calling sequence must be <tt><b>r=jac(t,y,ydot,cj)</b></tt> and the <tt><b>jac</b></tt> function must return <tt><b>r=dg(t,y,ydot)/dy+cj*dg(t,y,ydot)/dydot</b></tt> where <tt><b>cj</b></tt> is a real scalar</li>
+<li>
+<tt><b>list</b></tt>: it must be as follows<pre>
+
+list(jac,x1,x2,...)
+   
+                </pre>
+<p>
+    where the calling sequence of the function <tt><b>jac</b></tt> is now
+  </p>
+<pre>
+
+r=jac(t,y,ydot,x1,x2,...)
+   
+                </pre>
+<p><tt><b>jac</b></tt> still returns <tt><b>dg/dy+cj*dg/dydot</b></tt> as a function of <tt><b>(t,y,ydot,cj,x1,x2,...)</b></tt>.
+  </p>
+</li>
+<li>
+<tt><b>character string</b></tt>: it must refer to the name of a fortran subroutine  (see source code of <tt><b>Ex-dassl.f</b></tt> in routines/defaut/).</li>
+</ul>
+</li>
+<li>
+<tt><b>info</b></tt>: list which contains <tt><b>7</b></tt> elements, default value is list([],0,[],[],[],0,0);<ul>
+<li>
+<tt><b>info(1)  </b></tt>: real scalar which gives the maximum time for which <tt><b>g</b></tt> is allowed  to be evaluated or an empty matrix <tt><b>[]</b></tt> if no limits imposed for time.</li>
+<li>
+<tt><b>info(2)  </b></tt>: flag which indicates if <tt><b>dassl</b></tt> returns its intermediate  computed values (<tt><b>flag=1</b></tt>) or only the user specified time point  values (<tt><b>flag=0</b></tt>).</li>
+<li>
+<tt><b>info(3)  </b></tt>: <tt><b>2</b></tt> components vector which give the definition <tt><b>[ml,mu]</b></tt> of band  matrix computed by <tt><b>jac</b></tt>; <tt><b>r(i - j + ml + mu + 1,j) = "dg(i)/dy(j)+cj*dg(i)/dydot(j)"</b></tt>.  If <tt><b>jac</b></tt> returns a full matrix set <tt><b>info(3)=[]</b></tt>.</li>
+<li>
+<tt><b>info(4)  </b></tt>: real scalar which gives the maximum step size. Set <tt><b>info(4)=[]</b></tt> if no  limitation.</li>
+<li>
+<tt><b>info(5)  </b></tt>: real scalar which gives the initial step size. Set <tt><b>info(4)=[]</b></tt> if  not specified.</li>
+<li>
+<tt><b>info(6)  </b></tt>: set <tt><b>info(6)=1</b></tt> if the solution is known to be non negative,  else set <tt><b>info(6)=0</b></tt>.</li>
+<li>
+<tt><b>info(7)  </b></tt>: set <tt><b>info(7)=1</b></tt> if <tt><b>ydot0</b></tt> is just an estimation, <tt><b>info(7)=0</b></tt> if <tt><b>g(t0,y0,ydot0)=0</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>hd</b></tt>: real vector which allows to store the <tt><b>dassl</b></tt> context and to  resume integration</li>
+<li>
+<tt><b>r</b></tt>: real matrix . Each column is the vector [t;x(t);xdot(t)] where t is time index for which the solution had been computed</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Solution of the implicit differential equation</p>
+<pre>
+
+    g(t,y,ydot)=0
+    y(t0)=y0  and   ydot(t0)=ydot0
+   
+    </pre>
+<p>
+    Detailed examples are given in SCIDIR/tests/dassldasrt.tst</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ deff('[r,ires]=chemres(t,y,yd)',[
+         'r(1)=-0.04*y(1)+1d4*y(2)*y(3)-yd(1);';
+         'r(2)=0.04*y(1)-1d4*y(2)*y(3)-3d7*y(2)*y(2)-yd(2);'
+         'r(3)=y(1)+y(2)+y(3)-1;'
+         'ires=0']);
+ deff('[pd]=chemjac(x,y,yd,cj)',[
+         'pd=[-0.04-cj , 1d4*y(3)               , 1d4*y(2);';
+         '0.04    ,-1d4*y(3)-2*3d7*y(2)-cj ,-1d4*y(2);';
+         '1       , 1                      , 1       ]'])
+
+y0=[1;0;0];
+yd0=[-0.04;0.04;0];
+t=[1.d-5:0.02:.4,0.41:.1:4,40,400,4000,40000,4d5,4d6,4d7,4d8,4d9,4d10];
+
+
+y=dassl([y0,yd0],0,t,chemres);
+
+info=list([],0,[],[],[],0,0);
+info(2)=1;
+y=dassl([y0,yd0],0,4d10,chemres,info);
+y=dassl([y0,yd0],0,4d10,chemres,chemjac,info);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/dasrt.htm"><tt><b>dasrt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/impl.htm"><tt><b>impl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/fort.htm"><tt><b>fort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

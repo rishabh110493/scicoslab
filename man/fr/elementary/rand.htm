@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rand</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rand</b> -  générateur de nombres aléatoires  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rand(m1,m2,.. [,key])  </tt></dd>
+<dd><tt>rand(x [, key])  </tt></dd>
+<dd><tt>rand()  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>rand(key)  </tt></dd>
+<dd><tt>rand("seed" [,n])  </tt></dd>
+<dd><tt>rand("info")  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mi  </b></tt>
+    : entiers
+</li>
+<li>
+<tt><b>key  </b></tt>
+    : chaîne de caractères,  <tt><b>"uniform"</b></tt> ou <tt><b>"normal"</b></tt> ("uniform" par défaut)
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : une matrice, dont uniquement les dimensions sont prises en compte. 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Générateur de nombres aléatoires.
+  </p>
+<p>
+    Sans l'argument <tt><b>key</b></tt> la syntaxe ci-dessous produit une matrice 
+    aléatoire dont chaque élément est la réalisation d'une variable aléatoire 
+    suivant une loi donnée (par défaut uniforme sur [0,1]).
+  </p>
+<dl>
+<dd>
+<b>rand(m1,m2)</b> est une matrice aléatoire de dimensions <tt><b>m1</b></tt> x <tt><b>m2</b></tt>.</dd>
+<dd>
+<b>rand(m1,m2,..,mn)</b> est une matrice aléatoire de dimensions <tt><b>m1</b></tt> x <tt><b>m2</b></tt>,.. x <tt><b>mn</b></tt>.</dd>
+<dd>
+<b>rand(a)</b> est une matrice aléatoire de mêmes dimensions que a. <tt><b>rand(a)</b></tt> est complexe si <tt><b>a</b></tt> 
+    est une matrice complexe.</dd>
+<dd><b>rand() : sans argument, renvoie un scalaire aléatoire.</b></dd>
+</dl>
+<p>
+    S'il est présent, l'argument <tt><b>key</b></tt> permet de spécifier la loi suivie par défaut par la variable aléatoire.
+  </p>
+<dl>
+<dd>
+<b>rand('uniform')</b> La loi par défaut est uniforme sur l'intervalle [0,1].</dd>
+<dd>
+<b>rand('normal')</b> La loi par défaut est une loi normale centrée réduite (moyenne 0, variance 1).</dd>
+<dd>
+<b>str=rand('info')</b> renvoie 'uniform' ou 'normal' suivant la loi définie par défaut (voir ci-dessus).</dd>
+</dl>
+<p>
+    Il est possible de réinitialiser l'état interne du générateur aléatoire (spécifié par un entier
+    de l'intervalle [0,2^31-1]) ):
+  </p>
+<dl>
+<dd>
+<b>rand('seed')</b> Renvoie la valeur courante de l'état interne.</dd>
+<dd>
+<b>rand('seed',n)</b> Impose la valeur <tt><b>n</b></tt> pour l'état interne (par défaut l'état est initialisé
+    à <tt><b>n=0</b></tt> au premier appel).</dd>
+</dl>
+<h3><font color="blue">Remarque</font></h3>
+<dl><p>
+       Il est conseillé d'utiliser plutôt la fonction <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/dcd/grand.htm"><tt><b>grand</b></tt></a> qui permet aussi de simuler
+       les lois les plus classiques (binomiale, poisson, ....).
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=rand(10,10,'uniform')
+rand('normal')
+rand('info')
+y=rand(x,'normal');
+x=rand(2,2,2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/dcd/grand.htm"><tt><b>grand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ssrand.htm"><tt><b>ssrand</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

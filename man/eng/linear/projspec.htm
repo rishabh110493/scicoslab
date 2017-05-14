@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>projspec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>projspec</b> -  spectral operators</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[S,P,D,i]=projspec(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: square matrix</li>
+<li>
+<tt><b>S, P, D</b></tt>: square matrices</li>
+<li>
+<tt><b>i</b></tt>: integer (index of the zero eigenvalue of <tt><b>A</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Spectral characteristics of <tt><b>A</b></tt> at 0.</p>
+<p><tt><b>S</b></tt> = reduced resolvent at 0 (<tt><b>S</b></tt> = -Drazin_inverse(<tt><b>A</b></tt>)).</p>
+<p><tt><b>P</b></tt> = spectral projection at 0.</p>
+<p><tt><b>D</b></tt> = nilpotent operator at 0.</p>
+<p><tt><b>index</b></tt> = index of the 0 eigenvalue.</p>
+<p>
+    One has <tt><b>(s*eye()-A)^(-1) = D^(i-1)/s^i +... + D/s^2 + P/s - S - s*S^2 -...</b></tt>
+    around the singularity s=0.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('j=jdrn(n)','j=zeros(n,n);for k=1:n-1;j(k,k+1)=1;end')
+A=sysdiag(jdrn(3),jdrn(2),rand(2,2));X=rand(7,7);
+A=X*A*inv(X);
+[S,P,D,index]=projspec(A);
+index   //size of J-block
+trace(P)  //sum of dimensions of J-blocks
+A*S-(eye()-P)
+norm(D^index,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/coff.htm"><tt><b>coff</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

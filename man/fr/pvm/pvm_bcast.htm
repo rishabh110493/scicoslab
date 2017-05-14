@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_bcast</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_bcast</b> -  broacasts a message to all members of a group</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[info] = pvm_bcast(group, buff, msgtag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>group</b></tt>: string, string group name of an existing group.</li>
+<li>
+<tt><b>buff</b></tt>:  data to be send (any Scilab object).</li>
+<li>
+<tt><b>msgtag</b></tt>: integer,  message tag supplied by the user.</li>
+<li>
+<tt><b>info</b></tt>: integer,</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_bcast</b></tt> broadcasts a message to all the members of
+    the group named <tt><b>group</b></tt>.</p>
+<p>
+    In PVM 3.2 and later the broadcast message is not sent back to the sender.
+    Any PVM task can call <tt><b>pvm_bcast()</b></tt>, it need not be a member of the group.
+    The content of the message can be distinguished by its tag <tt><b>msgtag</b></tt></p>
+<p>
+    The returned value <tt><b>info</b></tt>will be zero if 
+    <tt><b>pvm_bcast</b></tt> is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<p>
+    pvm_bcast is asynchronous.
+    Computation on the sending processor resumes as soon as the message is
+    safely on its way to the receiving processors.  This is in
+    contrast to synchronous communication, during which computation on
+    the sending processor halts until a matching receive is
+    executed by all the receiving processors.</p>
+<p>
+    pvm_bcast first determines the tids of the
+    group members by checking a group data base.
+    A multicast is performed to these tids.
+    If the group is changed during a broadcast the change will not
+    be reflected in the broadcast.
+    Multicasting is not supported by most multiprocessor vendors.
+    Typically their native calls only support broadcasting to <tt><b>all</b></tt>
+    the user's processes on a multiprocessor. Because of this omission,
+    pvm_bcast may not be an efficient communication method on
+    some multiprocessors.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

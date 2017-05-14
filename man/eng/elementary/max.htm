@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>max</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>max</b> -  maximum</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[m [,k]]=max(A)  </tt></dd>
+<dd><tt>[m [,k]]=max(A,'c')  </tt></dd>
+<dd><tt>[m [,k]]=max(A,'r')  </tt></dd>
+<dd><tt>[m [,k]]=max(A,'m')  </tt></dd>
+<dd><tt>[m [,k]]=max(A1,A2,...,An)  </tt></dd>
+<dd><tt>[m [,k]]=max(list(A1,A2,...,An))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real vector or matrix.</li>
+<li>
+<tt><b>A1,...,An</b></tt>: a set of real vectors or matrices, all of the same size or scalar.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> For <tt><b>A</b></tt>, a real  vector or matrix, <tt><b>max(A)</b></tt> is
+      the largest element <tt><b>A</b></tt>. <tt><b>[m,k]=max(A)</b></tt> gives in
+      addition the index of the maximum. A second argument of type string
+      <tt><b>'r'</b></tt> or <tt><b>'c'</b></tt> can be used : <tt><b>'r'</b></tt> is
+      used to get a row vector <tt><b>m</b></tt> such that <tt><b>m(j)</b></tt>
+      contains the maximum of the <tt><b>j</b></tt> th column of A
+      (<tt><b>A(:,j)</b></tt>), <tt><b>k(j)</b></tt> gives the row indice which
+      contain the maximum for column <tt><b>j</b></tt>. <tt><b>'c'</b></tt> is used
+      for the dual operation on the rows of <tt><b>A</b></tt>. <tt><b>'m'</b></tt> is used
+      for compatibility with Matlab.</p>
+<p><tt><b>m=max(A1,A2,...,An)</b></tt>, where all the <tt><b>Aj</b></tt> are
+      matrices of the same sizes,returns a vector or a matrix <tt><b>m</b></tt> of
+      size <tt><b>size(m)=size(A1)</b></tt> such that <tt><b>m(i)= max( Aj(i)),
+	j=1,...,n</b></tt>. <tt><b>[m,k]=max(A1,A2,...,An)</b></tt> gives in
+      addition the vector or matrix <tt><b>k</b></tt>. for a fixed <tt><b>i</b></tt>,
+      <tt><b>k(i)</b></tt> is the number of the first <tt><b>Aj(i)</b></tt> achieving
+      the maximum.</p>
+<p><tt><b>[m,k]=max(list(A1,...,An))</b></tt> is an equivalent syntax of 
+    <tt><b>[m,k]=max(A1,A2,...,An)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[m,n]=max([1,3,1])
+[m,n]=max([3,1,1],[1,3,1],[1,1,3])
+[m,n]=max([3,-2,1],1)
+[m,n]=max(list([3,1,1],[1,3,1],[1,1,3]))
+[m,n]=max(list(1,3,1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/mini.htm"><tt><b>mini</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

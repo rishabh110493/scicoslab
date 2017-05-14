@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xtape</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xtape</b> -  détermine le processus d'enregistrement des graphiques  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xtape(str,[num,rect])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str  </b></tt>
+    : chaîne de caractères, "on", "clear", "replay" ou "replaysc".
+</li>
+<li>
+<tt><b>num  </b></tt>
+    : entier.
+</li>
+<li>
+<tt><b>rect  </b></tt>
+    : vecteur ligne de taille 4.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xtape</b></tt> est utilisée pour déterminer le processus d'enregistrement des graphiques :
+  </p>
+<p>
+    xtape("on") 
+    sélectionne le pilote "Rec" qui enregistre toutes les opérations
+    graphiques.
+  </p>
+<p>
+    xtape("clear",num) 
+    efface la fenêtre graphique <tt><b>num</b></tt> ainsi que les graphiques enregistrés.
+  </p>
+<p>
+    xtape("replay",num) 
+    ré-exécute les ordres graphiques enregistrés
+    dans la fenêtre <tt><b>num</b></tt>.
+  </p>
+<p>
+    xtape("replaysc",num,rect) redessine le contenu de la fenêtre graphique <tt><b>num</b></tt> en utilisant <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt> comme bornes.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/driver.htm"><tt><b>driver</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/replot.htm"><tt><b>replot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasr.htm"><tt><b>xbasr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

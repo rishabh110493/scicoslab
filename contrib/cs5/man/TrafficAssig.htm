@@ -1,0 +1,131 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>TrafficAssig</title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>TrafficAssig -   Traffic Assignment  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>TrafficAssig(p1,p2,p3)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>%net global variable containing the information  </b></tt>
+    : NetLists
+  </li>
+  <li><tt><b>%net.gp.algorithm  </b></tt>
+    : string to choose among "AON", "CAPRES", "DSD", "FW", "IA", "IAON", "MSA", "Probit", "ProbitE","LogitB","LogitD","LogitMB","LogitMD", "LogitBE","LogitDE","LogitMBE","LogitMDE"
+  </li>
+  <li><tt><b>p1,p2 p3  </b></tt>
+    : different algorithms' parameters to change the default ones in fields of %net.gp (see NetList) 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow of the traffic network described by the NetList net
+    using the algorithm selected by algo with the parameters given by p1, p2 and p3:
+  </p>
+  <p>
+    "AON" -&gt; All or nothing
+  </p>
+  <p>
+    "CAPRES" -&gt; Capres algorithm
+  </p>
+  <p>
+    "DSD" -&gt; Disaggregated simplicial decomposition (only total flow is computed). 
+               p1: iterations number, p2: precision
+  </p>
+  <p>
+    "DSDisaggregated" -&gt; Disaggregated simplicial decomposition. p1: iterations number,
+                      p2: precision
+  </p>
+  <p>
+    "FW" -&gt; Frank-Wolfe algorithm. p1: iterations number, p2: precision
+  </p>
+  <p>
+    "IA" -&gt; Incremental assignment. p1: iterations number
+  </p>
+  <p>
+    "IAON" -&gt; Iterated all or nothing. p1: iterations number
+  </p>
+  <p>
+    "MSA" -&gt; Method of successive averages. p1: iterations number, p2: precision
+  </p>
+  <p>
+    "Probit" -&gt; Probit assignment. p1: beta, p2: precision, p3: iterations number
+  </p>
+  <p>
+    "ProbitE" -&gt; MSA algorithm for the stochastic user equilibrium (MSASUE). p1:beta,
+                                         p2: precision, p3: iterations number
+  </p>
+  <p>
+    "LogitB" -&gt; Logit assignment (all paths used not only efficient ones  used)
+  </p>
+  <p>
+    "LogitD" -&gt; Logit assignment (only efficient paths are used)
+  </p>
+  <p>
+    "LogitMB" -&gt; Reiterated first step logit assignment (all paths used
+                               not only efficient ones used)
+  </p>
+  <p>
+    "LogitMD" -&gt; Reiterated first step logit assignment (only efficient
+                                 paths are used)
+  </p>
+  <p>
+    "LogitBE" -&gt; Logit equilibrium assignment (all paths used not only efficient ones  used)
+  </p>
+  <p>
+    "LogitDE" -&gt; Logit equilibrium assignment (only efficient paths are used)
+  </p>
+  <p>
+    "LogitMBE" -&gt; Reiterated first step logit equilibrium assignment (allpaths used 
+                                not only efficient ones used)
+  </p>
+  <p>
+    "LogitMDE" -&gt; Reiterated first step logit equilibrium assignment (only
+    efficient paths are used)
+  </p>
+  <p>
+    "NwtArc" -&gt; Newton method bsed on nodes-links formulation (useful
+                when there are a small number of demands)
+  </p>
+  <p>
+    The assigned flow, the current travel time and the disaggregated flow
+    are stored in %net.
+  </p>
+  <p>
+    It is normal that for some parameters and network some methods
+    "TrafficAssig" does not succeed to give an assignment. In particular, for
+    Logit method, the effective domain of the stochasticity
+    parameter is limited and depends of the network. For some
+    networks and some methods this domain may be empty (for example LogitB
+    with a zero travel time loop). For Logit method, the stochasticity
+    parameter must not be too large to avoid numerical difficulties coming 
+    from the limited precision of the computation.
+     
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+//
+// To load an editable traffic network graph
+//
+%net=TrafficExample("Steenbrink");
+ShowNet();
+//
+// The black arcs are the roads and the cyan ones are the
+// traffic OD demands. We can edit the net (see the net-edition demo).
+//
+// To compute the traffic assignment with "DSD" algorithm
+//
+TrafficAssig();
+ShowNet();
+//
+// To show  the travel times select GRAPH/Display arc names/Time
+//
+// It is possible to assign the flow using another algorithm
+// for example the incremental assignment denoted  "IA"
+//
+%net.gp.algorithm="IA"
+%net.gp.Niter=50;
+TrafficAssig();
+ShowNet();
+//
+// For Logit assignment, the stochasticity parameter
+// is in the field %net.gp.theta (default 1)
+//
+%net.gp.algorithm='LogitMD';
+%net.gp.theta=3;
+TrafficAssig();
+ShowNet();
+//
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="Probit.htm"><tt><b>Probit</b></tt></a>&nbsp;&nbsp;<a href="LogitB.htm"><tt><b>LogitB</b></tt></a>&nbsp;&nbsp;<a href="LogitD.htm"><tt><b>LogitD</b></tt></a>&nbsp;&nbsp;<a href="LogitMB.htm"><tt><b>LogitMB</b></tt></a>&nbsp;&nbsp;<a href="LogitMD.htm"><tt><b>LogitMD</b></tt></a>&nbsp;&nbsp;<a href="LogitN.htm"><tt><b>LogitN</b></tt></a>&nbsp;&nbsp;<a href="LogitNE.htm"><tt><b>LogitNE</b></tt></a>&nbsp;&nbsp;<a href="LogitNELS.htm"><tt><b>LogitNELS</b></tt></a>&nbsp;&nbsp;<a href="MSASUE.htm"><tt><b>MSASUE</b></tt></a>&nbsp;&nbsp;<a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

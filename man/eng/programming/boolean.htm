@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>boolean</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Objects</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>boolean</b> -  Scilab Objects, boolean variables and operators &amp; | ~  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A boolean variable is <tt><b>%T</b></tt> (for "true") or <tt><b>%F</b></tt> (for "false").
+    These variables can be used to define matrices of booleans,
+    with the usual syntax. Boolean matrices can be manipulated as ordinary
+    matrices for elements extraction/insertion and concatenation. Note
+    that  other usual operations  (<tt><b>+, *, -, ^,</b></tt> etc) are undefined
+    for booleans matrices, three special operators are defined for boolean
+    matrices:
+  </p>
+<dl>
+<dd>
+<b>~b</b>: is the element wise negation of boolean <tt><b>b</b></tt> (matrix).</dd>
+<dd>
+<b>b1&amp;b2</b>: is the element wise logical <tt><b>and</b></tt> of <tt><b>b1</b></tt> and <tt><b>b2</b></tt> (matrices).</dd>
+<dd>
+<b>b1|b2</b>: is the  element wise logical <tt><b>or</b></tt> of <tt><b>b1</b></tt> and <tt><b>b2</b></tt> (matrices).</dd>
+<dd>
+<b>Boolean variables can be used for indexing matrices or vectors.</b>For instance <tt><b>a([%T,%F,%T],:)</b></tt> returns the submatrix  made of rows <tt><b>1</b></tt> and <tt><b>3</b></tt> of <tt><b>a</b></tt>. Boolean sparse matrices are supported.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[1,2]==[1,3]
+[1,2]==1
+a=1:5; a(a&gt;2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/matrices.htm"><tt><b>matrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/or.htm"><tt><b>or</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/and.htm"><tt><b>and</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/not.htm"><tt><b>not</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

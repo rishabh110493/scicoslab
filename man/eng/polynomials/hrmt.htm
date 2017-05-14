@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hrmt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hrmt</b> -  gcd of polynomials</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pg,U]=hrmt(v)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v</b></tt>: row of polynomials i.e. <tt><b>1</b></tt>x<tt><b>k</b></tt> polynomial matrix</li>
+<li>
+<tt><b>pg</b></tt>: polynomial</li>
+<li>
+<tt><b>U</b></tt>: unimodular matrix polynomial</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[pg,U]=hrmt(v)</b></tt> returns a unimodular matrix <tt><b>U</b></tt> and  <tt><b>pg</b></tt> = gcd of row of 
+    polynomials <tt><b>v</b></tt> such that <tt><b>v*U = [pg,0]</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=poly(0,'x');
+v=[x*(x+1),x^2*(x+1),(x-2)*(x+1),(3*x^2+2)*(x+1)];
+[pg,U]=hrmt(v);U=clean(U)
+det(U)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/gcd.htm"><tt><b>gcd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/htrianr.htm"><tt><b>htrianr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> S. Steer INRIA</p>
+</body>
+</html>

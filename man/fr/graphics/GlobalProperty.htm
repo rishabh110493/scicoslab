@@ -1,0 +1,332 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>GlobalProperty</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>GlobalProperty</b> - to customize the objects appearance
+  (curves, surfaces...) in a plot or surf command.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>None. The GlobalProperty is an optional argument
+    that can be used inside a plot or surf command. It allows a global
+    customization of all the new plotted lines (respectivly surfaces). It has
+    to be given as a couple {PropertyName, PropertyValue}. Several couples can
+    be set at the same time in a plot or surf call.</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>PropertyName must be a string defining the property
+    to set.The PropertyValue can be a real, integer or string (scalar or
+    matrix) depending on the type of property used. For example, to specify a
+    red (color) longdash-dot (line style) with diamond marker (marker), the
+    sequence should be :
+    'Colo','red','LineSt','-.','Marker','diam'.</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>As you can see, a full complete spelling of each
+    property name and value is not required but those arguments, specified in
+    any order, must remain unambiguous. Furthermore, the string specification
+    is not case sensitive. GlobalProperty is predominant on all LineSpec
+    previously stated.</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>Here is a complete list of the <tt><b>PropertyName</b></tt> you can
+    specify (using <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a> or <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surf.htm"><tt><b>surf</b></tt></a>) and their available
+    associated <tt><b>PropertyValue</b></tt>. If not specified, those properties
+    are available for both <tt><b>Polyline</b></tt> and <tt><b>Fac3d</b></tt>
+    objects (created respectivly by plot or surf) and, as previously said,
+    they are applied to the new created objects (lines or surfaces).</p>
+<p>Sometimes, you may have two PropertyName correponding to one property :
+    the first one is the equivalent default Matlab name, the second is the
+    default name used by Scilab (i.e.:<tt><b> Color or Foreground</b></tt> for a
+    line, see below).</p>
+<dl><dd><b></b></dd></dl>
+<dl>
+<dd>
+<b>CData or ColorData: </b>a real matrix specifiying the color at every points defined by
+        <tt><b>Z</b></tt> matrix. This property is linked to the object's
+        <tt><b>data.color</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>). Note that this property is available
+        for surfaces only.<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>CDataMapping or ColorDataMapping: </b>a string with value <tt><b>'scaled'</b></tt> or
+        <tt><b>'direct'</b></tt>. If a <tt><b>data.color</b></tt> is set, each index
+        color data specifies a single value for each vertex.
+        <tt><b>cdata_mapping</b></tt> determines wether those indices are scaled
+        to map linearly into the current colormap (<tt><b>'scaled'</b></tt> mode)
+        or point directly into this colormap (<tt><b>'direct</b></tt>' mode).
+        This property is usefull when <tt><b>color_flag</b></tt> equals
+        <tt><b>2</b></tt>,<tt><b>3</b></tt> or <tt><b>4</b></tt>. Note that this
+        property exists only with <tt><b>Fac3d</b></tt> entities. Note also that
+        <tt><b>plot3d</b></tt> has <tt><b>'direct'</b></tt> mode by default and
+        <tt><b>surf</b></tt> has<tt><b> 'scaled'</b></tt> mode by default.<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>Clipping: </b>a string <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt> defining the
+        clipping mode (<tt><b>"on"</b></tt> by default). It is equivalent to the
+        <tt><b>clip_state</b></tt> property. This field contains the
+        <tt><b>visible</b></tt> property (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).
+        Note that this property is not yet available for surface
+        entities.<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>Color or Foreground: </b>a string defining a known color (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>) or a
+        <tt><b>1</b></tt>x<tt><b>3</b></tt> (or <tt><b>3</b></tt>x<tt><b>1</b></tt>) RGB
+        vector defining a color number. Color number is given as a 3-uple
+        <tt><b>R</b></tt>, <tt><b>G</b></tt>, <tt><b>B</b></tt> corresponding
+        respectively to red, green and blue intensity between 0 and 1. This
+        property is linked to the object's <tt><b>foreground</b></tt> property
+        (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>). <tt><b>Warning</b></tt><tt><b>
+        :</b></tt> Color is not available for surfaces objects. The
+        <tt><b>Foreground</b></tt> property exists for surfaces objects but is
+        linked to the Matlab <tt><b>EdgeColor</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>EdgeColor or Foreground: </b>a string defining a known color (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>) or a
+        <tt><b>1</b></tt>x<tt><b>3</b></tt> (or <tt><b>3</b></tt>x<tt><b>1</b></tt>) RGB
+        vector defining a color number. Color number is given as a 3-uple
+        <tt><b>R</b></tt>, <tt><b>G</b></tt>, <tt><b>B</b></tt> corresponding
+        respectively to red, green and blue intensity between 0 and 1. This
+        property is linked to the surface <tt><b>foreground</b></tt> property
+        (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>). <tt><b>Warning</b></tt><tt><b>
+        :</b></tt> For polyline objects, the <tt><b>Foreground</b></tt> property
+        exists with a different meaning (see above) and <tt><b>EdgeColor</b></tt>
+        does not exist at all.<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>FaceColor: </b>a string with value <tt><b>'none'</b></tt>, <tt><b>'flat'</b></tt> or
+        <tt><b>'interp'</b></tt> specifying the way the facet's color are
+        rendered. When<tt><b> 'none'</b></tt> is selected, a mesh of the surface
+        is drawn; if <tt><b>'flat'</b></tt> (deault mode) is set, the
+        <tt><b>Fac3d</b></tt><tt><b>color.data</b></tt> values determine one color
+        per facet using the color of the first vertex of the facet. If the
+        value is <tt><b>'interp'</b></tt>, an interpolated shading is done on the
+        surface using <tt><b>color.data</b></tt> to determine a color at each
+        vertex of each facet.<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>LineStyle: </b>This property value should be a string defining a line style. This
+        property is linked to tje object's <tt><b>line_style</b></tt> property
+        (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>Specifier</b></tt></td>
+<td><tt><b>Line Style</b></tt></td>
+</tr>
+<tr align="center">
+<td><tt><b>-</b></tt></td>
+<td>Solid line (default)</td>
+</tr>
+<tr align="center">
+<td><tt><b>--</b></tt></td>
+<td>Dashed line</td>
+</tr>
+<tr align="center">
+<td><tt><b>:</b></tt></td>
+<td>Dotted line</td>
+</tr>
+<tr align="center">
+<td><tt><b>-.</b></tt></td>
+<td>Dash-dotted line</td>
+</tr>
+<tr align="center">
+<td><tt><b>none</b></tt></td>
+<td>No line</td>
+</tr>
+</table></div>
+</dd>
+<dd><b></b></dd>
+<dd><b></b></dd>
+<dd>
+<b>Marker or MarkStyle: </b>A string defining the marker type. Note that if you specify a
+        marker wihtout a line style, both line (with default solid mode
+        enabled) and marker are drawn.This property is linked to the object's
+        <tt><b>mark_style</b></tt> and <tt><b>mark_mode</b></tt> properties (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>Specifier</b></tt></td>
+<td><tt><b>Marker Type</b></tt></td>
+</tr>
+<tr align="center">
+<td><tt><b>+</b></tt></td>
+<td>Plus sign</td>
+</tr>
+<tr align="center">
+<td><tt><b>o</b></tt></td>
+<td>Circle</td>
+</tr>
+<tr align="center">
+<td><tt><b>*</b></tt></td>
+<td>Asterisk</td>
+</tr>
+<tr align="center">
+<td><tt><b>.</b></tt></td>
+<td>Point</td>
+</tr>
+<tr align="center">
+<td><tt><b>x</b></tt></td>
+<td>Cross</td>
+</tr>
+<tr align="center">
+<td>
+<tt><b>'square'</b></tt> or
+            <tt><b>'s'</b></tt>
+</td>
+<td>Square</td>
+</tr>
+<tr align="center">
+<td>
+<tt><b>'diamond'</b></tt> or
+            <tt><b>'d'</b></tt>
+</td>
+<td>Diamond</td>
+</tr>
+<tr align="center">
+<td><tt><b>^</b></tt></td>
+<td>Upward-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>v</b></tt></td>
+<td>Downward-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>&gt;</b></tt></td>
+<td>Right-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>&lt;</b></tt></td>
+<td>Left-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>'pentagram'</b></tt></td>
+<td>Five-pointed star (pentagram)</td>
+</tr>
+<tr align="center">
+<td><tt><b>'none'</b></tt></td>
+<td>No marker (default)</td>
+</tr>
+</table></div>
+</dd>
+<dd><b></b></dd>
+<dd><b></b></dd>
+<dd>
+<b>MarkerEdgeColor or MarkForeground: </b>a string defining a known color (see color_list) or a
+        <tt><b>1</b></tt>x<tt><b>3</b></tt> (or <tt><b>3</b></tt>x<tt><b>1</b></tt>) RGB
+        vector defining a color number. Color number is given as a 3-uple
+        <tt><b>R</b></tt>, <tt><b>G</b></tt>, <tt><b>B</b></tt> corresponding
+        respectively to red, green and blue intensity between 0 and 1. This
+        property is linked to the object's <tt><b>mark_foreground</b></tt>
+        property (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>MarkerFaceColor or MarkBackground: </b>a string defining a known color (see color_list) or a
+        <tt><b>1</b></tt>x<tt><b>3</b></tt> (or <tt><b>3</b></tt>x<tt><b>1</b></tt>) RGB
+        vector defining a color number. Color number is given as a 3-uple
+        <tt><b>R</b></tt>, <tt><b>G</b></tt>, <tt><b>B</b></tt> corresponding
+        respectively to red, green and blue intensity between 0 and 1. This
+        property is linked to the object's <tt><b>mark_background</b></tt>
+        property (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>MarkerSize or MarkSize: </b>a scalar defining the marker size in <tt><b>point</b></tt> unit. This
+        property is linked to the object's <tt><b>mark_size</b></tt> property
+        with <tt><b>mark_size_unit</b></tt> enabled to <tt><b>"point"</b></tt> (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>Visible: </b>a string <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt> defining the
+        visibility mode (<tt><b>"on"</b></tt> by default). This property is
+        linked to the object's <tt><b>visible</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>X data: </b>a real vector or matrix (re-)defining the given data for all the
+        plotted lines or surfaces. Concerning dimensions, note that this new
+        data must match all the previous specified <tt><b>X</b></tt> data : that
+        is to say all those data matrices must be of the same dimensions. This
+        property is linked to the object's <tt><b>data.x</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>Y data: </b>a real vector or matrix (re-)defining the given data for all the
+        plotted lines or surfaces. Concerning dimensions, note that this new
+        data must match all the previous specified <tt><b>Y</b></tt> data : that
+        is to say all those data matrices must be of the same dimensions. This
+        property is linked to the object's <tt><b>data.y</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b>Z data: </b>when used with <tt><b>plot</b></tt>, a real vector or matrix adding
+        a<tt><b>Z</b></tt> data for all the plotted lines ; with
+        <tt><b>surf</b></tt>, a real matrix (re-)defining the given data for all
+        the surfaces. Concerning dimensions, note that this new data must
+        match all the previous specified <tt><b>X</b></tt> and <tt><b>Y</b></tt>
+        data. This property is linked to the object's <tt><b>data.z</b></tt>
+        property (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a> or
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>// --------------------
+// With the plot command :
+// --------------------
+x=1:10; // Init.
+plot(x,sin(x),'colo','red','linest','-.','marker','&gt;','markeredg','cyan','markerFace','yellow','markersize',5)
+clf();
+
+// combinations' order in {PropertyName,PropertyValue} does not matter
+plot(x,sin(x),'marker','p','markerfac','cyan','markersiz',10)
+clf();
+
+// combination of LineSpec and GlobalProperty shows the GlobalProperty predominance
+plot(x,x.*x,'*cya--','color','gr','linestyle','-','marker','sq','markersize',6,'markforegroun','red','markbackgro',[0.2 0.5 0.6])
+clf();
+
+//multiple plots with different LineSpecs and finally some global GlobalProperty
+clf();
+t=0:%pi/20:2*%pi;
+plot(t,sin(t),'ro-.',t,cos(t),'cya+',t,abs(sin(t)),'--mo','markstyl','diam')
+
+// --------------------
+// With the surf command :
+// --------------------
+
+
+Z= [   0.0001    0.0013    0.0053   -0.0299   -0.1809   -0.2465   -0.1100   -0.0168   -0.0008   -0.0000
+    0.0005    0.0089    0.0259   -0.3673   -1.8670   -2.4736   -1.0866   -0.1602   -0.0067    0.0000
+    0.0004    0.0214    0.1739   -0.3147   -4.0919   -6.4101   -2.7589   -0.2779    0.0131    0.0020
+   -0.0088   -0.0871    0.0364    1.8559    1.4995   -2.2171   -0.2729    0.8368    0.2016    0.0130
+   -0.0308   -0.4313   -1.7334   -0.1148    3.0731    0.4444    2.6145    2.4410    0.4877    0.0301
+   -0.0336   -0.4990   -2.3552   -2.1722    0.8856   -0.0531    2.6416    2.4064    0.4771    0.0294
+   -0.0137   -0.1967   -0.8083    0.2289    3.3983    3.1955    2.4338    1.2129    0.2108    0.0125
+   -0.0014   -0.0017    0.3189    2.7414    7.1622    7.1361    3.1242    0.6633    0.0674    0.0030
+    0.0002    0.0104    0.1733    1.0852    2.6741    2.6725    1.1119    0.1973    0.0152    0.0005
+    0.0000    0.0012    0.0183    0.1099    0.2684    0.2683    0.1107    0.0190    0.0014    0.0000];
+
+clf();
+f=gcf();
+f.figure_size = [610,724];
+subplot(211)
+surf(Z,'facecol','interp','ydat',101:110,'edgecol','mage')
+subplot(212)
+surf(Z,'edgeco','b','marker','d','markersiz',9,'markerfac','k','xdata',-50:-41)
+
+ 
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/LineSpec.htm"><tt><b>LineSpec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surf.htm"><tt><b>surf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Leray</p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xmltohtml</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xmltohtml</b> - converts xml Scilab help files
+  to html</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xmltohtml(dirs [,titles [,xsl [,step]]])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dirs</b></tt>: vector of strings: a set of directory paths  for which html
+       manuals are to be generated or <tt><b>[] </b></tt>
+</li>
+<li>
+<tt><b>titles</b></tt>: vector of strings: titles associated to directory paths or []</li>
+<li>
+<tt><b>xsl</b></tt>: string, name of xsl file used for translation</li>
+<li>
+<tt><b>step</b></tt>: string, should be  "whatis", "index", "html","contents", or "all"</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+converts xml Scilab help files contained in a set of directories  into
+html files.</p>
+<p>
+In a first step ("whatis") a whatis.htm file is generated in each directory using
+information given in the "SHORT_DESCRIPTION" tag of each xml file and
+the given title.</p>
+<p>
+In a second step ("index") the tags LINK are analysed, and xmltohtml tries to
+resolve  the references using the already known help files defined in
+the <tt><b>%helps</b></tt> variable.</p>
+<p>
+The third step ("html") it translates the xml file to html using external program
+xsltproc and the given  xsl file which should be located in
+<tt><b>SCIDIR/man/LANGUAGE/</b></tt>
+The generated html files are located together with the
+corresponding xml ones.</p>
+<p>
+the last step ("contents") produces a contents.xml file</p>
+<p>
+if dirs is  [] then already defined help directories
+(see <tt><b>%helps(:,1)</b></tt>)  are assumed and titles are searched in <tt><b>%helps(:,2)</b></tt>. So
+<tt><b>xmltohtml([])</b></tt> updates currents html files</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/help.htm"><tt><b> help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/help_skeleton.htm"><tt><b> help_skeleton</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

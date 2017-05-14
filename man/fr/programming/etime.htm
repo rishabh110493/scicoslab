@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>etime</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>etime</b> - Temps écoulé</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>e = etime(t2,t1)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>t2</b></tt> : un vecteur de 6 ou 10 valeurs.</li>
+<li>
+<tt><b>t1</b></tt> : un vecteur de 6 ou 10 valeurs.</li>
+<li>
+<tt><b>e</b></tt> : nombre de secondes entre <tt><b>t2</b></tt> et <tt><b>t1</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>t1 et t2 contenant 10 valeurs</b> : <tt><b>t2</b></tt> et <tt><b>t1</b></tt> doivent avoir le format retourné par <tt><b>getdate</b></tt>. 
+	Dans ce cas, leurs troisièmes, quatrièmes et cinquièmes valeurs sont ignorées.</dd>
+<dd>
+<b>t1 et t2 contenant 6 valeurs</b> : <tt><b>t2</b></tt> et <tt><b>t1</b></tt> doivent avoir le format : T = [Year Month Day Hour Minute Second]
+	avec Second un nombre de secondes et de millisecondes (e.g: 12.345).</dd>
+</dl>
+<p><tt><b>t2</b></tt> et <tt><b>t1</b></tt> doivent être de même taille.</p>
+<p><tt><b>t2</b></tt> et <tt><b>t1</b></tt> peuvent être des matrices dont chaque ligne contient un format
+    précisé ci-dessus (toutes les lignes du même format).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t1=[2004 06 10 17 00 12.345]
+t2=[2004 06 10 17 01 13.965]
+E1=etime(t2,t1)
+t1=[2004 06 24 162 5 10 17 00 12 345]
+t2=[2004 06 24 162 5 10 17 01 13 965]
+E2=etime(t2,t1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tic.htm"><tt><b>tic</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/toc.htm"><tt><b>toc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/getdate.htm"><tt><b>getdate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/etime.htm"><tt><b>etime</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

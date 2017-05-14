@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>%sn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>%sn</b> -  Jacobi 's elliptic function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=%sn(x,m)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: a point inside the fundamental rectangle  defined by the elliptic integral; <tt><b>x</b></tt> is a vector of complex numbers</li>
+<li>
+<tt><b>m</b></tt>: parameter of the elliptic integral (<tt><b>0&lt;m&lt;1</b></tt>)</li>
+<li>
+<tt><b>y</b></tt>: result</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Jacobi 's sn elliptic function with parameter <tt><b>m</b></tt>: the inverse 
+    of the elliptic integral for the parameter <tt><b>m</b></tt>.</p>
+<p>
+    The amplitude am is computed in fortran and 
+    the addition formulas for elliptic functions are applied</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+m=0.36;
+K=%k(m);
+P=4*K; //Real period
+real_val=0:(P/50):P;
+plot(real_val,real(%sn(real_val,m)))
+xbasc();
+KK=%k(1-m);
+Ip=2*KK;
+ima_val1=0:(Ip/50):KK-0.001;
+ima_val2=(KK+0.05):(Ip/25):(Ip+KK);
+z1=%sn(%i*ima_val1,m);z2=%sn(%i*ima_val2,m);
+plot2d([ima_val1',ima_val2'],[imag(z1)',imag(z2)']);
+xgrid(3)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/percentasn.htm"><tt><b>%asn</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/percentk.htm"><tt><b>%k</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

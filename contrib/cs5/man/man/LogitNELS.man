@@ -1,0 +1,58 @@
+.TH LogitNELS 1 " " " " "CiudadSim Function"
+.SH NAME
+LogitNELS  - Net Logit Equilibrium (Linear Search)
+.SH CALLING SEQUENCE
+.nf
+bench=LogitNELS(theta,method,eps,Niter)
+.fi
+.SH PARAMETERS
+.TP 10
+theta
+: stochasticity parameter 
+.TP 10
+method
+: macro among LogitB, LogitD, LogitMB, LogitMD
+.TP 10
+eps
+: convergence error test 
+.TP 10
+Niter
+: maximal number of iteration 
+.TP 10
+bench
+: niter x 5  matrix
+.TP 10
+%net 
+: global variable NetList 
+.SH DESCRIPTION
+Compute the logit traffic equilibrium using a
+logit method among LogitB, LogitD, LogitMB, LogitMD
+the travel time is taken in %net.links.time
+and the assigned fow is put in the field
+%net.links.flow of the variable %net which
+is a NetList which must be declared global.
+
+The equilibrium is computed using a linear search based
+on the corresponding deterministic criterium as approximated
+Lyapounov function. This method is valid at least for
+large theta.
+
+If %net.gp.verbose=%T  convergence informations are displayed.
+These informations are returned by the function in the variable %net.gp.bench.
+.SH EXAMPLES
+.nf
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost deterministic)
+theta=10
+// Flow calculation
+LogitNELS(theta,LogitMD,1.e-6,40);
+ShowNet()
+.SH SEE ALSO
+LogitD,
+LogitB,
+LogitMB,
+LogitMD,
+LogitN,
+LogitNE,
+TrafficAssig

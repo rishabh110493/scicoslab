@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>or |</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>or |</b> -  disjonction logique  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>or(A),  or(A,'*')  </tt></dd>
+<dd><tt>or(A,'r'), or(A,1)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>or(A,'c'), or(A,2)  </tt></dd>
+<dd><tt>A|B  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>or(A)</b></tt> donne la disjonction (ou) logique des éléments de la matrice booléenne <tt><b>A</b></tt>. <tt><b>or(A)</b></tt> est vrai (<tt><b>%t</b></tt>) si au moins un terme de <tt><b>A</b></tt> est <tt><b>%t</b></tt>. 
+  </p>
+<p><tt><b>y=or(A,'r')</b></tt> (ou <tt><b>y=or(A,1)</b></tt>) est la disjonction suivant l'indice de ligne. Chaque élément du vecteur ligne <tt><b>y</b></tt> contient la disjonction de chaque colonne de <tt><b>x</b></tt> (<tt><b>y(j)= or(A(i,j),i=1,m)</b></tt>).
+  </p>
+<p><tt><b>y=or(A,'c')</b></tt> (ou <tt><b>y=or(A,2)</b></tt>) est la disjonction suivant l'indice de colonne. Chaque élément du vecteur colonne <tt><b>y</b></tt> contient la disjonction de chaque ligne de <tt><b>x</b></tt> 
+    (<tt><b>y(i)= or(A(i,j),j=1,n)</b></tt>)).
+  </p>
+<p><tt><b>A|B</b></tt> renvoie la disjonction logique élément par élément des matrices booléennes  <tt><b>A</b></tt> et <tt><b>B</b></tt>. <tt><b>A</b></tt> et <tt><b>B</b></tt> doivent être des matrices de mêmes dimensions ou l'une d'elles doit être un simple booléen.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+or([%t %t %f])
+[%t %t %f]|[%f %t %t]
+[%t %t %f]|%f
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/and.htm"><tt><b>and</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/not.htm"><tt><b>not</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

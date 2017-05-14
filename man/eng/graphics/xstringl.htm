@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xstringl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xstringl</b> - compute a box which surrounds
+  strings</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rect=xstringl(x,y,str,[fontId,fontSize])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: vector of 4 real scalars defining the box.</li>
+<li>
+<tt><b>x,y</b></tt>: real scalars, coordinates of the lower-left point of the
+          strings.</li>
+<li>
+<tt><b>str</b></tt>: matrix of strings.</li>
+<li>
+<tt><b>fontId</b></tt>: an integer specifying the font type.</li>
+<li>
+<tt><b>fontSize</b></tt>: an integer specifying the font size.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xstringl</b></tt> returns in <tt><b>rect=[x,y,w,h]</b></tt>
+    (upper-left point, width, height) the size of a rectangle in the current
+    graphic scale which would surround the strings <tt><b>str</b></tt> drawn at
+    location <tt><b>x,y</b></tt> (lower-left point).</p>
+<p>The result can be approximative when using the Postscript driver.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d([0;1],[0;1],0)
+str=["Scilab" "is";"not" "elisaB"];
+r=xstringl(0.5,0.5,str)
+xrects([r(1) r(2)+r(4) r(3) r(4)]')
+xstring(r(1),r(2),str)
+ 
+
+plot2d([0;1],[0;1],0)
+str=["Scilab" "n''est ";"pas" "Matlab"];
+r2 = xstringl(0.5,0.5,str,2,5)
+xrects([r2(1) r2(2)+r2(4) r2(3) r2(4)]')
+xstring(r2(1),r2(2),str)
+
+e=gce();
+e.children(1).font_size = 5;
+e.children(1).font_style = 2;
+e.children(2).font_size = 5;
+e.children(2).font_style = 2;
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/titlepage.htm"><tt><b>titlepage</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstringl.htm"><tt><b>xstringl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/stringbox.htm"><tt><b>stringbox</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

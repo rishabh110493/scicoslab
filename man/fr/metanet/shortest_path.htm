@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>shortest_path</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>shortest_path</b> - chemin le plus
+  court</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p,lp] =
+    shortest_path(i,j,g,[typ])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>i</b></tt>: entier, numéro du sommet de départ</li>
+<li>
+<tt><b>j</b></tt>: entier, numéro du sommet d'arrivée</li>
+<li>
+<tt><b>g</b></tt>: graphe (liste)</li>
+<li>
+<tt><b>typ</b></tt>: chaîne de caractères, type du chemin le plus court</li>
+<li>
+<tt><b>p</b></tt>: vecteur ligne des numéros des arcs du chemin s'il existe</li>
+<li>
+<tt><b>lp</b></tt>: longueur du chemin</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>shortest_path</b></tt> renvoie le chemin le plus court
+    <tt><b>p</b></tt> du sommet <tt><b>i</b></tt> au sommet <tt><b>j</b></tt> s'il
+    existe, et le vecteur vide <tt><b>[]</b></tt> sinon. L'argument optionnel
+    <tt><b>typ</b></tt> est une chaîne définissant le type du chemin, 'arc' pour
+    le chemin le plus court par rapport au nombre d'arcs et 'length' pour le
+    chemin le plus court par rapport à  la longueur des arêtes
+    <tt><b>edge_length</b></tt>.</p>
+<p>Pour le chemin le plus court par rapport à  la longueur des arêtes, les
+    longueurs sont données par les éléments <tt><b>edge_length</b></tt> du
+    graphe. Si cette valeur n'est pas donnée (vecteur vide <tt><b>[]</b></tt>),
+    elle est supposée nulle sur chaque arête. Les longueurs peuvent être
+    positives ou négatives (ou nulles).</p>
+<p>Quand le chemin le plus court existe, <tt><b>lp</b></tt> est la longueur
+    du chemin.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 4 5 6 6 6 7 7 7 8 9 10 12 12 13 13 13 14 15 14 9 11 10];
+he=[2 6 3 4 5 1 3 5 1 7 10 11 5 8 9 5 8 11 10 11 9 11 15 13 14 4 6 9 1];
+g=make_graph('foo',1,15,ta,he);
+g('node_x')=[194 191 106 194 296 305 305 418 422 432 552 550 549 416 548]; 
+g('node_y')=[56 181 276 278 276 103 174 281 177 86 175 90 290 397 399];
+show_graph(g);
+g1=g;ma=prod(size(g1('head')));
+rand('uniform');
+g1('edge_length')=int(20*rand(1,ma));
+[p,lp]=shortest_path(13,1,g1,'length');
+p
+x_message(['Voici le chemin le plus court';
+           'Le nom des arcs peut être visualisé en selectionnant la valeur ""Name"" pour les arcs';
+           'dans le menu Graph-&gt;Options.']);
+g1('edge_name')=string(g1('edge_length'));
+edgecolor=ones(1:ma);edgecolor(p)=11*ones(p);
+g1('edge_color')=edgecolor;
+edgefontsize=12*ones(1,ma);edgefontsize(p)=18*ones(p);
+g1('edge_font_size')=edgefontsize;
+show_graph(g1);
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/find_path.htm"><tt><b>find_path</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/nodes_2_path.htm"><tt><b>nodes_2_path</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

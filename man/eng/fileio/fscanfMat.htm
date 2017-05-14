@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fscanfMat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fscanfMat</b> -  Reads a Matrix from a text file.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>M=fscanfMat(filename);  </tt></dd>
+<dd><tt>[M,text]=fscanfMat(filename);  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: a character string giving the name of the  file  to  be scanned.</li>
+<li>
+<tt><b>M</b></tt>: Output variable. A matrix of real numbers.</li>
+<li>
+<tt><b>text</b></tt>: Output variable. A string matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>fscanfMat</b></tt> function is used to read a scalar matrix from a
+    text file.  The first non-numeric lines of the file are returned
+    in <tt><b>text</b></tt> if requested and
+    all the remaining lines must have the same number of columns (column 
+    separator are assumed to be white spaces or tab characters). The
+    number of columns of the matrix will  follow the number 
+    of columns found in the file and the number of lines is fetched by 
+    detecting eof in the input file. This function can be used to read 
+    back numerical data saved with the <tt><b>fprintfMat</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+fd=mopen(TMPDIR+'/Mat','w');
+mfprintf(fd,'Some text.....\n');
+mfprintf(fd,'Some text again\n');
+a=rand(6,6);
+for i=1:6 ,
+ for j=1:6, mfprintf(fd,'%5.2f ',a(i,j));end;
+ mfprintf(fd,'\n'); 
+end
+mclose(fd);
+a1=fscanfMat(TMPDIR+'/Mat')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/meof.htm"><tt><b>meof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mputstr.htm"><tt><b>mputstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mseek.htm"><tt><b>mseek</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mtell.htm"><tt><b>mtell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mdelete.htm"><tt><b>mdelete</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

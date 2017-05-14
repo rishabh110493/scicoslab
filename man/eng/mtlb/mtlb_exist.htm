@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_exist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_exist</b> - Matlab exist emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>There is no Scilab equivalent for Matlab <tt><b>exist</b></tt> except when input is a variable.
+    Scilab <tt><b>mtlb_exist</b></tt> is a partial emulation of of this function.</p>
+<p>
+    The function <tt><b>r = mtlb_exist(nam[,tp])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>exist(nam[,tp])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_exist</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        When called with one input and if <tt><b>nam</b></tt> is a variable name,
+        <tt><b>mtlb_exist(nam)</b></tt> may be replaced by <tt><b>exists(nam)</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_exist</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/exists.htm"><tt><b>exists</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

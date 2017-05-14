@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>edit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>edit</b> -   function editing</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>newname=edit(functionname [, editor])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>functionname</b></tt>: character string</li>
+<li>
+<tt><b>editor</b></tt>: character string</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If functionname is the name of a defined scilab function 
+    <tt><b>edit(functionname ,[editor])</b></tt> try to open the associated file
+     <tt><b>functionname.sci</b></tt>. If this file can't be modified <tt><b>edit</b></tt>
+    first create a copy of this file in the TMPDIR directory.</p>
+<p>
+    If functionname is the name of a undefined scilab function <tt><b>edit</b></tt>
+    create a functionname.sci file in the TMPDIR directory.</p>
+<p>
+    When leaving the editor the modified or defined function is loaded
+    into Scilab under the name <tt><b>newname</b></tt>.</p>
+<p>
+    The editor character string can be used to specify your favourite text
+    editor. It is generally a system command, or the string "scipad", in 
+    which case the internal editor is used.</p>
+<p>
+    Default editor is Emacs. This function should be customized according
+    to your needs.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//newedit=edit('edit')  //opens editor with text of this function
+//myfunction=edit('myfunction')  //opens editor for a new function
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/manedit.htm"><tt><b>manedit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/scipad.htm"><tt><b>scipad</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

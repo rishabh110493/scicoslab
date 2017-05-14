@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>contr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>contr</b> -  controllability, controllable subspace, staircase</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>n=contr(A,B [,tol])   </tt></dd>
+<dd><tt>[n,U]=contr(A,B [,tol])   </tt></dd>
+<dd><tt>[n,U,ind,V,Ac,Bc]=contr(A,B,[,tol])   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, B</b></tt>: real matrices</li>
+<li>
+<tt><b>tol</b></tt>: tolerance parameter</li>
+<li>
+<tt><b>n</b></tt>:  dimension of controllable subspace.</li>
+<li>
+<tt><b>U</b></tt>: orthogonal change of basis which puts <tt><b>(A,B)</b></tt> in canonical form.</li>
+<li>
+<tt><b>V</b></tt>: orthogonal matrix, change of basis in the control space.</li>
+<li>
+<tt><b>Ac</b></tt>: block Hessenberg matrix <tt><b>Ac=U'*A*V</b></tt>
+</li>
+<li>
+<tt><b>Bc</b></tt>: is <tt><b>U'*B*V</b></tt>.</li>
+<li>
+<tt><b>ind</b></tt>: p integer vector associated with controllability indices  (dimensions of subspaces <tt><b>B, B+A*B,...=ind(1),ind(1)+ind(2),...</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[n,[U]]=contr(A,B,[tol])</b></tt> gives the controllable form of an <tt><b>(A,B)</b></tt> 
+    pair.(<tt><b>dx/dt = A x + B u</b></tt> or <tt><b>x(n+1) = A x(n) +b u(n)</b></tt>).
+    The <tt><b>n</b></tt> first columns of <tt><b>U</b></tt> make a basis for the controllable
+    subspace.</p>
+<p>
+    If <tt><b>V=U(:,1:n)</b></tt>, then <tt><b>V'*A*V</b></tt> and  <tt><b>V'*B</b></tt> give the controllable part
+    of the <tt><b>(A,B)</b></tt> pair.</p>
+<p>
+    The pair <tt><b>(Bc, Ac)</b></tt> is in staircase controllable form.</p>
+<pre>
+
+                        |B |sI-A      *  . . .  *      *       |
+                        | 1|    11       .      .      .       |
+                        |  |  A    sI-A    .    .      .       |
+                        |  |   21      22    .  .      .       |
+                        |  |        .     .     *      *       |
+     [U'BV|sI - U'AU] = |0 |     0    .     .                  |
+                        |  |            A     sI-A     *       |
+                        |  |             p,p-1    pp           |
+                        |  |                                   |
+                        |0 |         0          0   sI-A       |
+                        |  |                            p+1,p+1|
+   
+    </pre>
+<h3><font color="blue">Reference</font></h3>
+<dl><p>
+    Slicot library (see ab01od in SCIDIR/routines/slicot).</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+W=ssrand(2,3,5,list('co',3));  //cont. subspace has dim 3.
+A=W("A");B=W("B");
+[n,U]=contr(A,B);n
+A1=U'*A*U;
+spec(A1(n+1:$,n+1:$))  //uncontrollable modes
+spec(A+B*rand(3,5))    
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/canon.htm"><tt><b>canon</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/cont_mat.htm"><tt><b>cont_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/unobs.htm"><tt><b>unobs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/stabil.htm"><tt><b>stabil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/st_ility.htm"><tt><b>st_ility</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

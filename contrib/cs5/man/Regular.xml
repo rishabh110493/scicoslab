@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>Regular  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="Regular ">  Generation of regular city traffic network data  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>net=Regular(hs,vs,nd)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>hs  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : integer number of horizontal streets
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>vs  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : integer number of vertical streets
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nd  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : non-negative real parameter related to the OD-pairs (origin-destination)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : the resulting Netlist 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Generates a NetList consisting in a regular city whose graph is a hsxvs grid
+    For the link travel time functions, the data is the same for all links and given
+    by t0=ca=ma,ba=1. The lpf_model is 3.
+    It is possible to generated 4 different types of Regular City depending on parameter nd:
+  </P>
+  <P>
+    - nd=[] -&gt; The net has all possible O-D pairs all of them with demand equal to 1
+  </P>
+  <P>
+    - nd=1  -&gt; There is only one O-D pair joining the most distant nodes. Demand&apos;s value equal 
+    to 1.
+  </P>
+  <P>
+    - nd in (0,1) -&gt; The parameter nd represent the density of O-D pairs present in the net. 
+    Demands value equal to 1
+  </P>
+  <P>
+    - nd&gt;1 -&gt; There are [nd] random demands generated. Demands value in the interval [0,15].
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=Regular(4,5);
+// generates a network with 4 horizontal streets, 5 vertical streets, 
+// (20 nodes, 31 arcs) and all possible OD-pairs:343 
+ShowNet();
+
+%net=Regular(4,5,1);
+// generates only one demand
+ShowNet();
+
+%net=Regular(4,5,0.5);
+// generates randomly the OD-pairs with density 0.5
+ShowNet();
+
+%net=Regular(4,5,7);
+// generates 7 random OD-pairs
+ShowNet();
+
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficExample</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>ShowNet</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

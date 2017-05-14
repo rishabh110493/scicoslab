@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eqiir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eqiir</b> -  Design of iir filters</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[cells,fact,zzeros,zpoles]=eqiir(ftype,approx,om,deltap,deltas)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ftype</b></tt>: filter type (<tt><b>'lp','hp','sb','bp'</b></tt>)</li>
+<li>
+<tt><b>approx</b></tt>: design approximation (<tt><b>'butt','cheb1','cheb2','ellip'</b></tt>)</li>
+<li>
+<tt><b>om</b></tt>: 4-vector of cutoff frequencies (in radians)  <tt><b>om=[om1,om2,om3,om4]</b></tt>, <tt><b>0 &lt;= om1 &lt;= om2 &lt;= om3 &lt;= om4 &lt;= pi</b></tt>.  When <tt><b>ftype</b></tt>='lp' or 'hp', <tt><b>om3</b></tt> and <tt><b>om4</b></tt> are not used  and may be set to 0.</li>
+<li>
+<tt><b>deltap</b></tt>: ripple in the passband. <tt><b>0&lt;= deltap &lt;=1</b></tt>
+</li>
+<li>
+<tt><b>deltas</b></tt>: ripple in the stopband. <tt><b>0&lt;= deltas &lt;=1</b></tt>
+</li>
+<li>
+<tt><b>cells</b></tt>: realization of the filter as second order cells</li>
+<li>
+<tt><b>fact</b></tt>: normalization constant</li>
+<li>
+<tt><b>zzeros</b></tt>: zeros in the z-domain</li>
+<li>
+<tt><b>zpoles</b></tt>: poles in the z-domain</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Design of iir filter interface with eqiir (syredi)</p>
+<p>
+    The filter obtained is <tt><b>h(z)=fact</b></tt>*product of the elements of
+    <tt><b>cells</b></tt>.</p>
+<p>
+    That is <tt><b>hz=fact*prod(cells(2))./prod(cells(3))</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[cells,fact,zzeros,zpoles]=...
+eqiir('lp','ellip',[2*%pi/10,4*%pi/10],0.02,0.001)
+transfer=fact*poly(zzeros,'z')/poly(zpoles,'z')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/eqfir.htm"><tt><b>eqfir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/iir.htm"><tt><b>iir</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

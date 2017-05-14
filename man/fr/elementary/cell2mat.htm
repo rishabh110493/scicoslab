@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cell2mat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cell2mat</b> - convert a cell array into a
+  matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=cell2mat(c)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>c</b></tt>: cell, the components of c must have the same type and can be
+          scalars or matrices</li>
+<li>
+<tt><b>x</b></tt>: matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Returns a matrix which is the concatenation of all components of the
+    cell c.</p>
+<dl><dd>
+<b>cell2mat(c)</b>: all components of c must have the same data type (strings or
+        doubles or integers or booleans). For each row <tt><b>i </b></tt>of
+        <tt><b>c,</b></tt><tt><b>cell2mat</b></tt> concatenates all the components
+        of the <tt><b>ith</b></tt> row of the cell <tt><b>c</b></tt>
+</dd></dl>
+<p>Note that if the components of the cell input c<tt><b></b></tt>are
+    strings then <tt><b>cell2mat(c)</b></tt> returns a column vector of strings
+    concatenation</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+c=makecell([2,2],[1 2 3; 6 7 8],[4 5;9 10],[11 12;16 17],[14 13 15;18 19 20])
+cell2mat(c)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/cell.htm"><tt><b>cell</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

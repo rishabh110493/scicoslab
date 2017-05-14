@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ilib_gen_Make</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ilib_gen_Make</b> -  utility for  <tt><b>ilib_build</b></tt>: produces a makefile for building shared libraries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>Makename=ilib_gen_Make(name,files,libs,makename [,with_gateway,ldflags,cflags,fflags])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>lib_name</b></tt>: a character string, the generic name of the library without path and extension.</li>
+<li>
+<tt><b>files</b></tt>: a vector of character string. The names of the C or Fortran files without the extension and the path part.</li>
+<li>
+<tt><b>libs</b></tt>: a vector of character string. additionnal libraries paths or [].</li>
+<li>
+<tt><b>makename</b></tt>: character string. The path of the Makefile file.</li>
+<li>
+<tt><b>with_gateway</b></tt>: a boolean. If true a file with name &lt;lib_name&gt;_gateway is
+	    added. Default value is %t</li>
+<li>
+<tt><b>ldflags</b></tt>: a string. It can be used to add specific linker options in the
+	    generated Makefile. Default value is ''</li>
+<li>
+<tt><b>cflags</b></tt>: a string. It can be used to add specific C compiler options in the
+	    generated Makefile. Default value is ''</li>
+<li>
+<tt><b>fflags</b></tt>: a string. It can be used to add specific Fortran compiler options in the
+	    generated Makefile. Default value is ''</li>
+<li>
+<tt><b>Makename</b></tt>: character string. The path of the really generated Makefile file.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function used by <tt><b>ilib_build</b></tt></p>
+<p>
+    This function generates a makefile adapted to the Operating System for
+    building shared libraries to be loaded in Scilab. Proper options and
+    paths are set.</p>
+<p>
+    Shared libraries can then be used with the <tt><b>link</b></tt> and
+    <tt><b>addinter</b></tt> scilab function for incremental linking.</p>
+<p>
+    The shared library is build from a set of C or Fortran routines
+    stored in a directory and if required from a set of external
+    libraries.</p>
+<p>
+    Files are not required to exist, when makefile is generated, but of
+    course are required for executing the makefile.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_build.htm"><tt><b>ilib_build</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_compile.htm"><tt><b>ilib_compile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_gen_gateway.htm"><tt><b>ilib_gen_gateway</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_gen_loader.htm"><tt><b>ilib_gen_loader</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/ilib_for_link.htm"><tt><b>ilib_for_link</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bvode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bvode</b> -  boundary value problems for ODE</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>   [z]=bvode(points,ncomp,m,aleft,aright,zeta,ipar,ltol,tol,fixpnt,...  </tt></dd>
+<dd><tt> fsub1,dfsub1,gsub1,dgsub1,guess1)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>z</b></tt>The solution of the ode evaluated on the mesh given by points</li>
+<li>
+<tt><b>points</b></tt>an array which gives the points for which we want the solution</li>
+<li>
+<tt><b>ncomp</b></tt>number of differential equations   (ncomp &lt;= 20)</li>
+<li>
+<tt><b>m</b></tt>a vector of size <tt><b>ncomp</b></tt>. <tt><b>m(j)</b></tt> gives the  order of the j-th differential equation</li>
+<li>
+<tt><b>aleft</b></tt>left end of interval</li>
+<li>
+<tt><b>aright</b></tt>right end of interval</li>
+<li>
+<tt><b>zeta</b></tt><tt><b>zeta(j)</b></tt> gives j-th side condition point (boundary point). must have<p><tt><b>zeta(j) &lt;= zeta(j+1)</b></tt></p>
+<p>
+    all side condition points must be mesh points in all meshes used, see description of <tt><b>ipar(11)</b></tt> and <tt><b>fixpnt</b></tt> below.
+  </p>
+</li>
+<li>
+<tt><b>ipar</b></tt>an integer array dimensioned at least 11. a list of the parameters in <tt><b>ipar</b></tt> and their meaning follows some parameters are renamed in bvode; these new names are given in parentheses.<ul>
+<li>
+<tt><b>ipar(1)  </b></tt>0  if the problem is linear, 1 if the problem is nonlinear</li>
+<li>
+<tt><b>ipar(2)  </b></tt>= number of collocation points per subinterval  (= k ) where<p><tt><b>max m(i) &lt;=  k &lt;= 7 .</b></tt></p>
+<p>
+    if <tt><b>ipar(2)=0</b></tt> then bvode sets  
+  </p>
+<p><tt><b>k = max ( max m(i)+1, 5-max m(i) )</b></tt></p>
+</li>
+<li>
+<tt><b>ipar(3)  </b></tt>= number of subintervals in the initial mesh  ( = n ). if <tt><b>ipar(3) = 0</b></tt> then bvode arbitrarily sets <tt><b>n = 5</b></tt>.</li>
+<li>
+<tt><b>ipar(4)</b></tt>= number of solution and derivative tolerances.  ( = ntol ) we require<p><tt><b>0 &lt; ntol &lt;= mstar.</b></tt></p>
+</li>
+<li>
+<tt><b>ipar(5)</b></tt>= dimension of <tt><b>fspace</b></tt> ( = ndimf ) a
+                real work array. its size provides a constraint on
+                nmax. choose ipar(5) according to the formula:<p><tt><b>ipar(5)&gt;=nmax*nsizef</b></tt></p>
+<p>where</p>
+<p><tt><b>nsizef=4+3*mstar+(5+kd)*kdm+(2*mstar-nrec)*2*mstar</b></tt>.</p>
+</li>
+<li>
+<tt><b>ipar(6)</b></tt>= dimension of ispace ( = ndimi )an integer work
+                 array. its size provides a constraint on nmax, the
+                 maximum number of subintervals. choose
+                 <tt><b>ipar(6)</b></tt> according to the formula:<p><tt><b>ipar(6)&gt;=nmax*nsizei</b></tt></p>
+<p>where</p>
+<p><tt><b>nsizei=3 + kdm</b></tt> with
+                 <tt><b>kdm=kd+mstar</b></tt> ; <tt><b>kd=k*ncomp </b></tt>;
+                 <tt><b>nrec</b></tt>=number of right end boundary
+                 conditions.</p>
+</li>
+<li>
+<tt><b>ipar(7) </b></tt>output control ( = iprint )<ul>
+<li>
+<tt><b>= -1</b></tt>for full diagnostic printout</li>
+<li>
+<tt><b>= 0</b></tt>for selected printout</li>
+<li>
+<tt><b>= 1</b></tt>for no printout</li>
+</ul>
+</li>
+<li>
+<tt><b>ipar(8)  </b></tt>( = iread )<ul>
+<li>
+<tt><b>= 0</b></tt>causes bvode to generate a uniform initial mesh.</li>
+<li>
+<tt><b>= xx</b></tt>Other values are not implemented yet in Scilab<ul>
+<li>
+<tt><b>= 1</b></tt>if the initial mesh is provided by the user.  it is defined in fspace as follows:  the mesh<p>
+    will occupy  <tt><b>fspace(1), ..., fspace(n+1)</b></tt>. the user needs to supply only the interior mesh points  <tt><b>fspace(j) = x(j), j = 2, ..., n.</b></tt></p>
+</li>
+<li>
+<tt><b>= 2 if the initial mesh is supplied by the user</b></tt>as with <tt><b>ipar(8)=1</b></tt>, and in addition no adaptive mesh selection is to be done.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ipar(9)  </b></tt>( = iguess )<ul>
+<li>
+<tt><b>= 0</b></tt>if no initial guess for the solution is provided.</li>
+<li>
+<tt><b>= 1</b></tt>if an initial guess is provided by the user in subroutine  <tt><b>guess</b></tt>.</li>
+<li>
+<tt><b>= 2</b></tt>if an initial mesh and approximate solution coefficients are provided by the user in fspace. (the former and new mesh are the same).</li>
+<li>
+<tt><b>= 3</b></tt>if a former mesh and approximate solution coefficients are provided by the user in fspace, and the new mesh is to be taken twice as coarse; i.e.,every second point from the former mesh.</li>
+<li>
+<tt><b>= 4</b></tt>if in addition to a former initial mesh and approximate solution coefficients, a new mesh is provided in fspace as well. (see description of output for further details on iguess = 2, 3, and 4.)</li>
+</ul>
+</li>
+<li>
+<tt><b>ipar(10)  </b></tt><ul>
+<li>
+<tt><b>= 0</b></tt>if the problem is regular</li>
+<li>
+<tt><b>= 1</b></tt>if the first relax factor is =rstart, and the nonlinear iteration does not rely on past covergence (use for an extra sensitive nonlinear problem only).</li>
+<li>
+<tt><b>= 2</b></tt>if we are to return immediately upon  (a) two successive nonconvergences, or  (b) after obtaining error estimate for the first time.</li>
+</ul>
+</li>
+<li>
+<tt><b>ipar(11)  </b></tt>= number of fixed points in the mesh other than <tt><b>aleft</b></tt>
+  and <tt><b>aright</b></tt>. ( = nfxpnt , the dimension of
+  <tt><b>fixpnt</b></tt>) the code requires that all side condition
+  points other than <tt><b>aleft</b></tt> and <tt><b>aright</b></tt> (see
+  description of zeta ) be included as fixed points in
+  <tt><b>fixpnt</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>ltol</b></tt>an array of dimension <tt><b>ipar(4)</b></tt>.
+          <tt><b>ltol(j) = l</b></tt> specifies that the j-th tolerance
+          in tol controls the error in the l-th component of
+          <tt><b>z(u)</b></tt>.  also require that:<p><tt><b>1 &lt;= ltol(1) &lt; ltol(2) &lt; ... &lt; ltol(ntol)
+          &lt;= mstar</b></tt></p>
+</li>
+<li>
+<tt><b>tol</b></tt>an array of dimension
+          <tt><b>ipar(4)</b></tt>. <tt><b>tol(j)</b></tt> is the error
+          tolerance on the <tt><b>ltol(j)</b></tt> -th component of
+          <tt><b>z(u)</b></tt>. thus, the code attempts to satisfy for
+          <tt><b>j=1:ntol</b></tt>  on each subinterval<pre>
+        abs(z(v)-z(u))       &lt;=     tol(j)*abs(z(u))     +tol(j)
+                     ltol(j)                       ltol(j)
+</pre>
+<p>
+    if <tt><b>v(x)</b></tt> is the approximate solution vector.
+  </p>
+</li>
+<li>
+<tt><b>fixpnt</b></tt>an array of dimension <tt><b>ipar(11)</b></tt>. it contains the points, other than <tt><b>aleft</b></tt> and <tt><b>aright</b></tt>, which are to be included in every mesh.</li>
+<li>
+<tt><b>externals</b></tt>The function <tt><b>fsub,dfsub,gsub,dgsub,guess</b></tt> are Scilab
+  externals i.e. functions (see syntax below) or the name of a Fortran
+  subroutine (character string) with specified calling sequence or a
+  list. An external as a  character string refers to the name of a
+  Fortran subroutine. The Fortran coded function interface to bvode
+  are specified in the file <tt><b>fcol.f</b></tt>.<ul>
+<li>
+<tt><b>fsub</b></tt>name of subroutine for evaluating<pre>
+                                                t
+                f(x,z(u(x))) =    (f ,...,f     )  
+                                    1      ncomp
+</pre>
+<p>
+    at a point x in <tt><b>(aleft,aright)</b></tt>. it should have the heading  <tt><b>[f]=fsub(x,z)</b></tt>  where <tt><b>f</b></tt> is the vector containing the value of <tt><b>fi(x,z(u))</b></tt> in the i-th component and 
+  </p>
+<pre>
+                                                    t
+                         z(u(x))=(z(1),...,z(mstar))
+</pre>
+<p>
+    is defined as above under  purpose .
+  </p>
+</li>
+<li>
+<tt><b>dfsub</b></tt>name of subroutine for evaluating the Jacobian of
+                <tt><b>f(x,z(u))</b></tt> at a point x.  it should have
+                the heading <tt><b>[df]=dfsub (x , z )</b></tt> where
+                <tt><b>z(u(x))</b></tt> is defined as for
+                <tt><b>fsub</b></tt> and the (<tt><b>ncomp</b></tt>) by
+                (<tt><b>mstar</b></tt>) array df should be filled by the
+                partial derivatives of  f, viz, for a particular call
+                one calculates<pre>
+                    df(i,j) = dfi / dzj, i=1,...,ncomp
+                                         j=1,...,mstar.
+</pre>
+</li>
+<li>
+<tt><b>gsub</b></tt>name of subroutine for evaluating the i-th
+                component of
+                 <tt><b>g(x,z(u(x))) = g (zeta(i),z(u(zeta(i)))) </b></tt>
+                 at a point <tt><b>x = zeta(i)</b></tt> where
+                  <tt><b>1&lt;=i&lt;=mstar.</b></tt><p>
+                it should have the heading<tt><b>[g]=gsub (i ,
+                 z)</b></tt> where <tt><b>z(u)</b></tt> is as for
+                 <tt><b>fsub</b></tt>, and <tt><b>i</b></tt> and
+                 <tt><b>g=gi</b></tt> are as above. Note that in contrast
+                 to <tt><b>f</b></tt> in <tt><b>fsub</b></tt> , here only one value per
+                 call is returned in <tt><b>g</b></tt>.
+  </p>
+</li>
+<li>
+<tt><b>dgsub</b></tt>name of subroutine for evaluating the i-th row of the Jacobian of
+  <tt><b>g(x,u(x))</b></tt>.  it should have the heading <tt><b>[dg]=dgsub
+  (i , z )</b></tt> where <tt><b>z(u)</b></tt> is as for fsub, i as for
+  gsub and the mstar-vector  <tt><b>dg</b></tt> should be filled with the
+  partial derivatives of g, viz, for a particular call one calculates</li>
+<li>
+<tt><b>guess</b></tt>name of subroutine to evaluate the initial approximation for
+  <tt><b>z(u(x))</b></tt> and for <tt><b>dmval(u(x))</b></tt>= vector of the
+  mj-th derivatives of <tt><b>u(x)</b></tt>. it should have the heading
+  <tt><b>[z,dmval]= guess (x )</b></tt> note that this subroutine is used
+  only if  <tt><b>ipar(9) = 1</b></tt>, and then all  <tt><b>mstar</b></tt>
+  components of z and  ncomp  components of  dmval  should be
+  specified for any x,<p><tt><b>aleft &lt;= x &lt;= aright .</b></tt></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    this package solves a multi-point boundary value
+    problem for a mixed order system of ode-s given by</p>
+<pre>
+       (m(i))
+       u       =  f  ( x; z(u(x)) )      i = 1, ... ,ncomp
+        i          i                     aleft &lt; x  &lt; aright,
+                                        
+</pre>
+<pre>
+       g  ( zeta(j); z(u(zeta(j))) ) = 0   j = 1, ... ,mstar
+        j
+      mstar = m(1)+m(2)+...+m(ncomp),
+</pre>
+<p> where</p>
+<pre>
+                                        t
+             u = (u , u , ... ,u     )   
+                   1   2        ncomp    
+</pre>
+<p>is the exact solution vector</p>
+<pre>
+              (mi)
+             u     is the mi=m(i) th  derivative of u
+              i                                      i
+</pre>
+<pre>                                     
+
+                                (1)        (m1-1)       (mncomp-1)
+             z(u(x)) = ( u (x),u  (x),...,u    (x),...,u      (x) )
+                          1     1          1            ncomp
+</pre>
+<pre>  
+              f (x,z(u))   
+               i
+</pre>
+<p> is a (generally) nonlinear function of <tt><b>z(u)=z(u(x))</b></tt>.</p>
+<pre> 
+              g (zeta(j);z(u))  
+               j
+</pre>
+<p>  is a (generally) nonlinear function   used to represent a boundary condition.</p>
+<p> the boundary points satisfy</p>
+<p><tt><b>aleft &lt;= zeta(1)  &lt;= ..  &lt;= zeta(mstar)  &lt;= aright</b></tt>. </p>
+<p> the orders <tt><b>mi</b></tt> of the differential equations satisfy</p>
+<p><tt><b>1&lt;=m(i)&lt;=4</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('df=dfsub(x,z)','df=[0,0,-6/x**2,-6/x]')
+deff('f=fsub(x,z)','f=(1 -6*x**2*z(4)-6*x*z(3))/x**3')
+deff('g=gsub(i,z)','g=[z(1),z(3),z(1),z(3)];g=g(i)')
+deff('dg=dgsub(i,z)',['dg=[1,0,0,0;0,0,1,0;1,0,0,0;0,0,1,0]';
+                      'dg=dg(i,:)'])
+deff('[z,mpar]=guess(x)','z=0;mpar=0')// unused here
+
+ //define trusol for testing purposes
+deff('u=trusol(x)',[ 
+   'u=0*ones(4,1)';
+   'u(1) =  0.25*(10*log(2)-3)*(1-x) + 0.5 *( 1/x   + (3+x)*log(x) - x)'
+   'u(2) = -0.25*(10*log(2)-3)       + 0.5 *(-1/x^2 + (3+x)/x      + log(x) - 1)'
+   'u(3) = 0.5*( 2/x^3 + 1/x   - 3/x^2)'
+   'u(4) = 0.5*(-6/x^4 - 1/x/x + 6/x^3)'])
+
+fixpnt=0;m=4;
+ncomp=1;aleft=1;aright=2;
+zeta=[1,1,2,2];
+ipar=zeros(1,11);
+ipar(3)=1;ipar(4)=2;ipar(5)=2000;ipar(6)=200;ipar(7)=1;
+ltol=[1,3];tol=[1.e-11,1.e-11];
+res=aleft:0.1:aright;
+z=bvode(res,ncomp,m,aleft,aright,zeta,ipar,ltol,tol,fixpnt,...
+ fsub,dfsub,gsub,dgsub,guess)
+z1=[];for x=res,z1=[z1,trusol(x)]; end;  
+z-z1
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/fort.htm"><tt><b>fort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/dassl.htm"><tt><b>dassl</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>u. ascher, department of computer science, university of british; columbia, vancouver, b. c., canada   v6t 1w5; g. bader, institut f. angewandte mathematik university of heidelberg; im neuenheimer feld 294d-6900 heidelberg 1 ; ; Fortran subroutine colnew.f</p>
+</body>
+</html>

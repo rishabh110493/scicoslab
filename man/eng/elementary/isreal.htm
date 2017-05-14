@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>isreal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>isreal</b> -   check if a variable as real or complex entries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>t=isreal(x)  </tt></dd>
+<dd><tt>t=isreal(x,eps)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vector or matrix with floating point entries or coefficients</li>
+<li>
+<tt><b>t</b></tt>: a boolean</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>isreal(x)</b></tt> returns true if <tt><b>x</b></tt> is stored as a real variable and
+    false if  <tt><b>x</b></tt> is stored with an (eventually zero) imaginary part.</p>
+<p><tt><b>isreal(x,eps)</b></tt> returns true if <tt><b>x</b></tt> is stored as a real variable or
+    if maximum absolute value of imaginary floating points is less or equal
+    than <tt><b>eps</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+isreal([1 2])
+isreal(1+0*%i)
+isreal(1+0*%i,0)
+isreal(1+%s)
+isreal(sprand(3,3,0.1))
+ 
+  </pre>
+</body>
+</html>

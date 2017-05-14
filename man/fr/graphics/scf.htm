@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>scf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>scf</b> - set the current graphic figure
+  (window)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>f = scf()</tt></dd>
+<dd><tt>f = scf(h)</tt></dd>
+<dd><tt>f = scf(num)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: a handle, the figure handle</li>
+<li>
+<tt><b>num</b></tt>: a number, the figure_id</li>
+<li>
+<tt><b>f</b></tt>: the handle of the current figure</li>
+</ul>
+<h3><font color="blue">Description</font></h3>The current figure is the destination of the graphic drawing. The
+    <tt><b>scf</b></tt> function allows to change this current figure or to
+    create it if it does not already exist.<p></p>
+<p><tt><b>scf(num)</b></tt> set the figure with <tt><b>figure_id==num</b></tt>
+    as the current figure. If it does not already exist it is created.</p>
+<p></p>
+<p><tt><b>scf(h)</b></tt> set the figure pointed to by the handle
+    <tt><b>h</b></tt> as the current figure. If it does not already exist it is
+    created.</p>
+<p><tt><b>scf()</b></tt> is equivalent to <tt><b>scf(max(winsid())+1) </b></tt>.
+    It may be used to create a new graphic window.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   f4=scf(4); //creates figure with id==4 and make it the current one
+   f0=scf(0); //creates figure with id==0 and make it the current one
+   plot2d() //draw in current figure (id=0)
+   scf(f4); // set first created figure as current one
+   plot3d() //draw in current figure (id=4)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer INRIA</p>
+</body>
+</html>

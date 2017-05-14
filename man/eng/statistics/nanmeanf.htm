@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nanmeanf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nanmeanf</b> -  mean (ignoring Nan's) with a given frequency.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>m=nanmean(val,fre)  </tt></dd>
+<dd><tt>m=nanmean(val,fre,'r') (or m=nanmean(val,fre,1))  </tt></dd>
+<dd><tt>m=nanmean(val,fre,'c') (or m=nanmean(val,fre,2))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>val</b></tt>: real or complex vector or matrix</li>
+<li>
+<tt><b>fre</b></tt>: integer vector  or matrix with same dimensions  than
+val</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function returns in scalar <tt><b> m</b></tt> the mean of the
+    values (ignoring  the NANs) of a vector  or matrix 
+    <tt><b>val</b></tt>,   each counted  with   a  frequency signaled  by  the
+    corresponding values of the  integer vector or matrix  <tt><b>fre</b></tt> 
+   with the same type of <tt><b>val</b></tt>.</p>
+<p>
+    For      a  vector    or  matrix    <tt><b>    val</b></tt>, 
+    <tt><b> m=nanmeanf(val,fre)</b></tt>  or  <tt><b> m=nanmeanf(val,fre,'*')</b></tt>
+    returns in scalar  <tt><b> m</b></tt>  the mean of all  the entries
+    (ignoring  the NANs) of   <tt><b> val</b></tt>, each  value counted
+    with the multiplicity indicated by the corresponding value
+    of <tt><b> fre</b></tt>.</p>
+<p><tt><b>m=nanmeanf(val,fre,'r')</b></tt>       (or,     equivalently,
+    <tt><b>m=nanmeanf(val,fre,1)</b></tt> ) returns in each entry of the
+    row vector <tt><b>  m</b></tt> of  type 1xsize(val,'c') the mean of
+    each column of val (ignoring the NANs), each value counted
+    with the multiplicity indicated by the corresponding value
+    of <tt><b> fre</b></tt>.</p>
+<p><tt><b>m=nanmeanf(val,fre,'c')</b></tt>  (or,      equivalently,
+    <tt><b>m=nanmeanf(val,fre,2)</b></tt>) returns in  each entry of the
+    column  vector m of  type size(val,'c')x1 the mean of each
+    row  of val (ignoring  the NANs),  each value counted with
+    the multiplicity indicated  by the corresponding  value of
+    fre.</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 %nan 0.6653811;0.7560439 0.3303271 0.6283918]
+fre=[34 12 25;12 23 5]
+m=nanmeanf(x,fre)
+m=nanmeanf(x,fre,1)
+m=nanmeanf(x,fre,2)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

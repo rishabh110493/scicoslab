@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_lower</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_lower</b> - Fonction d'émulation de la fonction Matlab lower</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction Matlab <tt><b>lower(A)</b></tt> et la fonction Scilab
+    <tt><b>convstr(A,"l")</b></tt> se comportent différemment :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> n'est pas une chaîne de caractères : la fonction Matlab <tt><b>lower</b></tt> peut être utilisée
+	avec <tt><b>A</b></tt> n'étant pas une chaîne de caractères mais pas la fonction Scilab <tt><b>convstr</b></tt>.
+        </li></dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_lower(A)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>lower(A)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_lower</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> est une matrice de chaînes de caractères
+        <tt><b>mtlb_lower(A)</b></tt> peut être remplacé par <tt><b>convstr(A,"l")</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> n'est pas une matrice de chaînes de caractères
+        <tt><b>mtlb_lower(A)</b></tt> peut être remplacé par <tt><b>A</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_lower</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/convstr.htm"><tt><b>convstr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

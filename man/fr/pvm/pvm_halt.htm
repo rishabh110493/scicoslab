@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_halt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_halt</b> -  stops the PVM daemon</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[info] = pvm_halt()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>info</b></tt>: integer, status code returned by the routine. Values less than zero indicate an error.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_halt</b></tt> kills all PVM tasks, all the remote daemons, and the
+    local daemon.  If the master pvmd is killed manually it should be
+    sent a <tt><b>SIGTERM</b></tt> signal to allow it to kill the remote
+    pvmds and clean up various files.</p>
+<p>
+    The pvmd can be killed in a manner that leaves the file 
+    <tt><b>/tmp/pvmd.uid</b></tt> behind on one  or more  hosts 
+    (the <tt><b>uid</b></tt> suffix is  the  numeric user ID from
+    <tt><b>/etc/passwd</b></tt>) of  the user.  
+    This  will prevent PVM  from restarting on
+    that host.  Deletion of this file will fix this problem and 
+    it can be done as follows:
+     <tt><b> rm `( grep $user /etc/passwd || ypmatch $user passwd )</b></tt><tt><b>             | awk -F: '{print "/tmp/pvmd.";$3;exit}'`</b></tt></p>
+<p>
+    For example:</p>
+<pre>
+
+--&gt;pvm_halt()
+ ans  =
+ 
+    0.  
+ 
+--&gt;pvm_halt()
+ ans  =
+ 
+  - 14.  
+   
+    </pre>
+<p>
+    Error -14 means: pvm_halt(): Can't contact local daemon</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_start.htm"><tt><b>pvm_start</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_addhosts.htm"><tt><b>pvm_addhosts</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_config.htm"><tt><b>pvm_config</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

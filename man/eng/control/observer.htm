@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>observer</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>observer</b> -  observer design</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Obs=observer(Sys,J)  </tt></dd>
+<dd><tt>[Obs,U,m]=observer(Sys [,flag,alfa])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sys</b></tt>: <tt><b>syslin</b></tt> list (linear system)</li>
+<li>
+<tt><b>J</b></tt>: nx x ny constant matrix (output injection matrix)</li>
+<li>
+<tt><b>flag</b></tt>: character strings (<tt><b>'pp'</b></tt> or <tt><b>'st'</b></tt> (default))</li>
+<li>
+<tt><b>alfa</b></tt>: location of closed-loop poles (optional parameter, default=-1)</li>
+<li>
+<tt><b>Obs</b></tt>: linear system (<tt><b>syslin</b></tt> list), the observer</li>
+<li>
+<tt><b>U</b></tt>: orthogonal matrix (see <tt><b>dt_ility</b></tt>)</li>
+<li>
+<tt><b>m</b></tt>: integer (dimension of unstable unobservable (<tt><b>st</b></tt>)  or unobservable  (<tt><b>pp</b></tt>) subspace)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Obs=observer(Sys,J)</b></tt> returns the observer 
+    <tt><b>Obs=syslin(td,A+J*C,[B+J*D,-J],eye(A))</b></tt> obtained from <tt><b>Sys</b></tt> 
+    by a <tt><b>J</b></tt> output injection. (td is the time domain of <tt><b>Sys</b></tt>).
+    More generally, <tt><b>observer</b></tt> returns in <tt><b>Obs</b></tt> an observer for 
+    the observable part of linear system 
+    <tt><b>Sys</b></tt>: <tt><b>dotx=A x + Bu, y=Cx + Du</b></tt>  represented by a <tt><b>syslin</b></tt> list.
+    <tt><b>Sys</b></tt> has <tt><b>nx</b></tt> state variables, <tt><b>nu</b></tt> inputs and <tt><b>ny</b></tt> outputs.
+    <tt><b>Obs</b></tt> is a linear system with matrices <tt><b>[Ao,Bo,Identity]</b></tt>, 
+    where <tt><b>Ao</b></tt> is <tt><b>no x no</b></tt>, <tt><b>Bo</b></tt> is <tt><b>no x (nu+ny)</b></tt>, <tt><b> Co</b></tt> is
+    <tt><b>no x no</b></tt> and <tt><b>no=nx-m</b></tt>.</p>
+<p>
+    Input to <tt><b>Obs</b></tt> is <tt><b>[u,y]</b></tt> and output of <tt><b>Obs</b></tt> is:</p>
+<p>
+    xhat=estimate of x modulo unobservable subsp. (case <tt><b>flag='pp'</b></tt>)
+    or</p>
+<p>
+    xhat=estimate of x modulo unstable unobservable subsp. (case <tt><b>flag='st'</b></tt>)</p>
+<p>
+    case <tt><b>flag='st'</b></tt>:
+    z=H*x can be estimated with stable observer iff <tt><b>H*U(:,1:m)=0</b></tt>
+    and assignable poles of the observer are set to <tt><b>alfa(1),alfa(2),...</b></tt></p>
+<p>
+    case <tt><b>flag='pp'</b></tt>:
+    z=H*x can be estimated with given error spectrum iff <tt><b>H*U(:,1:m)=0</b></tt> 
+    all poles of the observer are assigned and set to <tt><b>alfa(1),alfa(2),...</b></tt></p>
+<p>
+    If H satifies the constraint: <tt><b>H*U(:,1:m)=0</b></tt>  (ker(H) contains unobs-subsp.
+    of Sys) one has H*U=[0,H2] and the observer for 
+    z=H*x is H2*Obs with H2=H*U(:,m+1:nx) i.e. Co, the C-matrix of the
+    observer for H*x, is Co=H2.</p>
+<p>
+    In the particular case where the pair <tt><b>(A,C)</b></tt> of <tt><b>Sys</b></tt> is 
+    observable, one has <tt><b>m=0</b></tt> and the linear system <tt><b>U*Obs</b></tt> (resp.
+    <tt><b>H*U*Obs</b></tt>) is an observer for <tt><b>x</b></tt> (resp. <tt><b>Hx</b></tt>). 
+    The error spectrum is <tt><b>alpha(1),alpha(2),...,alpha(nx)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+nx=5;nu=1;ny=1;un=3;us=2;Sys=ssrand(ny,nu,nx,list('dt',us,us,un));
+//nx=5 states, nu=1 input, ny=1 output, 
+//un=3 unobservable states, us=2 of them unstable.
+[Obs,U,m]=observer(Sys);  //Stable observer (default)
+W=U';H=W(m+1:nx,:);[A,B,C,D]=abcd(Sys);  //H*U=[0,eye(no,no)];
+Sys2=ss2tf(syslin('c',A,B,H))  //Transfer u--&gt;z
+Idu=eye(nu,nu);Sys3=ss2tf(H*U(:,m+1:$)*Obs*[Idu;Sys])  
+//Transfer u--&gt;[u;y=Sys*u]--&gt;Obs--&gt;xhat--&gt;HUxhat=zhat  i.e. u--&gt;output of Obs
+//this transfer must equal Sys2, the u--&gt;z transfer  (H2=eye).
+
+//Assume a Kalman model
+//dotx = A x + B u + G w
+// y   = C x + D u + H w + v
+//with Eww' = QN, Evv' = RN, Ewv' = NN
+//To build a Kalman observer:
+//1-Form BigR = [G*QN*G'         G*QN*H'+G*NN;
+//               H*QN*G'+NN*G'   H*QN*H'+RN];
+//the covariance matrix of the noise vector [Gw;Hw+v]
+//2-Build the plant P21 : dotx = A x + B1 e ; y = C2 x + D21 e 
+//with e a unit white noise.
+// [W,Wt]=fullrf(BigR);
+//B1=W(1:size(G,1),:);D21=W(($+1-size(C,1)):$,:);
+//C2=C;
+//P21=syslin('c',A,B1,C2,D21);
+//3-Compute the Kalman gain
+//L = lqe(P21);
+//4- Build an observer for the plant [A,B,C,D];
+//Plant = syslin('c',A,B,C,D);
+//Obs = observer(Plant,L);
+//Test example:
+A=-diag(1:4);
+B=ones(4,1);
+C=B'; D= 0; G=2*B; H=-3; QN=2;
+RN=5; NN=0;
+BigR = [G*QN*G'         G*QN*H'+G*NN;
+        H*QN*G'+NN*G'   H*QN*H'+RN];
+[W,Wt]=fullrf(BigR);
+B1=W(1:size(G,1),:);D21=W(($+1-size(C,1)):$,:);
+C2=C;
+P21=syslin('c',A,B1,C2,D21);
+L = lqe(P21);
+Plant = syslin('c',A,B,C,D);
+Obs = observer(Plant,L);
+spec(Obs.A)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/dt_ility.htm"><tt><b>dt_ility</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/unobs.htm"><tt><b>unobs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/stabil.htm"><tt><b>stabil</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

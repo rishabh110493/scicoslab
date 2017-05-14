@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>comments</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>comments</b> - comments</p>
+<h3><font color="blue">Description</font></h3>
+<p>A sequence of two consecutives slashes <tt><b> // </b></tt> out of
+    a string definition marks the beginning of a comment. The slashes
+    as well as all the following characters up to the end of the lines
+    are not interpreted.
+    </p>
+<p>Inside a function, the first comment lines, up to the first
+    instruction or an empty line may be used to provide the default
+    contents for the function help. </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+g=9.81// the gravity
+
+text='a//b'
+
+function y=myfunction(x)
+// myfunction computes y=x^2+1
+// x shoud be a vector or matrix
+  y=x^2+1
+endfunction
+
+help myfunction
+
+ 
+ </pre>
+</body>
+</html>

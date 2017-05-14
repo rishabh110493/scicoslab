@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dlgamma</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dlgamma</b> -   dérivée de la fonction gammaln
+  ou fonction psi.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> y = dlgamma(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>
+    : vecteur réel.
+</li>
+<li>
+<tt><b>y</b></tt>
+    : vecteur réel de même taille.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>dlgamma(x)</b></tt> calcule la dérivée de la fonction gammaln
+    pour chaque composante de <tt><b>x</b></tt>. 
+</p>
+<pre>
+          d/dx (gamma(x)) / gamma(x) = d/dx (ln gamma(x))
+      </pre>
+<p><tt><b>x</b></tt> doit être réel. Cette fonction est aussi connue
+    sous le nom de fonction psi
+</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+dlgamma(0.5)
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/gamma.htm"><tt><b>gamma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/gammaln.htm"><tt><b>gammaln</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>W. J. Cody (code from Netlib (specfun))</p>
+</body>
+</html>

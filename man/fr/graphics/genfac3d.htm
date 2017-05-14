@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>genfac3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>genfac3d</b> -  calcule les facettes d'une surface 3D non-paramétrique  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xx,yy,zz]=genfac3d(x,y,z,[mask])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xx,yy,zz  </b></tt>
+    : matrices de taille (4,n-1xm-1). <tt><b>xx(:,i)</b></tt> ,<tt><b>yy(:,i)</b></tt> et <tt><b>zz(:,i)</b></tt>  sont respectivement les coordonnées des 4 points de la facette numéro i.
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur de taille m.
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur de taille n.
+</li>
+<li>
+<tt><b>z  </b></tt>
+    : matrice de taille (m,n). <tt><b>z(i,j)</b></tt> est la hauteur de la surface au point (x(i),y(j)).
+</li>
+<li>
+<tt><b>mask  </b></tt>
+    : matrice booléenne optionnelle de même taille que <tt><b>z</b></tt> utilisée pour sélectionner les  termes de <tt><b>z</b></tt> à représenter par des facettes.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>genfac3d</b></tt>  calcule la représentation en facettes à 4 points d'une surface 3D non-paramétrique
+    <tt><b>z=f(x,y)</b></tt> définie par <tt><b>x</b></tt>, <tt><b>y</b></tt> et <tt><b>z</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=[0:0.3:2*%pi]'; z=sin(t)*cos(t');
+[xx,yy,zz]=genfac3d(t,t,z);
+plot3d(xx,yy,zz)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/eval3dp.htm"><tt><b>eval3dp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

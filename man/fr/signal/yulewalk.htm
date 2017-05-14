@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>yulewalk</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>yulewalk</b> -   least-square filter design</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>Hz = yulewalk(N,frq,mag)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>N</b></tt>: integer (order of desired filter)</li>
+<li>
+<tt><b>frq</b></tt>: real row vector (non-decreasing order), frequencies.</li>
+<li>
+<tt><b>mag</b></tt>: non negative real row vector (same size as frq), desired magnitudes.</li>
+<li>
+<tt><b>Hz</b></tt>: filter <tt><b>B(z)/A(z)</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Hz = yulewalk(N,frq,mag) finds the N-th order iir filter</p>
+<pre>
+
+                  n-1         n-2            
+      B(z)   b(1)z     + b(2)z    + .... + b(n)
+H(z)= ---- = ---------------------------------
+                n-1       n-2
+      A(z)    z   + a(2)z    + .... + a(n)
+   
+    </pre>
+<p>
+    which matches the magnitude frequency response given by vectors frq and mag.
+    Vectors frq and mag specify the frequency and magnitude of the desired
+    frequency response. The frequencies in frq must be between 0.0 and 1.0,
+    with 1.0 corresponding to half the sample rate. They must be in
+    increasing order and start with 0.0 and end with 1.0.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+f=[0,0.4,0.4,0.6,0.6,1];H=[0,0,1,1,0,0];Hz=yulewalk(8,f,H);
+fs=1000;fhz = f*fs/2;  
+xbasc(0);xset('window',0);plot2d(fhz',H');
+xtitle('Desired Frequency Response (Magnitude)')
+[frq,repf]=repfreq(Hz,0:0.001:0.5);
+xbasc(1);xset('window',1);plot2d(fs*frq',abs(repf'));
+xtitle('Obtained Frequency Response (Magnitude)')
+ 
+  </pre>
+</body>
+</html>

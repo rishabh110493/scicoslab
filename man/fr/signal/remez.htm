@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>remez</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>remez</b> -  Remez's algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[an]=remez(nc,fg,ds,wt)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nc</b></tt>: integer, number of cosine functions</li>
+<li>
+<tt><b>fg,ds,wt</b></tt>: real vectors</li>
+<li>
+<tt><b>fg</b></tt>: grid of frequency points in [0,.5)</li>
+<li>
+<tt><b>ds</b></tt>: desired magnitude on grid <tt><b>fg</b></tt>
+</li>
+<li>
+<tt><b>wt</b></tt>: weighting function on error on grid <tt><b>fg</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    minimax approximation of a frequency domain magnitude response.
+    The approximation takes the form</p>
+<pre>
+
+ h = sum[a(n)*cos(wn)]
+   
+    </pre>
+<p>
+    An FIR, linear-phase filter
+    can be obtained from the the output of <tt><b>remez</b></tt> by using the
+    following commands:</p>
+<pre>
+
+                 hn(1:nc-1)=an(nc:-1:2)/2;
+                 hn(nc)=an(1);
+                 hn(nc+1:2*nc-1)=an(2:nc)/2;
+   
+    </pre>
+<p>
+    where <tt><b>an</b></tt> = cosine filter coefficients</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/remezb.htm"><tt><b>remezb</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

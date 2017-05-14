@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>realtimeinitrealtime</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>realtimeinit</b> - set  time unit</p>
+<p><b>realtime</b> - set  dates origin or waits until date</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>realtimeinit(time_unit)</tt></dd>
+<dd><tt>realtime(t)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>time_unit</b></tt>: a real number. The number of seconds associated to the <tt><b>realtime</b></tt> argument</li>
+<li>
+<tt><b>t</b></tt>: a real number.  A date</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>   These two functions can be used to handle real time into Scilab.</p>
+<p><tt><b>realtimeinit(time_unit)</b></tt>  defines the time unit
+   associated to the <tt><b>realtime</b></tt> argument <tt><b>t</b></tt></p>
+<p>
+   first call to <tt><b>realtime(t0)</b></tt> sets current date to
+   (<tt><b>t0</b></tt>).
+   subsequent calls to <tt><b>realtime(t)</b></tt> wait till date <tt><b>t</b></tt> is
+   reached.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+
+   realtimeinit(1/2);//sets time unit to half a second
+   realtime(0);//sets current date to 0
+   for k=1:10,realtime(k);mprintf('current time is '+string(k/2)+'sec .\r\n');end
+ 
+  //next instruction outputs a dot each 2 seconds
+   realtimeinit(2); realtime(0);for k=1:10,realtime(k);mprintf('.\r\n');end
+
+   realtimeinit(1);realtime(0);
+   dt=getdate('s'); realtime(10);   getdate('s')-dt
+
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/getdate.htm"><tt><b>getdate</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

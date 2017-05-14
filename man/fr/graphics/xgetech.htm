@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xgetech</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xgetech</b> -  récupération de l'échelle graphique courante   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[wrect,frect,logflag,arect]=xgetech()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>wrect,frect  </b></tt>
+    : valeurs réelles.
+</li>
+<li>
+<tt><b>logflag  </b></tt>
+    : chaîne de caractères de taille 2 "xy".
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xgetech</b></tt> renvoie l'échelle graphique de la fenêtre courante.
+    Le rectangle [xmin,ymin,xmax,ymax] donné par
+    <tt><b>frect</b></tt> est la taille de toute la fenêtre graphique. 
+    Le dessin est fait dans la région définie par <tt><b>wrect</b></tt>.
+  </p>
+<p><tt><b>wrect=[x,y,w,h]</b></tt> (point en haut à gauche, largeur, hauteur) décrit 
+    la région de la fenêtre graphique. 
+  </p>
+<p><tt><b>wrect=[0,0,1,1]</b></tt> signifie que toute la fenêtre graphique est utilisée, 
+    et <tt><b>wrect=[0.5,0,0.5,1]</b></tt> signifie que seule la
+    moitié droite de la fenêtre graphique est utilisée.
+  </p>
+<p><tt><b>logflag</b></tt> : chaîne de caractères de taille 2 "xy", où x et y peuvent être "n" ou "l". "n" pour échelle normale et "l" pour échelle logarithmique. x  pour axe des x et y pour axe des y.
+  </p>
+<p><tt><b>arect=[x_gauche, x_droite,y_haut,y_bas]</b></tt> définit le cadre
+    dans la sous-fenêtre. Le cadre est spécifié (comme <tt><b>wrect</b></tt>) en utilisant des 
+    proportions de la largeur et de la hauteur de la sous-fenêtre courante.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// première sous-fenêtre
+xsetech([0,0,1.0,0.5])
+plot2d()
+// deuxième sous-fenêtre activée 
+xsetech([0,0.5,1.0,0.5])
+grayplot()
+// recupération de l'échelle 
+xsetech([0,0,1.0,0.5])
+[wrect,frect,logflag,arect]=xgetech();
+// recupération de l'échelle 
+xsetech([0,0.5,1.0,0.5])
+[wrect,frect,logflag,arect]=xgetech();
+xbasc();
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.;   </p>
+</body>
+</html>

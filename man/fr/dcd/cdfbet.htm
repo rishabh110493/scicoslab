@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdfbet</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfbet</b> -  fonction de répartition de la distribution Beta  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfbet("PQ",X,Y,A,B)  </tt></dd>
+<dd><tt>[X,Y]=cdfbet("XY",A,B,P,Q)  </tt></dd>
+<dd><tt>[A]=cdfbet("A",B,P,Q,X,Y)  </tt></dd>
+<dd><tt>[B]=cdfbet("B",P,Q,X,Y,A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,X,Y,A,B  </b></tt>
+    : cinq vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    : L'intégrale de 0 à X de la distribution beta (En entrée : [0, 1].)
+</li>
+<li>
+<tt><b>Q  </b></tt>
+    : 1-P
+</li>
+<li>
+<tt><b>X,Y (Y=1-X)  </b></tt>
+    : Borne supérieure d'intégration  (En entrée : [0,1],  En recherche : [0,1]) A,B : Les deux paramètres de la densité (En entrée: (0,+infini), En recherche : [1D-300,1D300] ) 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution beta 
+    (la distribution Beta est proportionnelle à <tt><b>t^(A-1) * (1-t)^(B-1)</b></tt>).
+  </p>
+<p>
+    La fonction de répartition  (P)  est calculée directement par le code associé à la référence
+  </p>
+<p>
+    DiDinato, A. R. and Morris,  A.   H.  Algorithm 708: Significant
+    Digit Computation of the Incomplete  Beta  Function Ratios.  ACM
+    Trans. Math.  Softw. 18 (1993), 360-373.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sort</b> -  tri par ordre décroissant  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[s, [k]]=sort(v)  </tt></dd>
+<dd><tt>[s, [k]]=sort(v,'r')  </tt></dd>
+<dd><tt>[s, [k]]=sort(v,'c')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v,s  </b></tt>
+    : vecteur (plein ou creux) ou matrice de nombres réels ou de chaînes de caractères.
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : vecteur ou matrice de nombres entiers.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>s=sort(v)</b></tt> trie <tt><b>v</b></tt> par ordre décroissant.
+    Si <tt><b>v</b></tt> est une matrice, cette instruction produit un tri de la 
+    matrice <tt><b>v</b></tt> vue comme un vecteur <tt><b>v(:)</b></tt> (les colonnes sont empilées).
+    <tt><b>[s,k]=sort(v)</b></tt> donne de plus les indices des termes de
+    <tt><b>s</b></tt> dans <tt><b>v</b></tt>, c'est à dire que <tt><b>v(k(:)) </b></tt> est le vecteur <tt><b>s</b></tt>.
+  </p>
+<p><tt><b>s=sort(v,'r')</b></tt> effectue le tri par ordre décroissant de <tt><b>v</b></tt> suivant l'indice de ligne : chaque colonne de <tt><b>s</b></tt> est obtenue à partir de la colonne de <tt><b>v</b></tt> correspondante triée par ordre décroissant.
+    <tt><b>[s,k]=sort(v,'r')</b></tt> renvoie de plus dans chaque colonne de <tt><b>k</b></tt>
+    les indices tels que <tt><b>v(k(:,i),i)=s(:,i)</b></tt> pour chaque indice de colonne <tt><b>i</b></tt>.
+  </p>
+<p><tt><b>s=sort(v,'c')</b></tt> effectue le tri par ordre décroissant de <tt><b>v</b></tt> suivant l'indice de colonne : chaque ligne de <tt><b>s</b></tt> est obtenue à partir de la ligne de <tt><b>v</b></tt> correspondante triée par ordre décroissant.
+  </p>
+<p><tt><b>[s,k]=sort(v,'c')</b></tt> renvoie de plus dans chaque ligne de <tt><b>k</b></tt>
+    les indices tels que <tt><b>v(i,k(i,:))=s(i,:)</b></tt> pour chaque indice de ligne <tt><b>i</b></tt>.
+  </p>
+<p>
+    Les matrices ou vecteurs complexes sont triés par rapport au module complexe.
+  </p>
+<p><tt><b>y=sort(A)</b></tt> est valide quand <tt><b>A</b></tt> est un vecteur creux. le tri suivant les lignes ou les colonnes n'est pas implémenté pour les matrices creuses.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[s,p]=sort(rand(1,10));
+// p est une permutation aléatoire de 1:10
+A=[1,2,5;3,4,2];
+[A_trie,q]=sort(A);A(q(:))-A_trie(:)
+v=1:10;
+sort(v)
+sort(v')
+sort(v,'r')  // ne fait rien pour les vecteurs lignes
+sort(v,'c')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

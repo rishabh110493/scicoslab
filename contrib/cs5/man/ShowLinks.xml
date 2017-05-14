@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>ShowLinks  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="ShowLinks ">  Shows the links of a net using Metanet or Scigraph  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>ShowLinks()  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx)  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>ShowLinks(nodes,arcs,fmin,fmax,tmin,tamx,d)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <P>  </P>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : the global NetList variable databasis
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nodes  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (nodes)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>arcs  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (arcs)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>fmin,fmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum flow
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>tmin,tmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum time 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>d  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : integer, a specific demand  
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+     Similar to ShowNet but it doesn&apos;t show the demands, it  only shows the
+    links of %net  that verify the conditions given by the
+    parameters (see ShowNet). If a demand is indicated, then the flow
+    shown is the corresponding to that demand.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=TrafficExample('Steenbrink');
+%net.gp.algorithm='AON';
+TrafficAssig();
+ShowLinks() // Shows the net
+ShowLinks('used','between',3000,6000,0,0,3)
+// Shows the net with the flow corresponding to demand 3, 
+// the light blue arcs are not used by the commodity 3
+// but by other commodities. The width corresponds to
+// the flow of the commodity 3. The arcs not shown have
+// total flow less than 3000 or greater than 6000.
+   ]]></VERBATIM>
+  <P>
+    
+  </P>
+  </ITEMIZE>
+  <SEE_ALSO>
+<SEE_ALSO_ITEM> <LINK>ShowNet</LINK> </SEE_ALSO_ITEM>    
+<SEE_ALSO_ITEM> <LINK>TrafficExample</LINK></SEE_ALSO_ITEM>    
+<SEE_ALSO_ITEM> <LINK>TrafficExample</LINK></SEE_ALSO_ITEM>
+<SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>    
+<SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     
+<SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Wardrop </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Wardrop </b> -  Wardrop equilibrium ( Newton hybrid method )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,f,err]=Wardrop(H,d,l,r,a,eps,niter)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H  </b></tt>
+    : incidence matrix nodes-arcs of size  mxn
+  </li>
+<li>
+<tt><b>d  </b></tt>
+    : nodes inputs-outputs for the p different classes  (matrix mxp) 
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : constant term of the travelling time (vector of size n)
+  </li>
+<li>
+<tt><b>a  </b></tt>
+    : regularization coefficient (small number)
+  </li>
+<li>
+<tt><b>eps  </b></tt>
+    : precision of the convergence test (small number)
+  </li>
+<li>
+<tt><b>niter  </b></tt>
+    : maximal number of iteration
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    : sum of the p potentials
+  </li>
+<li>
+<tt><b>F  </b></tt>
+    : sum of the p flows
+  </li>
+<li>
+<tt><b>w  </b></tt>
+    : (mxp) matrice of the potentials  
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Compute the Wardrop equilibrium of a transport
+    assignment problem by solving the following optimization
+    problem:
+  </p>
+<p>
+    Min_q  1/2 f'If+l'f
+  </p>
+<p>
+    f=Sum_i q_i
+  </p>
+<p>
+    I=diag(r)^(-1)
+  </p>
+<p>
+    Hq_i=d_i
+  </p>
+<p>
+    O&lt;=q_i
+  </p>
+<p>
+    i=1,...,p
+  </p>
+<p>
+    The method used is a decomposed newton method
+    in the space (q_i,v_i) i=1,p, where the v_i denote the dual
+    variables associated to the constraints Hq_i=d_i .
+  </p>
+<p>
+    v=Sum_i v_i.
+  </p>
+<p>
+    a must be taken small. It regularizes
+    the  matrices giving the potentials.
+  </p>
+<p>
+    It exists a Scilab toolbox (called CiudadSim) dedicated
+    to this problem. See Scilab Contributions.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+m=25; n=100; p=100;
+// generates a random admittance matrix
+r=max(rand(n,1),0.1);l=rand(n,1);
+// generates a random incidence matrix
+H=spzeros(m,n);
+
+
+
+
+for j=1:n
+  ij=ceil(m*rand(2,1));
+  H(ij(1),j)=1;
+  H(ij(2),j)=-1;
+end
+// generates random inputs-outputs
+d=spzeros(m,p);
+for j=1:p
+  ij=ceil(m*rand(2,1));
+  d(ij(1),j)=1;
+  d(ij(2),j)=-1;
+end
+// computes the wardrop equilibrium and gives
+// the computation time.
+timer();[V,f,pre]=Wardrop(H,d,l,r,0.01,1.e-7,20);timer() 
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/costo.htm"><tt><b>costo</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/fluide.htm"><tt><b>fluide</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

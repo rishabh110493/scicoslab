@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>inv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inv</b> -  inverse d'une matrice  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>inv(X)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X  </b></tt>
+	    : matrice carrée réelle, complexe, polynomiale ou rationnelle,
+	    liste de type "syslin"
+	  </li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>inv(X)</b></tt> est l'inverse de la matrice carrée
+      <tt><b>X</b></tt>. Un message de mise en garde est affiché si <tt><b>X</b></tt>
+      est mal équilibrée (termes très petits et termes très grands) ou
+      singulière à la précision machine.
+    </p>
+<p>
+      Pour les matrices polynomiales ou rationnelles, <tt><b>inv(X)</b></tt> est
+      équivalent à <tt><b>invr(X)</b></tt>.
+    </p>
+<p>
+      Pour les systèmes dynamiques linéaires sous forme de leur représentation
+      d'état (liste de type <tt><b>syslin</b></tt>), <tt><b>inv(X)</b></tt> est
+      équivalent à <tt><b>invsyslin(X)</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(3,3);inv(A)*A
+    //
+    x=poly(0,'x');
+    A=[x,1,x;x^2,2,1+x;1,2,3];inv(A)*A
+    //
+    A=[1/x,2;2+x,2/(1+x)]
+    inv(A)*A
+    //
+    A=ssrand(2,2,3);
+    W=inv(A)*A
+    clean(ss2tf(W))
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/slash.htm"><tt><b>slash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/invr.htm"><tt><b>invr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/coff.htm"><tt><b>coff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+      La fonction <tt><b>inv</b></tt> pour les matrices de  nombres est basée
+      sur les routines Lapack :
+      DGETRF, DGETRI pour les matrices réelles et  ZGETRF, ZGETRI pour le
+      cas complexe.
+      Pour les matrices de polynomes et de fractions rationnelles
+      <tt><b>inv</b></tt>  est basée sur la fonction Scilab  <tt><b>invr</b></tt>.
+    </p>
+</body>
+</html>

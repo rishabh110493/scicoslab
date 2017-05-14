@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>analpf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>analpf</b> -  create analog low-pass filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[hs,pols,zers,gain]=analpf(n,fdesign,rp,omega)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: positive integer : filter order</li>
+<li>
+<tt><b>fdesign</b></tt>: string : filter design method : <tt><b>'butt'</b></tt> or <tt><b>'cheb1'</b></tt> or <tt><b>'cheb2'</b></tt> or <tt><b>'ellip'</b></tt>
+</li>
+<li>
+<tt><b>rp</b></tt>: 2-vector of error values for cheb1, cheb2 and ellip filters where only <tt><b>rp(1)</b></tt> is used for cheb1 case, only <tt><b>rp(2)</b></tt> is used for cheb2 case, and <tt><b>rp(1)</b></tt> and <tt><b>rp(2)</b></tt> are both used for ellip case.  <tt><b>0&lt;rp(1),rp(2)&lt;1</b></tt><ul>
+<li>
+<tt><b>-  </b></tt>for cheb1 filters <tt><b>1-rp(1)&lt;ripple&lt;1</b></tt> in passband</li>
+<li>
+<tt><b>-  </b></tt>for cheb2 filters <tt><b>0&lt;ripple&lt;rp(2)</b></tt> in stopband</li>
+<li>
+<tt><b>-  </b></tt>for ellip filters <tt><b>1-rp(1)&lt;ripple&lt;1</b></tt> in passband <tt><b>0&lt;ripple&lt;rp(2)</b></tt> in stopband</li>
+</ul>
+</li>
+<li>
+<tt><b>omega</b></tt>: cut-off frequency of low-pass filter in Hertz</li>
+<li>
+<tt><b>hs</b></tt>: rational polynomial transfer function</li>
+<li>
+<tt><b>pols</b></tt>: poles of transfer function</li>
+<li>
+<tt><b>zers</b></tt>: zeros of transfer function</li>
+<li>
+<tt><b>gain</b></tt>: gain of transfer function</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates analog low-pass filter with cut-off frequency at omega.</p>
+<p><tt><b>hs=gain*poly(zers,'s')/poly(pols,'s')</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Evaluate magnitude response of continuous-time system 
+hs=analpf(4,'cheb1',[.1 0],5)
+fr=0:.1:15;
+hf=freq(hs(2),hs(3),%i*fr);
+hm=abs(hf);
+plot(fr,hm)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

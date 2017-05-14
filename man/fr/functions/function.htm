@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>functionendfunction</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>function</b> -  définition d'une fonction Scilab  </p>
+<p><b>endfunction</b> -  fin de la définition d'une fonction Scilab  </p>
+<h3><font color="blue">Description</font></h3>
+<pre>
+       function &lt;arguments_sortie&gt;=&lt;nom_de_la_fonction&gt;&lt;arguments_entrée&gt;
+       &lt;instructions&gt;
+        endfunction
+   </pre>  où<dl>
+<dd>
+<b>&lt;nom_de_la_fonction&gt;</b>est le nom de la fonction</dd>
+<dd>
+<b>&lt;arguments_entrée&gt;</b>est la liste d'arguments d'entrée. Il peut s'agir de :</dd>
+<dd>
+<b>-</b>une liste de noms de variables séparés par des virgules, entourée de parenthèses, comme  <tt><b>(x1,...,xm)</b></tt>. Le dernier nom de variable peut être <tt><b>varargin</b></tt> (voir varargin)</dd>
+<dd>
+<b>-</b>la séquence <tt><b>()</b></tt> ou rien du tout, si la fonction n'a pas d'argument d'entrée.</dd>
+<dd>
+<b>&lt;arguments_sortie&gt;</b>Est la liste d'arguments de sortie. Il peut s'agir de</dd>
+<dd>
+<b>-</b>une liste de noms de variables séparés par des virgules, entourée de crochets, comme  <tt><b>[y1,...,ym]</b></tt>. Le dernier nom de variable peut être <tt><b>varargout</b></tt> (voir varargout)</dd>
+<dd>
+<b>-</b>la séquence <tt><b>[]</b></tt>, si la fonction n'a pas d'argument de sortie. Dans ce cas la syntaxe d'appel peut aussi être : <tt><b>function &lt;nom_de_la_fonction&gt;&lt;arguments_entrée&gt;</b></tt>
+</dd>
+<dd>
+<b>&lt;instructions&gt;</b>une suite d'instructions Scilab.  Cette syntaxe peut être utilisée pour définir des fonctions (voir functions) en ligne ou dans un script (voir exec). Pour raisons de compatibilité avec les anciennes versions de Scilab, les fonctions définies dans un script ne contenant que des déclarations de fonctions peuvent être chargées dans Scilab avec la fonction <tt><b>getf</b></tt>.</dd>
+</dl>
+<p>
+    La séquence <tt><b>function &lt;arguments_sortie&gt;=&lt;nom_de_la_fonction&gt;&lt;arguments_entrée&gt;</b></tt>
+    doit apparaître sur une seule ligne. Cette suite peut être suivie d'instructions Scilab si une virgule ou un point-virgule est ajouté à la fin.
+  </p>
+<p>    Les définitions de fonctions peuvent être imbriquées.  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// définition en ligne
+function [x,y]=myfct(a,b)
+x=a+b
+y=a-b
+endfunction
+
+[x,y]=myfct(3,2)
+
+// définition sur une seule ligne
+function y=sq(x),y=x^2,endfunction
+
+sq(3)
+
+// définitions imbriquées
+function y=foo(x)
+a=sin(x)
+function y=sq(x), y=x^2,endfunction
+y=sq(a)+1
+endfunction
+
+foo(%pi/3)
+
+
+// définition dans un script
+exec SCI/macros/elem/asinh.sci;
+
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/functions.htm"><tt><b>functions</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

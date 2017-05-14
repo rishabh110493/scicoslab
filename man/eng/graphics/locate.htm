@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>locate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>locate</b> -  mouse selection of a set of points</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=locate([n,flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: matrix of size (2,n1). n1=n if the parameter n is given.</li>
+<li>
+<tt><b>n,flag</b></tt>: integer values.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>locate</b></tt> is used to get the coordinates of one or more 
+    points selected with the mouse in a graphics window. The coordinates 
+    are given using the current graphics scale.</p>
+<p>
+    If n&gt;0, n points are selected and their coordinates are returned in 
+    the matrix <tt><b>x</b></tt>.</p>
+<p>
+    If n&lt;=0, points are selected until the user clicks with the left button 
+    of the mouse which stands for stop. The last point (clicked with the left 
+    button) is not returned.</p>
+<p>
+    x=locate() is the same as <tt><b>x=locate(-1)</b></tt>.</p>
+<p>
+    If <tt><b>flag=1</b></tt> a cross is drawn at the points where the mouse is clicked.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S.S. &amp; J.Ph.C</p>
+</body>
+</html>

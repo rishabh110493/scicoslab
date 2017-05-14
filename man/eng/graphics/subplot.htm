@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>subplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>subplot</b> -  divide a graphics window into a matrix of sub-windows</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>subplot(m,n,p)  </tt></dd>
+<dd><tt>subplot(mnp)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>m,n,p</b></tt>: positive integers</li>
+<li>
+<tt><b>mnp</b></tt>: an integer with decimal notation <tt><b>mnp</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    subplot(m,n,p) or subplot(mnp) breaks the graphics window
+    into an m-by-n matrix of sub-windows and selects the p-th sub-window
+    for drawing  the current plot.  The number of a sub-window into the
+    matrices is counted row by row ie the sub-window corresponding to element
+    (i,j) of the matrix has number (i-1)*n + j.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+subplot(221)
+plot2d()
+subplot(222)
+plot3d()
+subplot(2,2,3)
+param3d()
+subplot(2,2,4)
+hist3d()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

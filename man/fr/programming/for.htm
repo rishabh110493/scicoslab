@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>for</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Keyword  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>for</b> -  mot clé pour les structures de boucles  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utilisé pour spécifier une boucle. La syntaxe est la suivante :
+  </p>
+<p><tt><b>for variable=expression ,instruction,   ,instruction,end</b></tt></p>
+<p><tt><b>for variable=expression do instruction,   ,instruction,end</b></tt></p>
+<p>
+    Si <tt><b>expression</b></tt> est une matrice ou un vecteur ligne, <tt><b>variable</b></tt>
+    prend successivement les valeurs de chaque colonne de la matrice.
+  </p>
+<p>
+    Un exemple utile : <tt><b>for variable=n1:pas:n2,  ...,end</b></tt></p>
+<p>
+    Si <tt><b>expression</b></tt> est une liste, <tt><b>variable</b></tt> prend comme valeurs successives les termes de la liste.
+  </p>
+<p>
+    Attention : le nombre de caractères constituant le corps d'une instruction conditionnelle (if while for ou select/case) est limité à 16k.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+n=5;
+for i = 1:n, for j = 1:n, a(i,j) = 1/(i+j-1);end;end
+for j = 2:n-1, a(j,j) = j; end; a
+for  e=eye(3,3),e,end  
+for v=a, write(6,v),end        
+for j=1:n,v=a(:,j), write(6,v),end 
+for l=list(1,2,'example'); l,end 
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/while.htm"><tt><b>while</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/end.htm"><tt><b>end</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/do.htm"><tt><b>do</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

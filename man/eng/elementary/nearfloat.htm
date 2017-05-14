@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nearfloat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nearfloat</b> -  get previous or next floating-point number</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xnear = nearfloat(dir, x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dir</b></tt>: string ("succ" or "pred")</li>
+<li>
+<tt><b>x</b></tt>: real scalar, vector or matrix</li>
+<li>
+<tt><b>xnear</b></tt>: real scalar, vector or matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes, in the element wise meaning, the corresponding neighbours 
+    of the elements of <tt><b>x</b></tt> (in the underlying floating point set, see number_properties), 
+    the successors if <tt><b>dir = "succ"</b></tt> and the predecessors if 
+    <tt><b>dir = "pred"</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+format("e",22)
+nearfloat("succ",1) - 1
+1 - nearfloat("pred",1)
+format("v") //reset default format
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/number_properties.htm"><tt><b>number_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/frexp.htm"><tt><b>frexp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>B.P.</p>
+</body>
+</html>

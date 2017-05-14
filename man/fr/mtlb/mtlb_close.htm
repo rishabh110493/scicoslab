@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_close</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_close</b> - Fonction d'émulation de la fonction Matlab close</p>
+<h3><font color="blue">Description</font></h3>
+<p>Suivant le type de la figure courante (uicontrol ou graphique), l'équivalent Scilab pour
+    la fonction Matlab <tt><b>close</b></tt> est différent :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si la figure courante est de type uicontrol : l'équivalent Scilab pour la fonction Matlab 
+	<tt><b>close</b></tt> est <tt><b>close</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si la fenêtre courante est une fenêtre graphique : l'équivalent Scilab pour la fonction Matlab 
+	<tt><b>close</b></tt> est <tt><b>xdel</b></tt> ou <tt><b>delete</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+	Dans Scilab on ne récupère pas de statut d'erreur.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_close([h])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>close([h])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_close</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>h</b></tt> est une figure de type uicontrol,
+        <tt><b>mtlb_close(h)</b></tt> peut être remplacé par <tt><b>close(h)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>h</b></tt> est une figure graphique,
+        <tt><b>mtlb_close(h)</b></tt> peut être remplacé par <tt><b>delete(h)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_close</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xdel.htm"><tt><b>xdel</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/winsid.htm"><tt><b>winsid</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/close.htm"><tt><b>close</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

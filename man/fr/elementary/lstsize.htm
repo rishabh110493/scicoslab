@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lstsize</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lstsize</b> -  nombre d'éléments des objets
+  list, tlist et mlist </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>n=lstsize(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>l  </b></tt>
+    : un object de type list, tlist ou mlist
+</li>
+<li>
+<tt><b>n </b></tt>
+    : un entier, le nombre d'éléments de la liste
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lstsize(x)</b></tt> retourne le nombre d'élément d'un objet de type list, tlist ou mlist.
+   Cette fonction est plus efficace que la fonction <tt><b>size</b></tt>
+   et à la même signification pour tous les objets de type  list
+   tandis que <tt><b>size</b></tt> est surcharge pour les objets de type <tt><b>mlist</b></tt>.
+ </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+lstsize(list(1,'aqsdf'))
+x=ssrand(3,2,4);
+[ny,nu]=size(x)
+lstsize(x)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/size.htm"><tt><b>size</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/mlist.htm"><tt><b>mlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

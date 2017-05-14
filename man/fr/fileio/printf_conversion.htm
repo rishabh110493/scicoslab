@@ -1,0 +1,143 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>printf_conversion</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Documentation</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>printf_conversion</b> -  printf, sprintf, fprintf conversion specifications</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Each conversion specification in the <tt><b>printf</b></tt> , <tt><b>sprintf</b></tt> ,
+    <tt><b>fprintf</b></tt><tt><b>format</b></tt> parameter
+    has the following syntax:
+  </p>
+<dl>
+<dd>
+<b>-</b>A % (percent) sign.</dd>
+<dd>
+<b>-</b>Zero or more <tt><b>options</b></tt>, which modify the meaning of the conversion specification. The following list contains the <tt><b>option</b></tt> characters and their meanings:</dd>
+<dd>
+<b>-</b>: Left align, within the field, the result of the conversion.</dd>
+<dd>
+<b>+</b>: Begin the result of a signed conversion with a sign (+ or -).</dd>
+<dd>
+<b>"space"</b>: Prefix a space character to the result if the first character of a signed conversion is not a sign. If both the (space) and + options appear, the (space) option is ignored.</dd>
+<dd>
+<b>#</b><p>
+    : Convert the value to an alternate form. For <tt><b>c</b></tt>,
+    <tt><b>d</b></tt>, <tt><b>i</b></tt>, <tt><b>s</b></tt>, and <tt><b>u</b></tt>
+    conversions, the <tt><b>#</b></tt> option has no effect. For
+    <tt><b>o</b></tt> conversion, <tt><b>#</b></tt> increases the precision
+    to force the first digit of the result to be a 0 (zero). For
+    <tt><b>x</b></tt> and <tt><b>X</b></tt> conversions, a nonzero result
+    has 0x or 0X prefixed to it. For <tt><b>e, E, f, g,</b></tt> and
+    <tt><b>G</b></tt> conversions, the result always contains a decimal
+    point, even if no digits follow it. For <tt><b>g</b></tt> and
+    <tt><b>G</b></tt> conversions, trailing zeros are not removed from
+    the result.
+   </p>
+</dd>
+<dd>
+<b>0</b><p>
+    : Pad to the field width, using leading zeros (following any
+    indication of sign or base) for <tt><b>d</b></tt>, <tt><b>i</b></tt>,
+    <tt><b>o</b></tt>, <tt><b>u</b></tt>, <tt><b>x</b></tt>, <tt><b>X</b></tt>,
+    <tt><b>e</b></tt>, <tt><b>E</b></tt>, <tt><b>f</b></tt>, <tt><b>g</b></tt>,
+    and <tt><b>G</b></tt> conversions; no space padding is performed. If
+    the <tt><b>0</b></tt> and <tt><b>\-</b></tt> (dash) flags both appear,
+    the <tt><b>0</b></tt> flag is ignored. For <tt><b>d</b></tt>,
+    <tt><b>i</b></tt>, <tt><b>o</b></tt><tt><b>u</b></tt>, <tt><b>x</b></tt>, and
+    <tt><b>X</b></tt> conversions, if a precision is specified, the
+    <tt><b>0</b></tt> flag is also ignored. 
+  </p>
+</dd>
+</dl>
+<p>
+    An optional decimal digit string that specifies the minimum field
+    width.
+    If the converted value has fewer characters than the field width, the
+    field is padded on the left to the length specified by the field
+    width.
+    If the left-adjustment option is specified, the field is padded on the
+    right.
+  </p>
+<p>
+    An optional precision.
+    The precision is a <tt><b>.</b></tt> (dot) followed by a decimal digit string.
+    If no precision is given, the parameter is treated as 0 (zero).
+    The precision specifies:
+  </p>
+<dl>
+<dd>
+<b>-</b>The minimum number of digits to appear for <tt><b>d</b></tt>,
+    <tt><b>u</b></tt>, <tt><b>o</b></tt>, <tt><b>x</b></tt>, or <tt><b>X</b></tt>
+    conversions</dd>
+<dd>
+<b>-</b>The number of digits to appear after the decimal point for <tt><b>e</b></tt>, <tt><b>E</b></tt>, and <tt><b>f</b></tt> conversions</dd>
+<dd>
+<b>-</b>The maximum number of significant digits for <tt><b>g</b></tt> and <tt><b>G</b></tt> conversions</dd>
+<dd>
+<b>-</b>The maximum number of characters to be printed from a string in an <tt><b>s</b></tt> conversion</dd>
+<dd>
+<b>-</b>A character that indicates the type of conversion to be applied:</dd>
+<dd>
+<b>%</b>: Performs no conversion.  Displays %.</dd>
+<dd>
+<b>d,i</b>:Accepts an integer <tt><b>value</b></tt> and converts it to signed decimal notation. The precision specifies the minimum number of digits to appear. If the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is a null string. Specifying a field width with a zero as a leading character causes the field width value to be padded with leading zeros.</dd>
+<dd>
+<b>u</b>:Accepts an integer <tt><b>value</b></tt> and converts it to unsigned decimal notation. The precision specifies the minimum number of digits to appear. If the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is a null string. Specifying a field width with a zero as the leading character causes the field width value to be padded with leading zeros.</dd>
+<dd>
+<b>o</b>:Accepts an integer <tt><b>value</b></tt> and converts it to unsigned octal notation. The precision specifies the minimum number of digits to appear. If the value being converted can be represented in fewer digits, it is expanded with leading zeros.  The default precision is 1. The result of converting a zero value with a precision of zero is a null string. Specifying a field width with a zero as the leading character causes the field width value to be padded with leading zeros. An octal value for field width is not implied.</dd>
+<dd>
+<b>x, X</b>:Accepts an integer <tt><b>value</b></tt> and converts it to unsigned hexadecimal notation. The letters ``abcdef'' are used for the <tt><b>x</b></tt> conversion; the letters ``ABCDEF'' are used for the <tt><b>X</b></tt> conversion. The precision specifies the minimum number of digits to appear. If the value being converted can be represented in fewer digits, it is expanded with leading zeros.  The default precision is 1. The result of converting a zero value with a precision of zero is a null string. Specifying a field width with a zero as the leading character causes the field width value to be padded with leading zeros.</dd>
+<dd>
+<b>f</b>: Accepts a float or double <tt><b>value</b></tt> and converts it to decimal notation in the format %[\-]<tt><b>ddd.ddd</b></tt>. The number of digits after the decimal point is equal to the precision specification.</dd>
+<dd>
+<b>-</b>If no precision is specified, six digits are output.</dd>
+<dd>
+<b>-</b>If the precision is zero, no decimal point appears and the system outputs a number rounded to the integer nearest to <tt><b>value</b></tt>.</dd>
+<dd>
+<b>-</b>If a decimal point is output, at least one digit is output before it.</dd>
+<dd>
+<b>e, E</b>:Accepts a real  and converts it to the exponential form %[\-]<tt><b>d.ddde</b></tt>+/\-<tt><b>dd</b></tt>. There is one digit before the decimal point, and the number of digits after the decimal point is equal to the precision specification.</dd>
+<dd>
+<b>-</b>If no precision is specified, , six digits are output.</dd>
+<dd>
+<b>-</b>If the precision is zero, , no decimal point appears.</dd>
+<dd>
+<b>-</b>The <tt><b>E</b></tt> conversion character  produces a number with E instead of e before the exponent. The exponent always contains at least two digits. If the value is zero, the exponent is zero.</dd>
+<dd>
+<b>g, G</b>: Accepts a real  and converts it in the style of the
+    <tt><b>e</b></tt>, <tt><b>E</b></tt>, or <tt><b>f</b></tt> conversion
+    characters, with the precision specifying the number of
+    significant digits. Trailing zeros are removed from the result. A
+    decimal point appears only if it is followed by a digit. The style
+    used depends on the value converted. Style <tt><b>e</b></tt>
+    (<tt><b>E</b></tt>, if <tt><b>G</b></tt> is the flag used) results only
+    if the exponent resulting from the conversion is less than -4, or
+    if it is greater or equal to the precision.</dd>
+<dd>
+<b>c</b>:Accepts and displays an integer value converted to a character.</dd>
+<dd>
+<b>s</b>:Accepts a string <tt><b>value</b></tt>  and displays characters from the string to the end or the number of characters indicated by the precision is reached. If no precision is specified, all characters up to the end are displayed.</dd>
+</dl>
+<p>
+    A field width or precision can be indicated by an <tt><b>*</b></tt> (asterisk)
+    instead of a digit string.
+    In this case, an integer <tt><b>value</b></tt> parameter supplies the field
+    width or precision.
+    The <tt><b>value</b></tt> parameter converted for output is not fetched until
+    the conversion letter is reached, so the parameters specifying field
+    width or precision must appear before the value to be converted (if any).</p>
+<p>
+    If the result of a conversion is wider than the field width, the field
+    is expanded to contain the converted result.</p>
+<p>
+    The representation of the plus sign depends on whether the
+    <tt><b>+</b></tt> or (space) formatting option is specified.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/printf.htm"><tt><b>printf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fprintf.htm"><tt><b>fprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/sprintf.htm"><tt><b>sprintf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

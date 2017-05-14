@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>flts</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>flts</b> -  time response (discrete time, sampled system)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[y [,x]]=flts(u,sl [,x0])  </tt></dd>
+<dd><tt>[y]=flts(u,sl [,past])    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>u</b></tt>: matrix (input vector)</li>
+<li>
+<tt><b>sl</b></tt>: list (linear system <tt><b>syslin</b></tt>)</li>
+<li>
+<tt><b>x0</b></tt>: vector (initial state ; default value=<tt><b>0</b></tt>)</li>
+<li>
+<tt><b>past</b></tt>: matrix (of the past ; default value=<tt><b>0</b></tt>)</li>
+<li>
+<tt><b>x,y</b></tt>: matrices (state and output)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    State-space form:</p>
+<p><tt><b>sl</b></tt> is a <tt><b>syslin</b></tt> list containing the matrices of the 
+    following linear system</p>
+<p><tt><b>sl=syslin('d',A,B,C,D)</b></tt> (see <tt><b>syslin</b></tt>):</p>
+<pre>
+
+  x[t+1] = A x[t] + B u[t]
+  y[t] = C x[t] + D u[t]
+   
+    </pre>
+<p>
+    or, more generally, if <tt><b>D</b></tt> is a polynomial matrix (<tt><b>p = degree(D(z))</b></tt>) :</p>
+<p>
+    Transfer form:</p>
+<p><tt><b> y=flts(u,sl[,past])</b></tt>. Here <tt><b>sl</b></tt> is a linear system in 
+    transfer matrix  representation i.e</p>
+<p><tt><b>sl=syslin('d',transfer_matrix)</b></tt> (see <tt><b>syslin</b></tt>).</p>
+<p>
+    is the matrix of past values of u and y.</p>
+<p>
+    nd is the maximum of degrees of lcm's of each row of the denominator
+    matrix of sl.</p>
+<pre>
+
+u=[u0 u1 ... un]  (input)
+y=[y0 y1 ... yn]  (output)
+   
+    </pre>
+<p>
+    p is the difference between maximum degree of numerator and 
+    maximum degree of denominator</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+sl=syslin('d',1,1,1);u=1:10;
+y=flts(u,sl); 
+plot2d2("onn",(1:size(u,'c'))',y')
+[y1,x1]=flts(u(1:5),sl);y2=flts(u(6:10),sl,x1);
+y-[y1,y2]
+
+//With polynomial D:
+z=poly(0,'z');
+D=1+z+z^2; p =degree(D);
+sl=syslin('d',1,1,1,D);
+y=flts(u,sl);[y1,x1]=flts(u(1:5),sl);
+y2=flts(u(5-p+1:10),sl,x1);  // (update)
+y-[y1,y2]
+
+//Delay (transfer form): flts(u,1/z)
+// Usual responses
+z=poly(0,'z');
+h=(1-2*z)/(z^2+0.3*z+1)
+u=zeros(1,20);u(1)=1;
+imprep=flts(u,tf2ss(h));   //Impulse response
+plot2d2("onn",(1:size(u,'c'))',imprep')
+u=ones(1,20);
+stprep=flts(u,tf2ss(h));   //Step response
+plot2d2("onn",(1:size(u,'c'))',stprep')
+//
+// Other examples
+A=[1 2 3;0 2 4;0 0 1];B=[1 0;0 0;0 1];C=eye(3,3);Sys=syslin('d',A,B,C);
+H=ss2tf(Sys); u=[1;-1]*(1:10);
+//
+yh=flts(u,H); ys=flts(u,Sys);
+norm(yh-ys,1)    
+//hot restart
+[ys1,x]=flts(u(:,1:4),Sys);ys2=flts(u(:,5:10),Sys,x);
+norm([ys1,ys2]-ys,1)
+//
+yh1=flts(u(:,1:4),H);yh2=flts(u(:,5:10),H,[u(:,2:4);yh(:,2:4)]);
+norm([yh1,yh2]-yh,1)
+//with D&lt;&gt;0
+D=[-3 8;4 -0.5;2.2 0.9];
+Sys=syslin('d',A,B,C,D);
+H=ss2tf(Sys); u=[1;-1]*(1:10);
+rh=flts(u,H); rs=flts(u,Sys);
+norm(rh-rs,1)
+//hot restart
+[ys1,x]=flts(u(:,1:4),Sys);ys2=flts(u(:,5:10),Sys,x);
+norm([ys1,ys2]-rs,1)
+//With H:
+yh1=flts(u(:,1:4),H);yh2=flts(u(:,5:10),H,[u(:,2:4); yh1(:,2:4)]);
+norm([yh1,yh2]-rh)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ltitr.htm"><tt><b>ltitr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/dsimul.htm"><tt><b>dsimul</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/rtitr.htm"><tt><b>rtitr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

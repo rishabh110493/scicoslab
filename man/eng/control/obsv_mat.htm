@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>obsv_mat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>obsv_mat</b> -  observability matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[O]=obsv_mat(A,C)  </tt></dd>
+<dd><tt>[O]=obsv_mat(sl)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,C,O</b></tt>: real matrices</li>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>obsv_mat</b></tt> returns the observability matrix:</p>
+<pre>
+
+O=[C; CA; CA^2;...; CA^(n-1) ]
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obsvss.htm"><tt><b>obsvss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obs_gram.htm"><tt><b>obs_gram</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

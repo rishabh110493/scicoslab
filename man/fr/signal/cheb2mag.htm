@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cheb2mag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cheb2mag</b> -  response of type 2 Chebyshev filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[h2]=cheb2mag(n,omegar,A,sample)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer ; filter order</li>
+<li>
+<tt><b>omegar</b></tt>: real scalar : cut-off frequency</li>
+<li>
+<tt><b>A</b></tt>: attenuation in stop band</li>
+<li>
+<tt><b>sample</b></tt>: vector of frequencies where cheb2mag is evaluated</li>
+<li>
+<tt><b>h2</b></tt>: vector of Chebyshev II filter values at sample points</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Square magnitude response of a type 2 Chebyshev filter.</p>
+<p><tt><b>omegar</b></tt> = stopband edge, <tt><b>sample</b></tt> = vector of 
+    frequencies where the square magnitude <tt><b>h2</b></tt> is desired.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Chebyshev; ripple in the stopband
+n=10;omegar=6;A=1/0.2;sample=0.0001:0.05:10;
+h2=cheb2mag(n,omegar,A,sample);
+plot(sample,log(h2)/log(10),'frequencies','magnitude in dB')
+//Plotting of frequency edges
+minval=(-maxi(-log(h2)))/log(10);
+plot2d([omegar;omegar],[minval;0],[2],"000");
+//Computation of the attenuation in dB at the stopband edge
+attenuation=-log(A*A)/log(10);
+plot2d(sample',attenuation*ones(sample)',[5],"000")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/cheb1mag.htm"><tt><b>cheb1mag</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

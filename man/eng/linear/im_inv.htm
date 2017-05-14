@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>im_inv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>im_inv</b> -  inverse image</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[X,dim]=im_inv(A,B [,tol])  </tt></dd>
+<dd><tt>[X,dim,Y]=im_inv(A,B, [,tol])   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B</b></tt>: two real or complex matrices with equal number of columns</li>
+<li>
+<tt><b>X</b></tt>: orthogonal or unitary square matrix of order equal to the  number of columns of <tt><b>A</b></tt>
+</li>
+<li>
+<tt><b>dim</b></tt>: integer (dimension of subspace)</li>
+<li>
+<tt><b>Y</b></tt>: orthogonal matrix of order equal to the number of rows  of <tt><b>A</b></tt> and <tt><b>B</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[X,dim]=im_inv(A,B)</b></tt> computes <tt><b>(A^-1)(B)</b></tt>
+     i.e vectors whose image through <tt><b>A</b></tt> are in
+     range(<tt><b>B</b></tt>)</p>
+<p>
+    The <tt><b>dim</b></tt> first columns of <tt><b>X</b></tt> span
+    <tt><b>(A^-1)(B)</b></tt></p>
+<p><tt><b>tol</b></tt> is a threshold used to test if subspace inclusion;
+    default value is <tt><b>tol = 100*%eps</b></tt>.
+    If <tt><b>Y</b></tt> is returned, then <tt><b>[Y*A*X,Y*B]</b></tt> is partitioned as follows:
+  <tt><b>[A11,A12;0,A22]</b></tt>,<tt><b>[B1;0]</b></tt></p>
+<p>
+    where <tt><b>B1</b></tt> has full row rank (equals
+    <tt><b>rank(B)</b></tt>) and <tt><b>A22</b></tt> has full column rank
+    and has <tt><b>dim</b></tt> columns.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[rand(2,5);[zeros(3,4),rand(3,1)]];B=[[1,1;1,1];zeros(3,2)];
+W=rand(5,5);A=W*A;B=W*B;
+[X,dim]=im_inv(A,B)
+svd([A*X(:,1:dim),B])   //vectors A*X(:,1:dim) belong to range(B)
+[X,dim,Y]=im_inv(A,B);[Y*A*X,Y*B]
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spaninter.htm"><tt><b>spaninter</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spanplus.htm"><tt><b>spanplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/linsolve.htm"><tt><b>linsolve</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque INRIA</p>
+</body>
+</html>

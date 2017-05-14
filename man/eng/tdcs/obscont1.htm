@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>obscont1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>obscont1</b> -  a controlled-observed system</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[macr]=obscont1(sysn)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sysn</b></tt>: A Scilab string which gives the name of the controlled system.</li>
+<li>
+<tt><b>gaincom,gainobs</b></tt>: column vectors giving the requested gains</li>
+<li>
+<tt><b>macr</b></tt>: a new Scilab function which simulates the controlled observed system.<pre>
+
+[x1dot]=macr(t,x1,abruit,pas,n)
+x1=[x;xchap],
+   
+          </pre>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This macros return a new function which computes the controlled observed 
+    version of a linearised system around the <tt><b>(xe,ue)</b></tt> point.</p>
+<p>
+    before calling this function, a noise vector <tt><b>br</b></tt> should be created.
+    the equilibrium point <tt><b>(xe,ue)</b></tt> should be given as a global Scilab.
+     the linearised system $f,g,h$ and the two  gain matrices <tt><b>l,k</b></tt> are 
+    returned as global Scilab data.</p>
+</body>
+</html>

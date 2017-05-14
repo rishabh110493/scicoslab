@@ -1,0 +1,269 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Graphics</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>Graphics</b> -  graphics library overview</p>
+<h3><font color="blue">2d plotting</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">plot2d</font></b>: plot a curve</li>
+<li>
+<b><font color="maroon">plot2d2</font></b>: plot a curve as step function</li>
+<li>
+<b><font color="maroon">plot2d3</font></b>: plot a curve with vertical bars</li>
+<li>
+<b><font color="maroon">plot2d4</font></b>: plot a curve with arrows</li>
+<li>
+<b><font color="maroon">fplot2d</font></b>: plot a curve defined by a function</li>
+<li>
+<b><font color="maroon">champ</font></b>: 2D vector field</li>
+<li>
+<b><font color="maroon">champ1</font></b>: 2D vector field with colored arrows</li>
+<li>
+<b><font color="maroon">fchamp</font></b>: direction field of a 2D first order ODE</li>
+<li>
+<b><font color="maroon">contour2d</font></b>: level curves of a surface on a 2D plot</li>
+<li>
+<b><font color="maroon">fcontour2d</font></b>: level curves of a surface defined by a function on a 2D plot</li>
+<li>
+<b><font color="maroon">grayplot</font></b>: 2D plot of a surface using colors</li>
+<li>
+<b><font color="maroon">fgrayplot</font></b>: 2D plot of a surface defined by a function using colors</li>
+<li>
+<b><font color="maroon">Sgrayplot</font></b>: smooth 2D plot of a surface using colors</li>
+<li>
+<b><font color="maroon">Sfgrayplot</font></b>: smooth 2D plot of a surface defined by a function using colors</li>
+<li>
+<b><font color="maroon">xgrid</font></b>: add a grid on a 2D plot</li>
+<li>
+<b><font color="maroon">errbar</font></b>: add vertical error bars on a 2D plot</li>
+<li>
+<b><font color="maroon">histplot</font></b>: plot a histogram</li>
+<li>
+<b><font color="maroon">Matplot</font></b>: 2D plot of a matrix using colors</li>
+</dd></dl>
+<h3><font color="blue">3d plotting</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">plot3d</font></b>: plot a surface</li>
+<li>
+<b><font color="maroon">plot3d1</font></b>: plot a surface with gray or color level</li>
+<li>
+<b><font color="maroon">fplot3d</font></b>: plot a surface defined by a function</li>
+<li>
+<b><font color="maroon">fplot3d1</font></b>: plot a surface defined by a function with gray or color level</li>
+<li>
+<b><font color="maroon">param3d</font></b>: plot one curve</li>
+<li>
+<b><font color="maroon">param3d1</font></b>: plots curves</li>
+<li>
+<b><font color="maroon">contour</font></b>: level curves on a 3D surface</li>
+<li>
+<b><font color="maroon">fcontour</font></b>: level curves on a 3D surface defined by a function</li>
+<li>
+<b><font color="maroon">hist3d</font></b>: 3D representation of a histogram</li>
+<li>
+<b><font color="maroon">genfac3d</font></b>: compute facets of a 3D surface</li>
+<li>
+<b><font color="maroon">eval3dp</font></b>: compute facets of a 3D surface</li>
+<li>
+<b><font color="maroon">geom3d</font></b>: projection from 3D on 2D after a 3D plot</li>
+</dd></dl>
+<h3><font color="blue">Line and polygon plotting</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xpoly</font></b>: draw a polyline or a polygon</li>
+<li>
+<b><font color="maroon">xpolys</font></b>: draw a set of polylines or polygons</li>
+<li>
+<b><font color="maroon">xrpoly</font></b>: draw a regular polygon</li>
+<li>
+<b><font color="maroon">xsegs</font></b>: draw unconnected segments</li>
+<li>
+<b><font color="maroon">xfpoly</font></b>: fill a polygon</li>
+<li>
+<b><font color="maroon">xfpolys</font></b>: fill a set of polygons</li>
+</dd></dl>
+<h3><font color="blue">Rectangle plotting</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xrect</font></b>: draw a rectangle</li>
+<li>
+<b><font color="maroon">xfrect</font></b>: fill a rectangle</li>
+<li>
+<b><font color="maroon">xrects</font></b>: draw or fill a set of rectangles</li>
+</dd></dl>
+<h3><font color="blue">Arc plotting</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xarc</font></b>: draw a part of an ellipse</li>
+<li>
+<b><font color="maroon">xarcs</font></b>: draw parts of a set of ellipses</li>
+<li>
+<b><font color="maroon">xfarc</font></b>: fill a part of an ellipse</li>
+<li>
+<b><font color="maroon">xfarcs</font></b>: fill parts of a set of ellipses</li>
+</dd></dl>
+<h3><font color="blue">Arrow plotting</font></h3>
+<dl><dd><li>
+<b><font color="maroon">xarrows</font></b>: draw a set of arrows</li></dd></dl>
+<h3><font color="blue">Strings</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xstring</font></b>: draw strings</li>
+<li>
+<b><font color="maroon">xstringl</font></b>: compute a box which surrounds strings</li>
+<li>
+<b><font color="maroon">xstringb</font></b>: draw strings into a box</li>
+<li>
+<b><font color="maroon">xtitle</font></b>: add titles on a graphics window</li>
+<li>
+<b><font color="maroon">titlepage</font></b>: add a title in the middle of a graphics window</li>
+<li>
+<b><font color="maroon">xinfo</font></b>: draw an info string in the message subwindow</li>
+</dd></dl>
+<h3><font color="blue">Frames and axes</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xaxis</font></b>: draw an axis</li>
+<li>
+<b><font color="maroon">graduate</font></b>: pretty axis graduations</li>
+<li>
+<b><font color="maroon">plotframe</font></b>: plot a frame with scaling and grids</li>
+</dd></dl>
+<h3><font color="blue">Coordinates transformations</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">isoview</font></b>: set scales for isometric plot (do not change the size of the window)</li>
+<li>
+<b><font color="maroon">square</font></b>: set scales for isometric plot (change the size of the window)</li>
+<li>
+<b><font color="maroon">scaling</font></b>: affine transformation of a set of points</li>
+<li>
+<b><font color="maroon">rotate</font></b>: rotation of a set of points</li>
+<li>
+<b><font color="maroon">xsetech</font></b>: set the sub-window of a graphics window for plotting</li>
+<li>
+<b><font color="maroon">subplot</font></b>: divide a graphics window into a matrix of sub-windows</li>
+<li>
+<b><font color="maroon">xgetech</font></b>: get the current graphics scale</li>
+<li>
+<b><font color="maroon">xchange</font></b>: transform real to pixel coordinates</li>
+</dd></dl>
+<h3><font color="blue">Colors</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">colormap</font></b>: using colormaps</li>
+<li>
+<b><font color="maroon">getcolor</font></b>: dialog to select colors in the current colormap</li>
+<li>
+<b><font color="maroon">addcolor</font></b>: add new colors to the current colormap</li>
+<li>
+<b><font color="maroon">graycolormap</font></b>: linear gray colormap</li>
+<li>
+<b><font color="maroon">hotcolormap</font></b>: red to yellow colormap</li>
+</dd></dl>
+<h3><font color="blue">Graphics context</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xset</font></b>: set values of the graphics context</li>
+<li>
+<b><font color="maroon">xget</font></b>: get current values of the graphics context</li>
+<li>
+<b><font color="maroon">xlfont</font></b>: load a font in the graphics context or query loaded font</li>
+<li>
+<b><font color="maroon">getsymbol</font></b>: dialog to select a symbol and its size</li>
+</dd></dl>
+<h3><font color="blue">Save and load</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xsave</font></b>: save graphics into a file</li>
+<li>
+<b><font color="maroon">xload</font></b>: load a saved graphics</li>
+<li>
+<b><font color="maroon">xbasimp</font></b>: send graphics to a Postscript printer or in a file</li>
+<li>
+<b><font color="maroon">xs2fig</font></b>: send graphics to a file in Xfig syntax</li>
+<li>
+<b><font color="maroon">xs2gif</font></b>: send graphics to a file in Gif syntax</li>
+<li>
+<b><font color="maroon">xs2ppm</font></b>: send graphics to a file in PPM syntax</li>
+</dd></dl>
+<h3><font color="blue">Graphics primitives</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xbasc</font></b>: clear a graphics window and erase the associated recorded graphics</li>
+<li>
+<b><font color="maroon">xclear</font></b>: clear a graphics window</li>
+<li>
+<b><font color="maroon">driver</font></b>: select a graphics driver</li>
+<li>
+<b><font color="maroon">xinit</font></b>: initialisation of a graphics driver</li>
+<li>
+<b><font color="maroon">xend</font></b>: close a graphics session</li>
+<li>
+<b><font color="maroon">xbasr</font></b>: redraw a graphics window</li>
+<li>
+<b><font color="maroon">replot</font></b>: redraw the current graphics window with new boundaries</li>
+<li>
+<b><font color="maroon">xpause</font></b>: suspend Scilab</li>
+<li>
+<b><font color="maroon">xselect</font></b>: raise the current graphics window</li>
+<li>
+<b><font color="maroon">xclea</font></b>: erase a rectangle</li>
+<li>
+<b><font color="maroon">xclip</font></b>: set a clipping zone</li>
+<li>
+<b><font color="maroon">xdel</font></b>: delete a graphics window</li>
+<li>
+<b><font color="maroon">winsid</font></b>: return the list of graphics windows</li>
+<li>
+<b><font color="maroon">xname</font></b>: change the name of the current graphics window</li>
+</dd></dl>
+<h3><font color="blue">Mouse position</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">xclick</font></b>: wait for a mouse click</li>
+<li>
+<b><font color="maroon">locate</font></b>: mouse selection of a set of points</li>
+<li>
+<b><font color="maroon">xgetmouse</font></b>: get the current position of the mouse</li>
+</dd></dl>
+<h3><font color="blue">Interactive editor</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">edit_curv</font></b>: interactive graphics curve editor</li>
+<li>
+<b><font color="maroon">gr_menu</font></b>: simple interactives graphic editor</li>
+<li>
+<b><font color="maroon">sd2sci</font></b>: gr_menu structure to scilab instruction convertor</li>
+</dd></dl>
+<h3><font color="blue">Graphics functions for automatic control</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">bode</font></b>: Bode plot</li>
+<li>
+<b><font color="maroon">gainplot</font></b>: magnitude plot</li>
+<li>
+<b><font color="maroon">nyquist</font></b>: Nyquist plot</li>
+<li>
+<b><font color="maroon">m_circle</font></b>: M-circle plot</li>
+<li>
+<b><font color="maroon">chart</font></b>: Nichols chart</li>
+<li>
+<b><font color="maroon">black</font></b>: Black's diagram</li>
+<li>
+<b><font color="maroon">evans</font></b>: Evans root locus</li>
+<li>
+<b><font color="maroon">sgrid</font></b>: s-plane grid lines</li>
+<li>
+<b><font color="maroon">plzr</font></b>: pole-zero plot</li>
+<li>
+<b><font color="maroon">zgrid</font></b>: zgrid plot</li>
+</dd></dl>
+</body>
+</html>

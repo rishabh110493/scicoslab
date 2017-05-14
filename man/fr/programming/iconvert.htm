@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>iconvert </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>iconvert </b> -  conversion au codage entier à 1,2 ou 4 octets  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=iconvert(X,itype)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X  </b></tt>
+    : matrice de flottants ou d'entiers
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : matrice d'entiers codés sur 1,2 ou 4 octets.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Convertit et stocke sous forme d'entiers à 1,2 ou 4 octets.
+  </p>
+<dl>
+<dd>
+<b>itype=0</b>
+    : renvoie des nombres à virgule flottante
+</dd>
+<dd>
+<b>itype=1</b>
+    : renvoie et stocke dans y des entiers int8 dans l'intervalle [-128,127] 
+</dd>
+<dd>
+<b>itype=11</b>
+    : renvoie et stocke dans y des entiers uint8 dans l'intervalle [0,255] 
+</dd>
+<dd>
+<b>itype=2</b>
+    : renvoie et stocke dans y des entiers int16 dans l'intervalle [-32768,32767] 
+</dd>
+<dd>
+<b>itype=12</b>
+    : renvoie et stocke dans y des entiers uint16 dans l'intervalle [0, 65535] 
+</dd>
+<dd>
+<b>itype=4</b>
+    : renvoie et stocke dans y des entiers int32 dans
+	l'intervalle[-2147483648,2147483647] 
+</dd>
+<dd>
+<b>itype=14</b>
+ : renvoie et stocke dans y des entiers uint32 dans l'intervalle [0, 4294967295] 
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+b=int32([1 -120 127 312])
+y=iconvert(b,1)
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/double.htm"><tt><b>double</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/inttype.htm"><tt><b>inttype</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

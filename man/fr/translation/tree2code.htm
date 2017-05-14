@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tree2code</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tree2code</b> -  genère le code ASCII d'une fonction Scilab</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=tree2code(tree,prettyprint)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>tree</b></tt>: arbre représentant une macro (retourné par macr2tree)</li>
+<li>
+<tt><b>prettyprint</b></tt>: booléen optionel<ul>
+<li>
+<tt><b>%T</b></tt>: le code généré est indenté et réarrangé</li>
+<li>
+<tt><b>%F</b></tt>: le code est inchangé (valeur par défaut)</li>
+</ul>
+</li>
+<li>
+<tt><b>txt</b></tt>: vecteur colonne de chaînes de caractère, texte contenant les instructions Scilab</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A partir de l'arbre (retourné par macr2tree) d'une fonction Scilab chargée en mémoire,
+    tree2code permet de regénérer le code de la fonction.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+tree=macr2tree(cosh);
+txt=tree2code(tree,%T);
+write(%io(2),txt,'(a)');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/macr2tree.htm"><tt><b>macr2tree</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

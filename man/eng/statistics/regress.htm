@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>regress</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>regress</b> -  regression coefficients of two variables</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>coefs=regress(x,y)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,y</b></tt>: real or complex vector</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function  computes the regresion  coefficients of two
+    variables <tt><b>x</b></tt>  and <tt><b>y</b></tt>, both  numerical vectors of
+    same number  of elements  <tt><b>n</b></tt>. <tt><b>coefs=[a b]</b></tt>  be a
+    1x2 matrix such that  <tt><b>Y=a+bX</b></tt> will be the equation of
+    the ordinary least square approximation to our data.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, J.Wiley &amp; Sons, 1990.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.5608486 0.6623569 0.7263507 0.1985144 0.5442573 0.2320748 0.2312237]
+y=[0.3616361 0.2922267 0.5664249 0.4826472 0.3321719 0.5935095 0.5015342]
+coefs=regress(x,y)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/covar.htm"><tt><b>covar</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

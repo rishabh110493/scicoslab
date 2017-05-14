@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fileinfo</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fileinfo</b> -  Provides information about a file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,ierr]=fileinfo(file)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file</b></tt>: a character string, the file pathname</li>
+<li>
+<tt><b>x</b></tt>: an integer vector of size 6 containing information or an empty matrix if file does not exist.</li>
+<li>
+<tt><b>ierr</b></tt>: error indicator, 0, if no error has occured</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    x=fileinfo(file) returns
+  </p>
+<dl>
+<dd>
+<b>x(1)</b>: The file size</dd>
+<dd>
+<b>x(2)</b>: The file mode</dd>
+<dd>
+<b>x(3)</b>: The user id</dd>
+<dd>
+<b>x(4)</b>: the group id</dd>
+<dd>
+<b>x(5)</b>: The device number</dd>
+<dd>
+<b>x(6)</b>: The date of last modification</dd>
+<dd>
+<b>x(7)</b>: The date of last change</dd>
+<dd>
+<b>x(8)</b>: The date of last access</dd>
+<dd>
+<b>x(9)</b>: The device type (if inode device)</dd>
+<dd>
+<b>x(10)</b>: The blocksize for filesystem I/O</dd>
+<dd>
+<b>x(11)</b>: The  number of blocks allocated</dd>
+<dd>
+<b>x(12)</b>: The inode</dd>
+<dd>
+<b>x(13)</b>: The number of hard links</dd>
+</dl>
+<h3><font color="blue">Reference</font></h3>
+<dl><p>
+    This function is an interface to the C function stat.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+w=fileinfo(SCI+'/scilab.star')
+getdate(w(6))
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/getdate.htm"><tt><b>getdate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/dispfiles.htm"><tt><b>dispfiles</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/newest.htm"><tt><b>newest</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/isdir.htm"><tt><b>isdir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer INRIA</p>
+</body>
+</html>

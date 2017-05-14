@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xs2eps</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xs2eps</b> - save graphics to a Postscript file.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xs2eps(win_num,filen [,colored] [,orientation])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>win_num</b></tt>: integer scalar or vector .</li>
+<li>
+<tt><b>filen</b></tt>: string, file name.</li>
+<li>
+<tt><b>colored</b></tt>: optional integer or boolean. 0 (%f) means black and white and 1
+	    (%t) means color.
+          The default value (-1) is to use a value compatible with the screen
+          status.</li>
+<li>
+<tt><b>orientation</b></tt>: optional character, with possible values 'p' (portrait) or 'l' (landscape).
+          The default value  is 'p'.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xs2eps</b></tt> saves the recorded graphics of the window
+    <tt><b>win_num</b></tt> to file <tt><b>filen</b></tt> in Postscript syntax. 
+    Note that <tt><b>filen</b></tt> must not have extension.</p>
+<p><tt><b>xs2eps</b></tt> produces a complete encapsulated Postscrip file. 
+    It simply  calls <tt><b>xs2eps</b></tt> and then <tt><b>BEpsf</b></tt>.</p>
+<p>This function works only if the selected driver is <tt><b>"Rec"</b></tt>
+    in the window <tt><b>win_num</b></tt> or if the window is in "new style". The
+    generated postscript file does not contrains the header part</p>
+<h3><font color="blue">Examples</font></h3>
+<pre> 
+    scf(0)
+    plot2d()
+    // Postscript export
+    filename='foo'; // ! no extension
+    xs2eps(0,filename)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set_posfig_dim.htm"><tt><b>set_posfig_dim</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/printing.htm"><tt><b>printing</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ps.htm"><tt><b>xs2ps</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2fig.htm"><tt><b>xs2fig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2gif.htm"><tt><b>xs2gif</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xs2ppm.htm"><tt><b>xs2ppm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

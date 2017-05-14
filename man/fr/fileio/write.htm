@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>write</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>write</b> -   write in a formatted file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>write(file-desc,a,[format])  </tt></dd>
+<dd><tt>write(file-desc,a,k,format)    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-desc</b></tt>: character string specifying the file name or integer value specifying logical unit (see file).</li>
+<li>
+<tt><b>a</b></tt>: real matrix or column vector of character strings.</li>
+<li>
+<tt><b>format</b></tt>: character string, specifies a "Fortran" format. This character string must begin with a right parenthesis and end with a left parenthesis. Formats cannot mix floating point , integer or character edition modes</li>
+<li>
+<tt><b>k</b></tt>: integer vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    writes row-by-row a real matrix or a column vector of character
+    strings in a formatted file.  Each row of the <tt><b>a</b></tt> argument begin
+    in a new line of <tt><b>file-desc</b></tt> file. Depending on <tt><b>format</b></tt> a
+    given row of the <tt><b>a</b></tt> argument may be written in more than one line
+    of <tt><b>file-desc</b></tt> file.</p>
+<p>
+    Format examples : <tt><b>(1x,e10.3,5x,3(f3.0))</b></tt>  ,  <tt><b>(10x,a20)</b></tt> ;</p>
+<p>
+    See a Fortran book for more precision.</p>
+<p>
+    Direct access files :
+    <tt><b>x=write(file_desc,a,k,format)</b></tt>.
+    Here <tt><b>k</b></tt> is the vector of records (one record by row, i.e. 
+    <tt><b>m=prod(size(k)</b></tt>)</p>
+<p><tt><b>write(%io(2),....)</b></tt> writes on Scilab's
+    window. Note that in this case <tt><b>format</b></tt> should produce
+    one output line per matrix row. If this contraint is not verified
+    unpredictable behavior could happen.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+if MSDOS then unix('del asave');
+else unix('rm -f asave'); end
+A=rand(5,3); write('asave',A); A=read('asave',5,3);
+write(%io(2),A,'('' | '',3(f10.3,'' | ''))')
+write(%io(2),string(1:10))
+write(%io(2),strcat(string(1:10),','))
+write(%io(2),1:10,'(10(i2,3x))')
+
+if MSDOS then unix('del foo');
+else unix('rm -f foo'); end
+write('foo',A)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/writb.htm"><tt><b>writb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/print.htm"><tt><b>print</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>msprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>companion</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>companion</b> -  companion matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>A=companion(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p</b></tt>: polynomial or vector of polynomials</li>
+<li>
+<tt><b>A</b></tt>: square matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns a matrix <tt><b>A</b></tt> with characteristic polynomial equal
+    to <tt><b>p</b></tt> if <tt><b>p</b></tt> is monic. If <tt><b>p</b></tt> is not monic
+    the characteristic polynomial of <tt><b>A</b></tt> is equal to
+    <tt><b>p/c</b></tt> where <tt><b>c</b></tt> is the coefficient of largest degree
+    in <tt><b>p</b></tt>.</p>
+<p>
+    If <tt><b>p</b></tt> is a vector of monic polynomials, <tt><b>A</b></tt> is block diagonal,
+    and the characteristic polynomial of the ith block is <tt><b>p(i)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+p=poly([1,2,3,4,1],'s','c')
+det(s*eye()-companion(p))
+roots(p)
+spec(companion(p))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/randpencil.htm"><tt><b>randpencil</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

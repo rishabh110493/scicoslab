@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plotframe</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plotframe</b> - dessine un cadre avec graduations et
+  définition de l'échelle</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plotframe(rect,tics,[arg_opt1,arg_opt2,arg_opt3])</tt></dd>
+<dd><tt>plotframe(rect,&lt;opts_args&gt;)
+    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: vecteur du type <tt><b>[xmin,ymin,xmax,ymax]</b></tt>.</li>
+<li>
+<tt><b>tics</b></tt>: vecteur du type <tt><b>[nx,mx,ny,my]</b></tt> où <tt><b>mx,
+          nx</b></tt> (resp. <tt><b>my, ny</b></tt>) sont le nombre d'intervalles
+          et de sous-intervalle pour les graduations de l'axe Ox (resp.
+          Oy).</li>
+<li>
+<tt><b>arg_optX</b></tt>: arguments optionnels choisi parmi :<ul>
+<li>
+<tt><b>flags</b></tt>: vecteur booléen <tt><b>[wantgrids,findbounds]</b></tt>
+                (<tt><b>%t</b></tt> ou <tt><b>%f</b></tt>) indiquant si l'on désire
+                une grille. Si <tt><b>findbounds</b></tt> vaut <tt><b>%t</b></tt>,
+                les bornes données dans <tt><b>rect</b></tt> sont éventuellement
+                modifiées (en fait légèrement augmentées) pour simplifier les
+                graduations : dans ce cas <tt><b>tics(2)</b></tt> et
+                <tt><b>tics(4)</b></tt> sont ignorés.</li>
+<li>
+<tt><b>captions</b></tt>: vecteur de 3 chaînes de caractères
+                <tt><b>[title,x-leg,y-leg]</b></tt> correspondant au titre du
+                dessin et aux légendes des axes x et y.</li>
+<li>
+<tt><b>subwin</b></tt>: vecteur de taille 4 définissant la sous-fenêtre. La
+                sous-fenêtre est spécifiée avec le paramètre
+                <tt><b>subwin=[x,y,w,h]</b></tt> (point en haut à  gauche,
+                largeur, hauteur). Les valeurs dans <tt><b>subwin</b></tt> sont
+                spécifiées sous la forme d'une proportion de la largeur ou de
+                la hauteur de la fenêtre graphique courante (voir
+                <tt><b>xsetech</b></tt>).</li>
+</ul>
+</li>
+<li>
+<tt><b>&lt;opts_args&gt;</b></tt>: Représente une séquence de la forme <b>clé1=valeur1</b>,
+          <b>clé2=valeur2</b>,... where <b>clé1</b>, <b>clé2</b>,...
+          peuvent être n'importe quel paramètres parmis: <b>tics</b>,
+          <b>flags</b>, <b>captions</b> ou <b>subwin</b>. Ces arguments
+          ont la même signification que ceux utilisés dans la première forme
+          de la routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lotframe</b></tt> est utilisée avec les fonctions de dessin 2D
+    <tt><b>plot2d</b></tt>,... pour dessiner le cadre. Elle doit être utilisée
+    avant <tt><b>plot2d</b></tt> qui doit être ensuite appelée avec le mode de
+    superposition "000".</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    x=[-0.3:0.8:27.3]';
+    y=rand(x);
+    rect=[min(x),min(y),max(x),max(y)];
+    tics=[4,10,2,5];    // 4 x-intervalles et 2 y-intervalles
+    plotframe(rect,tics,[%f,%f],["My plot","x","y"],[0,0,0.5,0.5])
+    plot2d(x,y,2,"000")
+    plotframe(rect,tics,[%t,%f],["My plot avec grille","x","y"],[0.5,0,0.5,0.5])
+    plot2d(x,y,3,"000")
+    plotframe(rect,tics,[%t,%t],..
+    ["plot avec grille et bornes automatiques","x","y"],[0,0.5,0.5,0.5])
+    plot2d(x,y,4,"000")
+    plotframe(rect,flags=[%f,%t],tics=tics,..
+       captions=["plot sans grille mais avec bornes automatiques ","x","y"],..
+       subwin=[0.5,0.5,0.5,0.5])
+    plot2d(x,y,5,"000")
+    xset("default")
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graduate.htm"><tt><b>graduate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>equil1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>equil1</b> -  balancing (nonnegative) pair of matrices</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[T [,siz]]=equil1(P,Q [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P, Q</b></tt>: two non-negative symmetric matrices</li>
+<li>
+<tt><b>T</b></tt>: nonsingular matrix</li>
+<li>
+<tt><b>siz</b></tt>: vector of three integers</li>
+<li>
+<tt><b>tol</b></tt>: threshold</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>equil1</b></tt> computes <tt><b>t</b></tt> such that:</p>
+<p><tt><b>P1=T*P*T'</b></tt>  and <tt><b>Q1=inv(T)'*Q*inv(T)</b></tt> are as follows:</p>
+<p><tt><b>P1 = diag(S1,S2,0,0)</b></tt>  and <tt><b>Q1 = diag(S1,0,S3,0)</b></tt> with
+    <tt><b>S1,S2,S3</b></tt> positive and diagonal matrices with respective 
+    dimensions <tt><b>siz=[n1,n2,n3]</b></tt></p>
+<p><tt><b>tol</b></tt> is a threshold for rank determination in SVD</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+S1=rand(2,2);S1=S1*S1';
+S2=rand(2,2);S2=S2*S2';
+S3=rand(2,2);S3=S3*S3';
+P=sysdiag(S1,S2,zeros(4,4));
+Q=sysdiag(S1,zeros(2,2),S3,zeros(2,2));
+X=rand(8,8);
+P=X*P*X';Q=inv(X)'*Q*inv(X);
+[T,siz]=equil1(P,Q);
+P1=clean(T*P*T')
+Q1=clean(inv(T)'*Q*inv(T))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/balreal.htm"><tt><b>balreal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/minreal.htm"><tt><b>minreal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil.htm"><tt><b>equil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/hankelsv.htm"><tt><b>hankelsv</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer 1987</p>
+</body>
+</html>

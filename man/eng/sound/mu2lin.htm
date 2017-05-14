@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mu2lin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mu2lin</b> -  mu-law encoding to linear signal</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>mu=lin2mu(y)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: real vector</li>
+<li>
+<tt><b>mu</b></tt>: real vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility fct: <tt><b>y=mu2lin(mu)</b></tt> converts mu-law encoded 8-bit audio signals,
+    stored in the range 0 &lt;= mu &lt;= 255, to linear signal amplitude in 
+    the range -s &lt; y &lt; s where s = 32124/32768 ~= .9803.  
+    The input mu is often obtained using mget(...,'uc') to read 
+    byte-encoded audio files.   Translation of C program by Craig Reese: 
+    IDA/Supercomputing Research Center Joe Campbell: Department of Defense</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/mu2lin.htm"><tt><b>mu2lin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

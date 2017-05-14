@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ones</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ones</b> -  matrix made of ones</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=ones(m1,m2,...)  </tt></dd>
+<dd><tt>y=ones(x)  </tt></dd>
+<dd><tt>y=ones()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: matrices</li>
+<li>
+<tt><b>m1, m2,..  </b></tt>: integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns a matrix made of ones.
+  </p>
+<dl>
+<dd>
+<b>ones(m1,m2)</b>returns a <tt><b>(m1,m2)</b></tt> matrix full of ones.</dd>
+<dd>
+<b>ones(m1,m2,..,mn)</b>: creates a <tt><b>(m1,m2,..,mn)</b></tt> matrix full of ones.</dd>
+<dd>
+<b>ones(x)</b>returns a matrix full of ones with the same size that <tt><b>x</b></tt>.</dd>
+<dd>
+<b>ones(x)</b>is also valid for <tt><b>x</b></tt> a <tt><b>syslin</b></tt> list.</dd>
+</dl>
+<p>
+    Note that <tt><b>ones(3)</b></tt> is <tt><b>ones(a)</b></tt> with <tt><b>a=3</b></tt> i.e it is NOT 
+    a 3x3 matrix!</p>
+<p>
+    ones() is eqivalent to ones(1,1).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ones(3)
+ones(3,3)
+ones(2,3,2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/zeros.htm"><tt><b>zeros</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

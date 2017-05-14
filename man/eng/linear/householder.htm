@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>householder</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>householder</b> -  Householder orthogonal reflexion matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>u=householder(v [,w])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v</b></tt>: real or complex column vector</li>
+<li>
+<tt><b>w</b></tt>: real or complex column vector with same size as <tt><b>v</b></tt>. Default value is <tt><b>eye(v)</b></tt>
+</li>
+<li>
+<tt><b>u</b></tt>: real or complex column vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    given 2 column vectors <tt><b>v</b></tt>, <tt><b> w</b></tt> of same size, <tt><b>householder(v,w)</b></tt> returns a unitary 
+    column vector <tt><b>u</b></tt>, such that <tt><b> (eye()-2*u*u')*v</b></tt> is proportional to <tt><b>w</b></tt>.
+    <tt><b>(eye()-2*u*u')</b></tt> is the orthogonal Householder reflexion matrix .</p>
+<p><tt><b>w</b></tt> default value is <tt><b> eye(v)</b></tt>. In this case vector <tt><b> (eye()-2*u*u')*v</b></tt> is the 
+    vector  <tt><b> eye(v)*norm(v)</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/givens.htm"><tt><b>givens</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

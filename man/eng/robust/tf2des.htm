@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tf2des</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tf2des</b> -  transfer function to descriptor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>S=tf2des(G)  </tt></dd>
+<dd><tt>S=tf2des(G,flag)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: linear system (<tt><b>syslin</b></tt> list) with possibly polynomial <tt><b>D</b></tt> matrix</li>
+<li>
+<tt><b>flag</b></tt>: character string <tt><b>"withD"</b></tt>
+</li>
+<li>
+<tt><b>S</b></tt>: list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Transfer function to descriptor form: <tt><b>S=list('d',A,B,C,D,E)</b></tt></p>
+<pre>
+
+  E*xdot = A*x+B*u
+  y = C*x + D*u
+   
+    </pre>
+<p>
+    Note that <tt><b>D=0</b></tt> if the optional parameter flag=<tt><b>"withD"</b></tt> is not
+    given. Otherwise a maximal rank <tt><b>D</b></tt> matrix is returned in the fifth
+    entry of the list <tt><b>S</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+G=[1/(s-1),s;1,2/s^3];
+S1=tf2des(G);des2tf(S1)
+S2=tf2des(G,"withD");des2tf(S2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/pol2des.htm"><tt><b>pol2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2des.htm"><tt><b>ss2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/des2tf.htm"><tt><b>des2tf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

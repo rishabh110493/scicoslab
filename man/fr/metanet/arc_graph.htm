@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>arc_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arc_graph</b> -  graphe avec sommets correspondant aux arcs  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g1 = arc_graph(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : ancien graphe (liste)
+</li>
+<li>
+<tt><b>g1  </b></tt>
+    : nouveau graphe (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>arc_graph</b></tt> renvoie le graphe orienté <tt><b>g1</b></tt> avec les sommets 
+    correspondant aux arcs du graphe orienté <tt><b>g</b></tt>.
+    <tt><b>g1</b></tt> est défini de la façon suivante :
+  </p>
+<p>
+    - ses sommets correspondent aux arcs de <tt><b>g</b></tt></p>
+<p>
+    - 2 sommets du nouveau graphe sont adjacents si et seulement si les arcs correspondants du graphe <tt><b>g</b></tt> sont consécutifs.
+  </p>
+<p>
+    Les coordonnées des sommets de <tt><b>g1</b></tt> sont données par les milieux des 
+    arêtes correspondantes de <tt><b>g</b></tt>.
+  </p>
+<p>
+    Si un tel graphe d'arcs n'existe pas, un vecteur vide est renvoyé
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 4 4 5 6 7 2 3 5 1];
+he=[2 6 3 6 7 8 8 8 4 7 3 5];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[281  284  360  185  405  182  118  45];
+g('node_y')=[262  179  130  154  368  248  64  309];
+show_graph(g);
+g1=arc_graph(g);
+show_graph(g1,'new');
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/line_graph.htm"><tt><b>line_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

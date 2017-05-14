@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>profile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>profile</b> -  extract execution profiles of a Scilab function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>c=profile(fun)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: a Scilab function</li>
+<li>
+<tt><b>c</b></tt>: a nx3 matrix containig the execution profiles</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    To use <tt><b>profile</b></tt> the Scilab function must have been prepared for
+    profiling (see getf).</p>
+<p>
+    For such function, When such a function is executed the systems counts
+    how many time each line is executed and how may cpu time is spend for
+    each line execution. These data are stored within the function data
+    structure.  The profile function allows to extract these data and
+    return them in the two first columns of <tt><b>c</b></tt>. The <tt><b>c</b></tt> third
+    column gives a measure of interpetor effort for one execution of
+    corresponding line. Ith line of <tt><b>c</b></tt> corresponds to Ith line of the
+    function (included first)</p>
+<p>
+    Note that, due to the precision of the processor clock (typically one
+    micro second), some executed lignes may appear with 0 cpu time even if
+    total cpu time really spend in their execution is large.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//define function and prepare it for profiling
+deff('x=foo(n)',['if n==0 then'
+                 '  x=[]'
+                 'else'
+                 '  x=0'
+                 '  for k=1:n'
+                 '    s=svd(rand(n+10,n+10))'
+                 '    x=x+s(1)'
+                 '  end'
+                 'end'],'p')
+//call the function
+foo(10)
+//get execution profiles
+profile(foo)
+//call the function
+foo(20)
+profile(foo) //execution profiles are cumulated
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/deff.htm"><tt><b>deff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/plotprofile.htm"><tt><b>plotprofile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/showprofile.htm"><tt><b>showprofile</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

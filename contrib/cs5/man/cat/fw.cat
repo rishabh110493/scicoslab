@@ -1,0 +1,40 @@
+FW                               Traffic-toolbox Function                FW
+NAME
+   FW  -  Frank-Wolfe traffic assignment algorithm
+  
+CALLING SEQUENCE
+ [F,ta,ben]=FW(net,kmax,tol)
+   
+  
+PARAMETERS
+ net        : a NetList 
+            
+ kmax       : maximum number of iterations
+            
+ tol        : precision
+            
+ F          : assigned flow 
+            
+ ta         : link travel time for the assigned flow F
+            
+ ben        : ni x 5 matrix (ni number of performed general iterations)
+            benchmark information  
+            
+DESCRIPTION
+   Assigns the flow with the Frank-Wolfe algorithm. After an initial AON
+  assignment the link costs are updated and a new assignment is computed.
+  The new assignment is combined with the previous one in a way that
+  minimizes the global cost. The algorithm terminates when the number of
+  iterations kmax is reached or the change in link costs is less than tol.
+  When they are not given tol and kmax have the default values 1e-6 and 20.
+   The matrix ben contains intermediary informations on the algorithm. For
+  each iteration it gives the iteration number, time spent, cost, memory
+  used and an convergence error evaluation. 
+  
+EXAMPLES
+ net=TrafficExample("Small");
+ /// generates a network with 4 nodes, 9 arcs and 2 OD-pairs
+ [F,ta,ben]=FW(net);
+SEE ALSO
+   AON, IAON, CAPRES, DSD, TrafficAssig     
+  

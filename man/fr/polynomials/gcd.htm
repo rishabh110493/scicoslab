@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gcd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gcd</b> -  calcul de PGCD  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pgcd,U]=gcd(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>p  </b></tt>
+    : vecteur ligne de polynômes <tt><b>p=[p1,..,pn] ou d'entiers (type égal à 8)</b></tt>
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calcule le PGCD des termes de <tt><b>p</b></tt> et une matrice unimodulaire (avec le polynôme inverse) <tt><b>U</b></tt>, de degré minimal tels que
+  </p>
+<p><tt><b>p*U=[0 ... 0 pgcd]</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+//cas des polynômes
+s=poly(0,'s');
+p=[s,s*(s+1)^2,2*s^2+s^3];
+[pgcd,u]=gcd(p);
+p*u
+//cas des entiers
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+[thegcd,U]=gcd(V)
+V*U
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/bezout.htm"><tt><b>bezout</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/lcm.htm"><tt><b>lcm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/hermit.htm"><tt><b>hermit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

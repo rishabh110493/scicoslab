@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>setbpt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>setbpt</b> - set breakpoints</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>setbpt(macroname
+    [,linenumb])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>macroname</b></tt>: string</li>
+<li>
+<tt><b>linenumb</b></tt>: scalar integer or vector of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>setbpt</b></tt> interactively inserts a breakpoint in the line
+    number <tt><b>linenumb</b></tt> (default value is 1) of the function
+    <tt><b>macroname</b></tt>.</p>
+<p><tt><b>linenumb</b></tt> can be a line or column vector of line numbers,
+    or a single scalar line number.</p>
+<p>Line numbers in <tt><b>linenumb</b></tt> are
+    <em>physical</em> line numbers in function
+    <tt><b>macroname</b></tt>. Note that Scilab versions before 5.0 used
+    <em>logical</em> line numbers. The difference between physical
+    and logical line numbers is the number of <em>continued
+    lines</em> (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/dot.htm"><tt><b>dot</b></tt></a>).</p>
+<p>When reaching a breakpoint, Scilab evaluates the specified physical
+    line and stops the execution flow. If the
+    function is not compiled (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/comp.htm"><tt><b>comp</b></tt></a>) the line is printed on
+    the screen. Then Scilab goes into a <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a> mode in which the
+    user can check current values. The <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a> is exited with
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/resume.htm"><tt><b>resume</b></tt></a> or <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/abort.htm"><tt><b>abort</b></tt></a>.</p>
+<p>Redefining the function does
+    not clear the breakpoints, the user must explicitly delete breakpoints
+    using <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/delbpt.htm"><tt><b>delbpt</b></tt></a>. The maximum number of functions with
+    breakpoints enabled must be less than 100 and the overall maximum number of
+    breakpoints is set to 1000.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>setbpt('foo'),setbpt('foo',10),dispbpt()
+delbpt()
+
+setbpt('foo',[1,2,5,6]),dispbpt()</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/delbpt.htm"><tt><b>delbpt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/dispbpt.htm"><tt><b>dispbpt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/resume.htm"><tt><b>resume</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ddp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ddp</b> -  disturbance decoupling</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Closed,F,G]=ddp(Sys,zeroed,B1,D1)  </tt></dd>
+<dd><tt>[Closed,F,G]=ddp(Sys,zeroed,B1,D1,flag,alfa,beta)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sys</b></tt>: <tt><b>syslin</b></tt> list containing the matrices <tt><b>(A,B2,C,D2)</b></tt>.</li>
+<li>
+<tt><b>zeroed</b></tt>: integer vector, indices of outputs of <tt><b>Sys</b></tt> which are zeroed.</li>
+<li>
+<tt><b>B1</b></tt>: real matrix</li>
+<li>
+<tt><b>D1</b></tt>: real matrix. <tt><b>B1</b></tt> and <tt><b>D1</b></tt> have the same number of columns.</li>
+<li>
+<tt><b>flag</b></tt>: string <tt><b>'ge'</b></tt> or <tt><b>'st'</b></tt> (default) or <tt><b>'pp'</b></tt>.</li>
+<li>
+<tt><b>alfa</b></tt>: real or complex vector (loc. of closed loop poles)</li>
+<li>
+<tt><b>beta</b></tt>: real or complex vector (loc. of closed loop poles)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Exact disturbance decoupling (output nulling algorithm).
+    Given a linear system, and a subset of outputs, z, which are to
+    be zeroed, characterize the inputs w of Sys such that the 
+    transfer function from w to z is zero.
+    <tt><b>Sys</b></tt> is a linear system {A,B2,C,D2} with one input and two outputs 
+    ( i.e.  Sys: u--&gt;(z,y) ), part the following system defined from <tt><b>Sys</b></tt>
+    and <tt><b>B1,D1</b></tt>:</p>
+<pre>
+
+  xdot =  A x + B1  w + B2  u
+     z = C1 x + D11 w + D12 u
+     y = C2 x + D21 w + D22 u
+   
+    </pre>
+<p>
+    outputs of Sys are partitioned into (z,y) where z is to be zeroed,
+    i.e. the matrices C and D2 are:</p>
+<pre>
+
+     C=[C1;C2]         D2=[D12;D22]
+     C1=C(zeroed,:)    D12=D2(zeroed,:)
+   
+    </pre>
+<p>
+    The matrix <tt><b>D1</b></tt> is partitioned similarly as <tt><b>D1=[D11;D21]</b></tt>
+    with <tt><b>D11=D1(zeroed,:)</b></tt>.
+    The control is u=Fx+Gw and one  looks for matriced <tt><b>F,G</b></tt> such that the 
+    closed loop system: w--&gt;z given by</p>
+<pre>
+
+  xdot= (A+B2*F)  x + (B1 + B2*G) w
+    z = (C1+D12F) x + (D11+D12*G) w
+   
+    </pre>
+<p>
+    has zero transfer transfer function.</p>
+<p><tt><b>flag='ge'</b></tt> : no stability constraints.
+    <tt><b>flag='st'</b></tt> : look for stable closed loop system (A+B2*F stable).
+    <tt><b>flag='pp'</b></tt> : eigenvalues of A+B2*F are assigned to <tt><b>alfa</b></tt> and 
+    <tt><b>beta</b></tt>.</p>
+<p>
+    Closed is a realization of the <tt><b>w--&gt;y</b></tt> closed loop system</p>
+<pre>
+
+  xdot= (A+B2*F)  x + (B1 + B2*G) w
+    y = (C2+D22*F) x + (D21+D22*G) w
+   
+    </pre>
+<p>
+    Stability (resp. pole placement) requires stabilizability 
+    (resp. controllability) of (A,B2).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rand('seed',0);nx=6;nz=3;nu=2;ny=1;
+A=diag(1:6);A(2,2)=-7;A(5,5)=-9;B2=[1,2;0,3;0,4;0,5;0,0;0,0];
+C1=[zeros(nz,nz),eye(nz,nz)];D12=[0,1;0,2;0,3];
+Sys12=syslin('c',A,B2,C1,D12);
+C=[C1;rand(ny,nx)];D2=[D12;rand(ny,size(D12,2))];
+Sys=syslin('c',A,B2,C,D2);
+[A,B2,C1,D12]=abcd(Sys12);  //The matrices of Sys12.
+alfa=-1;beta=-2;flag='ge';
+[X,dims,F,U,k,Z]=abinv(Sys12,alfa,beta,flag);
+clean(X'*(A+B2*F)*X)
+clean(X'*B2*U)
+clean((C1+D12*F)*X)
+clean(D12*U);
+//Calculating an ad-hoc B1,D1
+G1=rand(size(B2,2),3);
+B1=-B2*G1;
+D11=-D12*G1;
+D1=[D11;rand(ny,size(B1,2))];
+
+[Closed,F,G]=ddp(Sys,1:nz,B1,D1,'st',alfa,beta);
+closed=syslin('c',A+B2*F,B1+B2*G,C1+D12*F,D11+D12*G);
+ss2tf(closed)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/abinv.htm"><tt><b>abinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ui_observer.htm"><tt><b>ui_observer</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

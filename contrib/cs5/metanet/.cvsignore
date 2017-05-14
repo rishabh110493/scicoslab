@@ -1,0 +1,6 @@
+*.bin
+lib
+names
+genlib
+tmp_Macros
+tmp_Bin

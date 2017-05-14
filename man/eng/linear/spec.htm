@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>spec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spec</b> -  eigenvalues of matrices and pencils</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>evals=spec(A)  </tt></dd>
+<dd><tt>[X,diagevals]=spec(A)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>evals=spec(A,E)  </tt></dd>
+<dd><tt>[al,be]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be,Z]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be,Q,Z]=spec(A,E)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex square matrix</li>
+<li>
+<tt><b>E</b></tt>: real or complex square matrix with same dimensions as <tt><b> A</b></tt>
+</li>
+<li>
+<tt><b>evals</b></tt>: real or complex vector, the eigenvalues</li>
+<li>
+<tt><b>diagevals</b></tt>: real or complex diagonal matrix (eigenvalues along the diagonal)</li>
+<li>
+<tt><b>al</b></tt>: real or complex vector, al./be gives the eigenvalues</li>
+<li>
+<tt><b>be</b></tt>: real vector, al./be gives the eigenvalues</li>
+<li>
+<tt><b>X</b></tt>: real or complex invertible square matrix, matrix eigenvectors.</li>
+<li>
+<tt><b>Q</b></tt>: real or complex invertible square matrix, pencil left eigenvectors.</li>
+<li>
+<tt><b>Z</b></tt>: real or complex invertible square matrix, pencil right eigenvectors.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>spec(A)</b>: <tt><b> evals=spec(A)</b></tt> returns in  vector <tt><b>evals</b></tt> the eigenvalues of <tt><b>A</b></tt>.<p><tt><b> [evals,X] =spec(A)</b></tt> returns in  addition the eigenvectors
+    <tt><b>A</b></tt> (if they exist). See also <tt><b>bdiag</b></tt></p>
+</dd>
+<dd>
+<b>spec(A,B)</b>: <tt><b>evals=spec(A,E)</b></tt> returns the spectrum of the matrix pencil s E - A, i.e. the roots of the polynomial matrix s E - A.<p><tt><b>[al,be] = spec(A,E)</b></tt> returns the spectrum of the matrix pencil
+    s E - A, i.e. the roots of the polynomial matrix s E - A.
+    The eigenvalues are given by <tt><b>al./be</b></tt> and if <tt><b>be(i) = 0</b></tt> the ith
+    eigenvalue is at infinity. (For <tt><b>E = eye(A), al./be</b></tt> is <tt><b>spec(A)</b></tt>).</p>
+<p><tt><b> [al,be,Z] = spec(A,E)</b></tt> returns in addition the matrix <tt><b>Z</b></tt> of 
+    generalized right eigenvectors of the pencil.</p>
+<p><tt><b> [al,be,Q,Z] = spec(A,E)</b></tt> returns in addition the matrix <tt><b>Q</b></tt>
+    and <tt><b>Z</b></tt> of generalized left and right eigenvectors of the pencil.</p>
+</dd>
+</dl>
+<h3><font color="blue">References</font></h3>
+<dl>
+<p>
+    Matrix eigeinvalues computations are based on the Lapack routines DGEEV and ZGEEV.</p>
+<p>
+    Pencil eigeinvalues computations are based on the Lapack routines DGGEV and ZGGEV.</p>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// MATRIX EIGENVALUES
+A=diag([1,2,3]);X=rand(3,3);A=inv(X)*A*X;
+spec(A)
+//
+x=poly(0,'x');
+pol=det(x*eye()-A)
+roots(pol)
+//
+[S,X]=bdiag(A);
+clean(inv(X)*A*X)
+
+// PENCIL EIGENVALUES
+A=rand(3,3);
+[al,be,Z] = spec(A,eye(A));al./be
+clean(inv(Z)*A*Z)  //displaying the eigenvalues (generic matrix)
+A=A+%i*rand(A);E=rand(A);
+roots(det(%s*E-A))   //complex case
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/det.htm"><tt><b>det</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

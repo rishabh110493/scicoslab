@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sscanf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sscanf</b> -  Converts formatted input given by a string</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> [v_1,...v_n]=sscanf (string,format)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>format</b></tt>:Specifies the format conversion.</li>
+<li>
+<tt><b>string</b></tt>:Specifies input to be read.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      This function is obsolete, use preferably the <tt><b>msscanf</b></tt>
+      function which is more efficient and is more compatible with the C
+      <tt><b>sscanf</b></tt> procedure.
+    </p>
+<p>
+    The sscanf functions interpret character string  according
+    to a format, and returns the converted results.
+  </p>
+<p>
+    The format parameter contains conversion specifications
+    used to interpret the input.
+  </p>
+<p>
+    The format parameter can contain
+    white-space characters (blanks, tabs, newline, or formfeed)
+    that, except in the following two cases, read the input up to the
+    next nonwhite-space character. Unless there is a match in the control
+    string, trailing white space (including a newline character) is not
+    read.
+  </p>
+<dl>
+<dd>
+<b>-</b>Any character except % (percent sign), which must match the next character of the input stream.</dd>
+<dd>
+<b>-</b>A conversion specification that directs the conversion of the next input field. see <tt><b>scanf_conversion</b></tt> for details.</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>msscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

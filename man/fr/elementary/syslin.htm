@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>syslin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>syslin</b> -  définition d'un système dynamique linéaire  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[sl]=syslin(dom,A,B,C [,D [,x0] ])  </tt></dd>
+<dd><tt>[sl]=syslin(dom,N,D)  </tt></dd>
+<dd><tt>[sl]=syslin(dom,H)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dom  </b></tt>
+    : chaîne de caractères (<tt><b>'c'</b></tt>, <tt><b>'d'</b></tt>), ou <tt><b>[]</b></tt> ou un scalaire.
+</li>
+<li>
+<tt><b>A,B,C,D  </b></tt>
+    : matrices de la représentation d'état (<tt><b>D</b></tt> est optionnelle, matrice nulle par défaut). Pour les systèmes impropres <tt><b>D</b></tt> est une matrice polynomiale.
+</li>
+<li>
+<tt><b>x0  </b></tt>
+    : vecteur (état initial, vecteur nul par défaut)
+</li>
+<li>
+<tt><b>N, D  </b></tt>
+    : matrices polynomiales
+</li>
+<li>
+<tt><b>H  </b></tt>
+    : matrice rationnelle
+</li>
+<li>
+<tt><b>sl  </b></tt>
+    : tlist (liste de type "<tt><b>syslin</b></tt>") représentant le système dynamique
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>syslin</b></tt> définit un système dynamique linéaire en temps que liste typée, et vérifie la consistance des données.
+  </p>
+<p><tt><b>dom</b></tt> spécifie le domaine temporel :
+  </p>
+<p><tt><b>dom='c'</b></tt> pour un système à temps continu, <tt><b>dom='d'</b></tt> pour un système à temps discret,
+    <tt><b>n</b></tt> pour un système échantillonné à la période <tt><b>n</b></tt> (en secondes).
+  </p>
+<p><tt><b>dom=[]</b></tt> si le domaine temporel n'est pas défini
+  </p>
+<p>
+    Représentation d'état :
+  </p>
+<pre>
+sl=syslin(dom,A,B,C [,D [,x0] ])
+   </pre>
+<p>
+    représente le système :
+  </p>
+<pre>
+      s x  = A*x + B*u
+        y  = C*x + D*u
+      x(0) = x0
+   </pre>
+<p>
+    La sortie de <tt><b>syslin</b></tt> est une liste de la forme suivante : 
+    <tt><b>
+    sl=tlist(['lss','A','B','C','D','X0','dt'],A,B,C,D,x0,dom)
+    </b></tt>
+    Notez que <tt><b>D</b></tt> peut être une matrice polynomiale (systèmes impropres).
+  </p>
+<p>
+    Représentation sous forme de matrice de transfert :
+  </p>
+<pre>
+sl=syslin(dom,N,D) 
+sl=syslin(dom,H)
+   </pre>
+<p>
+    La sortie de <tt><b>syslin</b></tt> est une liste de la forme :  
+    <tt><b>sl=tlist(['r','num','den','dt'],N,D,dom)</b></tt> ou <tt><b>sl=tlist(['r','num','den','dt'],H(2),H(3),dom)</b></tt>.
+  </p>
+<p>
+    Les systèmes linéaires obtenus en sortie de <tt><b>syslin</b></tt> peuvent être manipulés comme des matrices usuelles (concaténation, extraction, transposition, multiplication, etc.) dans les deux types de représentation (représentation d'état ou matrice de transfert).
+  </p>
+<p>
+    La plupart des fonctions de la librairie de contrôle acceptent les listes de type <tt><b>syslin</b></tt> en argument au lieu des quatre matrices de la représentation d'état.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[0,1;0,0];B=[1;1];C=[1,1];
+S1=syslin('c',A,B,C)   // Définition du système
+S1.A    // La matrice A
+S1.X0, S1.dt // affichage de X0 et du domaine temporel
+s=poly(0,'s');
+D=s;
+S2=syslin('c',A,B,C,D)
+H1=(1+2*s)/s^2, S1bis=syslin('c',H1)
+H2=(1+2*s+s^3)/s^2, S2bis=syslin('c',H2)
+S1+S2
+[S1,S2]
+ss2tf(S1)-S1bis
+S1bis+S2bis
+S1*S2bis
+size(S1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/lsslist.htm"><tt><b>lsslist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/rlist.htm"><tt><b>rlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ssrand.htm"><tt><b>ssrand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/dscr.htm"><tt><b>dscr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/abcd.htm"><tt><b>abcd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

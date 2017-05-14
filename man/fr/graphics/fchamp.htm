@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fchamp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fchamp</b> - direction field of a 2D first order
+  ODE</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>fchamp(f,t,xr,yr,[arfact,rect,strf])</tt></dd>
+<dd><tt>fchamp(f,t,xr,yr,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f</b></tt>: An external (function or character string) or a list which
+          describes the ODE.<ul>
+<li>
+<tt><b>-</b></tt>It can be a function name <tt><b>f</b></tt>, where
+                <tt><b>f</b></tt> is supposed to be a function of type
+                <tt><b>y=f(t,xy [p1,..pn])</b></tt>. <tt><b>f</b></tt> returns a
+                column vector of size 2, <tt><b>y</b></tt>, which gives the value
+                of the direction field <tt><b>f</b></tt> at point
+                <tt><b>xy=[x,y]</b></tt> and at time <tt><b>t</b></tt>.</li>
+<li>
+<tt><b>-</b></tt>It can also be an object of type list,
+                <tt><b>list(f,P1,..Pn)</b></tt> where <tt><b>f</b></tt> is a
+                function of type <tt><b>y=f(t,xy,p1,..pn)</b></tt> and
+                <tt><b>Pi</b></tt> gives the value of the parameter
+                <tt><b>pi</b></tt>.</li>
+</ul>
+</li>
+<li>
+<tt><b>t</b></tt>: The selected time.</li>
+<li>
+<tt><b>xr,yr</b></tt>: Two row vectors of size n1 and n2 which define the grid on
+          which the direction field is computed.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: arfact, rect,
+          strf (see below).</li>
+<li>
+<tt><b>arfact,rect,strf</b></tt>: Optional arguments, see <tt><b>champ</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>fchamp</b></tt> is used to draw the direction field of a 2D first
+    order ODE defined by the external function <tt><b>f</b></tt>. Note that if
+    the ODE is autonomous, argument <tt><b>t</b></tt> is useless, but it must be
+    given.</p>
+<p>Enter the command <tt><b>fchamp()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff("[xdot] = derpol(t,x)",..
+        ["xd1 = x(2)";..
+         "xd2 = -x(1) + (1 - x(1)**2)*x(2)";..
+         "xdot = [ xd1 ; xd2 ]"])
+xf= -1:0.1:1;
+yf= -1:0.1:1;
+fchamp(derpol,0,xf,yf)
+clf()
+fchamp(derpol,0,xf,yf,1,[-2,-2,2,2],"011")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/champ.htm"><tt><b>champ</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/champ1.htm"><tt><b>champ1</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

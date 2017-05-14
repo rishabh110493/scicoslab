@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>AddLinks  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="AddLinks ">  Add links to a net list  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>AddLinks(tl,hl,lpp)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : the global Netlist variable databasis
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>tl  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : row vector, tail nodes numbers of the added links
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>hl  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : row vector, head nodes numbers of the added links
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>lpp  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : 4 x nl matrix, travel time function parameters, where nl is the  number of added links 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    AddLinks adds links to a net list.
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=TrafficExample('Diamond');
+ShowNet()
+// Add a new link from node 3 to node 4 with lpp=[0;0;1;1]
+AddLinks(3,4,[0;0;1;1]);
+// We can see the modifications with
+ShowNet()
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>AddNodes</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>AddDemands</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>MakeNet</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>ShowNet</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

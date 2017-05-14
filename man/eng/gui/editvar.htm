@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>editvar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>sciGUI toolbox function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>editvar</b> -  Scilab variable editor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>editvar varname</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>varname</b></tt>: variable name. The variable must exist in scilab.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>editvar</b></tt> is an embedded Scilab variable editor written in TCL/TK.</p>
+<p><tt><b>editvar</b></tt> can edit the following variable type: real or complex constant matrix (type 1), boolean matrix (type 4) an matrix of character strings (type 10). </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=rand(10,10);
+editvar a;
+b=['hello';'good bye'];
+editvar b;
+</pre>
+<h3><font color="blue">Author</font></h3>
+<p>Jaime Urzua</p>
+</body>
+</html>

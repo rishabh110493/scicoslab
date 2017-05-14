@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ss2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ss2ss</b> -  state-space to state-space conversion, feedback, injection</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Sl1,right,left]=ss2ss(Sl,T, [F, [G , [flag]]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list) in state-space form</li>
+<li>
+<tt><b>T</b></tt>: square (non-singular) matrix</li>
+<li>
+<tt><b>Sl1, right, left</b></tt>: linear systems (syslin lists) in state-space form</li>
+<li>
+<tt><b>F</b></tt>: real matrix (state feedback gain)</li>
+<li>
+<tt><b>G</b></tt>: real matrix (output injection gain)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Returns the linear system <tt><b>Sl1=[A1,B1,C1,D1]</b></tt>
+    where <tt><b>A1=inv(T)*A*T, B1=inv(T)*B, C1=C*T, D1=D</b></tt>.
+  </p>
+<p>
+    Optional parameters <tt><b>F</b></tt> and <tt><b>G</b></tt> are state feedback
+    and output injection respectively. 
+  </p>
+<p>
+    For example,
+    <tt><b>Sl1=ss2ss(Sl,T,F)</b></tt> returns <tt><b>Sl1</b></tt> with:
+  </p>
+<p>
+    and <tt><b>right</b></tt> is a non singular linear system such that <tt><b>Sl1=Sl*right</b></tt>.
+  </p>
+<p><tt><b>Sl1*inv(right)</b></tt> is a factorization of <tt><b>Sl</b></tt>.
+  </p>
+<p><tt><b>Sl1=ss2ss(Sl,T,0*F,G)</b></tt> returns <tt><b>Sl1</b></tt> with:
+  </p>
+<p>
+    and <tt><b>left</b></tt> is a non singular linear system such that <tt><b>Sl1=left*Sl</b></tt> (<tt><b>right=Id</b></tt> if <tt><b>F=0</b></tt>).
+  </p>
+<p>
+    When both <tt><b>F</b></tt> and <tt><b>G</b></tt> are given, <tt><b>Sl1=left*Sl*right</b></tt>.
+  </p>
+<dl>
+<dd>
+<b>-</b>When <tt><b>flag</b></tt> is used and <tt><b>flag=1</b></tt> an output injection  as follows is used 
+    and then a feedback is performed, <tt><b>F</b></tt> must be of size <tt><b>(m+p,n)</b></tt><p>
+    ( x is in <tt><b>R^n</b></tt> , y in <tt><b>R^p</b></tt>, u in <tt><b>R^m</b></tt> ). 
+  </p>
+<p><tt><b>right</b></tt> and <tt><b>left</b></tt> have the following property:
+  </p>
+<pre>
+
+  Sl1 =  left*sysdiag(sys,eye(p,p))*right 
+   
+        </pre>
+</dd>
+<dd>
+<b>-</b>When <tt><b>flag</b></tt> is used and <tt><b>flag=2</b></tt> a feedback
+  (<tt><b>F</b></tt> must be of  size <tt><b>(m,n)</b></tt>) is performed
+  and then the above output injection is applied. <tt><b>right</b></tt>
+  and <tt><b>left</b></tt> have  the following property:<pre>
+
+  Sl1 = left*sysdiag(sys*right,eye(p,p)))
+   
+        </pre>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+Sl=ssrand(2,2,5); trzeros(Sl)       // zeros are invariant:
+Sl1=ss2ss(Sl,rand(5,5),rand(2,5),rand(5,2)); 
+trzeros(Sl1), trzeros(rand(2,2)*Sl1*rand(2,2))
+// output injection [ A + GC, (B+GD,-G)]
+//                  [   C   , (D   , 0)]
+p=1,m=2,n=2; sys=ssrand(p,m,n);
+
+// feedback (m,n)  first and then output injection.
+
+F1=rand(m,n);
+G=rand(n,p);
+[sys1,right,left]=ss2ss(sys,rand(n,n),F1,G,2);
+
+// Sl1 equiv left*sysdiag(sys*right,eye(p,p)))
+
+res=clean(ss2tf(sys1) - ss2tf(left*sysdiag(sys*right,eye(p,p))))
+
+// output injection then feedback (m+p,n) 
+F2=rand(p,n); F=[F1;F2];
+[sys2,right,left]=ss2ss(sys,rand(n,n),F,G,1);
+
+// Sl1 equiv left*sysdiag(sys,eye(p,p))*right 
+
+res=clean(ss2tf(sys2)-ss2tf(left*sysdiag(sys,eye(p,p))*right))
+
+// when F2= 0; sys1 and sys2 are the same 
+F2=0*rand(p,n);F=[F1;F2];
+[sys2,right,left]=ss2ss(sys,rand(n,n),F,G,1);
+
+res=clean(ss2tf(sys2)-ss2tf(sys1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/projsl.htm"><tt><b>projsl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/feedback.htm"><tt><b>feedback</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

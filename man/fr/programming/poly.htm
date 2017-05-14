@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>poly</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>poly</b> -  définition d'un polynôme  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p]=poly(a,"x", ["flag"])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a  </b></tt>
+    : matrice ou nombre réel
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : indéterminée du polynôme
+</li>
+<li>
+<tt><b>"flag"  </b></tt>
+    : chaîne de caractères ("roots", "coeff"), la valeur par défaut est "roots".
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Si <tt><b>a</b></tt> est une matrice, <tt><b>p</b></tt> est le polynôme caractéristique de a, c'est à dire
+     <tt><b>déterminant(x*eye()-a)</b></tt>, <tt><b>x</b></tt> étant l'indéterminée.
+  </p>
+<p>
+    Si <tt><b>v</b></tt> est un vecteur, <tt><b>poly(v,"x",["roots"])</b></tt> est le polynôme dont les racines sont égales aux termes de <tt><b>v</b></tt> et <tt><b>"x"</b></tt> l'indéterminée. Dans ce cas <tt><b>roots</b></tt> et <tt><b>poly</b></tt> sont des fonctions inverses l'une de l'autre.
+  </p>
+<p><tt><b>poly(v,"x","coeff")</b></tt> crée le polynôme d'indéterminée <tt><b>"x"</b></tt>
+    dont les coefficients sont les termes de <tt><b>v</b></tt> (v(1) est le terme constant). Dans ce dernier cas, <tt><b>poly</b></tt> et <tt><b>coeff</b></tt> sont des fonctions inverses l'une de l'autre.
+  </p>
+<p><tt><b>s=poly(0,"s")</b></tt> permet de définir des polynômes en utilisant les opérations usuelles (+,-,*,^).
+    <tt><b>"s"</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,"s");p=1+s+2*s^2;
+A=rand(2,2);poly(A,"x")
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coeff.htm"><tt><b>coeff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/matrices.htm"><tt><b>matrices</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/rational.htm"><tt><b>rational</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

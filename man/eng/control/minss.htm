@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>minss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>minss</b> -  minimal realization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[slc]=minss( sl [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl,slc</b></tt>: <tt><b>syslin</b></tt> lists (linear systems in state-space form)</li>
+<li>
+<tt><b>tol</b></tt>: real (threshold for rank determination (see <tt><b>contr</b></tt>))</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>minss</b></tt> returns in <tt><b>slc</b></tt> a minimal realization of <tt><b>sl</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+sl=syslin('c',[1 0;0 2],[1;0],[2 1]);
+ssprint(sl);
+ssprint(minss(sl))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/minreal.htm"><tt><b>minreal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/arhnk.htm"><tt><b>arhnk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obsvss.htm"><tt><b>obsvss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/balreal.htm"><tt><b>balreal</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>name2rgb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>name2rgb</b> -  returns the RGB values of a named color</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rgb=name2rgb(name)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: name of the color.</li>
+<li>
+<tt><b>rgb</b></tt>: vector of RGB integer values of a color.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>name2rgb</b></tt> returns the RGB values of a color given by its name. The result is
+    a vector <tt><b>[r,g,b]</b></tt> where <tt><b>r</b></tt>, <tt><b>g</b></tt> and <tt><b>b</b></tt> are integers between 0 and 255
+    corresponding to colors components red, green and blue. As usual 0 means no intensity and 
+    255 means all the intensity of the color.
+    </p>
+<p> If no color is found <tt><b>[]</b></tt> is returned.</p>
+<p> The list of all known colors is given by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/color_list.htm"><tt><b>color_list</b></tt></a>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rgb=name2rgb("gold")
+rgb2name(rgb)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/color.htm"><tt><b>color</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/color_list.htm"><tt><b>color_list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/rgb2name.htm"><tt><b>rgb2name</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

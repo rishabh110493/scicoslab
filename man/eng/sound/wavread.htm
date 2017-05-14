@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>wavread</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>wavread</b> -  load .wav sound file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=wavread(wavfile)  </tt></dd>
+<dd><tt>y=wavread(wavfile,ext)  </tt></dd>
+<dd><tt>[y,Fs,bits]=wavread(wavfile)  </tt></dd>
+<dd><tt>[y,Fs,bits]=wavread(wavfile,ext)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>wavfile</b></tt>: string (The .wav extension is appended if no extension is given)</li>
+<li>
+<tt><b>Fs</b></tt>: integer, frequency sampling in Hz (number of samples per second).</li>
+<li>
+<tt><b>ext</b></tt>: string (<tt><b>'size'</b></tt>) or integer (to read n samples) or 1 x 2 integer vector [n1,n2] (to read from n1 to n2).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function to read <tt><b>.wav</b></tt> sound file.
+    <tt><b>wavread(wavfile)</b></tt> loads a sound file specified by the string wavfile,
+    returning the sampled data in y. Amplitude values are in the range [-1,+1].
+    Supports multi-channel data in the following formats:
+    8-bit mu-law, 8-, 16-, and 32-bit linear, and floating point.</p>
+<p><tt><b>[y,Fs,bits]=wavread(wavfile)</b></tt> returns the sample rate (Fs) in Hertz
+    and the number of bits per sample used to encode the data in the file.</p>
+<p><tt><b>wavread(wavfile,n)</b></tt> returns the first n samples from each channel.</p>
+<p><tt><b>wavread(wavfile,[n1,n2])</b></tt> returns samples n1 to n2.</p>
+<p><tt><b>read(wavfile,'size')</b></tt> returns the size of the audio data contained
+    in the file in place of the actual audio data, returning the
+    vector as [samples channels].</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  wavread('SCI/demos/signal/sound/chimes.wav','size')
+  [y,Fs,bits]=wavread('SCI/demos/signal/sound/chimes.wav');Fs,bits
+  subplot(2,1,1)
+  plot2d(y(1,:)) // first channel 
+  subplot(2,1,2)
+  plot2d(y(2,:)) // second channel
+  y=wavread('SCI/demos/signal/sound/chimes.wav',[1 5]) //the first five samples
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/auread.htm"><tt><b>auread</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/savewave.htm"><tt><b>savewave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/analyze.htm"><tt><b>analyze</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/mapsound.htm"><tt><b>mapsound</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

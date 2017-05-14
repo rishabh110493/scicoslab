@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>driver</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>driver</b> -  select a graphics driver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>driver(driver_name)  </tt></dd>
+<dd><tt>current_driver=driver()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>driver_name</b></tt>: string, driver to be selected.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function is used to select a graphics driver, or with no arguments 
+    to get the current graphics driver name.
+    Most of the time, a user can ignore this function and change the driver
+    by calling high level functions such as <tt><b>xbasc</b></tt> or <tt><b>xbasimp</b></tt>.
+    The selected driver can be one of the followings:
+  </p>
+<dl>
+<dd>
+<b>"X11"</b>: output to the screen of the computer.</dd>
+<dd>
+<b>"Pos"</b>: output into Postscript format.</dd>
+<dd>
+<b>"Rec"</b>: output to the screen of the computer with recording of all the graphics commands. This is the default driver.</dd>
+<dd>
+<b>"Fig"</b>: output into XFig format. Clipping of objects is not provided in XFig.</dd>
+<dd>
+<b>"GIF"</b>: output into Gif format based on gd (http://www.boutell.com/gd)</dd>
+<dd>
+<b>"PPM"</b>: output into PPM format based on gd (http://www.boutell.com/gd)</dd>
+</dl>
+<h3><font color="blue">Remark</font></h3>
+<dl>
+<p>
+    To convert "GIF" or "PPM" files to other image format or for building animation one can use the "convert" program for ImageMagic (http://www.imagemagick.org/)</p>
+<p>
+    For example if one has generated a sequence of Gif files named <tt><b>img*.gif</b></tt> it is possible to build an animated Gif file (named anim.gif) by</p>
+<pre>
+
+convert -delay 10  img*.gif anim.gif  
+   
+    </pre>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtape.htm"><tt><b>xtape</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

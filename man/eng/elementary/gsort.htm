@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gsort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gsort</b> -  decreasing order sorting</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[s, [k]]=gsort(v )  </tt></dd>
+<dd><tt>[s, [k]]=gsort(v,flag1)  </tt></dd>
+<dd><tt>[s, [k]]=gsort(v,flag1,flag2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v,s</b></tt>: real vector/matrix; character string vector/matrix</li>
+<li>
+<tt><b>flag1</b></tt>: a string <tt><b>'r'</b></tt>, <tt><b>'c'</b></tt>,<tt><b>'g'</b></tt>,<tt><b>'lr'</b></tt> and <tt><b>'lc'</b></tt>.</li>
+<li>
+<tt><b>flag2</b></tt>: a string <tt><b>'i'</b></tt> for increasing and <tt><b>'d'</b></tt> for decreasing order. k : vector or matrix of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gsort</b></tt> is similar to <tt><b>sort</b></tt> with additional properties. 
+    The third argument can be used to chose between increasing or
+    decreasing order. The second argument can be used for lexical orders.</p>
+<p><tt><b>[s,k]=gsort(a,'g')</b></tt> and <tt><b>[s,k]=gsort(a,'g','d')</b></tt> are  the
+    same as <tt><b>[s,k]=gsort(a)</b></tt>. They perform a sort of the entries of 
+    matrix <tt><b>a</b></tt>, <tt><b>a</b></tt> being seen as the stacked vector <tt><b>a(:)</b></tt>
+    (columnwise). <tt><b>[s,k]=gsort(a,'g','i')</b></tt> performs the same 
+    operation but in increasing order.</p>
+<p><tt><b>[s,k]=gsort(a,'lr')</b></tt> sort the rows of the matrix <tt><b>int(a)</b></tt> 
+    ( if <tt><b>a</b></tt> is a real matrix) or <tt><b>a</b></tt> (if <tt><b>a</b></tt> is a
+    character string matrix)
+    in lexical decreasing order. <tt><b>s</b></tt> is obtained by a permutation 
+    of the rows of matrix <tt><b>int(a)</b></tt> (or <tt><b>a</b></tt>) given by the column vector <tt><b>k</b></tt>)
+    in such a way that the rows of <tt><b>s</b></tt> verify <tt><b>s(i,:) &gt; s(j,:)</b></tt> if
+    <tt><b>i&lt;j</b></tt>. <tt><b>[s,k]=gsort(a,'lr','i')</b></tt> performs the same operation 
+    for increasing lexical order</p>
+<p><tt><b>[s,k]=gsort(a,'lc')</b></tt> sort the columns of the matrix <tt><b>int(a)</b></tt> 
+    ( if <tt><b>a</b></tt> is a real matrix) or <tt><b>a</b></tt> (if <tt><b>a</b></tt> is a
+    character string matrix)
+    in lexical decreasing order. <tt><b>s</b></tt> is obtained by a permutation 
+    of the columns of matrix <tt><b>int(a)</b></tt> (or <tt><b>a</b></tt>) given by the row vector <tt><b>k</b></tt>)
+    in such a way that the columns of <tt><b>s</b></tt> verify <tt><b>s(:,i) &gt; s(:,j)</b></tt> if
+    <tt><b>i&lt;j</b></tt>. <tt><b>[s,k]=gsort(a,'lc','i')</b></tt> performs the same operation 
+    for increasing lexical order</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+alr=[1,2,2;
+     1,2,1;
+     1,1,2;
+     1,1,1];
+[alr1,k]=gsort(alr,'lr','i')
+[alr1,k]=gsort(alr,'lc','i')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

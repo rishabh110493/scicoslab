@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>frmag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>frmag</b> -  magnitude of FIR and IIR filters</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xm,fr]=frmag(num[,den],npts)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>npts</b></tt>: integer (number of points in frequency response)</li>
+<li>
+<tt><b>xm</b></tt>: mvector of magnitude of frequency response at the points <tt><b>fr</b></tt>
+</li>
+<li>
+<tt><b>fr</b></tt>: points in the frequency domain where magnitude is evaluated</li>
+<li>
+<tt><b>num</b></tt>: if <tt><b>den</b></tt> is omitted vector coefficients/polynomial/rational polynomial of filter</li>
+<li>
+<tt><b>num</b></tt>: if <tt><b>den</b></tt> is given vector coefficients/polynomial of filter numerator</li>
+<li>
+<tt><b>den</b></tt>: vector coefficients/polynomial of filter denominator</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    calculates the magnitude of the frequency responses of
+    FIR and IIR filters. The filter description can be
+    one or two vectors of coefficients, one or two polynomials,
+    or a rational polynomial.</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

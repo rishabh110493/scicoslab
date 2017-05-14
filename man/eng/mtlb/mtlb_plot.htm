@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_plot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_plot</b> - Matlab plot emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab <tt><b>plot</b></tt> and Scilab <tt><b>plot2d</b></tt> behave differently.</p>
+<p>
+    The function <tt><b>mtlb_plot(varargin)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>plot(varargin)</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_plot</b></tt> calls when there is no output value,
+    however in this case, you have to set colors manualy:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With one input, if <tt><b>Y</b></tt> is real,
+        <tt><b>mtlb_plot(Y)</b></tt> may be replaced by <tt><b>plot2d(Y)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        With one input, if <tt><b>Y</b></tt> is complex,
+        <tt><b>mtlb_plot(Y)</b></tt> may be replaced by <tt><b>plot2d(real(Y),imag(Y))</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        With two inputs <tt><b>X</b></tt> and <tt><b>Y</b></tt>, if <tt><b>Y</b></tt> is not a character string,
+        <tt><b>mtlb_plot(X,Y)</b></tt> may be replaced by <tt><b>plot2d(X,Y)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_plot</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

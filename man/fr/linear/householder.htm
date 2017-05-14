@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>householder</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>householder</b> -  Matrice de Householder  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>u=householder(v [,w])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur colonne réel ou complexe
+</li>
+<li>
+<tt><b>w  </b></tt>
+    : vecteur colonne réel ou complexe de même taille que <tt><b>v</b></tt> (la valeur par défaut est <tt><b>eye(v)</b></tt>)
+</li>
+<li>
+<tt><b>u  </b></tt>
+    : vecteur colonne réel ou complexe
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Etant donnés deux vecteurs colonnes <tt><b>v</b></tt> et <tt><b>w</b></tt> de même taille, <tt><b>householder(v,w)</b></tt> renvoie un vecteur normé <tt><b>u</b></tt>, tel que 
+    <tt><b>(eye()-2*u*u')*v</b></tt> est colinéaire à <tt><b>w</b></tt>.
+    <tt><b>(eye()-2*u*u')</b></tt> est la matrice de la transformation de Householder correspondante.
+  </p>
+<p>
+    La valeur par défaut de <tt><b>w</b></tt> est <tt><b> eye(v)</b></tt>. Dans ce cas le vecteur <tt><b> (eye()-2*u*u')*v</b></tt> est égal à <tt><b> eye(v)*norm(v)</b></tt>.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/givens.htm"><tt><b>givens</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

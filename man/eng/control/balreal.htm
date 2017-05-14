@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>balreal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>balreal</b> -  balanced realization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[slb [,U] ] = balreal(sl)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>sl,slb</b></tt>: linear systems (<tt><b>syslin</b></tt> lists)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Balanced realization of linear system <tt><b>sl=[A,B,C,D]</b></tt>. <tt><b>sl</b></tt>
+    can be a continuous-time or discrete-time state-space system. 
+    sl is assumed stable.</p>
+<pre>
+
+slb=[inv(U)*A*U ,inv(U)*B , C*U , D]
+   
+    </pre>
+<p>
+    is the balanced realization.</p>
+<p><tt><b>slb</b></tt> is returned as a <tt><b>syslin</b></tt> list.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2,-3,-4,-5]);B=rand(5,2);C=rand(1,5);
+sl=syslin('c',A,B,C);
+[slb,U]=balreal(sl);
+Wc=clean(ctr_gram(slb))
+W0=clean(obs_gram(slb))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ctr_gram.htm"><tt><b>ctr_gram</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obs_gram.htm"><tt><b>obs_gram</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/hankelsv.htm"><tt><b>hankelsv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil.htm"><tt><b>equil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

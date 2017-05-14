@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>tlist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tlist</b> -  Scilab object and typed list definition.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>tlist(typ,a1,....an )    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>typ</b></tt>: Character string or vector of character strings</li>
+<li>
+<tt><b>ai</b></tt>: Any Scilab object (<tt><b>matrix, list,string...</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates a <tt><b>typed-list</b></tt> with elements <tt><b>ai</b></tt>'s. The <tt><b>typ</b></tt>
+    argument specifies the list type. Such <tt><b>typed-list</b></tt> allow the user
+    to define new operations working on these object through scilab
+    functions. The only difference between <tt><b>typed-list</b></tt> and <tt><b>list</b></tt>
+    is the value of the type (16 instead of 15).</p>
+<p><tt><b>typ(1)</b></tt> specifies the list type (character string used to define
+    soft coded operations)</p>
+<p>
+    if specified <tt><b>typ(i)</b></tt> may give the <tt><b>i+1</b></tt>th element formal name</p>
+<p>
+    Standard Operations on <tt><b>list</b></tt> work similarly for <tt><b>typed-list</b></tt>:</p>
+<p>
+     extraction 
+    : <tt><b>[x,y,z...]=l(v)</b></tt> where <tt><b>v</b></tt> is a vector of indices; 
+    <tt><b>[x,y,z]=l(:)</b></tt> extracts all the elements.</p>
+<p>
+      insertion
+    : <tt><b>l(i)=a</b></tt></p>
+<p>
+     deletion
+    : <tt><b>l(i)=null()</b></tt> removes the i-th element of the <tt><b>tlist l</b></tt>.</p>
+<p>
+     display</p>
+<p>
+    Moreover if <tt><b>typ(2:n+1)</b></tt> are specified, user may point elements by
+    their names</p>
+<p>
+    We give below examples where tlist are used.</p>
+<p>
+    Linear systems are represented by specific <tt><b>typed-list</b></tt> e.g. a
+    linear system <tt><b>[A,B,C,D]</b></tt> is represented by the tlist
+    <tt><b>Sys=tlist(['lss';'A';'B';'C';'D';'X0';'dt'],A,B,C,D,x0,'c')</b></tt> 
+    and this specific list may be created by the function <tt><b>syslin</b></tt>.</p>
+<p>
+    Sys(2), Sys('A') or Sys.A is the state-matrix and Sys('dt') or Sys.dt is the time domain</p>
+<p>
+    A rational matrix <tt><b>H</b></tt> is represented by the <tt><b>typed-list</b></tt><tt><b>H=tlist(['r';'num';'den';'dt'],Num,Den,[])</b></tt> where <tt><b>Num</b></tt> and <tt><b>Den</b></tt> are two
+    polynomial matrices and a  (e.g. continuous time) linear system with
+    transfer matrix <tt><b>H</b></tt> maybe created by <tt><b>syslin('c',H)</b></tt>.</p>
+<p>
+    H(2), H('num') or H.num is the transfer matrix numerator</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/null.htm"><tt><b>null</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/percent.htm"><tt><b>percent</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

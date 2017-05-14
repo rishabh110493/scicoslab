@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>print</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>print</b> -  prints variables  in a file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>print('file-name',x1,[x2,...xn])   </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    prints <tt><b>xi</b></tt> on file <tt><b>'file-name'</b></tt>
+    with the current format, i.e. the format used by scilab to display
+    the variables. All types of variables may be "<tt><b>print</b></tt>"'ed</p>
+<p>
+    Note : <tt><b>xi</b></tt> must be a named variable, with expressions variable
+    name part of the display is unpredictable.</p>
+<p><tt><b>print(%io(2),...)</b></tt> prints on Scilab's window. this syntax may be
+    used to display variables within a macro.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=rand(3,3);p=poly([1,2,3],'s');l=list(1,'asdf',[1 2 3]);
+print(%io(2),a,p,l)
+write(%io(2),a)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/format.htm"><tt><b>format</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/printf.htm"><tt><b>printf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/disp.htm"><tt><b>disp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

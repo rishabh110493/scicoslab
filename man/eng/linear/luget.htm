@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>luget</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>luget</b> -  extraction of sparse LU factors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,L,U,Q]=luget(hand)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>hand</b></tt>: handle, output of <tt><b>lufact</b></tt>
+</li>
+<li>
+<tt><b>P</b></tt>: sparse permutation matrix</li>
+<li>
+<tt><b>L</b></tt>: sparse matrix, lower triangular if <tt><b>hand</b></tt> is obtained from a  non singular matrix</li>
+<li>
+<tt><b>U</b></tt>: square non singular upper triangular sparse matrix with ones along the main diagonal</li>
+<li>
+<tt><b>Q</b></tt>: sparse permutation matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[P,L,U,Q]=luget(hand)</b></tt> with <tt><b>hand</b></tt> obtained by
+    the command <tt><b>[hand,rk]=lufact(A)</b></tt> with <tt><b>A</b></tt> a sparse matrix
+    returns four sparse matrices such that <tt><b>P*L*U*Q=A</b></tt>.</p>
+<p>
+    The A matrix needs not be full rank but must be square 
+    (since A is assumed sparse one may add zeros if necessary to squaring
+    down A).</p>
+<p>
+    If <tt><b>A</b></tt> is singular, the <tt><b>L</b></tt> matrix is column compressed (with
+    <tt><b>rk</b></tt> independent nonzero columns):  the nonsingular sparse 
+    matrix <tt><b>Q'*inv(U)</b></tt> column compresses <tt><b>A</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=rand(5,2)*rand(2,5);A=sparse(a);
+[hand,rk]=lufact(A);[P,L,U,Q]=luget(hand);
+full(L), P*L*U*Q-A
+clean(P*L*U*Q-A)
+ludel(hand)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hermit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hermit</b> -  forme d'Hermite  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ar,U]=hermit(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>Ar  </b></tt>
+    : matrice triangulaire de polynômes
+</li>
+<li>
+<tt><b>U  </b></tt>
+    : matrice unimodulaire de polynômes
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Forme d'Hermite : <tt><b>U</b></tt> est une matrice unimodulaire telle que <tt><b>A*U</b></tt> est sous la
+    forme d'Hermite triangulaire :
+  </p>
+<p>
+    La variable de sortie est <tt><b>Ar=A*U</b></tt>.
+  </p>
+<p>
+    Attention : version expérimentale
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+p=[s, s*(s+1)^2, 2*s^2+s^3];
+[Ar,U]=hermit(p'*p);
+clean(p'*p*U), det(U)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/hrmt.htm"><tt><b>hrmt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/htrianr.htm"><tt><b>htrianr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

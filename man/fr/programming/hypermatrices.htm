@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>hypermatrices</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab data type  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hypermatrices</b> -  Objet Scilab, matrices à N dimensions  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Le type Hypermatrice permet de manipuler des tableaux multidimensionnels. 
+    Ce type d'objet peut être défini par extension des matrices 2D comme ceci : 
+  </p>
+<p>
+    a=[1 2;3 4];a(:,:,2)=rand(2,2)
+  </p>
+<p>
+    ou directement en utilisant la fonction <tt><b>hypermat</b></tt>.
+  </p>
+<p>
+    Les termes peuvent être réels, complexes, polynômiaux, rationnels, booléens
+      ou de type chaîne de caractères. 
+  </p>
+<p>
+    Les Hypermatrices sont des <tt><b>mlists</b></tt> :
+    <tt><b>mlist(['hm','dims','entries'],sz,v)</b></tt> où <tt><b>sz</b></tt> est 
+      le vecteur ligne des dimensions et <tt><b>v</b></tt> le vecteur colonne des termes (rangés tel que 
+      l'indice le plus à gauche varie en premier).
+  </p>
+<p>NOTES: le nombre de dimensions des hypermatrices dont les dimensions les plus à droite sont egales  
+     à 1 est automatiquement réduit. Une hypermatrice n'ayant que 2 dimensions
+      est automatiquement transformée en une matrice standard (de type 1).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a(1,1,1,1:2)=[1 2]
+a=[1 2;3 4];a(:,:,2)=rand(2,2)
+a(1,1,:)
+
+size(a)
+
+a(:,:,1) //dimensionnality reduction 
+type(a(:,:,1))
+
+[a a]
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/hypermat.htm"><tt><b>hypermat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

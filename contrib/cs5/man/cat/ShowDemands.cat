@@ -1,0 +1,39 @@
+ShowDemands                   Traffic-toolbox Function          ShowDemands
+   
+  
+NAME
+   ShowDemands  -  Shows the demands of a net using Metanet or Scigraph 
+  
+CALLING SEQUENCE
+ ShowDemands()
+ ShowDemands(nodes,demands,dmin,dmax)
+ 
+   
+  
+PARAMETERS
+ %net       : the global NetList variable databasis
+            
+ nodes      : string or row vector of integers (nodes)
+            
+ demands    : string or row vector of integers (demands)
+            
+ dmin,dmax  : reals, minimum and maximum demands   
+            
+DESCRIPTION
+    ShowDemands shows the demands of NetList that their volume is between
+  dmin and dmax. All the demands are shown if nothing is indicated)  
+  
+EXAMPLES
+ %net=TrafficExample('Steenbrink');
+ ShowDemands() // Shows the net
+ ShowDemands('all','between',100,200)
+ ShowDemands('used','between',100,200)
+ // Shows the net with the demands between 100 and 200,
+ // and the used nodes.
+ ShowDemands('used',[1 3 8 12],100,200)
+ // Shows the given demands with values between 100 and 200
+   
+  
+SEE ALSO
+   ShowNet, ShowLinks, TrafficExample, TrafficAssig, IntroTrfAsg, NetList   
+  

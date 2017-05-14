@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>toolbar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>toolbar</b> - show or hide a toolbar
+  (Windows)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>state1=toolbar(winnum,state2)</tt></dd>
+<dd><tt>state1=toolbar(winnum)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>state1</b></tt>: returns toolbar's state 'on' or 'off'</li>
+<li>
+<tt><b>winum</b></tt>: window's number (-1 : console )</li>
+<li>
+<tt><b>state2</b></tt>: 'on' or 'off' set toolbar's state</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>show or hide a toolbar (Windows).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>toolbar(-1,'off')
+state=toolbar(-1,'on')
+
+plot3d();
+h=gcf();
+toolbar(h.figure_id,'off')
+
+</pre>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sylm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sylm</b> -  Sylvester matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[S]=sylm(a,b)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a,b</b></tt>: two polynomials</li>
+<li>
+<tt><b>S</b></tt>: matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sylm(a,b)</b></tt> gives the Sylvester matrix associated to polynomials
+    <tt><b>a</b></tt> and <tt><b>b</b></tt>, i.e. the matrix <tt><b>S</b></tt> such that:</p>
+<p><tt><b>coeff( a*x + b*y )' = S * [coeff(x)';coeff(y)']</b></tt>.</p>
+<p>
+    Dimension of <tt><b>S</b></tt> is equal to <tt><b>degree(a)+degree(b)</b></tt>.</p>
+<p>
+    If <tt><b>a</b></tt> and <tt><b>b</b></tt> are coprime polynomials then</p>
+<p><tt><b>rank(sylm(a,b))=degree(a)+degree(b))</b></tt> and the instructions</p>
+<pre>
+
+  u = sylm(a,b) \ eye(na+nb,1)
+  x = poly(u(1:nb),'z','coeff')
+  y = poly(u(nb+1:na+nb),'z','coeff')
+   
+    </pre>
+<p>
+    compute Bezout factors <tt><b>x</b></tt> and <tt><b>y</b></tt> of minimal degree 
+    such that <tt><b>a*x+b*y = 1</b></tt></p>
+</body>
+</html>

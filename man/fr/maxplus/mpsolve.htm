@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mpsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mpsolve</b> -   maxplus linear system solver  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>W=mpsolve(A,B,[pre])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : full maxplus matrix (system rhs)
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : full maxplus matrix (system lhs)
+  </li>
+<li>
+<tt><b>pre  </b></tt>
+    : precision
+  </li>
+<li>
+<tt><b>W  </b></tt>
+    : full maxplus matrix (solution) 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    W is a full maxplus matrix giving a weakbasis of the solution set in X
+    of AX = BX. This is only a tentative inefficient program.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=#([1,0;0,1]);b=#([1,0;0,1]);mpsolve(a,b)
+a=#([1,0;0,1]);b=#([1,%0;0,%0]);mpsolve(a,b)
+a=#([1,0,%0;0,1,%0]);b=#([%0,%0,0.5;%0,%0,0]);mpsolve(a,b)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/equalspan.htm"><tt><b>equalspan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/includespan.htm"><tt><b>includespan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/weakbasis.htm"><tt><b>weakbasis</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

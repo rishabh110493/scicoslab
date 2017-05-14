@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chsolve</b> -  sparse Cholesky solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>sol=chsolve(spcho,rhs)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>spcho</b></tt>: list containing the Cholesky factors in coded form returned by chfact</li>
+<li>
+<tt><b>rhs, sol</b></tt>: full column vectors</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sol=chsolve(spcho,rhs)</b></tt> computes the solution of 
+      <tt><b>rhs=A*sol</b></tt>, with <tt><b>A</b></tt> a symmetric sparse positive definite
+      matrix. This function is based on the Ng-Peyton programs (ORNL). See the
+      Fortran programs for a complete description of the variables in
+      <tt><b>spcho</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    A=sprand(20,20,0.1);
+    A=A*A'+eye();  
+    spcho=chfact(A);
+    sol=(1:20)';rhs=A*sol;
+    spcho=chfact(A);
+    chsolve(spcho,rhs)
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/chfact.htm"><tt><b>chfact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spchol.htm"><tt><b>spchol</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

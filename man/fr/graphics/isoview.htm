@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>isoview</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>isoview</b> -  set scales for isometric plot (do not change the size of the window)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>isoview(xmin,xmax,ymin,ymax)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>xmin,xmax,ymin,ymax</b></tt>: four real values</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function is obsolete, use preferably the <tt><b>frameflag=4</b></tt> plot2d
+    option which enable window resizing.</p>
+<p><tt><b>isoview</b></tt> is used to have isometric scales on the x and y axes. 
+    It does not change the size of the graphics window. The rectangle
+    <tt><b>xmin, xmax, ymin, ymax</b></tt> will be contained in the computed frame of 
+    the graphics window. <tt><b>isoview</b></tt> set the current graphics scales 
+    and can be used in conjunction with graphics routines which request
+    the current graphics scale (for instance <tt><b>strf="x0z"</b></tt> in <tt><b>plot2d</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=[0:0.1:2*%pi]';
+plot2d(sin(t),cos(t))
+xbasc()
+isoview(-1,1,-1,1)
+plot2d(sin(t),cos(t),1,"001")
+xset("default")
+
+plot2d(sin(t),cos(t),frameflag=4)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/square.htm"><tt><b>square</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.  </p>
+</body>
+</html>

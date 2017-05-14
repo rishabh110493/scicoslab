@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arc_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arc_graph</b> -  graph with nodes corresponding to arcs</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g1 = arc_graph(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list of the old graph</li>
+<li>
+<tt><b>g1</b></tt>: graph list of the new graph</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>arc_graph</b></tt> returns the directed graph <tt><b>g1</b></tt> with the nodes 
+    corresponding to the arcs of the directed graph <tt><b>g</b></tt>.
+    <tt><b>g1</b></tt> is defined in the following way:</p>
+<p>
+    - its nodes correspond to the arcs of <tt><b>g</b></tt></p>
+<p>
+    - 2 nodes of the new graph are adjacent if and only if the corresponding
+    arcs of the graph <tt><b>g</b></tt> are consecutive.</p>
+<p>
+    The coordinates of the nodes of <tt><b>g1</b></tt> are given by the middle points of the 
+    corresponding edges of <tt><b>g</b></tt>.</p>
+<p>
+    If such an arc graph does not exist, an empty vector is returned.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 4 4 5 6 7 2 3 5 1];
+he=[2 6 3 6 7 8 8 8 4 7 3 5];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[281  284  360  185  405  182  118  45];
+g('node_y')=[262  179  130  154  368  248  64  309];
+show_graph(g);
+g1=arc_graph(g);
+show_graph(g1,'new');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/line_graph.htm"><tt><b>line_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

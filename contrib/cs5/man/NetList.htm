@@ -1,0 +1,26 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>NetList</title></head><body bgcolor="FFFFFF"><CENTER> Traffic-Toolbox Data Structure  </CENTER><p><b>NetList -  Traffic Assignment Geographic Data Base  </b></p><H3><font color="blue">NETLIST</font></H3><ul><p>
+     All the data needed and obtained in a traffic assignment problem are stored in a Scilab data structure that we call  a NetList which is a typed list defined by :
+  </p><pre>
+tlist(['net','gp','nodes','links','demands'],gp,nodes,links,demands)
+   </pre><p>- gp : contains the general properties of the net </p><p>- nodes : contains the nodes parameters  </p><p>- links : contains the links parameters </p><p>- demands : contains the demands parameters </p><p>Each one of those elements is itself a typed list.</p></ul><H3><font color="blue">GP</font></H3><ul><p>- node_number : number of nodes in the network</p><p>- link_number : number of links in the network</p><p>- demand_number : number of demands (commodities) </p><p>- lpf_model : integer between 0 and 6 which defines the form of the
+link performance function.</p><p>- verbose (default %T): boolean when it is true information
+are given during assignment algorithm </p><p>- algorithm (default 'DSD'): function name defining the
+algorithm choosen for the assignment </p><p>- NodeDiameter (default 30) : integer used in the graph window
+for displaying the network </p><p>- NodeBorder (default 1): integer giving thewidth of the circle
+border of the node symbols </p><p>- FontSize (default 10): integer used in the graph window </p><p>- tolerance (default 1e-6): real giving theprecision used in
+algorithms  </p><p>- theta (default 1): stochasticity parameter for Logit</p><p>- Niter (default 200): integer giving maximal number of iteration</p><p>- N0 (default 0): integer giving starting number for Mean Average Algorithm  </p><p>- ShowDemands (default %T): botolean when it is true the demands are
+shown by ShowNet </p><p>- Show (default 'flow'): one of the string 'flow'
+'cost' or 'time'; it  is used in ShowNet to choose
+the shown link weights  </p><p>- bench (default 0): is an array storing the intermediary results 
+computed by the algorithm when verbose=%T this information is shown
+also during the computation.</p></ul><H3><font color="blue">NODES</font></H3><ul><p>- name : string row of node names  </p><p>- x : real row of the node x-coordinates </p><p>- y : real row of the node y-coordinates </p></ul><H3><font color="blue">LINKS</font></H3><ul><p>- name : string row vector of link names</p><p>- tail : integer row vector of tail node numbers of the links</p><p>- head : integer row vector of head node numbers of the links</p><p>- lpf_data : array of 4 rows vectors giving the parameters of the lpf
+function of the links  </p><p>- flow : real row vector of the total flows of the 
+links (0 by default)</p><p>- time : real row vector of the time spent in the links </p><p>- disaggregated_flow : nd x na real matrix of the commodity 
+flows on the links </p></ul><H3><font color="blue">DEMANDS</font></H3><ul><p>- name :  string row vector of demand names </p><p>- tail :  integer row vector of  tail node numbers</p><p>- head :  integer row vector of head node numbers</p><p>- demand : real row vector of demand flows </p></ul><H3><font color="blue">EXTRACTING AND INSERTING DATA FROM A NETLIST</font></H3><ul><p>
+    As they are typed lists it is always possible to access to any 
+field using the access functions, for example the x-coordinates of the 
+nodes is net1.nodes.x .  
+  </p></ul><H3><font color="blue">LINK PERFORMANCE FUNCTION</font></H3><ul><p>It is possible to choose among different formulae for the link
+     performance functions with the value of nf. </p><p>nf=0 -&gt; c=t0+ma/ca*F+ma*(max(0,F-ca))^ba, with ba&gt;=1 </p><p>nf=1 -&gt; c=t0*exp((F/ca)-1), with ca&gt;0 </p><p>nf=2 -&gt; c=t0*2.^((F/ca)-1), with ca&gt;0 </p><p>nf=3 -&gt; c=t0*(1+0.15*(F/ca)^ma), with ma&gt;=1 and ca&gt;0 </p><p>nf=4 -&gt; c=t0+log(ca)-log(ca-F), with ca&gt;0 </p><p>nf=5 -&gt; c=ba-ca*(t0-ba)/(F-ca), with ca&gt;0  </p><p>nf=6 -&gt; c=t0+ca*F+ma*F^ba, with ba&gt;1  </p><p>where t0,ca,ma,ba are the row vectors of the matrix net.links.lpf_data. </p></ul><H3><font color="blue">SHOWING THE NET</font></H3><ul><p> When a net is shown, three types of arcs can be seen. The black,
+     light-blue and cyan.   </p><p>1) The black and light-blue arcs correspond to the roads. </p><p>- The light blue to those roads with zero flow.  </p><p>- The black to those with a non zero flow.   </p><p>2) The cyan arcs correspond to the OD-traffic demand. These arcs go
+from origin to destination. </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="IntroTrfAsg.htm"><tt><b>IntroTrfAsg</b></tt></a>&nbsp;&nbsp;<a href="MakeNet.htm"><tt><b>MakeNet</b></tt></a>&nbsp;&nbsp;<a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

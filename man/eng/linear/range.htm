@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>range</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>range</b> -  range (span) of <tt><b>A^k</b></tt></p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[U,dim]=range(A,k)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix, assumed square if k&gt;1 </li>
+<li>
+<tt><b>k</b></tt>: integer</li>
+<li>
+<tt><b>U</b></tt>: orthonormal matrix</li>
+<li>
+<tt><b>dim</b></tt>: integer (dimension of subspace)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computation of Range <tt><b>A^k</b></tt> : the first dim columns of <tt><b>U'</b></tt> span the range of <tt><b>A^k</b></tt>. <tt><b>U</b></tt> performs a row compression of <tt><b>A^k</b></tt> without calculating <tt><b>A^k</b></tt>.Vector <tt><b>y</b></tt> belongs to range <tt><b>A^k</b></tt> iff the last components of <tt><b>U*y</b></tt>  are zeros (i.e. numerically small).
+     <tt><b>U*U'</b></tt> is the Identity matrix</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    A=rand(4,2)*rand(2,4);   // 4 column vectors, 2 independent.
+    [U,dim]=range(A,1);dim   // compute the range
+
+    y1=A*rand(4,1);          //a vector which is in the range of A
+    y2=rand(4,1);            //a vector which is not  in the range of A
+    norm(U(dim+1:$,:)*y1)    //the last entries are zeros, y1 is in the range of A
+    norm(U(dim+1:$,:)*y2)    //the last entries are not zeros
+
+    I=U(1:dim,:)'            //I is a basis of the range
+    coeffs=U(1:dim,:)*y1     // components of y1 relative to the I basis
+
+    norm(I*coeffs-y1)        //check
+
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/orth.htm"><tt><b>orth</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D. INRIA ;   </p>
+<h3><font color="blue">Used Function</font></h3>The <tt><b>range</b></tt> function is based on the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a> function
+    which uses the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a> decomposition.</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>balanc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>balanc</b> -  matrix or pencil balancing</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Ab,X]=balanc(A)  </tt></dd>
+<dd><tt>[Eb,Ab,X,Y]=balanc(E,A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A:  </b></tt>a real square matrix</li>
+<li>
+<tt><b>X:  </b></tt>a real square invertible matrix</li>
+<li>
+<tt><b>E:  </b></tt>a real square matrix (same dimension as <tt><b>A</b></tt>)</li>
+<li>
+<tt><b>Y:  </b></tt>a real square invertible matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Balance a square matrix to improve
+    its condition number.</p>
+<p><tt><b>[Ab,X] = balanc(A)</b></tt> finds a similarity transformation
+    <tt><b>X</b></tt> such that</p>
+<p><tt><b>Ab = inv(X)*A*X</b></tt> has approximately equal row and column norms.</p>
+<p>
+    For matrix pencils,balancing is done for improving the
+    generalized eigenvalue problem.</p>
+<p><tt><b>[Eb,Ab,X,Y] = balanc(E,A)</b></tt> returns left and right transformations <tt><b>X</b></tt> and <tt><b>Y</b></tt>
+    such that <tt><b>Eb=inv(X)*E*Y,  Ab=inv(X)*A*Y</b></tt></p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    Balancing is made in the functions <tt><b>bdiag</b></tt> and <tt><b>spec</b></tt>.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1/2^10,1/2^10;2^10,2^10];
+[Ab,X]=balanc(A);
+norm(A(1,:))/norm(A(2,:))
+norm(Ab(1,:))/norm(Ab(2,:))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

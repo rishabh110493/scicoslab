@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xarc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xarc</b> -  dessine un arc d'ellipse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xarc(x,y,w,h,a1,a2)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,w,h  </b></tt>
+    : 4 valeurs réelles définissant un rectangle.
+</li>
+<li>
+<tt><b>a1,a2  </b></tt>
+    : valeurs réelles définissant un secteur
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xarc</b></tt> dessine un arc d'ellipse contenu dans le rectangle 
+    <tt><b>(x,y,w,h)</b></tt> (point en haut à gauche, largeur, hauteur), et dans le secteur 
+    défini par l'angle <tt><b>alpha1</b></tt> et l'angle <tt><b>alpha1+alpha2</b></tt>. 
+    <tt><b>alpha1</b></tt> et <tt><b>alpha2</b></tt> sont 
+    donnés respectivement par <tt><b>a1/64</b></tt> degrés et <tt><b>a2/64</b></tt> degrés.
+    Cette fonction utilise la couleur et l'échelle graphique courantes.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// échelle isométrique 
+plot2d(0,0,-1,"031"," ",[-2,-2,2,2])
+xset("color",3)
+xarc(-1,1,2,2,0,90*64)
+xarc(-1.5,1.5,3,3,0,360*64)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xarcs.htm"><tt><b>xarcs</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarc.htm"><tt><b>xfarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfarcs.htm"><tt><b>xfarcs</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

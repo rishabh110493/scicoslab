@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sfact</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sfact</b> -  factorisation spectrale en temps discret  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>F=sfact(P)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>P  </b></tt>
+    : matrice de polynômes réels
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Trouve <tt><b>F</b></tt>, un facteur spectral de <tt><b>P</b></tt>. <tt><b>P</b></tt> est une
+    matrice de polynômes telle que chaque racine de <tt><b>P</b></tt> a une image miroir
+    par rapport au cercle unité. Le problème est singulier si une racine se trouve sur le cercle unité.
+  </p>
+<p><tt><b>sfact(P)</b></tt>  renvoie une matrice de polynômes <tt><b>F(z)</b></tt> antistable et telle que
+  </p>
+<p><tt><b>P = F(z)* F(1/z) *z^n</b></tt></p>
+<p>
+    Pour les polynômes scalaires un algorithme spécifique est utilisé.
+    Les algorithmes sont tirés du livre de Kucera.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// polynôme simple
+z=poly(0,'z');
+p=(z-1/2)*(2-z)
+w=sfact(p);
+w*numer(horner(w,1/z))
+// exemple matriciel
+F1=[z-1/2,z+1/2,z^2+2;1,z,-z;z^3+2*z,z,1/2-z];
+P=F1*gtild(F1,'d');  // P est symétrique
+F=sfact(P)    
+roots(det(P))  
+roots(det(gtild(F,'d')))  // Les racines stables
+roots(det(F))             // Les racines antistables
+clean(P-F*gtild(F,'d'))
+// Utilisation en temps continu
+s=poly(0,'s');
+p=-3*(s+(1+%i))*(s+(1-%i))*(s+0.5)*(s-0.5)*(s-(1+%i))*(s-(1-%i));p=real(p);
+// p(s) = polynôme dans s^2, cherche un f stable tel que p=f(s)*f(-s) 
+w=horner(p,(1-s)/(1+s));  // transformation bilinéaire w=p((1-s)/(1+s))
+wn=numer(w);              // prend le numérateur
+fn=sfact(wn);f=numer(horner(fn,(1-s)/(s+1))); // Factorisation et transformation inverse
+f=f/sqrt(horner(f*gtild(f,'c'),0));f=f*sqrt(horner(p,0));      // normalisation
+roots(f)    // f est stable
+clean(f*gtild(f,'c')-p)    //f(s)*f(-s) est égal à p(s) 
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/gtild.htm"><tt><b>gtild</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/fspecg.htm"><tt><b>fspecg</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

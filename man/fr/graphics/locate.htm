@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>locate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>locate</b> -  sélection avec la souris d'un ensemble de points   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=locate([n,flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice de taille (2,n1). n1=n si le paramètre n est donné.
+</li>
+<li>
+<tt><b>n,flag  </b></tt>
+    : entiers.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>locate</b></tt> est utilisée pour récupérer les coordonnées d'un ou plusieurs 
+    points sélectionnés avec la souris dans une fenêtre graphique. Les coordonnées 
+    sont données dans l'échelle graphique courante. 
+  </p>
+<p>
+    Si n&gt;0, n points sont sélectionnés et leurs coordonnées sont renvoyées dans 
+    la matrice <tt><b>x</b></tt>.
+  </p>
+<p>
+    Si n&lt;=0, les points sont sélectionnés jusqu'à ce que l'on presse le bouton de gauche de la souris. Le dernier point sélectionné (avec le bouton de gauche) n'est dans ce cas pas renvoyé.
+    x=locate() est identique à <tt><b>x=locate(-1)</b></tt>.
+  </p>
+<p>
+    Si <tt><b>flag=1</b></tt> une croix est dessinée aux points sélectionnés.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S.S. &amp; J.Ph.C  </p>
+</body>
+</html>

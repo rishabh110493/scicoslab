@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>median</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>median</b> - médiane des termes d'une
+  matrice</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=median(x)</tt></dd>
+<dd><tt>y=median(x,'r')</tt></dd>
+<dd><tt>y=median(x,'c')</tt></dd>
+<dd><tt>y=median(x,'m')</tt></dd>
+<dd><tt>y=median(x,dim) </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vecteur ou matrice réelle</li>
+<li>
+<tt><b>y</b></tt>: scalaire ou vecteur</li>
+<li>
+<tt><b>dim</b></tt>: entier positif </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Pour un vecteur ou une matrice <tt><b>x</b></tt>, <tt><b>y=median(x)</b></tt>
+    renvoie un scalaire <tt><b>y</b></tt> égal à  la médiane des termes de
+    <tt><b>x</b></tt>.</p>
+<p><tt><b>y=median(x,'r')</b></tt> (ou <tt><b>y=median(x,1)</b></tt>) est la
+    médiane selon l'indice de lignes. Chaque composante du vecteur ligne
+    <tt><b>y</b></tt> contient la médiane de chaque colonne de
+    <tt><b>x</b></tt>.</p>
+<p><tt><b>y=median(x,'c')</b></tt> (ou <tt><b>y=median(x,2)</b></tt>) est la
+    médiane selon l'indice de colonne. Chaque composante du vecteur colonne
+    <tt><b>y</b></tt> contient la médiane de chaque ligne de <tt><b>x</b></tt>.</p>
+<p><tt><b>y=median(x,'m')</b></tt> est la médiane suivant la première
+    dimension non_singleton de <tt><b>x</b></tt>. (compatibilité avec matlab)</p>
+<p><tt><b>y=median(x,dim)</b></tt> est la médiane suivant la dimension
+    <tt><b>dim</b></tt> de <tt><b>x</b></tt>. (compatibilité avec matlab)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2,10;7,7.1,7.01];
+median(A)
+median(A,'r')
+median(A,'c')
+A=matrix([-9 3 -8 6 74 39 12 -6 -89 23 65 34],[2,3,2]);
+median(A,3)
+median(A,'m')
+   
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/mean.htm"><tt><b>mean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/st_deviation.htm"><tt><b>st_deviation</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_reduce</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_reduce</b> -  Performs a reduce operation over members of the specified group</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[buff, info] = pvm_reduce(func, buff, msgtag, group, rootginst)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>func :  string, defines the  operation performed  on  the global</b></tt>data. Should be : Max, Min, Sum or Pro.</li>
+<li>
+<tt><b>buff : scalar,  local scilab variable.  On  return, the  data array on</b></tt>the root will  be overwritten with the result  of the reduce operation over the group.</li>
+<li>
+<tt><b>msgtag : integer, message tag supplied by the user.  msgtag</b></tt>should  be  &gt;=  0.   It allows the user's program to              distinguish between different kinds of messages.</li>
+<li>
+<tt><b>group</b></tt>: string, group name of an existing group.</li>
+<li>
+<tt><b>rootginst  :  integer, instance number  of  group member who  gets the</b></tt>result.</li>
+<li>
+<tt><b>info : integer, status code returned by the routine.  Values</b></tt>less than zero indicate an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_reduce</b></tt> performs global operations such as max, min,
+         sum or product over  all  the tasks in a group. All group members
+         call pvm_reduce with their local data, and the  result  of
+         the  reduction  operation appears on the user specified root
+         task root. The root  task  is  identified  by  its  instance
+         number in the group.</p>
+<p>
+    Max and Min are implemented for scalar datatypes (double, complex). 
+         For complex values the minimum  [maximum]  is  that  complex
+         pair with  the  minimum [maximum] modulus.    Sum and Product are
+    implemented for scalar datatypes.</p>
+<p>
+    Note:  pvm_reduce  does  not  block.   If  a  task   calls
+         pvm_reduce  and  then  leaves  the group before the root has
+         called pvm_reduce an error may occur.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_bcast.htm"><tt><b>pvm_bcast</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_barrier.htm"><tt><b>pvm_barrier</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_send.htm"><tt><b>pvm_send</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_getinst.htm"><tt><b>pvm_getinst</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_gsize.htm"><tt><b>pvm_gsize</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_lvgroup.htm"><tt><b>pvm_lvgroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

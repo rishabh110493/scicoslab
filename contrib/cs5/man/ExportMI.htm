@@ -1,0 +1,46 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>ExportMI </title></head><body bgcolor="FFFFFF"><CENTER>CiudadSim Function  </CENTER><p><b>ExportMI  -  Scilab to MapInfo interface   </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>ok=ExportMI(net,name,nameout,disp_option)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    Scilab variable containing the network
+  </li>
+  <li><tt><b>name  </b></tt>
+    the name of the MI source file without extension
+  </li>
+  <li><tt><b>nameout  </b></tt>
+    the name of the MapInfo table where the results will be saved 
+  </li>
+  <li><tt><b>disp_option  </b></tt>
+    displaying options. 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    This command is meant to display in MapInfo the results obtained for
+    a network already recovered from mapinfo. 
+    It uses an existant MI file named name and creates two files : one .mif and one.mid.
+  </p>
+  <p>
+    To see them in MI , they must be imported (table/import), then the values
+    obtained in Scilab will be in the table associated with the file, and the
+    width of the arcs will be proportional to the chosen magnitude, flow or time.
+  </p>
+  <p>
+    The displaying option is used to specify the magnitude shown in the arcs.
+    The values for disp_option are the strings 'flow' and 'time'. 
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+// Scilab to MapInfo translation
+// 1) Choose the example Versailles where the scilab network is obtained
+// from a MapInfo file
+%net=TrafficExample("Versailles");
+// 2) Make an assignment
+TrafficAssig()
+// 3) Translate to mapinfo
+ok=ExportMI(%net,CS_DIR+"/examples/SGL_Versailles",CS_DIR+"/examples/man_example")
+// 4) Look the content of the variable CS_DIR (you need it in MapInfo)
+// 5) Open MapInfo and import the tables man_example,
+// look for it in CS_DIR then in examples
+
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="ImportMI.htm"><tt><b>ImportMI</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

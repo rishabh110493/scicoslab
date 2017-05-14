@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>%asn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>%asn</b> -  elliptic integral</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=%asn(x,m)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: upper limit of integral (<tt><b>x&gt;0</b></tt>) (can be a vector)</li>
+<li>
+<tt><b>m</b></tt>: parameter of integral (<tt><b>0&lt;m&lt;1</b></tt>)</li>
+<li>
+<tt><b>y</b></tt>: value of the integral</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates the elliptic integral</p>
+<p>
+    If <tt><b>x</b></tt> is a vector, <tt><b>y</b></tt> is a vector of same dimension as <tt><b>x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+m=0.8;z=%asn(1/sqrt(m),m);K=real(z);Ktilde=imag(z);
+x2max=1/sqrt(m);
+x1=0:0.05:1;x2=1:((x2max-1)/20):x2max;x3=x2max:0.05:10;
+x=[x1,x2,x3];
+y=%asn(x,m);
+rect=[0,-Ktilde,1.1*K,2*Ktilde];
+plot2d(real(y)',imag(y)',1,'011',' ',rect)
+//
+deff('y=f(t)','y=1/sqrt((1-t^2)*(1-m*t^2))');
+intg(0,0.9,f)-%asn(0.9,m)  //Works for real case only!
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

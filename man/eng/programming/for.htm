@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>for</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>for</b> -  language keyword for loops</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Used to define loops. Its syntax is:
+   <tt><b> for variable=expression ,instruction, .. ,instruction,end</b></tt></p>
+<p><tt><b> for variable=expression do instruction,   ,instruction,end</b></tt></p>
+<p>
+    If  <tt><b>expression</b></tt> is a matrix or a row vector, <tt><b>variable</b></tt>
+    takes as values the values of each column of the matrix.</p>
+<p>
+    Useful example : <tt><b>for variable=n1:step:n2,  ...,end</b></tt></p>
+<p>
+    If <tt><b>expression</b></tt> is a list <tt><b>variable</b></tt> takes as values the
+    successive entries of the list.</p>
+<p>
+    Warning: the number of characters used to define the body of any
+    conditionnal instruction (if while for or select/case) must be limited to
+    16k.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+n=5;
+for i = 1:n, for j = 1:n, a(i,j) = 1/(i+j-1);end;end
+for j = 2:n-1, a(j,j) = j; end; a
+for  e=eye(3,3),e,end  
+for v=a, write(6,v),end        
+for j=1:n,v=a(:,j), write(6,v),end 
+for l=list(1,2,'example'); l,end 
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/while.htm"><tt><b>while</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/end.htm"><tt><b>end</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/do.htm"><tt><b>do</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

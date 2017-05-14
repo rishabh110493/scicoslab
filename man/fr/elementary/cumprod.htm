@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cumprod</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cumprod</b> -  produit cumulatif.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=cumprod(x)  </tt></dd>
+<dd><tt>y=cumprod(x,'r') ou y=cumprod(x,1) </tt></dd>
+<dd><tt>y=cumprod(x,'c') ou y=cumprod(x,2) </tt></dd>
+<dd><tt>y=cumprod(x,'m') </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur ou matrice (réelle ou complexe)
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur ou matrice (réelle ou complexe)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> Pour un vecteur <tt><b>x</b></tt>, <tt><b>y=cumprod(x)</b></tt> renvoie dans
+      <tt><b>y</b></tt> le produit cumulatif de tous les éléments de
+      <tt><b>x</b></tt>. Si <tt><b>x</b></tt> est une matrice, elle est considérée
+      comme un vecteur (les colonnes sont mises bout à bout). </p>
+<p><tt><b>y=cumprod(x,'c')</b></tt> (ou <tt><b>y=cumprod(x,2)</b></tt>)
+      renvoie dans <tt><b>y</b></tt> le produit cumulatif des éléments des lignes
+      de <tt><b>x</b></tt>: <tt><b> y(i,:)=cumprod(x(i,:))</b></tt>. </p>
+<p><tt><b>y=cumprod(x,'r')</b></tt> (ou <tt><b>y=cumprod(x,2)</b></tt>)
+      renvoie dans <tt><b>y</b></tt> le produit cumulatif des colonnes de
+      <tt><b>x</b></tt>: <tt><b> y(:,i)=cumprod(x(:,i))</b></tt>. </p>
+<p><tt><b>y=cumprod(x,'m')</b></tt>
+      effectue le produit cumulatif selon la première dimension plus grande que
+      1 (compatibilité avec Matlab). </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;3,4];
+cumprod(A)
+cumprod(A,'r')
+cumprod(A,'c')
+rand('seed',0);
+a=rand(3,4);
+[m,n]=size(a);
+w=zeros(a);
+w(1,:)=a(1,:);
+for k=2:m;w(k,:)=w(k-1,:).*a(k,:);end;w-cumprod(a,'r')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/cumsum.htm"><tt><b>cumsum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/prod.htm"><tt><b>prod</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>errbar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>errbar</b> -  add vertical error bars on a 2D plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>errbar(x,y,em,ep)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,y,em,ep</b></tt>: four matrices of the same size.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>errbar</b></tt> adds vertical error bars on a 2D plot. 
+    <tt><b>x</b></tt> and <tt><b>y</b></tt> have the same meaning as in <tt><b>plot2d</b></tt>.
+    <tt><b>em(i,j)</b></tt> and <tt><b>ep(i,j)</b></tt> stands for the error interval on the 
+    value <tt><b>y(i,j)</b></tt>: <tt><b>[y(i,j)-em(i,j),y(i,j)+ep(i,j)]</b></tt>.</p>
+<p>
+    Enter the command <tt><b>errbar()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=[0:0.1:2*%pi]';
+y=[sin(t) cos(t)]; x=[t t];
+plot2d(x,y)
+errbar(x,y,0.05*ones(x),0.03*ones(x))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

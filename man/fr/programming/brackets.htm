@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>brackets ([,])</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>brackets ([,])</b> -  crochets à droite et à gauche  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[a11,a12,...;a21,a22,...;...]  </tt></dd>
+<dd><tt>[s1,s2,...]=func(...)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a11,a12,...  </b></tt>
+    : toute matrice (réelle, complexe, polynomiale, rationnelle, liste de type <tt><b>syslin</b></tt> ...) de dimensions adéquates
+</li>
+<li>
+<tt><b>s1,s2,...  </b></tt>
+    : noms de variables
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Les crochets droit et gauche sont utilisés pour effectuer une concaténation de matrices. Ces symboles sont aussi utilisés quand on effectue un appel à une fonction renvoyant plusieurs arguments.
+  </p>
+<p>
+    A l'intérieur d'une paire de crochets spécifiant une concaténation, un espace ou une virgule signifient une concaténation de colonnes, alors qu'un point-virgule ou un passage à la ligne signifient une concaténation de lignes.
+  </p>
+<p>
+    Note : pour éviter les confusions il est plus sûr d'utiliser des virgules pour concaténer des colonnes.
+  </p>
+<p>
+    Pour des crochets entourant une liste d'arguments de sortie d'une fonction, 
+    les noms de variables doivent être séparés par des virgules.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[6.9,9.64; sqrt(-1) 0]
+[1 +%i  2 -%i  3]
+[]
+['ceci est';'un vecteur';'de chaines de caracteres']
+s=poly(0,'s');[1/s,2/s]
+[tf2ss(1/s),tf2ss(2/s)]
+
+[u,s]=schur(rand(3,3))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/comma.htm"><tt><b>comma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/semicolon.htm"><tt><b>semicolon</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+ImportMI                           CiudadSim Function              ImportMI
+NAME
+   ImportMI  - MapInfo to scilab interface 
+  
+CALLING SEQUENCE
+ [net,color,Bidir]=ImportMI(name)
+PARAMETERS
+ net        the resulting network 
+            
+ color      a vector with the color of the links
+            
+ Bidir      a sparse matrix  
+            
+DESCRIPTION
+   The purpose of the MapInfo interface is to facilitate the input of the 
+  geographical data into the CiudadSim Toolbox and to provide a nicer way
+  of displaying the results obtained after the assignment. There are two
+  commands : ImportMI (to translate from MI to Scilalb) and ExportMI (to
+  translate from Scilab to MI).   The MapInfo files must be done following
+  these directions:
+  
+ 
+ - In MapInfo, open the file CS_empty.tab located in the directory 
+ examples of the CiudadSim toolbox.
+ 
+ - Save it with another name to be able to modify it. 
+ 
+ - Close the MapInfo table MI_empty and open the one you created. 
+ 
+ - Make the layer editable.
+ 
+ - Press the F key to enter in the fussion mode
+ 
+ - Draw the arcs as polylines. 
+ 
+ - Export the table to obtain two files one .mif and other .mid .
+ 
+     Important Remarks :   1) The extreme of the arcs will be considered as
+  nodes so if you want that two arcs share the same node is important to
+  draw it like that. That's why the Fussion mode is important, when the
+  pointer is over an already defined node it will change into a cross.  2)
+  The style of the polyline is used to differentiate one-way and two-ways
+  links. The two-ways links can have any style but one-way links must have
+  style 2.  Each two-way link in MapInfo corresponds to two one-way links
+  in Scilab. This  correspondance is found in the sparse matrix Bidir.   3)
+  The links can be given different colors, these colors will be in the
+  output as the vector color, it can be useful to differentiate subsets of
+  links.   
+  
+EXAMPLES
+ // MapInfo translation from the files SGL_Versailles.mid and SGL_Versailles.mif
+ // regular town example with four modes and two classes
+ [%net,color,Bidir]=ImportMI(CS_DIR+"examples/SGL_Versailles");
+ // Show the translated arcs in Scilab
+ ShowNet()
+ // Now you can add demands with AddDemands and the compute the assignment
+SEE ALSO
+   ExportMI  
+  

@@ -1,0 +1,81 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>WardropN </title></head><body bgcolor="FFFFFF"><CENTER>Maxplus Function  </CENTER><p><b>WardropN  -  Wardrop equilibrium ( Newton hybrid method )  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>bench=WardropN(a,k,eps,niter)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>a  </b></tt>
+    : regularization coefficient (small number)
+  </li>
+  <li><tt><b>k  </b></tt>
+    : reducing regularization coefficient exponential rate (number &gt;= 1)
+  </li>
+  <li><tt><b>eps  </b></tt>
+    : precision of the convergence test (small number)
+  </li>
+  <li><tt><b>niter  </b></tt>
+    : maximal number of iterations
+  </li>
+  <li><tt><b>bench  </b></tt>
+    : niter x 5  matrix
+  </li>
+  <li><tt><b>%net  </b></tt>
+    : global variable NetList   
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Compute the Wardrop equilibrium of a transport
+    assignment problem by solving the following nodes-links
+    variational formulation of the problem:
+  </p>
+  <p>
+    Min_q Sum_l C(f_l)
+  </p>
+  <p>
+    f_l=Sum_i q_li
+  </p>
+  <p>
+    Hq_i=d_i
+  </p>
+  <p>
+    O&lt;=q_li
+  </p>
+  <p>
+    where :
+  </p>
+  <p>
+    - C(f) is a cost in the classes defined by the lpf function,
+    - H is is the incidence nodes-arcs matrix of the network,
+    - q_li is the flow of the commodity i on the link l,
+  </p>
+  <p>
+    %net is the netlist containing all the information relative to
+    the network and the cost function used.
+  </p>
+  <p>
+    The method used is a decomposed newton method
+    in the space (q_i,v_i) i=1,p, where the v_i denote the dual
+    variables associated to the constraints Hq_i=d_i .
+  </p>
+  <p>
+    The variable a regularizes
+    the  matrices giving the potentials.
+    At each iteration a is reduced by a factor k.
+    We can try first a small a and k=1. 
+  </p>
+  <p>
+    This method is useful mainly in the case of
+    a small number of commodities.
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+
+// Definition of the Network
+nw=4;
+%net=TrafficExample("Regular City",nw,nw);
+
+// Traffic Assignment
+bench=WardropN(0.1,2,1.e-4,12);
+
+// Visualization of the NET
+ShowNet();
+
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="DSD.htm"><tt><b>DSD</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="Probit.htm"><tt><b>Probit</b></tt></a>&nbsp;&nbsp;<a href="MSASUE.htm"><tt><b>MSASUE</b></tt></a>&nbsp;&nbsp;<a href="LogitNE.htm"><tt><b>LogitNE</b></tt></a>&nbsp;&nbsp;<a href="LogitNELS.htm"><tt><b>LogitNELS</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

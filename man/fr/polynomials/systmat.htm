@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>systmat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>systmat</b> -  system matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Sm]=systmat(Sl);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list) or descriptor system</li>
+<li>
+<tt><b>Sm</b></tt>: matrix pencil</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    System matrix of the linear system <tt><b>Sl</b></tt> (<tt><b>syslin</b></tt> list) 
+    in state-space form (utility function).</p>
+<pre>
+
+ Sm = [-sI + A   B;
+      [    C     D]
+   
+    </pre>
+<p>
+    For a descriptor system (<tt><b>Sl=list('des',A,B,C,D,E)</b></tt>), <tt><b>systmat</b></tt> returns:</p>
+<pre>
+
+ Sm = [-sE + A   B;
+      [    C     D]
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2des.htm"><tt><b>ss2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/sm2des.htm"><tt><b>sm2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/sm2ss.htm"><tt><b>sm2ss</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

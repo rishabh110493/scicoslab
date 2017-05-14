@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TCL_DeleteInterp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>TCL_DeleteInterp</b> - delete TCL interpreter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>TCL_DeleteInterp(interp)</tt></dd>
+<dd><tt>TCL_DeleteInterp()</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>interp</b></tt>: character string parameter. Name of the slave tcl
+					interpreter to delete. If not provided, it defaults to the main tcl interpreter created by Scilab.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>This routine allows to delete a TCL slave interpreter or the main scilab TCL interpreter.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+TCL_SetVar("Scilab","OK")
+TCL_ExistVar("Scilab")
+TCL_DeleteInterp()
+TCL_ExistVar("Scilab")
+TCL_CreateSlave('BisInterp')
+TCL_ExistInterp('BisInterp')
+TCL_SetVar("Scilab","OK",'BisInterp')
+TCL_ExistVar("Scilab",'BisInterp')
+TCL_DeleteInterp('BisInterp')
+TCL_ExistInterp('BisInterp')
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_SetVar.htm"><tt><b>TCL_SetVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_ExistVar.htm"><tt><b>TCL_ExistVar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_CreateSlave.htm"><tt><b>TCL_CreateSlave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/TCL_ExistInterp.htm"><tt><b>TCL_ExistInterp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gfrancis</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gfrancis</b> -  Francis equations for tracking</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[L,M,T]=gfrancis(Plant,Model)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Plant</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>Model</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>L,M,T</b></tt>: real matrices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the the linear plant:</p>
+<pre>
+
+    x'= F*x + G*u 
+    y = H*x + J*u
+   
+    </pre>
+<p>
+    and the linear model</p>
+<pre>
+
+    xm'= A*xm + B*um
+    ym = C*xm + D*um
+   
+    </pre>
+<p>
+    the goal is for the plant to track the model i.e. <tt><b>e = y - ym ---&gt; 0</b></tt>
+    while keeping stable the state x(t) of the plant. 
+    <tt><b>u</b></tt> is given by feedforward and feedback</p>
+<pre>
+
+ u = L*xm + M*um + K*(x-T*xm) = [K , L-K*T] *(x,xm) + M*um
+   
+    </pre>
+<p>
+    The matrices T,L,M satisfy generalized Francis equations</p>
+<pre>
+
+    F*T + G*L = T*A
+    H*T + J*L = C
+          G*M = T*B
+          J*M = D
+   
+    </pre>
+<p>
+    The matrix <tt><b>K</b></tt> must be chosen as stabilizing the pair <tt><b>(F,G)</b></tt>
+    See example of use in directory <tt><b>demos/tracking</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+Plant=ssrand(1,3,5);
+[F,G,H,J]=abcd(Plant);
+nw=4;nuu=2;A=rand(nw,nw);
+st=maxi(real(spec(A)));A=A-st*eye(A);
+B=rand(nw,nuu);C=2*rand(1,nw);D=0*rand(C*B);
+Model=syslin('c',A,B,C,D);
+[L,M,T]=gfrancis(Plant,Model);
+norm(F*T+G*L-T*A,1)
+norm(H*T+J*L-C,1)
+norm(G*M-T*B,1)
+norm(J*M-D,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg.htm"><tt><b>lqg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ppol.htm"><tt><b>ppol</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

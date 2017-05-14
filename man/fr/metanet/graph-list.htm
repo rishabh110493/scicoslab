@@ -1,0 +1,185 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>graph-list</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab type  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graph-list</b> -  description d'un graphe (sous forme de liste)  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Un graphe dans Scilab est représenté par une liste typée.
+    </p>
+<p>
+      Voir ci-dessous la description complète de cette liste.
+      Chaque élément est décrit par une ou plusieurs lignes.
+      La première ligne donne
+      le nom de l'élément et sa définition. Des informations supplémentaires, 
+      telles que les valeurs par défaut des éléments pouvant en avoir une, sont 
+      données sur les autres lignes.
+      En fait, seul les 5 premiers éléments doivent avoir une valeur, les 
+      autres pouvant être définis comme un vecteur vide <tt><b>[]</b></tt>, la
+      valeur par défaut étant utilisée par les fonctions ou la fenêtre de
+      Metanet.
+      Par exemple, il est possible de définir un graphe par :
+    </p>
+<pre>
+      g=make_graph('min',1,1,[1],[1]);
+      </pre>
+<p>
+      qui est le graphe le plus simple que l'on puisse créer avec Metanet
+      (il est orienté, possède un sommet et une boucle sur ce sommet).
+    </p>
+<p>
+      Le nom des élément dans la liste est très important car il est utilisé 
+      pour y accéder. Par exemple si <tt><b>g</b></tt> est un graphe, pour obtenir
+      le nom du graphe, il suffit de taper :
+    </p>
+<pre>
+      g('name')
+      </pre>
+<p>
+      ou 
+    </p>
+<pre>
+      g.name
+      </pre>
+<p>
+      et pour changer le nom du graphe en <tt><b>'toto'</b></tt> :
+    </p>
+<pre>
+      g('name')='toto'; 
+      </pre>
+<p>
+      ou 
+    </p>
+<pre>
+      g.name='toto';
+      </pre>
+<p>
+      On peut obtenir le nombre d'arêtes et le nombre d'arcs du graphe
+      avec <tt><b>edge_number(g)</b></tt> et <tt><b>arc_number(g)</b></tt> (ces noms
+      ne sont pas ceux des éléments de la liste). Pour raisons de compatibilité
+      <tt><b>node_number(g)</b></tt> peut être utilisé à la place de
+      <tt><b>g('node_number')</b></tt> ou <tt><b>g.node_number</b></tt>.
+    </p>
+<p>
+      Un graphe peut être syntaxiquement correct mais ne pas représenter un 
+      graphe valide.
+      Utiliser la fonction <tt><b>check_graph</b></tt> pour le vérifier.
+      De plus, les noms des sommets doivent être différents. En fait, cela ne
+      donne pas d'erreur dans Scilab, mais un comportement étrange peut en
+      résulter. Ceci n'est pas vérifié par <tt><b>check_graph</b></tt> 
+      car cela prendrait trop de temps. Cela est seulement vérifié lors de sa
+      visualisation, sauvegarde ou chargement.
+    </p>
+<p>
+      Les éléments d'un graphe sont les suivants :
+    </p>
+<dl>
+<dd>
+<b>name :</b> le nom du graphe. C'est une chaîne de caractères (longueur &lt; 80).</dd>
+<dd>
+<b>oriented :</b> flag donnant le type du graphe. Il est égal à 1 (graphe orienté) ou
+	égal à 0 (graphe non-orienté).</dd>
+<dd>
+<b>node_number :</b> nombre de sommets </dd>
+<dd>
+<b>tail :</b> vecteur ligne des numéros des sommets origines</dd>
+<dd>
+<b>head :</b> vecteur ligne des numéros des sommets extrémités </dd>
+<dd>
+<b>node_name :</b> vecteur ligne des noms des sommets. Les noms des sommets doivent être
+	différents. Par défaut les noms des sommets sont égaux à leurs numéros.</dd>
+<dd>
+<b>node_type :</b> vecteur ligne des types des sommets. Le type est un entier entre 0 et
+	2, 0 par défaut:<dl>
+<dd>
+<b>0</b> = sommet normal</dd>
+<dd>
+<b>1</b>= puits</dd>
+<dd>
+<b>2</b>= source</dd>
+</dl>
+</dd>
+<dd>
+<b>node_x :</b> vecteur ligne des coordonnées x des sommets. Valeur par défaut calculée.</dd>
+<dd>
+<b>node_y :</b> vecteur ligne des coordonnées y des sommets. Valeur par défaut calculée.</dd>
+<dd>
+<b>node_color :</b> vecteur ligne des couleurs des sommets, des entiers correspondants a la
+	table de couleur courante.</dd>
+<dd>
+<b>node_diam :</b> vecteur ligne des diamètres des sommets en pixels, un sommet est
+	dessiné sous forme d'un cercle. Par défaut, valeur de l'élément
+	<tt><b>default_node_diam</b></tt>.</dd>
+<dd>
+<b>node_border :</b> vecteur ligne de l'épaisseur des bords des sommets. un sommet est
+	dessiné sous forme d'un cercle, par défaut, valeur de l'élément
+	<tt><b>default_node_border</b></tt>.</dd>
+<dd>
+<b>node_font_size :</b> vecteur ligne de la taille de la police utilisée pour afficher le nom
+	du sommet. Les tailles possibles sont: 8, 10, 12, 14, 18 ou 24. Par
+	défaut, valeur de l'élément  <tt><b>default_font_size</b></tt>.</dd>
+<dd>
+<b>node_demand :</b> vecteur ligne des demandes des sommets,  0 par défaut;</dd>
+<dd>
+<b>edge_name :</b> vecteur ligne des noms d'arêtes. Il est souhaitable que les noms
+	des arêtes soient différents, mais c'est n'est pas
+	obligatoire. Par défaut les noms des arêtes sont leur numéros.</dd>
+<dd>
+<b>edge_color:</b> vecteur ligne des couleurs des arêtes. des entiers correspondants a la
+	table de couleur courante.</dd>
+<dd>
+<b>edge_width:</b> vecteur ligne des épaisseurs des arêtes en pixels, par défaut, valeur
+	de l'élément <tt><b>default_edge_width</b></tt>.</dd>
+<dd>
+<b>edge_hi_width :</b> vecteur ligne des épaisseurs des arêtes mises en évidence (en pixels),
+	par défaut, valeur de l'élément <tt><b>default_edge_hi_width</b></tt>.</dd>
+<dd>
+<b>edge_font_size:</b>  vecteur ligne de la taille de la police utilisée pour afficher le nom
+	des arêtes. Les tailles possibles sont:8, 10, 12, 14, 18 ou 24.  Par
+	défaut, valeur de l'élément <tt><b>default_font_size</b></tt> .</dd>
+<dd>
+<b>edge_length :</b> vecteur ligne des longueurs des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_cost :</b> vecteur ligne des coûts des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_min_cap :</b> vecteur ligne des capacités minimum des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_max_cap :</b> vecteur ligne des capacités maximum des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_q_weight :</b> vecteur ligne des poids quadratiques des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_q_orig :</b> vecteur ligne des origines quadratiques des arêtes, 0 par défaut.</dd>
+<dd>
+<b>edge_weight :</b> vecteur ligne des poids des arêtes,  0 par défaut.</dd>
+<dd>
+<b>default_node_diam :</b> diamètre par défaut des sommets du graphe, 20 pixels par défaut.</dd>
+<dd>
+<b>default_node_border :</b> épaisseur du bord des sommets, 2 pixels par défaut.</dd>
+<dd>
+<b>default_edge_width :</b> épaisseur par défaut des arêtes du graphe,1 pixel par défaut.</dd>
+<dd>
+<b>default_edge_hi_width :</b> taille par défaut des arêtes mises en évidence (en pixels),  3 pixels
+	par défaut.</dd>
+<dd>
+<b>default_font_size :</b> taille par défaut de la police utilisée pour afficher le nom des
+	sommets  et arêtes.  12 par défaut</dd>
+<dd>
+<b>node_label :</b> vecteur ligne des noms des sommets </dd>
+<dd>
+<b>edge_label :</b> vecteur ligne des noms des arêtes</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    g=load_graph(SCI+'/demos/metanet/mesh100');
+    g('node_color')=int(rand(1:g('node_number'))*16);
+    g('edge_color')=int(rand(1:edge_number(g))*16);
+    show_graph(g)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/edit_graph.htm"><tt><b>edit_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/arc_number.htm"><tt><b>arc_number</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/check_graph.htm"><tt><b>check_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/edge_number.htm"><tt><b>edge_number</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/glist.htm"><tt><b>glist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/make_graph.htm"><tt><b>make_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/node_number.htm"><tt><b>node_number</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

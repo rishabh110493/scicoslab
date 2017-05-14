@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>faurre</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>faurre</b> -  filter computation by simple Faurre algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,R,T]=faurre(n,H,F,G,R0)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: number of iterations.</li>
+<li>
+<tt><b>H, F, G</b></tt>: estimated triple from the covariance sequence of <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>R0</b></tt>: E(yk*yk')</li>
+<li>
+<tt><b>P</b></tt>: solution of the Riccati equation after n iterations.</li>
+<li>
+<tt><b>R, T</b></tt>: gain matrix of the filter.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes iteratively the minimal solution of the algebraic
+    Riccati equation and gives the matrices <tt><b>R</b></tt> and <tt><b>T</b></tt> of the 
+    filter model.
+    The algorithm tries to compute the solution P as the growing limit of a
+    sequence of matrices Pn such that</p>
+<pre>
+
+                                     -1
+Pn+1=F*Pn*F'+(G-F*Pn*h')*(R0-H*Pn*H')  *(G'-H*Pn*F')
+       -1
+P0=G*R0 *G'
+   
+    </pre>
+<p>
+    Note that this method may not converge,especially when F has poles
+    near the unit circle. Use preferably the srfaur function.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/srfaur.htm"><tt><b>srfaur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/lindquist.htm"><tt><b>lindquist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/phc.htm"><tt><b>phc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>G. Le V.  </p>
+</body>
+</html>

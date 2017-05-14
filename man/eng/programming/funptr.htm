@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>funptr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>funptr</b> -  coding of  primitives ( wizard stuff )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> [numptr] = funptr(name)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: a string, the name of a primitive</li>
+<li>
+<tt><b>numptr</b></tt>: the internal routine number of the primitive</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function (for experts only) to get the internal routine number <tt><b>numptr</b></tt>
+    of the primitive <tt><b>'name'</b></tt>. <tt><b>numptr</b></tt> is formed from the interface
+    number <tt><b>fun</b></tt> and the routine number <tt><b>fin</b></tt> of the primitive in its interface
+    by <tt><b>numptr = 100*fun + fin</b></tt> (fin &lt; 100). From  <tt><b>numptr</b></tt> you can get 
+    the interface number <tt><b>fun = floor(numptr/100)</b></tt> which may be useful to link a 
+    dynamical interface with arguments passed by reference (see example section).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Suppose you want to load some codes via the dynamic 
+// loading facilities offers by addinter. By default 
+// arguments are passed by values but if you want to 
+// pass them by reference you can do the following 
+// (name being the scilab name of one of the interfaced 
+// routines) :
+//
+// addinter(files,spnames,fcts)  // args passed by values
+// num_interface = floor(funptr(name)/100)
+// intppty(num_interface)  // args now passed by reference
+//
+// Note that if you enter the following
+//
+// intppty()                
+//
+// you will see all the interfaces working by reference
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/clearfun.htm"><tt><b>clearfun</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/newfun.htm"><tt><b>newfun</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/intppty.htm"><tt><b>intppty</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

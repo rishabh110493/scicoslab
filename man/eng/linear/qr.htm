@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>qr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>qr</b> -  QR decomposition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Q,R]=qr(X [,"e"])  </tt></dd>
+<dd><tt>[Q,R,E]=qr(X [,"e"])  </tt></dd>
+<dd><tt>[Q,R,rk,E]=qr(X [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>tol</b></tt>: nonnegative real number</li>
+<li>
+<tt><b>Q</b></tt>: square orthogonal or unitary matrix</li>
+<li>
+<tt><b>R</b></tt>: matrix with same dimensions as <tt><b>X</b></tt>
+</li>
+<li>
+<tt><b>E</b></tt>: permutation matrix</li>
+<li>
+<tt><b>rk</b></tt>: integer (QR-rank of <tt><b>X</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>[Q,R] = qr(X)</b>produces an upper triangular matrix <tt><b>R</b></tt> of the same dimension as <tt><b>X</b></tt> and an orthogonal (unitary in the complex case) matrix <tt><b>Q</b></tt> so that <tt><b>X = Q*R</b></tt>. <tt><b>[Q,R] = qr(X,"e")</b></tt> produces an "economy size": If <tt><b>X</b></tt> is m-by-n with m &gt; n, then only the first n columns of <tt><b>Q</b></tt>  are computed as well as the first n rows of <tt><b>R</b></tt>.<p>
+    From <tt><b>Q*R = X</b></tt> , it follows that
+    the kth column of the matrix <tt><b>X</b></tt>, is expressed as a linear combination
+    of the k first columns of <tt><b>Q</b></tt> (with coefficients <tt><b> R(1,k), ..., R(k,k) </b></tt>). The  k first columns of <tt><b>Q</b></tt> make an orthogonal basis
+    of the subspace spanned by the k first comumns of <tt><b>X</b></tt>. If column <tt><b>k</b></tt>
+    of <tt><b>X</b></tt> (i.e. <tt><b>X(:,k)</b></tt> ) is a linear combination of the first 
+    <tt><b>p</b></tt> columns of <tt><b>X</b></tt>, then the entries <tt><b>R(p+1,k), ..., R(k,k)</b></tt>
+    are zero. It this situation, <tt><b>R</b></tt> is upper trapezoidal. If <tt><b>X</b></tt> has
+    rank <tt><b>rk</b></tt>, rows <tt><b>R(rk+1,:), R(rk+2,:), ...</b></tt> are zeros.
+  </p>
+</dd>
+<dd>
+<b>[Q,R,E] = qr(X)</b><p>
+    produces a (column) permutation matrix <tt><b>E</b></tt>, an upper
+    triangular <tt><b>R</b></tt> with decreasing diagonal elements and an
+    orthogonal (or unitary) <tt><b>Q</b></tt> so that <tt><b>X*E =    Q*R</b></tt>. 
+    If <tt><b>rk</b></tt> is the rank of <tt><b>X</b></tt>, the
+    <tt><b>rk</b></tt> first  entries along the main diagonal of
+    <tt><b>R</b></tt>, i.e. <tt><b>R(1,1), R(2,2), ..., R(rk,rk)</b></tt>
+    are all different from zero.  <tt><b>[Q,R,E] =  qr(X,"e")</b></tt> 
+    produces an "economy size":
+    If <tt><b>X</b></tt> is m-by-n with m &gt; n, then only the first n
+    columns of <tt><b>Q</b></tt>  are computed as well as the first n
+    rows of <tt><b>R</b></tt>. 
+  </p>
+</dd>
+<dd>
+<b>[Q,R,rk,E] = qr(X ,tol)</b>returns <tt><b>rk</b></tt> = rank estimate of <tt><b>X</b></tt> i.e. <tt><b>rk</b></tt> is the number of diagonal elements in <tt><b>R</b></tt> which are larger than a given threshold <tt><b>tol</b></tt>.</dd>
+<dd>
+<b>[Q,R,rk,E] = qr(X) </b>returns <tt><b>rk</b></tt> = rank estimate of <tt><b>X</b></tt>
+    i.e. <tt><b>rk</b></tt> is the number of diagonal elements in
+    <tt><b>R</b></tt> which are larger than
+    <tt><b>tol=R(1,1)*%eps*max(size(R))</b></tt>. See <tt><b>rankqr</b></tt>
+    for a rank revealing QR factorization, using the condition number
+    of <tt><b>R</b></tt>.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// QR factorization, generic case
+// X is tall (full rank)
+X=rand(5,2);[Q,R]=qr(X); [Q'*X R]
+//X is fat (full rank)
+X=rand(2,3);[Q,R]=qr(X); [Q'*X R]
+//Column 4 of X is a linear combination of columns 1 and 2:
+X=rand(8,5);X(:,4)=X(:,1)+X(:,2); [Q,R]=qr(X); R, R(:,4)
+//X has rank 2, rows 3 to $ of R are zero:
+X=rand(8,2)*rand(2,5);[Q,R]=qr(X); R
+//Evaluating the rank rk: column pivoting ==&gt; rk first
+//diagonal entries of R are non zero :
+A=rand(5,2)*rand(2,5);
+[Q,R,rk,E] = qr(A,1.d-10);
+norm(Q'*A-R)
+svd([A,Q(:,1:rk)])    //span(A) =span(Q(:,1:rk))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rankqr.htm"><tt><b>rankqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+    qr decomposition is based  the Lapack routines DGEQRF, DGEQPF,
+    DORGQR for the real matrices and  ZGEQRF, ZGEQPF, ZORGQR for the
+    complex case.</p>
+</body>
+</html>

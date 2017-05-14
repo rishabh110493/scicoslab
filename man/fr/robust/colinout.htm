@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>colinout</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colinout</b> -  inner-outer factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Inn,X,Gbar]=colinout(G)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: linear system (<tt><b>syslin</b></tt> list) <tt><b>[A,B,C,D]</b></tt>
+</li>
+<li>
+<tt><b>Inn</b></tt>:  inner factor (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>Gbar</b></tt>:  outer factor (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>X</b></tt>:  row-compressor of <tt><b>G</b></tt> (<tt><b>syslin</b></tt> list)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Inner-outer factorization (and column compression) of (lxp) <tt><b>G =[A,B,C,D]</b></tt> with l&lt;=p.</p>
+<p><tt><b>G</b></tt> is assumed to be fat (<tt><b>l&lt;=p</b></tt>) without zero on the imaginary axis
+    and with a <tt><b>D</b></tt> matrix which is full row rank.</p>
+<p><tt><b>G</b></tt> must also be stable for having <tt><b>Gbar</b></tt> stable.</p>
+<p>
+    Dual of <tt><b>rowinout</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/rowinout.htm"><tt><b>rowinout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

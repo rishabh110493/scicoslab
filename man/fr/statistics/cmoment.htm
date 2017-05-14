@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cmoment</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cmoment</b> -   central moments of all orders</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mom=cmoment(x,ord)  </tt></dd>
+<dd><tt>mom=cmoment(x,ord,'r') or mom=cmoment(x,ord,1)  </tt></dd>
+<dd><tt>mom=cmoment(x,ord,'c') or mom=cmoment(x,ord,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li>
+<li>
+<tt><b>ord</b></tt>: positive integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    cmoment<tt><b>(x,ord)</b></tt> is the central moment or order ord of
+    the elements of <tt><b>x</b></tt>.
+    If a  third argument  of type string  <tt><b>'r'</b></tt> (or  <tt><b> 1
+    </b></tt>) or  <tt><b>'c'</b></tt> (or <tt><b> 2</b></tt>)  is used, we  get  in the
+    first   case,   a  row   vector   <tt><b> mom</b></tt>  such   that
+    <tt><b>mom(j)</b></tt>   contains  the   central  moment   of  order
+    <tt><b>ord</b></tt>     of     the     <tt><b>j</b></tt>     column     of
+    <tt><b>x</b></tt>. <tt><b>cmoment(x,ord,'c')</b></tt>  is used in  the same way
+    for the central moments in the rows.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, J.Wiley &amp; Sons, 1990.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 0.0002211 0.6653811;
+   0.7560439 0.3303271 0.6283918]
+mom=cmoment(x,3)
+mom=cmoment(x,2,'r')
+mom=cmoment(x,3,'c')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/median.htm"><tt><b>median</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/st_deviation.htm"><tt><b>st_deviation</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/mean.htm"><tt><b>mean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/meanf.htm"><tt><b>meanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/moment.htm"><tt><b>moment</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/nanmean.htm"><tt><b>nanmean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/nanmeanf.htm"><tt><b>nanmeanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/st_deviation.htm"><tt><b>stdev</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/stdevf.htm"><tt><b>stdevf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/variance.htm"><tt><b>variance</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/variancef.htm"><tt><b>variancef</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/nanstdev.htm"><tt><b>nanstdev</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

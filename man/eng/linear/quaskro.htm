@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>quaskro</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>quaskro</b> -  quasi-Kronecker form</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Q,Z,Qd,Zd,numbeps,numbeta]=quaskro(F)  </tt></dd>
+<dd><tt>[Q,Z,Qd,Zd,numbeps,numbeta]=quaskro(E,A)  </tt></dd>
+<dd><tt>[Q,Z,Qd,Zd,numbeps,numbeta]=quaskro(F,tol)  </tt></dd>
+<dd><tt>[Q,Z,Qd,Zd,numbeps,numbeta]=quaskro(E,A,tol)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>F</b></tt>: real matrix pencil <tt><b>F=s*E-A</b></tt>  (<tt><b>s=poly(0,'s')</b></tt>)</li>
+<li>
+<tt><b>E,A</b></tt>: two real matrices of same dimensions</li>
+<li>
+<tt><b>tol</b></tt>: a real number (tolerance, default value=1.d-10)</li>
+<li>
+<tt><b>Q,Z</b></tt>: two square orthogonal matrices</li>
+<li>
+<tt><b>Qd,Zd</b></tt>: two vectors of integers</li>
+<li>
+<tt><b>numbeps</b></tt>: vector of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Quasi-Kronecker form of matrix pencil: <tt><b>quaskro</b></tt> computes two
+    orthogonal matrices <tt><b>Q, Z</b></tt> which put the pencil <tt><b>F=s*E -A</b></tt> into
+    upper-triangular form:</p>
+<pre>
+
+
+           | sE(eps)-A(eps) |        X       |      X     |
+           |----------------|----------------|------------|
+           |        O       | sE(inf)-A(inf) |      X     |
+Q(sE-A)Z = |=================================|============|
+           |                                 |            |
+           |                O                | sE(r)-A(r) |
+
+   
+    </pre>
+<p>
+    The dimensions of the blocks are given by:</p>
+<p><tt><b>eps=Qd(1) x Zd(1)</b></tt>, <tt><b>inf=Qd(2) x Zd(2)</b></tt>,
+    <tt><b>r = Qd(3) x Zd(3)</b></tt></p>
+<p>
+    The <tt><b>inf</b></tt> block contains the infinite modes of
+    the pencil.</p>
+<p>
+    The <tt><b>f</b></tt> block contains the finite modes of
+    the pencil</p>
+<p>
+    The structure of epsilon blocks are given by:</p>
+<p><tt><b>numbeps(1)</b></tt> = <tt><b>#</b></tt> of eps blocks of size 0 x 1</p>
+<p><tt><b>numbeps(2)</b></tt> = <tt><b>#</b></tt> of eps blocks of size 1 x 2</p>
+<p><tt><b>numbeps(3)</b></tt> = <tt><b>#</b></tt> of eps blocks of size 2 x 3     etc...</p>
+<p>
+    The complete (four blocks) Kronecker form is given by
+    the function <tt><b>kroneck</b></tt> which calls <tt><b>quaskro</b></tt> on
+    the (pertransposed) pencil <tt><b>sE(r)-A(r)</b></tt>.</p>
+<p>
+    The code is taken from T. Beelen</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/kroneck.htm"><tt><b>kroneck</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/gschur.htm"><tt><b>gschur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/gspec.htm"><tt><b>gspec</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

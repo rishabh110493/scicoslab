@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sysconv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sysconv</b> -  system conversion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[s1,s2]=sysconv(s1,s2)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>s1,s2</b></tt>: list (linear <tt><b>syslin</b></tt> systems)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Converts <tt><b>s1</b></tt> and <tt><b>s2</b></tt> into common representation in order that
+    system interconnexion operations can be applied. Utility function for
+    experts. The conversion rules in given in the following table.
+  </p>
+<dl>
+<dd>
+<b>"c"</b>: continuous time system</dd>
+<dd>
+<b>"d"</b>: discrete time system</dd>
+<dd>
+<b>n</b>: sampled system with sampling period n</dd>
+<dd>
+<b>[]</b>: system with undefined time domain  For mixed systems <tt><b>s1</b></tt> and <tt><b>s2</b></tt> are put in state-space representation.</dd>
+</dl>
+<pre>
+
+ s1\s2|    "c"     |     "d"     |      n2        |     []     |
+ ---------------------------------------------------------------
+ "c"   | nothing    |uncompatible | c2e(s1,n2)     |  c(s2)     |
+ ---------------------------------------------------------------
+ "d"   |uncompatible| nothing     | e(s1,n2)       |  d(s2)     |
+ ---------------------------------------------------------------
+ n1    | c2e(s2,n1) | e(s2,n1)    | n1&lt;&gt;n2 uncomp  |  e(s2,n1)  |
+       |            |             | n1=n2  nothing |            |
+ ---------------------------------------------------------------
+ []    | c(s1)      | d(s1)       | e(s1,n2)       |  nothing   |
+ ---------------------------------------------------------------
+   
+    </pre>
+<p>
+    With the following meaning:
+  </p>
+<dl>
+<dd>
+<b>n1,n2</b>: sampling period</dd>
+<dd>
+<b>c2e(s,n)</b>: the continuous-time system s is transformed into a sampled system with sampling period n.</dd>
+<dd>
+<b>c(s)</b>: conversion to continuous (time domain is <tt><b>"c"</b></tt>)</dd>
+<dd>
+<b>d(s)</b>: conversion to discrete (time domain is <tt><b>"d"</b></tt>)</dd>
+<dd>
+<b>e(s,n)</b>: conversion to samples system with period <tt><b>n</b></tt>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s1=ssrand(1,1,2);
+s2=ss2tf(s1);
+[s1,s2]=sysconv(s1,s2);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+Par2Net                         Traffic-toolbox Function            Par2Net
+NAME
+   Par2Net  -  Net from parameters 
+  
+CALLING SEQUENCE
+ net=Par2Net(g,d,lpp,nf)
+PARAMETERS
+ net        : a NetList
+            
+ g          : graph-list, graph of the network
+            
+ d          : 3xnd matrix, tail, head and value of demands
+            
+ lpp        : 4xna matrix, data for the link performance functions
+            
+ nf         : integer between 0 and 6, travel time function formula   
+            
+DESCRIPTION
+   Par2Net  - Assembles the data fields in a net. 
+  
+EXAMPLES
+ net=TrafficExample('Sioux Falls');
+ [g,d,lpp,nf]=Net2Par(net);
+ net2=Par2Net(g,d,lpp,nf)
+SEE ALSO
+   IntroTrfAsg, NetList, Net2Par, TrafficExample     
+  

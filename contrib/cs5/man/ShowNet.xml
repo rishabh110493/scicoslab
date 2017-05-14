@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>ShowNet  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="ShowNet ">  Show a net using Metanet or Scigraph  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>ShowNet()  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax)  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>ShowNet(nodes,arcs,fmin,fmax,tmin,tamx,demands,dmin,dmax,d)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <P>  </P>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : the global NetList varaible databasis
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nodes  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (nodes)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>arcs  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (arcs)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>fmin,fmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum flow
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>tmin,tmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum time
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>demands  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string or row vector of integers (demands)
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>dmin,dmax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : reals, minimum and maximum demand 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>d  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : integer, a demand number 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+     ShowNet shows the state of the NetList with the flow and the travel time if they are
+    already assigned. The conventions are that the non used arcs are light
+    blue, the used arcs are black with their width proportional to the flow. The
+    demands are magenta with their width proportional to the demand flow.
+    The orientation of the demand arcs is from origin to destination. 
+  </P>
+  <P>
+     It is possible to give a list of nodes, arcs and demands to be shown or
+    a predefined string 
+  </P>
+  <P>
+    - For the nodes the strings available are : &quot;all&quot;
+    representing all the nodes, and &quot;used&quot; representing the nodes used by some
+    route. 
+  </P>
+  <P>
+    - For the arcs the options are &quot;all&quot; or &quot;between&quot; in this case 
+    the flow limits are the parameters fmin, fmax and the travel time limits are tmin, tmax.
+  </P>
+  <P>
+    - For the demands the options are &quot;all&quot; or &quot;between&quot; in this case the
+    demand limits are dmin,dmax. 
+  </P>
+  <P>
+     It is also possible to choose a demand in order to show the disaggregated flow 
+    corresponding to a specific commodity. In this case the
+    limits on the flow given by fmin and fmax corresponds to the total
+    flow but the width and the colors of the arcs correspond to the
+    disaggregated flow.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+%net=TrafficExample('Steenbrink');
+%net.gp.algorithm='DSDisaggregated';
+TrafficAssig();
+ShowNet() // Shows the net
+ShowNet('used','between',1000,2000,0,0,3,0,10000,3)
+// Shows the net with the flow corresponding to demand 3, 
+// the light blue arcs are not used by the commodity 3
+// but by other commodities. The width corresponds to
+// the flow of the commodity 3. The arcs not shown have
+// total flow less than 1000 or greater than 2000.
+   ]]></VERBATIM>
+  <P>
+    
+  </P>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>ShowLinks</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>ShowDemands</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficExample</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

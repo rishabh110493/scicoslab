@@ -1,0 +1,45 @@
+.TH AddLinks  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+AddLinks  -  Add links to a net list
+.SH CALLING SEQUENCE
+.nf
+AddLinks(tl,hl,lpp)
+.fi
+.SH PARAMETERS
+.TP 10
+%net 
+: the global Netlist variable databasis
+.TP 10
+tl
+: row vector, tail nodes numbers of the added links
+.TP 10
+hl
+: row vector, head nodes numbers of the added links
+.TP 10
+lpp
+: 4 x nl matrix, travel time function parameters, where nl is the 
+number of added links
+
+.SH DESCRIPTION
+AddLinks adds links to a net list.
+.SH EXAMPLES
+.nf
+%net=TrafficExample('Diamond');
+ShowNet()
+// Add a new link from node 3 to node 4 with lpp=[0;0;1;1]
+AddLinks(3,4,[0;0;1;1]);
+// We can see the modifications with
+ShowNet()
+.fi
+.SH SEE ALSO
+IntroTrfAsg,
+NetList,
+AddNodes,
+AddDemands,
+MakeNet,
+ShowNet
+
+
+
+
+

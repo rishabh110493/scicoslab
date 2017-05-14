@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>colcompr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colcompr</b> -  compression des colonnes d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Y,rk,ac]=colcompr(A);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>Y  </b></tt>
+    : matrice carrée de polynômes (base unimodulaire à droite)
+</li>
+<li>
+<tt><b>rk  </b></tt>
+    : rang normal de <tt><b>A</b></tt>
+</li>
+<li>
+<tt><b>Ac  </b></tt>
+    : <tt><b>Ac=A*Y</b></tt>, matrice de polynômes
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Compression de colonnes de la matrice de polynômes <tt><b>A</b></tt> (compression à gauche)
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+p=[s;s*(s+1)^2;2*s^2+s^3];
+[Y,rk,ac]=colcompr(p*p');
+p*p'*Y
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/rowcompr.htm"><tt><b>rowcompr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

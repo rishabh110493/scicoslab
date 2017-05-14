@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mpsyslin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mpsyslin</b> -  maxplus linear system constructor  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sl]=syslin(A,B,C [,D [,x0] ])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B,C,D  </b></tt>
+    : matrices of the state-space representation (<tt><b>D</b></tt> optional with maxplus zero matrix as default value). 
+  </li>
+<li>
+<tt><b>x0  </b></tt>
+    : vector (initial state; default value is <tt><b>-inf</b></tt>)
+  </li>
+<li>
+<tt><b>sl  </b></tt>
+    : tlist ("<tt><b>mpls</b></tt>" list) representing the linear system
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    mpsyslin  defines an  implicit dynamic linear maxplus system as a list
+    and checks the consistency of data in the state space representation.
+  </p>
+<pre>
+sl=mpsyslin(A,B,C [,D [,x0] ])
+   </pre>
+<p>
+    represents the maxplus system :
+  </p>
+<pre>
+      x(n) =  D*x(n) + A*x(n-1) + B*u(n)
+        y  =  C*x(n) 
+      x(0) = x0
+   </pre>
+<p>
+    The output of <tt><b>mplsyslin</b></tt> is a list of the following form: 
+    sl=tlist(['mpls','A','B','C','D','X0'],A,B,C,D,x0)
+    printed 
+  </p>
+<pre>
+      x=Dx+Ax'+Bu
+      y=Cx
+   </pre>
+<p>
+    as soon as the sizes of the matrices are compatible with this pretty print.
+  </p>
+<p>
+    Maxplus Linear systems defined as <tt><b>mpsyslin</b></tt> can be manipulated as
+    usual matrices -- see examples below.
+  </p>
+<p>
+    Most of maxplus state-space control functions receive a <tt><b>mpsyslin</b></tt> list as input instead
+    of the four matrices defining the system.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[%0,1;%0,%0];B=#([1;1]);C=#([1,1]);
+S1=mpsyslin(A,B,C) 
+S1("A")
+S1("D")
+S1("X0")
+S2=mpsyslin([%1],[%1],[%1])
+S1+S2 // Parallel composition
+S2*S1 // Series composition
+[S1,S2] // Output addition composition
+[S1;S2] // Input in common composition
+S3=S1|S2 // Diagonal composition
+S1/.S2 // star(S1*S2)*S1 Feedback composition
+S3(1,1) // Subsystem  extraction
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

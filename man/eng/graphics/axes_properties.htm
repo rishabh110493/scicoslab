@@ -1,0 +1,508 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>axes_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>axes_properties</b> - description of the axes entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Axes entity is the second level of the graphics entities hierarchy.
+    This entity defines the parameters allowing the change of coordinates and
+    the axes drawing as well as the parameters' default values for the
+    children creation.</p>
+<dl>
+<dd>
+<b>Axes properties</b><dl>
+<dd>
+<b>parent: </b>This field contains the handle of the parent figure.</dd>
+<dd>
+<b>children: </b>FA vector containing the handles of all graphics objects
+            children of the axes These graphics objects are of type
+            <tt><b>"Compound"</b></tt>, <tt><b>"Rectangle"</b></tt>,
+            <tt><b>"Polyline"</b></tt>, <tt><b>"Segs"</b></tt>, <tt><b>"Arc"</b></tt>,
+            <tt><b>"Grayplot"</b></tt>,.. (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/compound_properties.htm"><tt><b>Compound_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/rectangle_properties.htm"><tt><b>rectangle_properties</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/champ_properties.htm"><tt><b>champ_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axis_properties.htm"><tt><b>axis_properties</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/segs_properties.htm"><tt><b>segs_properties</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/grayplot_properties.htm"><tt><b>grayplot_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/param3d_properties.htm"><tt><b>param3d_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/fec_properties.htm"><tt><b>fec_properties</b></tt></a>, <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/text_properties.htm"><tt><b>text_properties</b></tt></a>,
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/legend_properties.htm"><tt><b>legend_properties</b></tt></a>)</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value
+            for axes . Its value should be <tt><b>"on" </b></tt> or
+            <tt><b>"off"</b></tt> . By default, axes is visible <tt><b>"on"</b></tt>
+            in case all "visible" chidren are displayed on the screen, If
+            <tt><b>"off"</b></tt> the axes and all its chidren are not
+            drawn.</dd>
+<dd>
+<b>axes_visible: </b>A <tt><b>1x3</b></tt> string vector. This property specifies
+            whether each axis is drawn or not. Its value should be
+            <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt> for a global setting.To
+            act on a single axis, the syntax is <tt><b>axes_visible(N)</b></tt>
+            where <tt><b>N</b></tt> is <tt><b>1,2</b></tt> or <tt><b>3</b></tt>
+            corresponding to the <tt><b> x,y</b></tt> or <tt><b>z</b></tt> axis. The
+            scaling data and if required the grids are drawn if the value is
+            <tt><b>"on"</b></tt>. Note that when creating a simple axes entity
+            using the <tt><b>gca()</b></tt> (shorcut for
+            <tt><b>get"current_axes")</b></tt>) or <tt><b>gcf()</b></tt> (shortcut
+            for <tt><b>get(current_figure)</b></tt>) commands, the axes
+            visiblibilty is set to <tt><b>"off"</b></tt>.</dd>
+<dd>
+<b>axes_reverse: </b>A <tt><b>1x3</b></tt> string vector corresponding to the three
+            axes (X,Y,Z). For each axes, the property specifies the direction
+            of the incresing values. If <tt><b>"off"</b></tt>, the default
+            direction is used. If <tt><b>"on"</b></tt>, the direction is reverse.
+            It is also possible to use only one string, <tt><b>"on"</b></tt> or
+            <tt><b>"off"</b></tt>, to set simultaneously the three data.</dd>
+<dd>
+<b>grid: </b>The field value is a vector
+            <tt><b>[x-grid,y-grid,z-grid]</b></tt> where <tt><b>x-grid</b></tt>
+            controls a grid drawning for the x-axis and <tt><b>y-grid,
+            z-grid</b></tt> respecting to the y-axis, z-axis. The default values
+            is <tt><b>-1</b></tt> grids are not drawn, else the grids are drawn
+            using the color given indexed by the grid value.</dd>
+<dd>
+<b>x_location: </b>Specify the location of the x-axis. The possible values
+            are:<dl>
+<dd>
+<b></b><tt><b>"bottom"</b></tt>. In this case the x axis is drawn at
+                the bottom of the axes rectangle.</dd>
+<dd>
+<b></b><tt><b>"top"</b></tt>. In this case the x axis is drawn at
+                the top of the axes rectangle.</dd>
+<dd>
+<b></b><tt><b>"middle"</b></tt> . In this case the x axis is drawn
+                at the position nearest to the 0 y coordinates.</dd>
+</dl>
+</dd>
+<dd>
+<b>y_location: </b>Specify the location of the y-axis. The possible values
+            are:<dl>
+<dd>
+<b></b><tt><b>"left"</b></tt>. In this case the y axis is drawn at
+                the left of the axes rectangle.</dd>
+<dd>
+<b></b><tt><b>"right"</b></tt>. In this case the y axis is drawn at
+                the right of the axes rectangle.</dd>
+<dd>
+<b></b><tt><b>"middle"</b></tt>. In this case the y axis is drawn at
+                the position nearest to the 0 x coordinates.</dd>
+</dl>
+</dd>
+<dd>
+<b>title: </b>An object attached to the Axes entity and returning a graphic
+            handle on a Label structure (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/label_properties.htm"><tt><b>label_properties</b></tt></a>).
+            This field defines a title with options on this label.</dd>
+<dd>
+<b>x_label: </b>An object attached to the Axes entity and returning a graphic
+            handle on a Label structure (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/label_properties.htm"><tt><b>label_properties</b></tt></a>).
+            This field defines a label on x axis with options on this
+            label.</dd>
+<dd>
+<b>y_label: </b>An object attached to the Axes entity and returning a graphic
+            handle on a Label structure (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/label_properties.htm"><tt><b>label_properties</b></tt></a>).
+            This field defines a label on y axis with options on this
+            label.</dd>
+<dd>
+<b>z_label: </b>An object attached to the Axes entity and returning a graphic
+            handle on a Label structure (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/label_properties.htm"><tt><b>label_properties</b></tt></a>).
+            This field defines a label on z axis with options on this
+            label.</dd>
+<dd>
+<b>auto_ticks: </b>A <tt><b>1x3</b></tt> string vector giving the auto_ticks status
+            for each axis. This property specifies whether each axis is
+            graduated using a computational algorithm or not (graduations are
+            set by the user). Its value should be <tt><b>"on"</b></tt> or
+            <tt><b>"off"</b></tt> for a global setting.To act on a single axis,
+            the syntax is <tt><b>auto_ticks(N)</b></tt> where <tt><b>N</b></tt> is
+            <tt><b>1,2</b></tt> or <tt><b>3</b></tt> corresponding to the
+            <tt><b>x,y</b></tt> or <tt><b>z</b></tt> axis. Note that editing ticks
+            (text and/or locations) via <tt><b>x_ticks, y_ticks</b></tt> or
+            <tt><b>z_ticks</b></tt> automatically set <tt><b>auto_ticks</b></tt> to
+            <tt><b>"off"</b></tt> for the corresponding axes.</dd>
+<dd>
+<b>x_ticks.locations: </b>A real vector containing the locations for the graduations on
+            x axis. This property can be edited specifying a new real vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>x_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> x_ticks.labels</b></tt> string vector too.</dd>
+<dd>
+<b>y_ticks.locations: </b>A real vector containing the locations for the graduations on
+            y axis. This property can be edited specifying a new real vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>y_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> y_ticks.labels</b></tt> string vector too.</dd>
+<dd>
+<b>z_ticks.locations: </b>A real vector containing the locations for the graduations on
+            z axis. This property can be edited specifying a new real vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>z_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> z_ticks.labels</b></tt> string vector too.</dd>
+<dd>
+<b>x_ticks.labels: </b>A string vector containing the labels for the graduations on x
+            axis. This property can be edited specifying a new string vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>x_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> x_ticks.locations</b></tt> real vector too.</dd>
+<dd>
+<b>y_ticks.labels: </b>A string vector containing the labels for the graduations on y
+            axis. This property can be edited specifying a new string vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>y_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> y_ticks.locations</b></tt> real vector too.</dd>
+<dd>
+<b>z_ticks.labels: </b>A string vector containing the labels for the graduations on z
+            axis. This property can be edited specifying a new string vector
+            (of the same size). To specify greater or lesser graduations, man
+            can act on the <tt><b>z_ticks</b></tt><tt><b>tlist</b></tt> defining a
+            corresponding<tt><b> z_ticks.locations</b></tt> real vector too.</dd>
+<dd>
+<b>box: </b>This property specifies whether to enclose the axes in a box.
+            Take as value <tt><b>"off" </b></tt> is to not display the box. The
+            default is <tt><b>"on" </b></tt>.</dd>
+<dd>
+<b>sub_ticks: </b>This field sets the number of tics to draw between two main
+            tics. The field value is the vector <tt><b>[nx,ny]</b></tt> where
+            <tt><b>nx</b></tt> is the number of sub tics for the x-axis and
+            <tt><b>ny</b></tt> respecting to the y-axis.</dd>
+<dd>
+<b>font_style: </b>Specify the font used for displaying tics labels. Seven
+            differents fonts are available : "Courrier", "Symbol", "Times",
+            "Times Italic", "Times Bold", "User defined". The
+            <tt><b>font_style</b></tt> property is an index in [0 6] which is
+            associated to the previous font names.</dd>
+<dd>
+<b>font_size: </b>An integer specifying the font size used to draw the tics
+            labels.</dd>
+<dd>
+<b>font_color: </b>This property determines the color of the tics labels.</dd>
+<dd>
+<b>isoview: </b>This property is used to have isometric scales on the x, y and
+            z axes (for exemple to make the display of the curve sin(x) versus
+            cos(x) be a circle not an ellipse). Its value should be
+            <tt><b>"on"</b></tt> or <tt><b>"off"</b></tt>. If the value is
+            <tt><b>"on"</b></tt>, the axes <tt><b>data_bounds</b></tt> automatically
+            change according to the corresponding figure
+            <tt><b>figure_size</b></tt> property values.</dd>
+<dd>
+<b>cube_scaling:</b>This property is used in <tt><b>3d mode</b></tt> to have a
+            rescaling of the x, y and z axes. Indeed, it allows the
+            <tt><b>data</b></tt> to fit into a 1x1x1 cube ; the goal is to better
+            display 3d graphics in case axes scales are very different from
+            one to another. Its value should be <tt><b>"on" </b></tt> or
+            <tt><b>"off"</b></tt> (which is the default value). In most cases, it
+            helps generating Matlab-like 3d view.</dd>
+<dd>
+<b>view: </b>This field is related to the graphics universe. It takes
+            <tt><b>"3d"</b></tt> as value corresponding to the three-dimensional
+            views. In the other case its value can be <tt><b>"2d"</b></tt> for
+            initial 2d plotting (default value). This flag also depends on the
+            plots the user enters : a <tt><b>plot3d </b></tt>command, for
+            example, will switch the <tt><b>view</b></tt> flag from
+            <tt><b>"2d"</b></tt> to <tt><b>"3d"</b></tt>.</dd>
+<dd>
+<b>rotation_angles: </b>This field is the vector <tt><b>[alpha,theta]</b></tt>. These two
+            values give the spherical coordinates of the observation points
+            (in degree).</dd>
+<dd>
+<b>log_flags: </b> 3 character string that sets the scale (linear or logarithmic) along the axes.
+            Each character speficfies the scale for respectivgly the X, Y and Z axes.
+            They should take a value between <tt><b>'n'</b></tt> for linear scale or
+            <tt><b>'l'</b></tt> for logarithmic scale.
+            </dd>
+<dd>
+<b>tight_limits: </b>If this property value is <tt><b>"on"</b></tt> axes adapt to fit
+            exactly with the minima and maxima values of the
+            <tt><b>data_bounds</b></tt>. If this field value is
+            <tt><b>"off"</b></tt>, axes may enlarge boundaries such as to produce
+            pretty tics labels.</dd>
+<dd>
+<b>data_bounds: </b>This field contains the boundary values for the x,y and z
+            coordinates. It is the matrix
+            <tt><b>[xmin,ymin,zmin;xmax,ymax,zmax]</b></tt> or
+            <tt><b>[xmin,ymin;xmax,ymax]</b></tt>. Note that, to stricly have the
+            specified data bounds, <tt><b>tight_limits</b></tt> must be set to
+            <tt><b>"on"</b></tt> value (see above).</dd>
+<dd>
+<b>zoom_box: </b>This field contains the current zoom box if any coordinates
+            are given. It is an empty matrix (no zoom) or the vector
+            <tt><b>[xmin,ymin,xmax,ymax]</b></tt> (defines a rectangle given by
+            two opposite corners). The z coordinates is not yet taken into
+            account.</dd>
+<dd>
+<b>margins: </b>A vector
+            <tt><b>[margin_left,margin_right,margin_top,margin_bottom]</b></tt>
+            specifying the margins portion for this axes. This vector is
+            composed of numbers between [0 1] with default: [0.125 0.125 0.125
+            0.125] (these numbers are ratio relatives to the corresponding
+            figure <tt><b>figure_size</b></tt> property values).</dd>
+<dd>
+<b>axes_bounds: </b>A vector <tt><b>[x_left,y_up,width,height]</b></tt> specifying
+            the portion of figure used by this axes. Where
+            <tt><b>x_left</b></tt>, <tt><b>y_up</b></tt>, <tt><b>width</b></tt> and
+            <tt><b>height</b></tt> are numbers in [0 1] give respectively the
+            position of the upper-left corner and the dimension of the axes
+            (these numbers are ratio relative to the corresponding figure
+            <tt><b>figure_size</b></tt> property values).</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the axes
+            data structure, and to retreive it.</dd>
+</dl>
+</dd>
+<dd>
+<b>Properties for high level functions</b><p>The <tt><b>plot</b></tt>, <tt><b>plot2dx</b></tt>, <tt><b>grayplot</b></tt>
+        and <tt><b>matplot</b></tt> functions use the following properties to
+        decide how to merge consecutive plots if this is not stated by the
+        <tt><b>frameflag</b></tt> calling argument. The result of the merge is
+        decided through these two following properties:</p>
+<dl>
+<dd>
+<b>auto_clear: </b>If this property value is equal to <tt><b>"on"</b></tt>, a call
+            to a high level graphic will re-ininitialize the current axes and
+            erase all its children before preforming the drawing. If the value
+            is <tt><b>"off"</b></tt> the drawings will be added to current axes
+            according to <tt><b>"auto_scale"</b></tt> property.</dd>
+<dd>
+<b>auto_scale: </b>A property to update the axes data boundary. If value is
+            <tt><b>"on"</b></tt>, a new plot will adapt the current axes
+            properties to fit with previous and current plots. If its value is
+            <tt><b>"off"</b></tt> the new plot will be drawn in the current axes
+            data boundary.</dd>
+</dl>
+</dd>
+<dd>
+<b>Children's default values: </b><dl>
+<dd>
+<b>hiddencolor: </b>This property controls the hidden parts' color. It takes as
+            value an index relative to the current colormap. In another case,
+            if it is a negative value, the hidden parts take the same colors
+            as the surface</dd>
+<dd>
+<b>line_mode: </b>This field contains the default <tt><b>line_mode</b></tt>
+            property value for Segs Rectangle Legend Axis Plot3d Fac3d and
+            Polyline objects. Its value should be <tt><b>"on" </b></tt>(default)
+            or <tt><b>"off"</b></tt>.</dd>
+<dd>
+<b>line_style: </b>This field contains the default <tt><b>line_style</b></tt>
+            property value for Segs, Arcs, Rectangle and Polyline objects.
+            <tt><b>line_style</b></tt> selects the type of line to be used to
+            draw lines . Its value should be an integer in [0 6]. 0 and 1
+            stand for solid, the other values stand for a selection of dashes
+            (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/getlinestyle.htm"><tt><b>getlinestyle</b></tt></a>).</dd>
+<dd>
+<b>thickness: </b>This field contains the default <tt><b>thickness</b></tt>
+            property value for all objects using line drawing. Its value
+            should be positive integer.</dd>
+<dd>
+<b>mark_mode: </b>This field contains the default <tt><b>mark_mode</b></tt>
+            property value for Segs Rectangle Legend Axis Plot3d Fac3d and
+            Polyline objects. Its value should be <tt><b>"on" </b></tt> or
+            <tt><b>"off"</b></tt> (default).</dd>
+<dd>
+<b>mark_style: </b>This field contains the default <tt><b>mark_style</b></tt>
+            property value for Segs Rectangle Legend Axis Plot3d Fac3d and
+            Polyline objects. <tt><b>mark_style</b></tt> selects the type of mark
+            to be displayed. Its value should be an integer in [0 9] which
+            stands for: dot, plus, cross, star, filled diamond, diamond,
+            triangle up, triangle down, trefle and circle.</dd>
+<dd>
+<b>mark_size_unit: </b>This field contains the default <tt><b>mark_size_unit</b></tt>
+            property value for Segs Rectangle Legend Axis Plot3d Fac3d and
+            Polyline objects. If <tt><b>mark_size_unit</b></tt> is set to
+            <tt><b>"point"</b></tt>, then the <tt><b>mark_size</b></tt> value is
+            directly given in points. When <tt><b>mark_size_unit</b></tt> is set
+            to <tt><b>"tabulated"</b></tt>, <tt><b>mark_size</b></tt> is computed
+            relative to the font size array: therefore, its value should be an
+            integer in [0 5] whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and
+            24pt. Note that <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> and pure scilab functions use
+            <tt><b>tabulated</b></tt> mode as default ; when using
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot.htm"><tt><b>plot</b></tt></a> function, the <tt><b>point</b></tt> mode is
+            automatically enabled.</dd>
+<dd>
+<b>mark_size: </b>This field contains the default <tt><b>mark_size</b></tt>
+            property value for Segs Rectangle Legend Axis Plot3d Fac3d and
+            Polyline objects. <tt><b>mark_size</b></tt> selects the font size of
+            mark to be displayed. Its value should be an integer in [0 5]
+            whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt (see
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/getmark.htm"><tt><b>getmark</b></tt></a>).</dd>
+<dd>
+<b>mark_foreground: </b>This field contains the default <tt><b>mark_foreground</b></tt>
+            property value for all objects created under this axes. Polyline,
+            rectangle, legend, surface, segment and axis objects are using
+            this property to specify a foreground (edge) color for their
+            marks. Its value should be a color index (relative to the current
+            color_map). Note that the default value is <tt><b>-1</b></tt>
+            (default black) and, even if you change the
+            <tt><b>color_map</b></tt>, this <tt><b>-1</b></tt> value will always
+            point onto the default black color.</dd>
+<dd>
+<b>mark_background: </b>This property controls the default
+            <tt><b>mark_background</b></tt> property value for all objects
+            created under this axes. Polyline, rectangle, legend, surface,
+            segment and axis objects are using this property to specify a
+            background (face) color for their marks. It takes as value an
+            index relative to the current colormap.Note that the default value
+            is <tt><b>-2</b></tt> (default white) and, even if you change the
+            <tt><b>color_map</b></tt>, this <tt><b>-2</b></tt> value will always
+            point onto the default white color.</dd>
+<dd>
+<b>foreground: </b>This field contains the default <tt><b>foreground</b></tt>
+            property value for axes and all objects created under this axes.
+            Its value should be a color index (relative to the current
+            color_map). Note that the default value is <tt><b>-1</b></tt>
+            (default black) and, even if you change the
+            <tt><b>color_map</b></tt>, this <tt><b>-1</b></tt> value will always
+            point onto the default black color.</dd>
+<dd>
+<b>background: </b>This property controls the default <tt><b>background</b></tt>
+            property value for axes and all objects created under this axes.
+            It takes as value an index relative to the current colormap.Note
+            that the default value is <tt><b>-2</b></tt> (default white) and,
+            even if you change the <tt><b>color_map</b></tt>, this
+            <tt><b>-2</b></tt> value will always point onto the default white
+            color.</dd>
+<dd>
+<b>clip_state: </b>This field contains the default <tt><b>clip_state</b></tt>
+            property value for all objects. Its value should be :<dl>
+<dd>
+<b></b><tt><b>"off"</b></tt> this means that all objects created
+                after that are not clipped (default value).</dd>
+<dd>
+<b></b><tt><b>"clipgrf"</b></tt> this means that all objects created
+                after that are clipped outside the Axes boundaries.</dd>
+<dd>
+<b></b><tt><b>"on"</b></tt> this means that all objects created
+                after that are clipped outside the rectangle given by property
+                clip_box.</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field contains the default <tt><b>clip_box</b></tt> property
+            value for all objects. Its value should be an empty matrix if
+            clip_state is <tt><b>"off"</b></tt>. Other case the clipping is given
+            by the vector <tt><b>[x,y,w,h]</b></tt> (upper-left point width
+            height).</dd>
+<dd>
+<b>Note on default values :</b><dl><dd>
+<b></b>All these listed properties and fields inherit from
+                default values stored in an axes model. These default values
+                can be seen and changed. To do so, use the
+                <tt><b>get("default_axes")</b></tt> command : it returns a
+                graphic handle on the axes model. Note that no graphic window
+                is created by this command. The next created axes will inherit
+                from this model (see "Example on axes model" below).</dd></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>  
+   lines(0) // disables vertical paging 
+   set("figure_style","new") //create a figure
+   a=get("current_axes")//get the handle of the newly created axes
+   a.axes_visible="on"; // makes the axes visible
+   a.font_size=3; //set the tics label font size
+   a.x_location="top"; //set the x axis position
+   a.data_bounds=[-100,-2,-1;100,2,1]; //set the boundary values for the x, y and z coordinates.
+   a.sub_tics=[5,0];
+   a.labels_font_color=5;
+   a.grid=[2,2];
+   a.box="off";
+
+   // Example with 3D axes
+   clf(); //clear the graphics window
+   x=0.1:0.1:2*%pi;plot2d(x-.3,sin(x)*7+.2);
+   a=gca(); // get the handle of the current axes
+   a.grid=[1 -1 -1]; //make x-grid
+   a.rotation_angles=[70 250]; //turn the axes with giving angles
+   a.grid=[1 6 -1]; //make y-grid
+   a.view="2d"; //return te the 2d view
+   a.box="off"; 
+   a.labels_font_color=5;
+   a.children.children.thickness=4;
+   a.children.children.polyline_style=3;
+   a.view="3d"; //return te the 3d view
+   a.children.children.thickness=1;
+   a.children.children.foreground=2;
+   a.grid=[1 6 3]; //make z-grid
+   a.parent.background=4;
+   a.background=7;
+   plot2d(cos(x)+1,3*sin(x)-3);
+   plot2d(cos(x)+7,3*sin(x)+3);
+   a.children(2).children.polyline_style=2;
+   a.children(1).children.polyline_style=4;
+   a.children(1).children.foreground=5;
+   a.children(2).children.foreground=14;
+   a.parent.figure_size= [1200,800];
+   a.box="on";
+   a.labels_font_size=4;
+   a.parent.background=8;
+   a.parent.figure_size= [400,200];
+   a.rotation_angles=[0 260];
+   delete(a.children(2)); 
+   delete(); // delete current object
+   
+   a.labels_font_size=1;
+   a.auto_clear= "on";
+   x=0:0.1:2.5*%pi;plot2d(10*cos(x),sin(x));
+
+   a.data_bounds(:,1) = [1;15] ; // set positive bounds for X axe
+   a.log_flags = "lnn" ; // set X axes to logarithmic scale
+   a.log_flags = "nnn" ; // switch back to linear scale
+
+   a=gca(); 
+   a.rotation_angles=[45 45];
+   a.data_bounds=[-20,-3,-2;20 3 ,2];
+   xrect([-4 0.5 8 1]);
+   a.auto_clear = "off" ;
+   a.isoview="on"; // isoview mode
+   xrect([-2 0.25 4 0.5]);
+   a.children(1).fill_mode="on";
+   a.axes_visible="off";
+   a.children(1).data=[-2 0.25 -1 4 0.5];
+   a.children(2).data=[-4 0.5 1 8 1];
+   x=2*%pi*(0:7)/8;
+   xv=[.2*sin(x);.9*sin(x)];yv=[.2*cos(x);.9*cos(x)];
+   xsegs(10*xv,yv,1:8)
+   s=a.children(1);
+   s.arrow_size=1;
+   s.segs_color=5;
+   a.data_bounds //the boundary values for the x,y and z coordinates
+   a.view="2d";
+   a.data_bounds=[-10,-1; 10,1]; // set the boundary values for the two-dimensional views
+   
+   // Example on axes model
+   da=gda() // get the handle on axes model to view and edit the fields
+   // title by default
+   da.title.text="My Default@Title"
+   da.title.foreground = 12;
+   da.title.font_size = 4;
+   // x labels default
+   da.x_label.text="x";
+   da.x_label.font_style = 8;
+   da.x_label.font_size = 2;
+   da.x_label.foreground = 5;
+   da.x_location = "middle";
+   // y labels default
+   da.y_label.text="y";
+   da.y_label.font_style = 3;
+   da.y_label.font_size = 5;
+   da.y_label.foreground = 3;
+   da.y_location = "right";
+   da.thickness = 2;
+   da.foreground = 7;
+   // the plot
+   x=(0:0.1:2*%pi)';
+   plot2d(x,[sin(x),sin(2*x),sin(3*x)],style=[1,2,3],rect=[0,-2,2*%pi,2]);
+   sda() // back to default axes model
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/lines.htm"><tt><b>lines</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/sda.htm"><tt><b>sda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/sdf.htm"><tt><b>sdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

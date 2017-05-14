@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>TrafficAssig  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="TrafficAssig">  Traffic Assignment  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>TrafficAssig(p1,p2,p3)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net global variable containing the information  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : NetLists
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>%net.gp.algorithm  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : string to choose among &quot;AON&quot;, &quot;CAPRES&quot;, &quot;DSD&quot;, &quot;FW&quot;, &quot;IA&quot;, &quot;IAON&quot;, &quot;MSA&quot;, &quot;Probit&quot;, &quot;ProbitE&quot;,&quot;LogitB&quot;,&quot;LogitD&quot;,&quot;LogitMB&quot;,&quot;LogitMD&quot;, &quot;LogitBE&quot;,&quot;LogitDE&quot;,&quot;LogitMBE&quot;,&quot;LogitMDE&quot;
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>p1,p2 p3  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : different algorithms&apos; parameters to change the default ones in fields of %net.gp (see NetList) 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+    Assigns the flow of the traffic network described by the NetList net
+    using the algorithm selected by algo with the parameters given by p1, p2 and p3:
+  </P>
+  <P>
+    &quot;AON&quot; -&gt; All or nothing
+  </P>
+  <P>
+    &quot;CAPRES&quot; -&gt; Capres algorithm
+  </P>
+  <P>
+    &quot;DSD&quot; -&gt; Disaggregated simplicial decomposition (only total flow is computed). 
+               p1: iterations number, p2: precision
+  </P>
+  <P>
+    &quot;DSDisaggregated&quot; -&gt; Disaggregated simplicial decomposition. p1: iterations number,
+                      p2: precision
+  </P>
+  <P>
+    &quot;FW&quot; -&gt; Frank-Wolfe algorithm. p1: iterations number, p2: precision
+  </P>
+  <P>
+    &quot;IA&quot; -&gt; Incremental assignment. p1: iterations number
+  </P>
+  <P>
+    &quot;IAON&quot; -&gt; Iterated all or nothing. p1: iterations number
+  </P>
+  <P>
+    &quot;MSA&quot; -&gt; Method of successive averages. p1: iterations number, p2: precision
+  </P>
+  <P>
+    &quot;Probit&quot; -&gt; Probit assignment. p1: beta, p2: precision, p3: iterations number
+  </P>
+  <P>
+    &quot;ProbitE&quot; -&gt; MSA algorithm for the stochastic user equilibrium (MSASUE). p1:beta,
+                                         p2: precision, p3: iterations number
+  </P>
+  <P>
+    &quot;LogitB&quot; -&gt; Logit assignment (all paths used not only efficient ones  used)
+  </P>
+  <P>
+    &quot;LogitD&quot; -&gt; Logit assignment (only efficient paths are used)
+  </P>
+  <P>
+    &quot;LogitMB&quot; -&gt; Reiterated first step logit assignment (all paths used
+                               not only efficient ones used)
+  </P>
+  <P>
+    &quot;LogitMD&quot; -&gt; Reiterated first step logit assignment (only efficient
+                                 paths are used)
+  </P>
+  <P>
+    &quot;LogitBE&quot; -&gt; Logit equilibrium assignment (all paths used not only efficient ones  used)
+  </P>
+  <P>
+    &quot;LogitDE&quot; -&gt; Logit equilibrium assignment (only efficient paths are used)
+  </P>
+  <P>
+    &quot;LogitMBE&quot; -&gt; Reiterated first step logit equilibrium assignment (allpaths used 
+                                not only efficient ones used)
+  </P>
+  <P>
+    &quot;LogitMDE&quot; -&gt; Reiterated first step logit equilibrium assignment (only
+    efficient paths are used)
+  </P>
+  <P>
+    &quot;NwtArc&quot; -&gt; Newton method bsed on nodes-links formulation (useful
+                when there are a small number of demands)
+  </P>
+  <P>
+    The assigned flow, the current travel time and the disaggregated flow
+    are stored in %net.
+  </P>
+  <P>
+    It is normal that for some parameters and network some methods
+    &quot;TrafficAssig&quot; does not succeed to give an assignment. In particular, for
+    Logit method, the effective domain of the stochasticity
+    parameter is limited and depends of the network. For some
+    networks and some methods this domain may be empty (for example LogitB
+    with a zero travel time loop). For Logit method, the stochasticity
+    parameter must not be too large to avoid numerical difficulties coming 
+    from the limited precision of the computation.
+     
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+//
+// To load an editable traffic network graph
+//
+%net=TrafficExample("Steenbrink");
+ShowNet();
+//
+// The black arcs are the roads and the cyan ones are the
+// traffic OD demands. We can edit the net (see the net-edition demo).
+//
+// To compute the traffic assignment with "DSD" algorithm
+//
+TrafficAssig();
+ShowNet();
+//
+// To show  the travel times select GRAPH/Display arc names/Time
+//
+// It is possible to assign the flow using another algorithm
+// for example the incremental assignment denoted  "IA"
+//
+%net.gp.algorithm="IA"
+%net.gp.Niter=50;
+TrafficAssig();
+ShowNet();
+//
+// For Logit assignment, the stochasticity parameter
+// is in the field %net.gp.theta (default 1)
+//
+%net.gp.algorithm='LogitMD';
+%net.gp.theta=3;
+TrafficAssig();
+ShowNet();
+//
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>AON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>Probit</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMB</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitMD</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitN</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>LogitNELS</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>MSASUE</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IntroTrfAsg</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>NetList</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

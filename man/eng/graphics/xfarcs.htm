@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xfarcs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xfarcs</b> -  fill parts of a set of ellipses</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xfarcs(arcs,[style])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>arcs</b></tt>: matrix of size (6,n) describing the ellipses.</li>
+<li>
+<tt><b>style</b></tt>: row vector of size n giving the colors to use.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xarcs</b></tt> fills parts of a set of ellipses described by <tt><b>arcs</b></tt>: 
+    <tt><b>arcs=[x y w h a1 a2;x y w h a1 a2;...]'</b></tt> where each ellipse is defined 
+    by the 6 parameters <tt><b>(x,y,w,h,a1,a2)</b></tt> (see <tt><b>xfarc</b></tt>).</p>
+<p><tt><b>style(i)</b></tt> gives the color number for filling ellipse number <tt><b>i</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d(0,0,-1,"031"," ",[-1,-1,1,1])
+arcs=[-1.0 0.0 0.5; // upper left x
+       1.0 0.0 0.5; // upper left y
+       0.5 1.0 0.5; // width
+       0.5 0.5 1.0; // height
+       0.0 0.0 0.0; // angle 1
+       180*64 360*64 90*64]; // angle 2
+xfarcs(arcs,[1,2,3])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xarc.htm"><tt><b>xarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfarc.htm"><tt><b>xfarc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfarc.htm"><tt><b>xfarc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

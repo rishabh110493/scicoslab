@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lmisolver</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lmisolver</b> -  linear matrix inequation solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[XLISTF[,OPT]] = lmisolver(XLIST0,evalfunc [,options])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>XLIST0</b></tt>: a list of containing initial guess (e.g. <tt><b>XLIST0=list(X1,X2,..,Xn)</b></tt>)</li>
+<li>
+<tt><b>evalfunc</b></tt>: a Scilab function ("external" function with specific
+    syntax)<p>
+    The syntax the function <tt><b>evalfunc</b></tt> must be as follows:
+  </p>
+<p><tt><b>[LME,LMI,OBJ]=evalfunct(X)</b></tt> where <tt><b>X</b></tt> is a list of matrices, <tt><b>LME, LMI</b></tt> are lists and <tt><b>OBJ</b></tt> a real scalar.
+  </p>
+</li>
+<li>
+<tt><b>XLISTF</b></tt>: a list of matrices (e.g. <tt><b>XLIST0=list(X1,X2,..,Xn)</b></tt>)</li>
+<li>
+<tt><b>options</b></tt>: optional parameter. If given, <tt><b>options</b></tt> is  a real row vector with 5 components <tt><b>[Mbound,abstol,nu,maxiters,reltol]</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lmisolver</b></tt> solves the following problem:</p>
+<p>
+    minimize <tt><b>f(X1,X2,...,Xn)</b></tt> a linear function of Xi's</p>
+<p>
+    under the linear constraints:
+    <tt><b>Gi(X1,X2,...,Xn)=0</b></tt> for i=1,...,p and LMI (linear matrix
+    inequalities) constraints:</p>
+<p><tt><b>Hj(X1,X2,...,Xn) &gt; 0</b></tt> for j=1,...,q</p>
+<p>
+    The functions f, G, H are coded in the Scilab function <tt><b>evalfunc</b></tt>
+    and the set of matrices Xi's in the list X (i.e.
+    <tt><b>X=list(X1,...,Xn)</b></tt>).</p>
+<p>
+    The function <tt><b>evalfun</b></tt> must return in the list <tt><b>LME</b></tt> the matrices
+    <tt><b>G1(X),...,Gp(X)</b></tt> (i.e. <tt><b>LME(i)=Gi(X1,...,Xn),</b></tt> i=1,...,p).
+    <tt><b>evalfun</b></tt> must return in the list <tt><b>LMI</b></tt> the matrices
+    <tt><b>H1(X0),...,Hq(X)</b></tt> (i.e. <tt><b>LMI(j)=Hj(X1,...,Xn)</b></tt>, j=1,...,q). 
+    <tt><b>evalfun</b></tt> must return in <tt><b>OBJ</b></tt> the value of <tt><b>f(X)</b></tt>
+    (i.e. <tt><b>OBJ=f(X1,...,Xn)</b></tt>).</p>
+<p><tt><b>lmisolver</b></tt>  returns in <tt><b>XLISTF</b></tt>, a list of real matrices,
+    i. e. <tt><b>XLIST=list(X1,X2,..,Xn)</b></tt> where the Xi's solve the LMI
+    problem:</p>
+<p>
+    Defining <tt><b>Y,Z</b></tt> and <tt><b>cost</b></tt> by:</p>
+<p><tt><b>[Y,Z,cost]=evalfunc(XLIST)</b></tt>, <tt><b>Y</b></tt> is a list of zero matrices, 
+    <tt><b>Y=list(Y1,...,Yp)</b></tt>, <tt><b>Y1=0, Y2=0, ..., Yp=0</b></tt>.</p>
+<p><tt><b> Z</b></tt> is a list of square symmetric matrices, 
+    <tt><b> Z=list(Z1,...,Zq) </b></tt>, which are semi positive definite
+    <tt><b> Z1&gt;0, Z2&gt;0, ..., Zq&gt;0</b></tt> (i.e. <tt><b>spec(Z(j))</b></tt> &gt; 0),</p>
+<p><tt><b>cost</b></tt> is minimized.</p>
+<p><tt><b>lmisolver</b></tt> can also solve LMI problems in which the <tt><b>Xi's</b></tt> 
+    are not matrices but lists of matrices. More details are given in the 
+    documentation of LMITOOL.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Find diagonal matrix X (i.e. X=diag(diag(X), p=1) such that
+//A1'*X+X*A1+Q1 &lt; 0, A2'*X+X*A2+Q2 &lt; 0 (q=2) and trace(X) is maximized 
+n=2;A1=rand(n,n);A2=rand(n,n);
+Xs=diag(1:n);Q1=-(A1'*Xs+Xs*A1+0.1*eye());
+Q2=-(A2'*Xs+Xs*A2+0.2*eye());
+deff('[LME,LMI,OBJ]=evalf(Xlist)','X=Xlist(1),LME=X-diag(diag(X));...
+LMI=list(-(A1''*X+X*A1+Q1),-(A2''*X+X*A2+Q2)),OBJ= -sum(diag(X))  ');
+X=lmisolver(list(zeros(A1)),evalf);X=X(1)
+[Y,Z,c]=evalf(X)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/lmitool.htm"><tt><b>lmitool</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

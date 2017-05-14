@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?> 
+<!DOCTYPE MAN SYSTEM "../../man.dtd">
+<MAN>
+  <LANGUAGE>eng</LANGUAGE>
+  <TITLE>DSD  </TITLE>
+  <TYPE>Traffic-toolbox Function  </TYPE>
+  <DATE>   </DATE>
+  <SHORT_DESCRIPTION name="DSD ">  Disaggregated Simplicial Decomposition algorithm  </SHORT_DESCRIPTION>
+  <CALLING_SEQUENCE>
+  <CALLING_SEQUENCE_ITEM>[F,ta,ben,f]=DSD(net,routemax,nFW,eps,list_eps,list_itemax)  </CALLING_SEQUENCE_ITEM>
+  <CALLING_SEQUENCE_ITEM>[F,ta,f]=dsd(net,routemax,nFW,eps,list_eps,list_itemax)  </CALLING_SEQUENCE_ITEM>
+  </CALLING_SEQUENCE>
+  <PARAM>
+ <PARAM_INDENT>
+  <PARAM_ITEM>
+  <PARAM_NAME>net  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : a NetList
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>routemax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : maximum number of general iterations
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>nFW  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : number of Frank-Wolfe iterations
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>eps  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : general precision
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>list_eps  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : array of precisions, Newton method precision, auxiliar precision and linear search precision
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>list_itemax  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : array of maximum number of iterations, Newton iterations, auxiliar iteration and linear search iteration
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>F  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : assigned flow
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>ta  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : link travel time for the assigned flow f
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>ben  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : ni x 5 matrix (ni number of performed general iterations) benchmark information
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+  <PARAM_ITEM>
+  <PARAM_NAME>f  </PARAM_NAME>
+  <PARAM_DESCRIPTION>
+    : assigned flow disaggregated by commodity 
+  </PARAM_DESCRIPTION> 
+  </PARAM_ITEM>
+ </PARAM_INDENT>
+  </PARAM>
+  <DESCRIPTION>
+  <P>
+     Assigns the flow with the disaggregated simplicial decomposition  algorithm.
+    This algorithm generates at each iteration a new route for each commodity using AON.
+    The traffic is assigned minimizing the total cost over the generated routes using
+    a Newton method.
+    The version DSD shows performance statistics.
+    The version dsd is used mostly inside other algorithms and it does not
+    displays any information.
+  </P>
+  <P>
+    The matrix ben contains intermediary informations on the
+    algorithm. For each iteration it gives the iteration number, time
+    spent, cost, memory used and an convergence error evaluation.
+  </P>
+  <P>
+  </P>
+  </DESCRIPTION>
+  <ITEMIZE label='EXAMPLES'>
+  <VERBATIM><![CDATA[
+net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+[F,ta,ben,f]=DSD(net,20,0,1e-4,[1e-6,1e-7,1e-8],[2,50,100]);
+   ]]></VERBATIM>
+  </ITEMIZE>
+  <SEE_ALSO>
+    <SEE_ALSO_ITEM> <LINK>AON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>IAON</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>CAPRES</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>FW</LINK> </SEE_ALSO_ITEM>     <SEE_ALSO_ITEM> <LINK>TrafficAssig</LINK> </SEE_ALSO_ITEM>
+  </SEE_ALSO>
+</MAN>

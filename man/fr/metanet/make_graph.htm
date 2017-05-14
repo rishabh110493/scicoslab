@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>make_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>make_graph</b> -  création d'un graphe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g = make_graph(name,oriented,n,tail,head)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name  </b></tt>
+    : chaîne de caractères, le nom du graphe
+</li>
+<li>
+<tt><b>oriented  </b></tt>
+    : entier, 0 (graphe non-orienté graph) ou 1 (graphe orienté)
+</li>
+<li>
+<tt><b>n  </b></tt>
+    : entier, le nombre de sommets du graphe
+</li>
+<li>
+<tt><b>tail  </b></tt>
+    : vecteur ligne des numéros des sommets origines (sa taille est  le nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>head  </b></tt>
+    : vecteur ligne des numéros des sommets destinations (sa taille est le nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>make_graph</b></tt> crée un graphe à partir des arguments qui sont 
+    respectivement le nom du graphe, un flag pour orienté ou non-orienté, le
+    nombre de sommets et les vecteurs lignes tail et head. Ce sont les données 
+    minimales nécessaires pour un graphe.
+  </p>
+<p>
+    Si <tt><b>n</b></tt> est un nombre positif, le graphe <tt><b>g</b></tt> a <tt><b>n</b></tt> sommets; ce
+    nombre doit être supérieur ou égal à <tt><b>max(max(tail),max(head))</b></tt>. S'il
+    est plus grand, le graphe <tt><b>g</b></tt> a des sommets isolés. Les noms des sommets 
+    sont égaux à leurs numéros.
+    Si <tt><b>n</b></tt> est égal à 0, le graphe <tt><b>g</b></tt> n'a pas de sommets isolés et le nombre
+    de sommets est calculé à partir de <tt><b>tail</b></tt> et <tt><b>head</b></tt>. Les noms des sommets 
+    sont pris à partie des numéros dans <tt><b>tail</b></tt> et <tt><b>head</b></tt>.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// création d'un graphe orienté avec 3 sommets et 4 arcs.
+g=make_graph('foo',1,3,[1,2,3,1],[2,3,1,3]);
+// création d'un graphe orienté avec 13 sommets et 14 arcs.
+ta=[1  1 2 7 8 9 10 10 10 10 11 12 13 13];
+he=[2 10 7 8 9 7  7 11 13 13 12 13  9 10];
+g=make_graph('foo',1,13,ta,he);
+g('node_x')=[120  98  87 188 439 698 226 127 342 467 711 779 477];
+g('node_y')=[ 21 184 308 426 435 428 129 360 435  55 109 320 321];
+show_graph(g)
+// création d'un graphe sans sommet isolé et avec 14 arcs.
+g=make_graph('foo',1,0,ta,he);
+g('node_x')=[120  98 226 127 342 467 711 779 477];
+g('node_y')=[ 21 184 129 360 435  55 109 320 321];
+show_graph(g,'new')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph-list.htm"><tt><b>graph-list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

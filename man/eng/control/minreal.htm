@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>minreal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>minreal</b> -  minimal balanced realization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>slb=minreal(sl [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl,slb</b></tt>: <tt><b>syslin</b></tt> lists</li>
+<li>
+<tt><b>tol</b></tt>: real (threshold)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[ae,be,ce]=minreal(a,b,c,domain [,tol]) </b></tt>
+    returns the balanced realization of linear 
+    system <tt><b>sl</b></tt> (<tt><b>syslin</b></tt> list).</p>
+<p><tt><b>sl</b></tt> is assumed stable.</p>
+<p><tt><b>tol</b></tt> threshold used in <tt><b>equil1</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[-eye(2,2),rand(2,2);zeros(2,2),-2*eye(2,2)];
+B=[rand(2,2);zeros(2,2)];C=rand(2,4);
+sl=syslin('c',A,B,C);
+slb=minreal(sl);
+ss2tf(sl)
+ss2tf(slb)
+ctr_gram(sl)
+clean(ctr_gram(slb))
+clean(obs_gram(slb))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/minss.htm"><tt><b>minss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/balreal.htm"><tt><b>balreal</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/arhnk.htm"><tt><b>arhnk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil.htm"><tt><b>equil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer INRIA 1987</p>
+</body>
+</html>

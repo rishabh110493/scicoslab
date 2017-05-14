@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>get</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>get</b> - Retrieve a property value from a graphics
+  entity or an User Interface object.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>h=get(prop)</tt></dd>
+<dd><tt>val=get(h,prop)</tt></dd>
+<dd><tt>val=h.prop</tt></dd>
+<dd><tt>val=get(n,prop)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: handle, the handle of the entity to retrieve a property.
+          <tt><b>h</b></tt> can be a vector of handles, in which case get returns
+          the property's value for all objects identified by h(i).</li>
+<li>
+<tt><b>n</b></tt>: integer, the handle of the User Interface object to retrieve a
+          property.</li>
+<li>
+<tt><b>prop</b></tt>: character string name of the property.</li>
+<li>
+<tt><b>val</b></tt>: scilab object value of the property.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This routine can be used to retrieve the value of a specified property
+    graphics entity or a GUI object. If the handle is not specified, the
+    current object is taken as the default handle. It is also used to return a
+    list of all children, parent, or type for the input handle if this one is
+    specified. Otherwise, the current axes object is taken as the default
+    input.</p>
+<p>Property name are character strings.</p>
+<p>See <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a> for details about properties' names
+    and values for graphics entities.</p>
+<p>See <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/uicontrol.htm"><tt><b>uicontrol</b></tt></a> for details about properties' names and
+    values for User Interface objects.</p>
+<p>For graphics entities handle it is possible to use a dot notation like
+    <tt><b>h.background</b></tt> instead of <tt><b>get</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  // for graphics entities
+    clf()
+    get("old_style") // check the state of the graphics' style
+    set("figure_style","new") //create a figure
+    get("figure_style") // check the style of the graphics' figure
+
+    // simple graphics objects  
+    subplot(121);
+    x=[-.2:0.1:2*%pi]';
+    plot2d(x-2,x.^2);
+    subplot(122);
+    xrect(.2,.7,.5,.2);     
+    xrect(.3,.8,.3,.2);
+    xfarc(.25,.55,.1,.15,0,64*360);
+    xfarc(.55,.55,.1,.15,0,64*360);
+    xstring(0.2,.9,"Example &lt;&lt;A CAR&gt;&gt;");
+ 
+    h=get("hdl") //get the object newly created
+    h.font_size=3;
+ 
+    f=get("current_figure") //get the current figure 
+    f.figure_size
+    f.figure_size=[700 500];
+    f.children
+    f.children(2).type
+    f.children(2).children
+    f.children(2).children.children.thickness=4; 
+ 
+    a=get("current_axes") //get the current axes
+    a.children.type
+    a.children.foreground //get the foreground color of a set of graphics objects
+    a.children.foreground=9;
+
+  // for  User Interface objects
+   h=uicontrol('string', 'Button'); // Opens a window with a  button.
+   p=get(h,'position'); // get the geometric aspect of the button
+   disp('Button width: ' + string(p(3))); // print the width of the button
+   close(); // close figure
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/uicontrol.htm"><tt><b>uicontrol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

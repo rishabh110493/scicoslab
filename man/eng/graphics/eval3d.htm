@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eval3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eval3d</b> -  values of a function on a grid</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[z]=eval3d(fun,x,[y])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: function accepting vectors as arguments.</li>
+<li>
+<tt><b>x,y</b></tt>: 2 vectors of size (1,n1) and (1,n2). (default value for <tt><b>y</b></tt> : <tt><b>y=x</b></tt>).</li>
+<li>
+<tt><b>z</b></tt>: matrix of size (n1,n2).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function returns a matrix <tt><b>z(n1,n2)</b></tt>. <tt><b>z(i,j)=fun(x(i),y(j))</b></tt>. 
+    If the function <tt><b>fun</b></tt> doesn't accept arguments of type vector use the
+    primitive <tt><b>feval</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  x=-5:5;y=x;
+  deff('[z]=f(x,y)',['z= x.*y']);
+  z=eval3d(f,x,y);
+  plot3d(x,y,z);
+// 
+  deff('[z]=f(x,y)',['z= x*y']);
+  z=feval(x,y,f);
+  plot3d(x,y,z);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/feval.htm"><tt><b>feval</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.; ; ;   </p>
+</body>
+</html>

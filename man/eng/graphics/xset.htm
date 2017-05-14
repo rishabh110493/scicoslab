@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xset</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xset</b> - set values of the graphics
+  context</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>xset(choice-name,x1,x2,x3,x4,x5)</tt></dd>
+<dd><tt>xset()</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>choice-name</b></tt>: string</li>
+<li>
+<tt><b>x1,...,x5</b></tt>: depending on <tt><b>choice-name</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Warning : </b></tt>Scilab 4.x versions family will be the last
+    versions working with the old graphics mode. </p>
+<p><tt><b>xset</b></tt> is used to set default values of the current window
+    graphic context.</p>
+<p>When called no argument, a choice menu is created showing the current
+    values and changes can be performed through toggle buttons.</p>
+<p>Use <tt><b>xset()</b></tt> to display or set the current color, mark and
+    fonts used.</p>
+<p></p>
+<dl>
+<dd>
+<b>xset("alufunction",number)</b>: Used to set the logical function for drawing. The logical
+        function used is set by <tt><b>x1</b></tt>. Usual values are: 3 for
+        copying (default), 6 for animation and 0 for clearing. See
+        alufunctions for more details.</dd>
+<dd>
+<b>xset("auto clear","on"|"off")</b>: Switch "on" or "off" the auto clear mode for graphics. When the
+        auto clear mode is "on", successive plots are not superposed, ie an
+        <tt><b>xbasc()</b></tt> operation (the graphics window is cleared and the
+        associated recorded graphics is erased) is performed before each high
+        level graphics function. Default value is "off".</dd>
+<dd>
+<b>xset("background",color)</b>: Set the background color of the current graphics window. The
+        graphics window means the current axes selection where plots are
+        drawn, not the whole figure.</dd>
+<dd>
+<b>xset("clipping",x,y,w,h)</b>: Set the clipping zone (the zone of the graphics window where
+        plots can be drawn) to the rectangle (x,y,w,h) (Upper-Left point Width
+        Height). This function uses the current coordinates of the plot.</dd>
+<dd>
+<b>xset("color",value)</b>: Set the default color for filling, line or text drawing
+        functions. <tt><b>value</b></tt> is an integer projected in the interval
+        [0,whiteid]. 0 is used for black filling and whiteid for white. The
+        value of whiteid can be obtained with <tt><b>xget("white")</b></tt>.</dd>
+<dd>
+<b>xset("colormap",cmap)</b>: Set the colormap as a m x 3 matrix. m is the number of colors.
+        Color number i is given as a 3-uple cmap(i,1), cmap(i,2), cmap(i,3)
+        corresponding respectively to red, green and blue intensity between 0
+        and 1.</dd>
+<dd>
+<b>xset("dashes",i)</b>: In black and white mode (<tt><b>xset("use color",0)</b></tt>), set
+        the dash style to style i (0 for solid line). In color mode
+        (<tt><b>xset("use color",1 )</b></tt>) this is used to set line, mark and
+        text color. This keyword is obsolete, please use
+        <tt><b>xset('color',i)</b></tt> or <tt><b>xset('line style',i)</b></tt>
+        instead.</dd>
+<dd>
+<b>xset("default")</b>: Reset the graphics context to default values.</dd>
+<dd>
+<b>xset("font",fontid,fontsize) : Set the current font and its current</b>size. Note that <tt><b>fontsize</b></tt> applies to all fonts not
+        only <tt><b>fontid</b></tt> .</dd>
+<dd>
+<b>xset("font size",fontsize)</b>: Set the fonts size.</dd>
+<dd>
+<b>xset("foreground",color)</b>: Set the foreground color of the current graphics window.</dd>
+<dd>
+<b>xset("fpf",string)</b>: Set the floating point format for number display in contour
+        functions. <tt><b>string</b></tt> is a string giving the format in C
+        format syntax (for example <tt><b>string="%.3f"</b></tt>). Use
+        <tt><b>string=""</b></tt> to switch back to default format.</dd>
+<dd>
+<b>xset("hidden3d",colorid) : Set the color number for backward facing faces in</b><tt><b>plot3d</b></tt>. <tt><b>colorid=0</b></tt> zero suppress the
+        drawing of backward facing faces of 3d objects. This is technically
+        called 'culling' and speeds up the rendering of closed surfaces.</dd>
+<dd>
+<b>xset("line mode",type)</b>: This function is used to set the line drawing mode. Absolute
+        mode is set with type=1 and relative mode with type=0. (Warning: the
+        mode type=0 has bugs)</dd>
+<dd>
+<b>xset("line style",value)</b>: Set the current line style (1: solid, &gt;1 for dashed
+        lines).</dd>
+<dd>
+<b>xset("mark",markid,marksize)</b>: Set the current mark and the current mark size. Use
+        <tt><b>xset()</b></tt> to see the marks. Note that <tt><b>marksize</b></tt>
+        applies to all marks not only <tt><b>markid</b></tt> .</dd>
+<dd>
+<b>xset("mark size",marksize)</b>: Set the marks size.</dd>
+<dd>
+<b>xset("pattern",value)</b>: Set the current pattern for filling functions. value is an
+        integer projected in the interval [0,whiteid]. 0 is used for black
+        filling and whiteid for white. The value of whiteid can be obtained
+        with <tt><b>xget("white")</b></tt>. "pattern" is equivalent to
+        "color".</dd>
+<dd>
+<b>xset("pixmap",flag)</b>If flag=0 the graphics are directly displayed on the screen. If
+        flag=1 the graphics are done on a pixmap and are sent to the graphics
+        window with the command <tt><b>xset("wshow")</b></tt>. The pixmap is
+        cleared with the command <tt><b>xset("wwpc")</b></tt>. Note that the
+        usual command <tt><b>xbasc()</b></tt> also clears the pixmap.</dd>
+<dd>
+<b>xset("thickness",value)</b>: Set the thickness of lines in pixel (0 and 1 have the same
+        meaning: 1 pixel thick).</dd>
+<dd>
+<b>xset("use color",flag)</b>If flag=1 then <tt><b>xset("pattern",.)</b></tt> or
+        <tt><b>xset("dashes",.)</b></tt> will be used so as to change the default
+        color for drawing or for filling patterns. If flag=0 then we switch
+        back to the gray and dashes mode.</dd>
+<dd>
+<b>xset("viewport",x,y)</b>: Set the position of the panner.</dd>
+<dd>
+<b>xset("wdim",width,height)</b>: Set the width and the height of the current graphics window.
+        This option is not used by the postscript driver.</dd>
+<dd>
+<b>xset("wpdim",width,height)</b>: Sets the width and the height of the current physical graphic
+        window (which can be different from the actual size in mode wresize
+        1). This option is not used by the postscript driver.</dd>
+<dd>
+<b>xset("window",window-number)</b>: Set the current window to the window <tt><b>window-number</b></tt>
+        and creates the window if it does not exist.</dd>
+<dd>
+<b>xset("wpos",x,y)</b>: Set the position of the upper left point of the graphics
+        window.</dd>
+<dd>
+<b>xset("wresize",flag)</b>If flag=1 then the graphic is automatically resized to fill the
+        graphics window.<pre>xdel();xset("wresize",1);plot2d();xset("wdim",1000,500)</pre>
+<p>If flag=0 the scale of the graphic is left unchanged when the
+        graphics window is resized. Top left panner or keyboard arrows may be
+        used to scroll over the graphic.</p>
+<pre>xdel();plot2d();xset("wresize",0);xset("wdim",1000,500)</pre>
+</dd>
+<dd>
+<b>xset("wshow")</b>: See <tt><b>xset("pixmap",1)</b></tt> above.</dd>
+<dd>
+<b>xset("wwpc")</b>: See <tt><b>xset("pixmap",1)</b></tt> above.</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xget.htm"><tt><b>xget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/getsymbol.htm"><tt><b>getsymbol</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

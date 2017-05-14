@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plot2d1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot2d1</b> - 2D plot (logarithmic axes)
+  (obsolete)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>plot2d1(str,x,y,[style,strf,leg,rect,nax])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: is a string of length three <tt><b>"abc"</b></tt>.<ul>
+<li>
+<tt><b>a</b></tt>: can have the following values: <tt><b>e</b></tt>,
+                <tt><b>o</b></tt> or <tt><b>g</b></tt>.<ul>
+<li>
+<tt><b>e</b></tt>: means "empty". Itspecifies the fact that the value
+                      of <tt><b>x</b></tt> is not used (the <tt><b>x</b></tt> values
+                      are supposed to be regularly spaced, ie 1:&lt;number of
+                      rows of <tt><b>y</b></tt>&gt;). The user must anyway give a
+                      value for <tt><b>x</b></tt>, 1 for instance:
+                      <tt><b>plot2d1("enn",1,y)</b></tt>.</li>
+<li>
+<tt><b>o</b></tt>: means "one". If there are many curves, they all
+                      have the same x-values: <tt><b>x</b></tt> is a column
+                      vector of size nl and <tt><b>y</b></tt> is a matrix of size
+                      (nl,nc). For example : <tt><b>x=[0:0.1:2*%pi]';
+                      plot2d1("onn",x,[sin(x) cos(x)])</b></tt>.</li>
+<li>
+<tt><b>g</b></tt>: means "general". <tt><b>x</b></tt> and <tt><b>y</b></tt>
+                      must have the same size (nl,nc). Each column of
+                      <tt><b>y</b></tt> is plotted with respect to the
+                      corresponding column of <tt><b>x</b></tt>. <tt><b>nc</b></tt>
+                      curves are plotted using <tt><b>nl</b></tt> points.</li>
+</ul>
+</li>
+<li>
+<tt><b>b, c</b></tt>: can have the values <tt><b>n</b></tt> (normal) or
+                <tt><b>l</b></tt> (logarithmic).<ul>
+<li>
+<tt><b>b=l</b></tt>: a logarithmic axis is used on the x-axis</li>
+<li>
+<tt><b>c=l</b></tt>: a logarithmic axis is used on the y-axis</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>x,y,[style,strf,leg,rect,nax]</b></tt>: these arguments have the same meaning as in the
+          <tt><b>plot2d</b></tt> function.</li>
+<li>
+<tt><b>opt_args</b></tt>: these arguments have the same meaning as in the
+          <tt><b>plot2d</b></tt> function.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function is obsolete. USE <tt><b>plot2d</b></tt> INSTEAD !!</p>
+<p><tt><b>plot2d1</b></tt> plots a set of 2D curves. It is the same as
+    <tt><b>plot2d</b></tt> but with one more argument <tt><b>str</b></tt> which
+    enables logarithmic axis. Moreover, it allows to specify only one column
+    vector for <tt><b>x</b></tt> when it is the same for all the curves.</p>
+<p>By default, successive plots are superposed. To clear the previous
+    plot, use <tt><b>clf</b></tt>.</p>
+<p>Enter the command <tt><b>plot2d1()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// multiple plot without giving x
+x=[0:0.1:2*%pi]';
+plot2d1("enn",1,[sin(x) sin(2*x) sin(3*x)])
+// multiple plot using only one x
+clf()
+plot2d1("onn",x,[sin(x) sin(2*x) sin(3*x)])
+// logarithmic plot
+x=[0.1:0.1:3]'; clf()
+plot2d1("oll",x,[exp(x) exp(x^2) exp(x^3)])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d2.htm"><tt><b>plot2d2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d3.htm"><tt><b>plot2d3</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d4.htm"><tt><b>plot2d4</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

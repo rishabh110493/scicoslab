@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>text_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>text_properties</b> - description of the Text entity
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Text entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for string drawing</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        text entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, text handles currently do not have any
+        <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .By
+        default, the text is visible, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the text is not displayed on
+        the screen.</dd>
+<dd>
+<b>text: </b>This field is the character string vector which contains the
+        text.</dd>
+<dd>
+<b>data: </b>This field is the vector <tt><b>[x,y,[z]]</b></tt> of the origin of
+        the text in the data units of the axes.</dd>
+<dd>
+<b>box: </b>This field takes the values <tt><b>"on"</b></tt> or
+        <tt><b>"off"</b></tt>. If <tt><b>"on"</b></tt> a box is draw around the text
+        with a line on its edge and a background.</dd>
+<dd>
+<b>line_mode: </b>This boolean property allows to draw or not a line around the box
+        when the <tt><b>box</b></tt> property is <tt><b>"on"</b></tt>. If
+        <tt><b>line_mode</b></tt> is <tt><b>"off"</b></tt>, the line of the box is
+        not drawn.</dd>
+<dd>
+<b>fill_mode: </b>This boolean property allows to draw or not the background of the
+        box when the <tt><b>box</b></tt> property is <tt><b>"on"</b></tt>. If
+        <tt><b>fill_mode</b></tt> is <tt><b>"off"</b></tt>, the background of the
+        box is not transparent.</dd>
+<dd>
+<b>font_foreground: </b>This field contains the color used to display the characters of
+        the text. Its value should be a color index (relative to the current
+        colormap).</dd>
+<dd>
+<b>foreground: </b>This field contains the color used to display the line on the edge
+        of the box. Its value should be a color index (relative to the current
+        colormap).</dd>
+<dd>
+<b>background: </b>This field contains the color used to fill the box around of the
+        text. Its value should be a color index (relative to the current
+        colormap).</dd>
+<dd>
+<b>font_size: </b>The <tt><b>font_size</b></tt> property is used to select the type of
+        size of the text. Its value should be an integer in between 0 and 5
+        which stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>font_style: </b>Seven differents fonts are available : "Courrier", "Symbol",
+        "Times", "Times Italic", "Times Bold", "User defined". The
+        <tt><b>font_style</b></tt> property is an index in [0 6] which is
+        associated to the previous font names.</dd>
+<dd>
+<b>font_angle: </b>This property determines the orientation of the text string.
+        Specify value of rotation in degrees.</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value for
+        the text. Its value should be :<dl>
+<dd>
+<b></b><tt><b>"off"</b></tt> this means that the text is not
+            clipped.</dd>
+<dd>
+<b></b><tt><b>"cliprf"</b></tt> this means that the text is clipped
+            outside the Axes box.</dd>
+<dd>
+<b></b><tt><b>"on"</b></tt> this means that the text is clipped outside
+            the rectangle given by the property <tt><b>clip_box</b></tt>.</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This field contains the <tt><b>clip_box</b></tt> property. Its value
+        should be an empty matrix if clip_state is "off" or the vector
+        <tt><b>[x,y,w,h</b></tt>] (upper-left point width height).</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the text
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>   
+
+  set("figure_style","new") //create a figure
+   a=get("current_axes");
+   a.data_bounds=[0,0;1,1];
+
+   xstring(0.5,0.6,"Scilab is not esilaB",0,0)
+
+   t=get("hdl")   //get the handle of the newly created object
+
+   t.font_foreground=6;
+   t.font_size=5;
+   t.font_style=5;
+   t.text="SCILAB";
+   t.font_angle=90;
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

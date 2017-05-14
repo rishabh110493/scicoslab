@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>minus</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>minus</b> -  (-)  substraction operator, sign changes</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X-Y</tt></dd>
+<dd><tt>-Y</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: scalar or vector or matrix of numbers, polynomials or rationals. It may also be a <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>Y</b></tt>: scalar or vector or matrix of numbers, polynomials or rationals. It may also be a <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Substraction</p>
+<p>
+    For numeric operands substraction as its usual meaning.
+    If one of the operands is a matrix and the other one a scalar the
+    the operation is performed element-wise. if <tt><b>Y==[] X</b></tt>  is returned;
+    if <tt><b>X==[] -Y</b></tt>  is returned.</p>
+<p>
+    Substraction may also be defined for other data types through
+    "soft-coded" operations.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[1,2]-1
+[]-2
+
+%s-2
+1/%s-2
+"cat"+"enate"
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/addf.htm"><tt><b>addf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mtlb_mode.htm"><tt><b>mtlb_mode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

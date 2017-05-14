@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>external</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>external</b> -  Scilab Object, external function or routine</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    External function or routine for use with specific commands.</p>
+<p>
+    An "external" is a function or routine which is used as an argument
+    of some high-level primitives (such as <tt><b>ode</b></tt>, <tt><b>optim</b></tt>, <tt><b>schur</b></tt>...).</p>
+<p>
+    The calling sequence of the external (function or routine) is imposed by
+    the high-level primitive which sets the arguments of the external.</p>
+<p>
+    For example the external function <tt><b>costfunc</b></tt> is an argument of the <tt><b>optim</b></tt> 
+    primitive. Its calling sequence must be: <tt><b>[f,g,ind]=costfunc(x,ind)</b></tt> and 
+    <tt><b>optim</b></tt> (the high-level optimization primitive) is invoked as follows:</p>
+<pre>
+
+optim(costfunc,...)
+   
+    </pre>
+<p>
+    Here <tt><b>costfunc</b></tt> (the cost function to be minimized by the primitive <tt><b>optim</b></tt>)
+    evaluates <tt><b>f=f(x)</b></tt> and <tt><b>g=</b></tt> gradient of <tt><b>f</b></tt> at <tt><b>x</b></tt> (<tt><b>ind</b></tt> is an integer. Its use is precised in the <tt><b>optim</b></tt> help).</p>
+<p>
+    If other values are needed by the external function these variables
+    can be defined in its environment. Also, they can be put in a list.
+    For example,the external function</p>
+<pre>
+
+[f,g,ind]=costfunc(x,ind,a,b,c) 
+   
+    </pre>
+<p>
+    is valid for <tt><b>optim</b></tt> if the external is <tt><b>list(costfunc,a,b,c)</b></tt> and
+    the call to <tt><b>optim</b></tt> is then:</p>
+<pre>
+
+optim(list(costfunc,a1,b1,c1),....
+   
+    </pre>
+<p>
+    An external can also be a Fortran or C routine : this is convenient to speed up 
+    the computations.</p>
+<p>
+    The name of the routine is given to the high-level primitive
+    as a character string. The calling sequence of the routine 
+    is also imposed. Examples are given in the <tt><b>routines/default</b></tt> directory 
+    (see the <tt><b>README</b></tt> file).</p>
+<p>
+    External Fortran or C routines can also be dynamically linked (see <tt><b>link</b></tt>)</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/impl.htm"><tt><b>impl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/dassl.htm"><tt><b>dassl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intg.htm"><tt><b>intg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/gschur.htm"><tt><b>gschur</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

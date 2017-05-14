@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>interp3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>interp3d</b> - 3d spline evaluation function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[fp[,dfpdx,dfpdy,dfpdz]]=interp3d(xp,yp,zp,tl,out_mode)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xp, yp, zp</b></tt>: real vectors or matrices of same size</li>
+<li>
+<tt><b>tl</b></tt>: tlist of type "splin3d", defining a 3d tensor spline (called <tt><b>s</b></tt> 
+                in the following)</li>
+<li>
+<tt><b>out_mode</b></tt>: (optional) string defining the evaluation of <tt><b>s</b></tt> outside the grid
+                ([xmin,xmax]x[ymin,ymax]x[zmin,zmax])</li>
+<li>
+<tt><b>fp</b></tt>: vector or matrix of same format than <tt><b>xp</b></tt>, <tt><b>yp</b></tt> and <tt><b>zp</b></tt>, 
+                elementwise evaluation of <tt><b>s</b></tt> on these points.</li>
+<li>
+<tt><b>dfpdx, dfpdy, dfpdz</b></tt>: vectors (or matrices) of same format than <tt><b>xp</b></tt>, <tt><b>yp</b></tt> and <tt><b>zp</b></tt>,
+                elementwise evaluation of the first derivatives of <tt><b>s</b></tt> on these points.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given a tlist <tt><b>tl</b></tt> defining a 3d spline function (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/splin3d.htm"><tt><b>splin3d</b></tt></a>) this function
+    evaluates <em>s</em> (and <em>ds/dx, ds/dy, ds/dz</em> if needed) at <em>(xp(i),yp(i),zp(i))</em> :
+    </p>
+<pre>
+      zp(i) = s(xp(i),yp(i))   
+      dzpdx(i) = ds/dx(xp(i),yp(i),zp(i))
+      dzpdy(i) = ds/dy(xp(i),yp(i),zp(i))  
+      dzpdz(i) = ds/dz(xp(i),yp(i),zp(i))
+         </pre>
+<p>
+    The <tt><b>out_mode</b></tt> parameter defines the evaluation rule for extrapolation,
+    i.e. for <em>(xp(i),yp(i),zp(i)) not in [xmin,xmax]x[ymin,ymax]x[zmin,zmax]</em>: 
+    </p>
+<dd>
+<li>
+<b><font color="maroon">"by_zero"</font></b>: an extrapolation by zero is done</li>
+<li>
+<b><font color="maroon">"by_nan"</font></b>: extrapolation by Nan</li>
+<li>
+<b><font color="maroon">"C0"</font></b>: the extrapolation is defined as follows :<pre>
+     s(x,y) = s(proj(x,y)) where proj(x,y) is nearest point 
+                           of [x(1),x(nx)]x[y(1),y(ny)] from (x,y)
+         </pre>
+</li>
+<li>
+<b><font color="maroon">"periodic"</font></b>: <tt><b>s</b></tt> is extended by periodicity.</li>
+</dd>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// see the examples of the splin3d help page
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/splin3d.htm"><tt><b>splin3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/bsplin3val.htm"><tt><b>bsplin3val</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b> R.F. Boisvert, C. De Boor (code from the CMLIB fortran lib)</dd>
+<dd>
+<b></b> B. Pincon (scilab interface)</dd>
+</dl>
+</body>
+</html>

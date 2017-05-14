@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ode_root</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ode_root</b> -  ordinary differential equation solver with root finding</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y,rd[,w,iw]=ode("root",y0,t0,t [,rtol  [,atol]],f  [,jac],ng,g [,w,iw])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y0</b></tt>: real vector or matrix (initial conditions).</li>
+<li>
+<tt><b>t0</b></tt>: real scalar (initial time).</li>
+<li>
+<tt><b>t</b></tt>: real vector (times at which the solution is computed).</li>
+<li>
+<tt><b>f</b></tt>: external i.e. function or character string or list.</li>
+<li>
+<tt><b>rtol,atol</b></tt>: real constants or real vectors of the same size as <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>jac</b></tt>: external i.e. function or character string or list.</li>
+<li>
+<tt><b>w,iw</b></tt>: real vectors.</li>
+<li>
+<tt><b>ng</b></tt>: integer.</li>
+<li>
+<tt><b>g</b></tt>: external i.e. function or character string or list.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    With this syntax (first argument equal to <tt><b>"root"</b></tt>)
+    <tt><b>ode</b></tt>
+    computes the solution
+    of the differential equation <tt><b>dy/dt=f(t,y)</b></tt> until the state
+    <tt><b>y(t)</b></tt> crosses the surface <tt><b>g(t,y)=0</b></tt>.</p>
+<p><tt><b>g</b></tt> should give the equation of the surface.
+    It is an external i.e. a function with
+    specified syntax, or the name of a Fortran subroutine or a C function 
+    (character string) with specified calling sequence or a list.</p>
+<p>
+    If <tt><b>g</b></tt> is a function the syntax should be as follows:</p>
+<pre>
+
+z=g(t,y)
+   
+    </pre>
+<p>
+    where <tt><b>t</b></tt> is a real scalar (time)  and <tt><b>y</b></tt> a real vector (state).
+    It returns a vector of size <tt><b>ng</b></tt> which corresponds to 
+    the <tt><b>ng</b></tt> constraints. 
+    If <tt><b>g</b></tt> is a character string it refers to the name of a Fortran
+    subroutine or a C function, with the following calling sequence: 
+    <tt><b>g(n,t,y,ng,gout)</b></tt>
+    where <tt><b>ng</b></tt> is the number of constraints and 
+    <tt><b>gout</b></tt> is the value of <tt><b>g</b></tt> (output of the program).
+    If <tt><b>g</b></tt> is a list the same conventions as for <tt><b>f</b></tt> apply (see ode
+    help).</p>
+<p>
+    Ouput <tt><b>rd</b></tt> is a <tt><b>1 x k</b></tt> vector. The first entry contains the stopping
+    time. Other entries indicate which components of <tt><b>g</b></tt> have changed
+    sign. <tt><b>k</b></tt> larger than 2 indicates that more than one surface
+    (<tt><b>(k-1)</b></tt> surfaces) have been simultaneously traversed.</p>
+<p>
+    Other arguments and other options are the same as for <tt><b>ode</b></tt>, see the
+    ode help.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Integration of the differential equation
+// dy/dt=y , y(0)=1, and finds the minimum time t such that y(t)=2
+deff("[ydot]=f(t,y)","ydot=y")
+deff("[z]=g(t,y)","z=y-2")
+y0=1;ng=1;
+[y,rd]=ode("roots",y0,0,2,f,ng,g)
+
+
+deff("[z]=g(t,y)","z=y-[2;2;33]")
+[y,rd]=ode("roots",1,0,2,f,3,g)
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/dasrt.htm"><tt><b>dasrt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

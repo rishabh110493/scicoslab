@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>portrait</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>portrait</b> -  2 dimensional phase portrait.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[]=portrait(f,[odem,xdim,npts,farrow,pinit])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f</b></tt>: a Scilab external which gives the field of the dynamical system. Hence  it can be a macro name which computes the field at time t and point x [y]=f(t,x,[u]) or a list list(f1,u1) where f1 is a macro of type [y]=f1(t,x,u) or a character string. The macro can be used to simulate a continuous or discrete system and in case  of discrete system the second parameter must be set to 'discrete'</li>
+<li>
+<tt><b>options</b></tt>: The other parameters are optional. If omitted they will be asked interactively<ul>
+<li>
+<tt><b>odem</b></tt>: gives the integration method to use. The value "default" can be used,  otherwise see ode for a complete set of possibilities</li>
+<li>
+<tt><b>xdim</b></tt>: [xmin,ymin,xmax,ymax] the boundaries of the graphic frame.</li>
+<li>
+<tt><b>npts</b></tt>:  a vector of size 2 [number-of-points,step] gives the step
+                for integration  and the number of requested points. The solution
+                will be calculated and drawn  for
+                time=0:step:(step*[number-of-points])</li>
+<li>
+<tt><b>farrow</b></tt>:  a string 't' or 'f' to display arrows or not on trajectory. </li>
+<li>
+<tt><b>pinit</b></tt>: initial values for integration. A set of initial points can be given in a matrix<pre>
+
+      pinit = [x0(1), x1(1),...., xn(1)
+               x0(2), x1(2),...., xn(2)
+               x0(3), x1(3),...., xn(3)].
+   
+                </pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Interactive integration and display of a 2 dimensional phase portrait
+    of a dynamical system  dx/dt=f(t,x,[u]) (where u is an optional parameter )</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  
+  //Interactive
+  a=rand(2,2)
+  deff('[ydot]=l_s(t,y)','ydot=a*y')
+  portrait(l_s)
+
+  //predator prey
+  function xd=predprey(t,x)
+    xd(1)=-3*x(1)+4*x(1)^2-x(1)*x(2)/2-x(1)^3;
+    xd(2)=-2.1*x(2)+x(1)*x(2);
+  endfunction
+  bound=[-1,-1,4,4];
+  nrect=12;
+  x=linspace(bound(1),bound(3),nrect);
+  y=linspace(bound(2),bound(4),nrect);
+  x0=[];
+  for i=1:size(x,'*')
+   for j=1:size(y,'*')
+      x0=[x0;x(i),y(j)];
+   end
+  end
+  portrait(predprey,"default",[-1,-1,4,4],[3000,0.01],'f',x0');
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

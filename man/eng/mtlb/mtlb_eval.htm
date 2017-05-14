@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_eval</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_eval</b> - Matlab eval emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Scilab equivalent for Matlab <tt><b>eval</b></tt> is different according to its inputs and outputs</p>
+<p>
+    The function <tt><b>mtlb_eval(str1,str2)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>eval</b></tt> because it was not possible to know
+    what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_eval</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        When called with one input and no output,
+        <tt><b>mtlb_eval(str1)</b></tt> may be replaced by <tt><b>evstr(str1)</b></tt>
+	if <tt><b>str1</b></tt> is a valid Scilab expression
+	or by <tt><b>execstr(str1)</b></tt> 
+	if <tt><b>str1</b></tt> is a valid Scilab instruction.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        When called with one input and one output,
+        <tt><b>val=mtlb_eval(str1)</b></tt> may be replaced by <tt><b>val=evstr(str1)</b></tt>
+	if <tt><b>str1</b></tt> is a valid Scilab instruction.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        When called with two inputs and no output,
+        <tt><b>mtlb_eval(str1,str2)</b></tt> may be replaced by:
+	<tt><b>if execstr(str1,"errcatch")&lt;&gt;0 then execstr(str2);end</b></tt>
+	if <tt><b>str1</b></tt> and <tt><b>str2</b></tt> are valid Scilab instructions.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        When called with more than one output and one input,
+        <tt><b>[val1,val2,...]=mtlb_eval(str1)</b></tt> may be replaced by
+	<tt><b>execstr("[val1,val2,...]"+str1)</b></tt>
+	if <tt><b>str1</b></tt> is a valid Scilab instruction.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        When called with two inputs and more than one output,
+        <tt><b>[val1,val2,...]=mtlb_eval(str1,str2)</b></tt> may be replaced by:
+        <pre>
+	if execstr("[val1,val2,...]"+str1,"errcatch")&lt;&gt;0 then
+	  execstr("[val1,val2,...]"+str2);
+	end	  
+	</pre>
+	if <tt><b>str1</b></tt> and <tt><b>str2</b></tt> are valid Scilab instructions.
+        </li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_eval</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

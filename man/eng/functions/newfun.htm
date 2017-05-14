@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>newfun</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>newfun</b> -  add a name in the table of functions</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>newfun("function-name",nameptr)  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function (for experts only). Adds the name <tt><b>"function-name"</b></tt>
+    in the table
+    of functions known to the interpreter. <tt><b>"nameptr"</b></tt> is an integer
+    <tt><b>100*fun+fin</b></tt> where <tt><b>fun</b></tt> and <tt><b>fin</b></tt> is the internal coding of
+    the primitive <tt><b>"function-name"</b></tt>.
+    This function is useful to associate a primitive to a routine
+    interfaced in <tt><b>"matusr.f"</b></tt> (<tt><b>fun=14</b></tt>).
+    Used with <tt><b>funptr</b></tt> and <tt><b>clearfun</b></tt> one can redefine a primitive
+    by a function with same name.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/clearfun.htm"><tt><b>clearfun</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

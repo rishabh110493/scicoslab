@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>simp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>simp</b> -  simplification rationnelle  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N1,D1]=simp(N,D)  </tt></dd>
+<dd><tt>H1=simp(H)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>N,D  </b></tt>
+    : polynômes réels ou matrices de polynômes réels
+</li>
+<li>
+<tt><b>H  </b></tt>
+    : matrice de fractions rationnelles (i.e matrice avec des termes <tt><b>n/d</b></tt>, <tt><b>n</b></tt> et <tt><b>d</b></tt> polynômes réels) 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[n1,d1]=simp(n,d)</b></tt> calcule deux polynômes <tt><b>n1</b></tt> et <tt><b>d1</b></tt>
+    tels que<tt><b>n1/d1 = n/d</b></tt>.
+  </p>
+<p>
+    Si <tt><b>N</b></tt> et <tt><b>D</b></tt> sont des matrices de polynômes le calcul
+    est fait élément par élément.
+  </p>
+<p><tt><b>H1=simp(H)</b></tt> est aussi valide (chaque terme de <tt><b>H</b></tt> est simplifié dans <tt><b>H1</b></tt>).
+  </p>
+<p>
+    Attention : 
+  </p>
+<p>
+    - pas de seuil i.e. <tt><b>simp</b></tt> ne peut pas forcer une
+    simplification.
+  </p>
+<p>
+    - Pour les systèmes dynamiques linéaires avec un intégrateur la simplification
+    change le gain statique. (<tt><b>H(0)</b></tt> pour les systèmes continus ou <tt><b>H(1)</b></tt> pour les systèmes discrets)
+  </p>
+<p>
+    - Pour les données complexes, <tt><b>simp</b></tt> renvoie ses entrées.
+  </p>
+<p>
+    - Une simplification est effectuée après la plupart des opérations rationnelles. Il est possible de la supprimer en utilisant la fonction <tt><b>simp_mode</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+[n,d]=simp((s+1)*(s+2),(s+1)*(s-2))
+
+simp_mode(%F);hns=s/s
+simp_mode(%T);hns=s/s
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/roots.htm"><tt><b>roots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/trfmod.htm"><tt><b>trfmod</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/simp_mode.htm"><tt><b>simp_mode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

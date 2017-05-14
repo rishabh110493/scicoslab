@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rmdir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rmdir</b> - Remove a directory</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rmdir('dirname')</tt></dd>
+<dd><tt>rmdir('dirname','s')</tt></dd>
+<dd><tt>[status,message] =
+    rmdir('dirname','s')</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>rmdir('dirname') removes the directory dirname from the current
+    directory. If the directory is not empty, you must use the s argument. If
+    dirname is not in the current directory, specify the relative path to the
+    current directory or the full path for dirname.</p>
+<p>rmdir('dirname','s') removes the directory dirname and its contents
+    from the current directory. </p>
+<p>[status, message] = rmdir('dirname','s') removes the directory dirname
+    and its contents from the current directory, returning the status, and a
+    message. Here, status is 1 for success and is 0 for error.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+mkdir(SCI,'Directory')
+rmdir(SCI+'/Directory')
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/chdir.htm"><tt><b>cd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/dir.htm"><tt><b>dir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/mkdir.htm"><tt><b>mkdir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C</dd></dl>
+</body>
+</html>

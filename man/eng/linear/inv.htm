@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>inv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inv</b> -  matrix inverse</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>inv(X)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X</b></tt>: real or complex square matrix, polynomial matrix, rational matrix in transfer or state-space representation.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>inv(X)</b></tt> is the inverse of the square matrix <tt><b>X</b></tt>. A warning
+    message is printed if <tt><b>X</b></tt> is badly scaled or nearly singular.</p>
+<p>
+    For polynomial matrices or rational matrices in transfer representation,
+    <tt><b>inv(X)</b></tt> is equivalent to <tt><b>invr(X)</b></tt>.</p>
+<p>
+    For linear systems in state-space representation (<tt><b>syslin</b></tt> list),
+    <tt><b>invr(X)</b></tt> is equivalent to <tt><b>invsyslin(X)</b></tt>.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p><tt><b>inv</b></tt> function for matrices of numbers is  based on the Lapack routines
+ DGETRF, DGETRI for  real matrices and  ZGETRF, ZGETRI for the complex case.
+ For polynomial matrix and rational function matrix <tt><b>inv</b></tt> is based on the <tt><b>invr</b></tt>
+ Scilab function.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(3,3);inv(A)*A
+//
+x=poly(0,'x');
+A=[x,1,x;x^2,2,1+x;1,2,3];inv(A)*A
+//
+A=[1/x,2;2+x,2/(1+x)]
+inv(A)*A
+//
+A=ssrand(2,2,3);
+W=inv(A)*A
+clean(ss2tf(W))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/slash.htm"><tt><b>slash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/invr.htm"><tt><b>invr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/coff.htm"><tt><b>coff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

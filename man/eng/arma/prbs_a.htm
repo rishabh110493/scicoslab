@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>prbs_a</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>prbs_a</b> -  pseudo random binary sequences generation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[u]=prbs_a(n,nc,[ids])  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    generation of pseudo random binary sequences
+    <tt><b>u=[u0,u1,...,u_(n-1)]</b></tt>
+    u takes values in {-1,1} and changes at most nc times its sign.
+    ids can be used to fix the date at which u must change its sign 
+    ids is then an integer vector with values in <tt><b>[1:n]</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+u=prbs_a(50,10);
+plot2d2("onn",(1:50)',u',1,"151",' ',[0,-1.5,50,1.5]);
+ 
+  </pre>
+</body>
+</html>

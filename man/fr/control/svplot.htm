@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>svplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>svplot</b> -  singular-value sigma-plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[SVM]=svplot(sl,[w])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list (continuous, discrete or sampled system)</li>
+<li>
+<tt><b>w</b></tt>: real vector (optional parameter)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes for the system <tt><b>sl=(A,B,C,D)</b></tt>
+    the singular values of its transfer function matrix:</p>
+<pre>
+
+             G(jw) = C(jw*I-A)B^-1+D
+or
+             G(exp(jw)) = C(exp(jw)*I-A)B^-1+D
+or
+             G(exp(jwT)) = C(exp(jw*T)*I-A)B^-1+D
+   
+    </pre>
+<p>
+    evaluated over the frequency range specified by <tt><b>w</b></tt>. (T is the sampling
+    period, <tt><b>T=sl('dt')</b></tt> for sampled systems).</p>
+<p><tt><b>sl</b></tt> is a <tt><b>syslin</b></tt> list representing the system
+    <tt><b>[A,B,C,D]</b></tt> in state-space form. <tt><b>sl</b></tt> can be continous or
+    discrete time or sampled system.</p>
+<p>
+    The <tt><b>i</b></tt>-th column of the output matrix <tt><b>SVM</b></tt> contains the singular
+    values of <tt><b>G</b></tt> for the <tt><b>i</b></tt>-th frequency value <tt><b>w(i)</b></tt>.</p>
+<pre>
+
+SVM = svplot(sl)
+   
+    </pre>
+<p>
+    is equivalent to</p>
+<pre>
+
+SVM = svplot(sl,logspace(-3,3))  (continuous)
+   
+    </pre>
+<pre>
+
+SVM = svplot(sl,logspace(-3,%pi)) (discrete)
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=logspace(-3,3);
+y=svplot(ssrand(2,2,4),x);
+xbasc();plot2d1("oln",x',20*log(y')/log(10));
+xgrid(12)
+xtitle("Singular values plot","(Rd/sec)", "Db");
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>F.D; ;   </p>
+</body>
+</html>

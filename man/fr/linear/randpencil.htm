@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>randpencil</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>randpencil</b> -  random pencil</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>F=randpencil(eps,infi,fin,eta)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>eps</b></tt>: vector of integers</li>
+<li>
+<tt><b>infi</b></tt>: vector of integers</li>
+<li>
+<tt><b>fin</b></tt>: real vector, or monic polynomial, or vector of monic polynomial</li>
+<li>
+<tt><b>eta</b></tt>: vector of integers</li>
+<li>
+<tt><b>F</b></tt>: real matrix pencil <tt><b>F=s*E-A</b></tt>  (<tt><b>s=poly(0,'s')</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function.
+    <tt><b>F=randpencil(eps,infi,fin,eta)</b></tt> returns a random pencil <tt><b>F</b></tt>
+    with given Kronecker structure. The structure is given by:
+    <tt><b>eps=[eps1,...,epsk]</b></tt>: structure of epsilon blocks (size eps1x(eps1+1),....)
+    <tt><b>fin=[l1,...,ln]</b></tt>  set of finite eigenvalues (assumed real)  (possibly [])
+    <tt><b>infi=[k1,...,kp]</b></tt> size of J-blocks at infinity
+    <tt><b>ki&gt;=1</b></tt>  (infi=[] if no J blocks).
+    <tt><b>eta=[eta1,...,etap]</b></tt>: structure ofeta blocks (size eta1+1)xeta1,...)</p>
+<p><tt><b>epsi</b></tt>'s should be &gt;=0, <tt><b>etai</b></tt>'s should be &gt;=0, <tt><b>infi</b></tt>'s should 
+    be &gt;=1.</p>
+<p>
+    If <tt><b>fin</b></tt> is a (monic) polynomial, the finite block admits the roots of 
+    <tt><b>fin</b></tt> as eigenvalues.</p>
+<p>
+    If <tt><b>fin</b></tt> is a vector of polynomial, they are the finite elementary
+    divisors of <tt><b>F</b></tt> i.e. the roots of <tt><b>p(i)</b></tt> are finite
+    eigenvalues of <tt><b>F</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+F=randpencil([0,1],[2],[-1,0,1],[3]);
+[Q,Z,Qd,Zd,numbeps,numbeta]=kroneck(F);
+Qd, Zd
+s=poly(0,'s');
+F=randpencil([],[1,2],s^3-2,[]); //regular pencil
+det(F)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/kroneck.htm"><tt><b>kroneck</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pencan.htm"><tt><b>pencan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/penlaur.htm"><tt><b>penlaur</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bouchonvm </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Procedure  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bouchonvm </b> -    mean speed computation ( circular road traffic )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>r=bouchonvm(n,k,l)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n  </b></tt>
+    : car number
+  </li>
+<li>
+<tt><b>k  </b></tt>
+    : ceil(1/v) where v is the speed
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : probability for a car to have speed v
+  </li>
+<li><tt><b>r vm/v where vm is the mean speed of the n cars  </b></tt></li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Compute the mean speed of n cars confined to a circular road without input or
+    output, where the cars cannot overtake each other.
+  </p>
+<p>
+    The cars can take two speeds 0 and v with probabilities
+    (1-l) and l.
+  </p>
+<p>
+    In stationnary regime there are k clusters.
+  </p>
+<p>
+    In this case it is possible to compute explicitely r :
+  </p>
+<p>
+    r(n+1)=l(k+nr(n))/(n+k) with r(0)=1.
+  </p>
+<p></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/bouchon.htm"><tt><b>bouchon</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

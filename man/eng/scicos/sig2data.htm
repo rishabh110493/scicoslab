@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sig2data</TITLE>
+<META NAME="description" CONTENT="sig2data">
+<META NAME="keywords" CONTENT="sig2data">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="sig2data.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Scilab Function
+<BR><A NAME="tex2html1"
+  HREF="../../fr/scicos/sig2data.htm">fr</A> - <A NAME="tex2html2"
+  HREF="./sig2data.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="sig2data"></A>
+<BR>
+<b>sig2data</b> - Scicos signal structure to scilab data
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00012000000000000000">
+Description</A>
+</font></H3>
+
+<P>
+Extract data from a 'scicos' signal structure. x will be the field B.values t will be the field B.time  
+<BR>
+<H3><font color="blue"><A NAME="SECTION00013000000000000000">
+Calling Sequence</A>
+</font></H3>
+<PRE>
+[x[,t]]=sig2data(B)
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00014000000000000000">
+Parameters</A>
+</font></H3>
+
+<UL>
+<LI><b>B :</b>
+   a scilab structure that defines a signal :
+
+<UL>
+<LI><b>B.values :</b>
+   B data
+</LI>
+<LI><b>B.time :</b>
+   the samples time in the form of a columun vector.
+</LI>
+</UL>
+</LI>
+<LI><b>x :</b>
+   the field B.values
+</LI>
+<LI><b>t :</b>
+   the field B.time
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00015000000000000000">
+Example</A>
+</font></H3>
+<PRE>
+--&gt;a(:,:,4)=([7 8 9;10 11 12]);
+--&gt;b=data2sig(a,0.1)
+b  =
+values: [2x3x4 hypermat]
+time: [4x1 constant]
+--&gt;b.time
+ans  =
+0.
+0.1.
+0.2.
+0.3.
+--&gt;[x,t]=sig2data(b)
+t  =
+0.
+0.1
+0.2
+0.3
+x  =
+(:,:,1)
+0.    0.    0.
+0.    0.    0.
+(:,:,2)
+0.    0.    0.
+0.    0.    0.
+(:,:,3)
+0.    0.    0.
+0.    0.    0.
+(:,:,4)
+7.     8.     9.
+10.    11.    12.
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION00016000000000000000">
+See Also</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html4"
+  HREF="data2sig.htm">data2sig - Scilab data to scicos signal structure (Scilab Function)</A>
+</LI>
+</UL>
+
+<H3><font color="blue"><A NAME="SECTION00017000000000000000">
+Authors</A>
+</font></H3>
+<b>Alan Layec</b> INRIA
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

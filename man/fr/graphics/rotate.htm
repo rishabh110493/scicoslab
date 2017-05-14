@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rotate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rotate</b> -  rotation d'un ensemble de points dans le plan    </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xy1=rotate(xy,[theta,orig])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xy  </b></tt>
+    : matrice de taille (2,n).
+</li>
+<li>
+<tt><b>xy1  </b></tt>
+    : matrice de taille (2,n).
+</li>
+<li>
+<tt><b>theta  </b></tt>
+    : réel, angle en radian (0 par défaut).
+</li>
+<li>
+<tt><b>orig  </b></tt>
+    : centre de la rotation ([0;0] par défaut)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rotate</b></tt> effectue une rotation d'angle theta <tt><b>theta</b></tt> :
+  </p>
+<p><tt><b>xy1(:,i) = M(theta) *xy (:,i) + yesg</b></tt></p>
+<p>
+    où <tt><b>M</b></tt> représente la matrice de rotation correspondante.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+xsetech([0,0,1,1],[-1,-1,1,1])
+xy=[(0:0.1:10);sin(0:0.1:10)]/10;
+for i=2*%pi*(0:10)/10,
+  [xy1]=rotate(xy,i);
+  xpoly(xy1(1,:),xy1(2,:),"lines")
+end
+ </pre>
+</body>
+</html>

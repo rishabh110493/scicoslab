@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>IntroTrfAsg</title></head><body bgcolor="FFFFFF"><CENTER> Traffic-Toolbox Comments  </CENTER><p><b>IntroTrfAsg -  Introduction to the Traffic Assignment Toolbox  </b></p><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     The purpose of the toolbox is to solve traffic assignment problems. A good reference is Michael Patriksson's book "The Traffic Assignment Problem, Models and
+    Methods".
+  </p>
+  <p>
+  </p>
+  <p>
+    To define the problem we need :
+  </p>
+  <p>
+  </p>
+ 
+
+  <li><b></b> 
+    1) The Traffic Network : an oriented graph G where nn nodes represent places or cities, and na arcs represent  links or roads.
+  </li>
+
+  <li><b></b> 
+    2) The Link Performance Functions (also known as travel time functions): the travel time as a function of the flow in the arc. Seven formulae are used needing 4 parameters. Once a formula is chosen for the whole network, the parameters are defined in a 4 x na matrix.
+  </li>
+
+  <li><b></b> 
+    3) The Origin-Destination traffic demand pairs (OD-pairs also called commodities) : are given by an initial node, a final node and a flow. The nd OD-pairs are defined by a 3 x nd matrix.
+  </li>
+ 
+  </dl><H3><font color="blue"></font></H3><ul><p>
+     All the data is stored in a scilab structure called a "NetList" that plays the role of a geographic data basis which can be visualized by "ShowNet" and edited inside "metanet" or "scigraph". This NetList is build by "MakeNet".
+  </p><p>
+     
+  </p><p>
+    The traffic assignment is computed by "TrafficAssig". The results are stored in the Geographic Data Basis and can be visualized with "ShowNet". 
+  </p></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="NetList.htm"><tt><b>NetList</b></tt></a>&nbsp;&nbsp;<a href="MakeNet.htm"><tt><b>MakeNet</b></tt></a>&nbsp;&nbsp;<a href="ShowNet.htm"><tt><b>ShowNet</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

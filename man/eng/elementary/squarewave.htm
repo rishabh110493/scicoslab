@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>squarewave</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>squarewave</b> -   generates a square wave with period <tt><b>2*%pi</b></tt></p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=squarewave(t [,percent])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>t</b></tt>: real vector, time discretization</li>
+<li>
+<tt><b>x</b></tt>: real vector, the wave value at each time point in set (-1,+1)</li>
+<li>
+<tt><b>percent</b></tt>: real positive scalar, the percent of the period in which the signal is positive. Defaut value is 50</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>squarewave(t)</b></tt> generates the vector of the values of the square
+    wave with period 2*%pi at each date given in the <tt><b>t</b></tt> vector.</p>
+<p><tt><b>squarewave(t,%)</b></tt> generates a square wave such that <tt><b>%</b></tt>  is
+    the percent of the period in which the signal is positive.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=(0:0.1:5*%pi)';
+plot2d1('onn',t,[2*sin(t),1.5*squarewave(t),squarewave(t,10)])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sin.htm"><tt><b>sin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cos.htm"><tt><b>cos</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

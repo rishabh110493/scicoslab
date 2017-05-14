@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>stacksize</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>stacksize</b> -  set scilab stack size</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>stacksize(n)  </tt></dd>
+<dd><tt>sz=stacksize()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer, the required stack size given in number of double precision words</li>
+<li>
+<tt><b>sz</b></tt>: 2-vector [total used]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Scilab stores "usual" variables in a stack <tt><b>stk</b></tt> (for global variables see <tt><b>gstacksize</b></tt>).</p>
+<p><tt><b>stacksize(n)</b></tt> allows the user to increase or decrease the size of
+    this stack. The maximum allowed size depends on the amount of
+    free memory and swap space available at the time.</p>
+<p>
+    This function with the <tt><b>n</b></tt> argument can now be used everywhere.</p>
+<p><tt><b>sz=stacksize()</b></tt> returns a 2-vector which contains  the current
+    total and used stack size. It can be used everywhere.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/gstacksize.htm"><tt><b>gstacksize</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

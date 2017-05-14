@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>apropos</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>apropos</b> -  searches keywords in Scilab help</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>apropos(key)</tt></dd>
+<dd><tt>apropos(regexp)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>key</b></tt>: character string. give the sequence of characters to be found</li>
+<li>
+<tt><b>regexp</b></tt>:  character string. give the regular expression to be found
+	    (only with "Scilab Browser")</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>apropos(key)</b></tt> looks for Scilab help files containing
+      keywords <tt><b>key</b></tt>in their short description section.</p>
+<p>With Scilab Browser only, <tt><b>apropos(regexp)</b></tt> looks for Scilab
+      help files containing regular expression  <tt><b>regexp</b></tt>in their short
+      description section.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+apropos('ode')
+apropos ode 
+apropos "list of"
+
+//next only for Scilab Browser
+global %browsehelp;%browsehelp_save=%browsehelp;%browsehelp="Scilab Browser";
+
+apropos "sin.*hyperbolic"
+apropos "^ab"  //search help beginning the two characters "ab"
+apropos "quadratic.*solver"
+
+%browsehelp=%browsehelp_save;
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/man.htm"><tt><b>man</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

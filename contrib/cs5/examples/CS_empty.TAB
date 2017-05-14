@@ -1,0 +1,11 @@
+!table
+!version 300
+!charset WindowsLatin1
+
+Definition Table
+  Type NATIVE Charset "WindowsLatin1"
+  Fields 4
+    lpf1 Float ;
+    lpf2 Float ;
+    lpf3 Float ;
+    lpf4 Float ;

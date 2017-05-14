@@ -1,0 +1,44 @@
+LogitMB                             CiudadSim Function              LogitMB
+NAME
+   LogitMB  - Logit equilibrium ( Markov Bell Method )
+  
+CALLING SEQUENCE
+ [F]=LogitMB(A,D,theta)
+PARAMETERS
+ A          : nxn nodesxnodes matrix of travel times
+            
+ D          : nxn nodesxnodes matrix of demand flows 
+            
+ theta      : stochasticity parameter 
+            
+ F          : nxn nodesxnodes assigned flow matrix
+            
+DESCRIPTION
+   Compute the logit traffic assignment by the Markov method where on each
+  road at each crossing we have to choose a link among the links leaving
+  this crossing including the ones comming back to the origine.  A Markov
+  chain is defined by normalizing the following transition matrix
+  Wij=exp(-theta (Lj+Aij-Li)) where Lj denotes the smallest travelling time
+  from j to the destination of the considered demand. The flow is assigned
+  proportionnaly to the probability to use an arc before reaching the
+  destination of the demand for the markov chain starting at the origine of
+  the demand with a probability 1.  The graph must be strongly connected.
+  If it is not the case we can add artificial  arcs with large travel time
+  in such a way that the new graph becomes strongly connected.  
+  
+EXAMPLES
+ // Graph generation (the graph must be stongly connected)
+ // n is the number of nodes, m the number of arcs
+ n=10; m=40; 
+ c1=m/(n*n); 
+ A=sprand(n,n,c1)+diag(sparse(ones(n-1,1)),1);
+ A(n,1)=1;A=A-diag(diag(A));
+ // Demand generation, p is the number of demand.
+ p=30;c2=p/(n*n);D=sprand(n,n,c2);D=D-diag(diag(D));
+ //theta definition (almost determinsitic)
+ theta=10
+ // Flow calculation
+ FD=LogitMB(A,D,theta)
+SEE ALSO
+   LogitD, LogitB, LogitMD, LogitN, LogitNE, TrafficAssig
+  

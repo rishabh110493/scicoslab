@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rubberbox</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rubberbox</b> -  Rubberband box for rectangle selection</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[final_rect,btn]=rubberbox(initial_rect)  </tt></dd>
+<dd><tt>[final_rect,btn]=rubberbox()  </tt></dd>
+<dd><tt>[final_rect,btn]=rubberbox(edition_mode)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>initial_rect</b></tt>: vector with two or four entries. With four entries it gives the
+  initial rectangle  defined by [x_left, y_top, width, height], with
+  two entries width and height are supposed to be 0.
+  coordinates of the upper-left corner of</li>
+<li>
+<tt><b>edition_mode</b></tt>:a boolean, if edition_mode==%t; button press selects the first corner, release
+	    selects the opposite corner.if edition_mode==%f, button press or
+	    click selects the first corner, a click is requested to select the
+	    opposite corner. The default value is  edition_mode=%f </li>
+<li>
+<tt><b>final_rect</b></tt>:a rectangle defined by [x_left, y_top, width, height]</li>
+<li>
+<tt><b>btn</b></tt>:an integer, the number of the mouse button clicked</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rubberbox(initial_rect)</b></tt>  tracks a rubberband box in
+    the current graphic window, following the mouse. When a button is clicked <tt><b>rubberbox</b></tt> returns the final
+    rectangles definition  in <tt><b>final_Rect</b></tt>. If the argument
+    <tt><b>initial_rect</b></tt> user has to click to fix the initial
+    corner position.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+xsetech(frect=[0,0,100,100])
+[x,y]=xclick();r=rubberbox([x;y;30;10])
+xrect(r)
+r=rubberbox()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xrect.htm"><tt><b>xrect</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xrects.htm"><tt><b>xrects</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/dragrect.htm"><tt><b>dragrect</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

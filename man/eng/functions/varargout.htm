@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>varargout</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab keyword</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>varargout</b> -   variable numbers of arguments in an output argument list</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A function whose output argument list contains  <tt><b>varargout</b></tt> must be
+    called with more output arguments than indicated in the output argument
+    list. The calling arguments passed form <tt><b>varargout</b></tt> keyword onwards
+    are extracted out of the <tt><b>varargout</b></tt> list defined in the function</p>
+<p><tt><b>varagout = function ex()</b></tt> may be called with any number of output
+    arguments. Within function  <tt><b>ex</b></tt> output arguments may be stored in
+    in <tt><b>varargout(i)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('varargout=exampl()','varargout=list(1,2,3,4)')
+
+x=exampl()
+[x,y]=exampl()
+[x,y,z]=exampl()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/varargin.htm"><tt><b>varargin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rref</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rref</b> -  computes  matrix row echelon form by lu transformations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>R=rref(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>:  m x n matrix with scalar entries</li>
+<li>
+<tt><b>R</b></tt>:  m x n matrix,row echelon form of a</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rref</b></tt> computes the row echelon form of the given matrix by left lu
+    decomposition. If ones need the transformation used just call
+    <tt><b>X=rref([A,eye(m,m)])</b></tt> the row echelon form <tt><b>R</b></tt> is <tt><b>X(:,1:n)</b></tt> and
+    the left transformation <tt><b>L</b></tt> is given by <tt><b>X(:,n+1:n+m)</b></tt> such as <tt><b>L*A=R</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1 2;3 4;5 6];
+X=rref([A,eye(3,3)]);
+R=X(:,1:2)
+L=X(:,3:5);L*A
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lu.htm"><tt><b>lu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

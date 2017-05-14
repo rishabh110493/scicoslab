@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>show_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>show_graph</b> -  displays a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>nw = show_graph(g,[smode,scale])  </tt></dd>
+<dd><tt>nw = show_graph(g,[scale,winsize])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>smode</b></tt>: string, mode value</li>
+<li>
+<tt><b>winsize</b></tt>: row vector defining the size of edit_graph window</li>
+<li>
+<tt><b>scale</b></tt>: real value, scale factor</li>
+<li>
+<tt><b>nw</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>show_graph</b></tt> displays the graph <tt><b>g</b></tt> in the current edit_graph window. 
+    If there is no current edit_graph window, a edit_graph window is created.
+    The return value <tt><b>nw</b></tt> is the number of the edit_graph window where
+    the graph is displayed.</p>
+<p>
+    If the optional argument <tt><b>smode</b></tt> is equal to the string 'rep' or is not
+    given and if there is already a graph displayed in the current edit_graph window,
+    the new graph is displayed instead.</p>
+<p>
+    If the optional argument <tt><b>smode</b></tt> is equal to the string 'new', a new 
+    edit_graph window is created. In this case, if the optional argument 
+    <tt><b>winsize</b></tt> is given as a row vector <tt><b>[width height]</b></tt>, it is 
+    the size in pixels of edit_graph window. The default is <tt><b>[600,400]</b></tt>.</p>
+<p>
+    The optional argument <tt><b>scale</b></tt> is the value of the scale factor when 
+    drawing the graph. The default value is 1.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g,2);
+show_graph(g,0.5);
+show_graph(g,1);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/edit_graph.htm"><tt><b>edit_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/netwindow.htm"><tt><b>netwindow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/netwindows.htm"><tt><b>netwindows</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

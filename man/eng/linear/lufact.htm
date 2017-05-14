@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lufact</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lufact</b> -  sparse lu factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[hand,rk]=lufact(A,prec)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: square sparse matrix</li>
+<li>
+<tt><b>hand</b></tt>: handle to sparse lu factors</li>
+<li>
+<tt><b>rk</b></tt>: integer  (rank of A)</li>
+<li>
+<tt><b>prec</b></tt>: a vector of size two <tt><b>prec=[eps,reps]</b></tt> giving the absolute and relative  thresolds.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[hand,rk]=lufact(A)</b></tt> performs the lu factorization of sparse matrix <tt><b>A</b></tt>.
+    <tt><b>hand</b></tt> (no display) is used by <tt><b>lusolve</b></tt> (for solving linear
+    system) and <tt><b>luget</b></tt> (for retrieving the factors).
+    <tt><b>hand</b></tt> should be cleared by the command: <tt><b>ludel(hand)</b></tt>;
+  </p>
+<p>
+    The A matrix needs not be full rank but must be square 
+    (since A is assumed sparse one may add zeros if necessary to squaring
+    down A).
+  </p>
+<dl>
+<dd>
+<b>eps :</b>The absolute magnitude an element must have to be considered as a pivot candidate, except as a last resort.  This number should be set significantly smaller than the smallest diagonal element that is is expected to be placed in the matrix. the default  value is <tt><b>%eps</b></tt>.</dd>
+<dd>
+<b>reps :</b>This number determines what the pivot relative threshold will be.  It should be between zero and one.  If it is one then the pivoting method becomes complete pivoting, which is very slow and tends to fill up the matrix.  If it is set close to zero the pivoting method becomes strict Markowitz with no threshold.  The pivot threshold is used to eliminate pivot candidates that would cause excessive element growth if they were used.  Element growth is the cause of roundoff error. Element growth occurs even in well-conditioned matrices. Setting the reps large will reduce element growth and roundoff error, but setting it too large will cause execution time to be excessive and will result in a large number of fill-ins.  If this occurs, accuracy can actually be degraded because of the large number of operations required on the matrix due to the large number of fill-ins.  A good value seems to be 0.001 which is the default value.  The default is chosen by giving a value larger than one or less than or equal to zero.  This value should be increased and the matrix resolved if growth is found to be excessive.  Changing the pivot threshold does not improve performance on matrices where growth is low, as is often the case with ill-conditioned matrices. reps was choosen for use with nearly diagonally dominant matrices such as node- and modified-node admittance matrices.  For these matrices it is usually best to use diagonal pivoting.  For matrices without a strong diagonal, it is usually best to use a larger threshold, such as 0.01 or 0.1.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=rand(5,5);b=rand(5,1);A=sparse(a);
+[h,rk]=lufact(A);
+x=lusolve(h,b);a*x-b
+ludel(h)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

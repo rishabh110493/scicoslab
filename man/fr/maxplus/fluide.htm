@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fluide </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fluide </b> -  network nonlinear flow ( water )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,q,niter]=fluide(H,d,r,a,err)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H  </b></tt>
+    : incidence matrix nodes-arcs of size  mxn
+  </li>
+<li>
+<tt><b>d  </b></tt>
+    : supply-demand m-vector
+  </li>
+<li>
+<tt><b>r  </b></tt>
+    : admittance vector of size n
+  </li>
+<li>
+<tt><b>a  </b></tt>
+    : regularization coefficient
+  </li>
+<li>
+<tt><b>niter  </b></tt>
+    : number of iterations
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    : potentials m-vector
+  </li>
+<li>
+<tt><b>q  </b></tt>
+    : flows n-vector
+  </li>
+<li>
+<tt><b>err  </b></tt>
+    : convergence  error 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Compute the water flows in a distribution network
+    by solving the following optimization problem:
+  </p>
+<p>
+    Min_q  1/3 q'diag(|q|/r) q
+  </p>
+<p>
+    Hq=d
+  </p>
+<p>
+    Where the nonlinear operations appearing in the criterium
+    must be understood componentwise.
+  </p>
+<p>
+    The method used is the Hamam method which is a
+    newton method in the space 
+    in the space (q,v) , where  v denotes the dual
+    variable associated to the constraints Hq=d .
+  </p>
+<p>
+    a must be taken small. It regularizes
+    the  matrices giving the potentials.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+m=500; n=1000;
+// generates a random admittance matrix
+r=max(rand(n,1),0.1);
+// generates a random incidence matrix
+H=spzeros(m,n);
+for j=1:n
+  ij=ceil(m*rand(2,1));
+  H(ij(1),j)=1;
+  H(ij(2),j)=-1;
+end
+// generates a random demand of nul average
+d=rand(m,1);
+moy=d'*ones(m,1)/m;
+d=d-moy;
+// compute the flows and potentials and gives the
+// computation time
+timer();[v,q,iter1]=fluide(H,d,r,0.01,0.001);timer()  
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/costo.htm"><tt><b>costo</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/Wardrop.htm"><tt><b>Wardrop</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

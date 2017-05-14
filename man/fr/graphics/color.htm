@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>color</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>color</b> -  returns the color id of a color</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>id=color(name)  </tt></dd>
+<dd><tt>id=color(r,g,b)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>: name of a color.</li>
+<li>
+<tt><b>r,g,b</b></tt>: RGB integer values of a color.</li>
+<li>
+<tt><b>id</b></tt>: id of the color.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>color</b></tt> returns the color id corresponding to its argument:</p>
+<dd>
+<li>
+<b><font color="maroon"></font></b><tt><b>name</b></tt> must be the name of a known color (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>). </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>r</b></tt>, <tt><b>g</b></tt> and <tt><b>b</b></tt> must be integers between 0 and 255
+        corresponding to colors components red, green and blue. As usual 0 means no intensity and 
+        255 means all the intensity of the color. </li>
+</dd>
+<p> If the requested color does not exist in the current colormap it is added to the
+    colormap.</p>
+<p> This function can be used to specify the foreground or background colors when plotting. 
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=linspace(-2*%pi,2*%pi,100)';
+// using existing colors
+plot2d(x,[sin(x),cos(x)],style=[color("red"),color("green")]);
+// new colors: there are added to the colormap
+e=gce(); p1=e.children(1); p2=e.children(2);
+p1.foreground=color("purple"); p2.foreground=color("navy blue");
+// using RGV values
+p1.foreground=color(255,128,128);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ss2des</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ss2des</b> -  (polynomial) state-space to descriptor form</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>S=ss2des(Sl)  </tt></dd>
+<dd><tt>S=ss2des(Sl,flag)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: <tt><b>syslin</b></tt> list: proper or improper linear system.</li>
+<li>
+<tt><b>flag</b></tt>: character string <tt><b>"withD"</b></tt>
+</li>
+<li>
+<tt><b>S</b></tt>: list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the linear system in state-space representation 
+    <tt><b>Sl</b></tt> (<tt><b>syslin</b></tt> list), with a <tt><b>D</b></tt> matrix which is either
+    polynomial or constant, but not zero <tt><b>ss2des</b></tt>
+    returns a descriptor system as <tt><b>list('des',A,B,C,0,E)</b></tt>
+    such that:</p>
+<pre>
+
+Sl=C*(s*E-A)^(-1)*B
+   
+    </pre>
+<p>
+    If the flag <tt><b>"withD"</b></tt> is given, <tt><b> S=list('des',A,B,C,D,E) </b></tt>
+    with a <tt><b>D</b></tt> matrix of maximal rank.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+G=[1/(s+1),s;1+s^2,3*s^3];Sl=tf2ss(G);
+S=ss2des(Sl)
+S1=ss2des(Sl,"withD")
+Des=des2ss(S);Des(5)=clean(Des(5))
+Des1=des2ss(S1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/pol2des.htm"><tt><b>pol2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/tf2des.htm"><tt><b>tf2des</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/des2ss.htm"><tt><b>des2ss</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nf3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nf3d</b> -  conversion de facettes pour plot3d  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xx,yy,zz]=nf3d(x,y,z)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,y,x,xx,yy,zz  </b></tt>
+    : 6 matrices réelles
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Fonction utilitaire utilisée pour convertir des facettes codées dans trois matrices x,y,z (format plot3d2) dans un format accepté par plot3d.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// une sphère...
+u = linspace(-%pi/2,%pi/2,40);
+v = linspace(0,2*%pi,20);
+x= cos(u)'*cos(v);
+y= cos(u)'*sin(v);
+z= sin(u)'*ones(v);
+// plot3d2(x,y,z) est équivalent à ...
+[xx,yy,zz]=nf3d(x,y,z); plot3d(xx,yy,zz)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d2.htm"><tt><b>plot3d2</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

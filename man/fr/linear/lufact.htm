@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lufact</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lufact</b> -  factorisation LU d'une matrice creuse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[hand,rk]=lufact(A,prec)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice réelle carrée creuse
+</li>
+<li>
+<tt><b>hand  </b></tt>
+    : pointeur vers des facteurs L,U creux
+</li>
+<li>
+<tt><b>rk  </b></tt>
+    : entier (rang de A)
+</li>
+<li>
+<tt><b>prec  </b></tt>
+    : vecteur à 2 composantes <tt><b>prec=[eps,reps]</b></tt> (tolérances absolue et relative).
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[hand,rk]=lufact(A)</b></tt> calcule la factorisation LU d'une matrice creuse <tt><b>A</b></tt>.
+    <tt><b>hand</b></tt> (variable non affichable) est utilisé par <tt><b>lusolve</b></tt> (pour la résolution d'un système linéaire Ax=B) et <tt><b>luget</b></tt> (pour récupérer L et U à partir du pointeur <tt><b>hand</b></tt>).
+    <tt><b>hand</b></tt> doit être détruit après utilisation (par luget ou lusolve) : <tt><b>ludel(hand)</b></tt>;
+  </p>
+<p>
+    La matrice A n'est pas obligatoirement de rang plein mais doit être carrée
+    (puisque A est supposée creuse on peut lui ajouter des lignes ou des colonnes nulles pour la rendre carrée).
+  </p>
+<dl>
+<dd>
+<b>eps :</b>
+    La valeur absolue qu'un élément de A doit avoir pour être utilisé comme pivot,  sauf éventuellement en dernier recours. Ce nombre doit être significativement plus petit que le plus petit élément diagonal attendu dans la matrice. La valeur par défaut est <tt><b>%eps</b></tt>.
+</dd>
+<dd>
+<b>reps :</b>
+    Ce nombre donne le seuil relatif pour les pivots. Il doit être compris entre zéro et un. S'il vaut un, la méthode se comporte comme un pivot total, qui est très lent et qui a tendance à remplir la matrice. S'il est proche de zéro,  la méthode de pivotage est de type Markowitz stricte sans utilisation de seuil.  Ce seuil est utilisé pour éliminer les pivots qui causeraient une croissance excessive des termes de la matrice. La croissance des éléments est source d'erreurs d'arrondi, et peut avoir lieu même si la matrice est bien conditionnée. Prendre reps grand réduit cette croissance excessive, et donc les erreurs d'arrondi, mais le prendre trop grand risque d'augmenter le temps d'exécution, ainsi que le remplissage de la matrice. La précision peut donc ainsi être dégradée à cause du nombre élevé d'opérations à effectuer à cause du remplissage. Une valeur correcte semble être 0.001 qui est la valeur par défaut (cette valeur par défaut est aussi utilisée si reps&gt;1 ou reps&lt;0). Cette valeur doit être augmentée et la factorisation doit être recommencée si la croissance s'avère trop importante. Changer le seuil sur les pivots n'améliore pas les performances pour les matrices où la croissance est faible, comme c'est souvent le cas pour les matrices mal conditionnées. La valeur par défaut de reps a été choisie pour un usage de lufact avec des matrices à diagonale à peu près dominante (matrices provenant de problèmes de type éléments finis). Pour ces matrices un pivotage diagonal donne les meilleurs résultats.  Pour les matrices à diagonale non dominante, on obtient de meilleurs résultats en prenant un seuil plus élevé, comme 0.01 ou 0.1.
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=rand(5,5);b=rand(5,1);A=sparse(a);
+[h,rk]=lufact(A);
+x=lusolve(h,b);a*x-b
+ludel(h)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

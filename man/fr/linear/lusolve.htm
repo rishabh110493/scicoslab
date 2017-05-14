@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lusolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lusolve</b> -  solveur de système linéaire creux  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>lusolve(hand,b)  </tt></dd>
+<dd><tt>lusolve(A,b)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>b  </b></tt>
+	    : matrice réelle pleine
+	  </li>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice réelle carrée creuse inversible
+	  </li>
+<li>
+<tt><b>hand  </b></tt>
+	    : pointeur vers des facteurs L,U creux déjà calculés (sortie de lufact)
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>x=lusolve(hand,b)</b></tt> résout le système linéaire
+      <tt><b>A*x = b</b></tt>, où <tt><b>hand</b></tt> est obtenu par un appel
+      préliminaire à <tt><b>lufact</b></tt> :<tt><b>[hand,rk]=lufact(A)</b></tt>.
+    </p>
+<p><tt><b>x=lusolve(A,b)</b></tt> résout le système linéaire creux
+    <tt><b>A*x = b</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    non_zeros=[1,2,3,4];rows_cols=[1,1;2,2;3,3;4,4];
+    sp=sparse(rows_cols,non_zeros);
+    [h,rk]=lufact(sp);x=lusolve(h,[1;1;1;1]);ludel(h)
+    rk,sp*x
+
+
+    non_zeros=[1,2,3,4];rows_cols=[1,1;2,2;3,3;4,4];
+    sp=sparse(rows_cols,non_zeros);
+    x=lusolve(sp,-ones(4,1));
+    sp*x
+
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/slash.htm"><tt><b>slash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/backslash.htm"><tt><b>backslash</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_find</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_find</b> - Fonction d'émulation de la fonction Matlab find</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>find</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec un paramètre d'entrée qui est un vecteur colonne ou une matrice :  La fonction Matlab <tt><b>find</b></tt>
+	retourne un(des) vecteur(s) colonne alors que Scilab retourne un(des) vecteur(s) ligne.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec trois paramètres de sortie : La fonction Matlab <tt><b>find</b></tt> peut retourner trois valeurs
+	mais pas la fonction Scilab.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>[i[,j[,v]]] = mtlb_find(B)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>[i[,j[,v]]] = find(B)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_find</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Pour un appel avec un seul paramètre de sortie, si <tt><b>B</b></tt> est un vecteur ligne,
+        <tt><b>i = mtlb_find(B)</b></tt> peut être remplacé par <tt><b>i = find(B)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour un appel avec un seul paramètre de sortie, si <tt><b>B</b></tt> n'est pas un vecteur ligne,
+        <tt><b>i = mtlb_find(B)</b></tt> peut être remplacé par <tt><b>i = matrix(find(B),-1,1)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour un appel avec deux paramètres de sortie, si <tt><b>B</b></tt> est un vecteur ligne,
+        <tt><b>[i,j] = mtlb_find(B)</b></tt> peut être remplacé par <tt><b>[i,j] = find(B)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour un appel avec un seul paramètre de sortie, si <tt><b>B</b></tt> n'est pas un vecteur ligne,
+        <tt><b>[i,j] = mtlb_find(B)</b></tt> peut être remplacé par 
+	<tt><b>[i,j] = find(B);i = matrix(i,-1,1);j = matrix(j,-1,1);</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_find</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

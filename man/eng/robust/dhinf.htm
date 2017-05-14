@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dhinf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dhinf</b> - <tt><b>H_infinity</b></tt> design of discrete-time systems</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[AK,BK,CK,DK,(RCOND)] = dishin(A,B,C,D,ncon,nmeas,gamma)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: the n-by-n system state matrix A.</li>
+<li>
+<tt><b>B</b></tt>: the n-by-m system input matrix B.</li>
+<li>
+<tt><b>C</b></tt>: the p-by-n system output matrix C.</li>
+<li>
+<tt><b>D</b></tt>: the p-by-m system matrix D.</li>
+<li>
+<tt><b>ncon</b></tt>: the number of control inputs. m &gt;= ncon &gt;= 0, p-nmeas &gt;= ncon.</li>
+<li>
+<tt><b>nmeas</b></tt>: the number of measurements. p &gt;= nmeas &gt;= 0, m-ncon &gt;= nmeas.</li>
+<li>
+<tt><b>gamma</b></tt>: the parameter gamma used in <tt><b>H_infinity</b></tt> design. It is assumed that gamma is sufficiently large so that the controller is admissible. gamma &gt;= 0.</li>
+<li>
+<tt><b>AK</b></tt>: the n-by-n controller state matrix AK.</li>
+<li>
+<tt><b>BK</b></tt>: the n-by-nmeas controller input matrix BK.</li>
+<li>
+<tt><b>CK</b></tt>: the ncon-by-n controller output matrix CK.</li>
+<li>
+<tt><b>DK</b></tt>: the ncon-by-nmeas controller matrix DK.</li>
+<li>
+<tt><b>RCOND</b></tt>: a vector containing estimates of the reciprocal condition numbers of the matrices which are to be inverted and estimates of the reciprocal condition numbers of the Riccati equations which have to be solved during the computation of the controller. (See the description of the algorithm in [1].)<ul>
+<li>
+<tt><b>RCOND</b></tt>(1) contains the reciprocal condition number of the  matrix R3,</li>
+<li>
+<tt><b>RCOND</b></tt>(2) contains the reciprocal condition number of the  matrix R1 - R2'*inv(R3)*R2</li>
+<li>
+<tt><b>RCOND</b></tt>(3) contains the reciprocal condition number of the matrix V21,</li>
+<li>
+<tt><b>RCOND</b></tt>(4) contains the reciprocal condition number of the   matrix St3,</li>
+<li>
+<tt><b>RCOND</b></tt>(5) contains the reciprocal condition number of the  matrix V12,</li>
+<li>
+<tt><b>RCOND</b></tt>(6) contains the reciprocal condition number of the matrix Im2 + DKHAT*D22,</li>
+<li>
+<tt><b>RCOND</b></tt>(7) contains the reciprocal condition number of the  X-Riccati equation,</li>
+<li>
+<tt><b>RCOND</b></tt>(8) contains the reciprocal condition number of the  Z-Riccati equation.</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[AK,BK,CK,DK,(RCOND)] = dhinf(A,B,C,D,ncon,nmeas, gamma)</b></tt> 
+     To compute the matrices of an H-infinity (sub)optimal n-state
+  controller</p>
+<pre>
+
+         | AK | BK |
+     K = |----|----|,
+         | CK | DK |
+   
+    </pre>
+<p>
+    for the discrete-time system</p>
+<pre>
+
+         | A  | B1  B2  |   | A | B |
+     P = |----|---------| = |---|---|,
+         | C1 | D11 D12 |   | C | D | 
+         | C2 | D21 D22 |
+   
+    </pre>
+<p>
+    and for a given value of gamma, where B2 has column size of the
+    number of control inputs (ncon) and C2 has row size of the number
+    of measurements (nmeas) being provided to the controller.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+       [1] P.Hr. Petkov, D.W. Gu and M.M. Konstantinov. Fortran 77 routines        for Hinf and H2 design of linear discrete-time control systems.        Report99-8, Department of Engineering, Leicester University,        April 1999.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//example from Niconet report SLWN1999-12
+//Hinf
+A=[-0.7  0    0.3  0   -0.5 -0.1
+   -0.6  0.2 -0.4 -0.3  0    0
+   -0.5  0.7 -0.1  0    0   -0.8
+   -0.7  0    0   -0.5 -1    0
+    0    0.3  0.6 -0.9  0.1 -0.4
+    0.5 -0.8  0    0    0.2 -0.9];
+B=[-1 -2 -2  1  0
+    1  0  1 -2  1
+   -3 -4  0  2 -2
+    1 -2  1  0 -1
+    0  1 -2  0  3
+    1  0  3 -1 -2];
+C=[ 1 -1  2 -2  0 -3
+   -3  0  1 -1  1  0
+    0  2  0 -4  0 -2
+    1 -3  0  0  3  1
+    0  1 -2  1  0 -2];
+D=[1 -1 -2  0  0
+   0  1  0  1  0
+   2 -1 -3  0  1
+   0  1  0  1 -1
+   0  0  1  2  1];
+
+ncon=2
+nmeas=2
+gam=111.30;
+[AK,BK,CK,DK] = dhinf(A,B,C,D,ncon,nmeas,gam)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/hinf.htm"><tt><b>hinf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/h_inf.htm"><tt><b>h_inf</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

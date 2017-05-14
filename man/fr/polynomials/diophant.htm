@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>diophant</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>diophant</b> -  équation diophantienne de Bezout  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,err]=diophant(p1p2,b)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p1p2  </b></tt>
+    : vecteur de polynômes <tt><b>p1p2 = [p1 p2]</b></tt>
+</li>
+<li>
+<tt><b>b  </b></tt>
+    : polynôme
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur de polynômes  [x1;x2]
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b> diophant</b></tt> résout l'équation de Bezout :
+  </p>
+<p><tt><b>p1*x1+p2*x2=b</b></tt> où <tt><b>p1p2</b></tt> est un vecteur de polynômes.
+    Si l'équation n'est pas soluble 
+  </p>
+<p>
+    sinon <tt><b>err=0</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');p1=(s+3)^2;p2=(1+s);
+x1=s;x2=(2+s);
+[x,err]=diophant([p1,p2],p1*x1+p2*x2);
+p1*x1+p2*x2-p1*x(1)-p2*x(2)
+ </pre>
+</body>
+</html>

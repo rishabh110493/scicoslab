@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getfield</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getfield</b> -   list field extraction</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,...]=getfield(i,l)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: matrix  of any  possible types</li>
+<li>
+<tt><b>l</b></tt>: list, tlist or mlist variable</li>
+<li>
+<tt><b>i</b></tt>: field index, see extraction for more details.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function is an equivalent of <tt><b>[x,...]=l(i)</b></tt> syntax for field
+    extraction with the only difference that it also applies to
+    <tt><b>mlist</b></tt> objects.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+l=list(1,'qwerw',%s)
+[a,b]=getfield([3 2],l)
+
+a=hypermat([2,2,2],rand(1:2^3));// hypermatrices are coded using mlists
+a(1) // the a(1,1,1) entry
+getfield(1,a) // the mlist first field
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>stacksize</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>stacksize</b> -  change la taille de la pile Scilab  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>stacksize(n)  </tt></dd>
+<dd><tt>sz=stacksize()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n  </b></tt>
+    : entier, la taille de pile désirée, en nombre de mots double-précision words
+</li>
+<li>
+<tt><b>sz  </b></tt>
+    : vecteur à deux composantes [taille_totale taille_utilisée] 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Scilab stocke les variables usuelles dans une pile <tt><b>stk</b></tt> (pour les variables globales voir <tt><b>gstacksize</b></tt>).
+     
+  </p>
+<p><tt><b>stacksize(n)</b></tt> permet d'augmenter ou de diminuer la taille de cette pile. La taille maximum dépend de la mémoire (physique ou virtuelle) restante.
+  </p>
+<p>
+    Avec l'argument <tt><b>n</b></tt> cette fonction peut maintenant
+    être utilisée n'importe où.
+  </p>
+<p><tt><b>sz=stacksize()</b></tt> renvoie un vecteur à deux composantes contenant la taille
+    totale de la pile et la taille actuellement utilisée. Elle peut être utilisée n'importe où.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/gstacksize.htm"><tt><b>gstacksize</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

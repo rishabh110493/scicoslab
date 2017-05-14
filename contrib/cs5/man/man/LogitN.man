@@ -1,0 +1,39 @@
+.TH LogitN 1 " " " " "CiudadSim Function"
+.SH NAME
+LogitN  - Net Logit Assignment 
+.SH CALLING SEQUENCE
+.nf
+LogitN(theta,method)
+.fi
+.SH PARAMETERS
+.TP 10
+theta
+: stochasticity parameter 
+.TP 10
+method
+: macro among LogitB, LogitD, LogitMB, LogitMD
+.TP 10
+%net global variable NetList  
+.SH DESCRIPTION
+Compute the logit traffic assignment using a
+method among LogitB, LogitD, LogitMB, LogitMD
+the travel time is taken in %net.links.time
+and the assigned fow is put in the field
+%net.links.flow of the variable %net which
+is a NetList which must be declared global.
+.SH EXAMPLES
+.nf
+// Graph generation (the graph must be stongly connected)
+%net=TrafficExample("Steenbrink");
+//theta definition (almost determinsitic)
+theta=10;
+// Flow calculation
+LogitN(theta,LogitMB)
+ShowNet()
+.SH SEE ALSO
+LogitD,
+LogitB,
+LogitMB,
+LogitMD,
+LogitNE,
+TrafficAssig

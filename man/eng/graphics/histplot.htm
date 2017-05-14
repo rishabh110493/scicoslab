@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>histplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>histplot</b> - plot a histogram</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>histplot(n, data, &lt;opt_args&gt;)</tt></dd>
+<dd><tt>histplot(x, data, &lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: positive integer (number of classes)</li>
+<li>
+<tt><b>x</b></tt>: increasing vector defining the classes (<tt><b>x</b></tt> may have at least 2 components)</li>
+<li>
+<tt><b>data</b></tt>: vector (datas to be analysed)</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1,key2=value2</b></tt>
+          ,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be any optional <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> parameter (<tt>style,strf,leg,
+          rect,nax, logflag,frameflag, axesflag</tt>) or normalization. For this last one the corresponding
+          value must be a boolean scalar (default value %t). </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> This function plot an histogram of the <tt><b>data</b></tt> vector using the
+        classes <tt><b>x</b></tt>. When the number <tt><b>n</b></tt> of classes is provided
+        instead of <tt><b>x</b></tt>, the classes are choosen equally spaced and
+        <em>x(1) = min(data) &lt;  x(2) = x(1) + dx  &lt;  ...  &lt; x(n+1) = max(data)</em>
+        with <em>dx = (x(n+1)-x(1))/n</em>.
+    </p>
+<p> The classes are defined by C1 = [x(1), x(2)] and  Ci = ( x(i), x(i+1)] for i &gt;= 2.
+        Noting Nmax the total number of <tt><b>data</b></tt> (Nmax = length(data)) and Ni the number 
+        of <tt><b>data</b></tt> components falling in Ci, the value of the histogram for x in Ci 
+        is equal to <em>Ni/(Nmax (x(i+1)-x(i)))</em> when <tt><b>normalization</b></tt> is true
+        (default case) and else, simply equal to <em>Ni</em>. When normalization occurs the
+        histogram verifies: 
+    </p>
+<pre>
+            x(n+1)
+           /  
+           |   h(x) dx = 1,  when x(1)&lt;=min(data) and max(data) &lt;= x(n+1)) 
+           /
+           x(1)
+     
+    </pre>
+<p>Any <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a> (optional) parameter may be provided; for instance to
+       plot an histogram with the color number 2 (blue if std colormap is used) and
+       to restrict the plot inside the rectangle [-3,3]x[0,0.5],
+       you may use <tt>histplot(n,data, style=2, rect=[-3,0,3,0.5])</tt>.
+    </p>
+<p>Enter the command <tt><b>histplot()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// example #1: variations around an histogram of a gaussian random sample 
+d=rand(1,10000,'normal');  // the gaussian random sample
+clf();histplot(20,d)
+clf();histplot(20,d,normalization=%f)
+clf();histplot(20,d,leg='rand(1,10000,''normal'')',style=5)
+clf();histplot(20,d,leg='rand(1,10000,''normal'')',style=16, rect=[-3,0,3,0.5]); 
+
+// example #2: histogram of a binomial (B(6,0.5)) random sample
+d = grand(1000,1,"bin", 6, 0.5);
+c = linspace(-0.5,6.5,8);
+xbasc()
+subplot(2,1,1)
+   histplot(c, d, style=2)
+   xtitle("normalized histogram")
+subplot(2,1,2)
+   histplot(c, d, normalization=%f, style=5)
+   xtitle("non normalized histogram")
+
+// example #3: histogram of an exponential random sample 
+lambda = 2;
+X = grand(100000,1,"exp", 1/lambda);
+Xmax = max(X);
+xbasc()
+histplot(40, X, style=2)
+x = linspace(0,max(Xmax),100)';
+plot2d(x,lambda*exp(-lambda*x),strf="000",style=5)
+legend(["exponential random sample histogram" "exact density curve"]);
+// Note: if you use the old graphic mode use instead 
+// legends(["exponential random sample histogram" "exact density curve"],[2 5],"ur");
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/hist3d.htm"><tt><b>hist3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/dsearch.htm"><tt><b>dsearch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

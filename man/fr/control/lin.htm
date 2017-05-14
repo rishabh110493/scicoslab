@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lin</b> -  linearization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[A,B,C,D]=lin(sim,x0,u0)  </tt></dd>
+<dd><tt>[sl]=lin(sim,x0,u0)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sim</b></tt>: function</li>
+<li>
+<tt><b>x0, u0</b></tt>: vectors of compatible dimensions</li>
+<li>
+<tt><b>A,B,C,D</b></tt>: real matrices</li>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    linearization of the non-linear system <tt><b>[y,xdot]=sim(x,u)</b></tt>
+    around <tt><b>x0,u0</b></tt>.</p>
+<p><tt><b>sim</b></tt> is a function which computes <tt><b>y</b></tt> and <tt><b>xdot</b></tt>.</p>
+<p>
+    The output is a linear system (<tt><b>syslin</b></tt> list) <tt><b>sl</b></tt> or the 
+    four matrices <tt><b>(A,B,C,D)</b></tt></p>
+<p>
+    For example, if <tt><b>ftz</b></tt> is the function passed to ode e.g.</p>
+<pre>
+
+[zd]=ftz(t,z,u)
+   
+    </pre>
+<p>
+    and if we assume that <tt><b>y=x</b></tt></p>
+<p><tt><b>[z]=ode(x0,t0,tf,list(ftz,u)</b></tt> compute <tt><b>x(tf)</b></tt>.</p>
+<p>
+    If <tt><b>simula</b></tt> is the following function:</p>
+<pre>
+
+deff('[y,xd]=simula(x,u)','xd=ftz(tf,x,u); y=x;');
+   
+    </pre>
+<p>
+    the tangent linear system <tt><b>sl</b></tt> can be obtained by:</p>
+<pre>
+
+[A,B,C,D]=lin(simula,z,u)
+sl = syslin('c',A,B,C,D,x0)
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('[y,xdot]=sim(x,u)','xdot=[u*sin(x);-u*x^2];y=xdot(1)+xdot(2)')
+sl=lin(sim,1,2);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/derivat.htm"><tt><b>derivat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

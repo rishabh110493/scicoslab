@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>circuit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>circuit</b> -  finds a circuit or the rank function in a directed graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p,r] = circuit(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>p</b></tt>: row vector of integer numbers of the arcs of the circuit if it exists</li>
+<li>
+<tt><b>r</b></tt>: row vector of rank function if there is no circuit</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>circuit</b></tt> tries to find a circuit for the directed graph <tt><b>g</b></tt>.
+    It returns the circuit <tt><b>p</b></tt> as a row vector of the
+    corresponding arc numbers if it exists and it returns the empty vector <tt><b>[]</b></tt>
+    otherwise.
+    If the graph has no circuit, the rank function is returned in <tt><b>r</b></tt>, 
+    otherwise its value is the empty vector <tt><b>[]</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// graph with circuit
+ta=[1 1 2 3 5 4 6 7 7 3 3 8 8 5];
+he=[2 3 5 4 6 6 7 4 3 2 8 1 7 4];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[116 231 192 323 354 454 305 155];
+g('node_y')=[ 118 116 212 219 117 185 334 316];
+show_graph(g);
+p=circuit(g)
+show_arcs(p)
+// graph without circuit
+g=make_graph('foo',1,4,[1 2 2 3],[2 3 4 4]);
+[p,r]=circuit(g)
+ 
+  </pre>
+</body>
+</html>

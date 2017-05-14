@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>addcolor</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>addcolor</b> -  ajoute de nouvelles couleurs à la table des couleurs courante  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>new=addcolor(c)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>new  </b></tt>
+    : indices des nouvelles couleurs dans la nouvelle table des couleurs
+</li>
+<li>
+<tt><b>c  </b></tt>
+    : matrice à trois colonnes. Définition des composantes RVB des nouvelles couleurs 
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>addcolor</b></tt> ajoute de nouvelles couleurs données dans l'argument <tt><b>c</b></tt>. 
+    <tt><b>c</b></tt> est une matrice à trois colonnes.
+    <tt><b>[R V B]</b></tt><tt><b>R</b></tt> est la composante rouge, <tt><b>V</b></tt> est la composante verte,
+    <tt><b>B</b></tt> est la composante bleue. Chaque terme de <tt><b>c</b></tt> est un nombre positif inférieur
+    ou égal à un.
+  </p>
+<p>
+    Les indices des nouvelles couleurs sont renvoyés dans <tt><b>new</b></tt>.
+  </p>
+<p>
+    Si une couleur dans <tt><b>c</b></tt> est déjà présente dans la table des couleurs courante, elle n'est pas ajoutée. 
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

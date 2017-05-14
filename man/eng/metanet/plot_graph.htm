@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plot_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot_graph</b> -  general plot of a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>plot_graph(g,[rep,rep1])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>rep</b></tt>: row vector of 13 values for the parameters of the plot</li>
+<li>
+<tt><b>rep1</b></tt>: row vector of 4 values defining the plotting rectangle</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot_graph</b></tt> plots graph <tt><b>g</b></tt> in a Scilab graphical window.
+    The optional arguments <tt><b>rep</b></tt> and <tt><b>rep1</b></tt> define the parameters
+    of the plot. If there are not given, a dialog box for the definition
+    of these parameters is opened.</p>
+<p><tt><b>rep</b></tt> must be a row vector with 13 integer numbers which must be 1 or 2.
+    The meaning of the values of <tt><b>rep</b></tt> are:</p>
+<p>
+    Frame definition: 1 = Automatic
+                      2 = Given (see below)</p>
+<p>
+    Plotting arrows: 1 = yes, 2 = no</p>
+<p>
+    Plotting sink and source nodes: 1 = yes, 2 = no</p>
+<p>
+    Plotting node names: 1 = yes, 2 = no</p>
+<p>
+    Plotting node labels: 1 = yes, 2 = no</p>
+<p>
+    Plotting arc names : 1 = yes, 2 = no</p>
+<p>
+    Plotting arc labels: 1 = yes, 2 = no</p>
+<p>
+    Plotting node demand: 1 = yes, 2 = no</p>
+<p>
+    Plotting edge length: 1 = yes, 2 = no</p>
+<p>
+    Plotting edge cost: 1 = yes, 2 = no</p>
+<p>
+    Plotting edge min cap: 1 = yes, 2 = no</p>
+<p>
+    Plotting edge max cap: 1 = yes, 2 = no</p>
+<p>
+    Plotting edge weight: 1 = yes, 2 = no</p>
+<p>
+    If <tt><b>rep(1)</b></tt> is 2, the frame definition must be given by
+    <tt><b>rep1</b></tt>. Otherwise, <tt><b>rep1</b></tt>can be omitted.
+    <tt><b>rep1</b></tt> must be a row vector <tt><b>[orx,ory,w,h]</b></tt> giving respectively the coordinates of the upper-left point, the width and the height of the
+    plotting rectangle.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// simple graph with different choices for the plot
+ta=[2 2 1 1 2 4 3 3 4];
+he=[2 2 3 2 3 2 1 2 1];
+g=make_graph('foo',1,4,ta,he);
+g('node_type')=[1 1 1 2];g('node_name')=string([1:4]);
+g('node_x')=[73 737 381 391]; g('node_y')=[283 337 458 142];
+g('node_color')=[3 3 3 11];
+g('node_diam')=[30 30 30 60];
+g('edge_color')=[10 0 2 6 11 11 0 0 11];
+rep=[2 2 1 1 2 2 2 2 2 2 2 2 2];
+rep1=[100 -400 650 300];
+xbasc(); plot_graph(g,rep,rep1);
+rep=[2 1 1 1 2 2 2 2 2 2 2 2 2];
+x_message('plot the graph with different parameters');
+xbasc(); plot_graph(g,rep,rep1);
+// plotting using dialogs
+xbasc(); plot_graph(g);
+xset("thickness",4);
+xbasc();
+plot_graph(g);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/show_graph.htm"><tt><b>show_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

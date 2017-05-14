@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xget</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xget</b> - get current values of the graphics
+  context</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x1]=xget(str,[flag])</tt></dd>
+<dd><tt>xget()</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: string.</li>
+<li>
+<tt><b>flag</b></tt>: optional. Set to 1 gives a verbose mode.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Warning : </b></tt>Scilab 4.x versions family will be the last
+    versions working with the old graphics mode. </p>
+<p>This function is used to get values from the graphics context on the
+    topic specified by the string <tt><b>str</b></tt>. When called with no
+    argument, a choice menu is created showing the current values and changes
+    can be performed through toggle buttons.</p>
+<dl>
+<dd>
+<b>number=xget("alufunction")</b>: Get the logical function number used for drawing. See
+        <tt><b>xset</b></tt>.</dd>
+<dd>
+<b>str=xget("auto clear")</b>: Get the auto clear status (<tt><b>"on"</b></tt> or
+        <tt><b>"off"</b></tt>).</dd>
+<dd>
+<b>color=xget("background")</b>: Get the background color of the current graphics window.</dd>
+<dd>
+<b>rect=xget("clipping")</b>: Get the clipping zone as a rectangle rect=[x,y,w,h] (Upper-Left
+        point Width Height).</dd>
+<dd>
+<b>c=xget("color")</b>: Get the default color for filling, line or text drawing
+        functions. <tt><b>c</b></tt> is an integer projected in the interval
+        [0,whiteid]. 0 stands for black filling and whiteid for white. The
+        value of whiteid can be obtained with <tt><b>xget("white")</b></tt>.</dd>
+<dd>
+<b>cmap=xget("colormap")</b>: Get the colormap used for the current graphics window as a m x 3
+        RGB matrix.</dd>
+<dd>
+<b>dash=xget("dashes")</b>: Get the dash style dash=[dash_number] where dash_number is the
+        id of the dash. This keyword is obsolete, please use
+        <tt><b>xget("color")</b></tt> or <tt><b>xget("line style")</b></tt>
+        instead.</dd>
+<dd>
+<b>font=xget("font")</b>: Get font=[fontid,fontsize], the default font and the default
+        size for fonts. size.</dd>
+<dd>
+<b>fontsize=xget("font size")</b>: Get the default size for fonts size.</dd>
+<dd>
+<b>color=xget("foreground")</b>: Get the foreground color of the current graphics window.</dd>
+<dd>
+<b>str=xget("fpf")</b>: Get the floating point format for number display in contour
+        functions. Note that <tt><b>str</b></tt> is <tt><b>""</b></tt> when default
+        format is used.</dd>
+<dd>
+<b>color=xget("hidden3d")</b>: Get the color number for hidden faces in plot3d.</dd>
+<dd>
+<b>pat=xget("lastpattern")</b>: Get the id of the last available pattern or color, with the
+        current colormap of the current window. In fact <tt><b>pat+1</b></tt> and
+        <tt><b>pat+2</b></tt> are also available and stand respectively for black
+        and white pattern.</dd>
+<dd>
+<b>type=xget("line mode")</b>: Get the line drawing mode. type=1 is absolute mode and type=0 is
+        relative mode. (Warning: the mode type=0 is has bugs)</dd>
+<dd>
+<b>xget("line style")</b>: Get the default line style (1: solid, &gt;1 for dashed
+        lines).</dd>
+<dd>
+<b>mark=xget("mark")</b>: Get the default mark id and the default marks size.
+        <tt><b>mark=[markid,marksize]</b></tt>.</dd>
+<dd>
+<b>marksize=xget("mark size")</b>: Get the default marks size.</dd>
+<dd>
+<b>pat=xget("pattern")</b>: Get the current pattern or the current color. <tt><b>pat</b></tt>
+        is an integer in the range <tt><b>[1,last]</b></tt>. When one uses black
+        and white, 0 is used for black filling and <tt><b>last</b></tt> for
+        white. The value of <tt><b>last</b></tt> can be obtained with
+        <tt><b>xget("lastpattern")</b></tt>.</dd>
+<dd>
+<b>value=xget("thickness")</b>: Get the thickness of lines in pixel (0 and 1 have the same
+        meaning: 1 pixel thick).</dd>
+<dd>
+<b>flag=xget("use color")</b>: Get the flag 0 (use black and white) or 1 (use colors). See
+        <tt><b>xset</b></tt>.</dd>
+<dd>
+<b>[x,y]=xget("viewport")</b>: Get the current postion of the visible part of graphics in the
+        panner.</dd>
+<dd>
+<b>dim=xget("wdim")</b>: Get the width and the height of the current graphics window
+        dim=[width,height].</dd>
+<dd>
+<b>win=xget("window")</b>: Get the current window number <tt><b>win</b></tt>.</dd>
+<dd>
+<b>pos=xget("wpos");</b>: Get the position of the upper left point of the graphics window
+        pos=[x,y].</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xset.htm"><tt><b>xset</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>if then else</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>if then else</b> -  exécution conditionnelle  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>if expr1 then instructions  </tt></dd>
+<dd><tt>elseif expri then instructions  </tt></dd>
+<dd><tt>  ....  </tt></dd>
+<dd><tt>else  instructions  </tt></dd>
+<dd><tt>end  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Le mot-clé <tt><b>if</b></tt> évalue une expression logique et exécute un groupe
+    d'instructions si l'expression est vraie.
+  </p>
+<p>
+    Les <tt><b>expri</b></tt> sont des expressions à valeurs numériques ou booléennes. Si <tt><b>expri</b></tt> est à valeur matricielle la condition est vraie si tous les termes de la matrice sont vrais ou différents de zéro.
+  </p>
+<p>
+    Les mot-clés optionnels <tt><b>elseif</b></tt> et <tt><b>else</b></tt> permettent d'exécuter en alternative des groupes d'instructions. Le mot clé <tt><b>end</b></tt>,
+    correspondant au <tt><b>if</b></tt>, termine le groupe courant d'instructions. La structure des lignes ci-dessus n'est pas significative et la seule contrainte
+    est que chaque mot-clé <tt><b>then</b></tt> doit être sur la même ligne que le <tt><b>if</b></tt> ou <tt><b>elseif</b></tt> correspondant .
+  </p>
+<p></p>
+<p>
+    Le mot-clé <tt><b>then</b></tt> peut être remplacé par un passage à la ligne ou une virgule.
+  </p>
+<p>
+    Attention : le nombre de caractères constituant le corps d'une instruction conditionnelle (if while for ou select/case) est limité à 16k.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   i=2
+   for j = 1:3, 
+      if i == j then
+        a(i,j) = 2; 
+      elseif abs(i-j) == 1 then 
+        a(i,j) = -1; 
+      else a(i,j) = 0;
+      end,
+   end
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/try.htm"><tt><b>try</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/while.htm"><tt><b>while</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/select.htm"><tt><b>select</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/end.htm"><tt><b>end</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/if.htm"><tt><b>then</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/else.htm"><tt><b>else</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

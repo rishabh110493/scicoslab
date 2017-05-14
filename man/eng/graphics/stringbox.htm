@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>stringbox</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>stringbox</b> - Compute the bounding rectangle of a text
+  or a label.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rect = stringbox( string, x, y, [angle, [fontStyle,
+    [fontSize]]] )</tt></dd>
+<dd><tt>rect = stringbox( Handle )</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: a 2x4 matrix containing the 4 vertex coordinates of the
+          bounding rectangle.</li>
+<li>
+<tt><b>string</b></tt>: string matrix to be enclosed.</li>
+<li>
+<tt><b>x,y</b></tt>: real scalars, coordinates of the lower left point of
+          strings.</li>
+<li>
+<tt><b>angle</b></tt>: Rotation angle of the string clockwise and in degrees around
+          the <tt><b>(x,y)</b></tt> point.</li>
+<li>
+<tt><b>fonStyle</b></tt>: integer specifying the type of the font.</li>
+<li>
+<tt><b>fontSize</b></tt>: integer specifying the size of the font.</li>
+<li>
+<tt><b>Handle</b></tt>: a graphic handle of Text or Label type.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>stringbox</b></tt> returns the bounding rectangle vertices of a
+    text or label object or a string which will be displayed with a certain
+    way. the coordinates are given with the current graphic scale. the first
+    vertex correspond to the text coordinates <tt><b>(x,y)</b></tt>, the lower
+    left point without rotation, the following vertex are given clockwise in
+    the resulting matrix.</p>
+<p>The result migth not be very accurate with PostScript driver.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// show axes
+axes = gca() ;
+axes.axes_visible = 'on' ;
+axes.data_bounds = [ 1, 1 ; 10, 10 ] ;
+
+// display a labels for axes
+xtitle( 'stringbox', 'X', 'Y' )  ;
+
+// get the bounding box of X label
+stringbox( axes.x_label )
+
+// draw a string
+str = [ "Scilab", "is" , "not", "Skylab" ] ;
+xstring( 4, 9, str ) ;
+
+//modify the text
+e = gce() ;
+e.font_angle = 90 ;
+e.font_size    = 6  ;
+e.font_style   = 7 ;
+e.box = 'on' ;
+
+// get its bounding box
+stringbox( e )
+// or
+rect = stringbox( str, 4, 9, 90, 6, 5 )
+
+// click and find if the text was hit
+hit = xclick()  ;
+hit = hit( 2 : 3 ) ;
+
+if hit(1) &gt;= rect(1,1)  &amp; hit(1) &lt;=  rect(1,2) &amp; hit(2) &lt;= rect(2,2) &amp; hit(2) &gt;= rect(2,3) then
+  disp('You hit the text.') ;
+else
+  disp('You missed it.')
+end;
+
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstringl.htm"><tt><b>xstringl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstringb.htm"><tt><b>xstringb</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Jean-Baptiste Silvy</p>
+</body>
+</html>

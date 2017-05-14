@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nyquist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nyquist</b> - nyquist plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>nyquist( sl,[fmin,fmax] [,step] [,comments]
+    )</tt></dd>
+<dd><tt>nyquist( sl, frq [,comments]
+    )</tt></dd>
+<dd><tt>nyquist(frq,db,phi
+    [,comments])</tt></dd>
+<dd><tt>nyquist(frq, repf
+    [,comments])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list (SIMO linear system in continuous or
+          discrete time )</li>
+<li>
+<tt><b>fmin,fmax</b></tt>: real scalars (frequency bounds (in Hz))</li>
+<li>
+<tt><b>step</b></tt>: real (logarithmic discretization step)</li>
+<li>
+<tt><b>comments</b></tt>: string vector (captions).</li>
+<li>
+<tt><b>frq</b></tt>: vector or matrix of frequencies (in Hz) (one row for each
+          output of <tt><b>sl</b></tt>).</li>
+<li>
+<tt><b>db,phi</b></tt>: real matrices of modulus (in Db) and phases (in degree) (one
+          row for each output of <tt><b>sl</b></tt>).</li>
+<li>
+<tt><b>repf</b></tt>: matrix of complex numbers. Frequency response (one row for
+          aech output of <tt><b>sl</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Nyquist plot i.e Imaginary part versus Real part of the frequency
+    response of <tt><b>sl</b></tt>.</p>
+<p>For continous time systems <tt><b>sl(2*%i*%pi*w)</b></tt> is plotted. For
+    discrete time system or discretized systems
+    <tt><b>sl(exp(2*%i*%pi*w*fd)</b></tt> is used ( <tt><b>fd=1</b></tt> for
+    discrete time systems and <tt><b>fd=sl('dt')</b></tt> for discretized systems
+    )</p>
+<p><tt><b>sl</b></tt> can be a continuous-time or discrete-time SIMO system
+    (see <tt><b>syslin</b></tt>). In case of multi-output the outputs are plotted
+    with different symbols.</p>
+<p>The frequencies are given by the bounds <tt><b>fmin,fmax</b></tt> (in Hz)
+    or by a row-vector (or a matrix for multi-output) <tt><b>frq</b></tt>.</p>
+<p><tt><b>step</b></tt> is the ( logarithmic ) discretization step. (see
+    <tt><b>calfrq</b></tt> for the choice of default value).</p>
+<p><tt><b>comments</b></tt> is a vector of character strings (captions).</p>
+<p><tt><b>db,phi</b></tt> are the matrices of modulus (in Db) and phases (in
+    degrees). (One row for each response).</p>
+<p><tt><b>repf</b></tt> is a matrix of complex numbers. One row for each
+    response.</p>
+<p>Default values for <tt><b>fmin</b></tt> and <tt><b>fmax</b></tt> are
+    <tt><b>1.d-3</b></tt>, <tt><b>1.d+3</b></tt> if <tt><b>sl</b></tt> is
+    continuous-time or <tt><b>1.d-3</b></tt>, <tt><b>0.5</b></tt> if <tt><b>sl</b></tt>
+    is discrete-time.</p>
+<p>Automatic discretization of frequencies is made by
+    <tt><b>calfrq</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+clf();
+s=poly(0,'s');
+h=syslin('c',(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01));
+comm='(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01)';
+nyquist(h,0.01,100,comm);
+h1=h*syslin('c',(s^2+2*0.1*15.1*s+228.01)/(s^2+2*0.9*15*s+225))
+clf();
+nyquist([h1;h],0.01,100,['h1';'h'])
+clf();nyquist([h1;h])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/bode.htm"><tt><b>bode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/black.htm"><tt><b>black</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/calfrq.htm"><tt><b>calfrq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/phasemag.htm"><tt><b>phasemag</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

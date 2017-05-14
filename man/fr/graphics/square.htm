@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>square</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>square</b> -  échelle isométrique 2D (change la taille de la fenêtre)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>square(xmin,ymin,xmax,ymax)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>xmin,xmax,ymin,ymax  </b></tt>
+    : 4 valeurs réelles
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>square</b></tt> est utilisée pour avoir une échelle identique sur les axes x et y. 
+    Les valeurs 
+    <tt><b>xmin, xmax, ymin, ymax</b></tt> sont les bornes du dessin
+    et <tt><b>square</b></tt> change les dimensions de la fenêtre graphique pour que les échelles soient identiques.
+    <tt><b>square</b></tt> change l'échelle graphique courante et
+    peut être utilisée en conjonction avec les routines graphiques nécessitant que l'échelle soit définie au préalable (mode <tt><b>fstrf="x0z"</b></tt> dans <tt><b>plot2d</b></tt>).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=[0:0.1:2*%pi]';
+plot2d(sin(t),cos(t))
+xbasc()
+square(-1,-1,1,1)
+plot2d(sin(t),cos(t))
+xset("default")
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/isoview.htm"><tt><b>isoview</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.  </p>
+</body>
+</html>

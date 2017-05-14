@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>diag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>diag</b> -  extraction de diagonale ou construction d'une matrice à partir d'une diagonale.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=diag(vm, [k])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>vm  </b></tt>
+    : vecteur ou matrice (stockage plein ou creux)
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : entier (valeur par défaut 0)
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur ou matrice
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Pour <tt><b>vm</b></tt> un n-vecteur (ligne ou colonne) <tt><b>diag(vm)</b></tt> renvoie une matrice diagonale
+    avec les composantes de <tt><b>vm</b></tt> sur la diagonale principale.
+  </p>
+<p><tt><b>diag(vm,k)</b></tt> est une matrice <tt><b>(n+abs(k))x(n+abs(k))</b></tt> avec les composantes de
+    <tt><b>vm</b></tt>  sur la kième diagonale.  <tt><b>k=0</b></tt>  correspond à la diagonale principale
+    <tt><b>k&gt;0</b></tt>  correspond aux diagonales supérieures et <tt><b>k&lt;0</b></tt> aux diagonales inférieures.
+  </p>
+<p></p>
+<p>
+    Pour une matrice <tt><b>vm</b></tt>, <tt><b>diag(vm,k)</b></tt> est le vecteur colonne dont les composantes sont les termes de la kième 
+    diagonale de <tt><b>vm</b></tt>.  <tt><b>diag(vm)</b></tt> est la diagonale principale de <tt><b>vm</b></tt>.
+    <tt><b>diag(diag(x))</b></tt>  est une matrice diagonale.
+  </p>
+<p>
+    Si <tt><b>vm</b></tt> est une matrice creuse <tt><b>diag(vm,k)</b></tt> renvoie une matrice creuse. 
+  </p>
+<p>
+    Pour construire un système linéaire diagonal, utilisez <tt><b>sysdiag</b></tt>.
+  </p>
+<p>
+    Notez que <tt><b>eye(A).*A</b></tt> renvoie une matrice diagonale avec les termes diagonaux de
+    <tt><b>A</b></tt>. Ceci est valide pour tout type de matrice (constante,
+    polynomiale, rationnelle, système dynamique linéaire, ...).
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+diag([1,2])
+
+A=[1,2;3,4];
+diag(A)  // diagonale principale
+diag(A,1) 
+
+diag(sparse(1:10))  // matrice diagonale creuse
+
+// Construction d'une matrice tridiagonale de taille 2*m+1
+m=5;diag(-m:m) +  diag(ones(2*m,1),1) +diag(ones(2*m,1),-1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sysdiag.htm"><tt><b>sysdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

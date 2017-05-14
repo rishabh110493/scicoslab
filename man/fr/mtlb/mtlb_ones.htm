@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_ones</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_ones</b> - Fonction d'émulation de la fonction Matlab ones</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>ones</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Avec une entrée qui est un scalaire : La fonction Matlab <tt><b>ones</b></tt> retourne une
+	matrice n x n alors que Scilab retourne 1.
+        </li></dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_ones(A)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>ones(A)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_ones</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> est un scalaire
+        <tt><b>mtlb_ones(A)</b></tt> peut être remplacé par <tt><b>ones(A,A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> n'est pas un scalaire
+        <tt><b>mtlb_ones(A)</b></tt> peut être remplacé par <tt><b>ones(A)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_ones</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

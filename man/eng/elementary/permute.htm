@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>permute</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>permute</b> - permute the dimensions of an
+  array</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=permute(x,dims)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dims</b></tt>: a scalar or a vector of positive reals.</li>
+<li>
+<tt><b>x</b></tt>: a scalar, a vector, a matrix or a mutlti-array.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=permute(x,dims) : </b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+//example 1:
+x=[1 2 3;4 5 6];
+y=permute(x,[2 1]);
+
+//example 2:
+x=matrix(1:12,[2,3,2]);
+y=permute(x,[3 1 2]);
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/pertrans.htm"><tt><b>pertrans</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/quote.htm"><tt><b>quote</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cat.htm"><tt><b>cat</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Farid Belahcene</p>
+</body>
+</html>

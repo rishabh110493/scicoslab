@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>markp2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>markp2ss</b> -  Markov parameters to state-space</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sl]=markp2ss(markpar,n,nout,nin)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>markpar</b></tt>: matrix</li>
+<li>
+<tt><b>n,nout,nin</b></tt>: integers</li>
+<li>
+<tt><b>Sl</b></tt>: <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    given a set of <tt><b>n</b></tt> Markov parameters stacked in the (row)-matrix 
+    <tt><b>markpar</b></tt> of size <tt><b>nout</b></tt>X<tt><b>(n*nin) markp2ss</b></tt>
+    returns a state-space linear system <tt><b>sl</b></tt> (<tt><b>syslin</b></tt> list) 
+    such that with <tt><b>[A,B,C,D]=abcd(sl)</b></tt>:</p>
+<pre>
+
+   C*B = markpar(1:nout,1:nin),
+   C*A*B =markpar(1:nout,nin+1:2*nin),....
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+W=ssrand(2,3,4);   //random system with 2 outputs and 3 inputs
+[a,b,c,d]=abcd(W);
+markpar=[c*b,c*a*b,c*a^2*b,c*a^3*b,c*a^4*b];
+S=markp2ss(markpar,5,2,3);
+[A,B,C,D]=abcd(S);
+Markpar=[C*B,C*A*B,C*A^2*B,C*A^3*B,C*A^4*B];
+norm(markpar-Markpar,1)
+//Caution... c*a^5*b is not C*A^5*B !
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/tf2ss.htm"><tt><b>tf2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/imrep2ss.htm"><tt><b>imrep2ss</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

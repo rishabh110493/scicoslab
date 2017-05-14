@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_eval</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_eval</b> - Fonction d'émulation de la fonction Matlab eval</p>
+<h3><font color="blue">Description</font></h3>
+<p>L'équivalent Scilab pour la fonction Matlab <tt><b>eval</b></tt> est différent suivant ses entrées et sorties.</p>
+<p>
+    La fonction <tt><b>mtlb_eval(str1,str2)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>eval</b></tt> parce qu'il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_eval</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec une entrée et pas de sortie,
+        <tt><b>mtlb_eval(str1)</b></tt> peut être remplacé par <tt><b>evstr(str1)</b></tt>
+	si <tt><b>str1</b></tt> est une expression Scilab valid
+	ou par <tt><b>execstr(str1)</b></tt> 
+	si <tt><b>str1</b></tt> est une instruction Scilab valid.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec une entrée et une sortie,
+        <tt><b>val=mtlb_eval(str1)</b></tt> peut être remplacé par <tt><b>val=evstr(str1)</b></tt>
+	si <tt><b>str1</b></tt> est une instruction Scilab valid.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux entrées et une sortie,
+        <tt><b>mtlb_eval(str1,str2)</b></tt> peut être remplacé par:
+	<tt><b>
+	if execstr(str1,"errcatch")&lt;&gt;0 then
+	  execstr(str2);
+	end	  
+	</b></tt>
+	si <tt><b>str1</b></tt> et <tt><b>str2</b></tt> sont des instructions Scilab valides.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec une entrée et plus d'une sortie,
+        <tt><b>[val1,val2,...]=mtlb_eval(str1)</b></tt> peut être remplacé par:
+	<tt><b>execstr("[val1,val2,...]"+str1)</b></tt>
+	si <tt><b>str1</b></tt> est une instruction Scilab valide.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux entrées et plus d'une sortie,
+        <tt><b>[val1,val2,...]=mtlb_eval(str1,str2)</b></tt> peut être remplacé par:
+	<tt><b>
+	if execstr("[val1,val2,...]"+str1,"errcatch")&lt;&gt;0 then
+	  execstr("[val1,val2,...]"+str2);
+	end	  
+	</b></tt>
+	si <tt><b>str1</b></tt> et <tt><b>str2</b></tt> sont des instructions Scilab valides.
+        </li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_eval</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

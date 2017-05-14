@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>splin2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>splin2d</b> - bicubic spline gridded 2d interpolation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>C = splin2d(x, y, z, [,spline_type])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: strictly increasing row vectors (with at least 2 components)
+               defining the interpolation grid</li>
+<li>
+<tt><b>z</b></tt>: nx x ny matrix (nx being the length of <tt><b>x</b></tt> and 
+               ny the length of <tt><b>y</b></tt>)</li>
+<li>
+<tt><b>spline_type </b></tt>: (optionnal) a string selecting the kind of bicubic spline to compute</li>
+<li>
+<tt><b>C</b></tt>: a big vector with the coefficients of the bicubic patches</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes a bicubic spline or sub-spline <em>s</em> which interpolates the 
+    <em>(xi,yj,zij)</em> points, ie, we have <em>s(xi,yj)=zij</em> for all  <em>i=1,..,nx</em>
+    and <em>j=1,..,ny</em>. 
+    The resulting spline <em>s</em> is defined by the triplet <tt><b>(x,y,C)</b></tt> where
+    <tt><b>C</b></tt> is the vector (of length 16(nx-1)(ny-1)) with the coefficients of each
+    of the (nx-1)(ny-1) bicubic patches : on <em>[x(i) x(i+1)]x[y(j) y(j+1)]</em>, <em>s</em>
+    is defined by :
+    </p>
+<pre>
+             _3_   _3_                       
+             \     \                    k         l
+    s(x,y) = /     /    C (k,l) (x - xi)  (y - yj)
+             ---   ---   ij
+             k=0   l=0
+          </pre>
+<p>
+    The evaluation of  <em>s</em> at some points must be done by the <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interp2d.htm"><tt><b>interp2d</b></tt></a> 
+    function. Several kind of splines may be computed by selecting the appropriate 
+    <tt><b>spline_type</b></tt> parameter. The method used to compute the bicubic spline
+    (or sub-spline) is the old fashionned one 's, i.e. to compute on each grid point
+    <em>(xi,yj)</em> an approximation of the first derivatives <em>ds/dx(xi,yj)</em>
+    and <em>ds/dy(xi,yj)</em> and of the cross derivative <em>d2s/dxdy(xi,yj)</em>.
+    Those derivatives are computed by the mean of 1d spline schemes leading to a C2
+    function (<em>s</em> is twice continuously differentiable) or by the mean of a
+    local approximation scheme leading to a C1 function only. This scheme is selected
+    with the <tt><b>spline_type</b></tt> parameter (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/splin.htm"><tt><b>splin</b></tt></a> for details) :  
+    </p>
+<dd>
+<li>
+<b><font color="maroon">"not_a_knot"</font></b>: this is the default case.</li>
+<li><b><font color="maroon">"natural"</font></b></li>
+<li>
+<b><font color="maroon">"periodic"</font></b>: to use if the underlying function is periodic : you must have <em>z(1,j) = z(nx,j) for
+              all j in [1,ny] and  z(i,1) = z(i,ny) for i in [1,nx]</em> but this is not verified
+              by the interface.</li>
+<li><b><font color="maroon">"monotone"</font></b></li>
+<li><b><font color="maroon">"fast"</font></b></li>
+<li><b><font color="maroon">"fast_periodic"</font></b></li>
+</dd>
+<h3><font color="blue">Remarks</font></h3>
+<dl>
+<p>From an accuracy point of view use essentially the <b>not_a_knot</b> type or <b>periodic</b>
+    type if the underlying interpolated function is periodic.
+    </p>
+<p>The <b>natural</b>, <b>monotone</b>, <b>fast</b> (or <b>fast_periodic</b>) type may
+       be useful in some cases, for instance to limit oscillations (<b>monotone</b> being the
+       most powerfull for that).
+    </p>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// example 1 : interpolation of cos(x)cos(y)
+n = 7;  // a regular grid with n x n interpolation points
+        // will be used
+x = linspace(0,2*%pi,n); y = x;
+z = cos(x')*cos(y);
+C = splin2d(x, y, z, "periodic");
+m = 50; // discretisation parameter of the evaluation grid
+xx = linspace(0,2*%pi,m); yy = xx;
+[XX,YY] = ndgrid(xx,yy);
+zz = interp2d(XX,YY, x, y, C);
+emax = max(abs(zz - cos(xx')*cos(yy)));
+xbasc()
+plot3d(xx, yy, zz, flag=[2 4 4])
+[X,Y] = ndgrid(x,y);
+param3d1(X,Y,list(z,-9*ones(1,n)), flag=[0 0])
+str = msprintf(" with %d x %d interpolation points. ermax = %g",n,n,emax) 
+xtitle("spline interpolation of cos(x)cos(y)"+str)
+
+// example 2 : different interpolation functions on random datas
+n = 6;
+x = linspace(0,1,n); y = x;
+z = rand(n,n);
+np = 50;
+xp = linspace(0,1,np); yp = xp;
+[XP, YP] = ndgrid(xp,yp);
+ZP1 = interp2d(XP, YP, x, y, splin2d(x, y, z, "not_a_knot"));
+ZP2 = linear_interpn(XP, YP, x, y, z);
+ZP3 = interp2d(XP, YP, x, y, splin2d(x, y, z, "natural"));
+ZP4 = interp2d(XP, YP, x, y, splin2d(x, y, z, "monotone"));
+xset("colormap", jetcolormap(64))
+xbasc()
+subplot(2,2,1)
+   plot3d1(xp, yp, ZP1, flag=[2 2 4])
+   xtitle("not_a_knot")
+subplot(2,2,2)
+   plot3d1(xp, yp, ZP2, flag=[2 2 4])
+   xtitle("bilinear interpolation")
+subplot(2,2,3)
+   plot3d1(xp, yp, ZP3, flag=[2 2 4])
+   xtitle("natural")
+subplot(2,2,4)
+   plot3d1(xp, yp, ZP4, flag=[2 2 4])
+   xtitle("monotone")
+xselect()
+
+// example 3 : not_a_knot spline and monotone sub-spline
+//             on a step function
+a = 0; b = 1; c = 0.25; d = 0.75;
+// create interpolation grid
+n = 11;
+x = linspace(a,b,n);
+ind = find(c &lt;= x &amp; x &lt;= d); 
+z = zeros(n,n); z(ind,ind) = 1;  // a step inside a square
+// create evaluation grid
+np = 220;
+xp = linspace(a,b, np);
+[XP, YP] = ndgrid(xp, xp);
+zp1 = interp2d(XP, YP, x, x, splin2d(x,x,z));
+zp2 = interp2d(XP, YP, x, x, splin2d(x,x,z,"monotone"));
+// plot
+xbasc()
+xset("colormap",jetcolormap(128))
+subplot(1,2,1)
+   plot3d1(xp, xp, zp1, flag=[-2 6 4])
+   xtitle("spline (not_a_knot)")
+subplot(1,2,2)
+   plot3d1(xp, xp, zp2, flag=[-2 6 4])
+   xtitle("subspline (monotone)")
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/cshep2d.htm"><tt><b>cshep2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/linear_interpn.htm"><tt><b>linear_interpn</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interp2d.htm"><tt><b>interp2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+     B. Pincon
+  </p>
+</body>
+</html>

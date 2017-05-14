@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>smooth</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>smooth</b> -  interpolation par une spline  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pt]=smooth(ptd [,pas])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ptd  </b></tt>
+    : vecteur réel à deux colonnes
+</li>
+<li>
+<tt><b>pas  </b></tt>
+    : réel (pas de discrétisation des abscisses)
+</li>
+<li>
+<tt><b>pt  </b></tt>
+    : vecteur réel à deux colonnes
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cette fonction calcule les valeurs d'une spline d'interpolation
+    dont les points de référence sont donnés par <tt><b>(ptd(1,i),ptd(2,i))</b></tt>. Les abscisses <tt><b>ptd(1,:)</b></tt> doivent être classés par ordre croissant.
+    La valeur par défaut du pas est égale à 
+    <tt><b>abs(maxi(ptd(1,:))-mini(ptd(1,:)))/100</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=[1 10 20 30 40];
+y=[1 30 -10 20 40];
+plot2d(x',y',[3],"011"," ",[-10,-40,50,50]);
+yi=smooth([x;y],0.1);
+plot2d(yi(1,:)',yi(2,:)',[1],"000");
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/splin.htm"><tt><b>splin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interp.htm"><tt><b>interp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/interpln.htm"><tt><b>interpln</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

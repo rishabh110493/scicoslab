@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cspect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cspect</b> -  spectral estimation (correlation method)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sm,cwp]=cspect(nlags,ntp,wtype,x,y,wpar)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: data if vector, amount of input data if scalar</li>
+<li>
+<tt><b>y</b></tt>: data if vector, amount of input data if scalar</li>
+<li>
+<tt><b>nlags</b></tt>: number of correlation lags (positive integer)</li>
+<li>
+<tt><b>ntp</b></tt>: number of transform points (positive integer)</li>
+<li>
+<tt><b>wtype</b></tt>: string : <tt><b>'re','tr','hm','hn','kr','ch'</b></tt> (window type)</li>
+<li>
+<tt><b>wpar</b></tt>: optional window parameters for <tt><b>wtype='kr', wpar&gt;0</b></tt> and for <tt><b>wtype='ch', 0 &lt; wpar(1) &lt; .5, wpar(2) &gt; 0</b></tt>
+</li>
+<li>
+<tt><b>sm</b></tt>: power spectral estimate in the interval [0,1]</li>
+<li>
+<tt><b>cwp</b></tt>: calculated value of unspecified Chebyshev window parameter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Spectral estimation using the  correlation method.
+    Cross-spectral estimate of <tt><b>x</b></tt> and <tt><b>y</b></tt> is calculated when both
+    <tt><b>x</b></tt> and <tt><b>y</b></tt> are given. Auto-spectral estimate of <tt><b>x</b></tt> is calculated
+    if <tt><b>y</b></tt> is not given.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rand('normal');rand('seed',0);
+x=rand(1:1024-33+1);
+//make low-pass filter with eqfir
+nf=33;bedge=[0 .1;.125 .5];des=[1 0];wate=[1 1];
+h=eqfir(nf,bedge,des,wate);
+//filter white data to obtain colored data 
+h1=[h 0*ones(1:maxi(size(x))-1)];
+x1=[x 0*ones(1:maxi(size(h))-1)];
+hf=fft(h1,-1);   xf=fft(x1,-1);yf=hf.*xf;y=real(fft(yf,1));
+sm=cspect(100,200,'tr',y);
+smsize=maxi(size(sm));fr=(1:smsize)/smsize;
+plot(fr,log(sm))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/pspect.htm"><tt><b>pspect</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. Bunks ;  Digital Signal Processing by Oppenheim and Schafer</p>
+</body>
+</html>

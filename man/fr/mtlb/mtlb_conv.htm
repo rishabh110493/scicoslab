@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_conv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_conv</b> - Fonction d'émulation de la fonction Matlab conv</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction Matlab <tt><b>conv</b></tt> et la fonction Scilab <tt><b>convol</b></tt>
+    se comportent différemment :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Avec des vecteurs colonne comme paramètres d'entrées : Si au moins l'un des deux paramètres d'entrée de la fonction
+	Matlab <tt><b>conv</b></tt> est un vecteur colonne alors la valeur retournée sera un vecteur colonne mais la fonction Scilab
+	<tt><b>convol</b></tt> retourne toujours un vecteur ligne.
+        </li></dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_conv(u,v)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>conv(u,v)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_conv</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>u</b></tt> et <tt><b>v</b></tt> sont des vecteurs ligne,
+        <tt><b>mtlb_conv(u,v)</b></tt> peut être remplacé par <tt><b>convol(u,v)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>u</b></tt> ou <tt><b>v</b></tt> est un vecteur colonne,
+        <tt><b>mtlb_conv(u,v)</b></tt> peut être remplacé par <tt><b>convol(u,v).'</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>u</b></tt> et <tt><b>v</b></tt> sont des vecteurs colonne,
+        <tt><b>mtlb_conv(u,v)</b></tt> peut être remplacé par <tt><b>convol(u,v).'</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>La fonction Scilab <tt><b>convol</b></tt> retourne parfois des valeurs qui peuvent être arrondies en utilisant <tt><b>clean</b></tt>
+    pour avoir un résultat plus proche de Matlab.</p>
+<p>Attention : <tt><b>mtlb_conv</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

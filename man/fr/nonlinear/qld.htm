@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>qld</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>qld</b> -  linear quadratic programming solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x,lagr]=qld(Q,p,C,b,ci,cs,me [,tol])  </tt></dd>
+<dd><tt>[x,lagr,info]=qld(Q,p,C,b,ci,cs,me [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Q</b></tt>: real positive definite symmetric matrix (dimension <tt><b>n x n</b></tt>).</li>
+<li>
+<tt><b>p</b></tt>: real (column) vector (dimension <tt><b> n</b></tt>)</li>
+<li>
+<tt><b>C</b></tt>: real matrix (dimension <tt><b> (me + md) x n</b></tt>) </li>
+<li>
+<tt><b>b</b></tt>: RHS column vector (dimension <tt><b> (me + md)</b></tt>)</li>
+<li>
+<tt><b>ci</b></tt>: column vector of lower-bounds (dimension <tt><b>n</b></tt>). If
+	    there are no lower bound constraints, put <tt><b>ci = []</b></tt>. If
+	    some components of <tt><b>x</b></tt> are bounded from below, set the
+	    other (unconstrained) values of <tt><b>ci</b></tt> to a very  large
+	    negative  number (e.g. <tt><b>ci(j) =
+	      -number_properties('huge')</b></tt>.</li>
+<li>
+<tt><b>cs</b></tt>: column vector of upper-bounds. (Same remarks as above).</li>
+<li>
+<tt><b>me</b></tt>: number of equality constraints (i.e. <tt><b>C(1:me,:)*x = b(1:me)</b></tt>)</li>
+<li>
+<tt><b>tol</b></tt>:Floatting point number, required précision.</li>
+<li>
+<tt><b>x</b></tt>: optimal solution found.</li>
+<li>
+<tt><b>lagr</b></tt>: vector of Lagrange multipliers.  If lower and upper-bounds
+	    <tt><b>ci,cs</b></tt> are provided, <tt><b>lagr</b></tt> has  <tt><b>n +
+	      me + md</b></tt> components and <tt><b>lagr(1:n)</b></tt> is the
+	    Lagrange  vector associated with the bound constraints and
+	    <tt><b>lagr (n+1 : n + me + md)</b></tt> is the Lagrange vector
+	    associated  with the linear constraints. (If an upper-bound
+	    (resp. lower-bound) constraint <tt><b>i</b></tt> is active
+	    <tt><b>lagr(i)</b></tt> is &gt; 0 (resp. &lt;0). If no bounds are
+	    provided, <tt><b>lagr</b></tt> has only <tt><b>me + md</b></tt>
+	    components.</li>
+<li>
+<tt><b>info</b></tt>: integer, return the execution status instead of sending
+	  errors.<p>info==1 : Too many iterations needed</p>
+<p>info==2 : Accuracy insufficient to statisfy convergence criterion</p>
+<p>info==5 : Length of working array is too short</p>
+<p>info==10: The constraints are inconsistent</p>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Minimize <tt><b> 0.5*x'*Q*x + p'*x</b></tt></p>
+<p>under the constraints</p>
+<pre>
+
+ C(j,:) x = b(j),  j=1,...,me
+ C(j,:) x &lt;= b(j), j=me+1,...,me+md
+ ci &lt;= x &lt;= cs
+   
+    </pre>
+<p>This function requires  <tt><b>Q</b></tt> to be positive definite, if it is
+      not the case, one may use the <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/quapro.htm"><tt><b>quapro</b></tt></a> function.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Find x in R^6 such that:
+//C1*x = b1 (3 equality constraints i.e me=3)
+C1= [1,-1,1,0,3,1;
+    -1,0,-3,-4,5,6;
+     2,5,3,0,1,0];
+b1=[1;2;3];
+//C2*x &lt;= b2 (2 inequality constraints)
+C2=[0,1,0,1,2,-1;
+    -1,0,2,1,1,0];
+b2=[-1;2.5];
+//with  x between ci and cs:
+ci=[-1000;-10000;0;-1000;-1000;-1000];cs=[10000;100;1.5;100;100;1000];
+//and minimize 0.5*x'*Q*x + p'*x with
+p=[1;2;3;4;5;6]; Q=eye(6,6);
+//No initial point is given;
+C=[C1;C2] ; //
+b=[b1;b2] ;  //
+me=3;
+[x,lagr]=qld(Q,p,C,b,ci,cs,me)
+//Only linear constraints (1 to 4) are active (lagr(1:6)=0):
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/quapro.htm"><tt><b>quapro</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>K.Schittkowski</b>, University of Bayreuth, Germany</dd>
+<dd>
+<b> A.L. Tits and J.L. Zhou</b> , University of Maryland</dd>
+</dl>
+<h3><font color="blue">Used Function</font></h3>
+<p>ql0001.f in routines/optim directory</p>
+</body>
+</html>

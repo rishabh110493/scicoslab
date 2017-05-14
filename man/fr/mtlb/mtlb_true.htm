@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_true</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_true</b> - Fonction d'émulation de la fonction Matlab true</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas d'équivalent Scilab pour la fonction Matlab <tt><b>true</b></tt>, cependant la fonction
+    Scilab <tt><b>ones</b></tt> retourne un résultat interprété de la même façon pour Scilab.</p>
+<p>Dans plusieurs cas particuliers, la fonction Matlab <tt><b>true</b></tt> et la fonction Scilab <tt><b>ones</b></tt>se comporte différemment :</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        Avec une entrée qui est un scalaire : La fonction Matlab <tt><b>true</b></tt> retourne une
+	matrice n x n alors que la fonction Scilab <tt><b>ones</b></tt> retourne 1.
+        </li></dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_true(A)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>true(A)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les opérandes pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_true</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> est un scalaire
+        <tt><b>mtlb_true(A)</b></tt> peut être remplacé par <tt><b>ones(A,A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> n'est pas un scalaire
+        <tt><b>mtlb_true(A)</b></tt> peut être remplacé par <tt><b>ones(A)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_true</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

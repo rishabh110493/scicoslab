@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pvm_start</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_start</b> -  Start the PVM daemon</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[info] = pvm_start(["hostfile"])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>hostfile</b></tt>: name of the hostfile describing the configuration for each host of the virtual machine.</li>
+<li>
+<tt><b>info</b></tt>: integer, status code returned by the routine. Values less than zero indicate an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_start</b></tt>  starts the <tt><b>Pvmd3</b></tt> daemon process  which
+    coordinates  unix hosts in a  virtual machine.  One  pvmd3 must run on
+    each host component of the virtual machine. They provide  the
+    communication and process 
+    control functions  needed by the user's PVM  processes.  The local and
+    remote pvmds can also be started from the PVM console program pvm.</p>
+<p>
+    The optional parameter is the name of a host file. See pvmd3 for more
+    details on the host file format. If no argument is given to
+    <tt><b>pvm_start</b></tt>, but the variable  PVM_ROOT is set, scilab will try to
+    load the file $HOME/.pvmd.conf. If this file does not exist, or the
+    variable PVM_ROOT is not set, scilab will try to load the default file 
+    $SCI/.pvmd.conf. In all other cases, scilab will supposed that PVM
+    and scilab are in standard place on your net.</p>
+<p>
+    Note that, to be able to start a PVM daemon, scilex must know the
+    place to find both scilex and pvmd. Normally, scilex will start a new
+    PVM daemon by using rsh. See the help on pvmd3 and pvm for more detail 
+    on how to start/stop pvm.</p>
+<p>
+    For example:</p>
+<pre>
+
+pvm_start()
+ ans  =
+ 
+    0. 
+--&gt;pvm_start()
+ ans  =
+ 
+  - 28.  
+   
+    </pre>
+<p>
+    Error -28 means: pvm_start_pvmd(): Duplicate host</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvmd3.htm"><tt><b>pvmd3</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_halt.htm"><tt><b>pvm_halt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_addhosts.htm"><tt><b>pvm_addhosts</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/pvm/pvm_config.htm"><tt><b>pvm_config</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

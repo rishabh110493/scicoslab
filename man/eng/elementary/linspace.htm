@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>linspace</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>linspace</b> - linearly spaced
+  vector</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v]=linspace(x1,x2 [,n])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x1,x2</b></tt>: real or complex scalars</li>
+<li>
+<tt><b>n</b></tt>: integer (number of values) (default value = 100)</li>
+<li>
+<tt><b>v</b></tt>: real or complex row vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Linearly spaced vector. <tt><b>linspace(x1, x2)</b></tt> generates a row
+    vector of n (default value=100) linearly equally spaced points between
+    <tt><b>x1</b></tt> and <tt><b>x2</b></tt>. if <tt><b>x1</b></tt> or <tt><b>x2</b></tt>
+    are complex then <tt><b>linspace(x1,x2)</b></tt> returns a row vector of n
+    complexes, the real (resp. imaginary) parts of the n complexes are
+    linearly equally spaced between the real (resp. imaginary) parst of
+    <tt><b>x1</b></tt> and <tt><b>x2 </b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+linspace(1,2,10)
+linspace(1+%i,2+2*%i,10)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/logspace.htm"><tt><b>logspace</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

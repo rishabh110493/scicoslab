@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mkdir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mkdir</b> - Make new directory</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mkdir('dirname')</tt></dd>
+<dd><tt>mkdir('parentdir','newdir')</tt></dd>
+<dd><tt>status=mkdir( ... )</tt></dd>
+<dd><tt>[status,msg]=mkdir( ... )</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>mkdir('dirname') creates the directory dirname in the current
+    directory, if dirname represents a relative path.</p>
+<p>mkdir('parentdir','dirname') creates the directory dirname in the
+    existing directory parentdir, where parentdir is an absolute or relative
+    pathname.</p>
+<p>[status,message] = mkdir(...,'dirname') creates the directory dirname
+    in the existing directory parentdir, returning the status, a message.
+    Here, status is 1 for success, 2 if it already exists, and 0
+    otherwise.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+rmdir(SCI + '/Directory'); //remove the directory if it exists
+mkdir(SCI,'Directory')
+status=mkdir(SCI,'Directory')
+[status,msg] = mkdir(SCI,'Directory')
+rmdir(SCI+'/Directory')
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/chdir.htm"><tt><b>cd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/dir.htm"><tt><b>dir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/rmdir.htm"><tt><b>rmdir</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>A.C</dd></dl>
+</body>
+</html>

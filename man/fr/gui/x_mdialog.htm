@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>x_mdialog</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_mdialog</b> - boîte de dialogue pour la saisie de
+  paramètres</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>result=x_mdialog(title,labels,default_inputs_vector)</tt></dd>
+<dd><tt>result=x_mdialog(title,labelsv,labelsh,default_input_matrix)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>title</b></tt>: vecteur colonne de chaînes de caractères. Titre général</li>
+<li>
+<tt><b>labels</b></tt>: n vecteurs colonnes de chaînes de caractères,
+          <tt><b>labels(i)</b></tt> est l'intitulé du i-ème paramètre à  
+          saisir</li>
+<li>
+<tt><b>default_input_vector</b></tt>: n vecteurs colonnes de chaînes de caractères,
+          <tt><b>default_input_vector(i)</b></tt> la valeur initiale du i-ème
+          paramètre</li>
+<li>
+<tt><b>labelsv</b></tt>: vecteur de n chaînes de caractères, <tt><b>labelsv(i)</b></tt>
+          est la légende de la i-ème ligne de la matrice de paramètres</li>
+<li>
+<tt><b>labelsh</b></tt>: vecteur de m chaînes de caractères, <tt><b>labelsh(j)</b></tt>
+          est la légende de la j-ième colonne de la matrice de paramètres</li>
+<li>
+<tt><b>default_input_matrix</b></tt>: matrice n x m de chaînes de caractères,
+          <tt><b>default_input_matrix(i,j)</b></tt> est la valeur initiale du
+          terme (i,j) de la matrice à   saisir</li>
+<li>
+<tt><b>result</b></tt>: matrice n x m de chaînes de caractères si le bouton "Ok" a été
+          pressé ou [] si c'est le bouton "Cancel".</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Boîte de dialogue pour la saisie de paramètres</p>
+<h3><font color="blue">Examples</font></h3>
+<pre> txt=['module';'frequence';'phase    '];
+ sig=x_mdialog('choisir le signal sinusoidal',txt,['1';'10';'0'])
+ mag=evstr(sig(1))
+ frq=evstr(sig(2))
+ ph=evstr(sig(3))
+
+ rep=x_mdialog(['Simulation d''un systeme';'avec un regulateur PI'],...
+                      ['gain P';'gain I'],[' ';' '])
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/editvar.htm"><tt><b>editvar</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_dialog.htm"><tt><b>x_dialog</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_choose.htm"><tt><b>x_choose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/x_message.htm"><tt><b>x_message</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/getvalue.htm"><tt><b>getvalue</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/gui/editvar.htm"><tt><b>editvar</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

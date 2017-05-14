@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>simp_mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>simp_mode</b> -  toggle rational simplification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mod=simp_mode()  </tt></dd>
+<dd><tt>simp_mode(mod)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mod</b></tt>: a boolean</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    rational simplification is called after nearly each operations on 
+    rationals. It is possible to toggle simplification on or off using
+    <tt><b>simp_mode</b></tt> function.</p>
+<p><tt><b>simp_mod(%t)</b></tt> set rational simplification mode on</p>
+<p><tt><b>simp_mod(%f)</b></tt> set rational simplification mode off</p>
+<p><tt><b>mod=simp_mod()</b></tt> returns in mod the current rational
+    simplification mode</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+mod=simp_mode()
+simp_mode(%f);hns=s/s
+simp_mode(%t);hns=s/s
+simp_mode(mod);
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

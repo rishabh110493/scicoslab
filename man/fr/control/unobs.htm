@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>unobs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unobs</b> -  unobservable subspace</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[n,[U]]=unobs(A,C,[tol])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, C</b></tt>: real matrices</li>
+<li>
+<tt><b>tol</b></tt>: tolerance used when evaluating ranks (QR factorizations).</li>
+<li>
+<tt><b>n</b></tt>: dimension of unobservable subspace.</li>
+<li>
+<tt><b>U</b></tt>: orthogonal change of basis which puts <tt><b>(A,B)</b></tt> in canonical form.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[n,[U]]=unobs(A,C,[tol])</b></tt> gives the unobservable form of an <tt><b>(A,C)</b></tt> 
+    pair.
+    The <tt><b>n</b></tt> first columns of <tt><b>U</b></tt> make a basis for the unobservable
+    subspace.</p>
+<p>
+    The <tt><b>(2,1)</b></tt> block (made of last <tt><b>nx-n</b></tt> rows and <tt><b>n</b></tt> first 
+    columns) of <tt><b>U'*A*U</b></tt> is zero and and the <tt><b>n</b></tt> first columns 
+    of <tt><b>C*U</b></tt> are zero.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([1,2,3]);C=[1,0,0];
+unobs(A,C)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/canon.htm"><tt><b>canon</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/cont_mat.htm"><tt><b>cont_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spantwo.htm"><tt><b>spantwo</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/dt_ility.htm"><tt><b>dt_ility</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

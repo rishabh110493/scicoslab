@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>explicit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>explicit</b> -   explicit form ( maxplus linear system)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>E=explicit(S)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>S  </b></tt>
+    : maxplus linear system
+  </li>
+<li>
+<tt><b>E  </b></tt>
+    : corresponding explicit maxplus linear system 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computes an explicit realization of a dynamic linear maxplus system.
+  </p>
+<p>
+    An explicit form of a system (A,B,C,D) has a matrix D 
+    with all entries equal to -inf.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+S=mpsyslin(%eye(2,2),[%1;%1],[%1,%1],#([-1,0;-1,-2]))
+explicit(S)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

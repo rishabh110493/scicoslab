@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nf3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nf3d</b> -  rectangular facets to plot3d parameters</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xx,yy,zz]=nf3d(x,y,z)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,y,x,xx,yy,zz</b></tt>: 6 real matrices</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function. Used for transforming rectangular facets coded 
+    in three matrices x,y,z to scilab code for facets accepted by plot3d.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//A sphere...
+u = linspace(-%pi/2,%pi/2,40);
+v = linspace(0,2*%pi,20);
+x= cos(u)'*cos(v);
+y= cos(u)'*sin(v);
+z= sin(u)'*ones(v);
+//plot3d2(x,y,z) is equivalent to...
+[xx,yy,zz]=nf3d(x,y,z); plot3d(xx,yy,zz)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d2.htm"><tt><b>plot3d2</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

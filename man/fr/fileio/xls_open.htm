@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xls_open</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xls_open</b> - Open an Excel file for reading</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[fd,SST,Sheetnames,Sheetpos] = xls_open(file_path)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file_path</b></tt>
+       : a character string: the path of the Excel file.
+       </li>
+<li>
+<tt><b>fd</b></tt>
+       : a number, the logical unit on the Excel stream.
+       </li>
+<li>
+<tt><b>SST</b></tt>
+       : A vector of all character strings which appear in the Excel sheets.
+       </li>
+<li>
+<tt><b>Sheetnames</b></tt>
+       : a vector of strings: the sheet names.
+       </li>
+<li>
+<tt><b>Sheetpos</b></tt>
+       : a vector of numbers: the position of the beginning of sheets in the
+	    Excel stream.
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function first analyzes the ole2 data structure associated with the
+      given file to extract the Excel stream which is included in. After
+      that the Excel stream is saved in the <tt><b>TMDIR</b></tt> directory
+      and opened. The <tt><b>fd</b></tt> logical unit points to this temporary
+      file. Then the  first sheet in this stream is read to get the global informations
+      like number of sheets, sheet names <tt><b>Sheetnames</b></tt>, sheet
+      adresses within the stream <tt><b>Sheetpos</b></tt> and the
+      <tt><b>SST</b></tt> which contains all the strings used in the following
+      sheets.</p>
+<p>The <tt><b>fd</b></tt> and <tt><b>Sheetpos</b></tt> data have to be passed to
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/xls_read.htm"><tt><b>xls_read</b></tt></a> to read the data sheets.</p>
+<p>The <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/readxls.htm"><tt><b>readxls</b></tt></a> function can be used to read all an Excel file
+      in one function with a single function call.</p>
+<p> Warning only BIFF8 Excel files (last Excel file version) are handled  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   //Decode ole file, extract and open Excel stream
+    [fd,SST,Sheetnames,Sheetpos] = xls_open('SCI/demos/excel/Test1.xls')
+    //Read first data sheet
+    [Value,TextInd] = xls_read(fd,Sheetpos(1))
+    //close the excel stream
+    mclose(fd)
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/xls_read.htm"><tt><b>xls_read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/readxls.htm"><tt><b>readxls</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>Pierrick Mode</b>
+    INRIA
+    </dd>
+<dd>
+<b>Serge Steer</b>
+    INRIA
+    </dd>
+</dl>
+<h3><font color="blue">Bibliography</font></h3>This function is based on the Microsoft ole2 file documentation
+      (http://chicago.sourceforge.net/devel/docs/ole/) and on Excel
+      stream description from OpenOffice (http://sc.openoffice.org/excelfileformat.pdf).<h3><font color="blue">Used Function</font></h3>The ripole-0.1.4 procedure (http://www.pldaniels.com/ripole)  is used
+      to extract the excel stream out of the ole file. </body>
+</html>

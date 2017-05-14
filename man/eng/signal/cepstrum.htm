@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cepstrum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cepstrum</b> -  cepstrum calculation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>fresp = cepstrum(w,mag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>w</b></tt>: positive real vector of frequencies (rad/sec)</li>
+<li>
+<tt><b>mag</b></tt>: real vector of magnitudes (same size as <tt><b>w</b></tt>)</li>
+<li>
+<tt><b>fresp</b></tt>: complex vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>fresp = cepstrum(w,mag)</b></tt> returns a frequency response <tt><b>fresp(i)</b></tt>
+    whose magnitude at frequency <tt><b>w(i)</b></tt> equals <tt><b>mag(i)</b></tt>  and such
+    that the phase of <tt><b>freq</b></tt> corresponds to a stable and minimum phase
+    system. <tt><b>w</b></tt> needs not to be sorted, but  minimal entry should not be
+    close to zero and all the entries of <tt><b>w</b></tt> should be different.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+w=0.1:0.1:5;mag=1+abs(sin(w));
+fresp=cepstrum(w,mag);
+plot2d([w',w'],[mag(:),abs(fresp)])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/frfit.htm"><tt><b>frfit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

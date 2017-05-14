@@ -1,0 +1,73 @@
+.TH lpf  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+lpf  -  Travel time functions
+.SH CALLING SEQUENCE
+.nf
+[ta,dta,cta]=lpf(F,lpp,nf)
+.fi
+.SH PARAMETERS
+.TP 10
+F
+: row vector of flows in each arc
+.TP 10
+lpp
+: parameters of the travel time functions (ttf) for each arc
+.TP 10
+nf
+: model for the ttf
+.TP 10
+ta
+: travel time of each arc for the given flow
+.TP 10
+dta
+: derivate of the ttf for the given arc flow
+.TP 10
+cta
+: integral of the ttf for the given arc flow
+.SH DESCRIPTION
+Computes the travel time of each arc for the given flow using the travel time
+functions with parameters lpp and formula nf. Each colum of lpp is of the form
+[t0;ca;ma;ba] where the coefficients t0 and ca have the meanings:
+.TP 5
+t0
+: free-flow travel time
+.TP 5
+ca
+: practical capacity of the link
+
+.TP 0
+The different formulae for the ttf are:
+
+.TP 10
+nf=0 -> c=t0+ma/ca*F+ma*(max(0,F-ca))^ba, with ba>=1 
+.TP 10
+nf=1 -> c=t0*exp((F/ca)-1), with ca>0
+.TP 10
+nf=2 -> c=t0*2^((F/ca)-1), with ca>0
+.TP 10
+nf=3 -> c=t0*(1+0.15*(F/ca)^ma), with ma>=1 and ca>0
+.TP 10
+nf=4 -> c=t0+log(ca)-log(ca-F), with ca>0
+.TP 10
+nf=5 -> c=ba-ca*(t0-ba)/(F-ca), with ca>0
+.TP 10
+nf=6 -> c=t0+ca*F+ma*F^ba, with ba>1
+.fi
+
+.SH EXAMPLES
+.nf
+net=TrafficExample('Small');
+[g,d,lpp,nf]=Net2Par(net);
+F=rand(1,9);
+[ta,dta,cta]=lpf(F,lpp,nf) 
+// shows the function with the different parameters
+dlpf(0.1,.01,5,lpp,6);
+.fi
+.SH SEE ALSO
+IntroTrfAsg,
+TrafficExample,
+dlpf
+
+
+
+

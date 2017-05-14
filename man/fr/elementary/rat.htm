@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rat</b> -  approximation rationnelle d'un flottant   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N,D]=rat(x [,tol])  </tt></dd>
+<dd><tt>y=rat(x [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur ou matrice réelle
+</li>
+<li>
+<tt><b>n  </b></tt>
+    : vecteur ou matrice d'entiers 
+</li>
+<li>
+<tt><b>d  </b></tt>
+    : vecteur ou matrice d'entiers 
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur ou matrice réelle
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[N,D] = rat(x,tol)</b></tt> renvoie deux matrices entières telles que <tt><b>N./D</b></tt> est proche de <tt><b>x</b></tt> au sens où
+    <tt><b>abs(N./D - X) &lt;= tol*abs(x)</b></tt>. Les approximations rationnelles sont obtenues par troncature d'un développement en fraction continue.   
+    <tt><b>tol = 1.e-6*norm(X,1)</b></tt> est la valeur de la tolérance par défaut.
+    <tt><b>y = rat(x,tol)</b></tt> renvoie le quotient <tt><b>N./D</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[n,d]=rat(%pi)
+[n,d]=rat(%pi,1.d-12)
+n/d-%pi
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/int.htm"><tt><b>int</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/round.htm"><tt><b>round</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

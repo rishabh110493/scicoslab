@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rowregul</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowregul</b> -  removing poles and zeros at infinity</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Stmp,Ws]=rowregul(Sl,alfa,beta)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl,Stmp</b></tt>: <tt><b>syslin</b></tt> lists</li>
+<li>
+<tt><b>alfa,beta</b></tt>: real numbers (new pole and zero positions)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes a postfilter <tt><b>Ws</b></tt> such that <tt><b>Stmp=Ws*Sl</b></tt> is proper and 
+    with full rank <tt><b>D</b></tt> matrix.</p>
+<p>
+    Poles at infinity of <tt><b>Sl</b></tt> are moved to <tt><b>alfa</b></tt>;</p>
+<p>
+    Zeros at infinity of <tt><b>Sl</b></tt> are moved to <tt><b>beta</b></tt>;</p>
+<p><tt><b>Sl</b></tt> is a assumed to be a right invertible linear system (<tt><b>syslin</b></tt> list)
+    in state-space representation with possibly a polynomial <tt><b>D</b></tt> matrix.</p>
+<p>
+    This function is the dual of colregul (see function code).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=%s;
+w=[1/s,0;s/(s^3+2),2/s];
+Sl=tf2ss(w);
+[Stmp,Ws]=rowregul(Sl,-1,-2);
+Stmp('D')     // D matrix of Stmp
+clean(ss2tf(Stmp))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/invsyslin.htm"><tt><b>invsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/colregul.htm"><tt><b>colregul</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D. , R. N. ;   </p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mfprintfmprintfmsprintf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mfprintf</b> -  converts, formats, and writes  data to a file</p>
+<p><b>mprintf</b> -  converts, formats, and writes  data to the main scilab window</p>
+<p><b>msprintf</b> -  converts, formats, and writes  data in a string</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mfprintf(fd,format,a1,...,an);  </tt></dd>
+<dd><tt>mprintf(format,a1,...,an);  </tt></dd>
+<dd><tt>str=msprintf(format,a1,...,an);  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fd</b></tt>: scalar, file descriptor given by <tt><b>mopen</b></tt> (it's a positive integer). The value <tt><b>-1</b></tt> refers to the default file ( i.e the last opened file).</li>
+<li>
+<tt><b>format</b></tt>: a Scilab string describing  the format to use to write  the  remaining  operands.  The format operand follows, as close as possible,  the C printf format operand syntax.</li>
+<li>
+<tt><b>str</b></tt>: a character string, string to be scanned.</li>
+<li>
+<tt><b>a1,...,an</b></tt>: Specifies the data to be converted and printed according to the format parameter.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>mprintf</b></tt>, <tt><b>mfprintf</b></tt>, and <tt><b>msprintf</b></tt> functions are interface for C-coded version of <tt><b>printf</b></tt>, <tt><b>fprintf</b></tt> and
+    <tt><b>sprintf</b></tt> functions.</p>
+<p>
+    The <tt><b>mprintf</b></tt> function 
+    writes formatted operands to the standard Scilab output
+    (i.e the Scilab window). The  argument operands are formatted under control
+    of the format operand.</p>
+<p>
+    The <tt><b>mfprintf</b></tt> function writes formatted operands to the file
+    specified by the file desciptor 
+    <tt><b>fd</b></tt>. The  argument operands are formatted under control
+    of the format operand.</p>
+<p>
+    The <tt><b>msprintf</b></tt> 
+    writes formatted operands in its returned value (a Scilab string).
+    The  argument operands are formatted under control
+    of the format operand. Note that, in this case, the  escape
+    sequences (<tt><b>"\n, \t,.."</b></tt>) are treated as a normal sequence of
+    characters.</p>
+<p>
+    All these functions may be used to output column vectors of numbers
+    and string vectors without an explicit loop on the elements. In that
+    case these functions iterates on the rows. The shortest vector gives
+    the number of time the format has to be iterated.</p>
+<p>
+    An homogeneous sequence of identical type parameters can be
+    replaced by a matrix</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+mprintf('At iteration %i, Result is:\nalpha=%f',33,0.535)
+
+msprintf('%5.3f %5.3f',123,0.732)
+msprintf('%5.3f\n%5.3f',123,0.732)
+
+A=rand(5,2);
+// vectorized forms: the format directive needs 
+// two operand, each column of A is used as an operand. 
+// and the mprintf function is applied on each row of A 
+mprintf('%5.3f\t%5.3f\n',A)
+
+colors=['red';'green';'blue';'pink';'black'];
+RGB=[1 0 0;0 1 0;0 0 1;1 0.75 0.75;0 0 0];
+mprintf('%d\t%s\t%f\t%f\t%f\n',(1:5)',colors,RGB)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/meof.htm"><tt><b>meof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mfprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fprintfMat.htm"><tt><b>fprintfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mfscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fscanfMat.htm"><tt><b>fscanfMat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mgetstr.htm"><tt><b>mgetstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mprintf.htm"><tt><b>mprintf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mput.htm"><tt><b>mput</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mputstr.htm"><tt><b>mputstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mfscanf.htm"><tt><b>mscanf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mseek.htm"><tt><b>mseek</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mtell.htm"><tt><b>mtell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mdelete.htm"><tt><b>mdelete</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

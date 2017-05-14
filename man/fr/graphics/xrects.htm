@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xrects</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xrects</b> -  dessine ou remplit un ensemble de rectangles  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xrects(rects,[fill])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rects  </b></tt>
+    : matrice de taille (4,n).
+</li>
+<li>
+<tt><b>fill  </b></tt>
+    : vecteur de taille n.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xrects</b></tt> dessine ou remplit un ensemble de rectangles. 
+    Chaque colonne de <tt><b>rects</b></tt> décrit un 
+    rectangle (point en haut à gauche, largeur, hauteur):
+    <tt><b>rects=[x1 y1 w1 h1;x2 y2 w2 h2;...]'</b></tt>.
+  </p>
+<p><tt><b>fill(i)</b></tt> définit le motif utilisé pour dessiner ou remplir le rectangle i:
+  </p>
+<p>
+    si <tt><b>fill(i)&lt;0</b></tt>, le rectangle <tt><b>i</b></tt> est dessiné avec la couleur
+    <tt><b>-fill(i)</b></tt>.
+  </p>
+<p>
+    si <tt><b>fill(i)&gt;0</b></tt>, le rectangle <tt><b>i</b></tt> est rempli avec la couleur
+    <tt><b>fill(i)</b></tt>.
+  </p>
+<p>
+    si <tt><b>fill(i)=0</b></tt>, le rectangle <tt><b>i</b></tt> est dessiné avec le style de ligne courant.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+plot2d([-100,500],[-50,50],[-1,-1],"022")
+cols=[-34,-33,-32,-20:5:20,32,33,34];
+x=400*(0:14)/14; step=20;
+rects=[x;10*ones(x);step*ones(x);30*ones(x)];
+xrects(rects,cols)
+xnumb(x,15*ones(x),cols)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfrect.htm"><tt><b>xfrect</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xrect.htm"><tt><b>xrect</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

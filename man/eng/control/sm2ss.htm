@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sm2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sm2ss</b> -  system matrix to state-space</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Sl]=sm2ss(Sm);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sm</b></tt>: polynomial matrix (pencil system matrix)</li>
+<li>
+<tt><b>Sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function: converts the system matrix:</p>
+<pre>
+
+ Sm = [-sI + A   B;
+      [    C     D]
+   
+    </pre>
+<p>
+    to linear system in state-space representation (<tt><b>syslin</b></tt>) list.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2des.htm"><tt><b>ss2des</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>colcomp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colcomp</b> -  column compression, kernel, nullspace</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[W,rk]=colcomp(A [,flag] [,tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>flag</b></tt>: character string</li>
+<li>
+<tt><b>tol</b></tt>: real number</li>
+<li>
+<tt><b>W</b></tt>: square non-singular matrix (change of basis)</li>
+<li>
+<tt><b>rk</b></tt>: integer (rank of <tt><b>A</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Column compression of <tt><b>A</b></tt>: <tt><b>Ac = A*W</b></tt> is 
+    column compressed i.e</p>
+<p><tt><b>Ac=[0,Af]</b></tt> with <tt><b>Af</b></tt> full column rank, 
+    rank(<tt><b>Af</b></tt>) = rank(<tt><b>A</b></tt>) = <tt><b>rk</b></tt>.</p>
+<p><tt><b>flag</b></tt> and <tt><b>tol</b></tt> are optional parameters: <tt><b>flag = 'qr'</b></tt> 
+    or <tt><b>'svd'</b></tt> (default is <tt><b>'svd'</b></tt>).</p>
+<p><tt><b>tol</b></tt> = tolerance parameter (of order <tt><b>%eps</b></tt> as default value).</p>
+<p>
+    The <tt><b>ma-rk</b></tt> first columns of <tt><b>W</b></tt> span the kernel of <tt><b>A</b></tt> 
+    when <tt><b>size(A)=(na,ma)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,2)*rand(2,5);
+[X,r]=colcomp(A);
+norm(A*X(:,1:$-r),1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/kernel.htm"><tt><b>kernel</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.;   </p>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>m2scideclare</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>m2scideclare</b> - Giving tips to help M2SCI...</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+  The main difficulty for M2SCI (<tt><b>mfile2sci</b></tt>) is to find what variables are: dimensions, type...  
+  </p>
+<p>
+  To help this tool, just add comments beginning with <tt><b>%m2scideclare</b></tt> in the M-file to convert, 
+  (<tt><b>%m2sciassume</b></tt> was used in previous Scilab versions and is now obsolete).
+  </p>
+<p>
+  The syntax of this command is:
+  </p>
+<p><tt><b>%m2scideclare variable_name|dimensions|data_type|property</b></tt></p>
+<p>
+  with :
+  </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+      variable_name: name of the variable declared. It can be a Struct field (e.g. <tt><b>x(1,2).name</b></tt>)
+      or describe the contents of a Cell using syntax
+      <tt><b>x(1,2).entries</b></tt>. NOTE that for Cells and Structs,
+      <tt><b>*</b></tt> can be used as an index (see examples below).
+      </li>
+<li>
+<b><font color="maroon"></font></b>
+      dimensions: dimensions of the variable declared separated by blanks, if a dimension is unknown,
+      replace it by <tt><b>?</b></tt>. NOTE that String dimensions must be similar to Matlab ones
+      e.g. <tt><b>1 6</b></tt> for character string 'string'.
+      </li>
+<li>
+<b><font color="maroon"></font></b>
+      data_type: data type of the variable which can be:
+      <div align="center"><table border="2">
+<tr align="center">
+<td>m2scideclare data type</td>
+<td>Scilab "equivalent" type</td>
+</tr>
+<tr align="center">
+<td>Double</td>
+<td>1</td>
+</tr>
+<tr align="center">
+<td>Boolean</td>
+<td>4</td>
+</tr>
+<tr align="center">
+<td>Sparse</td>
+<td>5</td>
+</tr>
+<tr align="center">
+<td>Int</td>
+<td>8</td>
+</tr>
+<tr align="center">
+<td>Handle</td>
+<td>9</td>
+</tr>
+<tr align="center">
+<td>String</td>
+<td>10</td>
+</tr>
+<tr align="center">
+<td>Struct</td>
+<td>Matlab struct (16)</td>
+</tr>
+<tr align="center">
+<td>Cell</td>
+<td>Matlab cell (17)</td>
+</tr>
+<tr align="center">
+<td>Void</td>
+<td>No type (0)</td>
+</tr>
+<tr align="center">
+<td>?</td>
+<td>Unknown type</td>
+</tr>
+</table></div>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+      property: property of the variable which can be:
+      <div align="center"><table border="2">
+<tr align="center">
+<td>m2scideclare property</td>
+<td>Scilab "equivalent"</td>
+</tr>
+<tr align="center">
+<td>Real</td>
+<td>Real data</td>
+</tr>
+<tr align="center">
+<td>Complex</td>
+<td>Complex data</td>
+</tr>
+<tr align="center">
+<td>?</td>
+<td>Unknown property</td>
+</tr>
+</table></div>
+      This field is ignored for following datatypes: <tt><b>Cell</b></tt>,
+      <tt><b>Struct</b></tt>, <tt><b>String</b></tt> and <tt><b>Boolean</b></tt>.
+      </li>
+</dd>
+</dd></dl>
+<p>
+  All data given by <tt><b>m2scideclare</b></tt> are compared with infered data,
+  in case of conflict, infered data are kept and a warning message is displayed.
+  If you are sure about your data, report a bug.
+  </p>
+<p>Some examples are given below:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var1|2 3|Double|Real</b></tt>
+      : var1 is declared as a 2x3 Double matrix containing real data</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var2|2 3 10|Double|Complex</b></tt>
+      : var2 is declared as a 2x3x10 Double hypermatrix containing complex data</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var3(1,2).name|1 10|String|?</b></tt>
+      : var3 is declared as a Struct array containing a 1x10 character string
+      in field 'name' of struct at index (1,2) </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var4(1,5).entries|1 ?|Boolean|?</b></tt>
+      : var4 is declared as a Cell containing a row boolean vector at index (1,5)</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var4(1,6).entries|? ?|Int|?</b></tt>
+      : var4 is declared as a Cell containing a row boolean vector at index (1,5) 
+      and integer data at index (1,6)</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var5(*,*).name|1 ?|String|?</b></tt>
+      : var5 is declared as a Struct array containing a 1xn character string
+      in all fields 'name'</li>
+<li>
+<b><font color="maroon"></font></b><tt><b>%m2scideclare var6(2,*).entries|1 3|Double|Real</b></tt>
+      : var6 is declared as a Cell array containing a 1x3 double vector
+      in each element of its second row</li>
+</dd>
+</dd></dl>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

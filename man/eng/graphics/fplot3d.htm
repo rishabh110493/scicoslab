@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fplot3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fplot3d</b> - 3D plot of a surface defined by a
+  function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>fplot3d(xr,yr,f,[theta,alpha,leg,flag,ebox])</tt></dd>
+<dd><tt>fplot3d(xr,yr,f,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xr</b></tt>: row vector of size n1.</li>
+<li>
+<tt><b>yr</b></tt>: row vector of size n2.</li>
+<li>
+<tt><b>f</b></tt>: external of type z=f(x,y).</li>
+<li>
+<tt><b>theta,alpha,leg,flag,ebox</b></tt>: see <tt><b>plot3d</b></tt>.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: see <tt><b>plot3d</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>fplot3d</b></tt> plots a surface defined by the external function
+    <tt><b>f</b></tt> on the grid defined by <tt><b>xr</b></tt> and
+    <tt><b>yr</b></tt>.</p>
+<p>Enter the command <tt><b>fplot3d()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('z=f(x,y)','z=x^4-y^4')
+x=-3:0.2:3 ;y=x ;
+clf() ;fplot3d(x,y,f,alpha=5,theta=31)  
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

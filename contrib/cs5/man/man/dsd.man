@@ -1,0 +1,70 @@
+.TH DSD  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+DSD  -  Disaggregated Simplicial Decomposition algorithm
+.SH CALLING SEQUENCE
+.nf
+[F,ta,ben,f]=DSD(net,routemax,nFW,eps,list_eps,list_itemax)
+[F,ta,f]=dsd(net,routemax,nFW,eps,list_eps,list_itemax)
+.fi
+.SH PARAMETERS
+.TP 10
+net
+: a NetList
+.TP 10
+routemax
+: maximum number of general iterations
+.TP 10
+nFW
+: number of Frank-Wolfe iterations
+.TP 10
+eps
+: general precision
+.TP 10
+list_eps
+: array of precisions, Newton method precision, auxiliar precision and linear search precision
+.TP 10
+list_itemax
+: array of maximum number of iterations, Newton iterations, auxiliar iteration and linear search iteration
+.TP 10
+F
+: assigned flow
+.TP 10
+ta
+: link travel time for the assigned flow f
+.TP 10
+ben
+: ni x 5 matrix (ni number of performed general iterations) benchmark information
+.TP 10
+f
+: assigned flow disaggregated by commodity
+
+.SH DESCRIPTION
+ Assigns the flow with the disaggregated simplicial decomposition  algorithm.
+This algorithm generates at each iteration a new route for each commodity using AON.
+The traffic is assigned minimizing the total cost over the generated routes using
+a Newton method.
+The version DSD shows performance statistics.
+The version dsd is used mostly inside other algorithms and it does not
+displays any information.
+
+The matrix ben contains intermediary informations on the
+algorithm. For each iteration it gives the iteration number, time
+spent, cost, memory used and an convergence error evaluation.
+
+.SH EXAMPLES
+.nf
+net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+[F,ta,ben,f]=DSD(net,20,0,1e-4,[1e-6,1e-7,1e-8],[2,50,100]);
+.fi
+.SH SEE ALSO
+AON,
+IAON,
+CAPRES,
+FW,
+TrafficAssig
+
+
+
+
+

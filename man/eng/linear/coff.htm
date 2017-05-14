@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>coff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coff</b> -  resolvent (cofactor method)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[N,d]=coff(M [,var])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>M</b></tt>: square real matrix</li>
+<li>
+<tt><b>var</b></tt>: character string</li>
+<li>
+<tt><b>N</b></tt>: polynomial matrix (same size as <tt><b>M</b></tt>)</li>
+<li>
+<tt><b>d</b></tt>: polynomial (characteristic polynomial <tt><b>poly(A,'s')</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>coff</b></tt> computes R=<tt><b>(s*eye()-M)^-1</b></tt> for <tt><b>M</b></tt> a real matrix. 
+    R is given by <tt><b>N/d</b></tt>.</p>
+<p><tt><b>N</b></tt> = numerator polynomial matrix.</p>
+<p><tt><b>d</b></tt> = common denominator.</p>
+<p><tt><b>var</b></tt> character string ('<tt><b>s</b></tt>' if omitted)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+M=[1,2;0,3];
+[N,d]=coff(M)
+N/d
+inv(%s*eye()-M)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/nlev.htm"><tt><b>nlev</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

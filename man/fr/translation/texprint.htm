@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>texprint</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>texprint</b> -  TeX output of Scilab object</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[text]= texprint(a)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: Scilab object</li>
+<li>
+<tt><b>text</b></tt>: list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns the Tex source code of the Scilab variable <tt><b>a</b></tt>.
+    <tt><b>a</b></tt> is a matrix (constant, polynomial, rational) or a linear system
+    (<tt><b>syslin</b></tt> list).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+texprint([1/s,s^2])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/pol2tex.htm"><tt><b>pol2tex</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/pol2str.htm"><tt><b>pol2str</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

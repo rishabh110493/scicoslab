@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>coshm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coshm</b> -  matrix hyperbolic cosine</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=coshm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,t</b></tt>: real or complex square matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    coshm is the matrix hyperbolic  cosine  of the matrix x.
+    <tt><b>t=(expm(x)+expm(-x))/2</b></tt>. Result may be inaccurate for nonsymmetric
+    matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;2,4]
+acoshm(coshm(A))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cosh.htm"><tt><b>cosh</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/expm.htm"><tt><b>expm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

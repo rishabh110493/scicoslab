@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mat_2_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mat_2_graph</b> -  graphe à partir de matrice d'incidence sommets-arcs ou sommets-sommets  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g = mat_2_graph(a,oriented,[mat])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a  </b></tt>
+    : matrice creuse d'incidence sommets-arcs ou  sommets-sommets
+</li>
+<li>
+<tt><b>orienté  </b></tt>
+    : entier, 0 (graphe non-orienté ) ou 1 (graphe orienté)
+</li>
+<li>
+<tt><b>mat  </b></tt>
+    : chaîne optionnelle, 'node-arc' ou 'node-node'
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>mat_2_graph</b></tt> calcule le graphe <tt><b>g</b></tt> correspondant à la matrice creuse d'incidence sommets-arcs ou 
+    sommets-sommets <tt><b>a</b></tt>.
+    Vérification est faite que <tt><b>a</b></tt> est une matrice d'incidence sommets-arcs ou 
+    sommets-sommets d'un graphe orienté (<tt><b>orienté = 1</b></tt>) ou non-orienté 
+    (<tt><b>non-orienté = 0</b></tt>).
+    Si l'argument optionnel <tt><b>mat</b></tt> est omis ou est la chaîne de caractères 
+    <tt><b>'node-arc'</b></tt>, a doit être une matrice sommets-arcs. Si <tt><b>mat</b></tt> est la chaîne de caractères
+    <tt><b>'node-node'</b></tt>, a doit être une matrice sommets-sommets.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+g=load_graph(SCI+'/demos/metanet/colored');
+show_graph(g);
+a=graph_2_mat(g);
+g1=mat_2_graph(a,1);
+g1('node_x')=g('node_x'); g1('node_y')=g('node_y');
+show_graph(g1,'new');
+a=graph_2_mat(g,'node-node');
+g1=mat_2_graph(a,1,'node-node');
+g1('node_x')=g('node_x'); g1('node_y')=g('node_y');
+show_graph(g1,'new');
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/adj_lists.htm"><tt><b>adj_lists</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/chain_struct.htm"><tt><b>chain_struct</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph_2_mat.htm"><tt><b>graph_2_mat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

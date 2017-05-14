@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plotprofile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plotprofile</b> -  extracts and displays execution profiles
+                     of a Scilab function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>plotprofile(fun)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>fun</b></tt>: a Scilab compiled function, or a function name (string), or an array of
+                function names</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    To use <tt><b>plotprofile</b></tt>, the Scilab function must have been prepared for
+    profiling (see getf).</p>
+<p>
+    When such a function is executed, the system
+    counts how many times each line is executed and how much cpu time is
+    spent executing each line. This data is stored within the
+    function data structure. The function <tt><b>plotprofile</b></tt> in an interactive
+    command which displays this results in a graphic window. When a line
+    is clicked, the source of the function is displayed with the selected line
+    highlighted.</p>
+<p>
+    NOTE: you have to click on the "Exit" item in the graphics windows to
+    exit from "plotprofile".</p>
+<p>
+    The function code is regenerated with <tt><b>fun2string</b></tt> and dumped into
+    a temporary file.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//define a function and prepare it for profiling
+deff('x=foo(n)',['if n==0 then'
+                 '  x=[]'
+                 'else'
+                 '  x=0'
+                 '  for k=1:n'
+                 '    s=svd(rand(n+10,n+10))'
+                 '    x=x+s(1)'
+                 '  end'
+                 'end'],'p')
+//call the function
+foo(30)
+//get execution profiles
+plotprofile(foo) // click on Exit to exit
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/profile.htm"><tt><b>profile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/showprofile.htm"><tt><b>showprofile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/fun2string.htm"><tt><b>fun2string</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>biGls </title></head>
+<body bgcolor="FFFFFF">
+<CENTER>Traffic-toolbox Function  </CENTER>
+<p><b>biGls  -   Bilevel optimisation function using a global linear search  </b></p>
+<H3><font color="blue">Calling Sequence</font></H3>
+<dl><dd><tt>[prix,opfV,sfV,sP]=biGls(prlk,lp,up,dia,prix0,eps)</tt></dd></dl>
+<H3><font color="blue">Parameters</font></H3>
+<ul><ul>
+  <li><tt><b>prlk  </b></tt>
+    : row vector of the priced links
+  </li>
+  <li><tt><b>lp  </b></tt>
+    : lower bound for prices
+  </li>
+  <li><tt><b>up  </b></tt>
+    : uper bound for prices 
+  </li>
+  <li><tt><b>dia  </b></tt>
+    : if it is true a diagonal search direction is used in the first step of the algorithm
+  </li>
+  <li><tt><b>prix0  </b></tt>
+    : initial price 
+  </li>
+  <li><tt><b>eps  </b></tt>
+    : general precision
+  </li>
+  <li><tt><b>prix  </b></tt>
+    : optimal link prices
+  </li>
+  <li><tt><b>opfV  </b></tt>
+    : optimum value of the profit function
+  </li>
+  <li><tt><b>sfV  </b></tt>
+    : sequence of the profit function values
+  </li>
+  <li><tt><b>sP  </b></tt>
+    : sequence of prices
+  </li>
+   </ul></ul>
+<H3><font color="blue">Description</font></H3><dl>
+<p>This function solves numerically the optimal network pricing problem
+given by: Max_y f(x(y),y)=y'x(y), subject to x being solution of the 
+parametric (with parameter y) traffic assignment problem over the traffic 
+network describe in the global variable %net.
+</p>
+<p>The algorithm is based on a cyclic decomposition along coordenate axis
+of upper level objective function (given by the links prices y). 
+In each direction a one-dimensional global optimization is performed 
+using as initial point the optimum found in the previous iteration.
+</p>  
+<p>
+In this case GLSsci is used to do one-dimensional search.
+GLSsci is the Scilab version of Matlab GLS, Global Line Search. 
+GLS is a Matlab program for univariate local or global optimization using 
+function values only, implemented as optimization in R^n along a ray 
+x+alp*p (alp>=0). Source of matlab version: 
+http://www.mat.univie.ac.at/~neum/software/ls/
+</p>
+<p>
+</p>
+
+<p>
+</p>
+
+</dl><H3><font color="blue">EXAMPLES</font></H3>
+<ul><pre>
+%net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+[prix,opfV,sfV,sP]=biGls([10,21],0,10,1,[0,0],1e-5);
+</pre></ul>
+<H3><font color="blue">See Also</font></H3>
+<p><ul><a href="biterGrid.htm"><tt><b>biterGrid</b></tt></a>&nbsp;&nbsp;<a href="biGraphic.htm"><tt><b>biGraphic</b></tt></a>&nbsp;&nbsp;<a href="bilevel.htm"><tt><b>bilevel</b></tt></a>&nbsp;&nbsp;
+</ul></p>
+</body>
+</html>

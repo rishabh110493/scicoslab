@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>inttrap</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inttrap</b> -  intégration approchée de données expérimentales avec la méthode des trapèzes.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>v = inttrap([x,] s)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur des abscisses, classées par ordre croissant. La valeur par défaut est <tt><b>1:size(y,'*')</b></tt>
+</li>
+<li>
+<tt><b>s  </b></tt>
+    : vecteur des ordonnées.
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : valeur de l'approximation de l'intégrale
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calcule une approximation de :
+  </p>
+<p>
+    où f est donnée sous forme de valeurs expérimentales :
+  </p>
+<p><tt><b>s(i)=f(x(i))</b></tt>  et <tt><b>x0=x(1)</b></tt>, <tt><b>x1=x(n)</b></tt></p>
+<p>
+    Entre les points, f est approchée linéairement.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+t=0:0.1:%pi
+inttrap(t,sin(t))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/intg.htm"><tt><b>intg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/intc.htm"><tt><b>intc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/intl.htm"><tt><b>intl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/integrate.htm"><tt><b>integrate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/intsplin.htm"><tt><b>intsplin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/splin.htm"><tt><b>splin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

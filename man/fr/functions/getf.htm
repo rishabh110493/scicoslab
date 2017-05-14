@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getf</b> -  chargement de fonctions à partir d'un fichier  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>getf(file-name [,opt])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename  </b></tt>: chaîne de caractères</li>
+<li>
+<tt><b>opt  </b></tt>: chaîne de caractères optionnelle. Si
+	  opt=="c", les fonctions sont
+	  "compilées" pour accélérer leur
+	  exécution (par défaut). Si opt=="n", les
+	  fonctions ne sont pas "compilées". Si
+	  opt=="p",les fonctions sont
+	  "compilées" et préparées pour les
+	  statistiques d'appel (voir <tt><b>profile</b></tt>) </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Charge une ou plusieurs fonctions (voir <tt><b>functions</b></tt>)
+      définies dans le fichier <tt><b>'file-name'</b></tt>.
+      La chaîne de caractères <tt><b>opt='n'</b></tt>
+      signifie que les fonctions ne sont pas compilées
+      (pré-interprétées) au chargement. Cela peut être
+      utile en phase de mise au point (voir <tt><b>comp</b></tt>). Par
+      défaut les fonctions sont compilées
+      (i.e. <tt><b>opt='c'</b></tt> est utilisée).
+    </p>
+<p>
+      Dans le fichier chaque fonction doit commencer par une ligne de
+      la forme :
+    </p>
+<pre>
+    function [y1,...,yn]=foo(x1,...,xm)
+    </pre>
+<p>
+      les lignes suivantes contiennent la r une suite d'instructions Scilab.
+    </p>
+<p>
+      La "ligne de définition" donne la syntaxe
+      d'appel complète de la fonction.  Les <tt><b>yi</b></tt>
+      sont les variables de sortie, calculées à partir des
+      variables d'entrée <tt><b>xi</b></tt> et des variables
+      existantes dans le contexte appelant lorsque la fonction est
+      exécutée. On peut utiliser éventuellement un
+      sous-ensemble de ces variables d'entrée et de sortie.
+    </p>
+<p>
+      Il est possible d'écrire plusieurs fonctions dans un
+      seul fichier. Une fonction est alors terminée par le
+      mot-clé <tt><b>endfunction</b></tt> ou par la ligne de
+      déclaration de la fonction suivante (ancienne convention) ou
+      par la fin du fichier.
+    </p>
+<p>L'usage de <tt><b>getf</b></tt> ne permet pas gérer
+    correctement les fichiers contenant des fonctions définies a
+    l'intérieur d'une fonction. Le chargement de tels fichiers ne
+    eput se faire que par l'intermédiaire de la fonction
+    <tt><b>exec</b></tt>. </p>
+<p><tt><b>getf</b></tt> est une fonction obsolete. Le chargement des
+    fonctions doit être réalisé en utilisant la fonction
+    <tt><b>exec</b></tt>. A noter que dans ce cas l'usage des mots-clé
+    <tt><b>endfunction</b></tt> est impératif. L'usage de
+    <tt><b>exec</b></tt> sous entend l'option<tt><b>opt=='c'</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  getf('SCI/macros/xdess/plot.sci')
+
+  getf SCI/macros/xdess/plot.sci
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/functions.htm"><tt><b>functions</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/genlib.htm"><tt><b>genlib</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/getd.htm"><tt><b>getd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

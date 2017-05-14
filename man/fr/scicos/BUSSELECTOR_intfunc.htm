@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>BUSSELECTOR_intfunc</TITLE>
+<META NAME="description" CONTENT="BUSSELECTOR_intfunc">
+<META NAME="keywords" CONTENT="BUSSELECTOR_intfunc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BUSSELECTOR_intfunc.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Fonction d'interfaçage
+<BR><A NAME="tex2html1"
+  HREF="./BUSSELECTOR_intfunc.htm">fr</A>
+
+</DIV>
+<H2><A NAME="SECTION00010000000000000000"></A><A NAME="BUSSELECTOR_intfunc"></A>
+<BR>
+BUSSELECTOR
+</H2>
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Contenu du fichier</A>
+</font></H3>
+<BR>
+<PRE  CLASS="verbatim">function [x,y,typ]=BUSSELECTOR(job,arg1,arg2)
+// Copyright INRIA
+x=[];y=[];typ=[];
+select job
+case 'plot' then
+  standard_draw(arg1)
+case 'getinputs' then
+  [x,y,typ]=standard_inputs(arg1)
+case 'getoutputs' then
+  [x,y,typ]=standard_outputs(arg1)
+case 'getorigin' then
+  [x,y]=standard_origin(arg1)
+case 'set' then
+  x=arg1;
+  graphics=x.graphics;model=x.model;
+  exprs=graphics.exprs
+  old_SelectedSignals=exprs(2)(1)
+  //scs_m=scs_m;
+  if graphics.pin(1) &lt;&gt; 0 then
+    //[Signals,ok]=FindSignalsInBus(x,scs_m,graphics.pin(1))
+   // Signals=exprs(1)
+     //if ~ok then return;end
+  else
+    //Signals=[];
+  end
+  //if model.opar&lt;&gt;list() then opar=model.opar(1); else opar=[];end
+  ok=%f
+  while ~ok do
+    //if Signals==[] then ok=%f;message('No Input Signals to Select');return;end
+    [ln,fun]=where();
+    if find (fun=="SUPER_f")&lt;&gt;[] then
+      v=find (fun=="SUPER_f")
+      fun=fun(1:v(1)-1)
+    end
+    if or(fun=="clickin") then
+      label=list(exprs(2)(1),exprs(1))
+      [okk,SelectedSignals,outputbus,label]=getvalue('This is just for test',..
+	  ['Signal Selected','Output type bus (0=No 1=yes)'],..
+	  list('string',-1,'vec',1),label) // just for test
+      outputbus=string(outputbus)
+      ierr=execstr('SelectedSignals=evstr(SelectedSignals)','errcatch');
+      if ierr&lt;&gt;0 then
+	message(['The Format you entered for the ""Signal Selected"" is wrong';
+	         'It must be ""[""S1"";""S2""]""']);okk=%f;
+      end
+      //[okk,SelectedSignals,outputbus]=BusSelectorProperties(Signals,opar,model.ipar)
+    else
+      if ~exists('okk')then okk=%t;end
+
+      SelectedSignals=evstr(exprs(2)(1))
+      outputbus=exprs(1)
+    end
+    if ~okk then return;end 
+    ok=%t;
+    SSignals=unique(SelectedSignals);
+    if size(SSignals,'*')&lt;size(SelectedSignals,'*') then
+      ok=%f
+      message('Signals must be extracted only one time from the bus');
+    end
+    //err_signal=setdiff(SelectedSignals(:),Signals(:))
+    //if err_signal&lt;&gt;[] then
+      //ok=%f
+      // message('The Signal ""'+err_signal+'"" in the selected list doesn''t exist in the Signal list. Please check it');
+    //end
+   okk=ok
+    if ok then
+      outnb=size(SelectedSignals,'*');
+//      inpsignals=size(Signals,'*');
+//      onesignalstay=(inpsignals-outnb==1) 
+//      outbus=(inpsignals-outnb&gt;1)
+     if outputbus=='0' then
+       if outnb&gt;0 then
+         out=[-[1:outnb]' -(outnb+[1:outnb]')];
+         ot=-[1:outnb]'
+       else out=[],ot=[]
+       end
+       [model,graphics,ok]=set_io(model,graphics,list([0 0],-1),list(out,ot),[],[],[],[],1,[])
+      // exprs=list(Signals',[])
+      exprs=list(outputbus,list(sci2exp(SelectedSignals(:)),[]))
+     else
+        out=[-1 -2],ot=-1
+ 	[model,graphics,ok]=set_io(model,graphics,list([0 0],-1),list(out,ot),[],[],[],[],1,1)
+	//exprs=list(Signals',SelectedSignals(:))
+	exprs=list(outputbus,list(sci2exp(SelectedSignals(:)),[]))
+     end	 
+    end
+    if ok then
+      if or(old_SelectedSignals&lt;&gt;SelectedSignals) then needcompile=4;y=needcompile;end
+      //graphics.signal_propagated=SelectedSignals;
+      graphics.exprs=exprs;
+      //model.opar=list(SelectedSignals);
+      if outnb&gt;3 &amp; outputbus=='0' then graphics.sz=[10 40+(outnb-3)*10];
+      else graphics.sz=[10 40];
+      end
+      x.model=model;x.graphics=graphics;
+      break
+    end
+  end
+  needcompile=resume(needcompile);
+case 'define' then
+  
+  model=scicos_model()
+  model.sim='busselector'
+  model.out=-1
+  model.out2=-2
+  model.outtyp=-1
+  model.in=0
+  model.intyp=-1
+  model.ipar=[]
+  model.opar=list()
+  model.blocktype='c'
+  model.dep_ut=[%t %f]
+
+  exprs=list('1',list([],[],[]))
+  gr_i=' ' //'xstringb(orig(1),orig(2),''BUS'',sz(1),sz(2),''fill'')'
+  x=standard_define([.5 2],model,exprs,gr_i)
+  x.graphics.id="DEBUS"
+  x.graphics.out_implicit='B'
+  x.graphics.in_implicit="B"
+end
+endfunction
+
+function [ok,SelSignals,outputbus]=BusSelectorProperties(Signals,opar,outputbus)
+SigVal=[]
+for i=1:size(Signals,'*')
+  ind=strindex(Signals(i),' ');
+  if ind&lt;&gt;[] then 
+    SigVal=[SigVal;strcat(['{',Signals(i),'}'])];
+  else 
+  SigVal=[SigVal;Signals(i)];
+  end
+end
+SSignal=opar(:)
+SelectedSignal=[]
+for i=1:size(SSignal,'*')
+  ind=strindex(SSignal(i),' ');
+  if ind&lt;&gt;[] then 
+    SelectedSignal=[SelectedSignal;strcat(['{',SSignal(i),'}'])];
+  else 
+  SelectedSignal=[SelectedSignal;SSignal(i)];
+  end
+end
+txt=['set www .busselectorxx'
+     'catch {destroy $www}'
+     'toplevel $www'
+     'set numx [winfo pointerx .]'
+     'set numy [winfo pointery .]'
+     'wm geometry $www +$numx+$numy'
+     'wm title $www '"Parameters'"'
+     'wm iconname $www '"busselector'"'
+     '#positionWindow $www'
+     'frame $www.buttons'
+     'pack $www.buttons -side bottom -fill x -pady 2m'
+     'button $www.buttons.dismiss -text Dismiss -command {set done 2}'
+     'button $www.buttons.code -text OK -command {set done 1}'
+     'pack $www.buttons.dismiss $www.buttons.code -side left -expand 1'
+     'frame $www.chkbox'
+     'pack $www.chkbox -side bottom -fill x -pady 2m'
+     'checkbutton $www.chkbox.outbus -text ""Output as bus"" -variable outputbus'
+     'pack $www.chkbox.outbus -side right'
+     'frame $www.signal'
+     'pack $www.signal -side bottom -fill x -pady 2m'
+     'listbox $www.signal.lst'
+      strcat(['lappend SignalsList' SigVal'],' ')
+     '$www.signal.lst configure -listvariable SignalsList'
+     'pack $www.signal.lst -side left -expand 1' 
+     'panedwindow $www.signal.buttons -orient vertical -opaqueresize 0'
+     'button $www.signal.buttons.select -text Select&gt;&gt; '
+     'button $www.signal.buttons.remove -text Remove '
+     '$www.signal.buttons add $www.signal.buttons.select'
+     '$www.signal.buttons.select configure -state disabled'
+     '$www.signal.buttons add $www.signal.buttons.remove'
+     '$www.signal.buttons.remove configure -state disabled'
+     'pack $www.signal.buttons -side left -expand 1'
+     'listbox $www.signal.lst2'
+      strcat(['lappend SelectedSignals' SelectedSignal'],' ')
+     '$www.signal.lst2 configure -listvariable SelectedSignals'
+     'pack $www.signal.lst2 -side left -expand 1'
+     ];
+txt=[txt;
+     ['frame $www.def'
+     'pack $www.def -side bottom -fill x -pady 2m'
+     'label $www.def.lab -text ""This block selected signals from a bus""'
+     'pack $www.def.lab -side left -expand 1']];
+tt='';
+for i=1:size(SigVal,'*')
+  SV=strsubst(SigVal(i),'{','');SV=strsubst(SV,'}','');
+  tt=tt+'""'+SV+'"" ';
+end
+txt=[txt;
+     ['$www.signal.lst delete 0 end'
+     '$www.signal.lst insert end '+tt]];
+tt='';
+for i=1:size(SelectedSignal,'*')
+  SSG=strsubst(SelectedSignal(i),'{','');SSG=strsubst(SSG,'}','');
+  tt=tt+'""'+SSG+'"" ';
+end
+txt=[txt;
+     ['$www.signal.lst2 delete 0 end'
+     '$www.signal.lst2 insert end '+tt]];
+tt='set Selectindx [$www.signal.lst curselection];'+.. 
+   'set ButtonState [$www.signal.buttons.select cget -state];'+..
+   'if {$Selectindx != """" &amp; $ButtonState != ""disabled""} {'+..
+   'set SelectSignal [$www.signal.lst get $Selectindx];'+..
+   '$www.signal.lst2 insert end $SelectSignal;}'
+txt=[txt;
+    ['proc Select {www} {'+tt+'}']];
+tt='set Selectindx [$www.signal.lst2 curselection];'+..
+   'set ButtonState [$www.signal.buttons.remove cget -state];'+..
+   'if {$Selectindx != """" &amp; $ButtonState != ""disabled""} {'+..
+   '$www.signal.lst2 delete $Selectindx;}';
+txt=[txt;
+    ['proc Remove {www} {'+tt+'}']];   
+tt='global SelectedSignals;global outputbus'
+txt=[txt;
+     ['proc done1 {www} {'+tt+'}']];
+tt1='$www.signal.buttons.select configure -state normal;'+..
+    '$www.signal.buttons.remove configure -state disabled';
+tt2='$www.signal.buttons.remove configure -state normal;'+..
+    '$www.signal.buttons.select configure -state disabled';    
+txt=[txt;
+     ['bind $www.signal.lst &lt;1&gt; {'+tt1+'}'
+     'bind $www.signal.lst2 &lt;1&gt; {'+tt2+'}'
+     'bind $www.signal.buttons.select &lt;ButtonPress&gt; {Select $www}'
+     'bind $www.signal.buttons.remove &lt;ButtonPress&gt; {Remove $www}'
+     'set done 0'
+     'bind $www &lt;Return&gt; {set done 1}'
+     'bind $www &lt;Destroy&gt; {set done 2}'
+     'tkwait variable done'
+     'if {$done==1} {done1 $www}']];
+TCL_EvalStr(txt);
+done=TCL_GetVar('done')
+if done==string(1) then
+  outputbus=TCL_GetVar('outputbus');
+  SelSignals=TCL_GetVar('SelectedSignals');
+  ok=%t
+  indxstart=strindex(SelSignals,'{')
+  indxend=strindex(SelSignals,'}')
+  if indxstart&lt;&gt;[] then
+    SignalVect=part(SelSignals,[1:indxstart(1)-1])
+    SignalVect=tokens(SignalVect)
+    SignalVect=[SignalVect;part(SelSignals,[indxstart(1)+1:indxend(1)-1])]
+    for i=2:size(indxstart,'*')
+      SVect=part(SelSignals,[indxend(i-1)+1:indxstart(i)-1])
+      SVect=tokens(SVect)
+      SignalVect=[SignalVect;SVect;part(SelSignals,[indxstart(i)+1:indxend(i)-1])]
+    end
+    SVect=part(SelSignals,[indxend($)+1:length(SelSignals)])
+    SVect=tokens(SVect)
+    SignalVect=[SignalVect;SVect]
+   else
+    SignalVect=tokens(SelSignals);
+   end
+  SelSignals=SignalVect
+else
+  ok=%f;SelSignals=opar(:);outputbus=outputbus
+end
+TCL_EvalStr('destroy $www')
+endfunction
+</PRE>
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

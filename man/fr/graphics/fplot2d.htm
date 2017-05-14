@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fplot2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fplot2d</b> - 2D plot of a curve defined by a
+  function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>fplot2d(xr,f,[style,strf,leg,rect,nax])</tt></dd>
+<dd><tt>fplot2d(xr,f,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xr</b></tt>: vector.</li>
+<li>
+<tt><b>f</b></tt>: external of type <tt><b>y=f(x)</b></tt> i.e. a scilab function or
+          a dynamically linked routine referred to as a string.</li>
+<li>
+<tt><b>style,strf,leg,rect,nax</b></tt>: see <tt><b>plot2d</b></tt>
+</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: see <tt><b>plot2d</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>fplot2d</b></tt> plots a curve defined by the external function
+    <tt><b>f</b></tt>. The curve is approximated by a piecewise linear
+    interpolation using the points <tt><b>(xr(i),f(xr(i))</b></tt>. The values of
+    f(x) are obtained by <tt><b>feval(xr,f)</b></tt>.</p>
+<p>Enter the command <tt><b>fplot2d()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff("[y]=f(x)","y=sin(x)+cos(x)")
+x=[0:0.1:10]*%pi/10;
+fplot2d(x,f)
+clf();
+fplot2d(1:10,'parab')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/feval.htm"><tt><b>feval</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/paramfplot2d.htm"><tt><b>paramfplot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

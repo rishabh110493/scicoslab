@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pie</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pie</b> - cercle graphique</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>pie(x)</tt></dd>
+<dd><tt>pie(x[,sp[,txt]])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: un scalaire ou un vecteur de réels positifs.</li>
+<li>
+<tt><b>sp</b></tt>: un scalaire ou un vecteur de réels.</li>
+<li>
+<tt><b>txt</b></tt>: une cell ou un vecteur de strings.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>x, sp et style doivent etre de meme longueur.</p>
+<p><tt><b>pie(x) :</b></tt> si la longueur du vecteur x est N alors la
+		fonction pie dessine un cercle graphique constitué de N part. La surface
+		de la ième part est egale à  : (x(i)/sum(x))*(aire du cercle unité). c'est
+		la division de la valeur de la ième composante de x divisée par la somme
+		des composantes de x</p>
+<p><tt><b>pie(x,sp) : </b></tt>le vecteur sp permet de couper une ou
+		plusieurs parts du cercle, (la longueur de sp doit etre egale a la
+		longueur de x). Si la valeur de la ième composante de sp est different de
+		0 alors la ième part est séparée des autres part(donc du cercle) par un
+		espace, Si la valeur de la ième composante de sp est egale à  0 alors elle
+		est attachée aux autres.</p>
+<p><tt><b>pie(x,txt) :</b></tt> le vecteur txt permet d'ecrire un texte à 
+		coté de chacune des part du cercle, la ième composante de txt correspond
+		au texte de la ième part (par défaut : on ecrit à  coté de chaque part le
+		pourcentage de l'aire d'une part par rappport à  la surface totale du
+		cercle. La longueur du vecteur txt doit etre égale à  la longueur.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// Premier exemple : un argument d'entrée  x=[1 2 5] 
+scf(0);
+pie([1 2 5]);
+
+// Deuxième example : deux arguments d'entrées x=[5 9  4 6 3], sp=[0 1 0 1 0], la 2ème et 4ème parts du cercle sont séparées des autres
+scf(1);
+pie([5 9 4 6 3],[0 1 0 1 0]);
+
+// Troisième exemple : trois arguments d'entrées, x=[3 4 6 2], sp=[0 1 0 0], txt=["part1","part2","part3","part4"]
+scf(2);
+pie([3 4 6 2],[0 1 0 0],["part1","part2","part3","part4"]);
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xfpolys.htm"><tt><b>xfpolys</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Farid Belahcene</p>
+</body>
+</html>

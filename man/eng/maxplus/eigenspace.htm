@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eigenspace</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eigenspace</b> -   maxplus eigenelements  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,l]=eigenspace(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : maxplus full square matrix 
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    :  eigenspace basis
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : eigenvalue
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Maxplus eigenvalues and basis of the corresponding eigenspace
+    for a maxplus matrix
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[v,l]=eigenspace(#(1))
+a=#([1,2;3,4]);[v,l]=eigenspace(a)
+a*v==l*v
+a=#([1,0;0,1]); [v,l]=eigenspace(a)
+a*v==l*v
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

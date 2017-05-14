@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>companion</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>companion</b> -  matrice compagnon  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>A=companion(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p  </b></tt>
+    : polynôme ou vecteur de polynômes
+</li>
+<li>
+<tt><b>A  </b></tt>
+    : matrice carrée
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Renvoie une matrice <tt><b>A</b></tt> dont le polynôme caractéristique est
+    <tt><b>p</b></tt> si <tt><b>p</b></tt> est unitaire (le coefficient de plus haut degré est égal à un). Si <tt><b>p</b></tt> n'est pas unitaire
+    le polynôme caractéristique de <tt><b>A</b></tt> est égal à
+    <tt><b>p/c</b></tt> où <tt><b>c</b></tt> est le coefficient de plus haut degré de <tt><b>p</b></tt>.
+  </p>
+<p>
+    Si <tt><b>p</b></tt> est un vecteur de polynômes unitaires, <tt><b>A</b></tt> est bloc-diagonale,
+    et le polynôme caractéristique du i-ème bloc est égal à <tt><b>p(i)</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+p=poly([1,2,3,4,1],'s','c')
+det(s*eye()-companion(p))
+roots(p)
+spec(companion(p))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/randpencil.htm"><tt><b>randpencil</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

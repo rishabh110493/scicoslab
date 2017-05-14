@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>gen_net</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gen_net</b> -  génération aléatoire ou interactive d'un réseau  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>g = gen_net(name,oriented,v)  </tt></dd>
+<dd><tt>g = gen_net()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name  </b></tt>
+    : chaîne de caractères, le nom du graphe
+</li>
+<li>
+<tt><b>oriented  </b></tt>
+    :  entier, 0 (graphe non-orienté) ou 1 (graphe orienté)
+</li>
+<li>
+<tt><b>v  </b></tt>
+    : vecteur ligne avec 12 valeurs pour définir le réseau
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>gen_net</b></tt> génère un réseau <tt><b>g</b></tt>.
+    Les arguments sont le nom du graphe, un flag égal à 0
+    (graphe non-orienté) ou 1 (graphe orienté) et un vecteur décrivant
+    le réseau (voir ci-dessous).
+  </p>
+<p>
+    Si aucun argument n'est donné, une boîte de dialogue pour la définition
+    de tous les arguments est ouverte.
+  </p>
+<p><tt><b>v</b></tt> doit être un vecteur ligne avec 12 valeurs.
+    La signification de ces valeurs est :
+  </p>
+<p>
+    Graine pour random : utilisé pour l'initialisation du générateur aléatoire
+  </p>
+<p>
+    Nombre de sommets
+  </p>
+<p>
+    Nombre de sources
+  </p>
+<p>
+    Nombre de puits
+  </p>
+<p>
+    Coût Minimum
+  </p>
+<p>
+    Coût Maximum
+  </p>
+<p>
+    Ressources d'entrée
+  </p>
+<p>
+    Ressources de sortie
+  </p>
+<p>
+    Capacité Minimum
+  </p>
+<p>
+    Capacité Maximum
+  </p>
+<p>
+    Pourcentage d'arêtes avec coûts : entre 0 et 100
+    Pourcentage d'arêtes avec capacités : entre 0 et 100
+  </p>
+<p>
+    Le coût des arêtes sans coût est fixé au coût minimum.
+    La capacité maximum des arêtes sans capacité est fixée aux ressources 
+    d'entrée.
+  </p>
+<p>
+    Le résultat est un réseau <tt><b>g</b></tt> construit sur un graphe planaire connecté, 
+    en utilisant une méthode de triangulation. De plus, les calculs sont faits 
+    de manière à obtenir un réseau cohérent. Les valeurs des coûts et des 
+    capacités maximum sont affectées aux arêtes. Les capacités minimum sont 
+    réduites à 0.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+v=[1,10,2,1,0,10,100,100,0,100,50,50];
+g=gen_net('foo',1,v);
+show_graph(g)
+// génération interactive
+g=gen_net();
+show_graph(g)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/mesh2d.htm"><tt><b>mesh2d</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

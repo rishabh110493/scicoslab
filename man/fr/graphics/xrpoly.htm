@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xrpoly</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xrpoly</b> -   dessine un polygone régulier  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xrpoly(orig,n,r,[theta])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>orig  </b></tt>
+    : vecteur de taille 2.
+</li>
+<li>
+<tt><b>n  </b></tt>
+    : entier, nombre de faces.
+</li>
+<li>
+<tt><b>r  </b></tt>
+    : scalaire.
+</li>
+<li>
+<tt><b>theta  </b></tt>
+    : réel, angle en radians (0 par défaut).
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xrpoly</b></tt> dessine un polygone régulier à <tt><b>n</b></tt> faces contenu dans le disque de 
+    diamètre <tt><b>r</b></tt> et avec l'origine au point <tt><b>orig</b></tt>. 
+    <tt><b>theta</b></tt>  spécifie un angle de rotation en radians. Cette fonction utilise
+    l'échelle graphique courante. 
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+plot2d(0,0,-1,"012"," ",[0,0,10,10])
+xrpoly([5,5],5,5)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xrect.htm"><tt><b>xrect</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

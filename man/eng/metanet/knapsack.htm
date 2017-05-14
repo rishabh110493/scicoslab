@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>knapsack</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>knapsack</b> -  solves a 0-1 multiple knapsack problem</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[earn,ind] = knapsack(profit,weight,capa,[bck])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>profit</b></tt>: integer row vector</li>
+<li>
+<tt><b>weight</b></tt>: integer row vector</li>
+<li>
+<tt><b>capa</b></tt>: integer row vector</li>
+<li>
+<tt><b>bck</b></tt>: integer</li>
+<li>
+<tt><b>earn</b></tt>: integer</li>
+<li>
+<tt><b>ind</b></tt>: integer row vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>knapsack</b></tt> solve a 0-1 multiple knapsack problem with  n (n &gt;= 2)
+    items and  m  knapsacks (m &gt;= 1).
+    <tt><b>profit</b></tt> is the vector of the (integer) profits of the n items and
+    <tt><b>weight</b></tt> is the vector of the corresponding (integer) weights.
+    <tt><b>capa</b></tt> is the vector of the (integer) capacities of the m 
+    knapsacks. 
+    <tt><b>bck</b></tt> is an optional integer: the maximum number of backtrackings to be 
+    performed, if heuristic solution is required. If the exact solution is 
+    required <tt><b>bck</b></tt> can be omitted or can have a negative value.
+    <tt><b>earn</b></tt> is the value of the criterium for the "optimal" solution and 
+    <tt><b>ind</b></tt> is a vector giving the optimal location:  <tt><b>ind(i)</b></tt> gives the 
+    number of the knapsack where item i is inserted and this value is 0 if the
+    item i is not in the optimal solution.</p>
+<p>
+    We recall that the problem to be solved is the following:
+    <tt><b>p(i)</b></tt> and <tt><b>w</b></tt> denote respectively the profit and the weight of the 
+    item <tt><b>i</b></tt> 1=1,...,n; 
+    <tt><b>c(j)</b></tt> denotes the capacity of the knapsack <tt><b>j</b></tt> j=1,...,m;  
+    <tt><b>q(j,i)</b></tt> denotes the quantity of item <tt><b>i</b></tt> in knapsack <tt><b>j</b></tt> (in fact 
+    0 or 1).</p>
+<p>
+    We want to maximize the global profit <tt><b>E</b></tt>:
+     <tt><b>E=p(1)*[x(1,1)+...+x(m,1)]+...+p(n)*[x(1,n)+...+x(m,n)]</b></tt></p>
+<p>
+    under the constraints:
+     <tt><b>[w(1)*x(j,1)+...+w(n)*x(j,m)] &lt;= c(j) ; j=1,...,m</b></tt><tt><b>[x(1,i)+...+x(m,i)] &lt;= 1 ; i=1,...,n</b></tt><tt><b>x(j,i)= 0 or 1</b></tt><tt><b>p(),w(),c()</b></tt> are positive integers.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+weight=ones(1,15).*.[1:4];
+profit=ones(1,60);
+capa=[15 45 30 60];
+[earn,ind]=knapsack(profit,weight,capa)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/qassign.htm"><tt><b>qassign</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

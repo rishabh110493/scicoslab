@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>spantwo</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spantwo</b> -  sum and intersection of subspaces</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Xp,dima,dimb,dim]=spantwo(A,B, [tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, B</b></tt>: two real or complex matrices with equal number of rows</li>
+<li>
+<tt><b>Xp</b></tt>: square non-singular matrix</li>
+<li>
+<tt><b>dima, dimb, dim</b></tt>: integers, dimension of subspaces</li>
+<li>
+<tt><b>tol</b></tt>: nonnegative real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given two matrices <tt><b>A</b></tt> and <tt><b>B</b></tt> with same number of rows,
+    returns a square matrix <tt><b>Xp</b></tt> (non singular but not necessarily orthogonal) 
+    such that :</p>
+<pre>
+
+         [A1, 0]    (dim-dimb rows)
+Xp*[A,B]=[A2,B2]    (dima+dimb-dim rows)
+         [0, B3]    (dim-dima rows)
+         [0 , 0]
+   
+    </pre>
+<p>
+    The  first <tt><b>dima</b></tt>  columns of <tt><b>inv(Xp)</b></tt> span range(<tt><b>A</b></tt>).</p>
+<p>
+    Columns <tt><b>dim-dimb+1</b></tt> to <tt><b>dima</b></tt> of <tt><b>inv(Xp)</b></tt> span the 
+    intersection of range(A) and range(B).</p>
+<p>
+    The <tt><b>dim</b></tt> first columns of <tt><b>inv(Xp)</b></tt> span 
+    range(<tt><b>A</b></tt>)+range(<tt><b>B</b></tt>).</p>
+<p>
+    Columns <tt><b>dim-dimb+1</b></tt> to <tt><b>dim</b></tt> of <tt><b>inv(Xp)</b></tt> span 
+    range(<tt><b>B</b></tt>).</p>
+<p>
+    Matrix <tt><b>[A1;A2]</b></tt> has full row rank (=rank(A)). Matrix <tt><b>[B2;B3]</b></tt> has
+    full row rank (=rank(B)). Matrix <tt><b>[A2,B2]</b></tt> has full row rank (=rank(A inter B)). Matrix <tt><b>[A1,0;A2,B2;0,B3]</b></tt> has full row rank (=rank(A+B)).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,0,0,4;
+   5,6,7,8;
+   0,0,11,12;
+   0,0,0,16];
+B=[1,2,0,0]';C=[4,0,0,1]; 
+Sl=ss2ss(syslin('c',A,B,C),rand(A));
+[no,X]=contr(Sl('A'),Sl('B'));CO=X(:,1:no);  //Controllable part
+[uo,Y]=unobs(Sl('A'),Sl('C'));UO=Y(:,1:uo);  //Unobservable part
+[Xp,dimc,dimu,dim]=spantwo(CO,UO);    //Kalman decomposition
+Slcan=ss2ss(Sl,inv(Xp));
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spanplus.htm"><tt><b>spanplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/spaninter.htm"><tt><b>spaninter</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sci2exp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sci2exp</b> -  convertit une expression ou une instruction d'affectation en une chaîne  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=sci2exp(a [,nam] [,lmax])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a  </b></tt>
+    : une expression Scilab de type
+  </li>
+<li>
+<tt><b>nam  </b></tt>
+    : chaîne de caractères
+  </li>
+<li>
+<tt><b>t  </b></tt>
+    : vecteur de chaînes de caractères, contenant l'instruction ou l'expression
+  </li>
+<li>
+<tt><b>lmax  </b></tt>
+    : entier, longueur maximum d'une ligne (90 par défaut. <tt><b>lmax=0</b></tt> signifie qu'il n'y pas de contrôle de taille, et <tt><b>sci2exp</b></tt> ne renvoie dans ce cas qu'une seule ligne). 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sci2exp</b></tt> évalue une expression et renvoie le résultat dans une chaîne de caractères. Si <tt><b>nam</b></tt> est précisé, la chaîne contient une instruction d'affectation de ce résultat à la variable dont le nom est donné dans <tt><b>nam</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  a=[1 2;3 4]
+  sci2exp(a,'aa')
+  sci2exp(a,'aa',0)
+  sci2exp(ssrand(2,2,2))
+  sci2exp(poly([1 0 3 4],'s'),'fi')
+ </pre>
+</body>
+</html>

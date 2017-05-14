@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>coeff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coeff</b> -  coefficients of matrix polynomial</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[C]=coeff(Mp [,v])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Mp</b></tt>: polynomial matrix</li>
+<li>
+<tt><b>v</b></tt>: integer (row or column) vector of selected degrees</li>
+<li>
+<tt><b>C</b></tt>: big matrix of the coefficients</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>C=coeff(Mp)</b></tt>
+    returns in a big matrix <tt><b>C</b></tt> the coefficients of the
+    polynomial matrix <tt><b>Mp</b></tt> . <tt><b>C</b></tt> is partitioned
+    as <tt><b>C=[C0,C1,...,Ck]</b></tt> 
+    where the <tt><b>Ci</b></tt> are arranged in increasing order 
+    <tt><b>k = maxi(degree(Mp))</b></tt></p>
+<p><tt><b>C=coeff(Mp,v)</b></tt> returns the matrix of coefficients with 
+    degree in <tt><b>v</b></tt> . (<tt><b>v</b></tt> is a row or column vector).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/degree.htm"><tt><b>degree</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/inv_coeff.htm"><tt><b>inv_coeff</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> S. Steer INRIA</p>
+</body>
+</html>

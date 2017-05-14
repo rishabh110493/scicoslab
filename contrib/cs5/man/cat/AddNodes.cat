@@ -1,0 +1,30 @@
+AddNodes                       Traffic-toolbox Function            AddNodes
+NAME
+   AddNodes  -  Add nodes to a net list
+  
+CALLING SEQUENCE
+   
+  
+ AddDemands(nx,ny)
+PARAMETERS
+ %net       : The global Netlist variable databasis
+            
+ nx         : row vector, x coordinates of the added nodes
+            
+ ny         : row vector, y coordinates of the added nodes
+            
+ net2       : the resulting net list 
+            
+DESCRIPTION
+   AddNodes adds nodes to a net list.
+  
+EXAMPLES
+ %net=TrafficExample('Diamond');
+ ShowNet()
+ // Add 2 new nodes with coordinates x=[346,346] and y=[559,-50]
+ AddNodes([346,346],[559,-50]);
+ // We can see the modifications with
+ ShowNet()
+SEE ALSO
+   IntroTrfAsg, NetList, AddDemands, AddLinks, MakeNet, ShowNet     
+  

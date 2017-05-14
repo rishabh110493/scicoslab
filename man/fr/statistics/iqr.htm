@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>iqr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>iqr</b> -  interquartile range</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>q=iqr(x) </tt></dd>
+<dd><tt>q=iqr(x,'r') (or, equivalently,
+  q=iqr(x,1)) </tt></dd>
+<dd><tt>q=iqr(x,'c') (or, equivalently,
+  q=iqr(x,2)) </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes  the interquartile range IQR= upper
+    quartile - lower  quartile of a  vector or a  matrix <tt><b> x
+    </b></tt>.</p>
+<p>
+    For a vector  or  a matrix <tt><b>  x</b></tt>  , <tt><b>  q=iqr(x)</b></tt>
+    returns in the scalar <tt><b> q</b></tt> the interquartile range of
+    all the entries of <tt><b> x</b></tt>.</p>
+<p><tt><b> q=iqr(x,'r') </b></tt>   (or, equivalently,  <tt><b>  q=iqr(x,1)
+    </b></tt>) is  the  rowwise interquartile range.  It  returns in
+    each entry  of the row vector  <tt><b> q</b></tt> the interquartile
+    range of each column of <tt><b> x</b></tt>.</p>
+<p><tt><b>  q=iqr(x,'c')  </b></tt> (or,  equivalently, <tt><b>  q=iqr(x,2)
+    </b></tt>) is the columnwise  interquartile range. It returns in
+    each     entry of  the    column  vector  <tt><b>   q</b></tt> the
+    interquartile range of each row of <tt><b> x</b></tt>.</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+     Wonacott, T.H.Wonacott, R.J.; Introductory Statistics, J.Wiley-Sons, 1990.</p>
+</body>
+</html>

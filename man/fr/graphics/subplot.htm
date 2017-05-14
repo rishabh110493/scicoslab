@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>subplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>subplot</b> -  divise une fenêtre graphique en sous-fenêtres  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>subplot(m,n,p)  </tt></dd>
+<dd><tt>subplot(mnp)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>m,n,p  </b></tt>
+    : entiers positifs
+</li>
+<li>
+<tt><b>mnp  </b></tt>
+    : un entier avec <tt><b>mnp</b></tt> comme notation décimale
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    subplot(m,n,p) ou subplot(mnp) divise la fenêtre graphique courante
+    en une matrice m x n matrice de sous fenêtres et sélectionne la p-ième sous-fenêtre
+    comme emplacement de dessin par défaut.  Le numéro de la sous-fenêtre
+    est compté ligne par ligne, c'est à dire que l'emplacement
+    (i,j) de la matrice porte le numéro (i-1)*n + j.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+subplot(221)
+plot2d()
+subplot(222)
+plot3d()
+subplot(2,2,3)
+param3d()
+subplot(2,2,4)
+hist3d()
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

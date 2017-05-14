@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>howard</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>howard</b> -  maxplus eigenvalues eigenvectors (Howard algorithm)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[l,v,p,c,n]=howard(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : square maxplus (full or sparse) matrix
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : eigenvalues
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    : eigenvectors
+  </li>
+<li>
+<tt><b>p  </b></tt>
+    : optimal policy (indices of the saturating entries of A)
+  </li>
+<li>
+<tt><b>n  </b></tt>
+    : number of iterations of Howard algorithm
+  </li>
+<li>
+<tt><b>c  </b></tt>
+    : number of connected components of the optimal policy 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Maxplus right eigenvalues and eigenvectors of a full or sparse maxplus matrix
+    by Howard algorithm. The eigenvalues are considered as the average cost
+    per unit of time for the corresponding dynamic programming problem.
+  </p>
+<p>
+    The values taken by the entries of l are the eigenvalues.
+    If A is irreducible, l is constant, it is the eigenvalue and
+    v is a corresponding eigenvector (in this case, there exits only one
+    eigenvalue but more than one eigenvectors may exist). 
+  </p>
+<p>
+    Otherwise, A can be decomposed into irreducible components (in a certain
+    numbering of rows and columns, it becomes block-triangular with
+    diagonal irreducible blocks), l is constant over  each component and
+    this constant is the eigenvalue, the corresponding entries of v, completed
+    by -inf for the other blocks, provide a corresponding eigenvector.
+  </p>
+<p>
+    p gives an optimal policy which satisfies a_ip(i) v_p(i)= l+v_i.
+  </p>
+<p>
+    Remark:
+  </p>
+<p>
+    - For  the block triangular case, take a look at the examples 
+    to see what happen precisely on the
+    transient block.  All the eigen values
+    are not found and the support of the eigenvectors depends of the
+    eigenvalues of the blocks.
+  </p>
+<p>
+    - For the block diagonal case all
+    the eigen values are found and the support of the eigenvectors
+    are clear.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[l,v]=howard(#(1))
+
+// irreducible matrix, only 1 eigenvalue
+// l is constant.
+a=#([1,2;3,4]);[l,v]=howard(a)
+a*v==l(1)*v
+
+//  2 blocks  diagonal matrix
+// the entries of l take two values
+a=#([%0,2,%0;%1,%0,%0;%0,%0,2])
+[l,v]=howard(a)
+(a/diag(l))*v==v
+
+// Block triangular matrix with 2 eigenvalues
+// l is constant only one eigen value is found
+a=#([1,1;%0,2])
+[l,v]=howard(a)
+a*v==l(1)*v
+// But 1 also en eigen value
+a*[0;%0]==#(1)*[0;%0]
+
+// Block triangular matrix with 1 eigenvalue
+// l is not constant l(1) is eigen value
+// with eigen vector [v(1);0]
+a=#([2,1;%0,%1])
+[l,v]=howard(a)
+(a/diag(l))*v==v
+a*[v(1);%0]==l(1)*[v(1);%0]
+
+// Sparse matrices
+[l,v]=howard(sparse([%0,1;3,%0]))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

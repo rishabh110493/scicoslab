@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hsv2rgb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hsv2rgb</b> -  Converts HSV colors to RGB</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[r,g,b] = hsv2rgb(h,s,v)</tt></dd>
+<dd><tt>rgb = hsv2rgb(h,s,v)</tt></dd>
+<dd><tt>[r,g,b] = hsv2rgb(hsv)</tt></dd>
+<dd><tt>rgb = hsv2rgb(hsv)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>
+       :  a vector of size n. The "hue" values.
+       </li>
+<li>
+<tt><b>s</b></tt>
+       :  a vector of size n. The "saturation" values.
+       </li>
+<li>
+<tt><b>v</b></tt>
+       :  a vector of size n. The "value" values
+       </li>
+<li>
+<tt><b>hsv</b></tt>
+       :  a n x 3 matrix. Each row contains a [hue saturation value] tripple.
+       </li>
+<li>
+<tt><b>r</b></tt>
+       :  a column vector of size n. The associated "red" values.
+       </li>
+<li>
+<tt><b>g</b></tt>
+       : a column vector of size n. The associated "green" values.
+       </li>
+<li>
+<tt><b>b</b></tt>
+       : a column vector of size n. The associated "blue" values.
+       </li>
+<li>
+<tt><b>rgb</b></tt>
+       :  a n x 3 matrix. Each row contains a [red green blue] tripple.
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>The function hsv2rgb converts colormaps
+      between the RGB and HSV color spaces. As hue varies from 0 to 1.0,
+      the corresponding colors vary from red through yellow, green, cyan, blue,
+      magenta, and back to red, so that there are actually red values both at 0
+      and 1.0. As saturation varies from 0 to 1.0, the corresponding colors
+      (hues) vary from unsaturated (shades of gray) to fully saturated (no
+      white component). As value, or brightness, varies from 0 to 1.0, the
+      corresponding colors become increasingly brighter. <h3><font color="blue">Examples</font></h3>
+<pre>
+    t=[0:0.3:2*%pi]'; z=sin(t)*cos(t'); 
+    plot3d1(t,t,z) 
+    f=gcf();f.pixmap='on';
+    for h=0:0.1:1
+      hsv=[h*ones(32,1) linspace(0,1,32)' 0.7*ones(32,1)];
+      f.color_map=hsv2rgb(hsv);
+      show_pixmap()
+      xpause(10000)
+    end
+    for v=0:0.1:1
+      hsv=[ones(32,1) linspace(0,1,32)' v*ones(32,1)];
+      f.color_map=hsv2rgb(hsv);
+      show_pixmap()
+      xpause(10000)
+    end
+  </pre>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b>Serge Steer</b>
+    INRIA
+    </dd></dl>
+</body>
+</html>

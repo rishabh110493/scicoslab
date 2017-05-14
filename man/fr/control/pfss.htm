@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pfss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pfss</b> -  partial fraction decomposition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>elts=pfss(Sl)  </tt></dd>
+<dd><tt>elts=pfss(Sl,rmax)  </tt></dd>
+<dd><tt>elts=pfss(Sl,'cord')  </tt></dd>
+<dd><tt>elts=pfss(Sl,rmax,'cord')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>Sl</b></tt><tt><b>syslin</b></tt> list (state-space or transfer linear system)
+  rmax : real number controlling the conditioning of block
+  diagoanalization cord : character string <tt><b>'c'</b></tt>
+  or <tt><b>'d'</b></tt>.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Partial fraction decomposition of the linear system <tt><b>Sl</b></tt> (in state-space 
+    form, transfer matrices are automatically converted to state-space form
+    by <tt><b>tf2ss</b></tt>):</p>
+<p><tt><b>elts</b></tt> is the list of linear systems which add up to <tt><b>Sl</b></tt>
+    i.e. <tt><b>elts=list(S1,S2,S3,...,Sn)</b></tt> with:</p>
+<p><tt><b>Sl = S1 + S2 +... +Sn</b></tt>.</p>
+<p>
+    Each <tt><b>Si</b></tt> contains some poles of <tt><b></b></tt>S according to the 
+    block-diagonalization of the <tt><b>A</b></tt> matrix of <tt><b>S</b></tt>.</p>
+<p>
+    For non proper systems the polynomial part of <tt><b>Sl</b></tt> is put
+    in the last entry of <tt><b>elts</b></tt>.</p>
+<p>
+    If <tt><b>Sl</b></tt> is given in transfer form, it is first converted into state-space
+    and each subsystem <tt><b>Si</b></tt> is then converted in transfer form.</p>
+<p>
+    The A matrix is of the state-space is put into block diagonal form
+    by function <tt><b>bdiag</b></tt>. The optional parameter <tt><b>rmax</b></tt> is sent to
+    <tt><b>bdiag</b></tt>. If <tt><b>rmax</b></tt> should be set to a large number to enforce
+    block-diagonalization.</p>
+<p>
+    If the optional flag <tt><b>cord='c'</b></tt> is given the elements in <tt><b>elts</b></tt>
+    are sorted according to the real part (resp. magnitude if <tt><b>cord='d'</b></tt>)
+    of the eigenvalues of A matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+W=ssrand(1,1,6);
+elts=pfss(W); 
+W1=0;for k=1:size(elts), W1=W1+ss2tf(elts(k));end
+clean(ss2tf(W)-W1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pbig.htm"><tt><b>pbig</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/dtsi.htm"><tt><b>dtsi</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.;   </p>
+</body>
+</html>

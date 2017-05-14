@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>check_graph</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>check_graph</b> -  checks a Scilab graph list</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>check_graph(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>g</b></tt>: graph list to check</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>check_graph</b></tt> checks its argument <tt><b>g</b></tt> to see if it is a
+    graph list. The checking is not only syntactic (number of elements of the
+    list, compatible sizes of the vectors), but also semantic in the sense that 
+    <tt><b>check_graph</b></tt> checks that <tt><b>node_number</b></tt>, <tt><b>tail</b></tt> and
+    <tt><b>head</b></tt> elements of the list can really represent a graph.</p>
+<p>
+    Moreover, the names of the node must be different. In fact, this
+    do not give errors in Scilab, but strange behaviour can appear when using the 
+    Metanet window. So, this is not checked by <tt><b>check_graph</b></tt> 
+    because it is time consuming. It is only checked when loading, saving
+    or showing a graph.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph-list.htm"><tt><b>graph-list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

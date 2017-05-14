@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>factors</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>factors</b> -  numeric real factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[lnum,g]=factors(pol [,'flag'])  </tt></dd>
+<dd><tt>[lnum,lden,g]=factors(rat [,'flag'])  </tt></dd>
+<dd><tt>rat=factors(rat,'flag')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>pol</b></tt>: real polynomial</li>
+<li>
+<tt><b>rat</b></tt>: real rational polynomial (<tt><b>rat=pol1/pol2</b></tt>)</li>
+<li>
+<tt><b>lnum</b></tt>: list of polynomials (of degrees 1 or 2)</li>
+<li>
+<tt><b>lden</b></tt>: list of polynomials (of degrees 1 or 2)</li>
+<li>
+<tt><b>g</b></tt>: real number</li>
+<li>
+<tt><b>flag</b></tt>: character string <tt><b>'c'</b></tt> or <tt><b>'d'</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    returns the factors of polynomial <tt><b>pol</b></tt> in the list <tt><b>lnum</b></tt>
+    and the "gain" g.</p>
+<p>
+    One has pol= g times product of entries of the list <tt><b>lnum</b></tt>
+    (if <tt><b>flag</b></tt> is not given). If <tt><b>flag='c'</b></tt> is given, then
+    one has <tt><b>|pol(i omega)|</b></tt> = <tt><b>|g*prod(lnum_j(i omega)|</b></tt>.
+    If <tt><b>flag='d'</b></tt> is given, then
+    one has <tt><b>|pol(exp(i omega))|</b></tt> = <tt><b>|g*prod(lnum_i(exp(i omega))|</b></tt>.
+    If argument of <tt><b>factors</b></tt> is a 1x1 rational <tt><b>rat=pol1/pol2</b></tt>, 
+    the factors of the numerator <tt><b>pol1</b></tt> and the denominator <tt><b>pol2</b></tt> 
+    are returned in the lists <tt><b>lnum</b></tt> and <tt><b>lden</b></tt> respectively.</p>
+<p>
+    The "gain" is returned as <tt><b>g</b></tt>,i.e. one has:
+    rat= g times (product entries in lnum) / (product entries in lden).</p>
+<p>
+    If <tt><b>flag</b></tt> is <tt><b>'c'</b></tt> (resp. <tt><b>'d'</b></tt>), the roots of <tt><b>pol</b></tt> 
+    are refected wrt the imaginary axis (resp. the unit circle), i.e. 
+    the factors in <tt><b>lnum</b></tt> are stable polynomials.</p>
+<p>
+    Same thing if <tt><b>factors</b></tt> is invoked with a rational arguments:
+    the entries in <tt><b>lnum</b></tt> and <tt><b>lden</b></tt> are stable polynomials if
+    <tt><b>flag</b></tt> is given. <tt><b>R2=factors(R1,'c')</b></tt> or <tt><b>R2=factors(R1,'d')</b></tt>
+    with <tt><b>R1</b></tt> a rational function or SISO <tt><b>syslin</b></tt> list then the 
+    output <tt><b>R2</b></tt> is a transfer with stable numerator and denominator and
+    with same magnitude as <tt><b>R1</b></tt> along the imaginary axis (<tt><b>'c'</b></tt>)
+    or unit circle (<tt><b>'d'</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+n=poly([0.2,2,5],'z');
+d=poly([0.1,0.3,7],'z');
+R=syslin('d',n,d);
+R1=factors(R,'d')
+roots(R1('num'))
+roots(R1('den'))
+w=exp(2*%i*%pi*[0:0.1:1]);
+norm(abs(horner(R1,w))-abs(horner(R,w)))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

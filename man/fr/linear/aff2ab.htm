@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>aff2ab</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>aff2ab</b> -  linear (affine) function to A,b conversion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[A,b]=aff2ab(afunction,dimX,D [,flag])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>afunction</b></tt>: a scilab function <tt><b> Y =fct(X,D) </b></tt> where <tt><b>X, D, Y</b></tt> are <tt><b>list</b></tt> of matrices</li>
+<li>
+<tt><b>dimX</b></tt>: a p x 2 integer matrix (<tt><b>p</b></tt> is the number of matrices in <tt><b>X</b></tt>)</li>
+<li>
+<tt><b>D</b></tt>: a <tt><b>list</b></tt> of real matrices (or any other valid Scilab object).</li>
+<li>
+<tt><b>flag</b></tt>: optional parameter (<tt><b>flag='f'</b></tt> or <tt><b>flag='sp'</b></tt>)</li>
+<li>
+<tt><b>A</b></tt>: a real matrix</li>
+<li>
+<tt><b>b</b></tt>: a real vector having same row dimension as <tt><b>A</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>aff2ab</b></tt>  returns the matrix representation of an affine
+    function (in the canonical basis).</p>
+<p><tt><b>afunction</b></tt> is a function with imposed syntax:
+    <tt><b> Y=afunction(X,D) </b></tt> where <tt><b> X=list(X1,X2,...,Xp) </b></tt> is
+    a list of p real matrices, and <tt><b> Y=list(Y1,...,Yq) </b></tt> is
+    a list of q real real matrices which depend linearly of
+    the <tt><b> Xi</b></tt>'s. The (optional) input <tt><b> D</b></tt> contains 
+    parameters needed to compute Y as a function of X. 
+    (It is generally a list of matrices).</p>
+<p><tt><b> dimX</b></tt> is a p x 2 matrix: <tt><b>dimX(i)=[nri,nci]</b></tt>
+    is the actual number of rows and columns of matrix <tt><b>Xi</b></tt>.
+    These dimensions determine <tt><b>na</b></tt>, the column dimension of 
+    the resulting matrix <tt><b>A</b></tt>: <tt><b>na=nr1*nc1 +...+ nrp*ncp</b></tt>.</p>
+<p>
+    If the optional parameter <tt><b>flag='sp'</b></tt> the resulting <tt><b>A</b></tt>
+    matrix is returned as a sparse matrix.</p>
+<p>
+    This function is useful to solve a system of linear equations
+    where the unknown variables are matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Lyapunov equation solver (one unknown variable, one constraint)
+deff('Y=lyapunov(X,D)','[A,Q]=D(:);Xm=X(:); Y=list(A''*Xm+Xm*A-Q)')
+A=rand(3,3);Q=rand(3,3);Q=Q+Q';D=list(A,Q);dimX=[3,3];
+[Aly,bly]=aff2ab(lyapunov,dimX,D);
+[Xl,kerA]=linsolve(Aly,bly); Xv=vec2list(Xl,dimX); lyapunov(Xv,D)
+Xm=Xv(:); A'*Xm+Xm*A-Q
+
+// Lyapunov equation solver with redundant constraint X=X'
+// (one variable, two constraints) D is global variable
+deff('Y=ly2(X,D)','[A,Q]=D(:);Xm=X(:); Y=list(A''*Xm+Xm*A-Q,Xm''-Xm)')
+A=rand(3,3);Q=rand(3,3);Q=Q+Q';D=list(A,Q);dimX=[3,3];
+[Aly,bly]=aff2ab(ly2,dimX,D);
+[Xl,kerA]=linsolve(Aly,bly); Xv=vec2list(Xl,dimX); ly2(Xv,D)
+
+// Francis equations
+// Find matrices X1 and X2 such that:
+// A1*X1 - X1*A2 + B*X2 -A3 = 0
+// D1*X1 -D2 = 0 
+deff('Y=bruce(X,D)','[A1,A2,A3,B,D1,D2]=D(:),...
+[X1,X2]=X(:);Y=list(A1*X1-X1*A2+B*X2-A3,D1*X1-D2)')
+A1=[-4,10;-1,2];A3=[1;2];B=[0;1];A2=1;D1=[0,1];D2=1;
+D=list(A1,A2,A3,B,D1,D2);
+[n1,m1]=size(A1);[n2,m2]=size(A2);[n3,m3]=size(B);
+dimX=[[m1,n2];[m3,m2]];
+[Af,bf]=aff2ab(bruce,dimX,D);
+[Xf,KerAf]=linsolve(Af,bf);Xsol=vec2list(Xf,dimX)
+bruce(Xsol,D)
+
+// Find all X which commute with A
+deff('y=f(X,D)','y=list(D(:)*X(:)-X(:)*D(:))')
+A=rand(3,3);dimX=[3,3];[Af,bf]=aff2ab(f,dimX,list(A));
+[Xf,KerAf]=linsolve(Af,bf);[p,q]=size(KerAf);
+Xsol=vec2list(Xf+KerAf*rand(q,1),dimX);
+C=Xsol(:); A*C-C*A
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/linsolve.htm"><tt><b>linsolve</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

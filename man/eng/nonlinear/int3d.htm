@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>int3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>int3d</b> -  definite 3D integral by quadrature and cubature method</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[result,err]=int3d(X,Y,Z,f [,nf[,params]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: a 4 by <tt><b>NUMTET</b></tt> array containing the abscissae of the vertices   of the <tt><b>NUMTET</b></tt> tetrahedrons.</li>
+<li>
+<tt><b>Y</b></tt>: a 4 by <tt><b>NUMTET</b></tt> array containing the ordinates of the vertices   of the <tt><b>NUMTET</b></tt> tetrahedrons.</li>
+<li>
+<tt><b>Z</b></tt>: a 4 by <tt><b>NUMTET</b></tt> array containing the third coordinates of the vertices   of the <tt><b>NUMTET</b></tt> tetrahedrons.</li>
+<li>
+<tt><b>f</b></tt>: external (function or list or string) defining the integrand <tt><b>f(xyz,nf)</b></tt>, where <tt><b>xyz</b></tt> is the vector of a point coordinates and nf the number functions</li>
+<li>
+<tt><b>nf</b></tt>: the number of function to integate (default is 1)</li>
+<li>
+<tt><b>params</b></tt>: real vector <tt><b>[minpts, maxpts, epsabs, epsrel]</b></tt>. default value is <tt><b>[0, 1000, 0.0, 1.d-5]</b></tt>.<ul>
+<li>
+<tt><b>epsabs</b></tt>: Desired bound on the absolute error.</li>
+<li>
+<tt><b>epsrel</b></tt>: Desired bound on the relative error.</li>
+<li>
+<tt><b>minpts</b></tt>: Minimum number of function evaluations.</li>
+<li>
+<tt><b>maxpts</b></tt>: Maximum number of function evaluations.  The number of function evaluations over each subregion is 43</li>
+</ul>
+</li>
+<li>
+<tt><b>result</b></tt>: the integral value,or vector of the integral values.</li>
+<li>
+<tt><b>err</b></tt>: Estimates of absolute errors.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The function calculates an approximation to a given
+    vector of definite integrals</p>
+<pre>
+
+I  I  I (F ,F ,...,F )      dx(3)dx(2)dx(1),
+          1  2      numfun
+   
+    </pre>
+<p>
+    where the region of integration is a collection of
+    NUMTET tetrahedrons and where</p>
+<pre>
+
+F = F (X(1),X(2),X(3)), J = 1,2,...,NUMFUN.
+ J   J
+   
+    </pre>
+<p>
+    A globally adaptive strategy is applied in order to
+    compute approximations <tt><b>result(k)</b></tt>
+    hopefully satisfying, for each component of I, the
+    following claim for accuracy:
+    <tt><b>ABS(I(K)-RESULT(K))&lt;=MAX(EPSABS,EPSREL*ABS(I(K)))</b></tt></p>
+<p><tt><b>int3d</b></tt> repeatedly subdivides the tetrahedrons with greatest
+    estimated errors and estimates the integrals and the errors over the
+    new subtetrahedrons until the error request is met or <tt><b>MAXPTS</b></tt>
+    function evaluations have been used.</p>
+<p>
+    A 43 point integration rule with all evaluation points inside the
+    tetrahedron is applied. The rule has polynomial degree 8.</p>
+<p>
+    If the values of the input parameters <tt><b>EPSABS</b></tt> or <tt><b>EPSREL</b></tt> are
+    selected great enough, an integration rule is applied over each
+    tetrahedron and the results are added up to give the approximations
+    <tt><b>RESULT(K)</b></tt>. No further subdivision of the tetrahedrons will then
+    be applied.</p>
+<p>
+    When <tt><b>int3d</b></tt> computes estimates to a vector of
+    integrals, all components of the vector are given
+    the same treatment. That is, <tt><b>I(Fj)</b></tt> and <tt><b>I(Fk)</b></tt> for</p>
+<p><tt><b>j</b></tt> not equal to <tt><b>k</b></tt>, are estimated with the same
+    subdivision of the region of integration.
+    For integrals with enough similarity, we may save
+    time by applying <tt><b>int3d</b></tt> to all integrands in one call.
+    For integrals that varies continuously as functions of
+    some parameter, the estimates produced by <tt><b>int3d</b></tt>  will
+    also vary continuously when the same subdivision is
+    applied to all components. This will generally not be
+    the case when the different components are given
+    separate treatment.</p>
+<p>
+    On the other hand this feature should be used with
+    caution when the different components of the integrals
+    require clearly different subdivisions.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+    Fortran routine dcutet.f</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+X=[0;1;0;0];
+Y=[0;0;1;0];
+Z=[0;0;0;1];
+[RESULT,ERROR]=int3d(X,Y,Z,'int3dex')
+// computes the integrand exp(x*x+y*y+z*z) over the 
+//tetrahedron (0.,0.,0.),(1.,0.,0.),(0.,1.,0.),(0.,0.,1.)
+
+
+//integration over a cube  -1&lt;=x&lt;=1;-1&lt;=y&lt;=1;-1&lt;=z&lt;=1
+
+//  bottom  -top-     right    -left-   front   -rear- 
+X=[ 0, 0,    0, 0,    0, 0,    0, 0,    0, 0,    0, 0;          
+   -1,-1,   -1,-1,    1, 1,   -1,-1,   -1,-1,   -1,-1; 
+    1,-1,    1,-1,    1, 1,   -1,-1,    1,-1,    1,-1;     
+    1, 1,    1, 1,    1, 1,   -1,-1,    1, 1,    1, 1];         
+Y=[ 0, 0,    0, 0,    0, 0,    0, 0,    0, 0,    0, 0; 
+   -1,-1,   -1,-1,   -1, 1,   -1, 1,   -1,-1,    1, 1;
+   -1, 1,   -1, 1,    1, 1,    1, 1,   -1,-1,    1, 1;   
+    1, 1,    1, 1,   -1,-1,   -1,-1,   -1,-1,    1, 1]; 
+Z=[ 0, 0,    0, 0,    0, 0,    0, 0,    0, 0,    0, 0;
+   -1,-1,    1, 1,   -1, 1,   -1, 1,   -1,-1,   -1,-1; 
+   -1,-1,    1, 1,   -1,-1,   -1,-1,   -1, 1,   -1, 1;  
+   -1,-1,    1, 1,    1, 1,    1, 1,    1, 1,    1, 1];      
+
+function v=f(xyz,numfun),v=exp(xyz'*xyz),endfunction
+[result,err]=int3d(X,Y,Z,f,1,[0,100000,1.d-5,1.d-7])
+
+function v=f(xyz,numfun),v=1,endfunction
+[result,err]=int3d(X,Y,Z,f,1,[0,100000,1.d-5,1.d-7])
+
+   
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intc.htm"><tt><b>intc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/intl.htm"><tt><b>intl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/int2d.htm"><tt><b>int2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b>Jarle Berntsen</b> The Computing Centre,
+University of Bergen, Thormohlens gt. 55,
+N-5008 Bergen, Norway
+Phone..  47-5-544055
+Email..  jarle@eik.ii.uib.no, 
+</dd>
+<dd>
+<b>Ronald Cools</b> Dept. of Computer Science,
+Katholieke Universiteit Leuven, Celestijnenlaan 200A,
+B-3030 Heverlee, Belgium
+Phone..  32-16-201015 (3562)
+Email..  ronald@cs.kuleuven.ac.be,
+</dd>
+<dd>
+<b>Terje O. Espelid</b> Department of Informatics,
+University of Bergen, Thormohlens gt. 55,
+N-5008 Bergen, Norway
+Phone..  47-5-544180
+Email..  terje@eik.ii.uib.no
+</dd>
+</dl>
+</body>
+</html>

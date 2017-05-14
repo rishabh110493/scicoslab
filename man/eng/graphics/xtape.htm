@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xtape</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xtape</b> -  set up the record process of graphics</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xtape(str,[num,rect])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: string, "on", "clear", "replay" or "replaysc".</li>
+<li>
+<tt><b>num</b></tt>: integer.</li>
+<li>
+<tt><b>rect</b></tt>: row vector of size 4.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xtape</b></tt> is used to set up the record process of graphics:</p>
+<p>
+    xtape("on") 
+    just selects the driver "Rec" which records all the 
+    graphics operations.</p>
+<p>
+    xtape("clear",num) 
+    clears the graphics window <tt><b>num</b></tt> and clears the recorded 
+    graphics associated with window <tt><b>num</b></tt>.</p>
+<p>
+    xtape("replay",num) 
+    redisplays all the recorded
+    graphics in the window <tt><b>num</b></tt>.</p>
+<p>
+    xtape("replaysc",num,rect) replots the graphics window <tt><b>num</b></tt>
+    using <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt> as x and y bounds.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/driver.htm"><tt><b>driver</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/replot.htm"><tt><b>replot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasr.htm"><tt><b>xbasr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

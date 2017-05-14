@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>unique</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unique</b> -  extrait les composantes distinctes d'un vecteur  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N, [k]]=unique(M)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>M,N  </b></tt>
+    : vecteur réel ou vecteur de chaînes de caractères
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : vecteur d'entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>unique(M)</b></tt> renvoie un vecteur contenant les valeurs distinctes contenues dans les termes de <tt><b>M</b></tt> classées par ordre croissant.
+  </p>
+<p>
+    S'il est présent l'argument de sortie <tt><b>k</b></tt> contient la position de la première occurrence de chaque valeur distincte dans <tt><b>M</b></tt>.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+M=round(2*rand(20,1));
+
+unique(M)
+[N,k]=unique(M)
+
+unique(string(M))
+[N,k]=unique(string(M))
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/union.htm"><tt><b>union</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/lex_sort.htm"><tt><b>lex_sort</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

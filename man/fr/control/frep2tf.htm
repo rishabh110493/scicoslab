@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>frep2tf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>frep2tf</b> -  transfer function realization from frequency response</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[h [,err]]=frep2tf(frq,repf,dg [,dom,tols,weight])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>frq</b></tt>: vector of frequencies in Hz.</li>
+<li>
+<tt><b>repf</b></tt>: vector of frequency response</li>
+<li>
+<tt><b>dg</b></tt>: degree of linear system</li>
+<li>
+<tt><b>dom</b></tt>: time domain (<tt><b>'c'</b></tt> or <tt><b>'d'</b></tt> or <tt><b>dt</b></tt>)</li>
+<li>
+<tt><b>tols</b></tt>: a vector of size 3 giving the relative and absolute tolerance  and the maximum number of iterations (default values are <tt><b>rtol=1.e-2; atol=1.e-4, N=10</b></tt>).</li>
+<li>
+<tt><b>weight</b></tt>: vector of weights on frequencies</li>
+<li>
+<tt><b>h</b></tt>: SISO transfer function</li>
+<li>
+<tt><b>err</b></tt>: error (for example if <tt><b>dom='c'</b></tt><tt><b>sum(abs(h(2i*pi*frq) - rep)^2)/size(frq,*)</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Frequency response to  transfer function conversion. The order of <tt><b>h</b></tt>
+    is a priori given in <tt><b>dg</b></tt> which must be provided.
+    The following linear system is solved in the least square sense.</p>
+<pre>
+
+ weight(k)*(n( phi_k) - d(phi_k)*rep_k)=0, k=1,..,n
+   
+    </pre>
+<p>
+    where <tt><b>phi_k= 2*%i*%pi*frq</b></tt> when <tt><b>dom='c'</b></tt> and <tt><b>phi_k=exp(2*%i*%pi*dom*frq</b></tt> if not. If the <tt><b>weight</b></tt> vector is not given a default 
+    penalization is used (when <tt><b>dom='c'</b></tt>).</p>
+<p>
+    A stable and minimum phase system can be obtained by using function <tt><b>factors</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+h=syslin('c',(s-1)/(s^3+5*s+20))
+frq=0:0.05:3;repf=repfreq(h,frq);
+clean(frep2tf(frq,repf,3))
+
+Sys=ssrand(1,1,10); 
+frq=logspace(-3,2,200);
+[frq,rep]=repfreq(Sys,frq);  //Frequency response of Sys
+[Sys2,err]=frep2tf(frq,rep,10);Sys2=clean(Sys2)//Sys2 obtained from freq. resp of Sys
+[frq,rep2]=repfreq(Sys2,frq); //Frequency response of Sys2
+xbasc();bode(frq,[rep;rep2])   //Responses of Sys and Sys2
+[sort(spec(Sys('A'))),sort(roots(Sys2('den')))] //poles
+
+dom=1/1000; // Sampling time 
+z=poly(0,'z');
+h=syslin(dom,(z^2+0.5)/(z^3+0.1*z^2-0.5*z+0.08))
+frq=(0:0.01:0.5)/dom;repf=repfreq(h,frq);
+[Sys2,err]=frep2tf(frq,repf,3,dom);
+[frq,rep2]=repfreq(Sys2,frq); //Frequency response of Sys2
+xbasc();plot2d1("onn",frq',abs([repf;rep2])');
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/imrep2ss.htm"><tt><b>imrep2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/arl2.htm"><tt><b>arl2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/time_id.htm"><tt><b>time_id</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/frfit.htm"><tt><b>frfit</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

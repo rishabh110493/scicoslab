@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gce</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>gce</b> - Get current entity handle.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>e = gce()</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>e</b></tt>: handle, the handle of the current entity.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>This routine returns the handle of the last created (and still
+    existent) entity.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   
+    set("figure_style","new") //create a figure entity
+    a=gca() //get the handle of the newly created axes
+    a.data_bounds=[1,1;10,10];
+    a.axes_visible = 'on' ;
+    for i=1:5
+      xfrect(7-i,9-i,3,3);
+      e=gce();
+      e.background=i;
+     end
+    delete(); // delete current entity
+    delete(gce()); // delete current entity
+    delete(gcf()); // delete current figure
+     
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gca.htm"><tt><b>gca</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

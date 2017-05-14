@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>show_pixmap</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>show_pixmap</b> - send the pixmap buffer to the
+  screen</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>show_pixmap()</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>If a graphic window <tt><b>pixmap</b></tt> property is <tt><b>"on"</b></tt>
+    the drawings are send to a pixmap memory instead of the screen
+    display.The <tt><b>show_pixmap()</b></tt> instruction send the pixmap to the
+    screen.The pixmap mode can be used to obtain smooth animations. This property
+    can be found among the figure entity fields (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/figure_properties.htm"><tt><b>figure_properties</b></tt></a>).<h3><font color="blue">Examples</font></h3>
+<pre>
+   set figure_style new
+   f=gcf();f.pixmap='on'; //set the pixmap mode
+   a=gca();a.data_bounds=[0 0; 10 10];
+   //construct two rectangles
+   xrects([0;10;1;1],5);r1=gce();r1=r1.children;
+   xrects([0;1;1;1],13);r2=gce();r2=r2.children;
+   //animation loop
+   for k=1:1000
+      //draw the rectangles in the pixmap buffer
+      move(r1,[0.01,-0.01]);move(r2,[0.01,0.01]) 
+      //show the pixmap buffer
+      show_pixmap()
+   end
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/figure_properties.htm"><tt><b>figure_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clear_pixmap.htm"><tt><b>clear_pixmap</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer INRIA</p>
+</body>
+</html>

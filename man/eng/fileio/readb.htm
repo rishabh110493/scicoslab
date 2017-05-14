@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>readb</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>readb</b> -  fortran file binary read</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=readb(file-name,m,n [,rec])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-name</b></tt>: string or integer</li>
+<li>
+<tt><b>m, n</b></tt>: integers (dimensions of the matrix x). Set m=-1 if you do not know the numbers of rows, so all the file is read</li>
+<li>
+<tt><b>rec</b></tt>: vector of positive integers. the selected records for direct access. This vector size must be equal to the number of rows of desired <tt><b>x</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    binary read of the matrix <tt><b>x</b></tt> in the file <tt><b>file-name</b></tt>.
+    Matrix entries are supposed to have been stored on 8 byte words.</p>
+<p>
+    For direct record access, file must have been previously opened using
+    <tt><b>file</b></tt> function to set the record_length. <tt><b>file-name</b></tt> must be
+    the result of the <tt><b>file</b></tt> function.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/writb.htm"><tt><b>writb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/mget.htm"><tt><b>mget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/read4b.htm"><tt><b>read4b</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

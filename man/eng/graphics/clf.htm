@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>clf</b> - clear or reset the current graphic figure
+  (window) to default values</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>clf(&lt;opt_job_arg&gt;)</tt></dd>
+<dd><tt>clf(h,&lt;opt_job_arg&gt;)</tt></dd>
+<dd><tt>clf(num,&lt;opt_job_arg&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: a handle, the figure handle</li>
+<li>
+<tt><b>num</b></tt>: a number, the figure_id</li>
+<li>
+<tt><b>&lt;opt_job_arg&gt;</b></tt>: a string ( <tt><b>'clear' </b></tt>or <tt><b>'reset'</b></tt> )
+          specifying the job for <tt><b>clf</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>The <tt><b>clf</b></tt> command is used to reset a figure to its default
+    values and/or to delete all its children.<p>If <tt><b>opt_job_arg</b></tt> string value is <tt><b>'clear'</b></tt> then
+    all children of the specified figure are deleted.</p>
+<p>If <tt><b>opt_job_arg</b></tt> string value is <tt><b>'reset'</b></tt> then
+    not only all children of the specified figure are deleted but the figure
+    properties are reset to their default values using the default figure
+    model (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>).</p>
+<p><tt><b>clf(num)</b></tt> clear or reset and clear the figure with
+    <tt><b>figure_id==num</b></tt>. Try not to specify an inexistant figure.</p>
+<p><tt><b>clf(h)</b></tt> clear or reset and clear the figure pointed to by
+    the handle <tt><b>h</b></tt>. Try not to specify an inexistant figure.</p>
+<p><tt><b>clf()</b></tt> clear or reset and clear the current existing
+    figure.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   f4=scf(4);  //creates figure with id==4 and make it the current one
+   f4.color_map = jetcolormap(64);
+   f4.figure_size = [400, 200];
+   plot2d()
+   clf(f4,'reset')
+   f0=scf(0); //creates figure with id==0 and make it the current one
+   f0.color_map=hotcolormap(128);
+   plot3d1();
+   clf() // equivalent to clf(gcf(),'clear')
+   plot3d1();  // color_map unchanged
+   clf(gcf(),'reset')
+   plot3d1();  // color_map changed (back to the default one with 32 colors)
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gcf.htm"><tt><b>gcf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/scf.htm"><tt><b>scf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer &amp; F.Leray INRIA</p>
+</body>
+</html>

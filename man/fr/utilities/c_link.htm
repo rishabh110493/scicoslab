@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>c_link</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>c_link</b> -  check dynamic link</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>c_link(routine-name)  </tt></dd>
+<dd><tt>[test,ilib]=c_link(routine-name)  </tt></dd>
+<dd><tt>test=c_link(routine-name,num)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>routine-name</b></tt>: a character string</li>
+<li>
+<tt><b>num</b></tt>:</li>
+<li>
+<tt><b>test</b></tt>: boolean, indicates if there is a shared library which contains <tt><b>routine-name</b></tt>.</li>
+<li>
+<tt><b>ilib</b></tt>: a scalar, the number of the shared library which contains <tt><b>routine-name</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>c_link</b></tt> is a boolean function which checks if the routine <tt><b>routine-name</b></tt> is currently linked. This function returns a
+    boolean value true or false. When used with two return values, the
+    function <tt><b>c_link</b></tt> returns a boolean value in <tt><b>test</b></tt> and the
+    number of the shared library which contains <tt><b>routine-name</b></tt> in
+    <tt><b>ilib</b></tt> (when <tt><b>test</b></tt> is true).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/fort.htm"><tt><b>fort</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

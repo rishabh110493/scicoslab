@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unique</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unique</b> -  extract unique components of a vector</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[N, [k]]=unique(M)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>M</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>N</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>k</b></tt>: vector  of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>unique(M)</b></tt> returns a vector which retains the unique entries of  <tt><b>M</b></tt>
+    in ascending order.</p>
+<p>
+    If required the output argument <tt><b>k</b></tt> contains the position of the
+    first encountered unique entries.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+M=round(2*rand(20,1));
+
+unique(M)
+[N,k]=unique(M)
+
+unique(string(M))
+[N,k]=unique(string(M))
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/union.htm"><tt><b>union</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/lex_sort.htm"><tt><b>lex_sort</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

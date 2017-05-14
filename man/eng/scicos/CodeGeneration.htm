@@ -1,0 +1,1441 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>CodeGeneration</TITLE>
+<META NAME="description" CONTENT="CodeGeneration">
+<META NAME="keywords" CONTENT="CodeGeneration">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="CodeGeneration.css">
+
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+
+<P>
+<DIV ALIGN="CENTER">
+Scicos Codegeneration
+<BR><A NAME="tex2html1"
+  HREF="../../fr/scicos/CodeGeneration.htm">fr</A> - <A NAME="tex2html2"
+  HREF="./CodeGeneration.htm">eng</A>
+
+</DIV>
+<BR><A NAME="SECTION00010000000000000000"></A><A NAME="CodeGeneration"></A>
+<BR>
+<b>CodeGeneration</b> - Scicos Code Generation
+
+
+<H3><font color="blue"><A NAME="SECTION00011000000000000000">
+Module</A>
+</font></H3>
+
+<UL>
+<LI><A NAME="tex2html3"
+  HREF="whatis_scicos.htm">Scicos</A>
+</LI>
+</UL>
+<BR>
+
+<H3><font color="blue"><A NAME="SECTION00020000000000000000">
+Contents</A>
+</font></H3>
+<!--Table of Contents-->
+
+<UL CLASS="TofC">
+<LI><A NAME="tex2html4"
+  HREF="CodeGeneration.htm#SECTION00010000000000000000">CodeGeneration - Scicos Code Generation</A>
+<UL>
+<LI><A NAME="tex2html5"
+  HREF="CodeGeneration.htm#SECTION00011000000000000000">Module</A>
+<LI><A NAME="tex2html6"
+  HREF="CodeGeneration.htm#SECTION00021000000000000000">Background</A>
+<LI><A NAME="tex2html7"
+  HREF="CodeGeneration.htm#SECTION00022000000000000000">Scicos Overview</A>
+<LI><A NAME="tex2html8"
+  HREF="CodeGeneration.htm#SECTION00023000000000000000">Functional approach</A>
+<LI><A NAME="tex2html9"
+  HREF="CodeGeneration.htm#SECTION00024000000000000000">Code generation implementation</A>
+<LI><A NAME="tex2html10"
+  HREF="CodeGeneration.htm#SECTION00025000000000000000">Inside the editor</A>
+<LI><A NAME="tex2html11"
+  HREF="CodeGeneration.htm#SECTION00026000000000000000">Use and definition of external libraries and additional compiler flag(s)</A>
+<LI><A NAME="tex2html12"
+  HREF="CodeGeneration.htm#SECTION00027000000000000000">List of the main generated files</A>
+<LI><A NAME="tex2html13"
+  HREF="CodeGeneration.htm#SECTION00028000000000000000">Code generation from the ScicosLab prompt</A>
+<LI><A NAME="tex2html14"
+  HREF="CodeGeneration.htm#SECTION00029000000000000000">Use of the ScicosLab interfacing function for the standalone</A>
+<LI><A NAME="tex2html15"
+  HREF="CodeGeneration.htm#SECTION000210000000000000000">Use the loader script to reload the generated codes inside Scicos/ScicosLab</A>
+<LI><A NAME="tex2html16"
+  HREF="CodeGeneration.htm#SECTION000211000000000000000">Standalone executable</A>
+<LI><A NAME="tex2html17"
+  HREF="CodeGeneration.htm#SECTION000212000000000000000">Authors</A>
+</UL></UL>
+<!--End of Table of Contents-->
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00021000000000000000">
+Background</A>
+</font></H3>
+    Scicos is a modeler/simulator of <B>hybrid dynamical systems</B>. It can simulate a wide
+    variety of systems, including in a same process of simulation, discrete and continuous
+    time dynamics.
+<BR>    <BR>
+Scicos can solve non-linear differential equations described by Ordinary Differential Equations
+    (<B>ODE</B>), Differential Algebraic Equations (<B>DAE</B>) and Discrete Difference Equations.
+    With Scicos one can model hybrid dynamical systems by using block diagram schematics and/or
+    by using the modelling language <B>Modelica</B>. In both cases the user can <B>generate C code</B>
+    from the model description.
+<BR>    <BR>
+An hybrid dynamical system can be described by separating the continuous time from the discrete
+    time dynamics. For a system using ODEs, we can write the continuous time part as :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+     y\left(t\right) & = & f\left(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)\\
+     \dot{x}\left(t\right) & = & h\left(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)
+\end{eqnarray}
+ -->
+<IMG
+ WIDTH="556" HEIGHT="58" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img1_eng.gif"
+ ALT="\begin{eqnarray}
+y\left(t\right) &amp; = &amp; f\left(t,x\left(t\right),z\left(t_{k}\ri...
+...t(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+where <B>t</B> is the continuous time, <B>y(t)</B> is a vector of outputs, <B>u(t)</B>
+    is a vector of inputs, <B>x(t)</B> is a vector of states, <B>dot(x)(t)</B> is the
+    vector of the derivative states, <B>z(tk)</B> is a vector of discrete states and <B>p</B> a
+    vector of constant parameters.
+    <B>f</B> and <B>h</B> are functions that define non-linear relation between variables.
+    For a system using DAEs, we can write the continuous time part as :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><A NAME="trois"></A><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+     0 & = & f\left(t,y\left(t\right),x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)\\
+     \dot{x}\left(t\right) & = & h\left(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)
+\end{eqnarray}
+ -->
+<A NAME="trois"></A><IMG
+ WIDTH="556" HEIGHT="58" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img2_eng.gif"
+ ALT="\begin{eqnarray}
+0 &amp; = &amp; f\left(t,y\left(t\right),x\left(t\right),z\left(t_{k}\...
+...t(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right)
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+where (<A HREF="#trois">3</A>) defines algebraic relations.
+<BR>    <BR>
+For the discrete time part, one can write :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><A NAME="deux"></A><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+     y\left(t_{k}\right) & = & f\left(t_{k},x\left(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)\\
+     x\left(t^{+}\right) & = & g_{\tt c}\left(t_{k},x\left(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)\\
+     z\left(t_{k+1}\right) & = & g_{\tt d}\left(t_{k},x\left(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)
+\end{eqnarray}
+ -->
+<A NAME="deux"></A><IMG
+ WIDTH="556" HEIGHT="84" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img3_eng.gif"
+ ALT="\begin{eqnarray}
+y\left(t_{k}\right) &amp; = &amp; f\left(t_{k},x\left(t_{k}\right),z\l...
+...ft(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+where <B>tk</B> is the discrete time, <B>gc</B> and <B>gd</B> are respectively functions for the states vector
+    and the discrete states vector. Note that here have written <B>x(t+)</B> instead of <B>x(tk+1)</B>
+    for (<A HREF="#deux">6</A>) because we assume that a discrete jump occurs during the continuous time integration of
+    the state vector.
+<BR>    <BR>
+In a Scicos simulation, the delay between two discrete instants <B>tk+1</B> and <B>tk</B> is not necessary constant. Such instants are
+    called <B>output events date</B> and are computed by <B>primary sources of activation</B>. These sources are defined by :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+     t_{k+1} & = & k\left(t_{k},x\left(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)
+\end{eqnarray}
+ -->
+<IMG
+ WIDTH="556" HEIGHT="31" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img4_eng.gif"
+ ALT="\begin{eqnarray}
+t_{k+1} &amp; = &amp; k\left(t_{k},x\left(t_{k}\right),z\left(t_{k}\right),u\left(t_{k}\right),p\right)
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+and can also be defined with a continuous time equation by using zeros crossing threshold related to
+    continuous time states or inputs :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+    t_{k+1} & = & \text{inf} \{ t > t_k \text{ such that }  0  =  g_{\tt z}\left(t,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right) \}
+\end{eqnarray}
+ -->
+<IMG
+ WIDTH="556" HEIGHT="31" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img5_eng.gif"
+ ALT="\begin{eqnarray}
+t_{k+1} &amp; = &amp; \text{inf} \{ t &gt; t_k \text{ such that } 0 = g_{...
+...,x\left(t\right),z\left(t_{k}\right),u\left(t\right),p\right) \}
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00022000000000000000">
+Scicos Overview</A>
+</font></H3>
+    In Scicos, hybrid dynamical systems defined by the previous equations, can be modeled by a block diagram graphic editor :
+
+<P>
+
+<DIV ALIGN="CENTER">
+      <DIV ALIGN="CENTER">
+<!-- MATH
+ $\rotatebox{-90}{\scalebox{0.7}{\includegraphics{Lorentz.eps}}}$
+ -->
+<IMG
+ WIDTH="599" HEIGHT="634" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img6_eng.gif"
+ ALT="\rotatebox{-90}{\scalebox{0.7}{\includegraphics{Lorentz.eps}}}">
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#guiii">1</A>:</b> A Scicos block diagram
+
+</DIV>
+
+<P>
+This diagram models the Lorentz's system defined by the following set of equations :
+    <BR>
+<DIV ALIGN="RIGHT" CLASS="mathdisplay">
+<P ALIGN="LEFT"><!-- MATH
+ \begin{eqnarray}
+\htmlimage{align=left}
+      \dot{x}(t) & = & a\left(-x(t)+y(t)\right)\\
+      \dot{y}(t) & = & bx(t)-y(t)-x(t)y(t)\\
+      \dot{z}(t) & = &-cx(t)+x(t)y(t)
+\end{eqnarray}
+ -->
+<IMG
+ WIDTH="556" HEIGHT="84" ALIGN="LEFT"
+ SRC="../../images/scicos/CodeGeneration_img7_eng.gif"
+ ALT="\begin{eqnarray}
+\dot{x}(t) &amp; = &amp; a\left(-x(t)+y(t)\right)\\
+\dot{y}(t) &amp; = &amp; bx(t)-y(t)-x(t)y(t)\\
+\dot{z}(t) &amp; = &amp;-cx(t)+x(t)y(t)
+\end{eqnarray}">
+<BR CLEAR="ALL">
+<P>
+<BR CLEAR="ALL"></DIV><P></P>
+<BR>    <BR>
+To simulate the dynamical system, the diagram (or its Modelica description if this high level language is used) must be compiled to translate the symbolic description in a compiled structure (or tree) that can be used both by a simulator and a code generator.
+
+<P>
+In the current Scicos version, the following flowchart shows a top-down view of the main parts of the modeler/simulator :
+
+<P>
+
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="271" HEIGHT="350" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img8_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\scalebox{0.7}{%
+\input{org_scicos.pstex_t}}
+\end{center} \end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#org_scicos">2</A>:</b> Flowchart Scicos implementation
+
+</DIV>
+
+<P>
+
+<UL>
+<LI>The output of the editor is a structure that corresponds to the hierarchical main diagram. It contains
+            informations related to graphical objects (e.g. blocks, links, ...)  appearing in the figure. Additional informations are set in that structure such that simulation parameters, code generation properties, etc...
+
+<P>
+</LI>
+<LI>A first step of the compiling process realizes a flat diagram structure. 
+In the hierarchical representation of the Scicos 
+            editor some blocks (called <B>super block</B>) are allowed to contain other diagram structure. During
+            that step, all graphical informations not needed for simulation are removed from the output structure.
+
+<P>
+</LI>
+<LI>Then a second pass in the compiler realizes the scheduling of blocks in the flat diagram. The output compiled structure have all informations needed for the simulation.
+
+<P>
+</LI>
+</UL>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00023000000000000000">
+Functional approach</A>
+</font></H3>
+
+<P>
+A more detailed flowchart of the Scicos hybrid dynamical systems toolbox is shown in figure <A HREF="#org_scicos_func">3</A>.
+
+<P>
+
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="1046" HEIGHT="514" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img9_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\scalebox{0.72}{%
+\input{org_scicos_func.pstex_t}}
+\end{center} \end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#org_scicos_func">3</A>:</b> Flowchart : Functional approach
+
+</DIV>
+
+<P>
+
+<UL>
+<LI>In the left part is shown how the Scicos code generation interacts with the compiler and the simulator.
+           With the informations provided by the compiler, two codes are generated :
+           
+<UL>
+<LI>one is a <B>computational function</B>. This code can directly be called by the simulator. That
+                   code calls the Standard/user's blocks computational functions and/or the computational function
+                   provided by the Scicos/Modelica implementation.
+</LI>
+<LI>the second code is called <B>standalone code</B>. It is a code which includes both the calls to the
+                   Standard/user's blocks computational functions (and/or the computational function
+                   provided by the Scicos/Modelica implementation) and simulator parts needed to achieve the simulation.
+           
+</LI>
+</UL>
+</LI>
+</UL>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00024000000000000000">
+Code generation implementation</A>
+</font></H3>
+
+<P>
+Figure <A HREF="#org_cdgen">4</A> displays the current Scicos code generation implementation.
+
+<P>
+
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="1045" HEIGHT="740" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img10_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\scalebox{0.55}{%
+\input{org_cdgen.pstex_t}}
+\end{center} \end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#org_cdgen">4</A>:</b> Flowchart : code generation implementation
+
+</DIV>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00025000000000000000">
+Inside the editor</A>
+</font></H3>
+
+<P>
+In the editor, the C code generation can be achievied through a super-block or an complete
+    top-level diagram. The various steps of code generation are not visible
+    by the user.
+    Finally, the generated codes are automatically compiled and dynamically linked inside Scicos and
+    ScicosLab.
+
+<P>
+
+<H3><A NAME="SECTION00025100000000000000">
+Default properties definition</A>
+</H3>
+
+<P>
+
+<H4><A NAME="SECTION00025110000000000000">
+Description
+<BR></A>
+</H4>
+      Before running the code generation process, the user can set some parameters that will overload 
+      the default properties of the generation. That parameters can be set with a GUI which appears in the Scicos menu 'Diagram', option 'Set Code Gen Properties' or with the context menu (also called
+      Popup Menu) when user right click on a super-block and use the menu 'Super Block Properties'.
+
+<P>
+
+<H4><A NAME="SECTION00025120000000000000">
+Dialog box
+        
+<DIV ALIGN="CENTER">
+<IMG
+  WIDTH="524" HEIGHT="348" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img11_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\scalebox{0.5}{\includegraphics{diagr_gui.eps}}
+\end{center} \end{figure}">
+</DIV></A>
+</H4>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#diagr_gui">5</A>:</b> The diagram GUI of the code generation
+
+</DIV>
+        
+<UL>
+<LI><B>Silent mode (0:no, 1:yes) :</B> If set to <B>1</B>, this parameter means that no GUI
+                                                   will be displayed during the code generation processes.
+                                                   This is useful when running code generation in batch mode.
+
+<P>
+</LI>
+<LI><B>Use CBLOCK4 (0:no, 1:yes) :</B> This parameter enables the use of a generic type 4 C block
+                                                   for the generation of the Scicos interfacing function associated with
+                                                   the newly created block.
+
+<P>
+</LI>
+<LI><B>Target name ([] means default) :</B> By default, a name is given for the generated code according
+                                                        to the title of the diagram or the title of the super-block.
+                                                        This dialog parameter overload the default name chosen
+                                                        by the code generation.
+
+<P>
+</LI>
+<LI><B>Target path ([] means default) :</B> By default, a name is chosen for the target path of the generated
+                                                        code, according to the title of the diagram or the title of the
+                                                        super-block. This dialog parameter overload the default path chosen
+                                                        by the code generator. This is useful for example to set it at 'TMPDIR'
+                                                        when doing a long sequence of tests.
+
+<P>
+</LI>
+<LI><B>External libraries ([] means default) :</B> With that parameter, the user can affect external libraries for
+                                                               a diagram or for a super-block. This parameter doesn't remove
+                                                               the external libraries set by the global Scicos variable
+                                                               <B>%scicos_libs</B>.
+
+<P>
+</LI>
+<LI><B>Standalone generation (0:no, 1:yes) :</B> One can disable the standalone code generation with that parameters.
+
+<P>
+</LI>
+<LI><B>Enable debug (0:no, 1:yes) :</B> That parameters is for use only by experts. If set to <B>1</B>, additionnal
+                                                    code is generated in the computational function and in the standalone code
+                                                    for the debugging purpose.
+        
+</LI>
+</UL>
+
+<P>
+
+<H3><A NAME="SECTION00025200000000000000">
+Use of the main GUI</A>
+</H3>
+
+<P>
+
+<H4><A NAME="SECTION00025210000000000000">
+Description
+<BR></A>
+</H4>
+      In the Scicos editor, the code generation begins by choosing the 'Code Generation' item in the Scicos
+      menu 'Tools' and then by clicking in a void area (for an entire diagram generation) or by cliking on
+      a super-block. The user can also first select the super-block that must be generated and then use
+      the popup Menu (mouse right click) and choose the option 'Code Generation'.
+<BR>      <BR>
+Then a dialog box appears, asking the user to set some parameters concerning the code generation.
+      Most of that parameters are default values or values set in the diagram GUI.
+
+<P>
+
+<H4><A NAME="SECTION00025220000000000000">
+Dialog box
+        
+<DIV ALIGN="CENTER">
+          <DIV ALIGN="CENTER">
+<!-- MATH
+ $\scalebox{0.5}{\includegraphics{gui.eps}}$
+ -->
+<IMG
+ WIDTH="533" HEIGHT="252" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img12_eng.gif"
+ ALT="\scalebox{0.5}{\includegraphics{gui.eps}}">
+</DIV>
+</DIV></A>
+</H4>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#gui">6</A>:</b> The main GUI of the code generation
+
+</DIV>
+
+<P>
+
+        <BR>
+<UL>
+<LI><B>New block's name :</B> That parameter is a string which defines the new name of the
+                                          Scicos block that will be generated inside the ScicosLab
+                                          environment. It will serve as a main identifier concerning
+                                          names given for the generated functions and files.
+<BR>
+For example, if we choose to name our block 'Rdnom' :
+                                          
+<UL>
+<LI>The Scicos interfacing function will be called 'Rdnom_c' and
+                                                   its associated file 'Rdnom_c.sci',
+</LI>
+<LI>the type 4 computational function will be called 'Rdnom' and
+                                                   its associated file 'Rdnom.c',
+</LI>
+<LI>the simulation function of the standalone code will have the name
+                                                   'Rdnom_sim' and its file 'Rdnom_standalone.c',
+</LI>
+<LI>the ScicosLab interfacing function of the Standalone will be called
+                                                   'Rdnom' and its associated file 'intRdnom_sci.c',
+</LI>
+<LI>the Makefiles will have the names 'Makefile_Rdnom(.lcc/.mak)' and
+                                                   'Makefile_intRdnom(.lcc/.mak)' to respectively compile the computational
+                                                   function/standalone code and the ScicosLab interfacing function,
+</LI>
+<LI>the loader script that reload generated functions in the ScicosLab
+                                                   environment will be called 'Rdnom_loader.sce',
+</LI>
+<LI>and etc...
+                                          
+</LI>
+</UL>
+
+<P>
+Note that some restrictions still exist concerning the name of the block :
+           
+<UL>
+<LI>The name cannot contains space, the ``.'' character and the ``-'' character.
+                  If such characters are used, then the main GUI will substitute them by the
+                  underscore character (``_'') and a message will be displayed to ask to the
+                  user to change the new name if needed.
+</LI>
+<LI>If a computational function with a the same name have already been dynamically
+                  linked in the ScicosLab environment, then the GUI displays the following message
+                  for the user :
+                  
+<DIV ALIGN="CENTER">
+                    <DIV ALIGN="CENTER">
+<!-- MATH
+ $\scalebox{0.5}{\includegraphics{gui2.eps}}$
+ -->
+<IMG
+ WIDTH="368" HEIGHT="161" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img13_eng.gif"
+ ALT="\scalebox{0.5}{\includegraphics{gui2.eps}}">
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#gui2">7</A>:</b> GUI asking to the user to change the name of the generated codes
+
+</DIV>
+
+<P>
+
+<UL>
+<LI><B>Change block name :</B> For the first choice, the GUI will automatically rename
+                                                    the block'name by adding a 'x' character to the end of
+                                                    the characters string, with 'x' an increasing number
+                                                    corresponding to the number of time taht the block have been
+                                                    generated or dynamically linked into ScicosLab.
+                                                    The user will have the choice to rename it if needed.
+
+<P>
+</LI>
+<LI><B>Force unlink :</B> that button allows to unlink the previous computational function
+                                               from ScicosLab. The new will then replace it.
+                  
+</LI>
+</UL>
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI><B>Created files path :</B> that parameter gives the target path. In that path, the files will be
+                                            generated and compiled. If that path doesn't exist, the code generator
+                                            will created it. If it can't, a message will be displayed to the user
+                                            and the generation will stop.
+
+<P>
+Note that some restrictions still exist concerning the name of the path :
+                                            
+<UL>
+<LI>The name can't contains space character.
+                                                     If a space is used, then the main GUI will substitute it by the
+                                                     underscore character (``_'') and a message will be displayed to
+                                                     ask to the user to change the new path if needed.
+                                            
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI><B>Other files to link with (if any) :</B> that parameter is a character string row vector. It is used to
+                                                           spectify the paths and names of additionnal external libraries.
+                                                           That libraries enclose compiled user's computational functions
+                                                           and other functions needed to compile and link the standalone
+                                                           generated code.
+                                                           For each library, a static and a shared version are needed. The
+                                                           shared library is for the dynamical link into ScicosLab, and the
+                                                           static is to compile the standalone executable.
+
+<P>
+The libraries must have file extensions ".dll" for the windows
+                                                           operating systems (<B>OS</B>), and ".so" for the Linux OS.
+                                                           The generator will then automatically look at for static libraries
+                                                           with file extensions ".lib" for Windows OSs and ".a" for Linux OS.
+
+<P>
+If that lastest files are not found, the GUI send a message to
+                                                           the user and the generation is aborted.
+
+<P>
+</LI>
+<LI><B>Additional compiler flag(s) :</B> this parameter defines an additional option for the C compiler. This can
+                                                     be useful for specifying a directory to include (needed for header file)
+                                                     and/or to include libraries (like '-lstdc++' under Linux OS).
+
+<P>
+</LI>
+</UL>
+         
+         When the user has informed all the GUI parameters, he accepts by click in the 'Ok' button, or by pressing the
+         key 'Enter'.
+<BR>
+But sometimes, the generation or the compilation processes will fail. In such cases error or warning messages
+         are send to the user.
+         The most encountered warning in the Scicos code generation is when the user generates code over an already
+         generated block (with same name and same target path). In that case, the following dialog box appears and
+         ask to the user if the file for the actuators/sensors routines 'Rdnom_act_sens_events.c' must be erased.
+
+<P>
+
+<DIV ALIGN="CENTER">
+           <DIV ALIGN="CENTER">
+<!-- MATH
+ $\scalebox{0.5}{\includegraphics{gui3.eps}}$
+ -->
+<IMG
+ WIDTH="342" HEIGHT="146" ALIGN="BOTTOM" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img14_eng.gif"
+ ALT="\scalebox{0.5}{\includegraphics{gui3.eps}}">
+</DIV>
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#gui3">8</A>:</b> GUI asking to the user to rewritte the Actuator/sensor routines
+
+</DIV>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00026000000000000000">
+Use and definition of external libraries and additional compiler flag(s)</A>
+</font></H3>
+
+<P>
+The use of the field entries 'Other files to link with (if any)' and 'Additional compiler flag(s)' in the main GUI
+    of the code generation can be sometimes difficult and boring when the diagram is composed of lot of user's blocks
+    that need many external libraries.
+<BR>    <BR>
+In Scicos, the global variable <B>%scicos_libs</B> can be used to inform external libraries from the
+    ScicosLab prompt just before launching the Scicos editor. The global variable <B>%scicos_cflags</B> is used as a compiler flag.
+<BR>    <BR>
+Typically it can be used in a 'loader.sce' script file that is in charge of loading user's function like interfacing functions
+    and computational functions.
+<BR>    <BR>
+An example of use of such a script is given below :
+    <DIV ALIGN="CENTER">
+</DIV><PRE>
+099  ...
+0100 if MSDOS then
+0101   libnam = ['mylib1.dll','mylib2.dll']
+0102 else
+0103   libnam = ['mylib1.so','mylib2.so']
+0104 end
+0105
+0106 if %scicos_libs&lt;&gt;[] then
+0107   for i=1:size(libnam,2)
+0108     if find(libnam(i)==%scicos_libs)==[] then
+0109       %scicos_libs=[%scicos_libs,libnam(i)]
+0110     end
+0111   end
+0112 else
+0113   %scicos_libs=libnam
+0114 end
+0115
+0116 if ~MSDOS then %scicos_cflags=[%scicos_cflags,'-lstdc++']; end
+0117...
+</PRE>
+<DIV ALIGN="CENTER">
+      
+</DIV>
+
+<P>
+When this variables are informed, the code generator of Scicos will automatically use it during the link and compile processes.
+    The dialog parameter 'Other files to link with (if any)' of the main GUI will be then set with the contents of <B>%scicos_libs</B>
+    and the dialog parameter 'Additional compiler flag(s)' with the content of the variable <B>%scicos_cflags</B>.
+<BR>    <BR>
+Finally, one can say that when the user generates a new block with the code generation, then the output library of the new block
+    will be automatically added at the end of the <B>%scicos_libs</B> content. That behaviour is for users that use the generated
+    block inside other blocks or diagram to be generated.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00027000000000000000">
+List of the main generated files</A>
+</font></H3>
+
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Files</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Description</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom.c</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Scicos computational function</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_c.sci</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Scicos interfacing function</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_standalone.c</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Standalone code</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_act_sens_events.c</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Actuators/sensors routines (shell/files)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_void_io.c</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Actuators/sensors routines (generic C structure)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_params.dat</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Parameters standalone file (``little endian binary'')</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>IntRdnom_sci.c</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>ScicosLab/standalone interfacing function</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Makefile_Rdnom (lcc.mak/mak)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Makefile for the computational function and the standalone codes</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Makefile_intRdnom (lcc.mak/mak)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>Makefile for the ScicosLab/standalone interfacing function</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=227>Rdnom_loader.sce</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=340>ScicosLab script to reload the generated code inside ScicosLab</TD>
+</TR>
+</TABLE>
+ 
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00028000000000000000">
+Code generation from the ScicosLab prompt</A>
+</font></H3>
+
+<P>
+
+<H4><A NAME="SECTION00028010000000000000">
+Description
+<BR></A>
+</H4>
+    The code generation of an entire diagram can be done without running the Scicos editor.
+    This feature can be automatically realized with the ScicosLab macro <B>scicos_codegeneration</B>
+    from the Scicoslab prompt.
+    Before use this function the desired diagram must be loaded into ScicosLab, for example by using the 
+    'load' command for a diagram included in a '.cos' file. 
+    After the generation, the resulting diagram can be loaded in scicos with <TT>-&gt;scicos(scs_m);</TT>. 
+    Default parameters for code generation can be set with the help of the 'Params' argument.
+
+<P>
+
+<H4><A NAME="SECTION00028020000000000000">
+Calling Sequence
+<BR></A>
+</H4>
+    <TT>[ok,scs_m,%cpr] = scicos_codegeneration(scs_m,Params)</TT>
+
+<P>
+
+<H4><A NAME="SECTION00028030000000000000">
+Parameters</A>
+</H4>
+    
+<UL>
+<LI><B>scs_m :</B> Scicos diagram (obtained, e.g., by 'load file.cos').
+</LI>
+<LI><B>Params :</B> A list of properties for scicos code generation.
+        
+<UL>
+<LI><B>Params(1) :</B> silent_mode : if 1 then no message are displayed during the code generation
+                                  and default values are taken for the target directory and names.
+</LI>
+<LI><B>Params(2) :</B> cblock : if set to 1, the generated block is replaced by a CBLOCK4 that enclosed the
+                                  generic parameters and the generated computational function.
+</LI>
+<LI><B>Params(3) :</B> rdnom : sets the default name for the generated code.
+</LI>
+<LI><B>Params(4) :</B> rpat : sets the default target path for the generated code.
+</LI>
+<LI><B>Params(5) :</B> libs : sets the additional external libraries needed by code generation.
+</LI>
+<LI><B>Params(6) :</B> opt : if 0, then the standalone code will not be generated -default 1-.
+</LI>
+<LI><B>Params(7) :</B> enable_debug : says if additionnal code must be generated to debug generated codes.
+          </LI>
+</UL>
+</LI>
+<LI><B>ok :</B> Flag to say if the code generation is successfull.
+</LI>
+<LI><B>scs_m :</B> The resulting diagram, that contains the generated block if any.
+</LI>
+<LI><B>%cpr :</B> The resulting compiled structure.
+    
+</LI>
+</UL>
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION00029000000000000000">
+Use of the ScicosLab interfacing function for the standalone</A>
+</font></H3>
+
+<P>
+The code generation of Scicos generates both a computational function and a standalone code.
+  In the generation process, when the user choose to generate the standalone code, it is
+  automatically compiled and dynamically linked in the ScicosLab environment. Then the standalone
+  code can be used by the way of a ScicosLab interfacing function which is also generated, compiled
+  and dynamically linked in the same time than the standalone code.
+  The ScicosLab interfacing function is a C function and is automatically added to the list of the
+  ScicosLab functions with the help of the function <TT>addinter</TT>.
+
+<P>
+For a generated code called 'Rdnom', such a function will have the following calling sequence in
+  ScicosLab for an entire diagram generation :
+  <DIV ALIGN="CENTER">
+<TT>[out1,out2,...,outX]=Rdnom(in1,in2...,inX,[,tf][,fil])</TT>
+  
+</DIV>
+with
+  
+<UL>
+<LI>out1,out2,...,outX : the output signals corresponding to the X actuators.
+</LI>
+<LI>in1,in2...,inX     : the input vector or matrix corresponding to the X sensors.
+</LI>
+<LI>tf   : the final time of the simulation (optional).
+</LI>
+<LI>file : the path and name of the binary data file that contains
+                 the parameters and initial states values (optional).
+  
+</LI>
+</UL>
+
+<P>
+and the following calling sequence for a super-block code generation :
+
+<P>
+<DIV ALIGN="CENTER">
+<TT>[out1,out2,...,outX]=Rdnom(in1,in2...,inX,[,te][,tf][,h][,solver])</TT>
+  
+</DIV>
+with
+  
+<UL>
+<LI>out1,out2,...,outX : the output signals corresponding to the X actuators.
+</LI>
+<LI>in1,in2...,inX     : the input vector or matrix corresponding to the X sensors.
+</LI>
+<LI>te     : the sampling time (optional, default 0.1).
+</LI>
+<LI>tf     : the final time of the simulation (optional, default 30).
+</LI>
+<LI>h      : solver step (optional, default 0.001).
+</LI>
+<LI>solver : solver type, 1:Euler, 2:Heun, 3:R.Kutta (optional, default 3).
+  
+</LI>
+</UL>
+
+<P>
+The output signals are scilab structures composed by two fields : time and values.
+  After have running the interfacing function, on can compute, e.g., an output signal :
+
+<P>
+<PRE>
+--&gt;out1=Discrete_KalmanFilter()
+out1  =
+
+values: [15000x3 constant]
+time: [15000x1 constant]
+</PRE>
+
+<P>
+The field <TT>values</TT> contains the data stored during the simulation. If input/output
+  signals are scalar, then the size of the value field will be <B>[n,1]</B> with <B>n</B> the <B>n</B>
+  calls for the sensor/actuator. If the input/output signals are vector of size <B>m</B>, then
+  the size for values will be <B>[n,m]</B>. The size for time is always <B>[n,1]</B>. For each rows,
+  the event dates of the call are recorded.
+  To extract or enclose data from or in signal structure one can use the scilab functions
+  <TT>sig2data</TT> or <TT>data2sig</TT>.
+<BR>
+<P>
+Note that for the time being, inputs are not considered like signals structure. The
+  <TT>in1,in2...,inX</TT> variables can only be set with vectors (for scalar sensors) or
+  with matrices (for vectorial sensors). The number of rows for the input correspond to
+  the number of call of the sensor routines. If the number of calls are more that the
+  number of rows, then the generic routine for sensor stops the reading at the last row.
+<BR>
+<P>
+When the ScicosLab interfacing function of the standalone code is launched, all the
+  simulation is running from the time 0 to the time tf. The value of the final simulation
+  time is in fact written in the default binary data file, but it can be overloaded by
+  the use of the optional right hand side argument <TT>tf</TT>.
+<BR>
+<P>
+For the entire diagram generation case, the default parameters data file is normally in the path
+  where codes have been generated. This file is named, for example, 'Rdnom_params.dat' and is written
+  in binary little endian format. The lastest optional right hand side argument <TT>fil</TT> allows
+  to specify another path and name for that parameters file.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION000210000000000000000">
+Use the loader script to reload the generated codes inside Scicos/ScicosLab</A>
+</font></H3>
+
+<P>
+The code generation of Scicos generates a ScicosLab loader.sce script that can be used
+  to reload the generated codes in another ScicosLab session. The script is generated in
+  the default path where the codes have been generated and is named, for a block
+  called 'Rdnom', <TT>Rdnom_loader.sce</TT>.
+<BR>
+<P>
+This script successively :
+  
+<UL>
+<LI>informs the <TT>%scicos_libs</TT> variable with the library that contains
+          the comptutational function of the generated block,
+
+<P>
+</LI>
+<LI>compiles and links the library that contains the computational function
+          and the standalone code in the ScicosLab environment,
+
+<P>
+</LI>
+<LI>loads the Scicos interfacing function of the generated block in
+          ScicosLab with the ScicosLab function <TT>getf</TT>,
+
+<P>
+</LI>
+<LI>compiles and links library that contains the ScicosLab interfacing function
+          of the standalone code in ScicosLab.
+  
+</LI>
+</UL>
+
+<P>
+Then after running this script from the ScicosLab prompt with the <TT>exec</TT>
+  command, with, e.g., the command :
+<BR>
+<P>
+<TT>-&gt;exec('Rdnom_loader.sce');</TT>,
+<BR>
+<P>
+the new generated Scicos block can be added to a diagram by the help of the item
+  <TT>Add new block</TT> in the menu <TT>Edit</TT> of the Scicos editor, and the standalone simulation
+  function can be run from the ScicosLab prompt with the ScicosLab interfacing function
+  calling sequence.
+
+<P>
+
+<H3><font color="blue"><A NAME="SECTION000211000000000000000">
+Standalone executable</A>
+</font></H3>
+
+<P>
+
+<H3><A NAME="SECTION000211100000000000000">
+Compilation</A>
+</H3>
+
+<P>
+When generating the codes, the standalone can be compiled as an executable. This executable can be run
+  in a shell and the compilation is possible via Makefiles generated in the target path. This Makefiles
+  are called, for example, <TT>Makefile_Rdnom</TT> for a Linux OS and <TT>Makefile_Rdnom.mak</TT> for a Windows OS.
+<BR>  <BR>
+Under Linux OS, the standalone executable can be obtained with the following command line :
+  <PRE>
+alan@fiboue:~/scicoslab/Rdnom$ make -f Makefile_Rdnom standalone
+</PRE>
+  and under Windows OS,
+  <PRE>
+c:\scicoslab\Rdnom&gt; nmake /f Makefile_Rdnom standalone
+</PRE> <BR>
+<P>
+Note that to run the standalone in Windows OS, the standard ScicosLab libraries (dlls in the SCI/bin directory)
+  and the external libraries defined by the user must be avialable in the path where the standalone executable
+  is called.
+<BR>
+<P>
+The standalone executable is always called <TT>standalone</TT> (or <TT>standalone.exe</TT> for Windows).
+  When it is called without argument, the standalone simulation is run and interacts with the shell
+  concerning data of actuators/sensors. 
+<BR>
+<P>
+
+<H3><A NAME="SECTION000211200000000000000">
+Sensors/Actuators</A>
+</H3>
+  When sensors are called, the shell prompts the user to enter
+  data with keyboard as follows :
+  <PRE>
+Require outputs of sensor number 1
+time is: 0.000000
+sizes of the sensor output is: 1,1
+type of the sensor output is: 10 (double)
+Please set the sensor output values
+y(0,0) :
+</PRE>
+  If the sensors are for vector or matrix then each element must be typed.
+<BR>  <BR>
+For the actuators, the data are displayed during the simulation, as follows :
+  <PRE>
+Actuator: time=0.000000, u(0,0) of actuator 1 is -0.878222
+Actuator: time=0.000000, u(1,0) of actuator 1 is -0.702345
+Actuator: time=0.000000, u(2,0) of actuator 1 is -0.783668
+Actuator: time=0.001000, u(0,0) of actuator 1 is -0.878222
+Actuator: time=0.001000, u(1,0) of actuator 1 is -0.702345
+Actuator: time=0.001000, u(2,0) of actuator 1 is -0.783668
+</PRE>
+   The subroutines that correspond to the sensor/actuator are in the file called
+   <TT>Rdnom_act_sens_events.c</TT>. For actuators, the routine is called
+   <TT>Rdnom_actuator</TT> and for sensors, the routine is called <TT>Rdnom_sensor</TT>.
+   That subroutines are considered like generic routines and the user of the
+   standalone executable can easily modify it.
+<BR>   <BR>
+The calling sequence of the <TT>Rdnom_actuator</TT> is :
+   <PRE>
+void Rdnom_actuator(flag,nport,nevprt,t,u,nu1,nu2,ut,typout,outptr)
+     /*
+      * To be customized for standalone execution
+      * flag   : specifies the action to be done
+      * nport  : specifies the  index of the super-block
+      *          regular input (The input ports are numbered
+      *          from the top to the bottom )
+      * nevprt : indicates if an activation had been received
+      *          0 = no activation
+      *          1 = activation
+      * t      : the current time value
+      * u      : the vector inputs value
+      * nu1    : the input size 1
+      * nu2    : the input size 2
+      * ut     : the input type
+      * typout : learn mode (0 from terminal,1 from input file)
+      * outptr : pointer to out data
+      *          typout=0, outptr not used
+      *          typout=1, outptr contains the output file name
+      */
+
+     int *flag,*nevprt,*nport;
+     int *nu1,*nu2,*ut;
+
+     int typout;
+     void *outptr;
+
+     double *t;
+     void *u;
+</PRE>
+   The calling sequence of the <TT>Rdnom_sensor</TT> is :
+   <PRE>
+void Rdnom_sensor(flag,nport,nevprt,t,y,ny1,ny2,yt,typin,inptr)
+     /*
+      * To be customized for standalone execution
+      * flag  : specifies the action to be done
+      * nport : specifies the  index of the super-block
+      *         regular input (The input ports are numbered
+      *         from the top to the bottom )
+      * nevprt: indicates if an activation had been received
+      *         0 = no activation
+      *         1 = activation
+      * t     : the current time value
+      * y     : the vector outputs value
+      * ny1   : the output size 1
+      * ny2   : the output size 2
+      * yt    : the output type
+      * typin : learn mode (0 from terminal,1 from input file)
+      * inptr : pointer to out data
+      *          typin=0, inptr not used
+      *          typin=1, inptr contains the input file name
+      */
+     int *flag,*nevprt,*nport;
+     int *ny1,*ny2,*yt;
+
+     int typin;
+     void *inptr;
+
+     double *t;
+     void *y;
+</PRE>
+
+<P>
+
+<H3><A NAME="SECTION000211300000000000000">
+Standalone options</A>
+</H3>
+
+<P>
+All of options of the standalone executable can be viewed by using the
+   inline help with the option -h.
+
+<P>
+
+<H4><A NAME="SECTION000211310000000000000">
+Options for an entire diagram generation
+<BR></A>
+</H4>
+
+<P>
+When the user has chosen to generate codes for an complete diagram
+   the following options are available :
+   <PRE>
+alan@fiboue:~/scicoslab/Rdnom$./standalone -h
+Usage: ./standalone [-h] [-v] [-i arg] [-o arg] [-d arg] [-t arg]
+ Options :
+     -h for the help
+     -v for printing the Scicos Version
+     -i for input file name, by default is Terminal
+     -o for output file name, by default is Terminal
+     -t for the final time, by default is 1.500000e+01
+     -p for input parameters file name, by default is Rdnom_params.dat
+</PRE>
+<BR>
+<P>
+
+<H4><A NAME="SECTION000211320000000000000">
+Options for a super-block generation
+<BR></A>
+</H4>
+   When the user do a code generation from a super-block, then the following
+   options are available :
+   <PRE>
+alan@fiboue:~/scicoslab/Rdnom$./standalone -h
+Usage: ./standalone [-h] [-v] [-i arg] [-o arg] [-d arg] [-t arg] [-e arg] [-s arg]
+Options :
+     -h for the help
+     -v for printing the Scicos Version
+     -i for input file name, by default is Terminal
+     -o for output file name, by default is Terminal
+     -d for the clock period, by default is 0.1
+     -t for the final time, by default is 30
+     -e for the solvers step size, by default is 0.001
+     -s integer parameter for select the numerical solver :
+        1 for Euler's method
+        2 for Heun's method
+        3 (default value) for the Fourth-Order Runge-Kutta (RK4) Formula
+</PRE>
+<BR>
+<P>
+
+<H4><A NAME="SECTION000211330000000000000">
+Options to use input/output files for sensor/actuator
+<BR></A>
+</H4>
+
+<P>
+The standalone executables can be used with the command line parameters <TT>-i</TT>
+   and <TT>-o</TT> to specify input/output files for the sensors/actuators instead of
+   using the terminal.
+<BR>   <BR>
+To specify output file(s) for the actuator(s), one can use
+   <PRE>
+alan@fiboue:~/scicoslab/Rdnom$./standalone -o out.txt
+</PRE>
+<BR>
+The data for the actuator(s) will be then recorded in file(s) <TT>out_x.txt</TT>
+    where <TT>x</TT> are for the actuator number. The generic routines write it in
+    text format and the contents will be :
+    <PRE>
+alan@fiboue:~/scicoslab/Rdnom$ cat out_1.txt | more
+0.000000 -0.878222 -0.702345 -0.783668
+0.001000 -0.878222 -0.702345 -0.783668
+0.002000 -0.878222 -0.702345 -0.783668
+0.003000 -0.878222 -0.702345 -0.783668
+0.004000 -0.878222 -0.702345 -0.783668
+....
+</PRE>
+<BR>
+For each row, the first column is for the event date when the actuator have been
+    called and the others are for the data. When there is more than two columns,
+    that says that the data are vector or matrix.
+<BR>    <BR>
+The final simulation time, that is enclosed in the parameters data files,
+    can be overloaded by using the <TT>-t</TT> option, and the path and name of
+    the parameters file can be specified with the <TT>-p</TT> option.
+
+<P>
+
+<H3><A NAME="SECTION000211400000000000000">
+The calling sequence of the standalone simulation function</A>
+</H3>
+
+<P>
+In the standalone code, a function named 'Rdnom_sim' is the entry point for
+  the simulation function. It can be called and interfaced with external routines.
+  In the main function of the standalone file 'Rdnom_standalone.c' and in the
+  ScicosLab interfacing function file 'intRdnom_sci.c', the standalone simulation
+  function is called like that :
+
+<P>
+<PRE>
+ierr = Rdnom_sim(params,typin,inptr,typout,outptr);
+</PRE>
+  The first argument is a structure with the following definition :
+  <PRE>
+typedef struct {
+  char *filen;
+  double tf;
+} params_struct;
+</PRE>
+
+<P>
+
+<UL>
+<LI><TT>filen</TT> is for the file name of the parameters data file
+          and <TT>tf</TT> is for the final simulation time.
+</LI>
+<LI><TT>typin</TT> and <TT>typout</TT> are vectors of <TT>int*</TT> and defines the type
+          of input and output (0 are for terminal, 1 for files and 2 for generic interfaces).
+</LI>
+<LI><TT>inptr</TT> and <TT>outptr</TT> are arrays for inputs/outputs of type void**.
+          The <TT>typin/typout</TT> vectors and <TT>inptr/outptr</TT> arrays have the same size.
+</LI>
+<LI><TT>ierr</TT> is an error number.
+  
+</LI>
+</UL>
+
+<P>
+
+<H3><A NAME="SECTION000211500000000000000">
+The calling sequence of the generic interfaces for actuator/sensor</A>
+</H3>
+
+<P>
+The file 'Rdnom_void_io.c' allows to use the standalone simulation function with
+    generic interfaces for actuator/sensor.
+
+<P>
+<PRE>
+void Rdnom_actuator(flag,nport,nevprt,t,u,nu1,nu2,ut,typout,outptr)
+     int *flag,*nevprt,*nport;
+     int *nu1,*nu2,*ut;
+
+     int typout;
+     void *outptr;
+
+     double *t;
+     void *u;
+</PRE>
+<BR>
+<P>
+<PRE>
+void Rdnom_sensor(flag,nport,nevprt,t,y,ny1,ny2,yt,typin,inptr)
+     int *flag,*nevprt,*nport;
+     int *ny1,*ny2,*yt;
+
+     int typin;
+     void *inptr;
+
+     double *t;
+     void *y;
+</PRE>
+<BR>
+That calling sequences doesn't differs from the calling sequences used in the file
+    'Rdnom_act_sens_events.c'. The difference is how the outptr/inptr structures are
+    used in generic interfaces. They are defined by <TT>scicos_inout</TT> structures :
+
+<P>
+<PRE>
+typedef struct {
+  int typ;      /* data type */
+  int ndims;    /* number of dims */
+  int ndata;    /* number of data */
+  int *dims;    /* size of data (length ndims) */
+  double *time; /* date of data (length ndata) */
+  void *data;   /* data (length ndata*prod(dims)) */
+} scicos_inout;
+</PRE>
+
+<P>
+
+<H3><A NAME="SECTION000211600000000000000">
+The structure of the parameters file</A>
+</H3>
+
+<P>
+When the code generation is used for an entire diagram a parameter file is generated to contain
+some data in binary format. This file is called, for example, <TT>Rdnom_params.dat</TT>. It is written in little
+endian format.
+
+<P>
+
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="236" HEIGHT="557" BORDER="0"
+ SRC="../../images/scicos/CodeGeneration_img15_eng.gif"
+ ALT="\begin{figure}\begin{center}
+\scalebox{0.65}{%
+\input{param_struc.pstex_t}}
+\end{center} \end{figure}">
+</DIV>
+<DIV ALIGN="CENTER">
+<b>Figure <A HREF="#param_struc">9</A>:</b> The structure of the parameters file
+
+</DIV>
+
+<P>
+The map can also be accessible via a Xml file which is generated in the directory and is called <TT>Rdnom_params.xml</TT>.
+For i.e, the content of this file for the Scicos demo <TT>RLC_circuit.cosf</TT> is
+<PRE>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+
+&lt;ScicosParam Name="RLC_circuit" version="scicos4.4"&gt;
+  &lt;ScicosVar name="tf" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="ttol" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="deltat" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="rtol" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="atol" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="hmax" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="rpar_1" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="rpar_2" dim1="7" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="rpar_3" dim1="6" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="ipar_2" dim1="12" dim2="1" typ="84"/&gt;
+  &lt;ScicosVar name="ipar_3" dim1="10" dim2="1" typ="84"/&gt;
+  &lt;ScicosVar name="x" dim1="3" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="outtb_1" dim1="1" dim2="1" typ="10"/&gt;
+  &lt;ScicosVar name="outtb_2" dim1="1" dim2="1" typ="10"/&gt;
+&lt;/ScicosParam&gt;
+</PRE>
+
+<P>
+For each variable, the size and the type is given. One then can use an Xml parser, to read and
+write data in the parameters file.
+
+<P>
+
+<H4><A NAME="SECTION000211610000000000000">
+Use of the functions getscicosparam and setscicosparam
+<BR></A>
+</H4>
+
+<P>
+The ScicosLab functions <TT>getscicosparam</TT> and <TT>setscicosparam</TT> can be used from the ScicosLab
+   prompt to read and write data in the parameters file provided by the Scicos generation. It use the
+   Xml file to know how is it written.
+   For i.e, for the Scicos demo <TT>RLC_circuit.cosf</TT> :
+<BR>
+<P>
+Step 1 - Do the code generation.
+   <PRE>
+    --&gt;load SCI/macros/scicos/lib;
+    --&gt;exec(SCI+'/demos/scicos/Electrical/RLC_circuit.cosf',-1);
+    --&gt;[ok,scs_m,%cpr] = scicos_codegeneration(scs_m,list(1));
+   </PRE>
+
+<P>
+Step 2 - Run the standalone generated code with default values.
+   <PRE>
+    --&gt;[out1,out2]=RLC_circuit();
+    --&gt;scf(1);plot(out1.time,out1.values);
+</PRE>
+
+<P>
+Step 3 - Load the parameters enclosed in the paramaters file in a ScicosLab list.
+   <PRE>
+    --&gt;curdir=getcwd();
+    --&gt;[dt,data] = getscicosparam(curdir+'/RLC_circuit/RLC_circuit_params.dat');
+</PRE>
+
+<P>
+Step 4 - Change parameter values.
+   <PRE>
+    --&gt;dt(1)
+    ans  =
+             column 1 to 9
+
+    !SicosParam  tf  ttol  deltat  rtol  atol  hmax  rpar_1  rpar_2  !
+
+             column 10 to 15
+
+    !rpar_3  ipar_2  ipar_3  x  outtb_1  outtb_2  !
+
+    --&gt;dt.tf=1;
+</PRE>
+
+<P>
+Step 5 - Save the parameters list in the parameters file.
+   <PRE>
+    --&gt;ok=setscicosparam(dt,curdir+'/RLC_circuit/RLC_circuit_params.dat');
+</PRE>
+
+<P>
+Step 6 - Re-Run the standalone generated code with new parameters values.
+   <PRE>
+    --&gt;[out1,out2]=RLC_circuit();
+    --&gt;scf(2);plot(out1.time,out1.values);
+</PRE>
+
+<H3><font color="blue"><A NAME="SECTION000212000000000000000">
+Authors</A>
+</font></H3>
+<b>Scicos Team</b> 
+
+<BR>
+
+
+
+
+</BODY>
+</HTML>

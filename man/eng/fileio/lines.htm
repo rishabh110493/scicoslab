@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lines</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lines</b> -  rows and columns used for display</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>lines([nl [,nc]])  </tt></dd>
+<dd><tt>ncl=lines()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nl : an integer, the number of lines for vertical paging control. If 0</b></tt>no vertical paging control is done.</li>
+<li>
+<tt><b>nc</b></tt>: an integer, the number of column of output. Used for formatting output</li>
+<li>
+<tt><b>ncl</b></tt>: a 1x2 vector [nc,nl]</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lines</b></tt> handles Scilab display paging.</p>
+<p><tt><b>lines()</b></tt> returns the vector <tt><b>[# columns, # rows]</b></tt> currently
+    used by Scilab for displaying the results.</p>
+<p><tt><b>lines(nl)</b></tt> sets the number of displayed lines (before user is asked
+    for more) to <tt><b>nl</b></tt>.</p>
+<p><tt><b>lines(0)</b></tt> disables vertical paging</p>
+<p><tt><b>lines(nl,nc)</b></tt> changes also the size of the output to <tt><b>nc</b></tt>
+    columns.</p>
+<p>
+    When Scilab is launched without -nw option, the <tt><b>lines</b></tt> parameters
+    are automatically set according to the output window size, these
+    parameters are also automaticaly modified when the window is resized.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/disp.htm"><tt><b>disp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/print.htm"><tt><b>print</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>invr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>invr</b> -  inversion of (rational) matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>F = invr(H)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H</b></tt>: polynomial or rational matrix</li>
+<li>
+<tt><b>F</b></tt>: polynomial or rational matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>H</b></tt> is a polynomial or rational function matrix, <tt><b>invr</b></tt>
+    computes <tt><b>H^(-1)</b></tt> using Leverrier's algorithm (see function code)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s')
+H=[s,s*s+2;1-s,1+s]; invr(H)
+[Num,den]=coffg(H);Num/den
+H=[1/s,(s+1);1/(s+2),(s+3)/s];invr(H)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>fftifft</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fft</b> - fast Fourier transform.</p>
+<p><b>ifft</b> - fast Fourier transform.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>x=fft(a ,-1) or x=fft(a)</tt></dd>
+<dd><tt>x=fft(a,1) or x=ifft(a)</tt></dd>
+<dd><tt>x=fft(a,-1,dim,incr)</tt></dd>
+<dd><tt>x=fft(a,1,dim,incr)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector. Real or complex matrix (2-dim
+          fft)</li>
+<li>
+<tt><b>a</b></tt>: real or complex vector, matrix or multidimensionnal
+          array.</li>
+<li>
+<tt><b>dim</b></tt>: integer</li>
+<li>
+<tt><b>incr</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>Short syntax </b><dl>
+<dd>
+<b>direct</b><p><tt><b>x=fft(a,-1)</b></tt> or <tt><b>x=fft(a)</b></tt> gives a
+            direct transform.</p>
+<dl>
+<dd>
+<b>single variate</b><p>If <tt><b>a</b></tt> is a vector a single variate direct FFT
+                is computed that is:</p>
+<p>x(k)=sum over m from 1 to n of
+                a(m)*exp(-2i*pi*(m-1)*(k-1)/n)</p>
+<p>for k varying from 1 to n (n=size of vector
+                <tt><b>a</b></tt>).</p>
+<p>(the <tt><b>-1</b></tt> argument refers to the sign of the
+                exponent..., NOT to "inverse"),</p>
+</dd>
+<dd>
+<b>multivariate</b><p>If <tt><b>a</b></tt> is a matrix or or a multidimensionnal
+                array a multivariate direct FFT is performed.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>inverse</b><p><tt><b>a=fft(x,1)</b></tt> or <tt><b>a=ifft(x)</b></tt>performs the
+            inverse transform normalized by <tt><b>1/n</b></tt>.</p>
+<dl>
+<dd>
+<b>single variate</b><p>If <tt><b>a</b></tt> is a vector a single variate inverse FFT
+                is computed</p>
+</dd>
+<dd>
+<b>multivariate</b><p>If <tt><b>a</b></tt> is a matrix or or a multidimensionnal
+                array a multivariate inverse FFT is performed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>Long syntax for multidimensional FFT</b><p><tt><b>x=fft(a,-1,dim,incr)</b></tt> allows to perform an
+        multidimensional fft.</p>
+<p>If a is a real or complex vector implicitly indexed by
+        <tt><b>j1,j2,..,jp</b></tt> i.e. <tt><b>a(j1,j2,..,jp)</b></tt> where
+        <tt><b>j1</b></tt> lies in <tt><b>1:dim(1),</b></tt><tt><b>j2</b></tt> in
+        <tt><b>1:dim(2),...</b></tt> one gets a p-variate FFT by calling p times
+        <tt><b>fft</b></tt> as follows</p>
+<pre>incrk=1; x=a; for k=1:p x=fft(x ,-1,dim(k),incrk)
+        incrk=incrk*dim(k) end</pre>
+<p>where <tt><b>dimk</b></tt> is the dimension of the current variable
+        w.r.t which one is integrating and <tt><b>incrk</b></tt> is the increment
+        which separates two successive <tt><b>jk</b></tt> elements in
+        <tt><b>a</b></tt>.</p>
+<p>In particular,if <tt><b>a</b></tt> is an mxn matrix,
+        <tt><b>x=fft(a,-1)</b></tt> is equivalent to the two instructions:</p>
+<p><tt><b>a1=fft(a,-1,m,1)</b></tt> and
+        <tt><b>x=fft(a1,-1,n,m)</b></tt>.</p>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  //Comparison with explicit formula
+  //----------------------------------
+  a=[1;2;3];n=size(a,'*');
+  norm(1/n*exp(2*%i*%pi*(0:n-1)'.*.(0:n-1)/n)*a -fft(a,1))
+  norm(exp(-2*%i*%pi*(0:n-1)'.*.(0:n-1)/n)*a -fft(a,-1)) 
+ 
+  //Frequency components of a signal
+  //----------------------------------
+  // build a noides signal sampled at 1000hz  containing to pure frequencies 
+  // at 50 and 70 Hz
+  sample_rate=1000;
+  t = 0:1/sample_rate:0.6;
+  N=size(t,'*'); //number of samples
+  s=sin(2*%pi*50*t)+sin(2*%pi*70*t+%pi/4)+grand(1,N,'nor',0,1);
+  
+  y=fft(s);
+  //the fft response is symetric we retain only the first N/2 points
+  f=sample_rate*(0:(N/2))/N; //associated frequency vector
+  n=size(f,'*')
+  clf()
+  plot2d(f,abs(y(1:n)))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/corr.htm"><tt><b>corr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

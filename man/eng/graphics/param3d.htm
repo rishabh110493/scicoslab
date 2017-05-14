@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>param3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>param3d</b> - 3D plot of a parametric
+  curve</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>param3d(x,y,z,[theta,alpha,leg,flag,ebox])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y,z</b></tt>: three vectors of the same size (points of the parametric
+          curve).</li>
+<li>
+<tt><b>theta, alpha</b></tt>: real values giving in degree the spherical coordinates of the
+          observation point.</li>
+<li>
+<tt><b>leg</b></tt>: string defining the labels for each axis with @ as a field
+          separator, for example "X@Y@Z".</li>
+<li>
+<tt><b>flag=[type,box]</b></tt>: <tt><b>type</b></tt> and <tt><b>box</b></tt> have the same meaning
+          as in <tt><b>plot3d</b></tt>:<ul>
+<li>
+<tt><b>type</b></tt>: an integer (scaling).<ul>
+<li>
+<tt><b>type=0</b></tt>the plot is made using the current 3D scaling (set
+                      by a previous call to <tt><b>param3d</b></tt>,
+                      <tt><b>plot3d</b></tt>, <tt><b>contour</b></tt> or
+                      <tt><b>plot3d1</b></tt>).</li>
+<li>
+<tt><b>type=1</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are specified by the value of the
+                      optional argument <tt><b>ebox</b></tt>.</li>
+<li>
+<tt><b>type=2</b></tt>rescales automatically 3d boxes with extreme aspect
+                      ratios, the boundaries are computed using the given
+                      data.</li>
+<li>
+<tt><b>type=3</b></tt>3d isometric with box bounds given by optional
+                      <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=4</b></tt>3d isometric bounds derived from the data, to
+                      similarily<tt><b>type=2</b></tt>.</li>
+<li>
+<tt><b>type=5</b></tt>3d expanded isometric bounds with box bounds given
+                      by optional <tt><b>ebox</b></tt>, similarily to
+                      <tt><b>type=1</b></tt>.</li>
+<li>
+<tt><b>type=6</b></tt>3d expanded isometric bounds derived from the data,
+                      similarily to <tt><b>type=2</b></tt>.Note that axes
+                      boundaries can be customized through the axes entity
+                      properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</li>
+</ul>
+</li>
+<li>
+<tt><b>box</b></tt>: an integer (frame around the plot).<ul>
+<li>
+<tt><b>box=0</b></tt>nothing is drawn around the plot.</li>
+<li>
+<tt><b>box=1</b></tt>unimplemented (like box=0).</li>
+<li>
+<tt><b>box=2</b></tt>only the axes behind the surface are drawn.</li>
+<li>
+<tt><b>box=3</b></tt>a box surrounding the surface is drawn and captions
+                      are added.</li>
+<li>
+<tt><b>box=4</b></tt>a box surrounding the surface is drawn, captions and
+                      axes are added.Note that axes aspect can also be
+                      customized through the axes entity properties (see
+                      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>ebox</b></tt>: It specifies the boundaries of the plot as the vector
+          <tt><b>[xmin,xmax,ymin,ymax,zmin,zmax]</b></tt>. This argument is used
+          together with <tt><b>type</b></tt> in <tt><b>flag</b></tt> : if it is set
+          to <tt><b>1</b></tt>, <tt><b>3</b></tt> or <tt><b>5</b></tt> (see above to
+          see the corresponding behaviour). If <tt><b>flag</b></tt> is missing,
+          <tt><b>ebox</b></tt> is not taken into acoount. Note that, when
+          specified, the <tt><b>ebox</b></tt> argument acts on the
+          <tt><b>data_bounds</b></tt> field that can also be reset through the
+          axes entity properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>param3d</b></tt> is used to plot a 3D curve defined by its
+    coordinates <tt><b>x</b></tt>, <tt><b>y</b></tt> and <tt><b>z</b></tt>. Note that
+    data can also be set or get through the surface entity properties (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surface_properties.htm"><tt><b>surface_properties</b></tt></a>).</p>
+<p>Note that properties like <tt><b>rotation angles</b></tt>,
+    <tt><b>colors</b></tt> and <tt><b>thickness</b></tt> of the plotted curves can
+    also be set through the param3d entity properties (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/param3d_properties.htm"><tt><b>param3d_properties</b></tt></a>).</p>
+<p>Use <tt><b>param3d1</b></tt> to do multiple plots.</p>
+<p>Enter the command <tt><b>param3d()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=0:0.1:5*%pi;
+param3d(sin(t),cos(t),t/10,35,45,"X@Y@Z",[2,3])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/param3d1.htm"><tt><b>param3d1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

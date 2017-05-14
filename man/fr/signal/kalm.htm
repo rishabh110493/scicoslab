@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>kalm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>kalm</b> -  Kalman update</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x1,p1,x,p]=kalm(y,x0,p0,f,g,h,q,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f,g,h</b></tt>: current system matrices</li>
+<li>
+<tt><b>q, r</b></tt>: covariance matrices of dynamics and observation noise</li>
+<li>
+<tt><b>x0,p0</b></tt>: state estimate and error variance at t=0 based on data up to t=-1</li>
+<li>
+<tt><b>y</b></tt>: current observation Output from the function is:</li>
+<li>
+<tt><b>x1,p1</b></tt>: updated estimate and error covariance at t=1 based on data up to t=0</li>
+<li>
+<tt><b>x</b></tt>: updated estimate and error covariance at t=0  based on data up to t=0</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    function which gives the Kalman update and error variance</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

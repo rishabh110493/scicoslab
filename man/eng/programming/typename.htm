@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>typename</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>typename</b> -  associates a name to variable type</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[types [ [,names]]=typename()  </tt></dd>
+<dd><tt>typename(name,type)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>types</b></tt>: integer column vector: the types codes of each defined data types.</li>
+<li>
+<tt><b>names</b></tt>: column vector of strings: the names associated to type codes.</li>
+<li>
+<tt><b>type</b></tt>: integer: the type code of new data type.</li>
+<li>
+<tt><b>name</b></tt>: string: the name associated to the type code</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The function and operator overloading make use of a formal name
+    associated to data types to form the name of the overloading function
+    (see overloading). The <tt><b>typename</b></tt> can be used to handle this
+    formal names for hard coded data types (the <tt><b>tlist</b></tt> or <tt><b>mlist</b></tt>
+    coded data types formal names are defined in an other way, see <tt><b>overloading</b></tt>).</p>
+<p>
+    Called without right hand side argument, <tt><b>typename</b></tt> returns
+    informations on defined data types.</p>
+<p>
+    Called with right hand side argument, <tt><b>typename</b></tt> associates a name
+    to a data type code.</p>
+<p><tt><b>typename('',type)</b></tt> suppress the data type given by its code
+    <tt><b>type</b></tt> out of the table of known data types.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/overloading.htm"><tt><b>overloading</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mlist.htm"><tt><b>mlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

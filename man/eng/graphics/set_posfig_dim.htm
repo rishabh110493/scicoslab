@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>set_posfig_dim</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>set_posfig_dim</b> - change defaut transformation for
+  exporting in postscript</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>set_posfig_dim(w,h)</tt></dd>
+<dd><tt>set_posfig_dim(0,0)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>w</b></tt>: graphic figure width, number of pixels</li>
+<li>
+<tt><b>h</b></tt>: graphic figure height, number of pixels</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>set_posfig_dim(w,h)</b></tt> set the coordinates transformation to
+    be used when exporting a graphic window in postscript. The graphic figure
+    zoomed with ratios <tt><b>w/&lt;graphic figure width&gt;</b></tt>
+    horizontally and <tt><b>h/&lt;graphic figure height&gt;</b></tt>
+    vertically.</p>
+<p>This function is particularily useful when one wants an export a
+    graphic figure exactly as it is shown on the screen. For that
+    <tt><b>w</b></tt> and <tt><b>h</b></tt> has to be set respectively to
+    <tt><b>&lt;graphic figure width&gt;</b></tt> and 
+    <tt><b>&lt;graphic figure height&gt;</b></tt></p>
+<p><tt><b>set_posfig_dim(0,0)</b></tt> resets the default values:
+    <tt><b>w=600</b></tt>, <tt><b>h=424</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre> 
+    // make a figure with a specific shape 
+    f=scf(0);f.figure_size=[800,300];
+    plot2d()
+    set_posfig_dim(f.figure_size(1),f.figure_size(2))
+    filename='foo'; // ! no extension
+    xs2ps(0,filename)
+    //add the Postscript file header and create &lt;filename&gt;.eps file
+    if MSDOS then
+      unix_s(pathconvert('""'+WSCI+'/bin/BEpsf'+'""',%f)+' -p ' +filename)
+    else
+      unix_s(pathconvert('SCI/bin/BEpsf',%f)+' -p ' +filename)
+    end
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xs2ps.htm"><tt><b>xs2ps</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer INRIA</p>
+</body>
+</html>

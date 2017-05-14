@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nfreq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nfreq</b> -  frequence of the values in a vector or matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>m=nfreq(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Frequence of the  values in a real or  complex vector or a
+    real or complex matrix <tt><b>x</b></tt>.</p>
+<p>
+    For a real  or complex vector or a  real or complex matrix
+    <tt><b>x</b></tt>,  <tt><b>m=freq(x)</b></tt> returns in  the first  column of
+    the  <tt><b>size(x,'*')x2</b></tt>  matrix  <tt><b>m</b></tt>  the  values  of
+    <tt><b>x</b></tt>  and  in the  second  column  of  this matrix  the
+    frequences of the corresponding values.</p>
+<p>
+Note that the  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/tabul.htm"><tt><b>tabul</b></tt></a> function is more efficient, applies
+also to vector of strings and returns a sorted <tt><b>m</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[2 8 0 3 7 6 8 7 9 1]
+m=nfreq(x)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/tabul.htm"><tt><b>tabul</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/dsearch.htm"><tt><b>dsearch</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/histplot.htm"><tt><b>histplot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+</body>
+</html>

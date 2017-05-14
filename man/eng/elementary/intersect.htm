@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>intersect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>intersect</b> -  returns the vector of common values of two vectors</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[v, [ka,kb]]=intersect(a,b)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>b</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>v</b></tt>: row vector  of real numbers or strings</li>
+<li>
+<tt><b>ka</b></tt>: row vector  of integers</li>
+<li>
+<tt><b>kb</b></tt>: row vector  of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>intersect(a,b)</b></tt> returns a sorted row vector of common values of
+    two vectors of <tt><b>a</b></tt> and <tt><b>b</b></tt>.</p>
+<p><tt><b>[v,ka,kb]=intersect(a,b)</b></tt> also returns index vectors <tt><b>ka</b></tt> and
+    <tt><b>kb</b></tt> such that <tt><b>v=a(ka)</b></tt> and <tt><b>v=b(kb)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=round(5*rand(10,1));
+B=round(5*rand(7,1));
+
+intersect(A,B)
+[N,ka,kb]=intersect(A,B)
+
+intersect('a'+string(A),'a'+string(B))
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/unique.htm"><tt><b>unique</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/union.htm"><tt><b>union</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

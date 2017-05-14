@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>bool2s</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bool2s</b> -  convert boolean matrix to a zero one matrix.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>bool2s(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: a boolean vector or a boolean matrix or a constant matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>x</b></tt> is a boolean matrix,
+    <tt><b>bool2s(x)</b></tt> returns the matrix where "true" values are replaced by 1
+    and "false" value by 0.</p>
+<p>
+    If <tt><b>x</b></tt> is a "standard" matrix,
+    <tt><b>bool2s(x)</b></tt> returns the matrix where non-zero values are replaced by 1.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+bool2s([%t %t %f %t])
+bool2s([2.3 0 10 -1])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>armax1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>armax1</b> -  armax identification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[arc,resid]=armax1(r,s,q,y,u [,b0f])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: output signal</li>
+<li>
+<tt><b>u</b></tt>: input signal</li>
+<li>
+<tt><b>r,s,q</b></tt>: auto regression orders with r &gt;=0, s &gt;=-1.</li>
+<li>
+<tt><b>b0f</b></tt>: optional parameter. Its default value is 0 and it means that the coefficient b0 must be identified. if bof=1 the b0 is supposed to be zero and is not identified</li>
+<li>
+<tt><b>arc</b></tt>: is tlist with type "ar" and fields a,  b,  d,  ny,  nu,  sig<ul>
+<li>
+<tt><b>a</b></tt>: is the vector [1,a1,...,a_r]</li>
+<li>
+<tt><b>b</b></tt>: is the vector [b0,......,b_s]</li>
+<li>
+<tt><b>d</b></tt>: is the vector [1,d1,....,d_q]</li>
+<li>
+<tt><b>sig</b></tt>:   resid=[ sig*echap(1),....,];</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    armax1 is used to identify the coefficients of a 1-dimensional 
+    ARX process:</p>
+<pre>
+
+   A(z^-1)y= B(z^-1)u + D(z^-1)sig*e(t)
+   e(t) is a 1-dimensional white noise with variance 1.
+   A(z)= 1+a1*z+...+a_r*z^r; ( r=0 =&gt; A(z)=1)
+   B(z)= b0+b1*z+...+b_s z^s ( s=-1 =&gt; B(z)=0)
+   D(z)= 1+d1*z+...+d_q*z^q  ( q=0 =&gt; D(z)=1)
+   
+    </pre>
+<p>
+    for the method, see Eykhoff in trends and progress in system identification) page 96.
+    with 
+            z(t)=[y(t-1),..,y(t-r),u(t),...,
+                  u(t-s),e(t-1),...,e(t-q)] 
+    and
+            coef= [-a1,..,-ar,b0,...,b_s,d1,...,d_q]'
+            y(t)= coef'* z(t) + sig*e(t).</p>
+<p>
+    a sequential version of the AR estimation where e(t-i) is replaced 
+    by an estimated value is used (RLLS). With q=0 this method is exactly
+    a sequential version of armax</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.-Ph.C; ;   </p>
+</body>
+</html>

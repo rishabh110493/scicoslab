@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>eqfir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eqfir</b> -  minimax approximation of FIR filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[hn]=eqfir(nf,bedge,des,wate)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nf</b></tt>: number of output filter points desired</li>
+<li>
+<tt><b>bedge</b></tt>: Mx2 matrix giving a pair of edges for each band</li>
+<li>
+<tt><b>des</b></tt>: M-vector giving desired magnitude for each band</li>
+<li>
+<tt><b>wate</b></tt>: M-vector giving relative weight of error in each band</li>
+<li>
+<tt><b>hn</b></tt>: output of linear-phase FIR filter coefficients</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Minimax approximation of multi-band, linear phase, FIR filter</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+hn=eqfir(33,[0 .2;.25 .35;.4 .5],[0 1 0],[1 1 1]);
+[hm,fr]=frmag(hn,256);
+plot(fr,hm),
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

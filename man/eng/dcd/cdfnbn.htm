@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cdfnbn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfnbn</b> -  cumulative distribution function  negative binomial distribution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfnbn("PQ",S,Xn,Pr,Ompr)  </tt></dd>
+<dd><tt>[S]=cdfnbn("S",Xn,Pr,Ompr,P,Q)  </tt></dd>
+<dd><tt>[Xn]=cdfnbn("Xn",Pr,Ompr,P,Q,S)  </tt></dd>
+<dd><tt>[Pr,Ompr]=cdfnbn("PrOmpr",P,Q,S,Xn)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,S,Xn,Pr,Ompr</b></tt>: six real vectors of the same size.</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>: The cumulation from 0 to S of the  negative binomial distribution. Input range: [0,1].</li>
+<li>
+<tt><b>S</b></tt>: The upper limit of cumulation of the binomial distribution. There are F or fewer failures before the XNth success. Input range: [0, +infinity). Search range: [0, 1E300]</li>
+<li>
+<tt><b>Xn</b></tt>:   The number of successes. Input range: [0, +infinity). Search range: [0, 1E300]</li>
+<li>
+<tt><b>Pr</b></tt>:   The probability of success in each binomial trial. Input range: [0,1]. Search range: [0,1].</li>
+<li>
+<tt><b>Ompr</b></tt>:   1-PR Input range: [0,1]. Search range: [0,1] PR + OMPR = 1.0</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculates any one parameter of the negative binomial
+    distribution given values for the others.</p>
+<p>
+    The  cumulative  negative   binomial  distribution  returns  the
+    probability that there  will be  F or fewer failures before  the
+    XNth success in binomial trials each of which has probability of
+    success PR.</p>
+<p>
+    The individual term of the negative binomial is the probability of
+    S failures before XN successes and is
+    Choose <tt><b>( S, XN+S-1 ) * PR^(XN) * (1-PR)^S</b></tt></p>
+<p>
+    Formula   26.5.26   of   Abramowitz  and  Stegun,  Handbook   of
+    Mathematical Functions (1966) is used  to  reduce calculation of
+    the cumulative distribution  function to that of  an  incomplete
+    beta.</p>
+<p>
+    Computation of other parameters involve a seach for a value that
+    produces  the desired  value  of P.   The search relies  on  the
+    monotinicity of P with the other parameter.</p>
+<p>
+    From DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.</p>
+</body>
+</html>

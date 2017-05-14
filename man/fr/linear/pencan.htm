@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>pencan</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pencan</b> -  canonical form of matrix pencil</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Q,M,i1]=pencan(Fs)  </tt></dd>
+<dd><tt>[Q,M,i1]=pencan(E,A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Fs</b></tt>: a regular pencil <tt><b>s*E-A</b></tt>
+</li>
+<li>
+<tt><b>E,A</b></tt>: two real square matrices</li>
+<li>
+<tt><b>Q,M</b></tt>: two non-singular real matrices</li>
+<li>
+<tt><b>i1</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the regular pencil <tt><b>Fs=s*E-A</b></tt>, <tt><b>pencan</b></tt> returns matrices <tt><b>Q</b></tt> 
+    and <tt><b>M</b></tt>
+    such than <tt><b>M*(s*E-A)*Q</b></tt> is in "canonical" form.</p>
+<p><tt><b>M*E*Q</b></tt> is a block matrix</p>
+<pre>
+
+[I,0;
+ 0,N]
+   
+    </pre>
+<p>
+    with <tt><b>N</b></tt> nilpotent and <tt><b>i1</b></tt> = size of the <tt><b>I</b></tt> matrix above.</p>
+<p><tt><b>M*A*Q</b></tt> is a block matrix:</p>
+<pre>
+
+[Ar,0;
+ 0,I]
+   
+    </pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+F=randpencil([],[1,2],[1,2,3],[]);
+F=rand(6,6)*F*rand(6,6);
+[Q,M,i1]=pencan(F);
+W=clean(M*F*Q)
+roots(det(W(1:i1,1:i1)))
+det(W($-2:$,$-2:$))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/penlaur.htm"><tt><b>penlaur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowshuff.htm"><tt><b>rowshuff</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

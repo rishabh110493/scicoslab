@@ -1,0 +1,149 @@
+.TH NetList  1 " " " " " Traffic-Toolbox Data Structure"
+.SH NAME
+NetList - Traffic Assignment Geographic Data Base
+.SH NETLIST
+ All the data needed and obtained in a traffic assignment problem
+are stored in a Scilab data structure that we call 
+a NetList which is a typed list defined by :
+.nf
+tlist(['net','gp','nodes','links','demands'],gp,nodes,links,demands)
+.fi
+where :
+
+ - gp : contains the general properties of the net
+
+ - nodes : contains the nodes parameters
+
+ - links : contains the links parameters 
+
+ - demands : contains the demands parameters
+
+ Each one of those elements is itself a typed list.
+
+.SH GP
+ - node_number : number of nodes in the network
+
+ - link_number : number of links in the network
+
+ - demand_number : number of demands (commodities)
+
+ - lpf_model : integer between 0 and 6 which defines the form of the
+                     link performance function.
+
+ - verbose (default %T): boolean when it is true information
+                           are given during assignment algorithm
+
+ - algorithm (default 'DSD'): function name defining the algorithm 
+                               choosen for the assignment
+
+ - NodeDiameter (default 30) : integer used in the graph window
+                                      for displaying the network
+
+ - NodeBorder (default 1): integer giving thewidth of the circle
+                                        border of the node symbols
+
+ - FontSize (default 10): integer used in the graph window
+
+ - tolerance (default 1e-6): real giving theprecision used in
+algorithms
+
+ - theta (default 1): stochasticity parameter for Logit
+
+ - Niter (default 200): integer giving maximal number of iteration 
+ 
+ - N0 (default 0): integer giving starting number for Mean Average
+Algorithm
+
+ - ShowDemands (default %T): botolean when it is true the demands are
+shown by ShowNet
+
+ - Show (default 'flow'): one of the string 'flow' 'cost' or 'time';
+it  is used in ShowNet to choose the shown link weights 
+
+ - bench (default 0): is an array storing the intermediary results computed by
+             the algorithm when verbose=%T this information is shown
+              also during the computation.
+
+.SH NODES
+
+ - name : string row of node names
+
+ - x : real row of the node x-coordinates
+
+ - y : real row of the node y-coordinates
+
+.SH LINKS
+
+ - name : string row vector of link names
+
+ - tail : integer row vector of tail node numbers of the links
+
+ - head : integer row vector of head node numbers of the links
+
+ - lpf_data : array of 4 rows vectors giving the parameters of the lpf function
+of the links 
+
+ - flow : real row vector of the total flows of the links (0 by
+default)
+
+ - time : real row vector of the time spent in the links 
+
+ - disaggregated_flow : nd x na real matrix of the commodity flows on the links
+
+.SH DEMANDS
+
+ - name :  string row vector of demand names
+ 
+ - tail :  integer row vector of  tail node numbers
+
+ - head :  integer row vector of head node numbers
+
+ - demand : real row vector of demand flows
+
+.SH EXTRACTING AND INSERTING DATA FROM A NETLIST
+As they are typed lists it is always possible to access to any field
+using the access functions, for example the x-coordinates of the
+nodes is net1.nodes.x .
+
+
+.SH LINK PERFORMANCE FUNCTION
+ It is possible to choose among different formulae for the
+link performance functions with the value of nf. 
+
+	nf=0 -> c=t0+ma/ca*F+ma*(max(0,F-ca))^ba, with ba>=1
+ 
+	nf=1 -> c=t0*exp((F/ca)-1), with ca>0
+
+	nf=2 -> c=t0*2.^((F/ca)-1), with ca>0
+
+	nf=3 -> c=t0*(1+0.15*(F/ca)^ma), with ma>=1 and ca>0
+
+	nf=4 -> c=t0+log(ca)-log(ca-F), with ca>0
+
+	nf=5 -> c=ba-ca*(t0-ba)/(F-ca), with ca>0
+
+	nf=6 -> c=t0+ca*F+ma*F^ba, with ba>1
+
+where t0,ca,ma,ba are the row vectors of the matrix net.links.lpf_data.
+
+.SH SHOWING THE NET
+ When a net is shown, three types of arcs can be seen. The black, light-blue
+and cyan. 
+
+1) The black and light-blue arcs correspond to the roads.
+
+ - The light blue to those roads with zero flow.
+
+ - The black to those with a non zero flow.
+
+2) The cyan arcs correspond to the OD-traffic demand. These arcs go
+from origin to destination.
+
+.SH SEE ALSO
+IntroTrfAsg,
+MakeNet, 
+ShowNet
+
+
+
+

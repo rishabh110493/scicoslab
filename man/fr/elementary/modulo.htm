@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>modulopmodulo</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>modulo</b> -  reste arithmétique symétrique modulo m  </p>
+<p><b>pmodulo</b> -  reste arithmétique positif modulo m  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>i=modulo(n,m)  </tt></dd>
+<dd><tt>i=pmodulo(n,m)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: entier</li>
+<li>
+<tt><b>m</b></tt>: entier</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>modulo</b></tt> calcule <tt><b>i= n (modulo m)</b></tt> c'est à dire le reste de <tt><b>n</b></tt> divisé par <tt><b>m</b></tt> (<tt><b>n</b></tt> et <tt><b>m</b></tt> sont entiers).
+  </p>
+<p>
+     i = n - m .* int (n ./ m). Ici la réponse peut être négative si <tt><b>n</b></tt> et/ou <tt><b>m</b></tt> 
+    sont négatifs.
+  </p>
+<p><tt><b>pmodulo</b></tt> calcule <tt><b>i = n - m .* floor (n ./ m)</b></tt>, la réponse est positive ou nulle.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+n=[1,2,10,15];m=[2,2,3,5];
+modulo(n,m)
+
+modulo(-3,9)
+pmodulo(-3,9)
+ </pre>
+</body>
+</html>

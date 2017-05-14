@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>x_choices</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>x_choices</b> -  interactive Xwindow choices through toggle buttons</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>rep=x_choices(title,items)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>title</b></tt>: vector of strings, title for the popup window.</li>
+<li>
+<tt><b>items</b></tt>: a list of items <tt><b>items=list(item1,...,itemn)</b></tt>, where each <tt><b>item</b></tt> is also a list  of the following type : <tt><b>item=list('label',default_choice,choices)</b></tt>. <tt><b>default_choice</b></tt> is an integer which gives the default toggle on entry and <tt><b>choices</b></tt> is a  row vector of strings which gives the possible choices.</li>
+<li>
+<tt><b>rep</b></tt>: an integer vector which gives for each item the number of the  selected toggle. If user exits dialog with "cancel" button <tt><b>rep</b></tt> is set to <tt><b>[]</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Select items through toggle lists and return in <tt><b>rep</b></tt> the selected 
+    items</p>
+<p>
+    Type <tt><b>x_choices()</b></tt> to see an example.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+l1=list('choice 1',1,['toggle c1','toggle c2','toggle c3']);
+l2=list('choice 2',2,['toggle d1','toggle d2','toggle d3']);
+l3=list('choice 3',3,['toggle e1','toggle e2']);
+rep=x_choices('Toggle Menu',list(l1,l2,l3));
+ 
+  </pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ieee</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ieee</b> -  set floating point exception mode</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mod=ieee()  </tt></dd>
+<dd><tt>ieee(mod)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mod</b></tt>: integer scalar whose possible values are 0,1,or 2</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>ieee()</b></tt> returns the current floating point exception mode.
+  </p>
+<dl>
+<dd>
+<b>0</b>: floating point exception produce an error</dd>
+<dd>
+<b>1</b>: floating point exception produce a warning</dd>
+<dd>
+<b>2</b>: floating point exception procudes Inf or Nan</dd>
+</dl>
+<p><tt><b>ieee(mod)</b></tt> sets the current floating point exception mode.</p>
+<p>
+    The initial mode value is 0.</p>
+<h3><font color="blue">Remarks</font></h3>
+<dl><p>
+    Floating point exception arising inside some library algorithms are not yet handled by <tt><b>ieee</b></tt> modes.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ieee(1);1/0
+ieee(2);1/0,log(0)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

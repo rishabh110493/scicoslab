@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>manedit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>manedit</b> -   editing a manual item</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>manedit(manitem)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>manitem</b></tt>: character string (usually, name of a function)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>edit(manitem)</b></tt> opens the xml file associated to <tt><b>manitem</b></tt>
+    in the scipad editor.</p>
+<p>If there is no xml file associated with <tt><b>manitem</b></tt> and
+      <tt><b>manitem</b></tt> is the name of a Scilab function scipad opens with
+      the skeleton of the xml file produced by <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help_skeleton.htm"><tt><b>help_skeleton</b></tt></a>. This
+    file is located in TMPDIR.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+manedit('manedit')
+
+function [x,y,z]=foo123(a,b),
+x=a+b,y=a-b,z=a==b
+endfunction
+manedit foo123
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help_skeleton.htm"><tt><b>help_skeleton</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lcm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lcm</b> -  least common multiple</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pp,fact]=lcm(p)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>p</b></tt>:</li>
+<li>
+<tt><b>fact</b></tt>: polynomial vector or integer vector (type equal to 8)</li>
+<li>
+<tt><b>pp</b></tt>: polynomial or integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pp=lcm(p)</b></tt> computes the lcm <tt><b>pp</b></tt> of polynomial vector <tt><b>p</b></tt>.</p>
+<p><tt><b>[pp,fact]=lcm(p)</b></tt> computes in addition the vector <tt><b>fact</b></tt> such that:</p>
+<p><tt><b>p.*fact=pp*ones(p)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//polynomial case
+s=poly(0,'s');
+p=[s,s*(s+1)^2,s^2*(s+2)];
+[pp,fact]=lcm(p);
+p.*fact, pp
+//integer case
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+lcm(V)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/gcd.htm"><tt><b>gcd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/bezout.htm"><tt><b>bezout</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

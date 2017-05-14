@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>horner</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>horner</b> -  évaluation d'un polynôme ou d'une fraction rationnelle  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>horner(P,x)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P  </b></tt>
+    : polynôme ou matrice de polynômes
+</li>
+<li>
+<tt><b>x  </b></tt>
+    : nombre réel, polynôme ou fraction rationnelle
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    évalue le polynôme ou la fraction rationnelle (ou matrice de fractions rationnelles)
+    <tt><b>P = P(s)</b></tt> quand la variable <tt><b>s</b></tt> du polynôme 
+    est remplacée par <tt><b>x</b></tt> :
+  </p>
+<p><tt><b>horner(P,x)</b></tt>=<tt><b>P(x)</b></tt></p>
+<p>
+    Exemple (transformation bilinéaire) : supposons que <tt><b>P = P(s)</b></tt> est 
+    une matrice de polynômes, alors la matrice de polynômes 
+    <tt><b>P((1+s)/(1-s))</b></tt> est obtenue par <tt><b>horner(P,(1+s)/(1-s))</b></tt>.
+  </p>
+<p>
+    Pour évaluer une matrice de polynômes à des fréquences données utiliser plutôt la primitive <tt><b>freq</b></tt>. 
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');M=[s,1/s];
+horner(M,1)
+horner(M,%i)
+horner(M,1/s)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

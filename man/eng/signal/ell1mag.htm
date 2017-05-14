@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ell1mag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ell1mag</b> -  magnitude of elliptic filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v]=ell1mag(eps,m1,z)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>eps</b></tt>: passband ripple=<tt><b>1/(1+eps^2)</b></tt>
+</li>
+<li>
+<tt><b>m1</b></tt>: stopband ripple=<tt><b>1/(1+(eps^2)/m1)</b></tt>
+</li>
+<li>
+<tt><b>z</b></tt>: sample vector of values in the complex plane</li>
+<li>
+<tt><b>v</b></tt>: elliptic filter values at sample points</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Function used for squared magnitude of an elliptic filter.
+    Usually <tt><b>m1=eps*eps/(a*a-1)</b></tt>. Returns 
+    <tt><b>v=real(ones(z)./(ones(z)+eps*eps*s.*s))</b></tt> for <tt><b>s=%sn(z,m1)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+deff('[alpha,BeTa]=alpha_beta(n,m,m1)',...
+'if 2*int(n/2)==n then, BeTa=K1; else, BeTa=0;end;...
+alpha=%k(1-m1)/%k(1-m);')
+epsilon=0.1;A=10;  //ripple parameters
+m1=(epsilon*epsilon)/(A*A-1);n=5;omegac=6;
+m=find_freq(epsilon,A,n);omegar = omegac/sqrt(m)
+%k(1-m1)*%k(m)/(%k(m1)*%k(1-m))-n   //Check...
+[alpha,Beta]=alpha_beta(n,m,m1)
+alpha*%asn(1,m)-n*%k(m1)      //Check
+sample=0:0.01:20;
+//Now we map the positive real axis into the contour...
+z=alpha*%asn(sample/omegac,m)+Beta*ones(sample);
+plot(sample,ell1mag(epsilon,m1,z))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/buttmag.htm"><tt><b>buttmag</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

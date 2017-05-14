@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>if</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>if</b> -  conditional execution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>if expr1 then statements</tt></dd>
+<dd><tt>elseif expri then statements</tt></dd>
+<dd><tt>  ....  </tt></dd>
+<dd><tt>else  statements</tt></dd>
+<dd><tt>end</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The <tt><b>if</b></tt> statement evaluates a logical expression and executes a group
+    of statements when the expression is true.</p>
+<p>
+    The  <tt><b>expri</b></tt> are expressions with numeric or boolean
+    values. If <tt><b>expri</b></tt> are matrix valued the condition is true only if
+    all matrix entries are true or different from zero.</p>
+<p>
+     The optional <tt><b>elseif</b></tt> and <tt><b>else</b></tt> provide for the
+    execution of alternate groups of statements. An <tt><b>end</b></tt> keyword,
+    which matches the <tt><b>if</b></tt>, terminates the last group of
+    statements. The line structure given above is not significant, the
+    only constraint is that each <tt><b>then</b></tt> keyword must be on the same
+    line as its corresponding <tt><b>if</b></tt> or <tt><b>elseif</b></tt> keyword.</p>
+<p>
+    The keyword <tt><b>then</b></tt> can be replaced by a carriage return or a
+    comma.</p>
+<p>
+    Warning: the number of characters used to define the body of any
+    conditionnal instruction (if while for or select/case) must be limited to
+    16k.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   i=2
+   for j = 1:3, 
+      if i == j then
+        a(i,j) = 2; 
+      elseif abs(i-j) == 1 then 
+        a(i,j) = -1; 
+      else a(i,j) = 0;
+      end,
+   end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/try.htm"><tt><b>try</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/while.htm"><tt><b>while</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/select.htm"><tt><b>select</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/boolean.htm"><tt><b>boolean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/end.htm"><tt><b>end</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/then.htm"><tt><b>then</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/else.htm"><tt><b>else</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

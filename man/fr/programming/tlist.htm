@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tlist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tlist</b> -  Objet Scilab. Définition d'une liste typée  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>tlist(typ,a1,....an )    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>typ  </b></tt>
+    : chaîne de caractères ou matrice de chaînes de caractères
+</li>
+<li>
+<tt><b>ai  </b></tt>
+    : objet Scilab (<tt><b>matrice, liste, chaîne...</b></tt>).
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Crée une <tt><b>liste typée</b></tt> avec les éléments <tt><b>ai</b></tt>. L'argument <tt><b>typ</b></tt>
+    spécifie le nom du type. L'utilisateur peut redéfinir
+    les opérateurs et primitives de Scilab pour ces nouveaux objets à l'aide de fonctions Scilab (voir <tt><b>overloading</b></tt>). La seule différence entre les listes typées et les listes (voir <tt><b>list</b></tt>)
+    est la valeur numérique du type (16 au lieu de 15).
+  </p>
+<p><tt><b>typ(1)</b></tt> spécifie le nom du type (cette chaîne de caractères est utilisée dans les noms des fonctions surchargeant les opérateurs et primitives).
+  </p>
+<p>
+    S'il est spécifié, <tt><b>typ(i)</b></tt> donne le nom formel de l'élément <tt><b>i+1</b></tt> (voir plus bas dans les exemples).
+  </p>
+<p>
+    Les opérations standard sur les listes fonctionnent similairement pour les listes typées (tlist). 
+  </p>
+<p>
+     extraction 
+    : <tt><b>[x,y,z...]=l(v)</b></tt> ou <tt><b>v</b></tt> est un vecteur d'indices; 
+    <tt><b>[x,y,z]=l(:)</b></tt> extrait tous les éléments.
+  </p>
+<p>
+      insertion
+    : <tt><b>l(i)=a</b></tt></p>
+<p>
+     suppression
+    : <tt><b>l(i)=null()</b></tt> supprime le i-ème élément de la <tt><b>tlist l</b></tt>.
+  </p>
+<p>
+     affichage
+  </p>
+<p>
+    De plus si les composantes <tt><b>typ(2:n+1)</b></tt> sont spécifiées, les éléments peuvent être désignés par leur noms formels.
+  </p>
+<p>
+    Voici quelques exemples d'utilisation des liste typées :
+  </p>
+<p>
+    Dans Scilab, les systèmes dynamiques linéaires sont définis par une liste typée :
+    le quadruplet <tt><b>[A,B,C,D]</b></tt> est représenté par la tlist
+    <tt><b>Sys=tlist(['lss';'A';'B';'C';'D';'X0';'dt'],A,B,C,D,x0,'c')</b></tt> 
+    et cette tlist spécifique est créée par la fonction <tt><b>syslin</b></tt>.
+  </p>
+<p>
+    Sys(2), Sys('A') ou Sys.A est la matrice d'état et Sys('dt') ou Sys.dt est le domaine temporel.
+  </p>
+<p>
+    Une matrice rationnelle <tt><b>H</b></tt> est représentée par la tlist
+    <tt><b>H=tlist(['r';'num';'den';'dt'],Num,Den,[])</b></tt> où <tt><b>Num</b></tt> et <tt><b>Den</b></tt> sont deux
+    matrices polynomiales et un système dynamique linéaire (en temps continu) peut être créé sous la forme d'une
+    matrice de transfert <tt><b>H</b></tt> par <tt><b>syslin('c',H)</b></tt>.
+  </p>
+<p>
+    H(2), H('num') ou H.num est le numérateur de la matrice de transfert
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/null.htm"><tt><b>null</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/percent.htm"><tt><b>percent</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/list.htm"><tt><b>list</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nlev</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nlev</b> -  Algorithme de Leverrier   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[num,den]=nlev(A,z [,rmax])    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice réelle carrée
+	  </li>
+<li>
+<tt><b>z  </b></tt>
+	    : chaîne de caractères
+	  </li>
+<li>
+<tt><b>rmax  </b></tt>
+	    : paramètre optionnel (voir <tt><b>bdiag</b></tt>) 
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[num,den]=nlev(A,z [,rmax])</b></tt> calcule
+      <tt><b>(z*eye()-A)^(-1)</b></tt> par bloc diagonalisation de
+      <tt><b>A</b></tt> suivie de l'algorithme de Leverrier sur chaque
+      bloc.
+    </p>
+<p>
+    Cet algorithme est plus efficace que l'algorithme de
+    Leverrier seul, mais il n'est toujours pas parfait !
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(3,3);x=poly(0,'x');
+    [NUM,den]=nlev(A,'x')
+    clean(den-poly(A,'x'))
+    clean(NUM/den-inv(x*eye()-A))
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/coff.htm"><tt><b>coff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/ss2tf.htm"><tt><b>ss2tf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>
+      F. Delebecque, INRIA; 
+    </dd>
+<dd>
+<b></b>
+      S. Steer, INRIA;  
+    </dd>
+</dl>
+</body>
+</html>

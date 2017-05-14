@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hypermatrices</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hypermatrices</b> -  Scilab object, N dimensional matrices in Scilab</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Hypermatrix type allows to manipulate multidimensional arrays</p>
+<p>
+    They can be defined by extension of 2D matrices as follows
+    a=[1 2;3 4];a(:,:,2)=rand(2,2)</p>
+<p>
+    or directly using <tt><b>hypermat</b></tt> function</p>
+<p>
+    Entries  can be real or complex numbers, polynomials,
+    rationals, strings, booleans.</p>
+<p>
+    Hypermatrices are <tt><b>mlists</b></tt>:
+    <tt><b>mlist(['hm','dims','entries'],sz,v)</b></tt> where <tt><b>sz</b></tt> is the row
+    vector of dimensions and <tt><b>v</b></tt> the column vector of entries (first
+      dimension are stored first)</p>
+<p>NOTES: The number of dimension of hypermatrices with right-most sizes equal to
+      1 are automatically reduced. An hypermatrix with only two dimensions is
+      automatically changed to a regular matrix (type 1).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a(1,1,1,1:2)=[1 2]
+a=[1 2;3 4];a(:,:,2)=rand(2,2)
+a(1,1,:)
+
+size(a)
+
+a(:,:,1) //dimensionnality reduction 
+type(a(:,:,1))
+
+[a a]
+
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/hypermat.htm"><tt><b>hypermat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

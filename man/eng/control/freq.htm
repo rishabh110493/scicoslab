@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>freq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>freq</b> -  frequency response</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x]=freq(A,B,C [,D],f)  </tt></dd>
+<dd><tt>[x]=freq(NUM,DEN,f)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, B, C, D</b></tt>:  real matrices of respective dimensions <tt><b>nxn, nxp, mxn, mxp</b></tt>.</li>
+<li>
+<tt><b>NUM,DEN</b></tt>: polynomial matrices of dimension <tt><b>mxp</b></tt>
+</li>
+<li>
+<tt><b>x</b></tt>: real or complex matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>x=freq(A,B,C [,D],f)</b></tt> returns a real or complex <tt><b>mxp*t</b></tt> matrix
+    such that:</p>
+<p><tt><b>x(:,k*p:(k+1)*p)= C*inv(f(k)*eye()-A)*B + D</b></tt>.</p>
+<p>
+    Thus, for <tt><b>f</b></tt> taking values along the imaginary axis or
+    on the unit circle <tt><b>x</b></tt> is the continuous or discrete time 
+    frequency response of <tt><b>(A,B,C,D)</b></tt>.</p>
+<p><tt><b>x=freq(NUM,DEN,f)</b></tt> returns a real or complex matrix <tt><b>x</b></tt> such
+    that columns <tt><b>k*(p-1)+1</b></tt> to <tt><b>k*p</b></tt> of <tt><b>x</b></tt> contain the matrix  
+    <tt><b>NUM(f(k))./DEN(f(k))</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+sys=(s+1)/(s^3-5*s+4)
+rep=freq(sys("num"),sys("den"),[0,0.9,1.1,2,3,10,20])
+[horner(sys,0),horner(sys,20)]
+//
+Sys=tf2ss(sys);
+[A,B,C,D]=abcd(Sys);
+freq(A,B,C,[0,0.9,1.1,2,3,10,20])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/horner.htm"><tt><b>horner</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

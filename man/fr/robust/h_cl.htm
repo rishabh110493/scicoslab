@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>h_cl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>h_cl</b> -  closed loop matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Acl]=h_cl(P,r,K)  </tt></dd>
+<dd><tt>[Acl]=h_cl(P22,K)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P, P22</b></tt>: linear system (<tt><b>syslin</b></tt> list), augmented plant or nominal plant respectively</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector, dimensions of 2,2 part of <tt><b>P</b></tt> (<tt><b>r=[rows,cols]=size(P22)</b></tt>)</li>
+<li>
+<tt><b>K</b></tt>: linear system (<tt><b>syslin</b></tt> list), controller</li>
+<li>
+<tt><b>Acl</b></tt>: real square matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Given the standard plant <tt><b>P</b></tt> (with <tt><b>r=size(P22)</b></tt>) and the controller
+    <tt><b>K</b></tt>, this function returns the closed loop matrix <tt><b>Acl</b></tt>.</p>
+<p>
+    The poles of <tt><b>Acl</b></tt> must be stable for the internal stability 
+    of the closed loop system.</p>
+<p><tt><b>Acl</b></tt> is the <tt><b>A</b></tt>-matrix of the linear system <tt><b>[I -P22;-K I]^-1</b></tt> i.e.
+    the <tt><b>A</b></tt>-matrix of <tt><b>lft(P,r,K)</b></tt></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.  </p>
+</body>
+</html>

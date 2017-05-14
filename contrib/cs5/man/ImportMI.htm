@@ -1,0 +1,80 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>ImportMI </title></head><body bgcolor="FFFFFF"><CENTER>CiudadSim Function  </CENTER><p><b>ImportMI  -  MapInfo to scilab interface   </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[net,color,Bidir]=ImportMI(name)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    the resulting network 
+  </li>
+  <li><tt><b>color  </b></tt>
+    a vector with the color of the links
+  </li>
+  <li><tt><b>Bidir  </b></tt>
+    a sparse matrix  
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    The purpose of the MapInfo interface is to facilitate the input of the 
+    geographical data into the CiudadSim Toolbox and to provide a nicer way of
+    displaying the results obtained after the assignment.
+    There are two commands : ImportMI (to translate from MI to Scilalb) and
+    ExportMI (to translate from Scilab to MI).
+  </p>
+  <p>
+  </p>
+  <p>
+    The MapInfo files must be done following these directions:
+  </p>
+  <pre>
+
+- In MapInfo, open the file CS_empty.tab located in the directory 
+examples of the CiudadSim toolbox.
+
+- Save it with another name to be able to modify it. 
+
+- Close the MapInfo table MI_empty and open the one you created. 
+
+- Make the layer editable.
+
+- Press the F key to enter in the fussion mode
+
+- Draw the arcs as polylines. 
+
+- Export the table to obtain two files one .mif and other .mid .
+
+   </pre>
+  <p>
+  </p>
+  <p>
+  </p>
+  <p>
+    Important Remarks : 
+  </p>
+  <p>
+    1) The extreme of the arcs will be considered as nodes so if you
+    want that two arcs share the same node is important to
+    draw it like that. That's why the Fussion mode is important, when
+    the pointer is over an already defined node it will change into a cross.
+  </p>
+  <p>
+    2) The style of the polyline is used to differentiate one-way and two-ways links.
+    The two-ways links can have any style but one-way links must have style 2. 
+    Each two-way link in MapInfo corresponds to two one-way links in Scilab. This 
+    correspondance is found in the sparse matrix Bidir.
+  </p>
+  <p>
+  </p>
+  <p>
+    3) The links can be given different colors, these colors will be in the output as
+    the vector color, it can be useful to differentiate subsets of links.
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+// MapInfo translation from the files SGL_Versailles.mid and SGL_Versailles.mif
+// regular town example with four modes and two classes
+[%net,color,Bidir]=ImportMI(CS_DIR+"examples/SGL_Versailles");
+// Show the translated arcs in Scilab
+ShowNet()
+// Now you can add demands with AddDemands and the compute the assignment
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="ExportMI.htm"><tt><b>ExportMI</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

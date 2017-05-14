@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdff</b> -  fonction de répartition de la distribution de Fisher  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdff("PQ",F,Dfn,Dfd)  </tt></dd>
+<dd><tt>[F]=cdff("F",Dfn,Dfd,P,Q);  </tt></dd>
+<dd><tt>[Dfn]=cdff("Dfn",Dfd,P,Q,F);  </tt></dd>
+<dd><tt>[Dfd]=cdff("Dfd",P,Q,F,Dfn)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,F,Dfn,Dfd  </b></tt>
+    : 5 vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    :  Intégrale de 0 à F de la densité En entrée : [0,1].
+</li>
+<li>
+<tt><b>F  </b></tt>
+    : Borne supérieure d'intégration En entrée : [0, +infini). En recherche : [0,1E300]
+</li>
+<li>
+<tt><b>Dfn  </b></tt>
+    : Degrés de liberté de la somme des carrés au numérateur En entrée : (0, +infini). En recherche : [ 1E-300, 1E300]
+</li>
+<li>
+<tt><b>Dfd  </b></tt>
+    : Degrés de liberté de la somme des carrés au dénominateur En entrée : (0, +infini). En recherche : [ 1E-300, 1E300]
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution de Fisher.
+  </p>
+<p>
+    La formule  26.6.2  de   Abramowitz  et  Stegun,   Handbook   of
+    Mathematical Functions  (1966) est utilisée pour réduire le calcul de la fonction de répartition de la distribution à celle d'une loi beta incomplète.
+  </p>
+<p>
+    Le calcul des autres paramètres implique une recherche d'une valeur conduisant à la valeur désirée pour P. La recherche dépend de la monotonicité de P par rapport aux autres paramètres.
+  </p>
+<p>
+    La valeur de la fonction de répartition de la distribution de Fisher n'est pas monotone.  
+    Il peut y avoir deux valeurs du paramètre donnant une valeur de donnée de la fonction de répartition.  
+    Cette fonction suppose qu'elle est monotone et renvoie arbitrairement une des deux valeurs.
+  </p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

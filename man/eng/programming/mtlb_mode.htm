@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_mode</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_mode</b> -  switch Matlab like operations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>mmode=mtlb_mode()  </tt></dd>
+<dd><tt>mtlb_mode(mmode)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>mmode</b></tt>: boolean</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Scilab and Matlab additions and substractions work differently
+    when used with empty matrices:
+  </p>
+<dl>
+<dd>
+<b>Scilab</b>:<pre>
+
+a+[] --&gt;a
+a-[] --&gt;a
+[]+a --&gt;a
+[]-a --&gt;-a
+   
+        </pre>
+</dd>
+<dd>
+<b>Matlab</b><pre>
+
+a+[] --&gt;[]
+a-[] --&gt;[]
+[]+a --&gt;[]
+[]-a --&gt;[]
+   
+        </pre>
+</dd>
+</dl>
+<p><tt><b> mtlb_mode(%t)</b></tt>  switches to Matlab evaluation mode for additions and
+    substractions. <tt><b> mtlb_mode(%f)</b></tt>  switches back to Scilab mode.</p>
+<p><tt><b> mtlb_mode()</b></tt> return the current mmode' value</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/empty.htm"><tt><b>empty</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

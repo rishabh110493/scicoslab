@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>inv_coeff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>inv_coeff</b> -  build a polynomial matrix from its coefficients</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P]=inv_coeff(C,[,d,[name])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>C</b></tt>: big matrix of the coefficients</li>
+<li>
+<tt><b>d</b></tt>: Polynomial matrix degree. optional parameter with default value  <tt><b>d=-1+size(C,'c')/size(C,'r')</b></tt>
+</li>
+<li>
+<tt><b>name</b></tt>: string giving the polynomial variable name (default value <tt><b>'x'</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>P=inv_coeff(Mp,k)</b></tt>, when <tt><b>k</b></tt> is compatible with <tt><b>Mp</b></tt>  
+    size, returns a polynomial matrix of degree k. <tt><b>C=[C0,C1,...,Ck]</b></tt> and 
+    <tt><b>P= C0 + C1*x +... +Ck*x^k</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=int(10*rand(2,6))
+// Building a degree 1 polynomial matrix
+P=inv_coeff(A,1)
+norm(coeff(P)-A)
+// Using default value for degree
+P1=inv_coeff(A)
+norm(coeff(P1)-A)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/degree.htm"><tt><b>degree</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/coeff.htm"><tt><b>coeff</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sci2map</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sci2map</b> -  conversion de variables Scilab vers Maple  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>txt=sci2map(a,Map-name)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a  </b></tt>
+    : objet Scilab (matrice, polynôme, liste, chaîne)
+  </li>
+<li>
+<tt><b>Map-name  </b></tt>
+    : chaîne de caractères (nom de la variable Maple)
+  </li>
+<li>
+<tt><b>txt  </b></tt>
+    : vecteur de chaînes de caractères contenant le code Maple
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Génère le code Maple nécessaire pour envoyer la variable Scilab 
+    <tt><b>a</b></tt> vers Maple : le nom de la variable dans Maple est <tt><b>Map-name</b></tt>.
+    Une procédure Maple <tt><b>maple2scilab</b></tt> se trouve dans le dossier <tt><b>SCIDIR/maple</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+txt=[sci2map([1 2;3 4],'a');
+     sci2map(%s^2+3*%s+4,'p')]
+ </pre>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>flowshop </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>flowshop </b> -   flowshop maxplus linear system builder  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>S=flowshop(T)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>T  </b></tt>
+    : maxplus matrix of processing times
+  </li>
+<li>
+<tt><b>S  </b></tt>
+    : dynamic maxplus linear system representing the open-loop flowshop
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    T_ij ((i,j)-entry of matrix T) is the processing time of part j by machine i
+    (T_ij = -inf if part j does not visit machine i) in a flowshop
+    (in a flowshop, as opposed to a jobshop, all parts visit machines in
+    the increasing order of the machine numbers with the possibility of skipping
+    some machines). 
+  </p>
+<p>
+    A maxplus linear system is generated for the corresponding
+    open-loop system (no cyclic use of machines or pallets carrying 
+    the parts : inputs are the arrival times of parts at the inlet and the
+    availaibility times of machines, outputs are the departure times of parts and
+    the times at which machines are available again).
+  </p>
+<p>
+    The internal-state number is  mxp where m is 
+    the machine-type  number and p is the part-type number 
+    even if some states are not useful (the parts
+    does not visit all the available machines).
+  </p>
+<p>
+    The input/output number is nm+np.
+  </p>
+<p>
+    The input/output counting is : 
+  </p>
+<p>
+    part 1 part 2 ... part p machine 1 machine 2 .....machine m 
+  </p>
+<p>
+    The state numbering is :
+     
+    (i=1,j=1) (i=1,j=2)... (i=1,j=p)
+  </p>
+<p></p>
+<p></p>
+<p>
+    (i=m,j=1) ............ (i=m,j=p).
+  </p>
+<p>
+    These countings do not  correspond to the internal
+    node number shown by  flowshop_graph.
+  </p>
+<p></p>
+<p>
+    T must not have a row or a column identical to -inf.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+T=#([2,1;%0,1;4,%0])
+/// realization with 6 states where only 4 are useful
+F=flowshop(T)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

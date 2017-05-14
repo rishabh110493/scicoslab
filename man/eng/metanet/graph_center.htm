@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>graph_center</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graph_center</b> -  center of a graph</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[no,rad] = graph_center(g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g</b></tt>: graph list</li>
+<li>
+<tt><b>no</b></tt>: integer</li>
+<li>
+<tt><b>rad</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>graph_center</b></tt> computes the center of the graph <tt><b>g</b></tt> i.e. the 
+    node for which the largest of the shortest paths to all the other nodes 
+    is minimum. The lengths of the arcs are supposed to be integer (and the default
+    value is 1). 
+    The output is the value <tt><b>rad</b></tt> of the length of the radius and
+    <tt><b>no</b></tt> which is the node number of the center of the graph.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 10 11 12 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 13 15 12 13  9 14 11 16 1 17 14 15];
+g=make_graph('foo',0,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+g('node_diam')=[1:(g('node_number'))]+20;
+show_graph(g);
+[no,rad] = graph_center(g)
+show_nodes(no);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/graph_diameter.htm"><tt><b>graph_diameter</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

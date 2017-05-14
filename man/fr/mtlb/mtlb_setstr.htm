@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_setstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_setstr</b> - Fonction d'émulation de la fonction Matlab setstr</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction Matlab <tt><b>setstr</b></tt> et la fonction Scilab
+    <tt><b>ascii</b></tt> se comportent différemment :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec les chaînes de charactères : la fonction Matlab <tt><b>setstr</b></tt> retourne une chaîne de caractères
+	alors que la fonction Scilab <tt><b>ascii</b></tt> retourne uen matrice de doubles.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec les matrices de doubles : la fonction Matlab <tt><b>setstr</b></tt> retourne une matrice
+	de caractères alors que la fonction Scilab <tt><b>ascii</b></tt> retourne une chaine de caractères.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_setstr(A)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>setstr(A)</b></tt> quand il n'était pas
+    possible de savoir ce qu'était le paramètres d'entrée pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_setstr</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Si <tt><b>A</b></tt> est une chaîne de caratères ou une matrice de chaînes
+        <tt><b>mtlb_setstr(A)</b></tt> peut être remplacé par <tt><b>A</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+         Si <tt><b>A</b></tt> est un vecteur ligne de doubles
+        <tt><b>mtlb_setstr(A)</b></tt> peut être remplacé par <tt><b>ascii(A)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_setstr</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

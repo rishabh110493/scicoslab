@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_echo</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_echo</b> - Matlab echo emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>There is no equivalent for Matlab <tt><b>echo</b></tt> in Scilab but some cases can be replaced by calls to Scilab <tt><b>mode</b></tt>:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b><tt><b>echo</b></tt>: is equivalent to Scilab <tt><b>mode(abs(mode()-1))</b></tt> for scripts and non-compiled functions
+        </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>echo on</b></tt>: is equivalent to Scilab <tt><b>mode(1)</b></tt> for scripts and non-compiled functions
+        </li>
+<li>
+<b><font color="maroon"></font></b><tt><b>echo off</b></tt>: is equivalent to Scilab <tt><b>mode(0)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_echo(arg1[,arg2])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>echo arg1 [arg2]</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_echo</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>arg1</b></tt> is equal to "on"
+        <tt><b>mtlb_echo(arg1)</b></tt> may be replaced by <tt><b>mode(1)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>arg1</b></tt> is equal to "off"
+        <tt><b>mtlb_echo(arg1)</b></tt> may be replaced by <tt><b>mode(0)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_echo</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mode.htm"><tt><b>mode</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

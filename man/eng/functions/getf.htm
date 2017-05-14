@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getf</b> -  defining a function from a file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>getf(file-name [,opt])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>filename</b></tt>: Scilab string.</li>
+<li>
+<tt><b>opt</b></tt>: optional character string<ul>
+<li>
+<tt><b>"c"  </b></tt>: loaded functions are "compiled" to be more efficient (default)</li>
+<li>
+<tt><b>"n"  </b></tt>: loaded functions are not "compiled"</li>
+<li>
+<tt><b>"p"  </b></tt>: loaded functions are  "compiled" and prepared for profiling (see profile)</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> loads one or several functions (see <tt><b>functions</b></tt>)
+    defined in the file <tt><b>'file-name'</b></tt>.  The string
+    <tt><b>opt='n'</b></tt> means that the functions are not compiled
+    (pre-interpreted) when loaded. This can be useful for some
+    debugging purpose (see <tt><b>comp</b></tt>). By default, functions
+    are compiled when loaded (i.e. <tt><b>opt='c'</b></tt> is used).</p>
+<p> In the file a function must begin by a "syntax
+    definition" line as follows:</p>
+<pre>
+
+function [y1,...,yn]=foo(x1,...,xm)
+   
+    </pre>
+<p>The following lines contain a sequence of scilab instructions.</p>
+<p>The "syntax definition" line gives the "full"
+    calling syntax of this function. The <tt><b>yi</b></tt> are output
+    variables calculated as functions of input variables
+    <tt><b>xi</b></tt> and variables existing in Scilab when the function
+    is executed. Shorter input or output argument list may be
+    used.</p>
+<p> Many functions may be written in the same file. A function is
+    terminated by an <tt><b>endfunction</b></tt> keyword. For
+    compatibility with previous versions a function may also be
+    terminated by the following <tt><b>function</b></tt> keyword or the
+    <tt><b>EOF</b></tt> mark. For that reason it is not possible to load
+    function containing nested function definition using the
+    <tt><b>getf</b></tt> function.</p>
+<p><tt><b>getf</b></tt> is an obsolete way for loading functions into
+    scilab from a file. It is replaced by the <tt><b>exec</b></tt>
+    function. Note that functions in a file should be terminated by an
+    <tt><b>endfunction</b></tt> keyword.  The <tt><b>exec</b></tt> function
+    supposes <tt><b>opt=='c'</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+getf('SCI/macros/xdess/plot.sci')
+
+getf SCI/macros/xdess/plot.sci
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/functions.htm"><tt><b>functions</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/function.htm"><tt><b>function</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/genlib.htm"><tt><b>genlib</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getd.htm"><tt><b>getd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/exec.htm"><tt><b>exec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xgraduate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xgraduate</b> -  graduation des axes   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[xi,xa,np1,np2,kMinr,kMaxr,ar]=xgraduate(xmi,xma)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xmi,xma  </b></tt>
+    : scalaire réel
+</li>
+<li>
+<tt><b>xi, xa, kMinr, kMaxr, ar  </b></tt>
+    :scalaires réels
+</li>
+<li>
+<tt><b>np1,np2  </b></tt>
+    : entier
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xgraduate</b></tt> renvoie les graduations des axes utilisées par les routines de dessin. Elle renvoie un intervalle <tt><b>[xi,xa]</b></tt> contenant l'intervalle donné <tt><b>[xmi,xma]</b></tt> avec xi et xa tels que  
+  </p>
+<p><tt><b>xi= kMinr*10^ar</b></tt>, <tt><b>xa=kMaxr*10^ar</b></tt> et l'intervalle peut être divise en <tt><b>np2</b></tt> intervalles et chaque intervalle est divisé en
+    <tt><b>np1</b></tt> sous-intervalles.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  [x1,xa,np1,np2,kMinr,kMaxr,ar]=xgraduate(-0.3,0.2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graduate.htm"><tt><b>graduate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.P.C ; ;   </p>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chart</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chart</b> -  Nichols chart</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>chart([flags])  </tt></dd>
+<dd><tt>chart(gain [,flags])  </tt></dd>
+<dd><tt>chart(gain,phase [,flags])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>gain</b></tt>: real vector ( gains (in DB))</li>
+<li>
+<tt><b>phase</b></tt>: real vector (phases (in degree))</li>
+<li>
+<tt><b>flags</b></tt>: a list of at most 4 flags list(sup [,leg [,cm [,cphi]]])<ul>
+<li>
+<tt><b>sup</b></tt>: 1 indicates superposition on the previous plot   0 no superposition is done</li>
+<li>
+<tt><b>leg</b></tt>: 1 indicates that legends are drawn, o: no legends</li>
+<li>
+<tt><b>cm</b></tt>: color number (see plot2d) for gain curves</li>
+<li>
+<tt><b>cphi</b></tt>:  color number (see plot2d) for phase curves</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    plot the Nichols'chart.</p>
+<p>
+    The default values for <tt><b>gain</b></tt> and <tt><b>phase</b></tt> are respectively :</p>
+<p><tt><b>[-12 -8 -6 -5 -4 -3 -2 -1.4 -1 -.5 0.25 0.5 0.7 1 1.4 2 2.3 3 4 5 6 8 12]</b></tt></p>
+<p><tt><b>[-(1:10) , -(20:10:160)]</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s')
+h=syslin('c',(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01))
+black(h,0.01,100,'(s^2+2*0.9*10*s+100)/(s^2+2*0.3*10.1*s+102.01)')
+chart(list(1,0,2,3));
+
+xbasc()
+h1=h*syslin('c',(s^2+2*0.1*15.1*s+228.01)/(s^2+2*0.9*15*s+225))
+black([h1;h],0.01,100,['h1';'h'])
+chart([-8 -6 -4],[80 120],list(1,0));
+ 
+  </pre>
+</body>
+</html>

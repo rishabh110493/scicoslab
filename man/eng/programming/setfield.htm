@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>setfield</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>setfield</b> -   list field insertion</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>setfield(i,x,l)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: matrix  of any  possible types</li>
+<li>
+<tt><b>l</b></tt>: list, tlist or mlist variable</li>
+<li>
+<tt><b>i</b></tt>: field index, see insertion for more details.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function is an equivalent of <tt><b>l(i)=x</b></tt> syntax for field
+    extraction with the only difference that it also applies to
+    <tt><b>mlist</b></tt> objects.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+l=list(1,'qwerw',%s)
+l(1)='Changed'
+l(0)='Added'
+l(6)=['one more';'added']
+//
+
+a=hypermat([2,2,2],rand(1:2^3));// hypermatrices are coded using mlists
+setfield(3,1:8,a);a // set the field value to 1:8
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/insertion.htm"><tt><b>insertion</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

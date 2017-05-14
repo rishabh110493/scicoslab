@@ -1,0 +1,254 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LineSpec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>LineSpec</b> - to quickly customize the lines appearance
+  in a plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>None. The LineSpec is an optional argument that can
+    be used inside a plot command to customize each new line aspect. It has to
+    be given as a concatenated string containing information about color, line
+    style or markers. It is very usefull to quickly specify such basic line
+    properties.</tt></dd>
+<dd><tt></tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>To specify a red longdash-dot with diamond marker,
+    the string can be 'r-.diam'. As you can see, a full complete spelling of
+    each property value is not required but the string, which is a
+    concatenation (in any order) of these three types of properties , must
+    remain unambiguous. Furthermore, the string specification is not case
+    sensitive.</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>Here is a complete list of the <tt><b>LineSpec</b></tt> types you can
+    specify (using <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>).</p>
+<dl><dd><b></b></dd></dl>
+<dl>
+<dd>
+<b>LineStyle: </b>a string defining the line style. This property is linked to the
+        object's <tt><b>line_style</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+<div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>Specifier</b></tt></td>
+<td><tt><b>Line Style</b></tt></td>
+</tr>
+<tr align="center">
+<td><tt><b>-</b></tt></td>
+<td>Solid line (default)</td>
+</tr>
+<tr align="center">
+<td><tt><b>--</b></tt></td>
+<td>Dashed line</td>
+</tr>
+<tr align="center">
+<td><tt><b>:</b></tt></td>
+<td>Dotted line</td>
+</tr>
+<tr align="center">
+<td><tt><b>-.</b></tt></td>
+<td>Dash-dotted line</td>
+</tr>
+</table></div>
+</dd>
+<dd><b></b></dd>
+<dd><b></b></dd>
+<dd>
+<b>Color: </b>a string defining the line color. This property is linked to the
+        object's <tt><b>foreground</b></tt> property (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+<div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>Specifier</b></tt></td>
+<td><tt><b>Color</b></tt></td>
+</tr>
+<tr align="center">
+<td><tt><b>r</b></tt></td>
+<td>Red</td>
+</tr>
+<tr align="center">
+<td><tt><b>g</b></tt></td>
+<td>Green</td>
+</tr>
+<tr align="center">
+<td><tt><b>b</b></tt></td>
+<td>Blue</td>
+</tr>
+<tr align="center">
+<td><tt><b>c</b></tt></td>
+<td>Cyan</td>
+</tr>
+<tr align="center">
+<td><tt><b>m</b></tt></td>
+<td>Magenta</td>
+</tr>
+<tr align="center">
+<td><tt><b>y</b></tt></td>
+<td>Yellow</td>
+</tr>
+<tr align="center">
+<td><tt><b>k</b></tt></td>
+<td>Black</td>
+</tr>
+<tr align="center">
+<td><tt><b>w</b></tt></td>
+<td>White</td>
+</tr>
+</table></div>
+</dd>
+<dd>
+<b></b><dl><dd><b></b></dd></dl>A default color table is used to color plotted curves if you do
+        not specify a color (neither with <tt><b>LineSpec</b></tt> nor with
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/GlobalProperty.htm"><tt><b>GlobalProperty</b></tt></a>). When drawing multiple lines, the plot
+        command automatically cycles through this table. Here are the used
+        colors:<dl><dd><b></b></dd></dl>
+</dd>
+<dd>
+<b></b><div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>R</b></tt></td>
+<td><tt><b>G</b></tt></td>
+<td><tt><b>B</b></tt></td>
+</tr>
+<tr align="center">
+<td>0.</td>
+<td>0.</td>
+<td>1.</td>
+</tr>
+<tr align="center">
+<td>0.</td>
+<td>0.5</td>
+<td>0.</td>
+</tr>
+<tr align="center">
+<td>1.</td>
+<td>0.</td>
+<td>0.</td>
+</tr>
+<tr align="center">
+<td>0.</td>
+<td>0.75</td>
+<td>0.75</td>
+</tr>
+<tr align="center">
+<td>0.75</td>
+<td>0.</td>
+<td>0.75</td>
+</tr>
+<tr align="center">
+<td>0.75</td>
+<td>0.75</td>
+<td>0.</td>
+</tr>
+<tr align="center">
+<td>0.25</td>
+<td>0.25</td>
+<td>0.25</td>
+</tr>
+</table></div>
+</dd>
+<dd><b></b></dd>
+<dd><b></b></dd>
+<dd>
+<b>Marker type: </b>A string defining the marker type. note that if you specify a
+        marker wihtout a line style, only the marker is drawn. This property
+        is linked to the object's <tt><b>mark_style</b></tt> and
+        <tt><b>mark_mode</b></tt> properties (see
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).<dl><dd><b></b></dd></dl>
+<div align="center"><table border="2">
+<tr align="center">
+<td><tt><b>Specifier</b></tt></td>
+<td><tt><b>Marker Type</b></tt></td>
+</tr>
+<tr align="center">
+<td><tt><b>+</b></tt></td>
+<td>Plus sign</td>
+</tr>
+<tr align="center">
+<td><tt><b>o</b></tt></td>
+<td>Circle</td>
+</tr>
+<tr align="center">
+<td><tt><b>*</b></tt></td>
+<td>Asterisk</td>
+</tr>
+<tr align="center">
+<td><tt><b>.</b></tt></td>
+<td>Point</td>
+</tr>
+<tr align="center">
+<td><tt><b>x</b></tt></td>
+<td>Cross</td>
+</tr>
+<tr align="center">
+<td>
+<tt><b>'square'</b></tt> or
+            <tt><b>'s'</b></tt>
+</td>
+<td>Square</td>
+</tr>
+<tr align="center">
+<td>
+<tt><b>'diamond'</b></tt> or
+            <tt><b>'d'</b></tt>
+</td>
+<td>Diamond</td>
+</tr>
+<tr align="center">
+<td><tt><b>^</b></tt></td>
+<td>Upward-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>v</b></tt></td>
+<td>Downward-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>&gt;</b></tt></td>
+<td>Right-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>&lt;</b></tt></td>
+<td>Left-pointing triangle</td>
+</tr>
+<tr align="center">
+<td><tt><b>'pentagram'</b></tt></td>
+<td>Five-pointed star (pentagram)</td>
+</tr>
+<tr align="center">
+<td><tt><b>'none'</b></tt></td>
+<td>No marker (default)</td>
+</tr>
+</table></div>
+</dd>
+</dl>
+<h3><font color="blue"></font></h3>
+<dl></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>x=1:0.1:10; // Init.
+plot(x,sin(x),'r.-&gt;') // plots a dash-dotted line with a right-pointing triangle centered on each points.
+clf();
+
+// If you specify a marker wihtout a line style, only the marker is drawn
+plot(x,sin(x),'d') // plots a dash-dotted line with a right-pointing triangle centered on each points.
+
+x=1:10; // Init.
+// combinations' order does not matter
+plot(x,x.*x,'*cya--') 
+
+//multiple plots with different LineSpecs
+clf();
+t=0:%pi/20:2*%pi;
+plot(t,sin(t),'ro-.',t,cos(t),'cya+',t,abs(sin(t)),'--mo')
+ 
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/GlobalProperty.htm"><tt><b>GlobalProperty</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.Leray</p>
+</body>
+</html>

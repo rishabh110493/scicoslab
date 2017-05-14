@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pspect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pspect</b> -  cross-spectral estimate between 2 series</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sm,cwp]=pspect(sec_step,sec_leng,wtype,x,y,wpar)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: data if vector, amount of input data if scalar</li>
+<li>
+<tt><b>y</b></tt>: data if vector, amount of input data if scalar</li>
+<li>
+<tt><b>sec_step</b></tt>: offset of each data window</li>
+<li>
+<tt><b>sec_leng</b></tt>: length of each data window</li>
+<li>
+<tt><b>wtype</b></tt>: window type <tt><b>(re,tr,hm,hn,kr,ch)</b></tt>
+</li>
+<li>
+<tt><b>wpar</b></tt>: optional parameters  for <tt><b>wtype='kr', wpar&gt;0</b></tt>  for <tt><b>wtype='ch', 0&lt;wpar(1)&lt;.5, wpar(2)&gt;0</b></tt>
+</li>
+<li>
+<tt><b>sm</b></tt>: power spectral estimate in the interval <tt><b>[0,1]</b></tt>
+</li>
+<li>
+<tt><b>cwp</b></tt>: unspecified Chebyshev window parameter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cross-spectral estimate between <tt><b>x</b></tt> and <tt><b>y</b></tt> if both are given
+    and auto-spectral estimate of <tt><b>x</b></tt> otherwise.
+    Spectral estimate obtained using the modified periodogram method.</p>
+<h3><font color="blue">Reference</font></h3>
+<dl><p>
+     Digital Signal Processing by Oppenheim and Schafer</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rand('normal');rand('seed',0);
+x=rand(1:1024-33+1);
+//make low-pass filter with eqfir
+nf=33;bedge=[0 .1;.125 .5];des=[1 0];wate=[1 1];
+h=eqfir(nf,bedge,des,wate);
+//filter white data to obtain colored data 
+h1=[h 0*ones(1:maxi(size(x))-1)];
+x1=[x 0*ones(1:maxi(size(h))-1)];
+hf=fft(h1,-1);   xf=fft(x1,-1);yf=hf.*xf;y=real(fft(yf,1));
+//plot magnitude of filter
+//h2=[h 0*ones(1:968)];hf2=fft(h2,-1);hf2=real(hf2.*conj(hf2));
+//hsize=maxi(size(hf2));fr=(1:hsize)/hsize;plot(fr,log(hf2));
+//pspect example
+sm=pspect(100,200,'tr',y);smsize=maxi(size(sm));fr=(1:smsize)/smsize;
+plot(fr,log(sm));
+rand('unif');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/cspect.htm"><tt><b>cspect</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

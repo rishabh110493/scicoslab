@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>CAPRES </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>CAPRES  -   CAPRES traffic assignment algorithm  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[f,ta]=CAPRES(net)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>f  </b></tt>
+    : assigned flow (disaggregated by commodity)
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : times for the current assigned flow
+  </li>
+  <li><tt><b>ben  </b></tt>
+    : a 2x4 matrix composed by the computation time and total cost row vectors
+  </li>
+  <li><tt><b>net  </b></tt>
+    : a NetList 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+    Assigns the flow with the CAPRES algorithm.
+    As in the IAON successive AON assignments are made,
+    but the number of iterations
+    is fixed to 4 and instead of using the current
+    travel times, the old travel times are combined
+    in the same way the flows are.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample('Small');
+[f,t]=CAPRES(net);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="IAON.htm"><tt><b>IAON</b></tt></a>&nbsp;&nbsp;<a href="IA.htm"><tt><b>IA</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rankqr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rankqr</b> -   rank revealing QR factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Q,R,JPVT,RANK,SVAL]=rankqr(A, [RCOND,JPVT])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>RCOND</b></tt>: real number used to determine the effective rank of
+  <tt><b>A</b></tt>, which is defined as the order of the largest leading
+  triangular submatrix <tt><b>R11</b></tt> in the QR factorization with
+  pivoting of<tt><b>A</b></tt>, whose estimated condition number &lt;
+  <tt><b>1/RCOND</b></tt>.</li>
+<li>
+<tt><b>JPVT</b></tt><p>
+    : integer vector on entry, if <tt><b>JPVT(i)</b></tt> is not 0, the
+ <tt><b>i</b></tt>-th column of <tt><b> A</b></tt> is permuted to the front
+ of <tt><b>AP</b></tt>, otherwise column <tt><b>i</b></tt> is a free
+ column. On exit, if <tt><b>JPVT(i) = k</b></tt>, then the
+ <tt><b>i</b></tt>-th column of <tt><b>A*P</b></tt> was the
+ <tt><b>k</b></tt>-th column of <tt><b>A</b></tt>. 
+  </p>
+</li>
+<li>
+<tt><b>RANK</b></tt>: the effective rank of <tt><b>A</b></tt>, i.e., the order of the
+  submatrix <tt><b>R11</b></tt>.  This is the same as the order of the
+  submatrix <tt><b>T1</b></tt> in the complete orthogonal factorization
+  of <tt><b>A</b></tt>.</li>
+<li>
+<tt><b>SVAL</b></tt>: real vector with 3 components; The estimates of some of the
+  singular values of the triangular factor <tt><b>R</b></tt>.<p><tt><b>SVAL(1)</b></tt> is the largest singular value of
+  <tt><b>R(1:RANK,1:RANK)</b></tt>;</p>
+<p><tt><b>SVAL(2)</b></tt> is the
+  smallest singular value of <tt><b>R(1:RANK,1:RANK)</b></tt>;</p>
+<p><tt><b>SVAL(3)</b></tt> is the smallest singular value of
+  <tt><b>R(1:RANK+1,1:RANK+1)</b></tt>, if <tt><b>RANK</b></tt> &lt; <tt><b>MIN(M,N)</b></tt>, 
+  or of <tt><b>R(1:RANK,1:RANK)</b></tt>, otherwise.</p>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+To compute (optionally) a rank-revealing QR factorization of a real
+general M-by-N real or complex matrix <tt><b>A</b></tt>, which may be
+rank-deficient, and estimate its effective rank using incremental
+condition estimation.</p>
+<p>
+The routine uses a QR factorization with column pivoting:</p>
+<pre>
+
+        A * P = Q * R,  where  R = [ R11 R12 ],
+                                   [  0  R22 ]
+
+    </pre>
+<p>
+with <tt><b>R11</b></tt> defined as the largest leading submatrix whose
+estimated condition number is less than <tt><b>1/RCOND</b></tt>.  The
+order of <tt><b>R11</b></tt>, <tt><b>RANK</b></tt>, is the effective rank of
+<tt><b>A</b></tt>.</p>
+<p>
+If the triangular factorization is a rank-revealing one (which will be
+the case if the leading columns were well- conditioned), then
+<tt><b>SVAL(1)</b></tt> will also be an estimate for the largest singular
+value of <tt><b>A</b></tt>, and <tt><b>SVAL(2)</b></tt> and
+<tt><b>SVAL(3)</b></tt> will be estimates for the <tt><b>RANK</b></tt>-th
+and <tt><b>(RANK+1)</b></tt>-st singular values of <tt><b>A</b></tt>,
+respectively.</p>
+<p>
+By examining these values, one can confirm that the
+rank is well defined with respect to the chosen value of
+<tt><b>RCOND</b></tt>.  The ratio <tt><b>SVAL(1)/SVAL(2)</b></tt> is an
+estimate of the condition number of <tt><b>R(1:RANK,1:RANK)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,3)*rand(3,7);
+[Q,R,JPVT,RANK,SVAL]=rankqr(A,%eps)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+    Slicot library routines MB03OD, ZB03OD.</p>
+</body>
+</html>

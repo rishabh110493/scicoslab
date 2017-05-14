@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>imult</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>imult</b> -  multiplication by i the imaginary unitary</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=imult(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex scalar, vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: complex scalar, vector or matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>imult(x)</b></tt> is a more efficient way to multiply x by i than y = %i*x,
+    without the problems occuring when x comprises "special" floating
+    point numbers as %inf and %nan.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+z1 = imult(%inf)
+z2 = %i * %inf
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>B.P.;   </p>
+</body>
+</html>

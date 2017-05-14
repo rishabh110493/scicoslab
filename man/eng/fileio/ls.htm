@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ls</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ls</b> -  show files</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>ls path options</tt></dd>
+<dd><tt>files=ls( [path) [,options])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: a string matrix giving a directory pathname (eventually  ended
+	    by a pattern built with <tt><b>*</b></tt>). Default value is <tt><b>.</b></tt>
+</li>
+<li>
+<tt><b>options</b></tt>: a sequence of strings which can be added under Unix systems:
+	    the Unix <tt><b>ls</b></tt> command options. (default value <tt><b>'-C'</b></tt>).</li>
+<li>
+<tt><b>files</b></tt>: a string column vector. By default it contains a column
+	    formatted output. if one of the option is
+	    <tt><b>'-1'</b></tt>. <tt><b>files</b></tt> contains an entry for each
+	    files</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>ls</b></tt> can be used to list the files which match 
+      the patterns given by the path argument. 
+      Patterns are given to the unix <tt><b>ls</b></tt> or to the windows
+      <tt><b>dir</b></tt> commands in order to get information on files. 
+      Thus in order to write portable Scilab script valid wildcard patterns 
+      for both os are to be given. Note that Pathname conversion is
+      performed and for example <tt><b>SCI/macros/util/*.sci</b></tt> is a valid 
+      pattern for both unix and windows.
+    </p>
+<p>
+      Under Unix systems it is possible to add options to rule the output (see
+      the unix manual about the ls command)
+    </p>
+<p>
+      If you want to get a vector of all files matching a pattern use preferabily
+      the  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/listfiles.htm"><tt><b>listfiles</b></tt></a>  or the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/dir.htm"><tt><b>dir</b></tt></a>function.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    ls
+    ls SCI/macros/util/*.sci
+    x=ls('SCI/macros/util/f*.sci')
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/listfiles.htm"><tt><b>listfiles</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/dir.htm"><tt><b>dir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

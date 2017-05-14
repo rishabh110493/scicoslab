@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>legend</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>legend</b> -  draw graph legend</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>hl=legend([h,] string1,string2, ... [,pos] [,boxed]) </tt></dd>
+<dd><tt>hl=legend([h,] strings [,pos] [,boxed]) </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: graphic handle on an Axes entity or vector of handles on
+	    polyline  entities. The default value is the handle on <tt><b>current_axes</b></tt>.</li>
+<li>
+<tt><b>string1,string2, ...</b></tt>: character strings stringsi is the legend of the ith curve</li>
+<li>
+<tt><b>strings</b></tt>: n vector of strings, strings(i) is the legend of the ith curve</li>
+<li>
+<tt><b>pos</b></tt>: (optional) specify where to draw the legend; this parameter may be a integer
+                flag (or equivalently a string flag) or a vector [x,y] which gives the coordinates 
+                of the upper left corner of the legend box. In the first case the possible values
+                are:<ul>
+<li>
+<tt><b>1</b></tt> the legend are drawn in the upper right-hand corner (default).</li>
+<li>
+<tt><b>2</b></tt> the legend are drawn in the upper left-hand corner.</li>
+<li>
+<tt><b>3</b></tt> the legend are drawn in the lower left-hand corner.</li>
+<li>
+<tt><b>4</b></tt> the legend are drawn in the lower right-hand corner.</li>
+<li>
+<tt><b>5</b></tt> interactive placement with the mouse .</li>
+</ul>
+</li>
+<li>
+<tt><b>boxed</b></tt>: a boolean (default value %t) which sets ot not the drawing of the box.</li>
+<li>
+<tt><b>hl</b></tt>: a handle, points to the Compound containing all the legend .</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Puts a legend on the current plot using the specified strings as
+    labels. legend prepends labels by a recall of the corresponding line or
+      patch. The recall is type ans properties are recover from the given handles: </p>
+<p> when called without handle argument (or with a handle on a axes entity)
+      the function looks first build the vectors of handle on polylines entities which
+      are the children of the given axes. </p>
+<p>
+    In the interactive placement (opt=5) move the legend box with the
+    mouse and press the left button to release it.</p>
+<p>
+    This function allows more flexible placement of the legend than the
+    leg plot2d argument.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+set figure_style new
+t=0:0.1:2*%pi;
+a=gca();a.data_bounds=[t(1) -1.8;t($) 1.8];
+
+plot2d(t,[cos(t'),cos(2*t'),cos(3*t')],[-1,2 3]);  
+e=gce();
+e.children(1).thickness=3;
+e.children(2).line_style=4;
+
+hl=legend(['cos(t)';'cos(2*t)';'cos(3*t)'],a=1);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

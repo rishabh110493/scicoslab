@@ -1,0 +1,211 @@
+SHELL			:/bin/bash
+------------------------------------------------------------
+Path Variables
+------------------------------------------------------------
+prefix			:/usr
+exec_prefix		:${prefix}
+program_transform_name	:s,x,x,
+bindir			:${exec_prefix}/bin
+sbindir			:${exec_prefix}/sbin
+libexecdir		:${exec_prefix}/libexec
+datadir			:${prefix}/share
+sysconfdir		:${prefix}/etc
+sharedstatedir		:${prefix}/com
+localstatedir		:${prefix}/var
+libdir			:${exec_prefix}/lib
+includedir		:${prefix}/include
+oldincludedir		:/usr/include
+infodir			:${prefix}/share/info
+mandir			:${prefix}/share/man
+PATH_SEPARATOR		::
+------------------------------------------------------------
+Package Variables
+------------------------------------------------------------
+PACKAGE			:scicoslab
+PACKAGE_NAME		:ScicosLab
+PACKAGE_TARNAME		:scicoslab
+PACKAGE_VERSION		:svn
+PACKAGE_STRING		:ScicosLab svn
+PACKAGE_BUGREPORT	:
+SCIVERSION		:ScicosLab-svn
+BLPR_SCRIPTS		:$(BPROGRAMS)
+EXAMPLES_TESTS		:$(SUBDIRS1) $(SUBDIRS2)
+IMPPREF			:S
+IMPENV			:
+FILES_TO_CLEAN		:*.ln *.BAK *.bak core errs ,* *~ *.a .emacs_* tags TAGS make.log MakeOut .*~ *.trace so_locations *.orig *.obj
+SCILAB_GS		:sh
+SCILABSCRIPT		:scilab.g
+
+MAIN			:mainsci.o
+PERIFILE		:periX11.o
+------------------------------------------------------------
+Host variable
+------------------------------------------------------------
+build_alias		:
+host_alias		:
+target_alias		:
+build			:i686-pc-linux-gnu
+build_cpu		:i686
+build_vendor		:pc
+build_os		:linux-gnu
+host			:i686-pc-linux-gnu
+host_cpu		:i686
+host_vendor		:pc
+host_os			:linux-gnu
+HPPA_OLD		:
+------------------------------------------------------------
+C Compiler Variables
+------------------------------------------------------------
+WITH_GCC		:
+CC			:gcc
+CFLAGS			:-g -O2 -Wall -fno-strict-aliasing
+CC_OPTIONS		:-g -O2 -Wall -fno-strict-aliasing
+CC_PICFLAGS		:-fPIC
+
+CPP			:gcc -E
+CPPFLAGS		:
+ac_ct_CC		:gcc
+DEFS			:-DHAVE_CONFIG_H
+------------------------------------------------------------
+Fortran Compiler Variables
+------------------------------------------------------------
+WITH_G77		:
+F77			:gfortran
+F2C			:@F2C@
+FC			:gfortran
+F2C_SUBDIR		:
+FFLAGS			:-g -O2
+ac_ct_F77		:gfortran
+
+
+FC_OPTIONS		:-g -O2 -Wall -fno-range-check -fno-strict-aliasing
+FC_OPTIONS1		:-g  -Wall -fno-range-check -fno-strict-aliasing
+FC_OPTIONS2		:-g -O2 -Wall -fno-range-check -fno-strict-aliasing
+FC_PICFLAGS		:-fPIC
+FC_USE_CDEC		:@FC_USE_CDEC@
+FC_SUBDIR		:
+------------------------------------------------------------
+Linker Variables
+------------------------------------------------------------
+LD			:/usr/bin/ld
+LD_LDFLAGS		:
+LDFLAGS			: -lieee
+
+CC_LDFLAGS		: -lieee
+FLIBS			: -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. -lgfortran -lm -lquadmath
+FC_LDFLAGS		: -lieee -ldl -rdynamic
+
+X_CFLAGS		:
+X_PRE_LIBS		: -lSM -lICE
+X_LIBS			:
+X_EXTRA_LIBS		:
+
+EXEEXT			:
+OBJEXT			:o
+
+LIBS			:-lm 
+------------------------------------------------------------
+Unix functions
+------------------------------------------------------------
+LN_S			:ln -s
+ECHO			:@ECHO@
+ECHO_C			:
+ECHO_N			:-n
+ECHO_T			:
+RANLIB			:ranlib
+ac_ct_RANLIB		:@ac_ct_RANLIB@
+STRIP			:strip
+ac_ct_STRIP		:@ac_ct_STRIP@
+RM			:rm -f
+AR			:ar
+AR_FLAGS		:cru
+NM			:/usr/bin/nm -B
+OBJDUMP			:objdump
+------------------------------------------------------------
+Xwindow Variables
+------------------------------------------------------------
+
+XAWLIB			:-lXaw3d
+XAW			:Xaw3d
+XMULIB			:-lXmu
+XAW_LOCAL_SUBDIR	:
+XAW_LOCAL_INCLUDES	:
+XAW_LOCAL_LIB		:
+------------------------------------------------------------
+GTK/GNOME Variables
+------------------------------------------------------------
+GTK_CONFIG		:
+GTKCFLAGS		:
+GTKLIBS			:
+
+GNOME_CONFIG		:
+GNOMECFLAGS		:
+GZVT			:
+------------------------------------------------------------
+pvm Variables
+------------------------------------------------------------
+PVMARCH			:LINUX
+PVMLIB			:/tmp/scicoslab/pvm3/lib/LINUX/libpvm3.a
+PVMSCIDIR		:pvm
+PVMSCILIB		:$(SCIDIR)/libs/pvm.a
+PVMGLIB			:/tmp/scicoslab/pvm3/lib/LINUX/libgpvm3.a
+PVMTARGET		:scilex-lib
+PVMROOT			:/tmp/scicoslab/pvm3
+PVMROOTR		:$SCI/pvm3
+PVMINST			:$(PVMBINDISTFILES) $(PVMBINDISTFILES1)
+PVMINCLUDE		:/tmp/scicoslab/pvm3/include
+PVMHOSTERFILES		:
+PVMHOSTER		:
+------------------------------------------------------------
+tcl/tk Variables
+------------------------------------------------------------
+TK_INC_PATH		:@TK_INC_PATH@
+TCL_INC_PATH		:@TCL_INC_PATH@
+TCLTK_LIBS		:-L/usr/lib/i386-linux-gnu -ltk8.5 -L/usr/lib/i386-linux-gnu -ltcl8.5
+TCLSCILIB		:$(SCIDIR)/libs/tclsci.a
+TCLSCIDIR		:tclsci
+TK_MINOR_VERSION	:5
+TK_MAJOR_VERSION	:8
+
+------------------------------------------------------------
+Blas Variables
+------------------------------------------------------------
+NOINLINE		:
+WHICH_BLAS		:STD_BLAS
+ATLAS_DIR		:
+IN_ATLAS		:LOCAL
+------------------------------------------------------------
+Libtools Variables
+------------------------------------------------------------
+LIBTOOL			:$(SHELL) $(top_builddir)/libtool
+DLDLIB			:
+DLD_SUBDIR		:
+DLLTOOL			:false
+LIBM			:
+LIBTOOL_DEPS		:config/ltmain.sh
+CXX                     :g++
+EXEEXT			:
+------------------------------------------------------------
+Ocaml Variables
+------------------------------------------------------------
+WITH_OCAML		:
+OCAMLTARGET		:ocaml_disabled
+------------------------------------------------------------
+Misc Variables
+------------------------------------------------------------
+TERMCAPLIB		:-lncurses
+MAKEFILE_TARGET		:Makefile.linux
+GUILIB			:xsci
+
+XDRLIB			:
+XDRLIBNAME		:
+FGETARG			:fgetarg
+GETARG			:getarg
+WINXFLAGS		:
+MENUSOBJS		:XOBJS
+MALLOC			:
+STATIC			:
+SED_CYGDRIVE		:
+ZZLEDT			:
+SCIDCOPY                :scidcopy
+UNSFDCOPY               :unsfdcopy

@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>backslash (\)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>backslash (\)</b> -  division matricielle à gauche  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>x=A\b</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+			L'anti-slash représente la division matricielle à gauche. 
+			<tt><b>x=A\b</b></tt> est une solution de <tt><b>A*x=b</b></tt>.
+		</p>
+<p>
+			Si <tt><b>A</b></tt> est carrée et régulière <tt><b>x=A\b</b></tt> (unique) est équivalent mathématiquement à <tt><b>x=inv(A)*b</b></tt> (dont le calcul est par contre beaucoup plus coûteux).
+		</p>
+<p>
+			Si <tt><b>A</b></tt> n'est pas carrée, <tt><b>x</b></tt> est une solution au sens des moindres carrés, c'est à dire que <tt><b>norm(A*x-b)</b></tt> est minimale (norme euclidienne). Si <tt><b>A</b></tt> est de rang maximal (colonnes linéairement indépendantes), la solution au sens des moindres carrés, <tt><b>x=A\b</b></tt>, est unique (le vecteur <tt><b>x</b></tt> minimisant <tt><b>norm(A*x-b)</b></tt> est unique).
+			Si <tt><b>A</b></tt> n'est pas de rang maximal, cette solution n'est pas unique, et <tt><b>x=A\b</b></tt>, en général, n'est pas la solution de norme minimale (la solution de norme minimale est <tt><b>x=pinv(A)*b</b></tt>). 
+		</p>
+<p><tt><b>A.\B</b></tt>  est la matrice dont le terme <tt><b>(i,j)</b></tt> est égal à   <tt><b>A(i,j)\B(i,j)</b></tt>.
+			Si <tt><b>A</b></tt> (ou <tt><b>B</b></tt>) est un scalaire <tt><b>A.\B</b></tt> est équivalent à  <tt><b>A*ones(B).\B</b></tt> (or <tt><b>A.\(B*ones(A))</b></tt></p>
+<p><tt><b>A\.B</b></tt>  est un opérateur dont la signification n'est pas prédéfinie. il peut être utilisé pour définir de nouveaux opérateurs (voir "overloading") avec la même priorité que * ou /.
+		</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(3,2);b=[1;1;1]; x=A\b; y=pinv(A)*b;  x-y
+A=rand(2,3);b=[1;1]; x=A\b; y=pinv(A)*b; x-y, A*x-b, A*y-b
+A=rand(3,1)*rand(1,2); b=[1;1;1]; x=A\b; y=pinv(A)*b; A*x-b, A*y-b
+A=rand(2,1)*rand(1,3); b=[1;1]; x=A\b; y=pinv(A)*b; A*x-b, A*y-b 
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/slash.htm"><tt><b>slash</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/percent.htm"><tt><b>percent</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/ieee.htm"><tt><b>ieee</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

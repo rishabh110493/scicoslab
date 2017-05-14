@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>colon</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colon</b> -  (:) colon operator</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+  Colon symbol <tt><b>:</b></tt> can be used to form implicit
+  vectors. (see also <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/linspace.htm"><tt><b>linspace</b></tt></a>,  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/logspace.htm"><tt><b>logspace</b></tt></a>) </p>
+<dl>
+<dd>
+<b>j:k</b>is the vector <tt><b>[j, j+1,...,k]</b></tt> (empty if
+   <tt><b>j&gt;k</b></tt>).</dd>
+<dd>
+<b>j:d:k</b>is the vector <tt><b>[j, j+d, ..., j+m*d]  </b></tt>
+</dd>
+</dl>
+<p>
+    The colon notation can also be used to pick out selected rows,
+    columns and elements of vectors and matrices (see also <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/extraction.htm"><tt><b>extraction</b></tt></a>,<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/insertion.htm"><tt><b>insertion</b></tt></a>)</p>
+<dl>
+<dd>
+<b>A(:)</b>is the vector of all the elements of <tt><b>A</b></tt>  regarded as a single column.</dd>
+<dd>
+<b>A(:,j)</b>ys the <tt><b>j</b></tt>-th column of <tt><b>A</b></tt>
+</dd>
+<dd>
+<b>A(j:k)</b>is <tt><b>[A(j),A(j+1),...,A(k)]</b></tt>
+</dd>
+<dd>
+<b>A(:,j:k)</b>is
+  <tt><b>[A(:,j),A(:,j+1),...,A(:,k)] </b></tt>
+</dd>
+<dd>
+<b>A(:)=w</b>fills the matrix <tt><b>A</b></tt> with entries of <tt><b>w</b></tt> (taken column by column if <tt><b>w</b></tt> is a matrix).</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/matrix.htm"><tt><b>matrix</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/for.htm"><tt><b>for</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/linspace.htm"><tt><b>linspace</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/logspace.htm"><tt><b>logspace</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

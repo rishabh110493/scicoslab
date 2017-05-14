@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>impl</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>impl</b> -  differential algebraic equation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=impl([type],y0,ydot0,t0,t [,atol, [rtol]],res,adda [,jac])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y0,ydot0</b></tt>: real vectors or matrix (initial conditions).</li>
+<li>
+<tt><b>t0</b></tt>: real scalar (initial time).</li>
+<li>
+<tt><b>t</b></tt>: real vector (times at which the solution is computed).</li>
+<li>
+<tt><b>res,adda</b></tt>: externals (function or character string or list).</li>
+<li>
+<tt><b>type</b></tt>: string <tt><b>'adams'</b></tt> or <tt><b>'stiff'</b></tt>
+</li>
+<li>
+<tt><b>atol,rtol</b></tt>: real scalar or real vector of the same size as  as <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>jac</b></tt>: external (function or character string or list).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Solution of the linear implicit differential equation</p>
+<p>
+    A(t,y) dy/dt=g(t,y), y(t0)=y0</p>
+<p><tt><b>t0</b></tt> is the initial instant, <tt><b>y0</b></tt> is the vector of initial conditions
+    Vector <tt><b>ydot0</b></tt> of the time derivative of <tt><b>y</b></tt> at <tt><b>t0</b></tt> must
+    also be given.
+    r
+    The input <tt><b>res</b></tt> is an external i.e. a function with
+    specified syntax, or the name a Fortran subroutine or a C function 
+    (character string) with specified calling sequence or a list.</p>
+<p>
+    If <tt><b>res</b></tt> is a function, its syntax must be as follows:</p>
+<pre>
+
+r = res(t,y,ydot)
+   
+    </pre>
+<p>
+    where <tt><b>t</b></tt> is a real scalar (time) and <tt><b>y</b></tt> and <tt><b>ydot</b></tt> are
+    real vector (state and derivative of the state). 
+    This function must return <tt><b>r=g(t,y)-A(t,y)*ydot</b></tt>.</p>
+<p>
+    If <tt><b>res</b></tt> is a character string, it refers to the name of a Fortran
+    subroutine or a C function. See
+    <tt><b>SCIDIR/routines/default/Ex-impl.f</b></tt> for an example to do that.</p>
+<p><tt><b>res</b></tt> can also be a list: see the help of <tt><b>ode</b></tt>.</p>
+<p>
+    The input <tt><b>adda</b></tt> is also an external.</p>
+<p>
+    If <tt><b>adda</b></tt> is a function, its syntax must be as follows:</p>
+<pre>
+
+r = adda(t,y,p)
+   
+    </pre>
+<p>
+    and it must return <tt><b>r=A(t,y)+p</b></tt> where <tt><b>p</b></tt> is a matrix to be
+    added to <tt><b>A(t,y)</b></tt>.</p>
+<p>
+    If <tt><b>adda</b></tt> is a character string, it refers to the name of a Fortran
+    subroutine or a C function. See
+    <tt><b>SCIDIR/routines/default/Ex-impl.f</b></tt> for an example to do that.</p>
+<p><tt><b>adda</b></tt> can also be a list: see the help of <tt><b>ode</b></tt>.</p>
+<p>
+    The input <tt><b>jac</b></tt> is also an external.</p>
+<p>
+    If <tt><b>jac</b></tt> is a function, its syntax must be as follows:</p>
+<pre>
+
+j = jac(t,y,ydot)
+   
+    </pre>
+<p>
+    and it must return the Jacobian of <tt><b>r=g(t,y)-A(t,y)*ydot</b></tt> with
+    respect to <tt><b>y</b></tt>.</p>
+<p>
+    If <tt><b>jac</b></tt> is a character string, it refers to the name of a Fortran
+    subroutine or a C function. See
+    <tt><b>SCIDIR/routines/default/Ex-impl.f</b></tt> for an example to do that.</p>
+<p><tt><b>jac</b></tt> can also be a list: see the help of <tt><b>ode</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+y=impl([1;0;0],[-0.04;0.04;0],0,0.4,'resid','aplusp');
+// Using hot restart 
+//[x1,w,iw]=impl([1;0;0],[-0.04;0.04;0],0,0.2,'resid','aplusp');
+// hot start from previous call 
+//[x1]=impl([1;0;0],[-0.04;0.04;0],0.2,0.4,'resid','aplusp',w,iw);
+//maxi(abs(x1-x))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/dassl.htm"><tt><b>dassl</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/external.htm"><tt><b>external</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

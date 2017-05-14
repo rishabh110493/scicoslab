@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>auread</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>auread</b> -  load .au sound file</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=auread(aufile)  </tt></dd>
+<dd><tt>y=auread(aufile,ext)  </tt></dd>
+<dd><tt>[y,Fs,bits]=auread(aufile)  </tt></dd>
+<dd><tt>[y,Fs,bits]=auread(aufile,ext)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>aufile</b></tt>: string (The .au extension is appended if no extension is given)</li>
+<li>
+<tt><b>Fs</b></tt>...</li>
+<li>
+<tt><b>[]</b></tt>: integer, frequency sampling in Hz.</li>
+<li>
+<tt><b>ext</b></tt>: string (<tt><b>'size'</b></tt> or <tt><b>'snd'</b></tt>) or integer (to read n samples) or 1 x 2 integer vector [n1,n2] (to read from n1 to n2).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function to read <tt><b>.au</b></tt> sound file.
+    <tt><b>auread(aufile)</b></tt> loads a sound file specified by the string aufile,
+    returning the sampled data in y. Amplitude values are in the range
+    [-1,+1].</p>
+<p>
+    Supports multi-channel data in the following formats:
+    8-bit mu-law, 8-, 16-, and 32-bit linear, and floating point.</p>
+<p><tt><b>[y,Fs,bits]=auread(aufile)</b></tt> returns the sample rate (Fs) in Hertz
+    and the number of bits per sample used to encode the data in the file.</p>
+<p><tt><b>auread(aufile,n)</b></tt> returns the first n samples from each channel.</p>
+<p><tt><b>auread(aufile,[n1,n2])</b></tt> returns samples n1 to n2.</p>
+<p><tt><b>auread(aufile,'size')</b></tt> returns the size of the audio data contained
+    in the file in place of the actual audio data, returning the
+    vector as [samples channels].</p>
+<p><tt><b>auread(aufile,'snd')</b></tt> returns information about the sample and data
+    as a tlist.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/savewave.htm"><tt><b>savewave</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/analyze.htm"><tt><b>analyze</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/sound/mapsound.htm"><tt><b>mapsound</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

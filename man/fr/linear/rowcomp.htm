@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rowcomp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowcomp</b> -  compression de lignes, image  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[W,rk]=colcomp(A [,flag [,tol]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>: matrice réelle ou complexe</li>
+<li>
+<tt><b>flag  </b></tt>: chaîne de caractères optionnelle qui peut prendre les valeurs
+	    <tt><b>'svd'</b></tt> ou <tt><b>'qr'</b></tt>.  La valeur par
+	    défaut est  <tt><b>sqrt(%eps)*norm(A,1)</b></tt>.</li>
+<li>
+<tt><b>tol  </b></tt>: nombre réel non négatif. La valeur par
+	    défaut est  <tt><b>sqrt(%eps)*norm(A,1)</b></tt>.</li>
+<li>
+<tt><b>W  </b></tt>: matrice carrée régulière (matrice de changement de base) </li>
+<li>
+<tt><b>rk  </b></tt>: entier (rang de"<tt><b>A</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Compression des colonnes de <tt><b>A</b></tt>. <tt><b>Ac = W*A</b></tt> est à
+      lignes compressées, c'est à dire
+      <tt><b>Ac=[Af;0]</b></tt> et les lignes de <tt><b>Af</b></tt> sont linéairement
+      indépendantes.</p>
+<p><tt><b>flag</b></tt> et <tt><b>tol</b></tt> sont des paramètres optionnels :
+      <tt><b>flag = 'qr'</b></tt> ou <tt><b>'svd'</b></tt>
+      (<tt><b>'svd'</b></tt> par défaut). </p>
+<p><tt><b>tol</b></tt> = paramètre de tolérance (de l'ordre de
+      <tt><b>%eps</b></tt> par défaut).</p>
+<p>Les <tt><b>rk</b></tt> premières colonnes de <tt><b>W'</b></tt> forment
+      une base de l'image de <tt><b>A</b></tt>. </p>
+<p> Un vecteur non nul <tt><b>x</b></tt> appartient à Im(<tt><b>A</b></tt>) si
+      <tt><b>W*x</b></tt> est à lignes compressées en accord avec <tt><b>Ac</b></tt>
+      c'est à dire que la norme de ses dernières composantes est  nulle (à
+      la précision machine) par rapport à ses rk premières composantes.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    A=rand(5,2)*rand(2,4);          // 4 vecteurs colonne dont 2 indépendants
+    [X,dim]=rowcomp(A);Xp=X';
+    svd([Xp(:,1:dim),A])            // Im(A) = Im(Xp(:,1:dim)
+    x=A*rand(4,1);                  // x appartient à Im(A)
+    y=X*x  
+    norm(y(dim+1:$))/norm(y(1:dim)) // la norme est petite
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; INRIA  </p>
+<h3><font color="blue">Used Function</font></h3>La fonction <tt><b>rowcomp</b></tt> est basée sur les décompositions
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a> ou <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>.</body>
+</html>

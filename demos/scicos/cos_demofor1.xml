@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <ScicosModel Name="cos_demofor1" >
+   <Diagram Name="cos_demofor1">
+   <ScicosVersion Name="scicos4.3" />
+   <Parameters>
+        <params id='wpar' value='[23.4464586520601017,640.935689152961118,108.366617725062952,460.326267268852291,842,480,106,30,630,480,1146,27,1.39999999999999991]' />
+        <params id='title' value='["cos_demofor1","/home/fady/Desktop/"]' />
+        <params id='tol' value='[0.000001;0.000001;0.0000000001;100001;0;0;0]' />
+        <params id='tf' value='10.0999999999999996' />
+        <params id='context' >
+           &quot; &quot;
+         </params>
+        <params id='void1' value='[]' />
+      <params id='options' >
+        <options id='3D' value='list(%t,33)' />
+        <options id='Background' value='[8,1]' />
+        <options id='Link' value='[1,5]' />
+        <options id='ID' value='list([5,1],[4,1])' />
+        <options id='Cmap' value='[0.8,0.8,0.8]' />
+      </params>
+        <params id='void2' value='[]' />
+        <params id='void3' value='[]' />
+        <params id='doc' value='list()' />
+   </Parameters>
+   <Objects>
+   <Block Name="OBJ1" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[124.704000000000022,281.384000000000015]' />
+      <graphics id='sz' value='[40,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>&quot;10&quot;</p>
+      </graphics>
+      <graphics id='pin' value='[]' />
+      <graphics id='pout' value='14' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([&quot;dx=sz(1)/5;dy=sz(2)/10;&quot;;&quot;w=sz(1)-2*dx;h=sz(2)-2*dy;&quot;;&quot;txt=C;&quot;;&quot;xstringb(orig(1)+dx,orig(2)+dy,txt,w,h,&apos;&apos;fill&apos;&apos;);&quot;],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='[]' />
+      <graphics id='out_implicit' value='&quot;E&quot;' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"CONST_m"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Block Name="OBJ2" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[452.504000000000019,271.117333333333306]' />
+      <graphics id='sz' value='[60,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[&quot;[1,1]&quot;;&quot;1&quot;;&quot;1&quot;;&quot;1&quot;;&quot;5&quot;;&quot;1&quot;;&quot;0&quot;]</p>
+      </graphics>
+      <graphics id='pin' value='4' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='11' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([&quot;fnt=xget(&apos;&apos;font&apos;&apos;)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,ipar(1),ipar(2))&quot;;&quot;str=&apos;&apos; &apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(5)-ipar(6)-2))+&apos;&apos;.&apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(6)))&quot;;&quot;str(1:model.in*model.in2)=str&quot;;&quot;str=matrix(str,model.in,model.in2)&quot;;&quot;rr=xstringl(orig(1),orig(2),str)&quot;;&quot;xstring(orig(1)+max(0,(sz(1)-rr(3))/2),orig(2)+max(0,(sz(2)-rr(4))/2),str)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,fnt(1),fnt(2))&quot;],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"AFFICH_m"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Block Name="OBJ3" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[281.803973202097097,238.117333333333363]' />
+      <graphics id='sz' value='[60,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='17' />
+      <graphics id='pout' value='4' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list(&quot;xstringb(orig(1),orig(2),[&apos;&apos;    for&apos;&apos;;&apos;&apos;SubSystem&apos;&apos;],sz(1),sz(2),&apos;&apos;fill&apos;&apos;)&quot;,8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='&quot;E&quot;' />
+    </Block>
+    <Block  id='diagram' >
+            <Diagram Name="SuperBlock">
+            <ScicosVersion Name="scicos4.3" />
+            <AtomicDiagram Atomic="yes" />
+            <Parameters>
+                 <params id='wpar' value='[-159.096000000000004,811.104000000000042,-121.215999999999994,617.984000000000037,1323,1008,346,294,630,480,1145,530,1.39999999999999991]' />
+                 <params id='title' value='"SuperBlock"' />
+                 <params id='tol' value='[0.000001,0.000001,0.0000000001,100001,0,0]' />
+                 <params id='tf' value='100000' />
+                 <params id='context' >
+                    &quot; &quot;
+                  </params>
+                 <params id='void1' value='[]' />
+               <params id='options' >
+                 <options id='3D' value='list(%t,33)' />
+                 <options id='Background' value='[8,1]' />
+                 <options id='Link' value='[1,5]' />
+                 <options id='ID' value='list([5,1],[4,1])' />
+                 <options id='Cmap' value='[0.8,0.8,0.8]' />
+               </params>
+                 <params id='void2' value='[]' />
+                 <params id='void3' value='[]' />
+                 <params id='doc' value='list()' />
+            </Parameters>
+            <Objects>
+            <Block Name="OBJ3_1" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[221.504000000000019,281.384000000000015]' />
+               <graphics id='sz' value='[60,40]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[&quot;1&quot;;&quot;5&quot;;&quot;1&quot;;&quot;1&quot;;&quot;0&quot;;&quot;1&quot;;&quot;1&quot;]</p>
+               </graphics>
+               <graphics id='pin' value='10' />
+               <graphics id='pout' value='3' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list(&quot;xstringb(orig(1),orig(2),&apos;&apos; For Iterator &apos;&apos;,sz(1),sz(2),&apos;&apos;fill&apos;&apos;);&quot;,8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='&quot;E&quot;' />
+               <graphics id='out_implicit' value='&quot;E&quot;' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"ForIterator"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Block Name="OBJ3_2" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[316.83733333333339,260.850666666666655]' />
+               <graphics id='sz' value='[40,60]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[&quot;1&quot;;&quot;[1;1]&quot;;&quot;0&quot;]</p>
+               </graphics>
+               <graphics id='pin' value='[3;6]' />
+               <graphics id='pout' value='5' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list([&quot;[x,y,typ]=standard_inputs(o) &quot;;&quot;dd=sz(1)/8,de=0,&quot;;&quot;if ~arg1.graphics.flip then dd=6*sz(1)/8,de=-sz(1)/8,end&quot;;&quot;for k=1:size(x,&apos;&apos;*&apos;&apos;)&quot;;&quot;if size(sgn,1)&gt;1 then&quot;;&quot;  if sgn(k)&gt;0 then&quot;;&quot;    xstring(orig(1)+dd,y(k)-4,&apos;&apos;+&apos;&apos;)&quot;;&quot;  else&quot;;&quot;    xstring(orig(1)+dd,y(k)-4,&apos;&apos;-&apos;&apos;)&quot;;&quot;  end&quot;;&quot;end&quot;;&quot;end&quot;;&quot;xx=sz(1)*[.8 .4 0.75 .4 .8]+orig(1)+de&quot;;&quot;yy=sz(2)*[.8 .8 .5 .2 .2]+orig(2)&quot;;&quot;xpoly(xx,yy,&apos;&apos;lines&apos;&apos;)&quot;],8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='[&quot;E&quot;;&quot;E&quot;]' />
+               <graphics id='out_implicit' value='&quot;E&quot;' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"SUMMATION"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ3_3" >
+               <Link id='xx' value='[290.075428571428574;308.265904761904835]' />
+               <Link id='yy' value='[301.384000000000015;300.850666666666655]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[1,1,0]' />
+               <Link id='to' value='[2,1,1]' />
+            </Link>
+            <Block Name="OBJ3_4" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[314.637333333333345,194.850666666666683]' />
+               <graphics id='sz' value='[40,40]' />
+               <graphics id='flip' value='%f' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[&quot;0&quot;;&quot;1&quot;]</p>
+               </graphics>
+               <graphics id='pin' value='8' />
+               <graphics id='pout' value='6' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list(&quot;xstringb(orig(1),orig(2),&apos;&apos;1/z&apos;&apos;,sz(1),sz(2),&apos;&apos;fill&apos;&apos;)&quot;,8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='&quot;E&quot;' />
+               <graphics id='out_implicit' value='&quot;E&quot;' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"DOLLAR_m"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ3_5" >
+               <Link id='xx' value='[365.408761904761946;381.370666666666693]' />
+               <Link id='yy' value='[290.850666666666655;290.850666666666086]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[2,1,0]' />
+               <Link id='to' value='[7,1,1]' />
+            </Link>
+            <Link Name="OBJ3_6" >
+               <Link id='xx' value='[306.06590476190479;294.104000000000042;294.104000000000042;308.265904761904835;308.265904761904835]' />
+               <Link id='yy' value='[214.850666666666683;214.850666666666683;279.184000000000026;279.184000000000026;280.850666666666655]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[4,1,0]' />
+               <Link id='to' value='[2,2,1]' />
+            </Link>
+            <Block Name="OBJ3_7" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[381.370666666666693,290.850666666666086]' />
+               <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[]</p>
+               </graphics>
+               <graphics id='pin' value='5' />
+               <graphics id='pout' value='[8;12]' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list([],8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='&quot;E&quot;' />
+               <graphics id='out_implicit' value='[&quot;E&quot;;&quot;E&quot;;&quot;E&quot;]' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"SPLIT_f"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ3_8" >
+               <Link id='xx' value='[381.370666666666693;383.570666666666682;383.570666666666682;360.351619047619067;360.351619047619067]' />
+               <Link id='yy' value='[290.850666666666086;290.850666666666655;212.450666666666677;212.450666666666677;214.850666666666683]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[7,1,0]' />
+               <Link id='to' value='[4,1,1]' />
+            </Link>
+            <Block Name="OBJ3_9" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[172.932571428571435,291.384000000000015]' />
+               <graphics id='sz' value='[20,20]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>&quot;1&quot;</p>
+               </graphics>
+               <graphics id='pin' value='[]' />
+               <graphics id='pout' value='10' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list(&quot; &quot;,8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='[]' />
+               <graphics id='out_implicit' value='&quot;E&quot;' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"IN_f"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ3_10" >
+               <Link id='xx' value='[192.932571428571435;212.932571428571435]' />
+               <Link id='yy' value='[301.384000000000015;301.384000000000015]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[9,1,0]' />
+               <Link id='to' value='[1,1,1]' />
+            </Link>
+            <Block Name="OBJ3_11" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[401.370666666666693,280.850666666666086]' />
+               <graphics id='sz' value='[20,20]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>&quot;1&quot;</p>
+               </graphics>
+               <graphics id='pin' value='12' />
+               <graphics id='pout' value='[]' />
+               <graphics id='pein' value='[]' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list(&quot; &quot;,8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='&quot;E&quot;' />
+               <graphics id='out_implicit' value='[]' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"OUT_f"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ3_12" >
+               <Link id='xx' value='[381.370666666666693;401.370666666666693]' />
+               <Link id='yy' value='[290.850666666666086;290.850666666666086]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[1,1]' />
+               <Link id='from' value='[7,2,0]' />
+               <Link id='to' value='[11,1,1]' />
+            </Link>
+            </Objects>
+            </Diagram>
+    </Block>
+    <gui id='gui' value='"SUPER_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ4" >
+      <Link id='xx' value='[350.375401773525653;387.520666666666671;387.520666666666671;443.932571428571464]' />
+      <Link id='yy' value='[258.117333333333363;258.117333333333363;291.117333333333306;291.117333333333306]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[3,1,0]' />
+      <Link id='to' value='[2,1,1]' />
+   </Link>
+   <Block Name="OBJ5" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[462.574924684684731,344.124499024982129]' />
+      <graphics id='sz' value='[40,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='[]' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='6' />
+      <graphics id='gr_i'>
+         list([&quot;wd=xget(&apos;&apos;wdim&apos;&apos;).*[1.016,1.12];&quot;;&quot;thick=xget(&apos;&apos;thickness&apos;&apos;);xset(&apos;&apos;thickness&apos;&apos;,2);&quot;;&quot;p=wd(2)/wd(1);p=1;&quot;;&quot;rx=sz(1)*p/2;ry=sz(2)/2;&quot;;&quot;xarcs([orig(1)+0.05*sz(1);&quot;;&quot;orig(2)+0.95*sz(2);&quot;;&quot;   0.9*sz(1)*p;&quot;;&quot;   0.9*sz(2);&quot;;&quot;   0;&quot;;&quot;   360*64],scs_color(5));&quot;;&quot;xset(&apos;&apos;thickness&apos;&apos;,1);&quot;;&quot;xx=[orig(1)+rx    orig(1)+rx;&quot;;&quot;    orig(1)+rx    orig(1)+rx+0.6*rx*cos(%pi/6)];&quot;;&quot;yy=[orig(2)+ry    orig(2)+ry ;&quot;;&quot;  orig(2)+1.8*ry  orig(2)+ry+0.6*ry*sin(%pi/6)];&quot;;&quot;xsegs(xx,yy,scs_color(10));&quot;;&quot;xset(&apos;&apos;thickness&apos;&apos;,thick);&quot;],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='[]' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block  id='diagram' >
+            <Diagram Name="Untitled">
+            <ScicosVersion Name="scicos4.3" />
+            <AtomicDiagram Atomic="no" />
+            <Parameters>
+                 <params id='wpar' value='[600,450,0,0,600,450]' />
+                 <params id='title' value='"Untitled"' />
+                 <params id='tol' value='[0.000001,0.000001,0.0000000001,100001,0,0]' />
+                 <params id='tf' value='100000' />
+                 <params id='context' >
+                    []
+                  </params>
+                 <params id='void1' value='[]' />
+               <params id='options' >
+                 <options id='3D' value='list(%t,33)' />
+                 <options id='Background' value='[8,1]' />
+                 <options id='Link' value='[1,5,2]' />
+                 <options id='ID' value='list([5,1],[4,1])' />
+                 <options id='Cmap' value='[0.8,0.8,0.8]' />
+               </params>
+                 <params id='void2' value='[]' />
+                 <params id='void3' value='[]' />
+                 <params id='doc' value='list()' />
+            </Parameters>
+            <Objects>
+            <Block Name="OBJ5_1" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[399,162]' />
+               <graphics id='sz' value='[20,20]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>&quot;1&quot;</p>
+               </graphics>
+               <graphics id='pin' value='[]' />
+               <graphics id='pout' value='[]' />
+               <graphics id='pein' value='5' />
+               <graphics id='peout' value='[]' />
+               <graphics id='gr_i'>
+                  list(&quot; &quot;,8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='[]' />
+               <graphics id='out_implicit' value='[]' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"CLKOUT_f"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Block Name="OBJ5_2" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[320,232]' />
+               <graphics id='sz' value='[40,40]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[&quot;1&quot;;&quot;0&quot;]</p>
+               </graphics>
+               <graphics id='pin' value='[]' />
+               <graphics id='pout' value='[]' />
+               <graphics id='pein' value='6' />
+               <graphics id='peout' value='3' />
+               <graphics id='gr_i'>
+                  list([&quot;dt=o.model.rpar(1);&quot;;&quot;txt=[&apos;&apos;Delay&apos;&apos;;string(dt)];&quot;;&quot;xstringb(orig(1),orig(2),txt,sz(1),sz(2),&apos;&apos;fill&apos;&apos;);&quot;],8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='[]' />
+               <graphics id='out_implicit' value='[]' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"EVTDLY_c"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ5_3" >
+               <Link id='xx' value='[340;340;380.70999999999998]' />
+               <Link id='yy' value='[226.289999999999992;172;172]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[5,-1]' />
+               <Link id='from' value='[2,1]' />
+               <Link id='to' value='[4,1]' />
+            </Link>
+            <Block Name="OBJ5_4" >
+             <Block id='graphics' >
+               <graphics id='orig' value='[380.710660000000018;172]' />
+               <graphics id='sz' value='[0.3333333,0.3333333]' />
+               <graphics id='flip' value='%t' />
+               <graphics id='theta' value='0' />
+               <graphics id='exprs'>
+                   <p>[]</p>
+               </graphics>
+               <graphics id='pin' value='[]' />
+               <graphics id='pout' value='[]' />
+               <graphics id='pein' value='3' />
+               <graphics id='peout' value='[5;6]' />
+               <graphics id='gr_i'>
+                  list([],8)
+               </graphics>
+               <graphics id='id' value='&quot;&quot;' />
+               <graphics id='in_implicit' value='[]' />
+               <graphics id='out_implicit' value='[]' />
+             </Block>
+             <Block id='diagram' >
+             </Block>
+             <gui id='gui' value='"CLKSPLIT_f"' />
+             <doc id='doc' value='list()' />
+            </Block>
+            <Link Name="OBJ5_5" >
+               <Link id='xx' value='[380.70999999999998;399]' />
+               <Link id='yy' value='[172;172]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[5,-1]' />
+               <Link id='from' value='[4,1]' />
+               <Link id='to' value='[1,1]' />
+            </Link>
+            <Link Name="OBJ5_6" >
+               <Link id='xx' value='[380.70999999999998;380.70999999999998;340;340]' />
+               <Link id='yy' value='[172;302;302;277.70999999999998]' />
+               <Link id='id' value='"drawlink"' />
+               <Link id='thick' value='[0,0]' />
+               <Link id='ct' value='[5,-1]' />
+               <Link id='from' value='[4,2]' />
+               <Link id='to' value='[2,1]' />
+            </Link>
+            </Objects>
+            </Diagram>
+    </Block>
+    <gui id='gui' value='"CLOCK_c"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ6" >
+      <Link id='xx' value='[482.574924684684731;482.547874822677102]' />
+      <Link id='yy' value='[338.410213310696406;323.391172424953254]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[5,1,0]' />
+      <Link id='to' value='[19,1,1]' />
+   </Link>
+   <Block Name="OBJ7" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[251.276330090090141,166.546694026455043]' />
+      <graphics id='sz' value='[60,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[&quot;1&quot;;&quot;(u1*(u1+1))/2&quot;;&quot;1&quot;]</p>
+      </graphics>
+      <graphics id='pin' value='18' />
+      <graphics id='pout' value='9' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list(&quot;xstringb(orig(1),orig(2),[&apos;&apos;Mathematical&apos;&apos;;&apos;&apos;Expression&apos;&apos;],sz(1),sz(2),&apos;&apos;fill&apos;&apos;);&quot;,8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='&quot;E&quot;' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"EXPRESSION"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Block Name="OBJ8" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[371.59914090090092,166.546694026455071]' />
+      <graphics id='sz' value='[60,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[&quot;[1,1]&quot;;&quot;1&quot;;&quot;1&quot;;&quot;1&quot;;&quot;5&quot;;&quot;1&quot;;&quot;0&quot;]</p>
+      </graphics>
+      <graphics id='pin' value='9' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='12' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([&quot;fnt=xget(&apos;&apos;font&apos;&apos;)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,ipar(1),ipar(2))&quot;;&quot;str=&apos;&apos; &apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(5)-ipar(6)-2))+&apos;&apos;.&apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(6)))&quot;;&quot;str(1:model.in*model.in2)=str&quot;;&quot;str=matrix(str,model.in,model.in2)&quot;;&quot;rr=xstringl(orig(1),orig(2),str)&quot;;&quot;xstring(orig(1)+max(0,(sz(1)-rr(3))/2),orig(2)+max(0,(sz(2)-rr(4))/2),str)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,fnt(1),fnt(2))&quot;],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"AFFICH_m"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ9" >
+      <Link id='xx' value='[319.847758661518696;363.027712329472365]' />
+      <Link id='yy' value='[186.546694026455043;186.546694026455071]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[7,1,0]' />
+      <Link id='to' value='[8,1,1]' />
+   </Link>
+   <Block Name="OBJ10" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[482.535954211845763;321.608968457512105]' />
+      <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='[]' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='20' />
+      <graphics id='peout' value='[11;12]' />
+      <graphics id='gr_i'>
+         list([],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='[]' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"CLKSPLIT_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ11" >
+      <Link id='xx' value='[482.535954211845763;482.504000000000019]' />
+      <Link id='yy' value='[321.608968457512105;316.831619047619029]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[10,1,0]' />
+      <Link id='to' value='[2,1,1]' />
+   </Link>
+   <Link Name="OBJ12" >
+      <Link id='xx' value='[482.535954211845763;525.671032792792857;525.671032792792857;401.59914090090092;401.59914090090092]' />
+      <Link id='yy' value='[321.608968457512105;321.608968457512105;211.983844026455046;211.983844026455046;212.260979740740794]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[10,2,0]' />
+      <Link id='to' value='[8,1,1]' />
+   </Link>
+   <Block Name="OBJ13" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[191.385928705155521,280.964140616239945]' />
+      <graphics id='sz' value='[40,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>&quot;1&quot;</p>
+      </graphics>
+      <graphics id='pin' value='14' />
+      <graphics id='pout' value='15' />
+      <graphics id='pein' value='27' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list(&quot;xstringb(orig(1),orig(2),&apos;&apos;S/H&apos;&apos;,sz(1),sz(2),&apos;&apos;fill&apos;&apos;)&quot;,8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='&quot;E&quot;' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"SAMPHOLD_m"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ14" >
+      <Link id='xx' value='[173.275428571428591;182.814500133726938]' />
+      <Link id='yy' value='[301.384000000000015;300.964140616239945]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[1,1,0]' />
+      <Link id='to' value='[13,1,1]' />
+   </Link>
+   <Link Name="OBJ15" >
+      <Link id='xx' value='[239.957357276584105;272.788903272376444]' />
+      <Link id='yy' value='[300.964140616239945;300.964140616240115]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[13,1,0]' />
+      <Link id='to' value='[23,1,1]' />
+   </Link>
+   <Block Name="OBJ16" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[273.232544630668656;266.334088191636738]' />
+      <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='24' />
+      <graphics id='pout' value='[17;18]' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='[&quot;E&quot;;&quot;E&quot;;&quot;E&quot;]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"SPLIT_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ17" >
+      <Link id='xx' value='[273.232544630668656;273.232544630668542]' />
+      <Link id='yy' value='[266.334088191636738;258.117333333333363]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[16,1,0]' />
+      <Link id='to' value='[3,1,1]' />
+   </Link>
+   <Link Name="OBJ18" >
+      <Link id='xx' value='[273.232544630668656;211.186652248533591;211.186652248533591;242.704901518661558;242.704901518661558]' />
+      <Link id='yy' value='[266.334088191636738;266.334088191636738;185.137297235089108;185.137297235089108;186.546694026455043]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[16,2,0]' />
+      <Link id='to' value='[7,1,1]' />
+   </Link>
+   <Block Name="OBJ19" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[482.547874822677102;323.391172424953254]' />
+      <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='[]' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='6' />
+      <graphics id='peout' value='[20;21]' />
+      <graphics id='gr_i'>
+         list([],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='[]' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"CLKSPLIT_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ20" >
+      <Link id='xx' value='[482.547874822677102;482.535954211845763]' />
+      <Link id='yy' value='[323.391172424953254;321.608968457512105]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[19,1,0]' />
+      <Link id='to' value='[10,1,1]' />
+   </Link>
+   <Link Name="OBJ21" >
+      <Link id='xx' value='[482.547874822677102;401.126926238715726]' />
+      <Link id='yy' value='[323.391172424953254;323.391172424953197]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[19,2,0]' />
+      <Link id='to' value='[26,1,1]' />
+   </Link>
+   <Block Name="OBJ22" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[289.656186290809615,331.729138915035492]' />
+      <graphics id='sz' value='[60,40]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[&quot;[1,1]&quot;;&quot;1&quot;;&quot;1&quot;;&quot;1&quot;;&quot;5&quot;;&quot;1&quot;;&quot;0&quot;]</p>
+      </graphics>
+      <graphics id='pin' value='25' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='28' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([&quot;fnt=xget(&apos;&apos;font&apos;&apos;)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,ipar(1),ipar(2))&quot;;&quot;str=&apos;&apos; &apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(5)-ipar(6)-2))+&apos;&apos;.&apos;&apos;+part(&apos;&apos;0&apos;&apos;,ones(1,ipar(6)))&quot;;&quot;str(1:model.in*model.in2)=str&quot;;&quot;str=matrix(str,model.in,model.in2)&quot;;&quot;rr=xstringl(orig(1),orig(2),str)&quot;;&quot;xstring(orig(1)+max(0,(sz(1)-rr(3))/2),orig(2)+max(0,(sz(2)-rr(4))/2),str)&quot;;&quot;xset(&apos;&apos;font&apos;&apos;,fnt(1),fnt(2))&quot;],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"AFFICH_m"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Block Name="OBJ23" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[272.788903272376444;300.964140616240115]' />
+      <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='15' />
+      <graphics id='pout' value='[24;25]' />
+      <graphics id='pein' value='[]' />
+      <graphics id='peout' value='[]' />
+      <graphics id='gr_i'>
+         list([],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='&quot;E&quot;' />
+      <graphics id='out_implicit' value='[&quot;E&quot;;&quot;E&quot;;&quot;E&quot;]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"SPLIT_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ24" >
+      <Link id='xx' value='[272.788903272376444;273.232544630668542;273.232544630668656]' />
+      <Link id='yy' value='[300.964140616240115;300.964140616239945;266.334088191636738]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[23,1,0]' />
+      <Link id='to' value='[16,1,1]' />
+   </Link>
+   <Link Name="OBJ25" >
+      <Link id='xx' value='[272.788903272376444;272.788903272376444;281.084757719381059;281.084757719381059]' />
+      <Link id='yy' value='[300.964140616240115;354.479572922153068;354.479572922153068;351.729138915035492]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[1,1]' />
+      <Link id='from' value='[23,2,0]' />
+      <Link id='to' value='[22,1,1]' />
+   </Link>
+   <Block Name="OBJ26" >
+    <Block id='graphics' >
+      <graphics id='orig' value='[401.126926238715726;323.391172424953197]' />
+      <graphics id='sz' value='[0.33333333333333331,0.33333333333333331]' />
+      <graphics id='flip' value='%t' />
+      <graphics id='theta' value='0' />
+      <graphics id='exprs'>
+          <p>[]</p>
+      </graphics>
+      <graphics id='pin' value='[]' />
+      <graphics id='pout' value='[]' />
+      <graphics id='pein' value='21' />
+      <graphics id='peout' value='[27;28]' />
+      <graphics id='gr_i'>
+         list([],8)
+      </graphics>
+      <graphics id='id' value='&quot;&quot;' />
+      <graphics id='in_implicit' value='[]' />
+      <graphics id='out_implicit' value='[]' />
+    </Block>
+    <Block id='diagram' >
+    </Block>
+    <gui id='gui' value='"CLKSPLIT_f"' />
+    <doc id='doc' value='list()' />
+   </Block>
+   <Link Name="OBJ27" >
+      <Link id='xx' value='[401.126926238715726;263.255221566305522;263.255221566305522;211.385928705155521;211.385928705155521]' />
+      <Link id='yy' value='[323.391172424953197;323.391172424953254;339.484350314652659;339.484350314652659;326.678426330525667]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[26,1,0]' />
+      <Link id='to' value='[13,1,1]' />
+   </Link>
+   <Link Name="OBJ28" >
+      <Link id='xx' value='[401.126926238715726;401.126926238715726;320.457311802731056;320.457311802731056;319.656186290809615]' />
+      <Link id='yy' value='[323.391172424953197;394.10936119261595;394.10936119261595;377.443424629321214;377.443424629321214]' />
+      <Link id='id' value='"drawlink"' />
+      <Link id='thick' value='[0,0]' />
+      <Link id='ct' value='[5,-1]' />
+      <Link id='from' value='[26,2,0]' />
+      <Link id='to' value='[22,1,1]' />
+   </Link>
+   </Objects>
+    </Diagram>
+ </ScicosModel>

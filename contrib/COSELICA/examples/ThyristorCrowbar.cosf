@@ -1,0 +1,2094 @@
+scs_m=scicos_diagram(..
+      version="scicos4.4",..
+      props=scicos_params(..
+            wpar=[-27.23587,822.94426,-30.787426,681.32893,1159,971,88,136,983,759,402,161,1.4],..
+            Title=["ThyristorCrowbar","/home/dirk/work/coselica/trunk/examples/"],..
+            tol=[0.00001;0.00001;1.000D-10;31;0;100;0],..
+            tf=30,..
+            context=" ",..
+            void1=[],..
+            options=tlist(["scsopt","3D","Background","Link","ID","Cmap"],list(%t,33),[8,1],[1,5,2],..
+            list([4,1,10,1],[4,1,2,1]),[0.8,0.8,0.8]),..
+            void2=[],..
+            void3=[],..
+            doc=list()))
+scs_m.objs(1)=scicos_block(..
+              gui="MEAB_Ground",..
+              graphics=scicos_graphics(..
+                       orig=[112.17895,85.987325],..
+                       sz=[40,40],..
+                       flip=%t,..
+                       theta=0,..
+                       exprs=[],..
+                       pin=37,..
+                       pout=[],..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "xpoly(xx+ww*[0.2;0.8],yy+hh*[0.75;0.75]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.3;0.7],yy+hh*[0.65;0.65]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.4;0.6],yy+hh*[0.55;0.55]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.5;0.5],yy+hh*[0.95;0.75]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0.2,""""+model.label+"""",sz(1)*1.41,sz(2)*0.3,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.22-1.41),orig(2)+sz(2)*0.2,""""+model.label+"""",sz(1)*1.41,sz(2)*0.3,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="I",..
+                       out_implicit=[]),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=[],..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Modelica.Electrical.Analog.Basic.Ground","p",[],list([],list(),[]))),..
+              doc=list())
+scs_m.objs(2)=scicos_block(..
+              gui="CSCOPE",..
+              graphics=scicos_graphics(..
+                       orig=[624.24397,424.15879],..
+                       sz=[40,40],..
+                       flip=%t,..
+                       theta=0,..
+                       exprs=["2 3 5 7 9 11 13 15";"-1";"[]";"[600;400]";"-1";"40";"30";"20";"1";""],..
+                       pin=24,..
+                       pout=[],..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["thick=xget(''thickness'');xset(''thickness'',2);";
+                       "xrect(orig(1)+sz(1)/10,orig(2)+(1-1/10)*sz(2),sz(1)*8/10,sz(2)*8/10);";
+                       "xx=[orig(1)+sz(1)/5,orig(1)+sz(1)/5;";
+                       "orig(1)+(1-1/4)*sz(1),orig(1)+sz(1)/5];";
+                       "yy=[orig(2)+sz(2)/5,orig(2)+sz(2)/5;";
+                       "orig(2)+sz(2)/5,orig(2)+(1-1/3)*sz(2)];";
+                       "xarrows(xx,yy);";
+                       "t=(0:0.3:2*%pi)'';";
+                       "xx=orig(1)+(1/5+3*t/(10*%pi))*sz(1);";
+                       "yy=orig(2)+(1/4.3+(sin(t)+1)*3/10)*sz(2);";
+                       "xpoly(xx,yy,''lines'');";
+                       "xset(''thickness'',thick)"],8),..
+                       id="",..
+                       in_implicit="E",..
+                       out_implicit=[]),..
+              model=scicos_model(..
+                       sim=list("cscope",4),..
+                       in=-1,..
+                       in2=1,..
+                       intyp=1,..
+                       out=[],..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[0;-1;40;30],..
+                       ipar=[-1;1;20;2;3;5;7;9;11;13;15;-1;-1;600;400],..
+                       opar=list(),..
+                       blocktype="x",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=list()),..
+              doc=list())
+scs_m.objs(3)=scicos_block(..
+              gui="CBI_RealOutput",..
+              graphics=scicos_graphics(..
+                       orig=[532.67297,445.43456],..
+                       sz=[13.333333,13.333333],..
+                       flip=%t,..
+                       theta=0,..
+                       exprs=[],..
+                       pin=32,..
+                       pout=25,..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "xpoly(xx+ww*[0;1;0;0],yy+hh*[1;0.5;0;1]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,191);";
+                       "e.background=color(255,255,255);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="E",..
+                       out_implicit="E"),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=1,..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Coselica.Blocks.Interfaces.RealOutput","u","y",list([],list(),[]))),..
+              doc=list())
+scs_m.objs(4)=scicos_block(..
+              gui="MEAS_PotentialSensor",..
+              graphics=scicos_graphics(..
+                       orig=[411.06668,508.40054],..
+                       sz=[40,40],..
+                       flip=%t,..
+                       theta=0,..
+                       exprs=[],..
+                       pin=20,..
+                       pout=32,..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "if orient then";
+                       "  xarc(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                       "else";
+                       "  xarc(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(255,255,255);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.5;0.5],yy+hh*[0.85;0.7]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.6145;0.701],yy+hh*[0.664;0.7865]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.3855;0.299],yy+hh*[0.664;0.7865]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.688;0.829],yy+hh*[0.5685;0.6195]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.312;0.171],yy+hh*[0.5685;0.6195]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.5;0.5451],yy+hh*[0.5;0.643]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.4976;0.59;0.59;0.4976],yy+hh*[0.658;0.63;0.786;0.658]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xarc(orig(1)+sz(1)*0.475,orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                       "else";
+                       "  xarc(orig(1)+sz(1)*(1-0.475-0.05),orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*0.355,orig(2)+sz(2)*0.15,""V"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1-0.355-0.295),orig(2)+sz(2)*0.15,""V"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.font_foreground=color(0,0,0);";
+                       "e.fill_mode=""off"";";
+                       "xpoly(xx+ww*[0.15;0.05],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[1;0.85],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="I",..
+                       out_implicit="E"),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=1,..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Modelica.Electrical.Analog.Sensors.PotentialSensor","p","phi",..
+                       list([],list(),[]))),..
+              doc=list())
+scs_m.objs(5)=scicos_block(..
+              gui="MEAB_Resistor",..
+              graphics=scicos_graphics(..
+                       orig=[331.21677,253.95264],..
+                       sz=[40,40],..
+                       flip=%t,..
+                       theta=0,..
+                       exprs="100",..
+                       pin=10,..
+                       pout=8,..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "if orient then";
+                       "  xrect(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                       "else";
+                       "  xrect(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.background=color(255,255,255);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.05;0.15],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.85;0.95],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.font_foreground=color(0,0,0);";
+                       "e.fill_mode=""off"";";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="I",..
+                       out_implicit="I"),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=1,..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Modelica.Electrical.Analog.Basic.Resistor","p","n",list("R",list(100),0))),..
+              doc=list())
+scs_m.objs(6)=scicos_block(..
+              gui="MEAB_Resistor",..
+              graphics=scicos_graphics(..
+                       orig=[269.68106,209.20016],..
+                       sz=[40,40],..
+                       flip=%t,..
+                       theta=90,..
+                       exprs="470",..
+                       pin=34,..
+                       pout=49,..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "if orient then";
+                       "  xrect(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                       "else";
+                       "  xrect(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.background=color(255,255,255);";
+                       "e.fill_mode=""on"";";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.05;0.15],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.85;0.95],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.font_foreground=color(0,0,0);";
+                       "e.fill_mode=""off"";";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="I",..
+                       out_implicit="I"),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=1,..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Modelica.Electrical.Analog.Basic.Resistor","p","n",list("R",list(470),0))),..
+              doc=list())
+scs_m.objs(7)=scicos_block(..
+              gui="MEAB_Capacitor",..
+              graphics=scicos_graphics(..
+                       orig=[364.9149,207.73287],..
+                       sz=[40,40],..
+                       flip=%f,..
+                       theta=90,..
+                       exprs="100e-9",..
+                       pin=41,..
+                       pout=44,..
+                       pein=[],..
+                       peout=[],..
+                       gr_i=list(..
+                       ["if orient then";
+                       "  xx=orig(1);yy=orig(2);";
+                       "  ww=sz(1);hh=sz(2);";
+                       "else";
+                       "  xx=orig(1)+sz(1);yy=orig(2);";
+                       "  ww=-sz(1);hh=sz(2);";
+                       "end";
+                       "xpoly(xx+ww*[0.43;0.43],yy+hh*[0.64;0.36]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.5;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.57;0.57],yy+hh*[0.64;0.36]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.5;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.05;0.43],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "xpoly(xx+ww*[0.57;0.95],yy+hh*[0.5;0.5]);";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,255);";
+                       "e.thickness=0.25;";
+                       "e.line_style=1;";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.18,orig(2)+sz(2)*0,""C=""+string(C)+"""",sz(1)*1.36,sz(2)*0.2,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.18-1.36),orig(2)+sz(2)*0,""C=""+string(C)+"""",sz(1)*1.36,sz(2)*0.2,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,0);";
+                       "e.font_foreground=color(0,0,0);";
+                       "e.fill_mode=""off"";";
+                       "if orient then";
+                       "  xstringb(orig(1)+sz(1)*-0.21,orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.41,sz(2)*0.3,""fill"");";
+                       "else";
+                       "  xstringb(orig(1)+sz(1)*(1--0.21-1.41),orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.41,sz(2)*0.3,""fill"");";
+                       "end";
+                       "e=gce();";
+                       "e.visible=""on"";";
+                       "e.foreground=color(0,0,0);";
+                       "e.background=color(0,0,255);";
+                       "e.font_foreground=color(0,0,255);";
+                       "e.fill_mode=""off"";"],[]),..
+                       id="",..
+                       in_implicit="I",..
+                       out_implicit="I"),..
+              model=scicos_model(..
+                       sim="Coselica",..
+                       in=1,..
+                       in2=[],..
+                       intyp=1,..
+                       out=1,..
+                       out2=[],..
+                       outtyp=1,..
+                       evtin=[],..
+                       evtout=[],..
+                       state=[],..
+                       dstate=[],..
+                       odstate=list(),..
+                       rpar=[],..
+                       ipar=[],..
+                       opar=list(),..
+                       blocktype="c",..
+                       firing=[],..
+                       dep_ut=[%t,%f],..
+                       label="",..
+                       nzcross=0,..
+                       nmode=0,..
+                       equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                       "Modelica.Electrical.Analog.Basic.Capacitor","p","n",list("C",list(1.000D-07),0))),..
+              doc=list())
+scs_m.objs(8)=scicos_link(..
+                xx=[372.21677;384.28359],..
+                yy=[273.95264;273.95264],..
+                id="",..
+                thick=[0,0],..
+                ct=[1,2],..
+                from=[5,1,0],..
+                to=[40,1,1])
+scs_m.objs(9)=scicos_link(..
+                xx=[353.92638;354.65895;355.39152;384.9149;384.9149;384.9149],..
+                yy=[189.39169;189.39169;189.39169;189.39169;189.39169;189.96131],..
+                id="",..
+                thick=[0,0],..
+                ct=[1,2],..
+                from=[33,1,1],..
+                to=[43,1,1])
+scs_m.objs(10)=scicos_link(..
+                 xx=[330.21677;289.85037],..
+                 yy=[273.95264;273.95264],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[5,1,1],..
+                 to=[48,1,1])
+scs_m.objs(11)=scicos_block(..
+               gui="MEAS_RampVoltage",..
+               graphics=scicos_graphics(..
+                        orig=[112.91151,291.36865],..
+                        sz=[40,40],..
+                        flip=%t,..
+                        theta=-90,..
+                        exprs=["20";"20";"0";"5"],..
+                        pin=15,..
+                        pout=38,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "if orient then";
+                        "  xarc(orig(1)+sz(1)*0.25,orig(2)+sz(2)*0.75,sz(1)*0.5,sz(2)*0.5,0,360*64);";
+                        "else";
+                        "  xarc(orig(1)+sz(1)*(1-0.25-0.5),orig(2)+sz(2)*0.75,sz(1)*0.5,sz(2)*0.5,0,360*64);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";";
+                        "xpoly(xx+ww*[0.05;0.95],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.1;0.25;0.75;0.9],yy+hh*[0.2;0.2;0.8;0.8]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(192,192,192);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;"],[]),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit="I"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Modelica.Electrical.Analog.Sources.RampVoltage","p","n",..
+                        list(["V","duration","offset","startTime"],list(20,20,0,5),[0,0,0,0]))),..
+               doc=list())
+scs_m.objs(12)=scicos_block(..
+               gui="MUX",..
+               graphics=scicos_graphics(..
+                        orig=[589.0807,422.6915],..
+                        sz=[10,40],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs="3",..
+                        pin=[25;26;27],..
+                        pout=24,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["txt=''Mux'';";
+                        "style=5;";
+                        "rectstr=stringbox(txt,orig(1),orig(2),0,style,1);";
+                        "if ~exists(''%zoom'') then %zoom=1, end;";
+                        "w=(rectstr(1,3)-rectstr(1,2))*%zoom;";
+                        "h=(rectstr(2,2)-rectstr(2,4))*%zoom;";
+                        "xstringb(orig(1)+sz(1)/2-w/2,orig(2)-h-4,txt,w,h,''fill'');";
+                        "e=gce();";
+                        "e.font_style=style;"],8),..
+                        id="",..
+                        in_implicit=["E";"E";"E"],..
+                        out_implicit="E"),..
+               model=scicos_model(..
+                        sim=list("multiplex",4),..
+                        in=[-1;-2;-3],..
+                        in2=[],..
+                        intyp=1,..
+                        out=0,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=3,..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=list()),..
+               doc=list())
+scs_m.objs(13)=scicos_block(..
+               gui="CBI_RealOutput",..
+               graphics=scicos_graphics(..
+                        orig=[532.67297,425.62609],..
+                        sz=[13.333333,13.333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=31,..
+                        pout=26,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "xpoly(xx+ww*[0;1;0;0],yy+hh*[1;0.5;0;1]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,191);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit="E",..
+                        out_implicit="E"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Coselica.Blocks.Interfaces.RealOutput","u","y",list([],list(),[]))),..
+               doc=list())
+scs_m.objs(14)=scicos_block(..
+               gui="CBI_RealOutput",..
+               graphics=scicos_graphics(..
+                        orig=[529.7427,403.61667],..
+                        sz=[13.333333,13.333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=23,..
+                        pout=27,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "xpoly(xx+ww*[0;1;0;0],yy+hh*[1;0.5;0;1]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,191);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*1,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit="E",..
+                        out_implicit="E"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Coselica.Blocks.Interfaces.RealOutput","u","y",list([],list(),[]))),..
+               doc=list())
+scs_m.objs(15)=scicos_link(..
+                 xx=[132.91151;132.91151;134.15598;134.15598],..
+                 yy=[332.36865;414.8129;414.8129;466.16821],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[11,1,1],..
+                 to=[19,1,1])
+scs_m.objs(16)=scicos_block(..
+               gui="MEAS_CurrentSensor",..
+               graphics=scicos_graphics(..
+                        orig=[217.66873,446.16821],..
+                        sz=[40,40],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=18,..
+                        pout=[29;23],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "if orient then";
+                        "  xarc(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                        "else";
+                        "  xarc(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.5;0.5],yy+hh*[0.85;0.7]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.6145;0.701],yy+hh*[0.664;0.7865]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.3855;0.299],yy+hh*[0.664;0.7865]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.688;0.829],yy+hh*[0.5685;0.6195]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.312;0.171],yy+hh*[0.5685;0.6195]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.5;0.5451],yy+hh*[0.5;0.643]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.4976;0.59;0.59;0.4976],yy+hh*[0.658;0.63;0.786;0.658]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xarc(orig(1)+sz(1)*0.475,orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                        "else";
+                        "  xarc(orig(1)+sz(1)*(1-0.475-0.05),orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*0.355,orig(2)+sz(2)*0.15,""A"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1-0.355-0.295),orig(2)+sz(2)*0.15,""A"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";";
+                        "xpoly(xx+ww*[0.15;0.05],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";";
+                        "xpoly(xx+ww*[0.85;0.95],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.5;0.5],yy+hh*[0.05;0.15]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;"],[]),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","E"]),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Modelica.Electrical.Analog.Sensors.CurrentSensor","p",["n","i"],..
+                        list([],list(),[]))),..
+               doc=list())
+scs_m.objs(17)=scicos_block(..
+               gui="MEAB_Resistor",..
+               graphics=scicos_graphics(..
+                        orig=[157.59816,446.16821],..
+                        sz=[40,40],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs="0.5",..
+                        pin=21,..
+                        pout=18,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "if orient then";
+                        "  xrect(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                        "else";
+                        "  xrect(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.65,sz(1)*0.7,sz(2)*0.3);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.05;0.15],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.85;0.95],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0,""R=""+string(R)+"""",sz(1)*1.44,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.22,orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.22-1.44),orig(2)+sz(2)*0.7,""""+model.label+"""",sz(1)*1.44,sz(2)*0.3,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit="I"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="Fuse",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Modelica.Electrical.Analog.Basic.Resistor","p","n",list("R",list(0.5),0))),..
+               doc=list())
+scs_m.objs(18)=scicos_link(..
+                 xx=[198.59816;216.66873],..
+                 yy=[466.16821;466.16821],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[17,1,0],..
+                 to=[16,1,1])
+scs_m.objs(19)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[134.15598,466.16821],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=15,..
+                        pout=[20;21],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(20)=scicos_link(..
+                 xx=[134.15598;134.15598;410.06668],..
+                 yy=[466.16821;528.40054;528.40054],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[19,1,0],..
+                 to=[4,1,1])
+scs_m.objs(21)=scicos_link(..
+                 xx=[134.15598;156.59816],..
+                 yy=[466.16821;466.16821],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[19,2,0],..
+                 to=[17,1,1])
+scs_m.objs(22)=scicos_block(..
+               gui="MEAS_PotentialSensor",..
+               graphics=scicos_graphics(..
+                        orig=[413.99695,444.70091],..
+                        sz=[40,40],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=30,..
+                        pout=31,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "if orient then";
+                        "  xarc(orig(1)+sz(1)*0.15,orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                        "else";
+                        "  xarc(orig(1)+sz(1)*(1-0.15-0.7),orig(2)+sz(2)*0.85,sz(1)*0.7,sz(2)*0.7,0,360*64);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.5;0.5],yy+hh*[0.85;0.7]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.6145;0.701],yy+hh*[0.664;0.7865]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.3855;0.299],yy+hh*[0.664;0.7865]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.688;0.829],yy+hh*[0.5685;0.6195]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.312;0.171],yy+hh*[0.5685;0.6195]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.5;0.5451],yy+hh*[0.5;0.643]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.4976;0.59;0.59;0.4976],yy+hh*[0.658;0.63;0.786;0.658]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xarc(orig(1)+sz(1)*0.475,orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                        "else";
+                        "  xarc(orig(1)+sz(1)*(1-0.475-0.05),orig(2)+sz(2)*0.525,sz(1)*0.05,sz(2)*0.05,0,360*64);";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*0.355,orig(2)+sz(2)*0.15,""V"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1-0.355-0.295),orig(2)+sz(2)*0.15,""V"",sz(1)*0.295,sz(2)*0.295,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";";
+                        "xpoly(xx+ww*[0.15;0.05],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[1;0.85],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*0.9,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,255);";
+                        "e.font_foreground=color(0,0,255);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit="E"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Modelica.Electrical.Analog.Sensors.PotentialSensor","p","phi",..
+                        list([],list(),[]))),..
+               doc=list())
+scs_m.objs(23)=scicos_link(..
+                 xx=[237.66873;237.66873;525.7427],..
+                 yy=[446.16821;410.28334;410.28334],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[16,2,0],..
+                 to=[14,1,1])
+scs_m.objs(24)=scicos_link(..
+                 xx=[607.65213;611.66234;611.66234;615.67254],..
+                 yy=[442.6915;442.6915;444.15879;444.15879],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,1],..
+                 from=[12,1,0],..
+                 to=[2,1,1])
+scs_m.objs(25)=scicos_link(..
+                 xx=[550.0063;565.25779;565.25779;580.50927],..
+                 yy=[452.10123;452.10123;452.6915;452.6915],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,1],..
+                 from=[3,1,0],..
+                 to=[12,1,1])
+scs_m.objs(26)=scicos_link(..
+                 xx=[550.0063;565.25779;565.25779;580.50927],..
+                 yy=[432.29275;432.29275;442.6915;442.6915],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,1],..
+                 from=[13,1,0],..
+                 to=[12,2,1])
+scs_m.objs(27)=scicos_link(..
+                 xx=[547.07603;563.79265;563.79265;580.50927],..
+                 yy=[410.28334;410.28334;432.6915;432.6915],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,1],..
+                 from=[14,1,0],..
+                 to=[12,3,1])
+scs_m.objs(28)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[353.19381,464.70091],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=46,..
+                        pout=[29;30],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(29)=scicos_link(..
+                 xx=[353.19381;353.19381;258.66873],..
+                 yy=[464.70091;466.16821;466.16821],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[28,1,0],..
+                 to=[16,1,0])
+scs_m.objs(30)=scicos_link(..
+                 xx=[353.19381;412.99695],..
+                 yy=[464.70091;464.70091],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[28,2,0],..
+                 to=[22,1,1])
+scs_m.objs(31)=scicos_link(..
+                 xx=[454.99695;477.73037;477.73037;528.67297],..
+                 yy=[464.70091;464.70091;432.29275;432.29275],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[22,1,0],..
+                 to=[13,1,1])
+scs_m.objs(32)=scicos_link(..
+                 xx=[452.06668;498.24227;498.24227;528.67297],..
+                 yy=[528.40054;528.40054;452.10123;452.10123],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[4,1,0],..
+                 to=[3,1,1])
+scs_m.objs(33)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[353.92638;189.39169],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=9,..
+                        pout=[34;35],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(34)=scicos_link(..
+                 xx=[353.92638;342.93786;342.93786;339.27502;289.68106;289.68106],..
+                 yy=[189.39169;189.39169;189.39169;189.39169;189.39169;208.20016],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[33,1,0],..
+                 to=[6,1,1])
+scs_m.objs(35)=scicos_link(..
+                 xx=[353.92638;353.92638;132.17895;132.17895],..
+                 yy=[189.39169;155.64392;155.64392;154.91027],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[33,2,0],..
+                 to=[36,1,1])
+scs_m.objs(36)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[132.17895,154.91027],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=35,..
+                        pout=[37;38],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(37)=scicos_link(..
+                 xx=[132.17895;132.17895],..
+                 yy=[154.91027;125.98733],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[36,1,0],..
+                 to=[1,1,1])
+scs_m.objs(38)=scicos_link(..
+                 xx=[132.17895;132.91151],..
+                 yy=[154.91027;290.36865],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[36,2,0],..
+                 to=[11,1,0])
+scs_m.objs(39)=scicos_block(..
+               gui="CEAS_Thyristor",..
+               graphics=scicos_graphics(..
+                        orig=[406.28998,267.95264],..
+                        sz=[40,40],..
+                        flip=%f,..
+                        theta=90,..
+                        exprs=["100";
+                        "100";
+                        "0.1";
+                        "1.7";
+                        "0.006";
+                        "25";
+                        "0.7";
+                        "0.005";
+                        "0.000001";
+                        "0.000015";
+                        "0.04";
+                        "0.74"],..
+                        pin=[52;42],..
+                        pout=45,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "xpoly(xx+ww*[0.65;0.35;0.35;0.65],yy+hh*[0.5;0.7;0.3;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.05;0.7],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.7;0.95],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.65;0.65],yy+hh*[0.7;0.3]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.65;0.85;0.85],yy+hh*[0.6;0.8;0.95]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.7;0.8],yy+hh*[0.75;0.65]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.21,orig(2)+sz(2)*0.005,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.21-1.5),orig(2)+sz(2)*0.005,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit=["I","I"],..
+                        out_implicit="I"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=[1;1],..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="Thyristor",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Coselica.Electrical.Analog.Semiconductors.Thyristor",["Anode","Gate"],"Cathode",..
+                        list(..
+                        ["VDRM","VRRM","IDRM","VTM","IH","ITM","VGT","IGT","TON","TOFF","Vt","Nbv"],..
+                        list(100,100,0.1,1.7,0.006,25,0.7,0.005,0.000001,0.000015,0.04,0.74),..
+                        [0,0,0,0,0,0,0,0,0,0,0,0]))),..
+               doc=list())
+scs_m.objs(40)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[384.28359,273.95264],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=8,..
+                        pout=[41;42],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(41)=scicos_link(..
+                 xx=[384.28359;384.9149;384.9149],..
+                 yy=[273.95264;273.95264;248.73287],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[40,1,0],..
+                 to=[7,1,1])
+scs_m.objs(42)=scicos_link(..
+                 xx=[384.28359;403.62331],..
+                 yy=[273.95264;273.95264],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[40,2,0],..
+                 to=[39,2,1])
+scs_m.objs(43)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[384.9149;189.96131],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=9,..
+                        pout=[44;45],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(44)=scicos_link(..
+                 xx=[384.9149;384.9149],..
+                 yy=[189.96131;206.73287],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[43,1,0],..
+                 to=[7,1,0])
+scs_m.objs(45)=scicos_link(..
+                 xx=[384.9149;426.28998;426.28998],..
+                 yy=[189.96131;189.96131;265.28597],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[43,2,0],..
+                 to=[39,1,0])
+scs_m.objs(46)=scicos_link(..
+                 xx=[353.19381;353.19381],..
+                 yy=[464.70091;343.97205],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[28,1,1],..
+                 to=[51,1,1])
+scs_m.objs(47)=scicos_block(..
+               gui="CEAS_ZDiode",..
+               graphics=scicos_graphics(..
+                        orig=[269.85037,288.96822],..
+                        sz=[40,40],..
+                        flip=%t,..
+                        theta=90,..
+                        exprs=["0.000001";"0.04";"30";"1.000D+08";"13";"0.7";"0.74"],..
+                        pin=50,..
+                        pout=53,..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list(..
+                        ["if orient then";
+                        "  xx=orig(1);yy=orig(2);";
+                        "  ww=sz(1);hh=sz(2);";
+                        "else";
+                        "  xx=orig(1)+sz(1);yy=orig(2);";
+                        "  ww=-sz(1);hh=sz(2);";
+                        "end";
+                        "xpoly(xx+ww*[0.65;0.35;0.35;0.65],yy+hh*[0.5;0.7;0.3;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.background=color(255,255,255);";
+                        "e.fill_mode=""on"";";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.05;0.7],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.7;0.95],yy+hh*[0.5;0.5]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "xpoly(xx+ww*[0.65;0.65],yy+hh*[0.7;0.3]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.135,orig(2)+sz(2)*0.105,""Bv=""+string(Bv)+"""",sz(1)*1.31,sz(2)*0.14,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.135-1.31),orig(2)+sz(2)*0.105,""Bv=""+string(Bv)+"""",sz(1)*1.31,sz(2)*0.14,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,0);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";";
+                        "xpoly(xx+ww*[0.65;0.6],yy+hh*[0.3;0.3]);";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.thickness=0.25;";
+                        "e.line_style=1;";
+                        "if orient then";
+                        "  xstringb(orig(1)+sz(1)*-0.25,orig(2)+sz(2)*0.78,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "else";
+                        "  xstringb(orig(1)+sz(1)*(1--0.25-1.5),orig(2)+sz(2)*0.78,""""+model.label+"""",sz(1)*1.5,sz(2)*0.2,""fill"");";
+                        "end";
+                        "e=gce();";
+                        "e.visible=""on"";";
+                        "e.foreground=color(0,0,255);";
+                        "e.background=color(0,0,0);";
+                        "e.font_foreground=color(0,0,0);";
+                        "e.fill_mode=""off"";"],[]),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit="I"),..
+               model=scicos_model(..
+                        sim="Coselica",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=1,..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%t,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],..
+                        "Coselica.Electrical.Analog.Semiconductors.ZDiode","p","n",..
+                        list(["Ids","Vt","Maxexp","R","Bv","Ibv","Nbv"],..
+                        list(0.000001,0.04,30,1.000D+08,13,0.7,0.74),[0,0,0,0,0,0,0]))),..
+               doc=list())
+scs_m.objs(48)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[289.85037,273.95264],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=10,..
+                        pout=[49;50],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(49)=scicos_link(..
+                 xx=[289.85037;289.68106;289.68106],..
+                 yy=[273.95264;273.95264;250.20016],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[48,1,0],..
+                 to=[6,1,0])
+scs_m.objs(50)=scicos_link(..
+                 xx=[289.85037;289.85037],..
+                 yy=[273.95264;287.96822],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[48,2,0],..
+                 to=[47,1,1])
+scs_m.objs(51)=scicos_block(..
+               gui="IMPSPLIT_f",..
+               graphics=scicos_graphics(..
+                        orig=[353.19381;343.97205],..
+                        sz=[0.3333333,0.3333333],..
+                        flip=%t,..
+                        theta=0,..
+                        exprs=[],..
+                        pin=46,..
+                        pout=[52;53],..
+                        pein=[],..
+                        peout=[],..
+                        gr_i=list([],8),..
+                        id="",..
+                        in_implicit="I",..
+                        out_implicit=["I","I"]),..
+               model=scicos_model(..
+                        sim="limpsplit",..
+                        in=1,..
+                        in2=[],..
+                        intyp=1,..
+                        out=[1;1],..
+                        out2=[],..
+                        outtyp=1,..
+                        evtin=[],..
+                        evtout=[],..
+                        state=[],..
+                        dstate=[],..
+                        odstate=list(),..
+                        rpar=[],..
+                        ipar=[],..
+                        opar=list(),..
+                        blocktype="c",..
+                        firing=[],..
+                        dep_ut=[%f,%f],..
+                        label="",..
+                        nzcross=0,..
+                        nmode=0,..
+                        equations=tlist(["modelica","model","inputs","outputs","parameters"],"limpsplit","n",..
+                        ["n";"n"],list([],list()))),..
+               doc=list())
+scs_m.objs(52)=scicos_link(..
+                 xx=[353.19381;353.19381;353.19381;426.28998;426.28998],..
+                 yy=[343.97205;342.72395;342.72395;342.72395;310.61931],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[51,1,0],..
+                 to=[39,1,1])
+scs_m.objs(53)=scicos_link(..
+                 xx=[353.19381;289.85037;289.85037],..
+                 yy=[343.97205;343.97205;329.96822],..
+                 id="",..
+                 thick=[0,0],..
+                 ct=[1,2],..
+                 from=[51,2,0],..
+                 to=[47,1,0])

@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sqrtm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sqrtm</b> -  matrix square root</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=sqrtm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>: real or complex  square matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=sqrt(x)</b></tt> is the matrix square root of the <tt><b>x</b></tt> x matrix (<tt><b>x=y^2</b></tt>)
+    Result may not be accurate if <tt><b>x</b></tt> is not symmetric.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0 1;2 4]
+w=sqrtm(x); 
+norm(w*w-x)
+x(1,2)=%i;
+w=sqrtm(x);norm(w*w-x,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/expm.htm"><tt><b>expm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/sqroot.htm"><tt><b>sqroot</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

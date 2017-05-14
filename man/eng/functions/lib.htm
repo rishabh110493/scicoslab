@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>lib</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lib</b> -  library definition</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xlib = lib('lib-dir')  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>lib-dir</b></tt>: character string</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>lib-dir</b></tt> is a character string defining a directory that contains
+    compiled Scilab function (<tt><b>.bin</b></tt>) files.</p>
+<p>
+    In addition to these files <tt><b>lib-dir</b></tt> must have a file called
+    <tt><b>names</b></tt>, that contains the names of the functions defined in
+    <tt><b>lib-dir</b></tt>.  On success, all functions in <tt><b>lib-dir</b></tt> are
+    available from within Scilab.  They are loaded on demand when called
+    for the first time.</p>
+<p>
+    Binary files can be created from within Scilab with the command
+    <tt><b>save</b></tt>.</p>
+<p>
+    Scilab's standard libraries are defined using <tt><b>lib</b></tt> on the
+    <tt><b>SCIDIR/macros/*</b></tt> subdirectories.</p>
+<p>
+    A library variable
+    usually is saved for later loading, either on-line or from the
+    user-specific startup file (see startup).</p>
+<h3><font color="blue">Restrictions</font></h3>
+<dl><p>
+    Scilab tacitly assumes that each xxxx.bin file defines a  variable named <tt><b>xxxx</b></tt>.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//define some variables
+function z = myplus(x, y), z = x + y,endfunction
+function z = yourplus(x, y), x = x - y,endfunction
+A=1:10;
+
+//create the *.bin files in libdir
+libdir=TMPDIR
+save(libdir + '/myplus.bin', myplus);
+save(libdir + '/yourplus.bin', yourplus);
+save(libdir + '/A.bin', A);
+
+//create the name file
+mputl(['myplus';'yourplus';'A'],TMPDIR+'/names');
+
+//build the library containing myplus and yourplus
+xlib = lib(libdir+'/')
+
+//erase the variables
+clear myplus yourplus A
+
+//Automatic loading and execution
+myplus(1,2)
+
+A
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/library.htm"><tt><b>library</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/genlib.htm"><tt><b>genlib</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/deff.htm"><tt><b>deff</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/whereis.htm"><tt><b>whereis</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

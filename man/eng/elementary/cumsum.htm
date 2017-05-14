@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cumsum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cumsum</b> -  cumulative sum</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=cumsum(x)  </tt></dd>
+<dd><tt>y=cumsum(x,'r') or y=cumsum(x,1)  </tt></dd>
+<dd><tt>y=cumsum(x,'c') or y=cumsum(x,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vector or matrix (real or complex)</li>
+<li>
+<tt><b>y</b></tt>: vector or matrix (real or complex)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> For a vector or a matrix <tt><b>x</b></tt>, <tt><b>y=cumsum(x)</b></tt>  returns
+      in <tt><b>y</b></tt> the cumulative sum of all the entries of <tt><b>x</b></tt>
+      taken columnwise.</p>
+<p><tt><b>y=cumsum(x,'c')</b></tt> (or, equivalently,
+      <tt><b>y=cumsum(x,2)</b></tt>) returns in  <tt><b>y</b></tt> the cumulative sum 
+      of the columns of <tt><b>x</b></tt>: <tt><b> 	y(i,:)=cumsum(x(i,:))</b></tt></p>
+<p><tt><b>y=cumsum(x,'r')</b></tt> (or, equivalently,
+      <tt><b>y=cumsum(x,1)</b></tt>) returns in <tt><b>y</b></tt> the cumulative sum
+      of the rows of <tt><b>x</b></tt>: <tt><b> y(:,i)=cumsum(x(:,i))</b></tt></p>
+<p><tt><b>y=cumsum(x,'m')</b></tt>  is the cumulative sum along the first non
+      singleton  dimension of <tt><b>x</b></tt> (for compatibility with Matlab).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2;3,4];
+cumsum(A)
+cumsum(A,'r')
+cumsum(A,'c')
+a=rand(3,4)+%i;
+[m,n]=size(a);
+w=zeros(a);
+w(1,:)=a(1,:);
+for k=2:m;w(k,:)=w(k-1,:)+a(k,:);end;w-cumsum(a,'r')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cumprod.htm"><tt><b>cumprod</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

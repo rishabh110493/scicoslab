@@ -1,0 +1,39 @@
+RandomNNet                     Traffic-toolbox Function          RandomNNet
+NAME
+   RandomNNet  -  Random generation of traffic network data
+  
+CALLING SEQUENCE
+   
+  
+ net=RandomNNet(nn,mna,var,nd,nf)
+PARAMETERS
+ nn         : number of nodes
+            
+ mna        : mean value of the exterior degree of each node (numbers of
+            leaving arcs)
+            
+ var        : variance of the exterior degree of each node
+            
+ nd         : number of OD-pairs (origin-destination)
+            
+ nf         : model chosen for the computation of the travel time
+            
+ net        : resulting network 
+            
+DESCRIPTION
+   Generates randomly the data for the Traffic Assignment Problem. For each
+  node an exterior degree is chosen randomly with a normal distribution of
+  mean mna and variance var, then the successors are chosen without
+  repetition. The value of nf indicates the formula chosen for the
+  computation of the travel time, by default it is 6. This way of
+  generating randomly the net if very much slower than RandomNet. 
+  
+EXAMPLES
+ %net=RandomNNet(3,3,1,2);
+ // generates a network with 3 nodes,2 OD-pairs and form
+ // each node the number of leaving arcs is normally dis-
+ // tributed with mean 3 and var 1
+ ShowNet();
+SEE ALSO
+   IntroTrfAsg, RandomNet, Regular, NetList, ShowNet  
+  

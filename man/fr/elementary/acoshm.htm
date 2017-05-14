@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>acoshm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>acoshm</b> -  cosinus hyperbolique matriciel inverse  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=acoshm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x,t  </b></tt>
+    : matrice carrée complexe ou réelle
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    acoshm est le cosinus hyperbolique matriciel inverse de la matrice x.
+    Utilise la formule <tt><b>t=logm(x+(x+eye())*sqrtm((x-eye())/(x+eye())))</b></tt>
+    Pour les matrices non symétriques le résultat peut être imprécis.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;3,4];
+coshm(acoshm(A))
+A(1,1)=A(1,1)+%i;
+coshm(acoshm(A))
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/acosh.htm"><tt><b>acosh</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/logm.htm"><tt><b>logm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sqrtm.htm"><tt><b>sqrtm</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

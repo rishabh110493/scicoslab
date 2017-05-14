@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>chol</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chol</b> -  Factorisation de Cholesky  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[R]=chol(X)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X  </b></tt>
+	    : matrice réelle ou complexe
+	  </li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Si <tt><b>X</b></tt> est hermitienne (symétrique dans le cas réel) définie positive, alors <tt><b>R = chol(X)</b></tt> renvoie une matrice triangulaire supérieure <tt><b>R</b></tt> telle que <tt><b>R'*R = X</b></tt>.
+    </p>
+<p><tt><b>chol(X)</b></tt> utilise uniquement la partie triangulaire supérieure de <tt><b>X</b></tt> dont la
+      partie triangulaire inférieure est supposée être la transposée (transposée conjuguée dans le cas complexe).
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    W=rand(5,5)+%i*rand(5,5);
+    X=W*W';
+    R=chol(X);
+    norm(R'*R-X)
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spchol.htm"><tt><b>spchol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+      La décomposition de Cholesky est basée sur les routines Lapack
+      DPOTRF pour les matrices réelles et  ZPOTRF pour le cas complexe.
+    </p>
+</body>
+</html>

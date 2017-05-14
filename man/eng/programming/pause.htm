@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pause</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pause</b> -  pause mode, invoke keyboard</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Switch to the <tt><b>pause</b></tt> mode;
+    inserted in the code of a function, <tt><b>pause</b></tt> interrupts the execution
+    of the function: one receives a prompt symbol which indicates
+    the level of the <tt><b>pause</b></tt> (e.g. <tt><b>-1-&gt;</b></tt>). The user is
+    then in a new workspace in which all the lower-level variables
+    (and in particular all the variable of the function) are available.
+    To return to the calling workspace enter <tt><b>"return"</b></tt></p>
+<p>
+    In this mode, <tt><b>[...]=return(...) </b></tt>
+    returns the variables of the argument <tt><b>(...)</b></tt> to the calling workspace with 
+    names in the output <tt><b> [...]</b></tt>. Otherwise, the lower-level variables
+    are protected and cannot be modified.</p>
+<p>
+    The <tt><b>pause</b></tt> is extremely useful for debugging purposes.</p>
+<p>
+    This mode is killed by the command <tt><b>"abort"</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/gui/halt.htm"><tt><b>halt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/abort.htm"><tt><b>abort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/quit.htm"><tt><b>quit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/whereami.htm"><tt><b>whereami</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/where.htm"><tt><b>where</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

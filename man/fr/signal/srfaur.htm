@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>srfaur</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>srfaur</b> -  square-root algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[p,s,t,l,rt,tt]=srfaur(h,f,g,r0,n,p,s,t,l)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h, f, g</b></tt>: convenient matrices of the state-space model.</li>
+<li>
+<tt><b>r0</b></tt>: E(yk*yk').</li>
+<li>
+<tt><b>n</b></tt>: number of iterations.</li>
+<li>
+<tt><b>p</b></tt>: estimate of the solution after n iterations.</li>
+<li>
+<tt><b>s, t, l</b></tt>: intermediate matrices for  successive iterations;</li>
+<li>
+<tt><b>rt, tt</b></tt>: gain matrices of the filter model after <tt><b>n</b></tt> iterations.</li>
+<li>
+<tt><b>p, s, t, l</b></tt>: may be given as input if more than one recursion is desired (evaluation of intermediate values of <tt><b>p</b></tt>).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    square-root algorithm for the algebraic Riccati equation.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//GENERATE SIGNAL
+x=%pi/10:%pi/10:102.4*%pi;
+rand('seed',0);rand('normal');
+y=[1;1]*sin(x)+[sin(2*x);sin(1.9*x)]+rand(2,1024);
+//COMPUTE CORRELATIONS
+c=[];for j=1:2,for k=1:2,c=[c;corr(y(k,:),y(j,:),64)];end;end
+c=matrix(c,2,128);
+//FINDING H,F,G with 6 states
+hk=hank(20,20,c);
+[H,F,G]=phc(hk,2,6);
+//SOLVING RICCATI EQN
+r0=c(1:2,1:2);
+[P,s,t,l,Rt,Tt]=srfaur(H,F,G,r0,200);
+//Make covariance matrix exactly symetric
+Rt=(Rt+Rt')/2
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/phc.htm"><tt><b>phc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/faurre.htm"><tt><b>faurre</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/lindquist.htm"><tt><b>lindquist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

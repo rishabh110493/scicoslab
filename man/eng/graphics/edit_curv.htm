@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>edit_curv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>edit_curv</b> -  interactive graphic curve editor</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x,y,ok,gc] = edit_curv(y)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job,tit)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job,tit,gc)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: vector of x coordinates</li>
+<li>
+<tt><b>y</b></tt>: vector of y coordinates</li>
+<li>
+<tt><b>job</b></tt>: a character string formed by one to three of the characters 'a','x','y'<ul>
+<li>
+<tt><b>'a'</b></tt>: to add points to the edited curve</li>
+<li>
+<tt><b>'x' </b></tt>: to modify x coordinates of the edited curve points</li>
+<li>
+<tt><b>'y'  </b></tt>: to modify y coordinates of the edited curve points</li>
+</ul>
+</li>
+<li>
+<tt><b>tit</b></tt>: a vector of three character strings which give the curve legend</li>
+<li>
+<tt><b>gc</b></tt>: a list of graphic window parameters: <tt><b>gc=list(rect,nax)</b></tt><ul>
+<li>
+<tt><b>rect</b></tt>: bounds of the graphics (see plot2d for details)</li>
+<li>
+<tt><b>nax</b></tt>: graduation parameters (see plot2d for details)</li>
+</ul>
+</li>
+<li>
+<tt><b>ok</b></tt>: indicator if ok==%t user as returned with 'ok' menu else user as returned with 'abort' menu  : list (graphical objects created under <tt><b>edit_curv</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>edit_curv</b></tt> is an interactive graphic curve editor. To add a new point
+    simply click at the desired location, the added point will be
+    connected to the nearest end-point. to move a point click on it, drag
+    the mouse to the new position and click to set the new position</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer ; ; ; ; ;   </p>
+</body>
+</html>

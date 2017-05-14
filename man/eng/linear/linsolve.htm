@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>linsolve</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>linsolve</b> -  linear equation solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x0,kerA]=linsolve(A,b [,x0])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: a <tt><b>na x ma</b></tt> real matrix (possibly sparse)</li>
+<li>
+<tt><b>b</b></tt>: a <tt><b>na x 1</b></tt> vector (same row dimension as <tt><b>A</b></tt>)</li>
+<li>
+<tt><b>x0</b></tt>: a real vector</li>
+<li>
+<tt><b>kerA</b></tt>: a <tt><b>ma x k</b></tt> real matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>linsolve</b></tt>  computes all the solutions to <tt><b> A*x+b=0</b></tt>.</p>
+<p><tt><b>x0</b></tt> is a particular solution (if any) and <tt><b> kerA= </b></tt>nullspace
+    of <tt><b>A</b></tt>. Any <tt><b>x=x0+kerA*w</b></tt> with arbitrary <tt><b>w</b></tt> satisfies
+    <tt><b> A*x+b=0</b></tt>.</p>
+<p>
+    If compatible <tt><b>x0</b></tt> is given on entry, <tt><b>x0</b></tt> is returned. If not
+    a compatible <tt><b>x0</b></tt>, if any, is returned.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,3)*rand(3,8);
+b=A*ones(8,1);[x,kerA]=linsolve(A,b);A*x+b   //compatible b
+b=ones(5,1);[x,kerA]=linsolve(A,b);A*x+b   //uncompatible b
+A=rand(5,5);[x,kerA]=linsolve(A,b), -inv(A)*b  //x is unique
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/im_inv.htm"><tt><b>im_inv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

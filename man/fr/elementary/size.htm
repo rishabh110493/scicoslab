@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>size</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>size</b> -  taille d'un objet  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=size(x [,sel])  </tt></dd>
+<dd><tt>[nr,nc]=size(x)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : matrice, liste ou liste de type <tt><b>syslin</b></tt>
+</li>
+<li>
+<tt><b>y  </b></tt>
+    :  un entier ou un vecteur d'entiers <tt><b> 1x2 </b></tt>
+</li>
+<li>
+<tt><b>sel  </b></tt>
+    : un entier ou une chaîne de caractères
+</li>
+<li>
+<tt><b>nr,nc  </b></tt>
+    : deux entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>Appliquée à :</b>une matrice (constante, polynomiale, de chaînes de caractères, booléenne, rationnelle) <tt><b>x</b></tt>, avec un seul argument en sortie, <tt><b>size</b></tt> renvoie un vecteur <tt><b>1</b></tt>x<tt><b>2</b></tt> [nombre de lignes, nombre de colonnes].  Appelée avec deux arguments en sortie, size renvoie <tt><b>nr,nc</b></tt> = [nombre de lignes, nombre de colonnes].  <tt><b>sel</b></tt> peut être utilisé pour indiquer la dimension désirée<dl>
+<dd>
+<b>1 ou 'r'</b>: pour obtenir le nombre de lignes </dd>
+<dd>
+<b>2 ou 'c'</b>: pour obtenir le nombre de colonnes</dd>
+<dd>
+<b>'*'</b>: pour obtenir le produit du nombre de lignes et de colonnes</dd>
+</dl>
+</dd>
+<dd>
+<b>Appliquée à :</b>une liste, size en renvoie le nombre d'éléments. Dans ce cas seule la syntaxe <tt><b>y=size(x)</b></tt> peut être utilisée.</dd>
+<dd>
+<b>Appliquée à :</b>un système dynamique linéaire, <tt><b>y=size(x)</b></tt> renvoie le vecteur ligne <tt><b>y</b></tt> = [nombre de sorties, nombre d'entrées] c'est à dire les dimensions de la matrice de transfert correspondante. La syntaxe <tt><b>[nr,nc]=size(x)</b></tt> est aussi valide (avec <tt><b>(nr,nc)=(y(1),y(2)</b></tt>).  Si <tt><b>x</b></tt> est un système dynamique linéaire donnée par sa représentation d'état, alors <tt><b> [nr,nc,nx]=size(x) </b></tt> renvoie de plus <tt><b>nx</b></tt> la dimension de la matrice <tt><b>A</b></tt> de <tt><b>x</b></tt> (la dimension de l'état).</dd>
+<dd>
+<b>Appliquée à :</b>une hypermatrice, <tt><b> y=size(x) </b></tt> renvoie le vecteur de ses dimensions. La syntaxe <tt><b> [n1,n2,...nn]=size(x) </b></tt> est aussi acceptée. <tt><b> ni=size(x,i) </b></tt> renvoie la ième dimension et <tt><b>size(x,'*') </b></tt> renvoie le produit des dimensions.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+[n,m]=size(rand(3,2))
+[n,m]=size(['a','b';'c','d'])
+x=ssrand(3,2,4);[ny,nu]=size(x)
+[ny,nu]=size(ss2tf(x))
+[ny,nu,nx]=size(x)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/length.htm"><tt><b>length</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

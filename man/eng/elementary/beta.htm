@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>beta</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>beta</b> - beta function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt> z = beta(x,y) </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x, y </b></tt>: 2 positive reals or 2 matrices (or vectors) of positive reals of same size.</li>
+<li>
+<tt><b>z  </b></tt>: a real or a matrix of the same size than <tt><b>x</b></tt> with <tt><b>z(i,j) = beta(x(i,j),y(i,j))</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computes the complete beta function :
+  </p>
+<pre>
+               /1
+               |   x-1     y-1        gamma(x) gamma(y)
+  beta(x,y) =  |  t   (1-t)    dt  =  ----------------
+               /0                        gamma(x+y)
+      </pre>
+<p>
+    For small <tt><b>x</b></tt> and <tt><b>y</b></tt> the algorithm uses the expression in function
+    of the gamma function, else it applies the exponential function onto the result of the
+    <tt><b>betaln</b></tt> function provided with the DCDFLIB: Library of Fortran Routines for 
+    Cumulative Distribution Functions, Inverses, and Other Parameter (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/dcd/cdfbet.htm"><tt><b>cdfbet</b></tt></a>
+    for more information about DCDFLIB).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// example 1 :
+beta(5,2) - beta(2,5)   // symetry (must be exactly 0)
+beta(0.5,0.5)           // exact value is pi
+
+// example 2 : an error study based on the relation  B(1,x) = 1/x
+// (computing 1/x must lead to only a relative error of eps_m, so
+//  it may be used near as a reference to evaluate the error in B(1,x))  
+x = logspace(-8,8,20000)';
+e = beta(ones(x),x) - (1)./x;
+er = abs(e) .* x;
+ind = find(er ~= 0);
+eps = ones(x(ind))*number_properties("eps");
+xbasc()
+plot2d(x(ind),[er(ind) eps 2*eps],style=[1 2 3],logflag="ll",leg="er@eps_m@2 eps_m")
+xtitle("approximate relative error in computing beta(1,x)")
+xselect()
+
+// example 3 : plotting the beta function 
+t = linspace(0.2,10,60);
+X = t'*ones(t); Y = ones(t')*t;
+Z = beta(X,Y);
+xbasc()
+plot3d(t, t, Z, flag=[2 4 4], leg="x@y@z", alpha=75, theta=30)
+xtitle("The beta function on [0.2,10]x[0.2,10]")
+xselect()
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/gamma.htm"><tt><b>gamma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/dcd/cdfbet.htm"><tt><b>cdfbet</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

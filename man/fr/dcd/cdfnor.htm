@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cdfnor</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cdfnor</b> -  fonction de répartition de la distribution normale  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[P,Q]=cdfnor("PQ",X,Mean,Std)  </tt></dd>
+<dd><tt>[X]=cdfnor("X",Mean,Std,P,Q)  </tt></dd>
+<dd><tt>[Mean]=cdfnor("Mean",Std,P,Q,X)  </tt></dd>
+<dd><tt>[Std]=cdfnor("Std",P,Q,X,Mean)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P,Q,X,Mean,Std  </b></tt>
+    : six vecteurs réels de même taille.
+</li>
+<li>
+<tt><b>P,Q (Q=1-P)  </b></tt>
+    : L'intégrale de -infini à X de la densité normale En entrée : (0,1].
+</li>
+<li>
+<tt><b>X  </b></tt>
+    : Borne supérieure d'intégration En entrée : ( -infini, +infini)
+</li>
+<li>
+<tt><b>Mean  </b></tt>
+    : moyenne de la densité En entrée : (-infini, +infini)
+</li>
+<li>
+<tt><b>Sd  </b></tt>
+    : écart-type de la densité En entrée : (0, +infini).
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Étant donnés les autres, calcule un paramètre de la distribution normale.
+  </p>
+<p>
+    Une version légèrement modifiée de ANORM :
+  </p>
+<p>
+    Cody, W.D. (1993). "ALGORITHM 715: SPECFUN - A Portable FORTRAN
+    Package of Special Function Routines and Test Drivers"
+    acm Transactions on Mathematical Software. 19, 22-32.
+  </p>
+<p>
+    est utilisée.
+  </p>
+<p>
+    Les fonctions rationnelles des pages 90-95 de 
+  </p>
+<p>
+    Kennedy and Gentle,
+    Statistical  Computing,  Marcel  Dekker, NY,  1980 
+  </p>
+<p>
+    sont utilisées comme valeurs de départ pour les itérations de Newton calculant l'inverse de la distribution.  Aucune recherche n'est donc nécessaire pour aucun des paramètres.
+  </p>
+<p>
+    Pour X &lt; -15, le développement asymptotique de la loi normale est utilisé comme valeur de départ pour trouver l'inverse. Il s'agit de la formule 26.2.12 de Abramowitz et Stegun.
+  </p>
+<p>
+    La densité normale est proportionnelle à
+    exp( - 0.5 * (( X - MEAN)/SD)**2)
+  </p>
+<p>
+    Tiré de la librairie DCDFLIB: Library of Fortran Routines for Cumulative Distribution
+    Functions, Inverses, and Other Parameters (February, 1994)
+    Barry W. Brown, James Lovato and Kathy Russell. The University of
+    Texas.
+  </p>
+</body>
+</html>

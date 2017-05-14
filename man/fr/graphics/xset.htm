@@ -1,0 +1,165 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xset</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xset</b> - change des valeurs du contexte
+  graphique</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>xset(choice-name,x1,x2,x3,x4,x5)</tt></dd>
+<dd><tt>xset()</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>choice-name</b></tt>: chaîne de caractères</li>
+<li>
+<tt><b>x1,...,x5</b></tt>: dépend de <tt><b>choice-name</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Remarque Importante : </b></tt>Les versions Scilab 4.x seront les
+    dernières à  fonctionner avec l'ancien mode graphique.</p>
+<p><tt><b>xset</b></tt> est utilisée pour changer des valeurs du contexte
+    graphique de la fenêtre graphique courante.</p>
+<p>Quand elle est appelée sans argument, une boîte de dialogue est
+    affichée avec les valeurs courantes et des changements peuvent être
+    effectués à   l'aide de boutons.</p>
+<p>Utiliser <tt><b>xset()</b></tt> pour afficher ou changer la couleur
+    courante, le marqueur ou la police.</p>
+<dl>
+<dd>
+<b>xset("alufunction",number)</b>: utilisé pour changer l'opérateur logique de dessin L'opérateur
+        est choisi avec <tt><b>x1</b></tt>. Les valeurs habituelles sont : 3 pour
+        la copie (par défaut), 6 pour le ou exclusif (pour faire des
+        animations) et 0 pour effacer. Voir <tt><b>alufunctions</b></tt> pour
+        plus de détails.</dd>
+<dd>
+<b>xset("auto clear","on"|"off")</b>: Met "on" ou "off" le mode d'effacement automatique des
+        graphiques. Quand le mode est "on", les dessins successifs ne sont pas
+        superposés, i.e. la commande <tt><b>xbasc()</b></tt> (effacement de la
+        fenêtre graphique et effacement des graphiques enregistrés) est
+        exécutée avant chaque commande graphique de haut niveau (plot2d par
+        exemple). La valeur par défaut est "off".</dd>
+<dd>
+<b>xset("background",color)</b>: Change la couleur d'arrière plan de la fenêtre graphique
+        courante. La fenêtre graphique courante désigne la zone des axes où
+        les dessins sont dessinés, pas la figure entière.</dd>
+<dd>
+<b>xset("clipping",x,y,w,h)</b>: Définit la zone de clipping (la zone de la fenêtre graphique où
+        les dessins peuvent être dessinés) comme le rectangle (x,y,w,h) (point
+        en haut à   gauche, largeur, hauteur). Cette fonction utilise
+        l'échelle courante de la fenêtre graphique.</dd>
+<dd>
+<b>xset("color",value)</b>: Définit la couleur par défaut de tracé de ligne, de remplissage,
+        de texte, pour toutes les fonctions de dessin. <tt><b>value</b></tt> est
+        un entier projeté sur l'intervalle [0,whiteid]. 0 est utilisé pour le
+        noir et whiteid pour le blanc. La valeur de whiteid peut être obtenue
+        avec <tt><b>xget("white")</b></tt>.</dd>
+<dd>
+<b>xset("colormap",cmap)</b>: Définit la table des couleurs à   partir d'une matrice m x
+        3. m est le nombre de couleurs. La couleur numéro i est donnée comme
+        le triplet cmap(i,1), cmap(i,2), cmap(i,3) correspondant
+        respectivement aux intensités de rouge, vert et bleu, comprises entre
+        0 et 1.</dd>
+<dd>
+<b>xset("dashes",i)</b>: en mode noir et blanc (<tt><b>xset("use color",0)</b></tt>),
+        choisit le style de pointillé numéro i (0 pour une ligne continue). En
+        mode couleur (<tt><b>xset("use color",1)</b></tt>) cette commande est
+        utilisée pour choisir la couleur du marqueur, des lignes et du texte.
+        Ce mot-clé est obsolète, utiliser <tt><b>xset('color',i)</b></tt> et
+        <tt><b>xset('line style',i)</b></tt> à   la place.</dd>
+<dd>
+<b>xset("default")</b>: Réinitialise le contexte graphiques aux valeurs par défaut.</dd>
+<dd>
+<b>xset("font",fontid,fontsize) : choisit la police courante et sa taille.</b>Noter que <tt><b>fontsize</b></tt> s'applique aussi à   toutes
+        les polices autres que <tt><b>fontid</b></tt> .</dd>
+<dd>
+<b>xset("font size",fontsize)</b>: Choisit la taille des polices.</dd>
+<dd>
+<b>xset("foreground",color)</b>: Choisit la couleur de premier plan pour la fenêtre graphique
+        courante.</dd>
+<dd>
+<b>xset("fpf",string)</b>: Change le format des nombres affichés sur les courbes de niveau,
+        où <tt><b>string</b></tt> précise le format comme en langage C (par
+        exemple <tt><b>string="%.3f"</b></tt>). Utiliser <tt><b>string=""</b></tt>
+        pour revenir au format par défaut.</dd>
+<dd>
+<b>xset("hidden3d",colorid) : Choisit la couleur des parties arrières dans la fonction plot3d.</b><tt><b>colorid=0</b></tt> supprime l'affichage des parties arrières
+        des objets 3D. Il s'agit d'une technique dénommée 'culling' et permet
+        d'accélérer le rendu des surfaces fermées.</dd>
+<dd>
+<b>xset("line mode",type)</b>: Cette fonction est utilisée pour changer le mode de dessin des
+        lignes. Mode absolu pour type=1 et relatif avec type=0. (attention :
+        le mode type=0 est buggé)</dd>
+<dd>
+<b>xset("line style",value)</b>: Choisit le style de ligne (1: continu, &gt;1 pour les
+        pointillés).</dd>
+<dd>
+<b>xset("mark",markid,marksize)</b>: Choisit le marqueur ainsi que sa taille. Utiliser
+        <tt><b>xset()</b></tt> pour voir les marqueurs. Noter que
+        <tt><b>marksize</b></tt> s'applique aussi à   tous les marqueurs
+        autres que <tt><b>markid</b></tt>.</dd>
+<dd>
+<b>xset("mark size",marksize)</b>: Choisit la taille de marqueur</dd>
+<dd>
+<b>xset("pattern",value)</b>: Choisit le motif pour les fonctions de remplissage.
+        <tt><b>value</b></tt> est un entier projeté sur l'intervalle [0,whiteid].
+        0 est utilisé pour le noir et whiteid pour le blanc. La valeur de
+        whiteid peut être obtenue avec <tt><b>xget("white")</b></tt>. "pattern"
+        est équivalent à   "color".</dd>
+<dd>
+<b>xset("pixmap",flag)</b>Si flag=0 les graphiques sont dessinés directement sur l'écran. Si
+        flag=1 les graphiques sont dessinés sur un pixmap et sont affichés
+        à   l'écran avec la commande <tt><b>xset("wshow")</b></tt>. Le pixmap
+        est effacé avec la commande <tt><b>xset("wwpc")</b></tt>. Noter que la
+        commande <tt><b>xbasc()</b></tt> efface aussi le pixmap.</dd>
+<dd>
+<b>xset("thickness",value)</b>: Choisit l'épaisseur des lignes en pixels (0 et 1 = épaisseur de
+        1 pixel).</dd>
+<dd>
+<b>xset("use color",flag)</b>Si flag=1 alors <tt><b>xset("pattern",.)</b></tt> ou
+        <tt><b>xset("dashes",.)</b></tt> changent la couleur de dessin ou de
+        remplissage. Si flag=0 on passe en mode pointillés et noir et
+        blanc.</dd>
+<dd>
+<b>xset("viewport",x,y)</b>: Choisit la position de la fenêtre glissante.</dd>
+<dd>
+<b>xset("wdim",width,height)</b>: Choisit la largeur et la hauteur de la fenêtre graphique
+        courante. Cette option n'est pas prise en compte par le pilote
+        PostScript.</dd>
+<dd>
+<b>xset("wpdim",width,height)</b>: Choisit (en pixels) la largeur et la hauteur de la fenêtre
+        graphique courante physique (qui peut être différente de la taille
+        réelle en mode wresize=1). Cette option n'est pas prise en compte par
+        le pilote PostScript.</dd>
+<dd>
+<b>xset("window",window-number)</b>: Choisit la fenêtre <tt><b>window-number</b></tt> comme fenêtre
+        graphique par défaut et crée cette fenêtre si elle n'existe pas.</dd>
+<dd>
+<b>xset("wpos",x,y)</b>: Choisit la position (en pixels) du point en haut à   gauche
+        de la fenêtre graphique.</dd>
+<dd>
+<b>xset("wresize",flag)</b>Si flag=1 alors les graphiques sont automatiquement redimensionnés
+        de manière à   remplir la fenêtre graphique.<pre>xdel();xset("wresize",1);plot2d();xset("wdim",1000,500)</pre>
+<p>Si flag=0 l'échelle des graphiques est inchangée quand la fenêtre
+        est redimensionnée. Le "panner" en haut à   gauche de la fenêtre
+        ou les flèches du clavier peuvent être utilisées pour faire glisser le
+        contenu de la fenêtre.</p>
+<pre>xdel();plot2d();xset("wresize",0);xset("wdim",1000,500)</pre>
+</dd>
+<dd>
+<b>xset("wshow")</b>: Voir <tt><b>xset("pixmap",1)</b></tt> ci-dessus.</dd>
+<dd>
+<b>xset("wwpc")</b>: Voir <tt><b>xset("pixmap",1)</b></tt> ci-dessus.</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/colormap.htm"><tt><b>colormap</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xget.htm"><tt><b>xget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getsymbol.htm"><tt><b>getsymbol</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

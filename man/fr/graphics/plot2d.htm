@@ -1,0 +1,285 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>plot2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot2d</b> - 2D plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plot2d([x],y)</tt></dd>
+<dd><tt>plot2d([x],y,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: a real matrice or vector. If omitted, it is assumed to be the
+          vector <tt><b>1:n</b></tt> where <tt><b>n</b></tt> is the number of curve
+          points given by the <tt><b>y</b></tt> parameter.</li>
+<li>
+<tt><b>y</b></tt>: a real matrice or vector.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following:<ul>
+<li>
+<tt><b>style</b></tt>: sets the style for each curve. The associated value
+                should be a real vector with integer (positive or negative)
+                values</li>
+<li>
+<tt><b>rect</b></tt>: sets the mimimal bounds requested for the plot. The
+                associated value should be a real vector with four entries:
+                <tt><b>[xmin,ymin,xmax,ymax]</b></tt>.</li>
+<li>
+<tt><b>logflag</b></tt>: sets the scale (linear or logarithmic) along the axes.
+                The associated value should be a a string with possible
+                values: <tt><b>"nn"</b></tt>, <tt><b>"nl"</b></tt> ,
+                <tt><b>"ln"</b></tt> and <tt><b>"ll"</b></tt> .</li>
+<li>
+<tt><b>frameflag</b></tt>: controls the computation of the actual coordinate ranges
+                from the minimal requested values. The associated value should
+                be an integer ranging from 0 to 8.</li>
+<li>
+<tt><b>axesflag</b></tt>: specifies how the axes are drawn. The associated value
+                should be an integer ranging from 0 to 5.</li>
+<li>
+<tt><b>nax</b></tt>: sets the axes labels and tics definition. The associated
+                value should be a real vector with four integer entries
+                <tt><b>[nx,Nx,ny,Ny]</b></tt>
+</li>
+<li>
+<tt><b>leg</b></tt>: sets the curves captions. The associated value should be
+                a character string</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot2d</b></tt> plots a set of 2D curves. If you are familiar with
+    Matlab <tt><b>plot</b></tt> syntax, you should use <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>.</p>
+<p></p>
+<p>If <tt><b>x</b></tt> and <tt><b>y</b></tt> are vectors,
+    plot2d(x,y,&lt;opt_args&gt;) plots vector <tt><b>y</b></tt> versus vector
+    <tt><b>x</b></tt>. <tt><b>x</b></tt> and <tt><b>y</b></tt> vectors should have the
+    same number of entries.</p>
+<p>If <tt><b>x</b></tt> is a vector and <tt><b>y</b></tt> a matrix
+    plot2d(x,y,&lt;opt_args&gt;) plots each columns of <tt><b>y</b></tt> versus
+    vector <tt><b>x</b></tt>. In this case the number of columns of
+    <tt><b>y</b></tt> should be equal to the number of <tt><b>x</b></tt>
+    entries.</p>
+<p>If <tt><b>x</b></tt> and <tt><b>y</b></tt> are matrices,
+    plot2d(x,y,&lt;opt_args&gt;) plots each columns of <tt><b>y</b></tt> versus
+    corresponding column of <tt><b>x</b></tt>. In this case the <tt><b>x</b></tt>
+    and <tt><b>y</b></tt> sizes should be the same.</p>
+<p>If <tt><b>y</b></tt> is a vector, plot2d(y,&lt;opt_args&gt;) plots vector
+    <tt><b>y</b></tt> versus vector <tt><b>1:size(y,'*')</b></tt>.</p>
+<p>If <tt><b>y</b></tt> is a matrix, plot2d(y,&lt;opt_args&gt;) plots each
+    columns of <tt><b>y</b></tt> versus vector <tt><b>1:size(y,1)</b></tt>.</p>
+<p></p>
+<p>The <tt><b>&lt;opt_args&gt;</b></tt> arguments sould be used to customize
+    the plot</p>
+<p></p>
+<dl>
+<dd>
+<b>style</b>: This option may be used to specify how the curves are drawn. If
+        this option is specified, the associated value should be a vector with
+        as many entries as curves.<dl>
+<dd>
+<b></b>if <tt><b>style(i)</b></tt> is strictly positive, the curve is
+            drawn as plain line and <tt><b>style(i)</b></tt> defines the index of
+            the color used to draw the curve (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getcolor.htm"><tt><b>getcolor</b></tt></a>). Note
+            that the line style and the thickness can be set throught the
+            polyline entity properties (see
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).Piecewise linear interpolation is done between the given curve
+            points.</dd>
+<dd>
+<b></b>if <tt><b>style(i)</b></tt> is negative or zero, the given curve
+            points are drawn using marks, <tt><b>abs(style(i))</b></tt> defines
+            the mark with id used. Note that the marks color and marks sizes
+            can be set throught the polyline entity properties (see
+            <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>).</dd>
+</dl>
+</dd>
+<dd>
+<b>logflag</b>: This option may be used to set the scale (linear or logarithmic)
+        along the axes. The associated value should be a a string with
+        possible values: <tt><b>"nn"</b></tt>, <tt><b>"nl"</b></tt> ,
+        <tt><b>"ln"</b></tt> and <tt><b>"ll"</b></tt>. <tt><b>"l"</b></tt> stands for
+        logarithmic scale and graduations and <tt><b>"n"</b></tt> for normal
+        scale.</dd>
+<dd>
+<b>rect</b>: This option may be used to set the mimimal bounds requested for
+        the plot. If this option is specified, the associated value should be
+        a real vector with four entries:<p><tt><b>[xmin,ymin,xmax,ymax]</b></tt>. <tt><b>xmin</b></tt> and
+        <tt><b>xmax</b></tt> defines the bounds on the abscissae while
+        <tt><b>ymin</b></tt> and <tt><b>ymax</b></tt> defines the bounds on the
+        ordinates.</p>
+<p>This argument may be used together with the <tt><b>frameflag</b></tt>
+        option to specify how the axes boundaries are derived from teh given
+        <tt><b>rect</b></tt> argument. If the <tt><b>frameflag</b></tt> option is
+        not given, it is supposed to be <tt><b>frameflag=7</b></tt>.</p>
+<p>The axes boundaries can also be customized throught the axes entity
+        properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</dd>
+<dd>
+<b>frameflag</b>: This option may be used to control the computation of the actual
+        coordinate ranges from the minimal requested values. Actual ranges can
+        be larger than minimal requirements.<dl>
+<dd>
+<b>frameflag=0</b>: no computation, the plot use the previous (or default)
+            scale.</dd>
+<dd>
+<b>frameflag=1</b>: The actual range is the range given by the <tt><b>rect</b></tt>
+            option.</dd>
+<dd>
+<b>frameflag=2</b>: The actual range is computed from the min/max of the
+            <tt><b>x</b></tt> and <tt><b>y</b></tt> data.</dd>
+<dd>
+<b>frameflag=3</b>: The actual range is the range given by the <tt><b>rect</b></tt>
+            option and enlarged to get an isometric scale.</dd>
+<dd>
+<b>frameflag=4</b>: The actual range is computed from the min/max of the
+            <tt><b>x</b></tt> and <tt><b>y</b></tt> data and enlarged to get an
+            isometric scale.</dd>
+<dd>
+<b>frameflag=5</b>: The actual range is the range given by the <tt><b>rect</b></tt>
+            option and enlarged to get pretty axes labels.</dd>
+<dd>
+<b>frameflag=6</b>: The actual range is computed from the min/max of the
+            <tt><b>x</b></tt> and <tt><b>y</b></tt> data and enlarged to get pretty
+            axes labels.</dd>
+<dd>
+<b>frameflag=7</b>: like <tt><b>frameflag=1</b></tt> but the previous plot(s) are
+            redrawn to use the new scale. Used to add the current graph to a
+            previous one.</dd>
+<dd>
+<b>frameflag=8</b>: like<tt><b>frameflag=2</b></tt> but the previous plot(s) are
+            redrawn to use the new scale. Used to add the current graph to a
+            previous one.</dd>
+</dl>The axes boundaries can also be customized throught the axes
+        entity properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>)</dd>
+<dd>
+<b>axesflag</b>: This option may be used to specify how the axes are drawn. The
+        associated value should be an integer ranging from 0 to 5 :<dl>
+<dd>
+<b>axesflag=0</b>: nothing is drawn around the plot.</dd>
+<dd>
+<b>axesflag=1</b>: axes are drawn, the y=axis is displayed on the left</dd>
+<dd>
+<b>axesflag=2</b>: the plot is surrounded by a box without tics</dd>
+<dd>
+<b>axesflag=3</b>: axes are drawn, the y=axis is displayed on the right</dd>
+<dd>
+<b>axesflag=4</b>: axes are drawn centred in the middle of the frame box</dd>
+<dd>
+<b>axesflag=5</b>: axes are drawn so as to cross at point (0,0) . If point
+            (0,0) does not lie inside the frame, axes will not appear on the
+            graph</dd>
+</dl>
+<p>The axes aspect can also be customized throught the axes entity
+        properties (see <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+</dd>
+<dd>
+<b>nax</b>: This option may be used to specify the axes labels and tics
+        definition when <tt><b>axesflag=1</b></tt> option is used. The associated
+        value should be a real vector with four integer entries
+        <tt><b>[nx,Nx,ny,Ny]</b></tt>.<tt><b>Nx</b></tt> gives the number of main tics to be used on the
+        x-axis, <tt><b>nx</b></tt> gives the number of subtics to be drawn
+        between two main x-axis tics.<tt><b>Ny</b></tt> and <tt><b>ny</b></tt> give similar information for
+        the y-axis.If <tt><b>axesflag</b></tt> option is not set <tt><b>nax</b></tt> option
+        supposes that <tt><b>axesflag</b></tt> option has been set to 1.</dd>
+<dd>
+<b>leg</b>: This option may be used to sets the curve captions. It must be a
+        string with the form <tt><b>"leg1@leg2@...."</b></tt> where
+        <tt><b>leg1</b></tt> , <tt><b>leg2</b></tt> , etc. are respectively the
+        captions of the first curve, of the second curve, etc. The default is
+        <tt><b> " "</b></tt>.<p>The curve captions are drawn on below the x-axis. This option is
+        not flexible enough, use the <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/legends.htm"><tt><b>legends</b></tt></a> function
+        preferably.</p>
+</dd>
+</dl>
+<h3><font color="blue">More information</font></h3>
+<dl>
+<p>To get more information on the plot2d old syntax , use the
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d_old_version.htm"><tt><b>plot2d_old_version</b></tt></a> help document.</p>
+<p></p>
+<p>By default, successive plots are superposed. To clear the previous
+    plot, use <tt><b>clf()</b></tt>.</p>
+<p></p>
+<p>Enter the command <tt><b>plot2d()</b></tt> to see a demo.</p>
+<p></p>
+<p>Other high level plot2d function exist:</p>
+<dd>
+<li>
+<b><font color="maroon">plot2d2</font></b>: same as <tt><b>plot2d</b></tt> but the curve is supposed to be
+        piecewise constant.</li>
+<li>
+<b><font color="maroon">plot2d3</font></b>: same as <tt><b>plot2d</b></tt> but the curve is plotted with
+        vertical bars.</li>
+<li>
+<b><font color="maroon">plot2d4</font></b>: same as <tt><b>plot2d</b></tt> but the curve is plotted with
+        arrows.</li>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// x initialisation 
+x=[0:0.1:2*%pi]';
+//simple plot
+plot2d(sin(x))
+clf()
+plot2d(x,sin(x))
+//multiple plot
+clf()
+plot2d(x,[sin(x) sin(2*x) sin(3*x)])
+// multiple plot giving the dimensions of the frame
+clf()
+plot2d(x,[sin(x) sin(2*x) sin(3*x)],rect=[0,0,6,0.5])
+//multiple plot with captions and given tics + style
+clf()
+plot2d(x,[sin(x) sin(2*x) sin(3*x)],..
+  [1,2,3],leg="L1@L2@L3",nax=[2,10,2,10],rect=[0,-2,2*%pi,2])
+// isoview
+clf()
+plot2d(x,sin(x),1,frameflag= 4) 
+// scale 
+clf()
+plot2d(x,sin(x),1,frameflag= 6) 
+// auto scaling with previous plots + style
+clf()
+plot2d(x,sin(x),-1)
+plot2d(x,2*sin(x),12) 
+plot2d(2*x,cos(x),3) 
+// axis on the right 
+clf()
+plot2d(x,sin(x),leg="sin(x)") 
+a=gca(); // Handle on axes entity 
+a.y_location ="right"; 
+// axis centered at (0,0) 
+clf()
+plot2d(x-4,sin(x),1,leg="sin(x)") 
+a=gca() // Handle on axes entity
+a.x_location = "middle"; 
+a.y_location = "middle"; 
+// Some operations on entities created by plot2d ...
+a=gca();
+a.isoview='on'; 
+a.children // list the children of the axes : here it is an Compound child composed of 2 entities 
+poly1= a.children.children(2); //store polyline handle into poly1 
+poly1.foreground = 4; // another way to change the style...
+poly1.thickness = 3;  // ...and the tickness of a curve.
+poly1.clip_state='off' // clipping control
+leg= a.children.children(1); // store legend handle into leg
+leg.font_style = 9; 
+leg.foreground = 6;
+a.isoview='off'; 
+ 
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d1.htm"><tt><b>plot2d1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d2.htm"><tt><b>plot2d2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d3.htm"><tt><b>plot2d3</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d4.htm"><tt><b>plot2d4</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xdel.htm"><tt><b>xdel</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p></p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>getenv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getenv</b> -  get the value of an environment variable</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>env=getenv(str [, rep] )  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>str</b></tt>: character string specifying environment variable name rep : an optional character string. When this optional value  is used, the function <tt><b>getenv</b></tt> returns the value <tt><b>rep</b></tt> when the environment variable <tt><b>str</b></tt> is not found.</li>
+<li>
+<tt><b>env</b></tt>: character string which contain the environment variable value</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Return the value of an environment variable if it exists.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ getenv('SCI')
+ getenv('FOO','foo') 
+ 
+  </pre>
+</body>
+</html>

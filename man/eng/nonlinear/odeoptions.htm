@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>odeoptions</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>odeoptions</b> -  set options for ode solvers</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>odeoptions()  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function interactively displays a command which
+    should be executed to set various options of ode solvers.
+    The global variable <tt><b>%ODEOPTIONS</b></tt> sets the options.</p>
+<p>
+    CAUTION: the <tt><b>ode</b></tt> function checks if this variable
+    exists and in this case it uses it. For using default
+    values you should clear this variable. Note that <tt><b>odeoptions</b></tt>
+    does not create this variable. To create it you must execute
+    the command line displayed by <tt><b>odeoptions</b></tt>.</p>
+<p>
+    The variable <tt><b>%ODEOPTIONS</b></tt> is a vector with the following elements:</p>
+<pre>
+
+[itask,tcrit,h0,hmax,hmin,jactyp,mxstep,maxordn,maxords,ixpr,ml,mu]
+   
+    </pre>
+<p>
+    The default value is:</p>
+<pre>
+
+[1,0,0,%inf,0,2,500,12,5,0,-1,-1]
+   
+    </pre>
+<p>
+    The meaning of the elements is described below.</p>
+<p><tt><b>itask</b></tt>
+     1 : normal computation at specified times
+     2 : computation at mesh points (given in first row of output of <tt><b>ode</b></tt>)
+     3 : one step at one internal mesh point and return
+     4 : normal computation without overshooting <tt><b>tcrit</b></tt>
+     5 : one step, without passing <tt><b>tcrit</b></tt>, and return</p>
+<p><tt><b>tcrit</b></tt>
+      assumes <tt><b>itask</b></tt> equals 4 or 5, described above</p>
+<p><tt><b>h0</b></tt>
+      first step tried</p>
+<p><tt><b>hmax</b></tt>
+      max step size</p>
+<p><tt><b>hmin</b></tt>
+      min step size</p>
+<p><tt><b>jactype</b></tt>
+     0 : functional iterations, no jacobian used (<tt><b>"adams"</b></tt> or
+         <tt><b>"stiff"</b></tt> only)
+     1 : user-supplied full jacobian
+     2 : internally generated full jacobian
+     3 : internally generated diagonal jacobian (<tt><b>"adams"</b></tt> or 
+         <tt><b>"stiff"</b></tt> only)
+     4 : user-supplied banded jacobian (see <tt><b>ml</b></tt> and <tt><b>mu</b></tt> below)
+     5 : internally generated banded jacobian (<tt><b>see</b></tt> ml and <tt><b>mu</b></tt> below)</p>
+<p><tt><b>maxordn</b></tt> 
+     maximum non-stiff order allowed, at most 12</p>
+<p><tt><b>maxords</b></tt>
+     maximum stiff order allowed, at most 5</p>
+<p><tt><b>ixpr</b></tt> 
+     print level, 0 or 1</p>
+<p><tt><b>ml</b></tt>,<tt><b>mu</b></tt>
+     If <tt><b>jactype</b></tt> equals 4 or 5, <tt><b>ml</b></tt> and <tt><b>mu</b></tt> are the lower
+     and upper half-bandwidths of the banded jacobian: the band is the
+     i,j's with i-ml &lt;= j &lt;= ny-1.
+     If <tt><b>jactype</b></tt> equals 4 the jacobian function must return
+     a matrix J which is  ml+mu+1 x ny (where ny=dim of y in ydot=f(t,y))
+     such that column 1 of J is made of mu zeros followed by
+     df1/dy1, df2/dy1, df3/dy1, ... (1+ml possibly non-zero entries)
+     column 2 is made of mu-1 zeros followed by df1/dx2, df2/dx2, etc</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/ode.htm"><tt><b>ode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

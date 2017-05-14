@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sva</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sva</b> -  singular value approximation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[U,s,V]=sva(A,k)  </tt></dd>
+<dd><tt>[U,s,V]=sva(A,tol)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>k</b></tt>: integer</li>
+<li>
+<tt><b>tol</b></tt>: nonnegative real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Singular value approximation.</p>
+<p><tt><b>[U,S,V]=sva(A,k)</b></tt> with <tt><b>k</b></tt> an integer
+    &gt;=1, returns <tt><b>U,S</b></tt> and <tt><b>V</b></tt> such that
+    <tt><b>B=U*S*V'</b></tt> is the best L2 approximation of
+    <tt><b>A</b></tt> with rank(<tt><b>B</b></tt>)=<tt><b>k</b></tt>.</p>
+<p><tt><b>[U,S,V]=sva(A,tol)</b></tt> with <tt><b>tol</b></tt> a real
+    number, returns <tt><b>U,S</b></tt> and <tt><b>V</b></tt> such that
+    <tt><b>B=U*S*V'</b></tt> such that L2-norm of <tt><b>A-B</b></tt>
+    is at most <tt><b>tol</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,4)*rand(4,5);
+[U,s,V]=sva(A,2);
+B=U*s*V';
+svd(A)
+svd(B)
+clean(svd(A-B))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>firstnonsingleton</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>firstnonsingleton</b> - Finds first dimension which is not 1</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[dim]=firstnonsingleton(A[,opt])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dim</b></tt>: first dimension of A which is not 1</li>
+<li>
+<tt><b>A</b></tt>: a variable of any Scilab data type</li>
+<li>
+<tt><b>opt</b></tt>: a character string giving the type of output we want<ul>
+<li>
+<tt><b>"num"</b></tt>: returned value is a numerical value</li>
+<li>
+<tt><b>"str"</b></tt>: returned value is a character string if possible ("r" instead of 1 and "c" instead of 2)</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function is used by <tt><b>mfile2sci</b></tt> to emulate Matlab behavior under Scilab, particularly
+    for functions which treat the values along the first non-singleton dimension of A in Matlab
+    while in Scilab they treat all values of A.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A = [1 2 3;4 5 6];
+// Scilab max
+M = max(A)
+// Matlab max emulation
+M = max(A,firstnonsingleton(A))
+ 
+  </pre>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hist3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hist3d</b> -  3D representation of a histogram</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>hist3d(f,[theta,alpha,leg,flag,ebox])  </tt></dd>
+<dd><tt>hist3d(list(f,x,y),[theta,alpha,leg,flag,ebox])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>f</b></tt>: matrix of size (m,n) defining the histogram <tt><b>f(i,j)=F(x(i),y(j))</b></tt>,  where <tt><b>x</b></tt> and <tt><b>y</b></tt>  are taken as  <tt><b>0:m</b></tt> and <tt><b>0:n</b></tt>.</li>
+<li>
+<tt><b>list(f,x,y)  </b></tt>: where f is a matrix of size (m,n)defining the histogram  <tt><b>f(i,j)=F(x(i),y(j))</b></tt>, with <tt><b>x</b></tt> and <tt><b>y</b></tt> vectors of size (1,n+1)  and (1,m+1).</li>
+<li>
+<tt><b>theta,alpha,leg,flag,ebox</b></tt>: see <tt><b>plot3d</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>hist3d</b></tt> represents a 2d histogram as a 3D plot.
+    The values are associated to the intervals 
+    <tt><b>[x(i) x(i+1)[ X [y(i) y(i+1)[</b></tt>.</p>
+<p>
+    Enter the command <tt><b>hist3d()</b></tt> to see a demo.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/histplot.htm"><tt><b>histplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S. &amp; JPhilippe C.  </p>
+</body>
+</html>

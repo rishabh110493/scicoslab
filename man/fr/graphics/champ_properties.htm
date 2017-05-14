@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>champ_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>champ_properties</b> - description of the 2D vector
+  field entity properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Champ entity is a leaf of the graphics entities hierarchy. This
+    entity defines the parameters for a 2D vector field.</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        2D vector field entity should be of the type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, <tt><b>champ</b></tt> handles currently do not have
+        any <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This properties contains the <tt><b>visible</b></tt> property value
+        for the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt>
+        . If <tt><b>"on" </b></tt> the vector field is drawn, If
+        <tt><b>"off"</b></tt> the vector field is not displayed on the
+        screen.</dd>
+<dd>
+<b>data: </b>This field defines a <tt><b>tlist</b></tt> data structure of type
+        <tt><b>"champdata"</b></tt> composed of a row and column indices of each
+        element : the x and y grid coordinates are contained respectively in
+        <tt><b>data.x </b></tt>and <tt><b>data.y</b></tt>. The complementary fields
+        named <tt><b>data.fx</b></tt> and <tt><b>data.fy</b></tt> are matrices which
+        describe respectively the <tt><b>x</b></tt> and <tt><b>y</b></tt> component
+        of the vector field at point <tt><b>(x(i),y(j))</b></tt>.</dd>
+<dd>
+<b>line_style: </b>The <tt><b>line_style</b></tt> property value should be an integer in
+        [0 9]. 0 stands for solid the other value stands for a selection of
+        dashes. This property applies to all lines used to draw the vector
+        field.</dd>
+<dd>
+<b>thickness: </b>This property contains the <tt><b>thickness</b></tt> property for all
+        lines used to draw the vector field. Its value should be a non
+        negative integer..</dd>
+<dd>
+<b>colored: </b>If this this property value is <tt><b>"on"</b></tt>, fields vectors
+        are drawn using a color proportional to the intensity of the
+        field.</dd>
+<dd>
+<b>arrow_size: </b>This positive defined the size of the triangle drawn at the end of
+        the arrows. If the value is 0, no triangle is drawn.</dd>
+<dd>
+<b>clip_state: </b>This field contains the <tt><b>clip_state</b></tt> property value for
+        the champ. It should be :<dl>
+<dd>
+<b></b><p><tt><b>"off"</b></tt> this means that the vector field is not
+            clipped</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"clipgrf"</b></tt> this means that the vector field is
+            clipped outside the Axes box.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>"on"</b></tt> this means that the vector field is clipped
+            outside the rectangle given by property clip_box.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>clip_box: </b>This property contains the <tt><b>clip_box</b></tt> property. Its
+        value should be an empty matrix if clip_state is "off" .Other cases
+        the vector <tt><b>[x,y,w,h]</b></tt> (upper-left point width height)
+        defines the portions of the vector field to display, however
+        <tt><b>clip_state</b></tt> property value will be changed.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the champ
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  
+  set("figure_style","new") //create a figure
+   a=get("current_axes");//get the handle of the newly created axes
+   a.data_bounds=[-10,-10;10,10];
+   champ(-5:5,-5:5,rand(11,11),rand(11,11))
+
+   c=a.children
+
+   c.colored="on";
+   c.thickness=2;
+   c.data // display the tlist of type "scichampdata"
+   a.data_bounds=[-5,-5;5,5];
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/champ.htm"><tt><b>champ</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/champ1.htm"><tt><b>champ1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>nextpow2</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nextpow2</b> -  next higher power of 2.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>t=nextpow2(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real  vector or matrix</li>
+<li>
+<tt><b>p</b></tt>: integer vector or matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>x</b></tt> is a scalar,
+    <tt><b>nextpow2(x)</b></tt> returns the first <tt><b>p</b></tt> such that  <tt><b>2^p &gt;= abs(x)</b></tt>  .
+    if <tt><b>x</b></tt> is a vector or a matrix <tt><b>nextpow2(x)</b></tt> applies element-wise.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+nextpow2(127)
+nextpow2(128)
+nextpow2(0:10)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/frexp.htm"><tt><b>frexp</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>zoom_rect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zoom_rect</b> -  zoom a selection of the current graphic figure</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>zoom_rect()  </tt></dd>
+<dd><tt>zoom_rect(rect)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>rect</b></tt>: vector of size 4 <tt><b>[xmin,ymin,xmax,ymax]</b></tt> give the
+	    rectangle to be zoomed.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>zoom_rect</b></tt> is used to zoom a given rectangle of the current graphic
+      figure: the rectangle(s) formed by the intersection of the given
+      rectangle with the axes boxe(s) are zoomed, i.e. the rectangle(s) content
+      are enlarged to fill the axes boxe(s). The selected rectangle  for each
+      axes is stored in the <tt><b>zoom_box</b></tt> property of associated the
+      axes entity (see  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).</p>
+<p>Without argument, the user is required to select the rectangle
+      with the mouse. If specified, the  <tt><b>rect</b></tt> argument  should
+      contain the coordinates ( using the current graphics scale) of two
+      opposite corner of the rectangle.</p>
+<p>The <tt><b>zoom_rect</b></tt> function corresponds to the <tt><b>Zoom</b></tt>
+    menu.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    clf()
+    x=0:0.01:6*%pi;
+    plot2d(x,sin(x^2))
+    zoom_rect([16,-1,18,1])
+    //more zoom
+    zoom_rect([16,0,16.2,1])
+    //back to the original
+    unzoom()
+    // zooming using axes_properties
+    a=gca();
+    a.zoom_box=[16,0,16.2,1];
+    a.zoom_box=[];
+
+    //zooming subplots accordingly
+    clf()
+    x=0:0.01:6*%pi;
+    subplot(211)
+    plot2d(x,cos(x))
+    subplot(212)
+    plot2d(x,cos(2*x))
+    rect=[3 -2 7 10]; //a rectangle specified in the current axes (last one) coordinates
+    zoom_rect(rect) 
+    unzoom()
+    //set the global underlying axes as current
+    f=gcf();set('current_axes',f.children($)) 
+    rect=[0.4 0 0.6 1] //a rectangle specified in ratio of the window size
+    zoom_rect(rect) 
+    rect=[0.4 0.2 0.6 0.8]; //a rectangle specified in ratio of the window size
+    zoom_rect(rect) 
+ 
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/unzoom.htm"><tt><b>unzoom</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer INRIA </p>
+</body>
+</html>

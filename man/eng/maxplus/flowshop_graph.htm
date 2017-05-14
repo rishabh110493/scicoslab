@@ -1,0 +1,119 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>flowshop_graph </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>flowshop_graph </b> -   flowshop graph builder ( maxplus )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[g,T,N]=flowshop_graph(PT,nm,np,l)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>PT  </b></tt>
+    : maxplus matrix of processing times
+  </li>
+<li>
+<tt><b>nm  </b></tt>
+    : machine numbers
+  </li>
+<li>
+<tt><b>np  </b></tt>
+    : pallet numbers
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : scaling number for plotting the flowshop (start with l=50)
+  </li>
+<li>
+<tt><b>g  </b></tt>
+    : flowshop graph
+  </li>
+<li>
+<tt><b>T  </b></tt>
+    : maxplus matrix of timing
+  </li>
+<li>
+<tt><b>N  </b></tt>
+    : maxplus matrix of initial marking 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    PT_ij ((i,j)-entry of matrix PT) is the processing time of part j by machine i
+    (T_ij = -inf if part j does not visit machine i) in a flowshop
+    (in a flowshop, as opposed to a jobshop, all parts visit machines in
+    the increasing order of the machine numbers with the possibility of skipping
+    some machines). 
+  </p>
+<p>
+    nm is a vector with size equal to the PT row number: it yields
+    the numbers of machines of each type working in parallel.
+  </p>
+<p>
+    np is a vector of size equal to the PT column number: it yields the numbers
+    of pallets of each type (parts of each type are carried by specialized
+    pallets).
+  </p>
+<p>
+    Given this data,  flowshop_graph:
+  </p>
+<p>
+    -  builds a flowshop graph (g) (metanet graph-list) depicting the corresponding
+    cyclic flowshop (where it is assumed that as soon as machines and pallets have
+    finished with all tasks of a cycle, they start another cycle),
+  </p>
+<p>
+    -  builds a maxplus matrix of the timings (T) for the corresponding event
+    graph, Tkl contains the processing time of edge from k to l where the
+    states corresponds here tp couples (i,j).
+  </p>
+<p>
+    -  builds a maxplus matrix of the initial markings (N) for the corresponding
+    event graph, Nkl contains the initial marking of edge from k to l.
+  </p>
+<p>
+    - plots the flowshop in a metanet window.
+  </p>
+<p>
+    PT must not have a row or a column identical to -inf.
+  </p>
+<p>
+    Remarks: 
+  </p>
+<p>
+    Some nodes  are duplicated artificially to see the system
+    as an input-output system with  feedback.
+    Then red nodes may considered as input nodes (U), green nodes
+    as  output nodes and the feedback as the identity (Y=U).
+  </p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p>
+    The black edge weights are processing times, the blue are resource
+    (machine or pallet numbers). The yellow edges (feedback) have 0
+    processing time and 0 resource.
+  </p>
+<p>
+    The arc weights (processing time or resource number) are 
+    in the "edge_length" field (called flow in menus) of the graph-list g
+    because either the processing time or the resource number 
+    is 0 in this modelling, and, by this way, no manipulations
+    are necessary to visualize these quantities in metanet.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+PT=#([2,1;%0,1;4,%0])
+xsetech([0 0 0.5 0.5]);
+[g,T,N]=flowshop_graph(PT,[1,1,1],[1,1],50);
+[l,v]=semihoward(T,N) // l gives the throughput of the flowshop
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/flowshop.htm"><tt><b>flowshop</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

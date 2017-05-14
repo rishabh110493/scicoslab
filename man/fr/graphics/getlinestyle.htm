@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getlinestyle</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getlinestyle</b> - dialog to select
+  linestyle</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>k=getlinestyle()</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>k</b></tt>: integer, selected linestyle or [] if the "Cancel" button has
+          been clicked.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>getlinestyle</b></tt> opens a graphic window to select a line
+    style.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>set("figure_style","new")
+x=0:0.1:10;
+plot2d(x,sin(x))
+e=gce(); // store the Compound containing the plot
+e.children(1).line_style = getlinestyle();
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/getmark.htm"><tt><b>getmark</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

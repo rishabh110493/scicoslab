@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>secto3d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>secto3d</b> -  conversion de surfaces 3D  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[m[,x]]=secto3d(seclist,npas)  </tt></dd>
+<dd><tt>[m]=secto3d(seclist ,x)   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>seclist  </b></tt>
+	    : une liste dont les éléments sont des matrices (2,.) 
+	  </li>
+<li>
+<tt><b>npas  </b></tt>
+	    : un entier
+	  </li>
+<li>
+<tt><b>m  </b></tt>
+	    : une matrice
+	  </li>
+<li>
+<tt><b>x  </b></tt>
+	    : un vecteur
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Considérant une surface donnée sous forme d'une liste <tt><b>seclist</b></tt> de sections dans le plan 
+      <tt><b>(x,z)</b></tt> la commande <tt><b>[m [,x]]=secto3d(seclist [,npas])</b></tt> renvoie une matrice <tt><b>m</b></tt>
+      contenant une discrétisation régulière de la surface.
+    </p>
+<dl>
+<dd>
+<b>-</b>La i-ème ligne de la matrice m correspond à la ième section </dd>
+<dd>
+<b>-</b>La j-ième colonne de m correspond aux x(j)</dd>
+</dl>
+<p>
+      Chaque section <tt><b>seclist(i)</b></tt> est décrite par une matrice (2,.) donnant respectivement les coordonnées 
+      x et z des points.
+    </p>
+<p><tt><b>[m]=secto3d(seclist ,x)</b></tt> : dans ce cas le vecteur x donne la discrétisation 
+      de l'axe des x pour toutes les sections 
+    </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.; ;   </p>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cainv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cainv</b> -   Dual of abinv</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X,dims,J,Y,k,Z]=cainv(Sl,alfa,beta,flag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: <tt><b>syslin</b></tt> list containing the matrices <tt><b>[A,B,C,D]</b></tt>.</li>
+<li>
+<tt><b>alfa</b></tt>: real number or vector (possibly complex, location of closed loop poles)</li>
+<li>
+<tt><b>beta</b></tt>: real number or vector (possibly complex, location of closed loop poles)</li>
+<li>
+<tt><b>flag</b></tt>: (optional) character string <tt><b>'ge'</b></tt> (default) or <tt><b>'st'</b></tt> or <tt><b>'pp'</b></tt>
+</li>
+<li>
+<tt><b>X</b></tt>: orthogonal matrix of size nx (dim of state space).</li>
+<li>
+<tt><b>dims</b></tt>: integer row vector <tt><b>dims=[nd1,nu1,dimS,dimSg,dimN]</b></tt>  (5 entries, nondecreasing order).If <tt><b>flag='st'</b></tt>, (resp. <tt><b>'pp'</b></tt>), <tt><b>dims</b></tt> has 4 (resp. 3) components.</li>
+<li>
+<tt><b>J</b></tt>: real matrix (output injection)</li>
+<li>
+<tt><b>Y</b></tt>: orthogonal matrix of size ny (dim of output space).</li>
+<li>
+<tt><b>k</b></tt>: integer (normal rank of <tt><b>Sl</b></tt>)</li>
+<li>
+<tt><b>Z</b></tt>: non-singular linear system (<tt><b>syslin</b></tt> list)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>cainv</b></tt> finds a bases <tt><b>(X,Y)</b></tt> (of state space and output space resp.)
+    and output injection matrix <tt><b>J</b></tt> such that the matrices of Sl in 
+    bases (X,Y) are displayed as:</p>
+<pre>
+
+
+                  [A11,*,*,*,*,*]                [*]
+                  [0,A22,*,*,*,*]                [*]
+   X'*(A+J*C)*X = [0,0,A33,*,*,*]   X'*(B+J*D) = [*]
+                  [0,0,0,A44,*,*]                [0]
+                  [0,0,0,0,A55,*]                [0]
+                  [0,0,0,0,0,A66]                [0]
+
+          Y*C*X = [0,0,C13,*,*,*]          Y*D = [*]
+                  [0,0,0,0,0,C26]                [0]
+
+
+   
+    </pre>
+<p>
+    The partition of <tt><b>X</b></tt> is defined by the vector 
+    <tt><b>dims=[nd1,nu1,dimS,dimSg,dimN]</b></tt> and the partition of <tt><b>Y</b></tt>
+    is determined by <tt><b>k</b></tt>.</p>
+<p>
+    Eigenvalues of <tt><b>A11</b></tt><tt><b>(nd1 x nd1)</b></tt> are unstable.
+    Eigenvalues of <tt><b>A22</b></tt><tt><b>(nu1-nd1 x nu1-nd1)</b></tt> are stable.</p>
+<p>
+    The pair <tt><b>(A33, C13)</b></tt><tt><b>(dimS-nu1 x dimS-nu1, k x dimS-nu1)</b></tt> is observable, 
+    and eigenvalues of <tt><b>A33</b></tt> are set to <tt><b>alfa</b></tt>.</p>
+<p>
+    Matrix <tt><b>A44</b></tt><tt><b>(dimSg-dimS x dimSg-dimS)</b></tt> is unstable.
+    Matrix <tt><b>A55</b></tt><tt><b>(dimN-dimSg,dimN-dimSg)</b></tt> is stable</p>
+<p>
+    The pair <tt><b>(A66,C26)</b></tt><tt><b>(nx-dimN x nx-dimN)</b></tt> is observable, 
+    and eigenvalues of <tt><b>A66</b></tt> set to <tt><b>beta</b></tt>.</p>
+<p>
+    The <tt><b>dimS</b></tt> first columns of <tt><b>X</b></tt> span S= smallest (C,A) invariant
+    subspace which contains Im(B), <tt><b>dimSg</b></tt> first columns of <tt><b>X</b></tt>
+    span Sg the maximal "complementary detectability subspace" of <tt><b>Sl</b></tt></p>
+<p>
+    The <tt><b>dimN</b></tt> first columns of <tt><b>X</b></tt> span the maximal
+    "complementary observability subspace" of <tt><b>Sl</b></tt>. 
+    (<tt><b>dimS=0</b></tt> if B(ker(D))=0).</p>
+<p>
+    If <tt><b>flag='st'</b></tt> is given, a five blocks partition of the matrices is 
+    returned and <tt><b>dims</b></tt> has four components. If <tt><b>flag='pp'</b></tt> is 
+    given a four blocks partition is returned (see abinv).</p>
+<p>
+    This function can be used to calculate an unknown input observer:</p>
+<pre>
+
+// DDEP: dot(x)=A x + Bu + Gd
+//           y= Cx   (observation)
+//           z= Hx    (z=variable to be estimated, d=disturbance)
+//  Find: dot(w) = Fw + Ey + Ru such that
+//          zhat = Mw + Ny
+//           z-Hx goes to zero at infinity
+//  Solution exists iff Ker H contains Sg(A,C,G) inter KerC (assuming detectability)
+//i.e. H is such that:
+// For any W which makes a column compression of [Xp(1:dimSg,:);C]
+// with Xp=X' and [X,dims,J,Y,k,Z]=cainv(syslin('c',A,G,C));
+// [Xp(1:dimSg,:);C]*W = [0 | *] one has
+// H*W = [0 | *]  (with at least as many aero columns as above).
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/abinv.htm"><tt><b>abinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/dt_ility.htm"><tt><b>dt_ility</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ui_observer.htm"><tt><b>ui_observer</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

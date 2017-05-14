@@ -1,0 +1,37 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>orth</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>orth</b> -  orthogonal basis</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>Q=orth(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>Q</b></tt>: real or complex matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Q=orth(A)</b></tt> returns <tt><b>Q</b></tt>, an orthogonal
+    basis for the span of <tt><b>A</b></tt>.  Range(<tt><b>Q</b></tt>) =
+    Range(<tt><b>A</b></tt>) and <tt><b>Q'*Q=eye</b></tt>.</p>
+<p>
+    The number of columns of <tt><b>Q</b></tt> is the rank of
+    <tt><b>A</b></tt> as determined by the QR algorithm.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,3)*rand(3,4);
+[X,dim]=rowcomp(A);X=X';
+svd([orth(A),X(:,1:dim)])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/range.htm"><tt><b>range</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

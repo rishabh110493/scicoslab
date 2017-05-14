@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>phasemag</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>phasemag</b> - phase and magnitude
+  computation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[phi,db]=phasemag(z [,mod])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>z</b></tt>: matrix or row vector of complex numbers.</li>
+<li>
+<tt><b>mod</b></tt>: character string<ul>
+<li>
+<tt><b>mod='c'</b></tt>: "continuous" representation between -infinity and +360
+                degrees (default)</li>
+<li>
+<tt><b>mod='m'</b></tt>: representation between -360 and 0 degrees</li>
+</ul>
+</li>
+<li>
+<tt><b>phi</b></tt>: phases (in degree) of <tt><b>z</b></tt>.</li>
+<li>
+<tt><b>db</b></tt>: magnitude (in Db)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>phasemag</b></tt> computes the phases and magnitudes of the entries
+    of a complex matrix. For <tt><b>mod='c'</b></tt><tt><b>phasemag</b></tt>
+    computes <tt><b>phi(:,i+1)</b></tt> to minimize the distance with
+    <tt><b>phi(:,i)</b></tt>, i.e. it tries to obtain a "continuous
+    representation" of the phase.</p>
+<p>To obtain the phase between -%pi and %pi use
+    <tt><b>phi=atan(imag(z),real(z))</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+h=syslin('c',1/((s+5)*(s+10)*(100+6*s+s*s)*(s+.3)));
+[frq,rf]=repfreq(h,0.1,20,0.005);
+scf();
+plot2d(frq',phasemag(rf,'c')');
+scf();
+plot2d(frq',phasemag(rf,'m')');
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/repfreq.htm"><tt><b>repfreq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/gainplot.htm"><tt><b>gainplot</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/atan.htm"><tt><b>atan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/bode.htm"><tt><b>bode</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>hat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>hat</b> -  (<tt><b>^</b></tt>) exponentiation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>A^b</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Exponentiation of matrices or vectors by a constant vector.</p>
+<p>
+    If <tt><b>A</b></tt> is a vector or a rectangular matrix the exponentiation is done
+    element-wise, with the usual meaning.</p>
+<p>
+    For square <tt><b>A</b></tt> matrices the exponentiation is done in the matrix sense.</p>
+<p>
+    For boolean, polynomial and rational matrices, the exponent must be an
+    integer</p>
+<p>
+    Remark that <tt><b>123.^b</b></tt> is interpreted as <tt><b>(123).^b</b></tt>. In such
+    cases dot is part of the operator, not of the number.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+2^4
+[1 2;2 4]^(1+%i)
+s=poly(0,"s");
+[1 2 s]^4
+[s 1;1  s]^(-1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/exp.htm"><tt><b>exp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/inv.htm"><tt><b>inv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

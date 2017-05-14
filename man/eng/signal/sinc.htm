@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sinc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sinc</b> -   samples of sinc function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x]=sinc(n,fl)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: number of samples</li>
+<li>
+<tt><b>fl</b></tt>: cut-off frequency of the associated low-pass filter in Hertz.</li>
+<li>
+<tt><b>x</b></tt>: samples of the sinc function</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Calculate n samples of the function <tt><b>sin(2*pi*fl*t)/(pi*t)</b></tt>
+    for <tt><b>t=-(n-1)/2:(n-1)/2</b></tt> (i.e. centred around the origin).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot(sinc(100,0.1))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/sincd.htm"><tt><b>sincd</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.;   </p>
+</body>
+</html>

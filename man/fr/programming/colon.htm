@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>colon (:)</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colon (:)</b> -  opérateur "deux points"  </p>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Le symbole <tt><b>:</b></tt> peut être utilisé pour former des vecteurs
+      (voir aussi <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/linspace.htm"><tt><b>linspace</b></tt></a>,  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/logspace.htm"><tt><b>logspace</b></tt></a>).
+    </p>
+<dl>
+<dd>
+<b>j:k</b> 
+	  est le vecteur <tt><b>[j, j+1,...,k]</b></tt>
+	  (ou la matrice vide si <tt><b>j&gt;k</b></tt>).
+	</dd>
+<dd>
+<b>j:d:k</b>
+	   est le vecteur <tt><b>[j, j+d, ..., j+m*d]  </b></tt>
+</dd>
+</dl>Cet opérateur peut aussi être utilisé pour sélectionner des lignes
+    ou des colonnes d'une matrice, ou bien des sous-matrices (voir aussi
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b>extraction</b></tt></a>,  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/insertion.htm"><tt><b>insertion</b></tt></a>).<dl>
+<dd>
+<b>A(:)</b>
+	  est le vecteur de tous les éléments de la matrice <tt><b>A</b></tt>,
+	  considérée comme un vecteur colonne (les colonnes sont mises bout à
+	  bout).
+	</dd>
+<dd>
+<b>A(:,j)</b>
+	  est la <tt><b>j</b></tt>-ème colonne de <tt><b>A</b></tt>
+</dd>
+<dd>
+<b>A(j:k)</b>
+	  est égal à <tt><b>[A(j),A(j+1),...,A(k)]</b></tt>
+</dd>
+<dd>
+<b>A(:,j:k)</b>
+	  est égal à <tt><b>[A(:,j),A(:,j+1),...,A(:,k)] </b></tt>
+</dd>
+<dd>
+<b>A(:)=w</b>
+	  remplit la matrice <tt><b>A</b></tt> avec les composantes de
+	  <tt><b>w</b></tt> (prises colonne par colonne si <tt><b>w</b></tt> est une
+	  matrice).
+	</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/matrix.htm"><tt><b>matrix</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

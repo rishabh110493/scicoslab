@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>linfn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>linfn</b> -  infinity norm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x,freq]=linfn(G,PREC,RELTOL,options);  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>G</b></tt>: is a <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>PREC</b></tt>: desired relative accuracy on the norm</li>
+<li>
+<tt><b>RELTOL</b></tt>: relative threshold to decide when an eigenvalue can be  considered on the imaginary axis.</li>
+<li>
+<tt><b>options</b></tt>: available options are <tt><b>'trace'</b></tt> or <tt><b>'cond'</b></tt>
+</li>
+<li>
+<tt><b>x</b></tt>is the computed norm.</li>
+<li>
+<tt><b>freq</b></tt>: vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Computes the Linf (or Hinf) norm of <tt><b>G</b></tt>
+    This norm is well-defined as soon as the realization
+    <tt><b>G=(A,B,C,D)</b></tt> has no imaginary eigenvalue which is both 
+    controllable and observable.</p>
+<p><tt><b>freq</b></tt> is a list of the frequencies for which <tt><b>||G||</b></tt> is 
+    attained,i.e., such that <tt><b>||G (j om)|| = ||G||</b></tt>.</p>
+<p>
+    If -1 is in the list, the norm is attained at infinity.</p>
+<p>
+    If -2 is in the list, <tt><b>G</b></tt> is all-pass in some direction so that 
+    <tt><b>||G (j omega)|| = ||G||</b></tt> for all frequencies omega.</p>
+<p>
+    The algorithm follows the paper by G. Robel 
+    (AC-34 pp. 882-884, 1989).
+    The case <tt><b>D=0</b></tt> is not treated separately due to superior 
+    accuracy of the general method when <tt><b>(A,B,C)</b></tt> is nearly 
+    non minimal.</p>
+<p>
+    The <tt><b>'trace'</b></tt> option traces each bisection step, i.e., displays 
+    the lower and upper bounds and the current test point.</p>
+<p>
+    The <tt><b>'cond'</b></tt> option estimates a confidence index on the computed 
+    value and issues a warning if computations are 
+    ill-conditioned</p>
+<p>
+    In the general case (<tt><b>A</b></tt> neither stable nor anti-stable), 
+    no upper bound is  prespecified.</p>
+<p>
+    If by contrast <tt><b>A</b></tt> is stable or anti stable, lower
+    and upper bounds are computed using the associated 
+    Lyapunov solutions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/h_norm.htm"><tt><b>h_norm</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>P. Gahinet</p>
+</body>
+</html>

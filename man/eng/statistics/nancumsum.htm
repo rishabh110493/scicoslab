@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nancumsum</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nancumsum</b> -   Thos function returns
+  the cumulative sum of the values of a matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>s = nancumsum(x,orient)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: x is a numerical vector or matrix.</li>
+<li>
+<tt><b>orient</b></tt>: is an optional parameter. The possible values are
+        '*', 1, 2, 'r' or 'c'.</li>
+<li>
+<tt><b>s</b></tt>: numerical scalar or vector. It contains the cumulative
+       sum of the values of x, ignoring the NAN's.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+   This function returns in scalar or vector s the cumulative
+   sum  of the  values (ignoring  the  NANs) of  a vector  or
+   matrix (real or complex) x.
+</p>
+<p>
+   This function  for a vector or a  matrix x, s=nancumsum(x)
+   (or, equivalently  s=nancumsum(x,'*') returns in  scalar s
+   the cumulative sum (ignoring  the NANs) of all the entries
+   of x taken columnwise.
+</p>
+<p>
+   s=nancumsum(x,'r')  (or,  equivalently,  s=nancumsum(x,1))
+   returns in  the cols(x) sized vector s  the cumulative sum
+   (ignoring    the    NANs)    of    the    rows    of    x:
+   s(:,i)=nancumsum(x(:,i))
+</p>
+<p>
+   s=nancumsum(x,'c')  (or,  equivalently,  s=nancumsum(x,2))
+   returns in  the rows(x) sized vector s  the cumulative sum
+   (ignoring     NANs)    of     the     columns    of     x:
+   s(i,:)=nancumsum(x(i,:))
+</p>
+<p>
+   For the  last two cases,  if a row  or column is  in whole
+   composed of NAN, the corresponding place of s will contain
+   a NAN.
+</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=[1 2 3;4 5 6]
+s=nancumsum(a)
+s=nancumsum(a,'r')
+s=nancumsum(a,'c')
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/statistics/nansum.htm"><tt><b>nansum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cumsum.htm"><tt><b>cumsum</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Carlos Klimann
+  </p>
+</body>
+</html>

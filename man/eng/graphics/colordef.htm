@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>colordef</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>colordef</b> - Set default color values to display different color schemes</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>colordef(color_scheme)</tt></dd>
+<dd><tt>colordef(f,color_scheme)</tt></dd>
+<dd><tt>colordef('new',color_scheme)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>color_scheme</b></tt>
+       : a character string with possible value: 'white', 'black','none'
+       </li>
+<li>
+<tt><b>f</b></tt>
+       : a handle on a graphic figure
+       </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b></b><tt><b>colordef('white')</b></tt> sets the default figure (see
+	  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>) colormap to <tt><b>jetcolormap(64)</b></tt>, the
+	    default figure background color to
+	  light gray and the default axes (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>) background
+	  color to white, the axes lines foreground and font color to black.</dd>
+<dd>
+<b></b><tt><b>colordef('black')</b></tt> sets the default figure (see
+	  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>) colormap to <tt><b>jetcolormap(64)</b></tt>, the
+	    default figure  background color to dark gray and the default axes
+	  (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>) background color to black, the axes lines
+	  foreground and font color to white.</dd>
+<dd>
+<b></b><tt><b>colordef('none')</b></tt> sets the default figure (see
+	  <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b>gdf</b></tt></a>)  colormap to <tt><b>hsvcolormap(64)</b></tt>, the
+	    default figure  background color to dark gray and the default axes
+	  (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b>gda</b></tt></a>) background color to black, the axes lines
+	  foreground and font color to white.</dd>
+<dd>
+<b></b><tt><b>colordef(f,color_scheme)</b></tt> sets the color  properties of  figure given by the
+	handle <tt><b>f</b></tt> as well as the color properties of its current axes.</dd>
+<dd>
+<b></b><tt><b>colordef('new',color_scheme)</b></tt> creates a new graphic window
+	and its color properties as well as the properties of its  axes.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   // Add here scilab instructions and comments
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gdf.htm"><tt><b> gdf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/gda.htm"><tt><b> gda</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/figure_properties.htm"><tt><b> figure_properties</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b> axes_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b>S. Steer</b>
+       INRIA
+    </dd></dl>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>apropos</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>apropos</b> -  recherche d'un mot-clé dans l'aide de Scilab   </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>apropos(key)</tt></dd>
+<dd><tt>apropos(regexp)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>key</b></tt>: Une chaîne de caractères, la séquence de caractères à rechercher</li>
+<li>
+<tt><b>regexp</b></tt>:  Une chaîne de caractères, l'expression régulière à
+	    rechercher. Cette syntaxe ne fonctionne que le browser "Scilab Browser"</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>apropos(key)</b></tt> recherche les pages d'aides contenant la
+      séquence de caractères <tt><b>key</b></tt> dans leur section "SHORT_DESCRIPTION".</p>
+<p>Avec le "Browser Scilab" uniquement , <tt><b>apropos(regexp)</b></tt>
+      recherche les pages d'aides contenant l'expression régulière donnée par
+      <tt><b>regexp</b></tt> dans leur section "SHORT_DESCRIPTION".</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+apropos('ode')
+apropos ode 
+apropos "list of"
+
+// la suite ne fonction qu'avec le browser "Browser Scilab"
+global %browsehelp;%browsehelp_save=%browsehelp;%browsehelp="Scilab Browser";
+
+apropos "sin.*hyperbolique"
+apropos "^ab"  //rechercher les pages d'aide dont le nom commence par les deux caractères "ab"
+apropos "quadratic.*solver"
+
+%browsehelp=%browsehelp_save;
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/man.htm"><tt><b>man</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

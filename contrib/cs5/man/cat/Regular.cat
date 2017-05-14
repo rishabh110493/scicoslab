@@ -1,0 +1,51 @@
+Regular                         Traffic-toolbox Function            Regular
+NAME
+   Regular  -  Generation of regular city traffic network data
+  
+CALLING SEQUENCE
+   
+  
+ net=Regular(hs,vs,nd)
+PARAMETERS
+ hs         : integer number of horizontal streets
+            
+ vs         : integer number of vertical streets
+            
+ nd         : non-negative real parameter related to the OD-pairs
+            (origin-destination)
+            
+ net        : the resulting Netlist 
+            
+DESCRIPTION
+   Generates a NetList consisting in a regular city whose graph is a hsxvs
+  grid For the link travel time functions, the data is the same for all
+  links and given by t0=ca=ma,ba=1. The lpf_model is 3. It is possible to
+  generated 4 different types of Regular City depending on parameter nd:  -
+  nd=[] -> The net has all possible O-D pairs all of them with demand equal
+  to 1  - nd=1  -> There is only one O-D pair joining the most distant
+  nodes. Demand's value equal  to 1.  - nd in (0,1) -> The parameter nd
+  represent the density of O-D pairs present in the net.  Demands value
+  equal to 1  - nd>1 -> There are [nd] random demands generated. Demands
+  value in the interval [0,15]. 
+  
+EXAMPLES
+ %net=Regular(4,5);
+ // generates a network with 4 horizontal streets, 5 vertical streets, 
+ // (20 nodes, 31 arcs) and all possible OD-pairs:343 
+ ShowNet();
+ 
+ %net=Regular(4,5,1);
+ // generates only one demand
+ ShowNet();
+ 
+ %net=Regular(4,5,0.5);
+ // generates randomly the OD-pairs with density 0.5
+ ShowNet();
+ 
+ %net=Regular(4,5,7);
+ // generates 7 random OD-pairs
+ ShowNet();
+ 
+SEE ALSO
+   IntroTrfAsg, TrafficExample, ShowNet    
+  

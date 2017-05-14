@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rand</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rand</b> -  random number generator</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rand(m1,m2,.. [,key])  </tt></dd>
+<dd><tt>rand(x [, key])  </tt></dd>
+<dd><tt>rand()  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>rand(key)  </tt></dd>
+<dd><tt>rand("seed" [,n])  </tt></dd>
+<dd><tt>rand("info")  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>mi</b></tt>: integers</li>
+<li>
+<tt><b>key</b></tt>: character string with value in <tt><b>"uniform"</b></tt>, <tt><b>"normal"</b></tt>
+</li>
+<li>
+<tt><b>x</b></tt>: a matrix. Only its dimensions are taken into account.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    random matrix generator.
+  </p>
+<p>
+    Without key argument the syntaxes below produce  random matrices with
+    the current random generator (default is "uniform")
+  </p>
+<dl>
+<dd>
+<b>rand(m1,m2)</b> is a random matrix of dimension <tt><b>m1</b></tt> by <tt><b>m2</b></tt>.</dd>
+<dd>
+<b>rand(m1,m2,..,mn)</b> is a random matrix of dimension <tt><b>m1</b></tt> by <tt><b>m2</b></tt>,.. by <tt><b>mn</b></tt>.</dd>
+<dd>
+<b>rand(a)</b> is a random matrix of same size as a. <tt><b>rand(a)</b></tt> is complex if  <tt><b>a</b></tt> is a complex matrix.</dd>
+<dd>
+<b>rand() : with no arguments gives a scalar whose value changes</b> each time it is referenced.</dd>
+</dl>
+<p>
+    If present, the key argument allows to specifie an other random distribution.
+  </p>
+<dl>
+<dd>
+<b>rand('uniform')</b> The current random generator is set to a uniform random generator. Random numbers are 
+            uniformly distributed in the interval (0,1).</dd>
+<dd>
+<b>rand('normal')</b> The current random generator is set to a Gaussian (with mean 0 and variance 1) random number generator.</dd>
+<dd>
+<b>str=rand('info')</b> return the type of the default random generator ('uniform' or 'normal')</dd>
+</dl>
+<p>
+    IT is possible to (re-)initialize the seed of the rand generator:
+  </p>
+<dl>
+<dd>
+<b>rand('seed')</b> returns the current value of the seed.</dd>
+<dd>
+<b>rand('seed',n)</b> puts the seed to <tt><b>n</b></tt>. (by default <tt><b>n=0</b></tt> at first call).</dd>
+</dl>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+       Use the more powerful function <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/dcd/grand.htm"><tt><b>grand</b></tt></a> instead.
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=rand(10,10,'uniform')
+rand('normal')
+rand('info')
+y=rand(x,'normal');
+x=rand(2,2,2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/dcd/grand.htm"><tt><b>grand</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/ssrand.htm"><tt><b>ssrand</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

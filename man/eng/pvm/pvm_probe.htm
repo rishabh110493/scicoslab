@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_probe</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_probe</b> -  Check if message has arrived.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[buffid] = pvm_probe(tid, msgtag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>tid</b></tt>: integer, task identifier of sending process supplied by the user.</li>
+<li>
+<tt><b>msgtag : integer, message tag supplied by the user.  msgtag should be</b></tt>&gt;= 0.</li>
+<li>
+<tt><b>buffid</b></tt>: integer, returning  the  value  of  the  new  active              receive  buffer  identifier.   Values less than zero              indicate an error.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_probe</b></tt> 
+    checks to see if a message with  label
+         <tt><b>msgtag</b></tt>   has  arrived  from <tt><b>tid</b></tt>.
+         If  a matching message has
+         arrived <tt><b>pvm_probe</b></tt> returns a buffer identifier in 
+         <tt><b>bufid</b></tt>. This
+         bufid  can be used in a pvm_bufinfo call to determine infor-
+         mation about the message such as its source and length.</p>
+<p>
+         If the requested message has  not  arrived,  then  pvm_probe
+         returns  with  a 0 in bufid. If some error occurs bufid will
+         be &lt; 0.</p>
+<p>
+         A -1 in msgtag or tid matches  anything.   This  allows  the
+         user  the  following  options.   If  tid  = -1 and msgtag is
+         defined by the user, then pvm_probe will  accept  a  message
+         from  any  process which has a matching msgtag.  If msgtag =
+         -1 and tid is defined  by  the  user,  then  pvm_probe  will
+         accept  any message that is sent from process tid.  If tid =
+         -1 and msgtag = -1, then pvm_probe will accept  any  message
+         from any process.</p>
+<p>
+         pvm_probe can be called multiple times to check if  a  given
+         message  has  arrived  yet.  After  the message has arrived,
+         pvm_recv must be called before the message can  be  unpacked
+         into the user's memory using the unpack routines.</p>
+<p>
+    For example</p>
+<pre>
+
+arrived = pvm_probe( tid, msgtag );
+if (arrived &gt;= 0) then [bytes, msgtag, tid, info] = pvm_info(arrived); end
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_recv.htm"><tt><b>pvm_recv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

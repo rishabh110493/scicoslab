@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>armac</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>armac</b> -  Scilab description of an armax process</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[ar]=armac(a,b,d,ny,nu,sig)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a=[Id,a1,..,a_r]  </b></tt>: is a matrix of size (ny,r*ny)</li>
+<li>
+<tt><b>b=[b0,.....,b_s]  </b></tt>: is a matrix of size (ny,(s+1)*nu)</li>
+<li>
+<tt><b>d=[Id,d1,..,d_p]  </b></tt>: is a matrix of size (ny,p*ny);</li>
+<li>
+<tt><b>ny</b></tt>: dimension of the output  y</li>
+<li>
+<tt><b>nu</b></tt>: dimension of the output  u</li>
+<li>
+<tt><b>sig</b></tt>: a matrix of size (ny,ny)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function creates a description as a tlist of an  ARMAX process</p>
+<p><tt><b>ar</b></tt> is defined by</p>
+<pre>
+
+ar=tlist(['ar','a','b','d','ny','nu','sig'],a,b,d,ny,nu,sig);
+   
+    </pre>
+<p>
+    and thus the coefficients of <tt><b>ar</b></tt> can be retrieved by e.g.
+    <tt><b> ar('a') </b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=[1,-2.851,2.717,-0.865].*.eye(2,2)
+b=[0,1,1,1].*.[1;1];
+d=[1,0.7,0.2].*.eye(2,2);
+sig=eye(2,2);
+ar=armac(a,b,d,2,1,sig)
+// extract polynomial matrices from ar representation 
+[A,B,D]=arma2p(ar);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/arma.htm"><tt><b>arma</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/armax1.htm"><tt><b>armax1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/arsimul.htm"><tt><b>arsimul</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/arma/arma2p.htm"><tt><b>arma2p</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/tlist.htm"><tt><b>tlist</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

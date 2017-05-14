@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lattn</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lattn</b> -  recursive solution of normal equations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[la,lb]=lattn(n,p,cov)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: maximum order of the filter</li>
+<li>
+<tt><b>p</b></tt>: fixed dimension of the MA part. If <tt><b>p= -1</b></tt>, the algorithm reduces to the classical Levinson recursions.</li>
+<li>
+<tt><b>cov</b></tt>: matrix containing the <tt><b>Rk</b></tt>'s (<tt><b>d*d</b></tt> matrices for a d-dimensional process).It must be given the following way</li>
+<li>
+<tt><b>la</b></tt>: list-type variable, giving the successively calculated polynomials (degree 1 to degree n),with coefficients Ak</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    solves recursively on <tt><b>n</b></tt> (<tt><b>p</b></tt> being fixed)
+    the following system (normal equations), i.e. identifies
+    the AR part (poles) of a vector ARMA(n,p) process</p>
+<p>
+    where {<tt><b>Rk;k=1,nlag</b></tt>} is the sequence of empirical covariances</p>
+<h3><font color="blue">Author</font></h3>
+<p>G. Le V.  </p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>system</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>system</b> -  observation update</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[x1,y]=system(x0,f,g,h,q,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x0</b></tt>: input state vector</li>
+<li>
+<tt><b>f</b></tt>: system matrix</li>
+<li>
+<tt><b>g</b></tt>: input matrix</li>
+<li>
+<tt><b>h</b></tt>: Output matrix</li>
+<li>
+<tt><b>q</b></tt>: input noise covariance matrix</li>
+<li>
+<tt><b>r</b></tt>: output noise covariance matrix</li>
+<li>
+<tt><b>x1</b></tt>: output state vector</li>
+<li>
+<tt><b>y</b></tt>: output observation</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    define system function which generates the next
+    observation given the old state.
+    System recursively calculated</p>
+<pre>
+
+     x1=f*x0+g*u
+     y=h*x0+v
+   
+    </pre>
+<p>
+    where <tt><b>u</b></tt> is distributed <tt><b>N(0,q)</b></tt>
+    and <tt><b>v</b></tt> is distribute <tt><b>N(0,r)</b></tt>.</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. B.  </p>
+</body>
+</html>

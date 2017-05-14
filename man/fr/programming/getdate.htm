@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getdate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getdate</b> - renvoie la date et l'heure</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>dt=getdate()</tt></dd>
+<dd><tt>x=getdate("s")</tt></dd>
+<dd><tt>dt=getdate(x)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dt</b></tt>: un vecteur entier à 10 composantes (voir plus bas)</li>
+<li>
+<tt><b>x</b></tt>: un entier contenant la date en secondes écoulées depuis le 1er Janvier 1970</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>dt=getdate()</b> renvoie la date courante au format expliqué ci-dessous :<dl>
+<dd>
+<b>dt(1)</b> : l'année (entier compris entre 0000 et 9999).</dd>
+<dd>
+<b>dt(2)</b> : le mois (entier compris entre 01 et 12).</dd>
+<dd>
+<b>dt(3)</b> : le numéro de semaine à la norme ISO 8601 (entier compris entre 01 et 53).</dd>
+<dd>
+<b>dt(4)</b> : le jour du calendrier Julien (entier compris entre 000 et 366).</dd>
+<dd>
+<b>dt(5)</b> : le jour de la semaine (entier compris entre 1 (dimanche) et 7).</dd>
+<dd>
+<b>dt(6)</b> : le jour dans le mois (entier compris entre 01 et 31).</dd>
+<dd>
+<b>dt(7)</b> : l'heure du jour (entier compris entre 00 et 23).</dd>
+<dd>
+<b>dt(8)</b> : les minutes (entier compris entre 00 et 59).</dd>
+<dd>
+<b>dt(9)</b> : les secondes (entier compris entre 00 et 59).</dd>
+<dd>
+<b>dt(10)</b> : les millisecondes (entier compris entre 000 et 999).</dd>
+</dl>
+</dd>
+<dd>
+<b>x = getdate("s")</b> renvoie un entier contenant le nombre de secondes écoulées depuis le 1er Janvier 1970, 00:00 UTC (Unix Time Convention).</dd>
+<dd>
+<b>dt = getdate(x)</b> renvoie dt au format ci-dessus, à partir de x (nombre de secondes depuis le 1er Janvier 1970). 
+        Dans ce cas, dt(10) est toujours égal à 0.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+w=getdate()
+mprintf("Annee:%d,mois:%d,jour:%d",w(1),w(2),w(6));
+
+x=getdate("s")
+getdate(x)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/date.htm"><tt><b>date</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/timer.htm"><tt><b>timer</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

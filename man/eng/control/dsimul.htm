@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dsimul</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dsimul</b> -   state space discrete time simulation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=dsimul(sl,u)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list describing a discrete time linear system</li>
+<li>
+<tt><b>u</b></tt>: real matrix of appropriate dimension</li>
+<li>
+<tt><b>y</b></tt>: output of <tt><b>sl</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Utility function. 
+    If <tt><b>[A,B,C,D]=abcd(sl)</b></tt> and <tt><b>x0=sl('X0')</b></tt>, <tt><b>dsimul</b></tt> returns <tt><b>y=C*ltitr(A,B,u,x0)+D*u</b></tt> i.e.
+    the time response of <tt><b>sl</b></tt> to the input <tt><b>u</b></tt>.
+    <tt><b>sl</b></tt> is assumed to be in state space form (<tt><b>syslin</b></tt> list).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+z=poly(0,'z');
+h=(1-2*z)/(z^2-0.2*z+1);
+sl=tf2ss(h);
+u=zeros(1,20);u(1)=1;
+x1=dsimul(sl,u)   //Impulse response
+u=ones(1,20);
+x2=dsimul(sl,u);  //Step response
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/syslin.htm"><tt><b>syslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/flts.htm"><tt><b>flts</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ltitr.htm"><tt><b>ltitr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

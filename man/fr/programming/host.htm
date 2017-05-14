@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>host</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>host</b> -  exécution d'une commande Unix ou DOS  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>stat=host(command-name)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>command-name  </b></tt>
+    : chaîne de caractères contenant les commandes à exécuter
+</li>
+<li>
+<tt><b>stat  </b></tt>
+    : un entier
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Envoie la chaîne <tt><b>command-name</b></tt> à l'interpréteur de commande
+    (sh sous Unix, ou command.com sous DOS). La sortie standard et les erreurs sont reportées dans 
+    l'interpréteur de commande.
+  </p>
+<p><tt><b>stat</b></tt> vaut -1 en sortie si la fonction ne peut pas être appelée (pas assez de mémoire par exemple) ou
+    alors le code de sortie de l'interpréteur de commande.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    //creation d'un fontion pour recuperer la path courant
+    function wd=getdir()
+      if MSDOS then 
+        host('cd&gt;'+TMPDIR+'\path');
+      else
+        host('pwd&gt;'+TMPDIR+'/path');
+      end
+      wd=read(TMPDIR+'/path',1,1,'(a)')
+    endfunction
+    //appel de la fonction
+    wd=getdir()
+
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/edit.htm"><tt><b>edit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/manedit.htm"><tt><b>manedit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_g.htm"><tt><b>unix_g</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_s.htm"><tt><b>unix_s</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_w.htm"><tt><b>unix_w</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_x.htm"><tt><b>unix_x</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>givens</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>givens</b> -  Givens transformation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>U=givens(xy)  </tt></dd>
+<dd><tt>U=givens(x,y)  </tt></dd>
+<dd><tt>[U,c]=givens(xy)  </tt></dd>
+<dd><tt>[U,c]=givens(x,y)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two real or complex numbers</li>
+<li>
+<tt><b>xy</b></tt>:  real or complex size 2 column vector</li>
+<li>
+<tt><b>U</b></tt>: 2x2 unitary matrix</li>
+<li>
+<tt><b>c</b></tt>:  real or complex size 2 column vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>U = givens(x, y)</b></tt> or <tt><b>U = givens(xy)</b></tt> with <tt><b>xy = [x;y]</b></tt>
+    returns a <tt><b>2</b></tt>x<tt><b>2</b></tt> unitary matrix <tt><b>U</b></tt> such that:</p>
+<p><tt><b>U*xy=[r;0]=c</b></tt>.</p>
+<p>
+    Note that <tt><b>givens(x,y)</b></tt> and <tt><b>givens([x;y])</b></tt> are equivalent.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[3,4;5,6];
+U=givens(A(:,1));
+U*A
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

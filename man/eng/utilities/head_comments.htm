@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>head_comments</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>head_comments</b> - display scilab function header comments</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>head_comments(name)</tt></dd>
+<dd><tt>head_comments(name,%paths)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>name</b></tt>
+       : character string, the function name
+    </li>
+<li>
+<tt><b>%paths</b></tt>
+       : character string vector, paths where to look for the asscoated sci-file
+    </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<tt><b>comments(name)</b></tt> displays the function header comments (like the
+    Matlab help). The comments are read from the associated sci-file. If <tt><b>name</b></tt>
+    if a function in a library the sci-file path is those given by the library
+    path (see <tt><b>lib</b></tt>). If <tt><b>name</b></tt> if a function which is
+    not in a library, a file with name <tt><b>name.sci</b></tt> is searched in the
+    directories given by the variable <tt><b>%paths</b></tt><p>
+    Warning, most of the scilab predefined functions have no header comments.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+   head_comments sinc
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Serge Steer, INRIA
+  </p>
+</body>
+</html>

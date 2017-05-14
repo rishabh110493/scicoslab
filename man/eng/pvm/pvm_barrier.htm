@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_barrier</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_barrier</b> -  blocks the calling process until all processes in a group have called it.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[info] = pvm_barrier(group,count)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>type</b></tt>: string,  name of an existing group.</li>
+<li>
+<tt><b>count</b></tt>: integer, specifying the number of group members that must call pvm_barrier before they are all released.</li>
+<li>
+<tt><b>info</b></tt>: integer, status code returned by the routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_barrier</b></tt> blocks the calling process until <tt><b>count</b></tt>
+    members of the <tt><b>group</b></tt> have called <tt><b>pvm_barrier</b></tt>.
+    The <tt><b>count</b></tt> argument is required because processes could be
+    joining the given group after other processes have called
+    <tt><b>pvm_barrier</b></tt>. Thus PVM doesn't know how many group members
+    to wait for at any given instant. Although <tt><b>count</b></tt> can be set less,
+    it is typically the total number of members of the group.
+    So the logical function of the <tt><b>pvm_barrier</b></tt> call
+    is to provide a group synchronization.
+    During any given barrier call all participating group members
+    must call barrier with the same count value.
+    Once a given barrier has been successfully passed,
+    <tt><b>pvm_barrier</b></tt> can be called again by the same group using the same
+    group name.</p>
+<p>
+    The returned value <tt><b>info</b></tt>will be zero if 
+    <tt><b>pvm_barrier</b></tt> is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_joingroup.htm"><tt><b>pvm_joingroup</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

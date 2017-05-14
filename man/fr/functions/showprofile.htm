@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>showprofile</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>showprofile</b> -  extracts and displays execution profiles of a Scilab function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>showprofile(fun)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>fun</b></tt>: a Scilab function</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    To use <tt><b>showprofile</b></tt> the Scilab function must have been prepared for
+    profiling (see getf).</p>
+<p>
+    For such function, When such a function is executed the systems counts
+    how many time each line is executed and how may cpu time is spend for
+    each line execution. These data are stored within the function data
+    structure.  The <tt><b>showprofile</b></tt> function outputs profiling results
+    (see <tt><b>profile</b></tt>) with text of the function lines.</p>
+<p>
+    Function text is rebuild with <tt><b>fun2string</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//define function and prepare it for profiling
+deff('x=foo(n)',['if n==0 then'
+                 '  x=[]'
+                 'else'
+                 '  x=0'
+                 '  for k=1:n'
+                 '    s=svd(rand(n+10,n+10))'
+                 '    x=x+s(1)'
+                 '  end'
+                 'end'],'p')
+//call the function
+foo(30)
+//get execution profiles
+showprofile(foo)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/profile.htm"><tt><b>profile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/plotprofile.htm"><tt><b>plotprofile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/translation/fun2string.htm"><tt><b>fun2string</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

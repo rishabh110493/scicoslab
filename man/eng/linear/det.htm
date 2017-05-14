@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>det</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>det</b> -  determinant</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>det(X)  </tt></dd>
+<dd><tt>[e,m]=det(X)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X</b></tt>: real or complex square matrix, polynomial or rational matrix.</li>
+<li>
+<tt><b>m</b></tt>: real or complex number, the determinant base 10 mantissae</li>
+<li>
+<tt><b>e</b></tt>: integer, the determinant base 10 exponent</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>det(X)</b></tt> ( <tt><b>m*10^e</b></tt> is the determinant of the square matrix <tt><b>X</b></tt>.</p>
+<p>
+    For polynomial matrix <tt><b>det(X)</b></tt> is equivalent to <tt><b>determ(X)</b></tt>.</p>
+<p>
+    For rational matrices <tt><b>det(X)</b></tt> is equivalent to <tt><b>detr(X)</b></tt>.</p>
+<h3><font color="blue">References</font></h3>
+<dl><p>
+     det computations are based on the Lapack routines
+      DGETRF for  real matrices and  ZGETRF for the complex case.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=poly(0,'x');
+det([x,1+x;2-x,x^2])
+w=ssrand(2,2,4);roots(det(systmat(w))),trzeros(w)   //zeros of linear system
+A=rand(3,3);
+det(A), prod(spec(A))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/detr.htm"><tt><b>detr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/determ.htm"><tt><b>determ</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>contour2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>contour2d</b> - level curves of a surface on a 2D
+  plot</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>contour2d(x,y,z,nz,[style,strf,leg,rect,nax])</tt></dd>
+<dd><tt>contour2d(x,y,z,nz,&lt;opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two real row vectors of size n1 and n2: the grid.</li>
+<li>
+<tt><b>z</b></tt>: real matrix of size (n1,n2), the values of the function on the
+	    grid or a  Scilab function which defines the surface  <tt><b>z=f(x,y)</b></tt>. </li>
+<li>
+<tt><b>nz</b></tt>: the level values or the number of levels.<ul>
+<li>
+<tt><b>-</b></tt>If <tt><b>nz</b></tt> is an integer, its value gives the
+                number of level curves equally spaced from zmin to zmax as
+                follows:<pre>z= zmin + (1:nz)*(zmax-zmin)/(nz+1)</pre>
+<p>Note that the <tt><b>zmin</b></tt> and <tt><b>zmax</b></tt>
+                levels are not drawn (generically they are reduced to points)
+                but they can be added with</p>
+<pre>[im,jm] = find(z == zmin); // or zmax
+plot2d(x(im)',y(jm)',-9,"000")</pre>
+</li>
+<li>
+<tt><b>-</b></tt>If <tt><b>nz</b></tt> is a vector, <tt><b>nz(i)</b></tt> gives
+                the value of the ith level curve.</li>
+</ul>
+</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: This represents a sequence of statements 
+          <tt><b>key1=value1,key2=value2</b></tt>,... where <tt><b>key1</b></tt>,
+          <tt><b>key2,...</b></tt> can be one of the following: style, leg, rect,
+          nax, strf or axesflag and frameflag (see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>)</li>
+<li>
+<tt><b>style,strf,leg,rect,nax</b></tt>: see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>. The argument <tt><b>style</b></tt> gives
+          the dash styles or colors which are to be used for level curves. It
+          must have the same size as the number of levels.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>contour2d</b></tt> draws level curves of a surface
+    <tt><b>z=f(x,y)</b></tt> on a 2D plot. The values of <tt><b>f(x,y)</b></tt> are
+    given by the matrix <tt><b>z</b></tt> at the grid points defined by
+    <tt><b>x</b></tt> and <tt><b>y</b></tt>.</p>
+<p>You can change the format of the floating point number printed on the
+    levels by using <tt><b>xset("fpf",string)</b></tt> where <tt><b>string</b></tt>
+    gives the format in C format syntax (for example
+    <tt><b>string="%.3f"</b></tt>). Use <tt><b>string=""</b></tt> to switch back to
+    default format and Use <tt><b>string=" "</b></tt> to suppress printing. This
+    last feature is useful in conjunction with <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/legends.htm"><tt><b>legends</b></tt></a> to display
+    the level numbers in a legend and not directly onto the level curves as 
+    usual (see Examples).</p>
+<p>The optional arguments <tt><b>style,strf,leg,rect,nax</b></tt>, can be
+    passed by a sequence of statements <tt><b>key1=value1, key2=value2</b></tt>,
+    ... where keys may be
+    <tt><b>style</b></tt>,<tt><b>strf</b></tt>,<tt><b>leg</b></tt>,<tt><b>rect</b></tt>,<tt><b>nax</b></tt>.
+    In this case, the order has no special meaning.</p>
+<p>Use <tt><b>contour</b></tt> to draw levels curves on a 3D surface.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+contour2d(1:10,1:10,rand(10,10),5,rect=[0,0,11,11])
+// changing the format of the printing of the levels
+xset("fpf","%.2f")
+clf()
+contour2d(1:10,1:10,rand(10,10),5,rect=[0,0,11,11])
+ 
+// now an example with level numbers drawn in a legend
+// Caution there are a number of tricks...
+x = linspace(0,4*%pi,80);
+z = cos(x')*cos(x);
+clf(); f=gcf();
+xset("fpf"," ")  // trick 1: this implies that the level numbers are not
+                 //          drawn on the level curves
+f.color_map=jetcolormap(7);
+// trick 2: to be able to put the legend on the right without
+//          interfering with the level curves use rect with a xmax
+//          value large enough 
+contour2d(x,x,z,-0.75:0.25:0.75,frameflag=3,rect=[0,0,5*%pi,4*%pi])
+// trick 3: use legends (note that the more practical legend function
+//          will not work as soon as one of the level is formed by 2 curves)  
+legends(string(-0.75:0.25:0.75),1:7,"lr");
+xtitle("Some level curves of the function cos(x)cos(y)")
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/contour.htm"><tt><b>contour</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/contour2di.htm"><tt><b>contour2di</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

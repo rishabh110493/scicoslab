@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arhnk</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arhnk</b> -  Hankel norm approximant</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[slm]=arhnk(sl,ord,[tol])     </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>sl</b></tt>: linear system (<tt><b>syslin</b></tt> list)</li>
+<li>
+<tt><b>ord</b></tt>: integer, order of the approximant</li>
+<li>
+<tt><b>tol</b></tt>: threshold for rank determination in <tt><b>equil1</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes <tt><b>slm</b></tt>, the optimal Hankel norm approximant of the 
+    stable continuous-time linear system <tt><b>sl</b></tt> with matrices <tt><b>[A,B,C,D]</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=diag([-1,-2,-3,-4,-5]);B=rand(5,1);C=rand(1,5);
+sl=syslin('c',A,B,C);
+slapprox=arhnk(sl,2);
+[nk,W]=hankelsv(sl);nk
+[nkred,Wred]=hankelsv(slapprox);nkred
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil.htm"><tt><b>equil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/equil1.htm"><tt><b>equil1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/robust/hankelsv.htm"><tt><b>hankelsv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

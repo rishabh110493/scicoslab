@@ -1,0 +1,10 @@
+#!/bin/sh
+# Rename  *.1 in *.man
+#
+
+for i in *.man
+do
+	sed -e 's/%NET/%net/' < $i > $i.1
+	sed -e 's/%NET/%net/' < $i.1 > $i.2
+	mv -f $i.2 $i
+done

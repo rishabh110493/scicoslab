@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fileparts</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fileparts</b> - returns the path, filename and extension for a file path</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[path,fname,extension]=fileparts(fullpath)</tt></dd>
+<dd><tt> v=fileparts(fullpath,sel)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fullpath</b></tt>:  a character string, the given file path</li>
+<li>
+<tt><b>sel</b></tt>: a optional character string selector, with posible values:
+       'path' 'fname' or 'extension'</li>
+<li>
+<tt><b>path</b></tt>: a character string, the path of the directory pointed to by fullpath</li>
+<li>
+<tt><b>fname</b></tt> : a character string, the filename part is any or ''</li>
+<li>
+<tt><b>extension</b></tt> : a character string, the extension part is any or ''</li>
+<li>
+<tt><b>value</b></tt> : a character string, depending on sel value</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[path,fname,extension]=fileparts(fullpath)</b></tt> splits the
+   fullpath character string in its three parts: the path of the
+   directory pointed to, the filename part, the extension part
+   including the dot.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+   [path,fname,extension]=fileparts('SCI/scilab.star')
+   fileparts('SCI/scilab.star','extension')
+  
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/pathconvert.htm"><tt><b> pathconvert</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/basename.htm"><tt><b> basename</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fullfile.htm"><tt><b>fullfile</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>
+    Serge Steer, INRIA
+  </p>
+</body>
+</html>

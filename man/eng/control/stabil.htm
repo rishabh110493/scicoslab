@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>stabil</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>stabil</b> -  stabilization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>F=stabil(A,B,alfa)  </tt></dd>
+<dd><tt>K=stabil(Sys,alfa,beta)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: square real matrix (<tt><b>nx x nx</b></tt>)</li>
+<li>
+<tt><b>B</b></tt>:  real matrix (<tt><b>nx x nu</b></tt>)</li>
+<li>
+<tt><b>alfa, beta</b></tt>:  real or complex vector (in conjugate pairs) or real number.</li>
+<li>
+<tt><b>F</b></tt>: real matrix (<tt><b>nx x nu</b></tt>)</li>
+<li>
+<tt><b>Sys</b></tt>: linear system (<tt><b>syslin</b></tt> list) (<tt><b>m</b></tt> inputs, <tt><b>p</b></tt> outputs).</li>
+<li>
+<tt><b>K</b></tt>: linear system (<tt><b>p</b></tt> inputs, <tt><b>m</b></tt> outputs)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>F=stabil(A,B,alfa)</b></tt> returns a gain matrix <tt><b>F</b></tt> such that
+    <tt><b>A+B*F</b></tt> is stable if pair <tt><b>(A,B)</b></tt> is stabilizable. 
+    Assignable poles are set to <tt><b>alfa(1),alfa(2),...</b></tt>.
+    If <tt><b>(A,B)</b></tt> is not stabilizable a warning is given
+    and assignable poles are set to <tt><b>alfa(1),alfa(2),...</b></tt>.
+    If <tt><b>alfa</b></tt> is a number all eigenvalues are set to this
+    <tt><b>alfa</b></tt> (default value is <tt><b>alfa=-1</b></tt>).</p>
+<p><tt><b>K=stabil(Sys,alfa,beta)</b></tt> returns <tt><b>K</b></tt>, a compensator for <tt><b>Sys</b></tt>
+    such that <tt><b>(A,B)</b></tt>-controllable eigenvalues are set to 
+    <tt><b>alfa</b></tt> and <tt><b>(C,A)</b></tt>-observable eigenvalues are set to <tt><b>beta</b></tt>.</p>
+<p>
+    All assignable closed loop poles (which are given by the 
+    eigenvalues of <tt><b>Aclosed=h_cl(Sys,K)</b></tt> are set to <tt><b>alfa(i)</b></tt>'s
+    and <tt><b>beta(j)</b></tt>'s.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// Gain:
+Sys=ssrand(0,2,5,list('st',2,3,3));
+A=Sys('A');B=Sys('B');F=stabil(A,B);
+spec(A) //2 controllable modes 2 unstable uncontrollable modes
+//and one stable uncontrollable mode
+spec(A+B*F) //the two controllable modes are set to -1.
+// Compensator:
+Sys=ssrand(3,2,5,list('st',2,3,3)); //3 outputs, 2 inputs, 5 states
+//2 controllables modes, 3 controllable or stabilizable modes.
+K=stabil(Sys,-2,-3);  //Compensator for Sys.
+spec(Sys('A'))
+spec(h_cl(Sys,K))   //K Stabilizes what can be stabilized.
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/st_ility.htm"><tt><b>st_ility</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ppol.htm"><tt><b>ppol</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>prod</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>prod</b> -  produit des termes d'une matrice  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=prod(x)  </tt></dd>
+<dd><tt>y=prod(x,'r')  ou y=prod(x,1)  </tt></dd>
+<dd><tt>y=prod(x,'c')  ou y=prod(x,2) </tt></dd>
+<dd><tt>y=prod(x,'m') </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur ou matrice (réelle ou complexe)
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : scalaire ou vecteur
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p> Pour un vecteur ou une matrice <tt><b>x</b></tt>, <tt><b>y=prod(x)</b></tt>
+      renvoie un scalaire <tt><b>y</b></tt> égal au produit des termes de
+      <tt><b>x</b></tt>.</p>
+<p><tt><b>y=prod(x,'r')</b></tt> (ou <tt><b>y=prod(x,1)</b></tt>)
+      effectue le produit suivant l'indice de ligne. Chaque composante du
+      vecteur ligne <tt><b>y</b></tt> contient le produit de la colonne
+      correspondante <tt><b>x</b></tt>
+      (<tt><b>y(j)=prod(x(i,j),i=1,m)</b></tt>). </p>
+<p><tt><b>y=prod(x,'c')</b></tt> (ou <tt><b>y=prod(x,2)</b></tt>)
+      effectue le produit suivant l'indice de colonne. Chaque composante
+      du vecteur colonne <tt><b>y</b></tt> contient le produit de la ligne
+      correspondante de <tt><b>x</b></tt> (<tt><b>y(i)=
+	prod(x(i,j),j=1,n)</b></tt>)).  </p>
+<p><tt><b>y=prod(x,'m')</b></tt>
+      effectue le produit suivant la première dimension plus grande que 1
+      (compatibilité avec Matlab). </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;0,100];
+prod(A)
+prod(A,'c')
+prod(A,'r')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/cumprod.htm"><tt><b>cumprod</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xend</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xend</b> -  close a graphics session</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xend()  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xend</b></tt> is used to close a graphics session. Under the Postscript,
+    Xfig or Gif drivers <tt><b>xend</b></tt> closes the
+    file which was opened by <tt><b>xinit</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+driver("Pos")
+xinit("foo.ps")
+plot2d()
+xend()
+driver("X11")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasimp.htm"><tt><b>xbasimp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xend.htm"><tt><b>xend</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

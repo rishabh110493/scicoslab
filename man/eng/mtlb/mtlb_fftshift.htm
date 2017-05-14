@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_fftshift</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_fftshift</b> - Matlab fftshift emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>fftshift</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With character string input: due to the fact that character strings are not considered in the same way in Matlab and Scilab, results can be different for this kind of input.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With two inputs: Matlab <tt><b>fftshift</b></tt> can work even if <tt><b>dim</b></tt> parameter is greater than number of dimensions of first input.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_fftshift(A[,dim])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>fftshift(A[,dim])</b></tt> when it was not
+    possible to know what were the inputs while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_fftshift</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is not a character string matrix,
+        <tt><b>mtlb_fftshift(A)</b></tt> may be replaced by <tt><b>fftshift(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+         If <tt><b>A</b></tt> is not a character string matrix and <tt><b>dim</b></tt> is not greater than <tt><b>size(size(a),"*")</b></tt>,
+        <tt><b>mtlb_fftshift(A,dim)</b></tt> may be replaced by <tt><b>fftshift(A,dim)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_fftshift</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

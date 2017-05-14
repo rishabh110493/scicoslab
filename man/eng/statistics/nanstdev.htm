@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nanstdev</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>nanstdev</b> -  standard deviation (ignoring the NANs).  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s=nanstdev(x)  </tt></dd>
+<dd><tt>s=nanstdev(x,'r') or m=nanstdev(x,1)  </tt></dd>
+<dd><tt>s=nanstdev(x,'c') or m=nanstdev(x,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x</b></tt>real or complex vector or matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function   computes the standard  deviation  of the
+    values of  a vector or  matrix   <tt><b> x</b></tt> (ignoring  the
+    NANs).</p>
+<p>
+    For a vector or a matrix <tt><b> x</b></tt>, <tt><b> s=nanstdev(x)</b></tt>
+    returns in the scalar  <tt><b> s</b></tt> the  standard deviation
+    of all the entries of <tt><b>x</b></tt> (ignoring the NANs).</p>
+<p><tt><b>s=nanstdev(x,'r')</b></tt>        (or,  equivalently,  
+    <tt><b>  s=nanstdev(x,1) </b></tt>) is  the rowwise standard deviation.
+    It returns in each entry of the row  vector <tt><b> s</b></tt> the
+    standard deviation of each column of <tt><b> x</b></tt> (ignoring
+    the NANs).</p>
+<p><tt><b>s=nanstdev(x,'c')</b></tt>          (or,      equivalently,
+    <tt><b>s=nanstdev(x,2)</b></tt>)   is the columnwise      standard
+    deviation. It returns in each entry of the column vector
+    <tt><b>s</b></tt> the standard  deviation of  each row of  <tt><b>x</b></tt>
+    (ignoring the NANs).</p>
+<p>
+    In Labostat, NAN values stand for missing values in tables.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+
+x=[0.2113249 0.0002211 0.6653811;
+   0.7560439 %nan      0.6283918;
+   0.3       0.2       0.5      ];
+s=nanstdev(x)
+s=nanstdev(x,'r')
+s=nanstdev(x,'c')
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

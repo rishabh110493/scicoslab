@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xrects</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xrects</b> -  draw or fill a set of rectangles</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xrects(rects,[fill])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rects</b></tt>: matrix of size (4,n).</li>
+<li>
+<tt><b>fill</b></tt>: vector of size n.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xrects</b></tt> draws or fills a set of rectangles. 
+    Each column of <tt><b>rects</b></tt> describes 
+    a rectangle (upper-left point, width, height):
+    <tt><b>rects=[x1 y1 w1 h1;x2 y2 w2 h2;...]'</b></tt>.</p>
+<p><tt><b>fill(i)</b></tt> gives the pattern to use for filling or drawing rectangle i:</p>
+<p>
+    if <tt><b>fill(i)&lt;0</b></tt>, rectangle <tt><b>i</b></tt> is drawn using the line style (or
+    color) <tt><b>-fill(i)</b></tt></p>
+<p>
+    if <tt><b>fill(i)&gt;0</b></tt>, rectangle <tt><b>i</b></tt> is filled using the pattern (or
+    color) <tt><b>fill(i)</b></tt></p>
+<p>
+    if <tt><b>fill(i)=0</b></tt>, rectangle <tt><b>i</b></tt> is drawn using the current
+    line style (or color).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d([-100,500],[-50,50],[-1,-1],"022")
+cols=[-34,-33,-32,-20:5:20,32,33,34];
+x=400*(0:14)/14; step=20;
+rects=[x;10*ones(x);step*ones(x);30*ones(x)];
+xrects(rects,cols)
+xnumb(x,15*ones(x),cols)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfrect.htm"><tt><b>xfrect</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xrect.htm"><tt><b>xrect</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

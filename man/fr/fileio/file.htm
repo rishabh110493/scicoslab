@@ -1,0 +1,140 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>file</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>file</b> -  file management</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[unit [,err]]=file('open', file-name [,status] [,access [,recl]] [,format])  </tt></dd>
+<dd><tt>file(action,unit)  </tt></dd>
+<dd><tt>[units [,typ [,nams [,mod [,swap]]]]] = file([unit])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>file-name</b></tt>: string, file name of the file to be opened</li>
+<li>
+<tt><b>status</b></tt>: string, The status of the file to be opened<ul>
+<li>
+<tt><b>"new"</b></tt>: file must not exist new file (default)</li>
+<li>
+<tt><b>"old"</b></tt>: file must already exists.</li>
+<li>
+<tt><b>"unknown"</b></tt>: unknown status</li>
+<li>
+<tt><b>"scratch"</b></tt>: file is to be deleted at end of session</li>
+</ul>
+</li>
+<li>
+<tt><b>access</b></tt>: string, The type of access to the file<ul>
+<li>
+<tt><b>"sequential"   </b></tt>: sequential access (default)</li>
+<li>
+<tt><b>"direct"   </b></tt>: direct access.</li>
+</ul>
+</li>
+<li>
+<tt><b>format</b></tt>: string,<ul>
+<li>
+<tt><b>"formatted"   </b></tt>: for a   formatted file (default)</li>
+<li>
+<tt><b>"unformatted"   </b></tt>: binary record.</li>
+</ul>
+</li>
+<li>
+<tt><b>recl</b></tt>: integer,is the size of records in bytes when <tt><b>access="direct"</b></tt>
+</li>
+<li>
+<tt><b>unit</b></tt>: integer, logical unit descriptor of the opened file</li>
+<li>
+<tt><b>units</b></tt>: integer vector, logical unit descriptor of
+   the opened files. Units 1 5 and 6 are reserved by the system for
+   history file , input and output devices.</li>
+<li>
+<tt><b>typs</b></tt>: Character string vector, type (C or Fortran) of opened files.</li>
+<li>
+<tt><b>nams</b></tt>: Character string vector, pathnames of opened files.</li>
+<li>
+<tt><b>mod</b></tt>: file opening mode. Formed by three digits abc<ul>
+<li>
+<tt><b>Fortran files</b></tt><ul>
+<li>
+<tt><b>a</b></tt>: 0 stands for formatted and 1 for unformatted (binary)</li>
+<li>
+<tt><b>b</b></tt>0 stands for sequential acces and 1 for direct access</li>
+<li>
+<tt><b>c</b></tt>: 0 stands for   "new", 1 for  "old", 2 for "scratch" and 3 for  "unknown"</li>
+</ul>
+</li>
+<li>
+<tt><b>C files</b></tt><ul>
+<li>
+<tt><b>a</b></tt>: is 1 if file has been opened with a "b" (binary) mode</li>
+<li>
+<tt><b>b</b></tt>: is 1 if file has been opened with a "+" (updating) mode</li>
+<li>
+<tt><b>c</b></tt>: 1 stands for "r" (read), 2 stands for "w" (write) and 3 for "a" (append)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<tt><b>swap</b></tt>: automatic swap switch. swap=1 if automatic swap is on. swap is always 0 for Fortran files.</li>
+<li>
+<tt><b>err</b></tt>: integer, error message number (see error), if open fails. If err is omitted an error message is issued.</li>
+<li>
+<tt><b>action</b></tt>: is one of the following strings:<ul>
+<li>
+<tt><b>"close"   </b></tt>: closes the file(s) given by the logical unit descriptors given in <tt><b>units</b></tt>
+</li>
+<li>
+<tt><b>"rewind"   </b></tt>: puts the pointer at beginning of file</li>
+<li>
+<tt><b>"backspace"   </b></tt>: puts the pointer at beginning of last record.</li>
+<li>
+<tt><b>"last"   </b></tt>: puts the pointer after last record.</li>
+</ul>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    selects a logical unit <tt><b>unit</b></tt> and manages the file
+    <tt><b>file-name</b></tt>.</p>
+<p><tt><b>[unit [,err]]=file('open', file-name [,status] [,access [,recl]]
+    [,format])</b></tt> allows to open a file with specified properties and to
+    get the associated unit number <tt><b>unit</b></tt>. This unit number may be
+    used for further actions on this file or as file descriptor in
+    <tt><b>read</b></tt>, <tt><b>write</b></tt>, <tt><b>readb</b></tt>, <tt><b>writb</b></tt>,<tt><b>save</b></tt>,
+    <tt><b>load</b></tt> function calls.</p>
+<p><tt><b>file(action,unit)</b></tt> allows to close the file , or move the current
+    file pointer .</p>
+<p><tt><b>file()</b></tt> returns the logical unit descriptors of the opened
+    files. So <tt><b>file('close',file() )</b></tt> closes all user opened files (C
+    or Fortran type).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+u=file('open',TMPDIR+'/foo','unknown')
+for k=1:4
+  a=rand(1,4)
+  write(u,a)
+end
+file('rewind',u)
+x=read(u,2,4)
+file('close',u)
+//
+u1=file('open',TMPDIR+'/foo','unknown')
+u2=mopen(TMPDIR+'/foo1','wb')
+[units,typs,nams]=file()
+file('close',u1);
+mclose(u2);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/write.htm"><tt><b>write</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/read.htm"><tt><b>read</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/writb.htm"><tt><b>writb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/readb.htm"><tt><b>readb</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/xgetfile.htm"><tt><b>xgetfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mopen.htm"><tt><b>mopen</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/mclose.htm"><tt><b>mclose</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

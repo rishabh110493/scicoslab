@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eye</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eye</b> -  identity matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X=eye(m,n)  </tt></dd>
+<dd><tt>X=eye(A)  </tt></dd>
+<dd><tt>X=eye()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,X</b></tt>: matrices or <tt><b>syslin</b></tt> lists</li>
+<li>
+<tt><b>m,n</b></tt>: integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    according to its arguments defines an <tt><b>m</b></tt>x<tt><b>n</b></tt> matrix with 1 along the 
+    main diagonal or an identity matrix of the same dimension as <tt><b>A</b></tt> .</p>
+<p>
+    Caution: <tt><b>eye(10)</b></tt> is interpreted as <tt><b>eye(A)</b></tt> with <tt><b>A=10</b></tt> i.e. <tt><b>1</b></tt>.
+    (It is NOT a ten by ten identity matrix!).</p>
+<p>
+    If <tt><b>A</b></tt> is a linear system represented by a <tt><b>syslin</b></tt> list, <tt><b>eye(A)</b></tt>
+    returns an <tt><b>eye</b></tt> matrix of appropriate dimension: 
+    (number of outputs x number of inputs).</p>
+<p><tt><b>eye()</b></tt> produces a identity matrix with undefined
+    dimensions. Dimensions will be defined when this identity matrix is
+    added to a mtrix with fixed dimensions.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+eye(2,3)
+A=rand(2,3);eye(A)
+s=poly(0,'s');A=[s,1;s,s+1];eye(A)
+A=[1/s,1;s,2];eye(A);
+A=ssrand(2,2,3);eye(A)
+[1 2;3 4]+2*eye()
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/zeros.htm"><tt><b>zeros</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

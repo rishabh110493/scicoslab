@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>exec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>exec</b> -  script file execution</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>exec(path [,mode])  </tt></dd>
+<dd><tt>exec(fun [,mode])  </tt></dd>
+<dd><tt>ierr=exec(path,'errcatch' [,mode])  </tt></dd>
+<dd><tt>ierr=exec(fun,'errcatch' [,mode])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: a string, the path of the script file</li>
+<li>
+<tt><b>mode</b></tt>: an integer scalar, the execution mode (see below)</li>
+<li>
+<tt><b>fun</b></tt>: a scilab function</li>
+<li>
+<tt><b>ierr</b></tt>: integer, 0 or error number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>exec(path [,mode])</b></tt> executes sequentialy the scilab instructions
+    contained in the file given by <tt><b>path</b></tt>  with an optional 
+    execution mode <tt><b>mode</b></tt> .</p>
+<p>
+    The different cases for <tt><b>mode</b></tt> are :</p>
+<p>
+     0 
+    : the default value</p>
+<p>
+     -1 
+    : nothing is printed</p>
+<p>
+     1 
+    : echo of each command line</p>
+<p>
+     2 
+    : prompt <tt><b>--&gt;</b></tt> is printed</p>
+<p>
+     3 
+    : echoes + prompts</p>
+<p>
+     4 
+    : stops before each prompt. Execution resumes after a carriage return.</p>
+<p>
+     7 
+    : stops + prompts + echoes : useful mode for demos.</p>
+<p><tt><b>exec(fun [,mode])</b></tt> executes function  <tt><b>fun</b></tt> as a script: no
+    input nor output argument nor specific variable environment. This form
+    is more efficient, because script code may be pre-compiled (see getf,
+    comp). This method for script evaluation allows to store scripts as
+    function in libraries.</p>
+<p>
+    If an error is encountered while executing, if 'errcatch' flag is
+    present <tt><b>exec</b></tt> issues no error message, aborts execution of the
+    instructions and resumes with <tt><b>ierr</b></tt> equal to the error
+    number. If 'errcatch' flag is not present, standard error handling
+    works.</p>
+<h3><font color="blue">Remark</font></h3>
+<dl><p><tt><b>exec</b></tt> files may now be used to define functions using the inline function definition syntax (see function).</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// create a script file
+mputl('a=1;b=2',TMPDIR+'/myscript')
+// execute it
+exec(TMPDIR+'/myscript')
+whos -name "a "
+
+// create a function
+deff('y=foo(x)','a=x+1;y=a^2')
+clear a b
+// call the function
+foo(1)
+// a is a variable created in the environment of the function foo
+//    it is destroyed when foo returns
+whos -name "a "
+
+
+x=1 //create x to make it known by the script foo
+exec(foo)
+// a and y are created in the current environment
+whos -name "a "
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/evstr.htm"><tt><b>evstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/comp.htm"><tt><b>comp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/mode.htm"><tt><b>mode</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/chdir.htm"><tt><b>chdir</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pwd.htm"><tt><b>getcwd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

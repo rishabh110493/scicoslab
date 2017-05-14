@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sgrid</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sgrid</b> -  s-plane grid lines.  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>sgrid()  </tt></dd>
+<dd><tt>sgrid('new')  </tt></dd>
+<dd><tt>sgrid(zeta,wn [,color])  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Used in conjonction with evans, 
+    plots lines of constant damping ratio (<tt><b>zeta</b></tt>)
+    and natural frequency (<tt><b>wn</b></tt>).
+  </p>
+<dl>
+<dd>
+<b>sgrid()</b>: add a grid over an existing continuous s-plane root with default values for <tt><b>zeta</b></tt> and <tt><b>wn</b></tt>.</dd>
+<dd>
+<b>sgrid('new')</b>: clears the graphic screen and then plots a default  s-plane grid</dd>
+<dd>
+<b>sgrid(zeta,wn [,color])</b>: same as <tt><b>sgrid()</b></tt> but uses the provided damping ratio and  natural frequency.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+H=syslin('c',352*poly(-5,'s')/poly([0,0,2000,200,25,1],'s','c'));
+evans(H,100)
+sgrid()
+sgrid(0.6,2,7)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/evans.htm"><tt><b>evans</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

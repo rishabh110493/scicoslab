@@ -1,0 +1,134 @@
+.TH TrafficAssig  1 " " " " "Traffic-toolbox Function"
+.SH NAME
+TrafficAssig -  Traffic Assignment
+.SH CALLING SEQUENCE
+.nf
+TrafficAssig(p1,p2,p3)
+.fi
+.SH PARAMETERS
+.TP 10
+%net global variable containing the information
+: NetLists
+.TP 10
+%net.gp.algorithm
+: string to choose among "AON", "CAPRES", "DSD", "FW", "IA", "IAON",
+"MSA", "Probit", "ProbitE","LogitB","LogitD","LogitMB","LogitMD",
+"LogitBE","LogitDE","LogitMBE","LogitMDE"
+.TP 10
+p1,p2 p3
+: different algorithms' parameters to change the default ones
+in fields of %net.gp (see NetList)
+
+.SH DESCRIPTION
+Assigns the flow of the traffic network described by the NetList net
+using the algorithm selected by algo with the parameters given by p1, p2 and p3:
+
+"AON" -> All or nothing
+
+"CAPRES" -> Capres algorithm
+
+"DSD" -> Disaggregated simplicial decomposition (only total flow is computed). 
+           p1: iterations number, p2: precision
+
+"DSDisaggregated" -> Disaggregated simplicial decomposition. p1: iterations number,
+                  p2: precision
+
+"FW" -> Frank-Wolfe algorithm. p1: iterations number, p2: precision
+
+"IA" -> Incremental assignment. p1: iterations number
+
+"IAON" -> Iterated all or nothing. p1: iterations number
+
+"MSA" -> Method of successive averages. p1: iterations number, p2: precision
+
+"Probit" -> Probit assignment. p1: beta, p2: precision, p3: iterations number
+
+"ProbitE" -> MSA algorithm for the stochastic user equilibrium (MSASUE). p1:beta,
+                                     p2: precision, p3: iterations number
+
+"LogitB" -> Logit assignment (all paths used not only efficient ones  used)
+
+"LogitD" -> Logit assignment (only efficient paths are used)
+
+"LogitMB" -> Reiterated first step logit assignment (all paths used
+                           not only efficient ones used)
+
+"LogitMD" -> Reiterated first step logit assignment (only efficient
+                             paths are used)
+
+"LogitBE" -> Logit equilibrium assignment (all paths used not only efficient ones  used)
+
+"LogitDE" -> Logit equilibrium assignment (only efficient paths are used)
+
+"LogitMBE" -> Reiterated first step logit equilibrium assignment (allpaths used 
+                            not only efficient ones used)
+
+"LogitMDE" -> Reiterated first step logit equilibrium assignment (only
+efficient paths are used)
+
+"NwtArc" -> Newton method bsed on nodes-links formulation (useful
+            when there are a small number of demands)
+
+The assigned flow, the current travel time and the disaggregated flow
+are stored in %net.
+
+It is normal that for some parameters and network some methods
+"TrafficAssig" does not succeed to give an assignment. In particular, for
+Logit method, the effective domain of the stochasticity
+parameter is limited and depends of the network. For some
+networks and some methods this domain may be empty (for example LogitB
+with a zero travel time loop). For Logit method, the stochasticity
+parameter must not be too large to avoid numerical difficulties coming 
+from the limited precision of the computation.
+ 
+
+.SH EXAMPLES
+.nf
+//
+// To load an editable traffic network graph
+//
+%net=TrafficExample("Steenbrink");
+ShowNet();
+//
+// The black arcs are the roads and the cyan ones are the
+// traffic OD demands. We can edit the net (see the net-edition demo).
+//
+// To compute the traffic assignment with "DSD" algorithm
+//
+TrafficAssig();
+ShowNet();
+//
+// To show  the travel times select GRAPH/Display arc names/Time
+//
+// It is possible to assign the flow using another algorithm
+// for example the incremental assignment denoted  "IA"
+//
+%net.gp.algorithm="IA"
+%net.gp.Niter=50;
+TrafficAssig();
+ShowNet();
+//
+// For Logit assignment, the stochasticity parameter
+// is in the field %net.gp.theta (default 1)
+//
+%net.gp.algorithm='LogitMD';
+%net.gp.theta=3;
+TrafficAssig();
+ShowNet();
+//
+.fi
+.SH SEE ALSO
+AON,
+Probit,
+LogitB,
+LogitD,
+LogitMB,
+LogitMD,
+LogitN,
+LogitNE,
+LogitNELS,
+MSASUE,
+IntroTrfAsg,
+NetList
+
+

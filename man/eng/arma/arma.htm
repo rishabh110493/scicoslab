@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>arma</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>arma</b> -  Scilab arma library</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Armax processes can be coded with Scilab tlist of type <tt><b>'ar'</b></tt>. 
+    <tt><b>armac</b></tt> is used to build <tt><b>Armax</b></tt> scilab object. An <tt><b>'ar'</b></tt> 
+    tlist contains the fields <tt><b>['a','b','d','ny','nu','sig']</b></tt>. 
+  </p>
+<dl>
+<dd>
+<b>armac</b>: this function creates a Scilab tlist which code an  Armax
+  process    <tt><b> A(z^-1)y= B(z^-1)u + D(z^-1)sig*e(t)</b></tt><pre>
+
+--&gt;ar=armac([1,2],[3,4],1,1,1,sig);
+ 
+--&gt;ar('a')   
+ ans  =
+ 
+!   1.    2. !
+--&gt;ar('sig')
+ ans  =
+ 
+    1.  
+   
+        </pre>
+</dd>
+<dd>
+<b>armap(ar [,out])</b>: Display the armax equation associated with <tt><b>ar</b></tt>
+</dd>
+<dd>
+<b>armap_p(ar [,out])</b>: Display the armax equation associated with <tt><b>ar</b></tt>  using polynomial matrix display.</dd>
+<dd>
+<b>[A,B,D]=armap2p(ar)</b>: extract polynomial matrices from ar representation</dd>
+<dd>
+<b>armax</b>: is used to identify the coefficients of a n-dimensional  ARX process   <tt><b>A(z^-1)y= B(z^-1)u + sig*e(t)</b></tt>
+</dd>
+<dd>
+<b>armax1</b>: armax1 is used to identify the coefficients of a 1-dimensional  ARX process    
+         <tt><b>A(z^-1)y= B(z^-1)u + D(z^-1)sig*e(t)</b></tt>
+</dd>
+<dd>
+<b>arsimul</b>: armax trajectory simulation.</dd>
+<dd>
+<b>arspec</b>: Spectral power estimation of armax processes.  Test of  mese and arsimul</dd>
+<dd>
+<b>exar1</b>: An  Example of ARMAX identification ( K.J. Astrom) The armax process is described by :     a=[1,-2.851,2.717,-0.865]     b=[0,1,1,1]     d=[1,0.7,0.2]</dd>
+<dd>
+<b>exar2</b>: ARMAX example ( K.J. Astrom). A simulation of a bi dimensional version of the example of exar1.</dd>
+<dd>
+<b>exar3</b>: Spectral power estimation of arma processes from Sawaragi et all where a value of m=18 is used. Test of  mese and arsimul</dd>
+<dd>
+<b>gbruit</b>: noise generation</dd>
+<dd>
+<b>narsimul</b>: armax simulation ( using rtitr)</dd>
+<dd>
+<b>odedi</b>: Simple tests of ode and arsimul. Tests the option 'discret' of ode</dd>
+<dd>
+<b>prbs_a</b>: pseudo random binary sequences generation</dd>
+<dd>
+<b>reglin</b>: Linear regression</dd>
+</dl>
+<h3><font color="blue">Author</font></h3>
+<p>J.P.C ; ;   </p>
+</body>
+</html>

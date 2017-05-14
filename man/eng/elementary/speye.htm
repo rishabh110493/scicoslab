@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>speye</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>speye</b> -   sparse identity matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>Isp=speye(nrows,ncols)  </tt></dd>
+<dd><tt>Isp=speye(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nrows</b></tt>: integer (number of rows)</li>
+<li>
+<tt><b>ncols</b></tt>: integer (number os columns)</li>
+<li>
+<tt><b>A</b></tt>: sparse matrix</li>
+<li>
+<tt><b>sp</b></tt>: sparse identity matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Isp=speye(nrows,ncols)</b></tt> returns a sparse identity matrix <tt><b>Isp</b></tt> 
+    with <tt><b>nrows</b></tt> rows, <tt><b>ncols</b></tt> columns. (Non square identity matrix
+    have a maximal number of ones along the main diagonal).</p>
+<p><tt><b>Isp=speye(A)</b></tt> returns a sparse identity matrix with same
+    dimensions as <tt><b>A</b></tt>. If <tt><b>[m,n]=size(A)</b></tt>, <tt><b>speye(m,n)</b></tt> and
+    <tt><b>speye(A)</b></tt> are equivalent. In particular <tt><b>speye(3)</b></tt> is not
+    equivalent to <tt><b>speye(3,3)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+eye(3,3)-full(speye(3,3))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/spzeros.htm"><tt><b>spzeros</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/spones.htm"><tt><b>spones</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

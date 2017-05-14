@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>int8 int16int32uint8 uint16uint32</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>int8 </b> -  conversion au codage entier à 1 octet  </p>
+<p><b>int16</b> -  conversion au codage entier à 2 octets  </p>
+<p><b>int32</b> -  conversion au codage entier à 4 octets  </p>
+<p><b>uint8 </b> -  conversion au codage entier non signé à 1 octet  </p>
+<p><b>uint16</b> -  conversion au codage entier non signé à 2 octets  </p>
+<p><b>uint32</b> -  conversion au codage entier non signé à 4 octets  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=int8(X)  </tt></dd>
+<dd><tt>y=int16(X)  </tt></dd>
+<dd><tt>y=int32(X)  </tt></dd>
+<dd><tt>y=uint8(X)  </tt></dd>
+<dd><tt>y=uint16(X)  </tt></dd>
+<dd><tt>y=uint32(X)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X  </b></tt>
+    : matrice de flottants ou d'entiers
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : matrice d'entiers codés sur 1,2 ou 4 octets.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Convertit et stocke sous forme d'entiers. Ces types de données sont particulièrement intéressants pour stocker des images, de longs signaux, ...
+  </p>
+<dl>
+<dd>
+<b>y=int8(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [-128,127] </dd>
+<dd>
+<b>y=uint8(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [0,255] </dd>
+<dd>
+<b>y=int16(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [-32768,32767] </dd>
+<dd>
+<b>y=uint16(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [0, 65535] </dd>
+<dd>
+<b>y=int32(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [-2147483648,2147483647] </dd>
+<dd>
+<b>y=uint32(X)</b>: renvoie et stocke dans y des entiers dans l'intervalle [0, 4294967295] </dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+int8([1 -120 127 312])
+uint8([1 -120 127 312])
+
+x=int32(-200:100:400)
+int8(x)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/double.htm"><tt><b>double</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/inttype.htm"><tt><b>inttype</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/iconvert.htm"><tt><b>iconvert</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

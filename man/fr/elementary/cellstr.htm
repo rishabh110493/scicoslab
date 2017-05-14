@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>cellstr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>cellstr</b> - convert strings vector (or strings matrix)
+  into a cell of strings</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>c=cellstr(s)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>s</b></tt>: strings vector, or strings matrix</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>returns a cell array of strings</p>
+<dl>
+<dd>
+<b></b>If <tt><b>s </b></tt>is a line vector of strings then
+        <tt><b>cellstr(s)</b></tt> returns a <tt><b>(one-by-one)</b></tt> cell which
+        contains one component (the concatenation of all columns components of
+        <tt><b>s )</b></tt>
+</dd>
+<dd>
+<b></b>If <tt><b>s</b></tt> is a column vector of strings then
+        <tt><b>cellstr(s)</b></tt> convert s into a cell which have the same size
+        : <tt><b>(size(s,1)-by-one)</b></tt> cell of strings</dd>
+<dd>
+<b></b>If <tt><b>s</b></tt> is a matrix of strings then for each row<tt><b> i
+        </b></tt>of <tt><b>s</b></tt>, <tt><b>cellstr(s)</b></tt> concatenates all the
+        components of the ith rows of the matrix <tt><b>s</b></tt> (i.e s(i,1),
+        s(i,2), s(i,3),...) and returns a (<tt><b>size(s,1)-by-one)</b></tt> cell
+        of strings</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+cellstr("foo")
+cellstr(["sci","lab"])
+cellstr(["abc","def",'gh';"i","j","klm"])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/mtlb/cell.htm"><tt><b>cell</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/strings/string.htm"><tt><b>string</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

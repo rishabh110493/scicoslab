@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>adj_lists</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>adj_lists</b> -  calcule des listes d'adjacence  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[lp,la,ls] = adj_lists(g)  </tt></dd>
+<dd><tt>[lp,la,ls] = adj_lists(oriented,n,tail,head)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>oriented  </b></tt>
+    : entier, 0 (graphe non-orienté) ou 1 (graphe orienté)
+</li>
+<li>
+<tt><b>n  </b></tt>
+    : entier, le nombre de sommets du graphe
+</li>
+<li>
+<tt><b>tail  </b></tt>
+    : le vecteur ligne des numéros des sommets origines du graphe (sa taille est égale au nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>head  </b></tt>
+    : le vecteur ligne des numéros des sommets extrémités du graphe (sa taille est égale au nombre d'arêtes du graphe)
+</li>
+<li>
+<tt><b>lp  </b></tt>
+    : vecteur ligne, tableau de pointeurs de la description du graphe sous forme de liste d'adjacence (sa taille est égale au nombre de sommets du graphe + 1) 
+</li>
+<li>
+<tt><b>la  </b></tt>
+    : vecteur ligne, tableau d'arcs de la description du graphe sous forme de liste d'adjacence (sa taille est égale au nombre d'arêtes du graphe) 
+</li>
+<li>
+<tt><b>ls  </b></tt>
+    : vecteur ligne, tableau de sommets de la description du graphe sous forme de liste d'adjacence (sa taille est égale au nombre d'arêtes du graphe)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>adj_lists</b></tt> calcule le vecteur ligne de la description du graphe <tt><b>g</b></tt> sous forme de liste d'adjacence.
+    Il est aussi possible de donner <tt><b>adj_lists</b></tt>, la description du
+    graphe donnée par le nombre de sommets <tt><b>n</b></tt> ainsi que les vecteurs lignes <tt><b>tail</b></tt> et <tt><b>head</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[2 3 3 5 3 4 4 5 8];
+he=[1 2 4 2 6 6 7 7 4];
+g=make_graph('foo',1,8,ta,he);
+g('node_x')=[129 200 283 281 128 366 122 333];
+g('node_y')=[61 125 129 189 173 135 236 249];
+show_graph(g);
+[lp,la,ls]=adj_lists(g)
+[lp,la,ls]=adj_lists(1,g('node_number'),ta,he)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/chain_struct.htm"><tt><b>chain_struct</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/graph_2_mat.htm"><tt><b>graph_2_mat</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

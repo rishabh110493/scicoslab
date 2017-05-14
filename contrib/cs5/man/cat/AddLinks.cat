@@ -1,0 +1,31 @@
+AddLinks                       Traffic-toolbox Function            AddLinks
+NAME
+   AddLinks  -  Add links to a net list
+  
+CALLING SEQUENCE
+   
+  
+ AddLinks(tl,hl,lpp)
+PARAMETERS
+ %net       : the global Netlist variable databasis
+            
+ tl         : row vector, tail nodes numbers of the added links
+            
+ hl         : row vector, head nodes numbers of the added links
+            
+ lpp        : 4 x nl matrix, travel time function parameters, where nl is
+            the  number of added links 
+            
+DESCRIPTION
+   AddLinks adds links to a net list.
+  
+EXAMPLES
+ %net=TrafficExample('Diamond');
+ ShowNet()
+ // Add a new link from node 3 to node 4 with lpp=[0;0;1;1]
+ AddLinks(3,4,[0;0;1;1]);
+ // We can see the modifications with
+ ShowNet()
+SEE ALSO
+   IntroTrfAsg, NetList, AddNodes, AddDemands, MakeNet, ShowNet     
+  

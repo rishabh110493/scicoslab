@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>rowcomp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowcomp</b> -  row compression, range</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[W,rk]=rowcomp(A [,flag [,tol]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>flag</b></tt>: optionnal character string, with possible values
+	    <tt><b>'svd'</b></tt> or <tt><b>'qr'</b></tt>. The default value is  <tt><b>'svd'</b></tt>.</li>
+<li>
+<tt><b>tol</b></tt>: optionnal real non negative number. The default value is 
+	    <tt><b>sqrt(%eps)*norm(A,1)</b></tt>.</li>
+<li>
+<tt><b>W</b></tt>: square non-singular matrix (change of basis)</li>
+<li>
+<tt><b>rk</b></tt>: integer (rank of <tt><b>A</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Row compression of <tt><b>A</b></tt>. <tt><b>Ac = W*A</b></tt> is a row compressed matrix: i.e. 
+    <tt><b>Ac=[Af;0]</b></tt> with <tt><b>Af</b></tt> full row rank.</p>
+<p><tt><b>flag</b></tt> and <tt><b>tol</b></tt> are optional parameters: <tt><b>flag='qr'</b></tt> 
+    or <tt><b>'svd'</b></tt> (default <tt><b>'svd'</b></tt>).</p>
+<p><tt><b>tol</b></tt> is a tolerance parameter.</p>
+<p>The <tt><b>rk</b></tt> first columns of <tt><b>W'</b></tt> span the range of
+      <tt><b>A</b></tt>.</p>
+<p>The <tt><b>rk</b></tt> first (top) rows of <tt><b>W</b></tt> span the row
+      range of <tt><b>A</b></tt>.</p>
+<p>A non zero vector <tt><b>x</b></tt> belongs to range(<tt><b>A</b></tt>) iff
+      <tt><b>W*x</b></tt> is row  compressed in accordance with <tt><b>Ac</b></tt>
+      i.e the norm of its last components is small w.r.t its first
+      components.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    A=rand(5,2)*rand(2,4);              // 4 col. vectors, 2 independent.
+    [X,dim]=rowcomp(A);Xp=X';
+    svd([Xp(:,1:dim),A])                //span(A) = span(Xp(:,1:dim)
+    x=A*rand(4,1);                      //x belongs to span(A)
+    y=X*x  
+    norm(y(dim+1:$))/norm(y(1:dim))     // small
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrf.htm"><tt><b>fullrf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/fullrfk.htm"><tt><b>fullrfk</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; INRIA   </p>
+<h3><font color="blue">Used Function</font></h3>The <tt><b>rowcomp</b></tt> function is based on the <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a> or
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a> decompositions.</body>
+</html>

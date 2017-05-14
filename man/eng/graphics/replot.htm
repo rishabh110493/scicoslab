@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>replot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>replot</b> - redraw the current graphics window with new
+  boundaries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>replot(rect,[handle])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: row vector of size 4.</li>
+<li>
+<tt><b>handle</b></tt>: optional argument. Graphics handle(s) of type Axes to select
+          one or several given Axes. Only available in new graphics mode.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>replot</b></tt> is used to redraw the content of the current
+    graphics window with new boundaries defined by
+    <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt>. Under old graphics syntax, it
+    works only with the driver <tt><b>"Rec"</b></tt>.</p>
+<p>Under new graphics mode, this transformation can be applied to specific
+    axes given by Axes graphics handles via the handle argument. If handle is
+    not specified, the new boundaries are applied to the current axes of the
+    current figure. The transformation changes the <tt><b>data_bounds</b></tt>
+    value of those axes. Note that the axes property <tt><b>tight_limits</b></tt>
+    must also be set to "on" to strictly select those bounds (see
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/axes_properties.htm"><tt><b>axes_properties</b></tt></a>).<tt><b></b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>backupstyle='?'
+if (get('old_style')=='off') then
+  set('old_style','on');
+  backupstyle='off'
+end
+
+// under old graphics mode
+x=[0:0.1:2*%pi]';
+plot2d(x,sin(x)) 
+replot([-1,-1,10,2]) 
+
+// under new graphics mode
+set old_style off
+xdel(winsid());
+plot() // plot demo
+f=gcf();
+replot([-1,-1,10,2],f.children(1)) // specify axes handle's value
+replot([-3,-2,8,4],f.children(2)) 
+if (backupstyle =='off') then set('old_style',backupstyle);end;
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasr.htm"><tt><b>xbasr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

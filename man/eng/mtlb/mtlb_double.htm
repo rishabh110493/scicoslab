@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_double</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_double</b> - Matlab double emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>double</b></tt> behave differently in some particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        With character string input: Scilab <tt><b>double</b></tt> does not work with this type of input while Matlab <tt><b>double</b></tt> returns a matrix of ASCII codes.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        With boolean input: Scilab <tt><b>double</b></tt> does not work with this type of input while Matlab <tt><b>double</b></tt> returns a matrix of double values.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_double(A)</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>double(A)</b></tt> when it was not
+    possible to know what were theinput while porting Matlab code to Scilab. This function will
+    determine the correct semantic at run time. If you want to have a
+    more efficient code it is possible to replace <tt><b>mtlb_double</b></tt> calls:
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is a character string, 
+        <tt><b>mtlb_double(A)</b></tt> may be replaced by <tt><b>asciimat(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is a boolean matrix,
+        <tt><b>mtlb_double(A)</b></tt> may be replaced by <tt><b>bool2s(A)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        If <tt><b>A</b></tt> is a double matrix,
+        <tt><b>mtlb_double(A)</b></tt> may be replaced by <tt><b>A</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_double</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/mtlb/asciimat.htm"><tt><b>asciimat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/bool2s.htm"><tt><b>bool2s</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

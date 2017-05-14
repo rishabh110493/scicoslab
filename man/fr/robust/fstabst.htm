@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fstabst</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>fstabst</b> -  Youla's parametrization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[J]=fstabst(P,r)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>P</b></tt>: <tt><b>syslin</b></tt> list (linear system)</li>
+<li>
+<tt><b>r</b></tt>: 1x2 row vector, dimension of <tt><b>P22</b></tt>
+</li>
+<li>
+<tt><b>J</b></tt>: <tt><b>syslin</b></tt> list (linear system in state-space representation)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Parameterization of all stabilizing feedbacks.</p>
+<p><tt><b>P</b></tt> is partitioned as follows:</p>
+<pre>
+
+P=[ P11 P12;
+    P21 P22]  
+   
+    </pre>
+<p>
+    (in state-space or transfer form: automatic conversion in state-space is
+    done for the computations)</p>
+<p><tt><b>r</b></tt> = size of  <tt><b>P22</b></tt> subsystem, (2,2) block of <tt><b>P</b></tt></p>
+<pre>
+
+          J =[ J11 J12;
+               J21 J22]
+   
+    </pre>
+<p><tt><b>K</b></tt> is a stabilizing controller for <tt><b>P</b></tt> (i.e. <tt><b>P22</b></tt>) iff 
+    <tt><b>K=lft(J,r,Q)</b></tt> with <tt><b>Q</b></tt> stable.</p>
+<p>
+    The central part of <tt><b>J</b></tt> , <tt><b>J11</b></tt> is the lqg regulator for <tt><b>P</b></tt></p>
+<p>
+    This <tt><b>J</b></tt> is such that defining <tt><b>T</b></tt> as the 2-port <tt><b>lft</b></tt> of <tt><b>P</b></tt>
+    and <tt><b>J</b></tt> : <tt><b>[T,rt]=lft(P,r,J,r)</b></tt> one has that <tt><b>T12</b></tt> is inner
+    and <tt><b>T21</b></tt> is co-inner.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ny=2;nu=3;nx=4;
+P22=ssrand(ny,nu,nx);
+bigQ=rand(nx+nu,nx+nu);bigQ=bigQ*bigQ';
+bigR=rand(nx+ny,nx+ny);bigR=bigR*bigR';
+[P,r]=lqg2stan(P22,bigQ,bigR);
+J=fstabst(P,r);
+Q=ssrand(nu,ny,1);Q('A')=-1;  //Stable Q
+K=lft(J,r,Q);
+A=h_cl(P,r,K); spec(A)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/obscont.htm"><tt><b>obscont</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/lft.htm"><tt><b>lft</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg.htm"><tt><b>lqg</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/control/lqg2stan.htm"><tt><b>lqg2stan</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

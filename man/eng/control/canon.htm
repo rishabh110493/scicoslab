@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>canon</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>canon</b> -  canonical controllable form</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ac,Bc,U,ind]=canon(A,B)    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Ac,Bc</b></tt>: canonical form</li>
+<li>
+<tt><b>U</b></tt>: current basis (square nonsingular matrix)</li>
+<li>
+<tt><b>ind</b></tt>: vector of integers, controllability indices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    gives the canonical controllable form of the pair <tt><b>(A,B)</b></tt>.</p>
+<p><tt><b>Ac=inv(U)*A*U, Bc=inv(U)*B</b></tt></p>
+<p>
+    The vector <tt><b>ind</b></tt> is made of the <tt><b>epsilon_i</b></tt>'s indices
+    of the pencil <tt><b>[sI - A ,  B]</b></tt> (decreasing order).
+    For example with <tt><b>ind=[3,2]</b></tt>, <tt><b>Ac</b></tt> and <tt><b>Bc</b></tt> are as follows:</p>
+<pre>
+
+      [*,*,*,*,*]           [*]
+      [1,0,0,0,0]           [0]
+Ac=   [0,1,0,0,0]        Bc=[0]
+      [*,*,*,*,*]           [*]
+      [0,0,0,1,0]           [0]
+   
+    </pre>
+<p>
+    If <tt><b>(A,B)</b></tt> is controllable, by an appropriate choice 
+    of <tt><b>F</b></tt> the <tt><b>*</b></tt> entries of <tt><b>Ac+Bc*F</b></tt> 
+    can be arbitrarily set to desired values (pole placement).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2,3,4,5;
+   1,0,0,0,0;
+   0,1,0,0,0;
+   6,7,8,9,0;
+   0,0,0,1,0];
+B=[1,2;
+   0,0;
+   0,0;
+   2,1;
+   0,0];
+X=rand(5,5);A=X*A*inv(X);B=X*B;    //Controllable pair 
+[Ac,Bc,U,ind]=canon(A,B);  //Two indices --&gt; ind=[3.2];
+index=1;for k=1:size(ind,'*')-1,index=[index,1+sum(ind(1:k))];end
+Acstar=Ac(index,:);Bcstar=Bc(index,:);
+s=poly(0,'s');
+p1=s^3+2*s^2-5*s+3;p2=(s-5)*(s-3);   
+//p1 and p2 are desired closed-loop polynomials with degrees 3,2
+c1=coeff(p1);c1=c1($-1:-1:1);c2=coeff(p2);c2=c2($-1:-1:1);
+Acstardesired=[-c1,0,0;0,0,0,-c2];  
+//Acstardesired(index,:) is companion matrix with char. pol=p1*p2
+F=Bcstar\(Acstardesired-Acstar);   //Feedbak gain
+Ac+Bc*F         // Companion form 
+spec(A+B*F/U)   // F/U is the gain matrix in original basis.
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obsv_mat.htm"><tt><b>obsv_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/cont_mat.htm"><tt><b>cont_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ctr_gram.htm"><tt><b>ctr_gram</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/ppol.htm"><tt><b>ppol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/stabil.htm"><tt><b>stabil</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

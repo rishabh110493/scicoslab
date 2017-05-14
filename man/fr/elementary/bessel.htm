@@ -1,0 +1,171 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>besselibesseljbesselkbesselybesselh</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>besseli</b> - Modified Bessel function of the first kind
+  (I sub alpha).</p>
+<p><b>besselj</b> - Bessel function of the first kind (J sub
+  alpha).</p>
+<p><b>besselk</b> - Modified Bessel function of the second
+  kind (K sub alpha).</p>
+<p><b>bessely</b> - Bessel function of the second kind (Y sub
+  alpha).</p>
+<p><b>besselh</b> - Modified Bessel function of the third
+  kind.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y = besseli(alpha,x [,ice])</tt></dd>
+<dd><tt>y = besselj(alpha,x [,ice])</tt></dd>
+<dd><tt>y = besselk(alpha,x [,ice])</tt></dd>
+<dd><tt>y = bessely(alpha,x [,ice])</tt></dd>
+<dd><tt>y = besselh(alpha,x)</tt></dd>
+<dd><tt>y = besselh(alpha,K,x
+    [,ice])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real or complex vector.</li>
+<li>
+<tt><b>alpha</b></tt>: real vector</li>
+<li>
+<tt><b>ice</b></tt>: integer flag, with default value 0</li>
+<li>
+<tt><b>K</b></tt>: integer , with possible values 1 or 2, the Hankel function
+          type.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>Warning: the semantics of these function changes between Scilab-3.0
+    and Scilab-3.1. The old semantics is available for compatibility using the
+    oldbesseli, oldbesselj, oldbesselk, oldbessely functions.<dl>
+<dd>
+<b>*</b><tt><b>besseli(alpha,x)</b></tt> computes modified Bessel functions
+        of the first kind (I sub alpha), for real order <tt><b>alpha</b></tt> and
+        argument <tt><b>x</b></tt>. <tt><b>besseli(alpha,x,1)</b></tt> computes
+        <tt><b>besseli(alpha,x).*exp(-abs(real(x)))</b></tt>.</dd>
+<dd>
+<b>*</b><tt><b>besselj(alpha,x)</b></tt> computes modified Bessel functions
+        of the first kind (J sub alpha), for real order <tt><b>alpha</b></tt> and
+        argument <tt><b>x</b></tt>. <tt><b>besselj(alpha,x,1)</b></tt> computes
+        <tt><b>besselj(alpha,x).*exp(-abs(imag(x)))</b></tt>.</dd>
+<dd>
+<b>*</b><tt><b>besselk(alpha,x)</b></tt> computes modified Bessel functions
+        of the second kind (K sub alpha), for real order <tt><b>alpha</b></tt>
+        and argument <tt><b>x</b></tt>. <tt><b>besselk(alpha,x,1)</b></tt> computes
+        <tt><b>besselk(alpha,x).*exp(x)</b></tt>.</dd>
+<dd>
+<b>*</b><tt><b>bessely(alpha,x)</b></tt> computes modified Bessel functions
+        of the second kind (Y sub alpha), for real order <tt><b>alpha</b></tt>
+        and argument <tt><b>x</b></tt>. <tt><b>bessely(alpha,x,1)</b></tt> computes
+        <tt><b>bessely(alpha,x).*exp(-abs(imag(x)))</b></tt>.</dd>
+<dd>
+<b>*</b><tt><b>besselh(alpha [,K] ,x)</b></tt> computes modified Bessel
+        functions of the third kind (Hankel function H1 or H2 depending on
+        <tt><b>K</b></tt>), for real order <tt><b>alpha</b></tt> and argument
+        <tt><b>x</b></tt>. If omitted <tt><b>K</b></tt> is supposed to be equal to
+        1. <tt><b>besselh(alpha,1,x,1)</b></tt> computes
+        <tt><b>besselh(alpha,1,x).*exp(-%i*x)</b></tt> and
+        <tt><b>besselh(alpha,2,x,1)</b></tt> computes
+        <tt><b>besselh(alpha,2,x).*exp(%i*x)</b></tt>
+</dd>
+</dl>
+<p>If <tt><b>alpha</b></tt> and <tt><b>x</b></tt> are arrays of the same size,
+    the result <tt><b>y</b></tt> is also that size. If either input is a scalar,
+    it is expanded to the other input's size. If one input is a row vector and
+    the other is a column vector, the result<tt><b>y</b></tt> is a
+    two-dimensional table of function values.</p>
+<p>I_alpha and K_alpha are 2 independant solutions of the modified
+    Bessel's differential equation :</p>
+<pre>2 2 2 x y(x)" + x y(x)' - (x + alpha ) y(x) = 0 ,</pre>
+<p>J_alpha and Y_alpha are 2 independant solutions of the Bessel's
+    differential equation :</p>
+<pre>2 2 2 x y(x)" + x y(x)' + (x - alpha ) y(x) = 0 ,</pre>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+//  besselI functions
+// ==================
+   x = linspace(0.01,10,5000)';
+   xbasc()
+   subplot(2,1,1)
+   plot2d(x,besseli(0:4,x), style=2:6)
+   legend('I'+string(0:4),2);
+   xtitle("Some modified Bessel functions of the first kind")
+   subplot(2,1,2)
+   plot2d(x,besseli(0:4,x,1), style=2:6)
+   legend('I'+string(0:4),1);
+   xtitle("Some modified scaled Bessel functions of the first kind")
+
+// besselJ functions
+// =================
+   x = linspace(0,40,5000)';
+   xbasc()
+   plot2d(x,besselj(0:4,x), style=2:6, leg="J0@J1@J2@J3@J4")
+   legend('I'+string(0:4),1);
+   xtitle("Some Bessel functions of the first kind")
+
+// use the fact that J_(1/2)(x) = sqrt(2/(x pi)) sin(x)
+// to compare the algorithm of besselj(0.5,x) with a more direct formula 
+   x = linspace(0.1,40,5000)';
+   y1 = besselj(0.5, x);
+   y2 = sqrt(2 ./(%pi*x)).*sin(x);
+   er = abs((y1-y2)./y2);
+   ind = find(er &gt; 0 &amp; y2 ~= 0);
+   xbasc()
+   subplot(2,1,1)
+   plot2d(x,y1,style=2)
+   xtitle("besselj(0.5,x)")
+   subplot(2,1,2)
+   plot2d(x(ind), er(ind), style=2, logflag="nl")
+   xtitle("relative error between 2 formulae for besselj(0.5,x)") 
+
+// besselK functions
+// =================
+   x = linspace(0.01,10,5000)';
+   xbasc()
+   subplot(2,1,1)
+   plot2d(x,besselk(0:4,x), style=0:4, rect=[0,0,6,10])
+   legend('K'+string(0:4),1);
+   xtitle("Some modified Bessel functions of the second kind")
+   subplot(2,1,2)
+   plot2d(x,besselk(0:4,x,1), style=0:4, rect=[0,0,6,10])
+   legend('K'+string(0:4),1);
+   xtitle("Some modified scaled Bessel functions of the second kind")
+
+// besselY functions
+// =================
+   x = linspace(0.1,40,5000)'; // Y Bessel functions are unbounded  for x -&gt; 0+
+   xbasc()
+   plot2d(x,bessely(0:4,x), style=0:4, rect=[0,-1.5,40,0.6])
+   legend('Y'+string(0:4),4);
+   xtitle("Some Bessel functions of the second kind")
+
+// besselH functions
+// =================
+   x=-4:0.025:2; y=-1.5:0.025:1.5;
+   [X,Y] = ndgrid(x,y);
+   H = besselh(0,1,X+%i*Y); 
+   clf();f=gcf();
+   xset("fpf"," ")
+   f.color_map=jetcolormap(16);
+   contour2d(x,y,abs(H),0.2:0.2:3.2,strf="034",rect=[-4,-1.5,3,1.5])
+   legends(string(0.2:0.2:3.2),1:16,"ur")
+   xtitle("Level curves of |H1(0,z)|")
+
+  </pre>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b>Amos, D. E., (SNLA)</dd>
+<dd>
+<b></b>Daniel, S. L., (SNLA)</dd>
+</dl>
+<h3><font color="blue">Used Function</font></h3>The source codes can be found in routines/calelm<p>Slatec : dbesi.f, zbesi.f, dbesj.f, zbesj.f, dbesk.f, zbesk.f, dbesy.f,
+    zbesy.f, zbesh.f</p>
+<p>Drivers to extend definition area (Serge Steer INRIA): dbesig.f,
+    zbesig.f, dbesjg.f, zbesjg.f, dbeskg.f, zbeskg.f, dbesyg.f, zbesyg.f,
+    zbeshg.f</p>
+</body>
+</html>

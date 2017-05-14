@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>oldplot</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>oldplot</b> - simple plot (old
+  version)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>oldplot(x,y,[xcap,ycap,caption])</tt></dd>
+<dd><tt>oldplot(y)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two vectors with same sizes</li>
+<li>
+<tt><b>xcap,ycap,caption</b></tt>: character strings or string matrices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Plot <tt><b>y</b></tt> as function of <tt><b>x</b></tt>. <tt><b>xcap</b></tt>
+    and <tt><b>ycap</b></tt> are captions for x-axis and y-axis respectively and
+    <tt><b>caption</b></tt> is the caption of the plot.</p>
+<p>Invoked with only one argument, <tt><b>oldplot(y)</b></tt> plots the
+    <tt><b>y</b></tt> vector or, if <tt><b>y</b></tt> is a matrix, it plots all its
+    row vectors on the same plot. This plot is done with respect to the vector
+    1:&lt;number of columns of <tt><b>y</b></tt>&gt;.</p>
+<p><tt><b>oldplot</b></tt> is obsolete. Use <tt><b>plot2d</b></tt> or
+    <tt><b>plot</b></tt> instead.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=0:0.1:2*%pi;
+// simple plot
+oldplot(sin(x))
+// using captions
+xbasc()
+oldplot(x,sin(x),"sin","time","plot of sinus")
+// plot 2 functions
+xbasc()
+oldplot([sin(x);cos(x)])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot.htm"><tt><b>plot</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

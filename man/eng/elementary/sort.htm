@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sort</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sort</b> -  decreasing order sorting</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[s, [k]]=sort(v)  </tt></dd>
+<dd><tt>[s, [k]]=sort(v,'r')  </tt></dd>
+<dd><tt>[s, [k]]=sort(v,'c')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v</b></tt>: real or complex vector/matrix; sparse vector; character string vector/matrix</li>
+<li>
+<tt><b>s</b></tt>: real or complex vector or matrix; sparse vector; character string vector/matrix</li>
+<li>
+<tt><b>k</b></tt>: vector or matrix of integers</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>s=sort(v)</b></tt> sorts <tt><b>v</b></tt>  in decreasing order. 
+    If <tt><b>v</b></tt> is a matrix, sorting
+    is done columnwise, <tt><b>v</b></tt> being seen as the stacked vector <tt><b>v(:)</b></tt>.
+    <tt><b>[s,k]=sort(v)</b></tt> gives in addition the indices of entries 
+    of <tt><b>s</b></tt> in <tt><b>v</b></tt>, i.e. <tt><b>v(k(:)) </b></tt> is the vector <tt><b>s</b></tt>.</p>
+<p><tt><b>s=sort(v,'r')</b></tt> sorts the rows of <tt><b>v</b></tt> in decreasing order i.e.
+    each column of <tt><b>s</b></tt> is obtained from each column of <tt><b>v</b></tt>
+    by reordering it in decreasing order.
+    <tt><b>[s,k]=sort(v,'r')</b></tt> returns in addition in each column of <tt><b>k</b></tt>
+    the indices such that <tt><b>v(k(:,i),i)=s(:,i)</b></tt> for each column index <tt><b>i</b></tt>.</p>
+<p><tt><b>s=sort(v,'c')</b></tt> sorts the columns of <tt><b>v</b></tt> in decreasing order i.e.
+    each row of <tt><b>s</b></tt> is obtained from each row of <tt><b>v</b></tt>
+    by reordering it in decreasing order.
+    <tt><b>[s,k]=sort(v,'c')</b></tt> returns in addition in each row of <tt><b>k</b></tt>
+    the indices such that <tt><b>v(i,k(i,:))=s(i,:)</b></tt> for each row index <tt><b>i</b></tt>.</p>
+<p>
+    Complex matrices or vectors are sorted w.r.t their magnitude.</p>
+<p><tt><b>y=sort(A)</b></tt> is valid when <tt><b>A</b></tt> is a sparse vector. Column/row
+    sorting is not implemented for sparse matrices.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+[s,p]=sort(rand(1,10));
+//p  is a random permutation of 1:10
+A=[1,2,5;3,4,2];
+[Asorted,q]=sort(A);A(q(:))-Asorted(:)
+v=1:10;
+sort(v)
+sort(v')
+sort(v,'r')  //Does nothing for row vectors
+sort(v,'c')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

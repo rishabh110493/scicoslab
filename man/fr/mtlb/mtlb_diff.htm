@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_diff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_diff</b> - Fonction d'émulation de la fonction Matlab diff</p>
+<h3><font color="blue">Description</font></h3>
+<p>Dans plusieurs cas particuliers, la fonction <tt><b>diff</b></tt> se comporte différemment dans Matlab et dans Scilab :</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux paramètres d'entrée : la fonction <tt><b>diff</b></tt> de Scilab considère
+	toutes les valeurs du premier paramètre comm un vecteur ce que Matlab ne fait pas.
+        </li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec trois paramètres d'entrée : si la dimension du premier paramètre suivant la dimension
+	donnée par le troisième paramètre atteint 1 avant que la fin des n itérations, Matlab passe
+	à la dimension suivante n'étant pas un 1 ce que Scilab ne fait pas.
+        </li>
+</dd>
+</dd></dl>
+<p>
+    La fonction <tt><b>mtlb_diff(A[,n[,dim]])</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>diff(A[,n[,dim]])</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les entrées pendant la conversion d'un code Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_diff</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux entrées, si <tt><b>A</b></tt> est un scalaire ou un vecteur
+        <tt><b>mtlb_diff(A,n)</b></tt> peut être remplacé par <tt><b>diff(A,n)</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Avec deux entrées, si la taille de A suivant la dimension donnée par <tt><b>dim</b></tt> ne peut pas atteindre 1
+        <tt><b>mtlb_diff(A,n,dim)</b></tt> peut être remplacé par <tt><b>diff(A,n,dim)</b></tt>
+</li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_diff</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

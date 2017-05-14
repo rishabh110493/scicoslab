@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>wfir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>wfir</b> -  linear-phase FIR filters</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[wft,wfm,fr]=wfir(ftype,forder,cfreq,wtype,fpar)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ftype</b></tt>: string : <tt><b>'lp','hp','bp','sb'</b></tt> (filter type)</li>
+<li>
+<tt><b>forder</b></tt>: Filter order (pos integer)(odd for <tt><b>ftype='hp'</b></tt> or <tt><b>'sb'</b></tt>)</li>
+<li>
+<tt><b>cfreq</b></tt>: 2-vector of cutoff frequencies (<tt><b>0&lt;cfreq(1),cfreq(2)&lt;.5</b></tt>)  only <tt><b>cfreq(1)</b></tt> is used when <tt><b>ftype='lp'</b></tt> or <tt><b>'hp'</b></tt>
+</li>
+<li>
+<tt><b>wtype</b></tt>: Window type (<tt><b>'re','tr','hm','hn','kr','ch'</b></tt>)</li>
+<li>
+<tt><b>fpar</b></tt>: 2-vector of window parameters. Kaiser window <tt><b>fpar(1)&gt;0 fpar(2)=0</b></tt>. Chebyshev window  <tt><b>fpar(1)&gt;0, fpar(2)&lt;0</b></tt> or <tt><b>fpar(1)&lt;0, 0&lt;fpar(2)&lt;.5</b></tt>
+</li>
+<li>
+<tt><b>wft</b></tt>: time domain filter coefficients</li>
+<li>
+<tt><b>wfm</b></tt>: frequency domain filter response on the grid fr</li>
+<li>
+<tt><b>fr</b></tt>: Frequency grid</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Function which makes linear-phase, FIR low-pass, band-pass,
+    high-pass, and stop-band filters
+    using the windowing technique.
+    Works interactively if called with no arguments.</p>
+<h3><font color="blue">Author</font></h3>
+<p>C. Bunks</p>
+</body>
+</html>

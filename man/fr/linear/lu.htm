@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lu</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lu</b> -  factorisation LU  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[L,U]= lu(A)  </tt></dd>
+<dd><tt>[L,U,E]= lu(A)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice carrée réelle ou complexe (m x n).
+	  </li>
+<li>
+<tt><b>L,U  </b></tt>
+	    : matrices carrées réelles ou complexes (n x n).
+	  </li>
+<li>
+<tt><b>E  </b></tt>
+	    : une matrice de permutation.
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[L,U]= lu(A)</b></tt> calcule deux matrices <tt><b>L</b></tt> et
+      <tt><b>U</b></tt> telles que <tt><b>A = L*U</b></tt> avec <tt><b>U</b></tt>
+      triangulaire supérieure et <tt><b>L</b></tt> triangulaire inférieure
+      à une permutation des lignes près.
+    </p>
+<p>
+      Si <tt><b>A</b></tt> est de rang <tt><b>k</b></tt>, les lignes
+      <tt><b>k+1</b></tt> à <tt><b>n</b></tt> de <tt><b>U</b></tt> sont nulles.
+    </p>
+<p></p>
+<p><tt><b>[L,U,E]= lu(A)</b></tt> calcule trois matrices <tt><b>L</b></tt>,
+      <tt><b>U</b></tt> et <tt><b>E</b></tt> telles que <tt><b>E*A = L*U</b></tt>
+      avec <tt><b>U</b></tt> triangulaire supérieure, <tt><b>L</b></tt>
+      triangulaire inférieure et <tt><b>E</b></tt> une matrice de
+      permutation.
+    </p>
+<p>
+      Si <tt><b>A</b></tt> est une matrice réelle, il est possible en
+      utilisant <tt><b>lufact</b></tt> et <tt><b>luget</b></tt>
+      d'obtenir les matrices de permutations et quand
+      <tt><b>A</b></tt> n'est pas inversible la compression des
+      colonnes de la matrice <tt><b>L</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    a=rand(4,4);
+    [l,u]=lu(a)
+    norm(l*u-a)
+
+
+    [h,rk]=lufact(sparse(a))  // lufact fonctionne avec des matrices creuses 
+    [P,L,U,Q]=luget(h);
+    ludel(h)
+    P=full(P);L=full(L);U=full(U);Q=full(Q); 
+    norm(P*L*U*Q-a) // P,Q sont des matrices de permutation
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lusolve.htm"><tt><b>lusolve</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>La décomposition LU est basée sur les routines Lapack  DGETRF pour
+    les matrices réelles et ZGETRF pour le cas complexe. </body>
+</html>

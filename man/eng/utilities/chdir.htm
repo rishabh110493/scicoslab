@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chdircd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>chdir</b> - changes Scilab current
+  directory</p>
+<p><b>cd</b> - changes Scilab current
+  directory</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>chdir(path)</tt></dd>
+<dd><tt>realpath=cd(path)</tt></dd>
+<dd><tt>cd path</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: a character string</li>
+<li>
+<tt><b>realpath</b></tt>: a character string, the real path name after pathname
+          conversion (see below)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>Change the current Scilab directory to those given by
+    <tt><b>path</b></tt>. Note that path conversion is performed and for example
+    <tt><b>SCI/macros/util</b></tt> is a valid pattern for both unix and windows.
+    If path is empty change to "home" directory.<h3><font color="blue">Examples</font></h3>
+<pre>
+
+chdir(TMPDIR);
+pwd
+cd 
+cd SCI
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pwd.htm"><tt><b>getcwd</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

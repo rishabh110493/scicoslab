@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plot2d3</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plot2d3</b> - 2D plot (vertical
+  bars)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plot2d3([logflags,]
+    x,y,[style,strf,leg,rect,nax])</tt></dd>
+<dd><tt>plot232(y)</tt></dd>
+<dd><tt>plot2d3(x,y
+    &lt;,opt_args&gt;)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>args</b></tt>: see <tt><b>plot2d</b></tt> for a description of parameters.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plot2d3</b></tt> is the same as <tt><b>plot2d</b></tt> but curves are
+    plotted using vertical bars.</p>
+<p>By default, successive plots are superposed. To clear the previous
+    plot, use <tt><b>clf()</b></tt>.</p>
+<p>Enter the command <tt><b>plot2d3()</b></tt> to see a demo. Note that all
+    the modes proposed by <tt><b>plot2dxx</b></tt> (xx = 1 to 4) can be enabled
+    using <tt><b>plot2d</b></tt> and setting the <tt><b>polyline_style</b></tt>
+    option to the corresponding number.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// compare the following with plot2d1
+x=[0:0.1:2*%pi]';
+plot2d3(x,[sin(x) sin(2*x) sin(3*x)])
+// In New graphics only
+clf()
+set("figure_style","new")
+plot2d(x,[sin(x) sin(2*x) sin(3*x)])
+e=gce();
+e.children(1).polyline_style=3;
+e.children(2).polyline_style=3;
+e.children(3).polyline_style=3;</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d2.htm"><tt><b>plot2d2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d4.htm"><tt><b>plot2d4</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/clf.htm"><tt><b>clf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/polyline_properties.htm"><tt><b>polyline_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

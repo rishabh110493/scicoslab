@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>bloc2exp</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bloc2exp</b> -  block-diagram to symbolic expression</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[str]=bloc2exp(blocd)  </tt></dd>
+<dd><tt>[str,names]=bloc2exp(blocd)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>blocd</b></tt>: list</li>
+<li>
+<tt><b>str</b></tt>: string</li>
+<li>
+<tt><b>names</b></tt>: string</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    given a block-diagram representation of a linear system
+    <tt><b>bloc2exp</b></tt> returns its symbolic evaluation.
+    The first element of the list <tt><b>blocd</b></tt> must be the string <tt><b>'blocd'</b></tt>.
+    Each other element of this list <tt><b>(blocd(2),blocd(3),...)</b></tt>
+    is itself a list of one the following types :</p>
+<pre>
+
+list('transfer','name_of_linear_system')
+   
+    </pre>
+<pre>
+
+list('link','name_of_link',
+               [number_of_upstream_box,upstream_box_port],
+               [downstream_box_1,downstream_box_1_portnumber],
+               [downstream_box_2,downstream_box_2_portnumber],
+               ...)
+   
+    </pre>
+<p>
+    The strings <tt><b>'transfer'</b></tt> and <tt><b>'links'</b></tt> are keywords which
+    indicate the type of element in the block diagram.</p>
+<p>
+    Case 1 :  the second parameter of the list is a character string which 
+    may refer (for a possible further evaluation) 
+    to the Scilab name of a linear system given
+    in state-space representation (<tt><b>syslin</b></tt> list) or in transfer
+    form (matrix of rationals).</p>
+<p>
+    To each transfer block is associated an integer.
+    To each input and output of a transfer block is also
+    associated its number, an integer (see examples)</p>
+<p>
+    Case 2 :  the second kind of element in a block-diagram representation
+    is a link.
+    A link links one output of a block represented by the pair
+    <tt><b>[number_of_upstream_box,upstream_box_port]</b></tt>, to different
+    inputs of other blocks. Each such input is represented by 
+    the pair <tt><b>[downstream_box_i,downstream_box_i_portnumber]</b></tt>.</p>
+<p>
+    The different elements of a block-diagram can be defined
+    in an arbitrary order.</p>
+<p>
+    For example</p>
+<p>
+    [1] <tt><b>S1*S2</b></tt> with unit feedback.</p>
+<p>
+    There are 3 transfers <tt><b>S1</b></tt> (number <tt><b>n_s1=2</b></tt>) , <tt><b>S2</b></tt> (number <tt><b>n_s2=3</b></tt>)
+    and an adder (number <tt><b>n_add=4</b></tt>) with symbolic transfer 
+    function <tt><b>['1','1']</b></tt>.</p>
+<p>
+    There are 4 links. The first one (named <tt><b>'U'</b></tt>) links the input 
+    (port 0 of fictitious block -1, omitted) to port 1 of the adder.
+    The second and third one link respectively (output)port 1 
+    of the adder to (input)port 1 of system <tt><b>S1</b></tt>, and 
+    (output)port 1 of <tt><b>S1</b></tt> to (input)port 1 of <tt><b>S2</b></tt>.
+    The fourth link (named <tt><b>'Y'</b></tt>) links (output)port 1 of <tt><b>S2</b></tt> to 
+    the output (port 0 of fictitious block -1, omitted) and to 
+    (input)port 2 of the adder.</p>
+<pre>
+
+//Initialization
+syst=list('blocd'); l=1;
+//
+//Systems
+l=l+1;n_s1=l;syst(l)=list('transfer','S1');  //System 1
+l=l+1;n_s2=l;syst(l)=list('transfer','S2');  //System 2
+l=l+1;n_adder=l;syst(l)=list('transfer',['1','1']);  //adder
+//
+//Links
+// Inputs  -1 --&gt; input 1
+l=l+1;syst(l)=list('link','U',[-1],[n_adder,1]);
+// Internal 
+l=l+1;syst(l)=list('link',' ',[n_adder,1],[n_s1,1]);
+l=l+1;syst(l)=list('link',' ',[n_s1,1],[n_s2,1]);
+// Outputs // -1 -&gt; output 1
+l=l+1;syst(l)=list('link','Y',[n_s2,1],[-1],[n_adder,2]);
+//Evaluation call
+w=bloc2exp(syst);
+   
+    </pre>
+<p>
+    The result is the character string:
+    <tt><b>w=-(s2*s1-eye())\s2*s1</b></tt>.</p>
+<p>
+    Note that invoked with two output arguments,
+    <tt><b>[str,names]= blocd(syst)</b></tt> returns in <tt><b>names</b></tt> the list
+    of symbolic names of named links. This is useful to
+    set names to inputs and outputs.</p>
+<p>
+    [2] second example</p>
+<pre>
+
+//Initialization
+syst=list('blocd'); l=1;
+//
+//System (2x2 blocks plant)
+l=l+1;n_s=l;syst(l)=list('transfer',['P11','P12';'P21','P22']);  
+//
+//Controller
+l=l+1;n_k=l;syst(l)=list('transfer','k'); 
+//
+//Links
+l=l+1;syst(l)=list('link','w',[-1],[n_s,1]);
+l=l+1;syst(l)=list('link','z',[n_s,1],[-1]);
+l=l+1;syst(l)=list('link','u',[n_k,1],[n_s,2]);
+l=l+1;syst(l)=list('link','y',[n_s,2],[n_k,1]);
+//Evaluation call
+w=bloc2exp(syst);
+   
+    </pre>
+<p>
+    In this case the result is a formula equivalent to the usual one:</p>
+<p><tt><b>P11+P12*invr(eye()-K*P22)*K*P21;</b></tt></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/bloc2ss.htm"><tt><b>bloc2ss</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. S., F. D. (INRIA)  </p>
+</body>
+</html>

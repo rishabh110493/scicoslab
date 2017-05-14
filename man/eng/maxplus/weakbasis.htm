@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>weakbasis </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>weakbasis </b> -   maxplus matrix image weak basis  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>B=weakbasis(A,[pre])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : full maxplus  matrix
+  </li>
+<li>
+<tt><b>pre  </b></tt>
+    : precision
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : full maxplus matrix (basis)
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    B is the weak basis of Im(A) (up to precision pre).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=#([2,0;0,1]); b=weakbasis(a)
+a=#([2,0,1;0,1,1]); b=weakbasis(a)
+a=#([2,0,1,0;0,1,1,%0]); b=weakbasis(a)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/includespan.htm"><tt><b>includespan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/equalspan.htm"><tt><b>equalspan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/weakbasis.htm"><tt><b>weakbasis</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsolve.htm"><tt><b>mpsolve</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

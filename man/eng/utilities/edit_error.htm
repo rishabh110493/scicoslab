@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>edit_error</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>edit_error</b> -  opens in SciPad the source of the last recorded error</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>answ = edit_error(clearerror)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>clearerror</b></tt>
+        : boolean - if true the error condition is cleared, if false it is kept (as in
+          <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>)
+        </li>
+<li>
+<tt><b>answ</b></tt>
+        : a string stating which source file is open (or why no file was open)
+        </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+       This function opens in SciPad the source of the function which caused the last recorded
+       error, and highlights the offending line.
+      </p>
+<p>
+       This function works only for functions which are defined in libraries, i.e.
+       not for internal functions, nor with functions defined online, nor loaded with
+       individual <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getf.htm"><tt><b>getf</b></tt></a> or <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/functions/getd.htm"><tt><b>getd</b></tt></a>. This is since Scilab presently
+       retains only the path to libraries and not to individual function sources.
+      </p>
+<p>
+       Correspondance between the function name foo and function filename foo.sci
+       is tacitly assumed.
+      </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    acosh abc
+    edit_error
+   </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/scipad.htm"><tt><b>scipad</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errclear.htm"><tt><b>errclear</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>Enrico Segre</dd></dl>
+</body>
+</html>

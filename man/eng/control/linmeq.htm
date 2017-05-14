@@ -1,0 +1,203 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>linmeq</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>linmeq</b> -  Sylvester and Lyapunov equations solver</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X(,sep)] = linmeq(task,A,(B,)C,flag,trans(,schur))  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>task</b></tt>: integer option to determine the equation type:<ul>
+<li>
+<tt><b>=1</b></tt>:  solve the Sylvester equation (1a) or (1b);</li>
+<li>
+<tt><b>=2</b></tt>:  solve the Lyapunov equation (2a) or (2b);</li>
+<li>
+<tt><b>=3</b></tt>: solve for the Cholesky factor op(X) the Lyapunov equation (3a) or (3b).</li>
+</ul>
+</li>
+<li>
+<tt><b>A</b></tt>: real matrix</li>
+<li>
+<tt><b>B</b></tt>: real matrix</li>
+<li>
+<tt><b>C</b></tt>: real matrix</li>
+<li>
+<tt><b>flag</b></tt>: (optional) integer vector of length 3 or 2 containing options.<ul>
+<li>
+<tt><b>task</b></tt>= 1 : flag has length 3<ul>
+<li>
+<tt><b>flag(1)</b></tt>= 0 : solve the continuous-time equation (1a); otherwise, solve the discrete-time equation (1b).</li>
+<li>
+<tt><b>flag(2)  </b></tt>= 1 : A is (quasi) upper triangular;</li>
+<li>
+<tt><b>flag(2)  </b></tt>= 2 : A is upper Hessenberg;</li>
+<li>
+<tt><b>otherwise</b></tt>A is in general form.</li>
+<li>
+<tt><b>flag(3)  </b></tt>= 1 : B is (quasi) upper triangular;</li>
+<li>
+<tt><b>flag(3)  </b></tt>= 2 : B is upper Hessenberg;</li>
+<li>
+<tt><b>otherwise,  </b></tt>B is in general form.</li>
+</ul>
+</li>
+<li>
+<tt><b>task</b></tt>= 2 : flag has length 2<ul>
+<li>
+<tt><b>flag(1)</b></tt>: if 0 solve continuous-time equation
+            (2a), otherwise, solve discrete-time equation (2b).</li>
+<li>
+<tt><b>flag(2) </b></tt>= 1 : A is (quasi) upper triangular     otherwise, A is in general form.</li>
+</ul>
+</li>
+<li>
+<tt><b>task</b></tt>= 3 : flag has length 2<ul>
+<li>
+<tt><b>flag(1)  </b></tt>= 0 : solve continuous-time equation (3a); otherwise, solve discrete-time equation (3b).</li>
+<li>
+<tt><b>flag(2)  </b></tt>= 1 : A is (quasi) upper triangular; otherwise, A is in general form.</li>
+</ul>
+</li>
+</ul>
+<p>
+     Default:    flag(1) = 0, flag(2) = 0 (, flag(3) = 0).
+    </p>
+</li>
+<li>
+<tt><b>trans</b></tt>: (optional) integer specifying a transposition option.<ul>
+<li>
+<tt><b>=  </b></tt>0 : solve the equations (1) - (3) with op(M) = M.</li>
+<li>
+<tt><b>=  </b></tt>1 : solve the equations (1) - (3) with op(M) = M'.</li>
+<li>
+<tt><b>=  </b></tt>2 : solve the equations (1) with op(A) = A';  op(B) = B;</li>
+<li>
+<tt><b>=  </b></tt>3 : solve the equations (1) with op(A) = A;   op(B) = B'.</li>
+</ul>
+<p>
+     Default:    trans = 0.
+    </p>
+</li>
+<li>
+<tt><b>schur</b></tt>: (optional) integer specifying whether the Hessenberg-Schur or Schur method should be used. Available for task = 1.<ul>
+<li>
+<tt><b>= 1 : Hessenberg-Schur method (one matrix is reduced</b></tt>to Schur form).</li>
+<li>
+<tt><b>= 2 : Schur method (two matrices are reduced to Schur</b></tt>form).</li>
+</ul>
+<p>
+    Default:    schur = 1.
+  </p>
+</li>
+<li>
+<tt><b>X</b></tt>:</li>
+<li>
+<tt><b>sep</b></tt>: (optional) estimator of Sep(op(A),-op(A)') for (2.a) or Sepd(A,A') for (2.b).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    linmeq  function for solving Sylvester and Lyapunov equations
+    using SLICOT routines SB04MD, SB04ND, SB04PD, SB04QD, 
+    SB04RD, SB03MD, and SB03OD.
+  </p>
+<pre>
+
+       [X] = linmeq(1,A,B,C,flag,trans,schur)
+   [X,sep] = linmeq(2,A,C,flag,trans)
+       [X] = linmeq(2,A,C,flag,trans)
+       [X] = linmeq(3,A,C,flag,trans)
+   
+    </pre>
+<p>
+    linmeq solves various Sylvester and Lyapunov matrix equations:
+  </p>
+<pre>
+
+        op(A)*X + X*op(B) = C,                           (1a)
+
+        op(A)*X*op(B) + X = C,                           (1b)
+
+        op(A)'*X + X*op(A) = C,                          (2a)
+
+        op(A)'*X*op(A) - X = C,                          (2b)
+
+        op(A)'*(op(X)'*op(X)) + (op(X)'*op(X))*op(A) =
+                              -  op(C)'*op(C),           (3a)
+
+        op(A)'*(op(X)'*op(X))*op(A) - op(X)'*op(X) =
+                                    - op(C)'*op(C),      (3b)
+   
+    </pre>
+<p>
+    where op(M) = M, or M'.
+  </p>
+<h3><font color="blue">Comments</font></h3>
+<dl><dd>
+<li>
+<b><font color="maroon">1.</font></b>For equation (1a) or (1b), when schur = 1, the Hessenberg-Schur
+method is used, reducing one matrix to Hessenberg form and the other
+one to a real Schur form. Otherwise, both matrices are reduced to real
+Schur forms. If one or both matrices are already reduced to
+Schur/Hessenberg forms, this could be specified by flag(2) and
+flag(3). For general matrices, the Hessenberg-Schur method could be
+significantly more efficient than the Schur method.</li>
+<li>
+<b><font color="maroon">2.</font></b>For equation (2a) or (2b), matrix C is assumed symmetric.</li>
+<li>
+<b><font color="maroon">3.</font></b>For equation (3a) or (3b), matrix A must be stable or convergent, respectively.</li>
+<li>
+<b><font color="maroon">4.</font></b>For equation (3a) or (3b), the computed matrix X is the Cholesky factor of the solution, i.e., the real solution is op(X)'*op(X), where X is an upper triangular matrix.</li>
+</dd></dl>
+<h3><font color="blue">Revisions</font></h3>
+<dl><p>
+    V. Sima, Katholieke Univ. Leuven, Belgium, May 1999, May, Sep. 2000. V. Sima, University of Bucharest, Romania, May 2000.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//(1a)
+n=40;m=30;
+A=rand(n,n);C=rand(n,m);B=rand(m,m);
+X = linmeq(1,A,B,C);
+norm(A*X+X*B-C,1)
+//(1b)
+flag=[1,0,0]
+X = linmeq(1,A,B,C,flag);
+norm(A*X*B+X-C,1)
+//(2a)
+A=rand(n,n);C=rand(A);C=C+C';
+X = linmeq(2,A,C);
+norm(A'*X + X*A -C,1)
+//(2b)
+X = linmeq(2,A,C,[1 0]);
+norm(A'*X*A -X-C,1)
+//(3a)
+A=rand(n,n);
+A=A-(max(real(spec(A)))+1)*eye(); //shift eigenvalues
+C=rand(A);
+X=linmeq(3,A,C);
+norm(A'*X'*X+X'*X*A +C'*C,1)
+//(3b)
+A = [-0.02, 0.02,-0.10, 0.02,-0.03, 0.12;
+      0.02, 0.14, 0.12,-0.10,-0.02,-0.14;     
+     -0.10, 0.12, 0.05, 0.03,-0.04,-0.04;     
+      0.02,-0.10, 0.03,-0.06, 0.08, 0.11;      
+     -0.03,-0.02,-0.04, 0.08, 0.14,-0.07;   
+      0.12,-0.14,-0.04, 0.11,-0.07, 0.04]    
+
+C=rand(A);
+X=linmeq(3,A,C,[1 0]);
+norm(A'*X'*X*A - X'*X +C'*C,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/sylv.htm"><tt><b>sylv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/lyap.htm"><tt><b>lyap</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>H. Xu, TU Chemnitz, FR Germany, Dec. 1998.  </p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>maxplus </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>maxplus </b> -  (#)  maxplus type constructor  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>B=maxplus(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : standard full or sparse matrix
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : maxplus full or sparse matrix 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Sets the type to maxplus-full if A is full or maxplus-sparse if A is
+    sparse.
+  </p>
+<p>
+    Many of the standard operators and functions have a maxplus analogue
+    which overloads the standard operator and which is not documented.
+  </p>
+<p>
+    When one applies a standard operator or a function, which has a meaning
+    in the maxplus algebra, with at least one argument of maxplus type,
+    the operator is interpreted in the maxplus sense and the result has
+    a maxplus type.
+  </p>
+<p>
+    The internal numper type of a full maxplus matrix or constant is
+    257. The internal type number of a sparse matix is 261.
+  </p>
+<p>
+    The overloading of maxplus function is obtained by adding
+    the prefix %talg_ to the corresponding standard name 
+    in the definition of the function. If %talg_tutu(A) has been
+    defined, tutu(A) with A a full maxplus matrix calls %talg_tutu(A).
+    For sparse maxplus matrix the prefix is %mps_ .
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+typeof(maxplus(1))
+type(maxplus(1))
+typeof(maxplus(sparse(1)))
+typeof(maxplus([1,2;3,4]))
+typeof(maxplus(sparse([1,0;0,1])))
+typeof(#(1))
+typeof(#(sparse(1)))
+#(3)+#(3)
+#(3)*#(3)
+a=[#(1),2;3,4]
+typeof(a)
+a*a
+a==a
+a(:,1)
+a(5,5)=5
+typeof(a)
+size(a)
+sum(a)
+prod(a)
+diag([%1,%1])
+a=[%1,2;3,4]
+triu(a)
+tril(a)
+sum(a)
+prod(a)
+sign(a)
+a.*.a // kronecker product of maxplus matrices
+clean([%1,-1.e12])
+a=[%1,0.2,-0.7,1.d0]
+floor(a)
+ceil(a)
+typeof(1+#(1))
+1+#(1)
+typeof(#(1)+1)
+#(1)+1
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/plustimes.htm"><tt><b>plustimes</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/type.htm"><tt><b>type</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/typeof.htm"><tt><b>typeof</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/diag.htm"><tt><b>diag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/prod.htm"><tt><b>prod</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/kron.htm"><tt><b>kron</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/floor.htm"><tt><b>floor</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/ceil.htm"><tt><b>ceil</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/diag.htm"><tt><b>diag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/triu.htm"><tt><b>triu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/tril.htm"><tt><b>tril</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/size.htm"><tt><b>size</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sign.htm"><tt><b>sign</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/full.htm"><tt><b>full</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/save.htm"><tt><b>save</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/load.htm"><tt><b>load</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

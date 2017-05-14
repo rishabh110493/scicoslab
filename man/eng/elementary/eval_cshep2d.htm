@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eval_cshep2d</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>eval_cshep2d</b> - bidimensional cubic shepard interpolation evaluation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[zp [,dzpdx, dzpdy [,d2zpdxx,d2zpdxy,d2zpdyy]]] = eval_cshep2d(xp, yp, tl_coef)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xp, yp</b></tt>: two real vectors (or matrices) of the same size</li>
+<li>
+<tt><b>tl_coef</b></tt>: a tlist scilab structure (of type cshep2d) defining a cubic Shepard interpolation function
+               (named <tt><b>S</b></tt> in the following)</li>
+<li>
+<tt><b>zp</b></tt>: vector (or matrix) of the same size than <tt><b>xp</b></tt> and  <tt><b>yp</b></tt>, 
+               evaluation of the interpolant <tt><b>S</b></tt> at these points</li>
+<li>
+<tt><b>dzpdx,dzpdy</b></tt>: vectors (or matrices) of the same size than <tt><b>xp</b></tt> and  <tt><b>yp</b></tt>, evaluation
+               of the first derivatives of <tt><b>S</b></tt> at these points</li>
+<li>
+<tt><b>d2zpdxx,d2zpdxy,d2zpdyy</b></tt>: vectors (or matrices) of the same size than <tt><b>xp</b></tt> and  <tt><b>yp</b></tt>, evaluation of the
+               second derivatives of <tt><b>S</b></tt> at these points</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This is the evaluation routine for cubic Shepard interpolation function computed with
+    <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cshep2d.htm"><tt><b>cshep2d</b></tt></a>, that is :
+    </p>
+<pre>
+      zp(i) = S(xp(i),yp(i))   
+      dzpdx(i) = dS/dx(xp(i),yp(i))
+      dzpdy(i) = dS/dy(xp(i),yp(i))  
+      d2zpdxx(i) = d2S/dx2(xp(i),yp(i))
+      d2zpdxy(i) = d2S/dxdy(xp(i),yp(i))  
+      d2zpdyy(i) = d2S/dy2(xp(i),yp(i))
+         </pre>
+<h3><font color="blue">Remark</font></h3>
+<dl><p>
+    The interpolant <em>S</em> is C2 (twice continuously differentiable) but is also extended by 
+    zero for <em>(x,y)</em> far enough the interpolation points. This leads to a discontinuity
+    in a region far outside the interpolation points, and so, is not cumbersome in practice (in a 
+    general manner, evaluation outside interpolation points (i.e. extrapolation) leads to very 
+    inacurate results).
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+// see example section of cshep2d
+
+// this example shows the behavior far from the interpolation points ...
+deff("z=f(x,y)","z = 1+ 50*(x.*(1-x).*y.*(1-y)).^2")
+x = linspace(0,1,10);
+[X,Y] = ndgrid(x,x);
+X = X(:); Y = Y(:); Z = f(X,Y);
+S = cshep2d([X Y Z]);
+// evaluation inside and outside the square [0,1]x[0,1]
+m = 40;
+xx = linspace(-1.5,0.5,m);
+[xp,yp] = ndgrid(xx,xx);
+zp = eval_cshep2d(xp,yp,S);
+// compute facet (to draw one color for extrapolation region
+// and another one for the interpolation region)
+[xf,yf,zf] = genfac3d(xx,xx,zp);
+color = 2*ones(1,size(zf,2));
+// indices corresponding to facet in the interpolation region
+ind=find( mean(xf,"r")&gt;0 &amp; mean(xf,"r")&lt;1 &amp; mean(yf,"r")&gt;0 &amp; mean(yf,"r")&lt;1 );
+color(ind)=3;
+xbasc();
+plot3d(xf,yf,list(zf,color), flag=[2 6 4])
+legends(["extrapolation region","interpolation region"],[2 3],1)
+xselect()
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/cshep2d.htm"><tt><b>cshep2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl>
+<dd>
+<b></b> Robert J. Renka</dd>
+<dd>
+<b></b> B. Pincon (scilab interface)</dd>
+</dl>
+</body>
+</html>

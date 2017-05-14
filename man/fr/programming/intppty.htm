@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>intppty</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>intppty</b> -  set interface argument passing properties</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>funs=intppty()  </tt></dd>
+<dd><tt>intppty(fun)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: integer an interface number (see funptr)</li>
+<li>
+<tt><b>funs</b></tt>: integer vector, vector of interface number (see funptr)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    The interface programs may be written in 2 different ways for the mode
+    of function argument passing.</p>
+<p>
+    In the first and default way, the arguments are passed by value.
+    With the following syntax:</p>
+<pre>
+
+foo(A,1+2)
+   
+    </pre>
+<p>
+    the argument associated with <tt><b>A</b></tt> will be passed by value (a copy
+    of <tt><b>A</b></tt> is made before <tt><b>foo</b></tt> is called, and
+    the argument associated with <tt><b>1+2</b></tt> will be passed by value.</p>
+<p>
+    In
+    the second way arguments may be passed be reference if there are
+    "named arguments" (no copy of the variable value is
+    done). <tt><b>intppty(fun)</b></tt> with <tt><b>fun&gt;0</b></tt> tells Scilab that the
+    interface with number <tt><b>fun</b></tt> can handle arguments passed by
+    reference. With the following syntax:</p>
+<pre>
+
+foo(A,1+2)
+   
+    </pre>
+<p>
+    the argument associated with <tt><b>A</b></tt> will be passed by reference, and
+    the argument associated with <tt><b>1+2</b></tt> will be passed by value.</p>
+<p>
+    Warning, declaring that the interface with number
+    <tt><b>fun</b></tt> can handle arguments passed by reference if it is not the
+    case should produce unpredictable results.</p>
+<p><tt><b>intppty(fun)</b></tt> with <tt><b>fun&lt;0</b></tt> suppress this property
+    for the interface <tt><b>-fun</b></tt>.</p>
+<p><tt><b>intppty()</b></tt> returns the vector of interfaces which handle
+    arguments passed by reference.</p>
+<p>
+    This function may be useful for dynamically loaded interface (see
+    addinter).</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/funptr.htm"><tt><b>funptr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

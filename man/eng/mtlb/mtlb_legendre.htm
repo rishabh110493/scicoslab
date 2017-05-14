@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_legendre</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_legendre</b> - Matlab legendre emulation
+  function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>P = mtlb_legendre(n,X)</tt></dd>
+<dd><tt>P =
+    mtlb_legendre(n,X[,normflag])</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>X</b></tt>: a scalar, vector, matrix or hypermatrix with elements in
+          [-1,1]</li></ul>
+<ul><li>
+<tt><b>n</b></tt>: a positive scalar integer</li></ul>
+<ul><li>
+<tt><b>normflag</b></tt>: a string ('sch' or 'norm')</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>legendre</b></tt> behave differently in some
+    particular cases:</p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>Scilab <tt><b>legendre(m,n,X)</b></tt> evaluates the
+            <tt><b>legendre</b></tt> function of degree n and order n for the
+            <tt><b>X</b></tt> elements. Matlab <tt><b>legendre(n,X)</b></tt>
+            evaluates the Legendre functions of degree <tt><b>n</b></tt> and
+            order <tt><b>m</b></tt>=0,1,...,n. (emulated by mtlb_legendre) for
+            the <tt><b>X</b></tt> elements.</li>
+<li>
+<b><font color="maroon"></font></b>The option normflag= <tt><b>'sch'</b></tt> doesn't exist for
+            Scilab legendre (emulated)</li>
+<li>
+<b><font color="maroon"></font></b>If <tt><b>X</b></tt> is a hypermatrix then Scilab
+            <tt><b>legendre(n,X)</b></tt> doesn't work (emulated)</li>
+</dd>
+</dd></dl>
+<p>The function <tt><b>mtlb_legendre(n,X[,normflag])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>legendre(n,X[,normflag])</b></tt>
+    when it was not possible to know what were the inputs while porting Matlab
+    code to Scilab. This function will determine the correct semantic at run
+    time. If you want to have a more efficient code it is possible to replace
+    <tt><b>mtlb_legendre</b></tt> call:</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>If <tt><b>X</b></tt> is a scalar, a vector or a matrix
+            <tt><b>mtlb_legendre(n,X[,'norm']) </b></tt>may be replaced by
+            <tt><b>legendre(n,0:n,X[,'norm'])</b></tt>
+</li></dd>
+</dd></dl>
+<p>Caution: <tt><b>mtlb_legendre</b></tt> has not to be used for hand coded
+    functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>F.B.</dd></dl>
+</body>
+</html>

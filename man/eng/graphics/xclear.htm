@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xclear</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xclear</b> -  clear a graphics window</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xclear([window-id])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>window-id</b></tt>: integer scalar or vector</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Without any argument, this function clears the current window.
+    Otherwise it clears the graphics windows whose numbers are included 
+    in the vector <tt><b>window-id</b></tt>. For example <tt><b>xclear(1:3)</b></tt> clears windows
+    1, 2 and 3.
+    If one of the windows does not 
+    exist, then it is automatically created.</p>
+<p>
+    Warning: in recording mode <tt><b>xclear</b></tt> clears
+    the window, but it does not erase the recorded commands.
+    In this case you must use the function <tt><b>xbasc</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xbasc.htm"><tt><b>xbasc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mtlb_dir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>M2SCI function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_dir</b> - Matlab dir emulation function</p>
+<h3><font color="blue">Description</font></h3>
+<p>Matlab and Scilab <tt><b>dir</b></tt> behave differently:</p>
+<dl><dd>
+<b></b><dd><li>
+<b><font color="maroon"></font></b>
+        When result is stored in a variable: Matlab <tt><b>dir</b></tt> returns a structure but Scilab
+	<tt><b>dir</b></tt> returns a 'dir' tlist, so data can not be extracted in the same way.
+        </li></dd>
+</dd></dl>
+<p>
+    The function <tt><b>mtlb_dir([path])</b></tt> is used by
+    <tt><b>mfile2sci</b></tt> to replace <tt><b>dir([path])</b></tt> when output is stored in a variable.
+    There is no replacement possibility for it, else (when <tt><b>mtlb_dir</b></tt> is replaced by <tt><b>dir</b></tt>)
+    data can not be extracted like in Matlab. For example, Scilab equivalent for Matlab
+    <tt><b>L=dir;file_name=L(1).name;</b></tt> is <tt><b>L=dir();file_name=L.name(1);</b></tt>.
+    </p>
+<p>Caution: <tt><b>mtlb_dir</b></tt> has not to be used for hand coded functions.</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

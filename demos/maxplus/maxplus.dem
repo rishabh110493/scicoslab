@@ -1,0 +1,23 @@
+mode(-1)
+// Copyright ENPC
+//path=get_absolute_file_path('maxplus.dem');
+//getf(path+'maxplus.dem');
+//oldln=lines();lines(0)
+
+demolist=[
+    'Maxplus Arithmetic, Maxplus linear System, Production ... 
+     System Application','exec '+SCI+'/demos/maxplus/mxpdemo.sce';]
+//    'Maxplus Algebra Course', 'exec '+SCI+'/demos/maxplus/mxpcourse.sce']
+
+
+//xbasc();
+while %t then
+  num=x_choose(demolist(:,1),'Choose a demo');
+  if num==0 then 
+     lines(oldln(1))
+     return
+  else
+     execstr(demolist(num,2))
+  end,
+end
+

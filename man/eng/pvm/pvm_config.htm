@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pvm_config</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pvm_config</b> -  sends a message</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>res =  pvm_config()  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>res</b></tt>list of 7 elements such that:<ul>
+<li>
+<tt><b>(1)</b></tt>:
+     integer returning the number of hosts (pvmds) in the virtual
+     machine.</li>
+<li>
+<tt><b>(2)</b></tt>:  integer returning the number of different data formats being used.</li>
+<li>
+<tt><b>(3)</b></tt>:  integer returning pvmd task ID for host.</li>
+<li>
+<tt><b>(4)</b></tt>:  character string returning name of host.</li>
+<li>
+<tt><b>(5)</b></tt>:  character string returning architecture name of host</li>
+<li>
+<tt><b>(6)</b></tt>:  integer returning relative speed of host. Default value is 1000.</li>
+<li>
+<tt><b>(7)</b></tt>:  integer status code returned by the routine.</li>
+</ul>
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>pvm_config</b></tt> returns information about
+    the present virtual machine. The information returned is
+    similar to that available from the console command.</p>
+<p>
+    The <tt><b>pvm_config</b></tt> function returns information about the entire
+    virtual machine in one call.</p>
+<p>
+    The returned value <tt><b>res(7)</b></tt>will be zero if 
+    the call is successful and will be 
+    will be &lt; 0 if some error occurs.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+if pvm_start()==0 then
+    res = pvm_config()
+    pvm_halt()
+end
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_start.htm"><tt><b>pvm_start</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/pvm/pvm_tasks.htm"><tt><b>pvm_tasks</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

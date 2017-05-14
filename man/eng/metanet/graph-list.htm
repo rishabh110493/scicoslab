@@ -1,0 +1,286 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>graph-list</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graph-list</b> -  description of graph list</p>
+<h3><font color="blue">Description</font></h3>
+<p>
+    A graph in Scilab is represented by a Scilab typed list. 
+    We call it a graph list.
+  </p>
+<p>
+    You will find below the complete description of the list.
+    Each element is described by one or more lines.
+    The first line gives
+    the name of the element and its definition. Additional informations, such as
+    the default for elements that can have one, are given in the other lines.
+    Indeed, only the 5 first elements must have a value in the list, all the 
+    others can be given the empty vector <tt><b>[]</b></tt> as a value, and then the default 
+    is used when it is needed by functions or by the Metanet window.
+    For instance, you can define a graph list by
+  </p>
+<pre>
+
+g=make_graph('min',1,1,[1],[1]);
+   
+    </pre>
+<p>
+    which is the simplest graph you can create in Metanet (it is directed, has 
+    one node and one loop arc on this node).
+  </p>
+<p>
+    The name of the element in the list is very important because it is used to 
+    access the elements of the list. For instance, if <tt><b>g</b></tt> is a graph list, 
+    to get the name of the graph, you only have to do:
+  </p>
+<pre>
+
+g('name')
+   
+    </pre>
+<p>
+    or
+  </p>
+<pre>
+
+g.name
+   
+    </pre>
+<p>
+    and if you want to change the name of the graph to <tt><b>'toto'</b></tt>, 
+    you have to do: 
+  </p>
+<pre>
+
+g('name')='toto';
+   
+    </pre>
+<p>
+    or
+  </p>
+<pre>
+
+g.name='toto';
+   
+    </pre>
+<p>
+    Moreover, you can get the number of edges and the number of arcs of the graph
+    by using <tt><b>edge_number(g)</b></tt> and <tt><b>arc_number(g)</b></tt> (these names do not
+    correspond to elements of the list). For compatibility, <tt><b>node_number(g)</b></tt> 
+    can also be used instead of <tt><b>g('node_number')</b></tt> or <tt><b>g.node_number</b></tt>.
+  </p>
+<p>
+    A graph list can be syntactically correct but not represent a good graph. 
+    You can use the function <tt><b>check_graph</b></tt> to check it.
+    Moreover it is a good idea to give nodes different names. In fact, this
+    does not give errors in Scilab, but strange behaviour can appear when using 
+    the 
+    Metanet window. This is not checked by <tt><b>check_graph</b></tt> 
+    because it is time consuming. It is only checked when loading, saving
+    or showing a graph.
+  </p>
+<p>
+    The elements of a graph list are given below:
+  </p>
+<p></p>
+<dl>
+<dd>
+<b>name:</b>- the name of the graph</dd>
+<dd>
+<b>-</b>it is a string with a maximum of 80 characters</dd>
+<dd>
+<b>directed:</b>- flag giving the type of the graph</dd>
+<dd>
+<b>-</b>it is equal to 1 (graph directed) or equal to 0 (graph undirected)</dd>
+<dd>
+<b>node_number:</b>- number of nodes</dd>
+<dd>
+<b>tail:</b>- row vector of the tail node numbers</dd>
+<dd>
+<b>head:</b>- row vector of the head node numbers</dd>
+<dd>
+<b>node_name:</b>- row vector of node names</dd>
+<dd>
+<b>-</b>the names of the nodes must be different</dd>
+<dd>
+<b>-</b>default is the node numbers as node names</dd>
+<dd>
+<b>node_type:</b>- row vector of the node types</dd>
+<dd>
+<b>-</b>the type is an integer from 0 to 2, default is 0 (plain node):</dd>
+<dd>
+<b>-</b>0 = plain node</dd>
+<dd>
+<b>-</b>1 = sink node</dd>
+<dd>
+<b>-</b>2 = source node</dd>
+<dd>
+<b>node_x:</b>- row vector of the x coordinate of the nodes</dd>
+<dd>
+<b>-</b>default is computed</dd>
+<dd>
+<b>node_y:</b>- row vector of the y coordinate of the nodes</dd>
+<dd>
+<b>-</b>default is computed</dd>
+<dd>
+<b>node_color:</b>- row vector of the node colors</dd>
+<dd>
+<b>-</b>the color is an integer from 0 to 16, default is 0 (default foreground):</dd>
+<dd>
+<b>-</b>0 = default foreground</dd>
+<dd>
+<b>-</b>1 = navyblue</dd>
+<dd>
+<b>-</b>2 = blue</dd>
+<dd>
+<b>-</b>3 = skyblue</dd>
+<dd>
+<b>-</b>4 = aquamarine</dd>
+<dd>
+<b>-</b>5 = forestgreen</dd>
+<dd>
+<b>-</b>6 = green</dd>
+<dd>
+<b>-</b>7 = lightcyan</dd>
+<dd>
+<b>-</b>8 = cyan</dd>
+<dd>
+<b>-</b>9 = orange</dd>
+<dd>
+<b>-</b>10 = red</dd>
+<dd>
+<b>-</b>11 = magenta</dd>
+<dd>
+<b>-</b>12 = violet</dd>
+<dd>
+<b>-</b>13 = yellow</dd>
+<dd>
+<b>-</b>14 = gold</dd>
+<dd>
+<b>-</b>15 = beige</dd>
+<dd>
+<b>-</b>16 = background</dd>
+<dd>
+<b>node_diam:</b>- row vector of the size of the node diameters in pixels</dd>
+<dd>
+<b>-</b>a node is drawn as a circle</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_node_diam</b></tt>
+</dd>
+<dd>
+<b>node_border:</b>- row vector of the size of the node borders in pixels</dd>
+<dd>
+<b>-</b>a node is drawn as a circle</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_node_border</b></tt>
+</dd>
+<dd>
+<b>node_font_size:</b>- row vector of the size of the font used to draw the name of the node</dd>
+<dd>
+<b>-</b>you can choose 8, 10, 12, 14, 18 or 24</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_font_size</b></tt>
+</dd>
+<dd>
+<b>node_demand:</b>- row vector of the node demands</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_name:</b>- row vector of the edge names</dd>
+<dd>
+<b>-</b>it is better that the names of the edges are different, but this is not an error</dd>
+<dd>
+<b>-</b>default is the edge numbers as edge names</dd>
+<dd>
+<b>edge_color:</b>- row vector of the edge colors</dd>
+<dd>
+<b>-</b>the color is an integer from 0 to 16 (see <tt><b>node_color</b></tt>)</dd>
+<dd>
+<b>-</b>default is 0 (default foreground)</dd>
+<dd>
+<b>edge_width:</b>- row vector of the size of the edge widths in pixels</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_edge_width</b></tt>
+</dd>
+<dd>
+<b>edge_hi_width:</b>- row vector of the size of the highlighted edge widths in pixels</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_edge_hi_width</b></tt>
+</dd>
+<dd>
+<b>edge_font_size:</b>- row vector of the size of the fonts used to draw the name of the edge</dd>
+<dd>
+<b>-</b>you can choose 8, 10, 12, 14, 18 or 24</dd>
+<dd>
+<b>-</b>default is the value of element <tt><b>default_font_size</b></tt>
+</dd>
+<dd>
+<b>edge_length:</b>- row vector of the edge lengths</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_cost:</b>- row vector of the edge costs</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_min_cap:</b>- row vector of the edge minimum capacities</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_max_cap:</b>- row vector of the edge maximum capacities</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_q_weight:</b>- row vector of the edge quadratic weights</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_q_orig:</b>- row vector of the edge quadratic origins</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>edge_weight:</b>- row vector of the edge weights</dd>
+<dd>
+<b>-</b>default is 0</dd>
+<dd>
+<b>default_node_diam:</b>- default size of the node diameters of the graph</dd>
+<dd>
+<b>-</b>default is 20 pixels</dd>
+<dd>
+<b>default_node_border:</b>- default size of the node borders of the graph</dd>
+<dd>
+<b>-</b>default is 2 pixels</dd>
+<dd>
+<b>default_edge_width:</b>- default size of the edge widths of the graph</dd>
+<dd>
+<b>-</b>default is 1 pixel</dd>
+<dd>
+<b>default_edge_hi_width:</b>- default size of the highlighted edge widths of the graph</dd>
+<dd>
+<b>-</b>default is 3 pixels</dd>
+<dd>
+<b>default_font_size:</b>- default size of the font used to draw the names of nodes and edges</dd>
+<dd>
+<b>-</b>default is 12</dd>
+<dd>
+<b>node_label:</b>- row vector of node labels</dd>
+<dd>
+<b>edge_label:</b>- row vector of edge labels</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+g=load_graph(SCI+'/demos/metanet/mesh100');
+g('node_color')=int(rand(1:g('node_number'))*16);
+g('edge_color')=int(rand(1:edge_number(g))*16);
+show_graph(g)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/arc_number.htm"><tt><b>arc_number</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/check_graph.htm"><tt><b>check_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/edge_number.htm"><tt><b>edge_number</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/glist.htm"><tt><b>glist</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/make_graph.htm"><tt><b>make_graph</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/metanet/node_number.htm"><tt><b>node_number</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

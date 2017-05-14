@@ -1,0 +1,282 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>surface_properties</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Data type</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>surface_properties</b> - description of the 3D entities
+  properties</p>
+<h3><font color="blue">Description</font></h3>
+<p>The Surface entity is a leaf of the graphics entities hierarchy. Two
+    classes appears under this type of entity : <tt><b>Plot3d</b></tt> and
+    <tt><b>Fac3d</b></tt> according to the ploting function or the way data is
+    entered. <tt><b>Fac3d</b></tt> and <tt><b>Plo3d</b></tt> entities are similar
+    but <tt><b>Fac3d</b></tt> is more complete and accept more options than
+    <tt><b>Plot3d</b></tt>. To always have <tt><b>Fac3d</b></tt> entities, simply
+    use <tt><b>genfac3d</b></tt> to pre-build matrices before using
+    <tt><b>plot3d</b></tt> or use the <tt><b>surf</b></tt> command.</p>
+<p>Here are the properties contained in a surface entity:</p>
+<dl>
+<dd>
+<b>parent: </b>This property contains the handle of the parent. The parent of the
+        surface entity should be of type <tt><b>"Axes"</b></tt> or
+        <tt><b>"Compound"</b></tt>.</dd>
+<dd>
+<b>children: </b>This property contains a vector with the <tt><b>children</b></tt> of
+        the handle. However, surface handles currently do not have any
+        <tt><b>children</b></tt>.</dd>
+<dd>
+<b>visible: </b>This field contains the <tt><b>visible</b></tt> property value for
+        the entity . It should be <tt><b>"on" </b></tt> or <tt><b>"off"</b></tt> .
+        By default, surfaces are visibles, the value's property is
+        <tt><b>"on"</b></tt>. If <tt><b>"off"</b></tt> the 3D graphics are not
+        displayed on the screen.</dd>
+<dd>
+<b>surface_mode: </b>This field contains the default <tt><b>surface_mode</b></tt> property
+        value for the surface. Its value should be <tt><b>"on" </b></tt>(surface
+        drawn) or <tt><b>"off"</b></tt> (no surface drawn).</dd>
+<dd>
+<b>foreground: </b>If <tt><b>color_mode &gt;= 0</b></tt>, this field contains the color
+        index used to draw the edges. If not, foreground is not used at all.
+        The foreground value should be an integer color index (relative to the
+        current colormap).</dd>
+<dd>
+<b>thickness: </b>This field contains the default <tt><b>thickness</b></tt> value of
+        the lines used to draw the facets contours. It should be a positive
+        integer.</dd>
+<dd>
+<b>mark_mode: </b>This field contains the default <tt><b>mark_mode</b></tt> property
+        value for the surface. Its value should be <tt><b>"on"</b></tt> (marks
+        drawn) or <tt><b>"off"</b></tt> (no marks drawn).</dd>
+<dd>
+<b>mark_style: </b>The <tt><b>mark_style</b></tt> property value is used to select the
+        type of mark to use when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. The value should be an integer in [0 14] which
+        stands for: dot, plus, cross, star, filled diamond, diamond, triangle
+        up, triangle down, diamond plus, circle, asterisk, square, triangle
+        right, triangle left and pentagram.</dd>
+<dd>
+<b>mark_size_unit: </b>This field contains the default <tt><b>mark_size_unit</b></tt>
+        property value. If <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"point"</b></tt>, then the <tt><b>mark_size</b></tt> value is
+        directly given in points. When <tt><b>mark_size_unit</b></tt> is set to
+        <tt><b>"tabulated"</b></tt>, <tt><b>mark_size</b></tt> is computed relative
+        to the font size array: therefore, its value should be an integer in
+        [0 5] whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt. Note that
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a> and pure scilab functions use
+        <tt><b>tabulated</b></tt> mode as default ; when using the
+        <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surf.htm"><tt><b>surf</b></tt></a> (or <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot.htm"><tt><b>plot</b></tt></a> for 2D lines) function, the
+        <tt><b>point</b></tt> mode is automatically enabled.</dd>
+<dd>
+<b>mark_size: </b>The <tt><b>mark_size</b></tt> property is used to select the type of
+        size of the marks when <tt><b>mark_mode</b></tt> property is
+        <tt><b>"on"</b></tt>. Its value should be an integer between 0 and 5
+        whith stands for 8pt, 10pt, 12pt, 14pt, 18pt and 24pt.</dd>
+<dd>
+<b>mark_foreground: </b>This field contains the <tt><b>mark_foreground</b></tt> property
+        value which is the marks' edge color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>mark_background: </b>This field contains the <tt><b>mark_background</b></tt> property
+        value which is the marks' face color. Its value should be a color
+        index (relative to the current color_map).</dd>
+<dd>
+<b>data: </b>This field defines a <tt><b>tlist</b></tt> data structure of type
+        "3d" composed of a row and column indices of each element as the x-,
+        y- and z-coordinates contained respectivly in
+        <tt><b>data.x</b></tt>,<tt><b>data.y</b></tt> and <tt><b>data.z</b></tt>. The
+        complementary field named <tt><b>data.color</b></tt> is available in case
+        a real color vector or matrix is specified. If none,
+        <tt><b>data.color</b></tt> is not listed. The surface is painted
+        according to <tt><b>color_mode </b></tt>and <tt><b>color_flag</b></tt>
+        properties. </dd>
+<dd>
+<b>color_mode: </b>an integer between <tt><b>[-size(colormap) ; size(colormap)]</b></tt>
+        defining the color of the facet when <tt><b>color_flag</b></tt> value is
+        <tt><b>0</b></tt>. As stated before, if<tt><b> color_mode &gt; 0</b></tt>,
+        edges are drawn using <tt><b>foreground</b></tt> color. If
+        <tt><b>color_mode</b></tt> is set to <tt><b>0</b></tt>, a mesh of the
+        surface is drawn: front faces have no colors. Finally, when
+        <tt><b>color_mode &lt; 0</b></tt>, front faces are painted with color
+        <tt><b>-color_mode</b></tt> but no edges are displayed.</dd>
+<dd>
+<b>color_flag: </b>This field is used to specify the algorithm used to set facets'
+        colors.Not that the rules on <tt><b>color_mode</b></tt>,
+        <tt><b>foreground</b></tt> and <tt><b>hiddencolor</b></tt> are still applied
+        to this case.<dl>
+<dd>
+<b></b><p><tt><b>color_flag == 0</b></tt></p>
+<dl><dd>
+<b></b><p>All facets are painted using the color index and method
+                defined by <tt><b>color_mode</b></tt> (see above).</p>
+</dd></dl>
+</dd>
+<dd>
+<b></b><p><tt><b>color_flag == 1</b></tt></p>
+<dl><dd>
+<b></b><p>All facets are painted using one color index per facet
+                proportional to <tt><b>z</b></tt>. The minimum <tt><b>z</b></tt>
+                value is painted using the index 1 color while the maximum
+                <tt><b>z</b></tt> value is painted using highest color index. The
+                edges of the facets can be additionnaly drawn depending on the
+                value of <tt><b>color_mode</b></tt> (see above).</p>
+</dd></dl>
+</dd>
+<dd>
+<b></b><p>The 3 remaining cases (<tt><b>color_flag</b></tt><tt><b>== 2,3 or
+            4</b></tt>) are only available only with <tt><b>Fac3d</b></tt> entity.
+            Then, the <tt><b>data.color</b></tt> value is used to set colors for
+            facets (indices in the current colormap) if it exists. If not, the
+            current <tt><b>color_mode</b></tt> is used to paint the facets.</p>
+</dd>
+<dd>
+<b></b><p><tt><b>color_flag == 2 ('flat' shading)</b></tt></p>
+<dl>
+<dd>
+<b></b><p>All facets are painted using the color index given in the
+                <tt><b>data.color</b></tt> property (one color per facet is
+                needed). Two cases are then possible :</p>
+</dd>
+<dd>
+<b></b><p><tt><b>data.color</b></tt> contains a <tt><b>color</b></tt>
+                vector : if <tt><b>color(i)</b></tt> is positive it gives the
+                color of facet <tt><b>i</b></tt> and the boundary of the facet is
+                drawn with current line style and color. If
+                <tt><b>color(i)</b></tt> is negative, color id
+                <tt><b>-color(i)</b></tt> is used and the boundary of the facet
+                is not drawn.</p>
+<p><tt><b>data.color</b></tt> contains a color matrix of size
+                (nf,n) where <tt><b>n</b></tt> stands for the number of facets
+                and <tt><b>nf</b></tt> for the number of points defining the
+                polygonal facet. For the <tt><b>nf</b></tt> vertices defining
+                each facet, the algorithm computes an <tt>average value</tt>
+                of the color index (from the matrix color index) : the
+                <tt><b>nf</b></tt> vertices of the same facet will have the same
+                color index value.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b></b><p><tt><b>color_flag == 3 ('interpolated' shading)</b></tt></p>
+<dl>
+<dd>
+<b></b><p>Facets painting results of interpolation of vertices
+                colors. The indices of vertices color are given in the
+                <tt><b>data.color</b></tt> property (one color per vertex is
+                needed). Two cases are possible :</p>
+</dd>
+<dd>
+<b></b><p><tt><b>data.color</b></tt> contains a <tt><b>colors</b></tt>
+                vector : then, there are too few data to complete the
+                interpolated shading mode. Indeed, a color matrix of size
+                (nf,n) (where <tt><b>n</b></tt> stands for the number of facets
+                and <tt><b>nf</b></tt> for the number of points defining the
+                polygonal facet) is needed to perform this operation. For each
+                facet, the algorithm copies the single color index value of
+                the facet into the <tt><b>nf</b></tt> color indexes vertices
+                defining the facet's boundary.</p>
+<p><tt><b>data.color</b></tt> contains a color matrix of size
+                (nf,n) (see upper for <tt><b>nf</b></tt> and <tt><b>n</b></tt>
+                definitions), the interpolated shading mode can be completed
+                normally using those color indexes.</p>
+</dd>
+</dl>
+</dd>
+<dd>
+<b></b><p><tt><b>color_flag == 4 (Matlab-like 'flat' shading)</b></tt></p>
+<dl>
+<dd>
+<b></b><p>Same as <tt><b>color_flag==2</b></tt> with a slight difference
+                when <tt><b>data.color</b></tt> is a matrix. All facets are
+                painted using the color index given in the
+                <tt><b>data.color</b></tt> property (one color per facet is
+                needed). Two cases are then possible :</p>
+</dd>
+<dd>
+<b></b><p><tt><b>data.color</b></tt> contains a <tt><b>color</b></tt>
+                vector : if <tt><b>color(i)</b></tt> is positive it gives the
+                color of facet <tt><b>i</b></tt> and the boundary of the facet is
+                drawn with current line style and color. If
+                <tt><b>color(i)</b></tt> is negative, color id
+                <tt><b>-color(i)</b></tt> is used and the boundary of the facet
+                is not drawn.</p>
+<p><tt><b>data.color</b></tt> contains a color matrix of size
+                (nf,n) where <tt><b>n</b></tt> stands for the number of facets
+                and <tt><b>nf</b></tt> for the number of points defining the
+                polygonal facet. For the <tt><b>nf</b></tt> vertices defining
+                each facet, the algorithm takes the<tt> color of the first
+                vertex</tt> defining the patch (facet).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>cdata_mapping: </b><tt><b>Specific to Fac3d handles</b></tt>. A string with value
+        <tt><b>'scaled'</b></tt> or <tt><b>'direct'</b></tt>. If a
+        <tt><b>data.color</b></tt> is set, each index color data specifies a
+        single value for each vertex. <tt><b>cdata_mapping</b></tt> determines
+        wether those indices are scaled to map linearly into the current
+        colormap (<tt><b>'scaled'</b></tt> mode) or point directly into this
+        colormap (<tt><b>'direct</b></tt>' mode). This property is usefull when
+        <tt><b>color_flag</b></tt> equals <tt><b>2</b></tt>,<tt><b>3</b></tt> or
+        <tt><b>4</b></tt>.</dd>
+<dd>
+<b>hiddencolor: </b>This field contains the color index used to draw the backward
+        faces of a surface. Its value should be a positive integer (color
+        index relative to the current colormap). If it is a negative
+        integer,the same color than the "visible" face is applied to the rear
+        face.</dd>
+<dd>
+<b>user_data: </b>This field can be use to store any scilab variable in the surface
+        data structure, and to retreive it.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>set("figure_style","new") 
+//create a figure 
+t=[0:0.3:2*%pi]'; z=sin(t)*cos(t');
+[xx,yy,zz]=genfac3d(t,t,z); 
+plot3d([xx xx],[yy yy],list([zz zz+4],[4*ones(1,400) 5*ones(1,400)])) 
+h=get("hdl") //get handle on current entity (here the surface) 
+a=gca(); //get current axes
+a.rotation_angles=[40,70]; 
+a.grid=[1 1 1]; 
+//make grids 
+a.data_bounds=[-6,0,-1;6,6,5];
+a.axes_visible="off"; 
+//axes are hidden a.axes_bounds=[.2 0 1 1]; 
+f=get("current_figure");
+//get the handle of the parent figure 
+f.color_map=hotcolormap(64); 
+//change the figure colormap 
+h.color_flag=1; 
+//color according to z 
+h.color_mode=-2; 
+//remove the facets boundary 
+h.color_flag=2; 
+//color according to given colors 
+h.data.color=[1+modulo(1:400,64),1+modulo(1:400,64)];
+//shaded
+h.color_flag=3; 
+
+scf(2); // creates second window and use surf command
+subplot(211)
+surf(z,'cdata_mapping','direct','facecol','interp')
+
+subplot(212)
+surf(t,t,z,'edgeco','b','marker','d','markersiz',9,'markeredg','red','markerfac','k')
+e=gce();
+e.color_flag=1 // color index proportional to altitude (z coord.)
+e.color_flag=2; // back to default mode
+e.color_flag= 3; // interpolated shading mode (based on blue default color because field data.color is not filled)
+
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/delete.htm"><tt><b>delete</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d1.htm"><tt><b>plot3d1</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d2.htm"><tt><b>plot3d2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/surf.htm"><tt><b>surf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE &amp; F.Leray</p>
+</body>
+</html>

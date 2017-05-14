@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>edit_curv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>edit_curv</b> -  éditeur graphique interactif  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[x,y,ok,gc] = edit_curv(y)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job,tit)  </tt></dd>
+<dd><tt>[x,y,ok,gc] = edit_curv(x,y,job,tit,gc)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+    : vecteur de coordonnées x
+</li>
+<li>
+<tt><b>y  </b></tt>
+    : vecteur de coordonnées y 
+</li>
+<li>
+<tt><b>job  </b></tt>
+    : chaîne de caractères composée d'un à trois des caractères 'a','x','y'
+<ul>
+<li><tt><b>'a' : pour ajouter des points à la courbe éditée  </b></tt></li>
+<li><tt><b>'x' : pour modifier les coordonnées x des points de la courbe éditée  </b></tt></li>
+<li><tt><b>'y' : pour modifier les coordonnées y des points de la courbe éditée  </b></tt></li>
+</ul>
+</li>
+<li>
+<tt><b>tit  </b></tt>
+    : un vecteur de 3 chaînes de caractères donnant les légendes de la courbe
+</li>
+<li>
+<tt><b>gc  </b></tt>
+    : une liste de paramètres pour la fenêtre graphique : <tt><b>gc=list(rect,nax)</b></tt><ul>
+<li><tt><b>rect : bornes du graphique (voir plot2d)  </b></tt></li>
+<li><tt><b>nax  : paramètres de graduation (voir plot2d)  </b></tt></li>
+</ul>
+</li>
+<li>
+<tt><b>ok  </b></tt>
+    : si ok==%t l'utilisateur a quitté avec le menu 'ok' sinon l'utilisateur a quitté avec le menu 'abort'. : list (objets graphiques créés avec <tt><b>edit_curv</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>edit_curv</b></tt> est un éditeur de courbes interactif. Pour ajouter un nouveau point
+    cliquer à la position désirée, le point ajouté sera
+    connecté au point final le plus proche. Pour bouger un point cliquer dessus, bouger la souris et cliquer pour définir la nouvelle position.
+  </p>
+<h3><font color="blue">Author</font></h3>
+<p>Serge Steer ; ; ; ; ;   </p>
+</body>
+</html>

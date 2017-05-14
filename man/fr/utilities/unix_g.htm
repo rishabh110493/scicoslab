@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>unix_g</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>unix_g</b> -  exécution d'une commande Unix ou DOS, sortie redirigée vers une variable  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>rep=unix_g(cmd)  </tt></dd>
+<dd><tt>[rep,stat]=unix_g(cmd)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>command-name  </b></tt>
+    : chaîne de caractères
+  </li>
+<li>
+<tt><b>rep  </b></tt>
+    : vecteur colonne de chaînes de caractères
+  </li>
+<li>
+<tt><b>stat  </b></tt>
+    : un entier, le statut d'erreur, si stat==0 aucune erreur.
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Envoie la chaîne <tt><b>command-name</b></tt> à l'interpréteur
+    de commande (sh sous Unix, ou command.com sous DOS). La sortie
+    standard et les erreurs sont reportées dans la variable
+    <tt><b>rep</b></tt>. Les erreurs se produisant dans
+    l'interpréteur de commande sont interceptées; notez que la
+    *dernière erreur uniquement* est signalée quand
+    <tt><b>command-name</b></tt> est une suite de commandes séparées par
+    des ";".
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+function d=DIR(path)
+  path=pathconvert(path,%t,%t)
+  if MSDOS then
+    d=unix_g('dir '+path)
+  else
+    d=unix_g('ls '+path)
+  end
+endfunction
+
+DIR('SCI/demos')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_s.htm"><tt><b>unix_s</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_w.htm"><tt><b>unix_w</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix_x.htm"><tt><b>unix_x</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/unix.htm"><tt><b>unix</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

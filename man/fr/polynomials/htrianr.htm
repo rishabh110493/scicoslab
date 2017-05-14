@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>htrianr</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>htrianr</b> -  triangularisation d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ar,U,rk]=htrianr(A)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>Ar  </b></tt>
+    : matrice de polynômes
+</li>
+<li>
+<tt><b>U  </b></tt>
+    : matrice unimodulaire de polynômes
+</li>
+<li>
+<tt><b>rk  </b></tt>
+    : entier, le rang normal de <tt><b>A</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    triangularisation de la matrice de polynômes <tt><b>A</b></tt>.
+  </p>
+<p><tt><b>A</b></tt> de taille <tt><b>[m,n]</b></tt>, <tt><b>m &lt;= n</b></tt>.
+  </p>
+<p><tt><b>Ar=A*U</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=poly(0,'x');
+M=[x;x^2;2+x^3]*[1,x-2,x^4];
+[Mu,U,rk]=htrianr(M)
+det(U)
+M*U(:,1:2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/hrmt.htm"><tt><b>hrmt</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/colcompr.htm"><tt><b>colcompr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

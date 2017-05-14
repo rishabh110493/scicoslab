@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>coffg</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>coffg</b> -  inverse d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ns,d]=coffg(Fs)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>Fs  </b></tt>
+    : matrice carrée de polynômes
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>coffg</b></tt> calcule <tt><b>Fs^-1</b></tt> par la méthode des cofacteurs, où <tt><b>Fs</b></tt> est une matrice de polynômes.
+  </p>
+<p>
+    inverse de <tt><b>Fs</b></tt> = <tt><b>Ns/d</b></tt></p>
+<p><tt><b>d</b></tt> = dénominateur commun; <tt><b>Ns</b></tt> = numérateur (une matrice de polynômes).
+  </p>
+<p>
+    (pour les grandes matrices, s'armer de patience... les résultats sont en général fiables)
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s')
+a=[ s, s^2+1; s  s^2-1];
+[a1,d]=coffg(a);
+(a1/d)-inv(a)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/determ.htm"><tt><b>determ</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/detr.htm"><tt><b>detr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/invr.htm"><tt><b>invr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/penlaur.htm"><tt><b>penlaur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

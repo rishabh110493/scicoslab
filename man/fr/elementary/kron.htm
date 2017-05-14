@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>kron</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>kron</b> -  produit de kronecker (.*.)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>kron(x,y)   </tt></dd>
+<dd><tt>x.*.y  </tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Produit tensoriel de Kronecker de deux matrices <tt><b>x</b></tt> et <tt><b>y</b></tt>.
+    Identique à <tt><b>x.*.y</b></tt>. <tt><b>x</b></tt> et <tt><b>y</b></tt> peuvent être des matrices creuses.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+A=[1,2;3,4];
+kron(A,A)
+A.*.A
+sparse(A).*.sparse(A)
+A(1,1)=%i;
+kron(A,A)
+ </pre>
+</body>
+</html>

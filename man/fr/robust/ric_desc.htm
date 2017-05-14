@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ric_desc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ric_desc</b> -  Riccati equation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>X=ric_desc(H [,E))  </tt></dd>
+<dd><tt>[X1,X2,zero]=ric_desc(H [,E])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>H,E</b></tt>: real square matrices</li>
+<li>
+<tt><b>X1,X2</b></tt>: real square matrices</li>
+<li>
+<tt><b>zero</b></tt>: real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Riccati solver with hamiltonian matrices as inputs.</p>
+<p>
+    In the continuous time case calling sequence is <tt><b>ric_descr(H)</b></tt> (one input):</p>
+<p>
+    Riccati equation is:</p>
+<pre>
+
+  (Ec)   A'*X + X*A + X*R*X -Q = 0.
+   
+    </pre>
+<p>
+    Defining the hamiltonian matrix <tt><b>H</b></tt> by:</p>
+<pre>
+
+ H = [A  R;
+      Q -A']
+   
+    </pre>
+<p>
+    with the calling sequence <tt><b>[X1,X2,zero]=ric_descr(H)</b></tt>, the 
+    solution <tt><b>X</b></tt> is given by <tt><b>X=X1/X2</b></tt>.</p>
+<p><tt><b>zero</b></tt> = L1 norm of rhs of (<tt><b>Ec</b></tt>)</p>
+<p>
+    The solution <tt><b>X</b></tt> is also given by <tt><b>X=riccati(A,Q,R,'c'))</b></tt></p>
+<p>
+    In the discrete-time case calling sequence is <tt><b>ric_descr(H,E)</b></tt> (two inputs):</p>
+<p>
+    The Riccati equation is:</p>
+<pre>
+
+   (Ed)  A'*X*A-(A'*X*B*(R+B'*X*B)^-1)*(B'*X*A)+C-X = 0.
+   
+    </pre>
+<p>
+    Defining <tt><b>G=B/R*B'</b></tt> and the hamiltonian pencil <tt><b>(E,H)</b></tt> by:</p>
+<pre>
+
+      E=[eye(n,n),G;               H=[A, 0*ones(n,n);
+         0*ones(n,n),A']             -C, eye(n,n)];
+   
+    </pre>
+<p>
+    with the calling sequence <tt><b>[X1,X2,err]=ric_descr(H,E)</b></tt>, the 
+    solution <tt><b>X</b></tt> is given by <tt><b>X=X1/X2</b></tt>.</p>
+<p><tt><b>zero</b></tt>= L1 norm of rhs of (<tt><b>Ed</b></tt>)</p>
+<p>
+    The solution <tt><b>X</b></tt> is also given by <tt><b>X=riccati(A,G,C,'d')</b></tt>  
+    with <tt><b>G=B/R*B'</b></tt></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/robust/riccati.htm"><tt><b>riccati</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

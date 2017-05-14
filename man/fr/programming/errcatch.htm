@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>errcatch</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>errcatch</b> -  interception d'erreur  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>errcatch(n [,'action'] [,'option'])   </tt></dd>
+<dd><tt>errcatch()   </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n  </b></tt>
+	    : entier
+	  </li>
+<li>
+<tt><b>action, option  </b></tt>
+	    : chaînes de caractères
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>errcatch</b></tt> définit une action à effectuer quand une erreur de
+      numéro <tt><b>n</b></tt> est rencontrée. <tt><b>n</b></tt> a la signification
+      suivante:
+    </p>
+<p>
+      si <tt><b>n&gt;0</b></tt>, <tt><b>n</b></tt> est le numéro de l'erreur à
+      intercepter
+    </p>
+<p>
+      si <tt><b>n&lt;0</b></tt>, toutes les erreurs sont à intercepter
+    </p>
+<p><tt><b>action</b></tt> est une des chaînes de caractères suivantes :
+    </p>
+<dl>
+<dd>
+<b>"pause"</b>
+	  : l'interception de l'erreur conduit à une pause. Cette
+	  option est utile en phase de mise au point. On peut utiliser
+	  <tt><b>whereami()</b></tt> pour obtenir des informations sur le contexte
+	  courant.
+	</dd>
+<dd>
+<b>"continue"</b>
+	  : l'exécution de la fonction ou du script continue,
+	  l'instruction courante est tout simplement ignorée. Il est
+	  possible de vérifier si une erreur s'est produite avec la
+	  fonction <tt><b>iserror</b></tt>. Ne pas oublier d'effacer
+	  l'erreur avec la fonction <tt><b>errclear</b></tt> le plus tôt
+	  possible. Cette option est utile pour remédier aux erreurs. Dans la
+	  plupart des cas, l'usage de <tt><b>
+	    errcatch(n,"continue",..)</b></tt> peut être remplacé par
+	  l'usage de la fonction <tt><b>execstr</b></tt>.  
+	</dd>
+<dd>
+<b>"kill"</b>
+	  : mode par défaut, tous les niveaux intermédiaires sont abandonnés,
+	  et Scilab revient à l'invite de commande de niveau 0.
+	</dd>
+<dd>
+<b>"stop"</b>
+	  : interrompt la session Scilab courante (très utile quand Scilab est
+	  exécuté à partir d'un programme externe).
+	</dd>
+</dl>
+<p><tt><b>option</b></tt> est la chaîne de caractères
+      <tt><b>'nomessage'</b></tt> pour supprimer les messages
+      d'erreurs.
+    </p>
+<p>
+      Pour revenir au mode par défaut, taper
+      <tt><b>errcatch(-1,"kill")</b></tt> ou bien
+      <tt><b>errcatch(-1)</b></tt>. 
+    </p>
+<p>
+      Lorsque <tt><b>errcatch</b></tt> est appelée à l'intérieur d'une
+      fonction, le mode d'interception d'erreur est automatiquement
+      réinitialisé au mode par défaut lorsque l'on sort de la fonction. 
+    </p>
+<p><tt><b>errcatch()</b></tt> est un equivalent obsolete de <tt><b>errcatch(-1)</b></tt>.</p>
+<h3><font color="blue">REMARQUES</font></h3>
+<dl><p><tt><b>errcatch</b></tt> est obsolete.
+      Il est préférable d'utiliser  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/try.htm"><tt><b>try</b></tt></a> ou <tt><b>execstr(...,'errcatch')</b></tt>  à
+      la place de <tt><b>errcatch</b></tt> lorsque c'est possible.
+    </p></dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/errclear.htm"><tt><b>errclear</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/iserror.htm"><tt><b>iserror</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/whereami.htm"><tt><b>whereami</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

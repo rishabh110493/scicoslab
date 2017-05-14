@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>tk_getdir</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>tk_getdir</b> -  dialog to get a directory path</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>path=tk_getdir([title='string'])  </tt></dd>
+<dd><tt>path=tk_getdir([title='string'])  </tt></dd>
+<dd><tt>path=tk_getdir(dir,[title='string'])  </tt></dd>
+<dd><tt>path=tk_getdir(dir,'string')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>dir</b></tt>: a character string which gives the initial directory used for directory search. by default tk_getdir uses the previously selected directory.</li>
+<li>
+<tt><b>path</b></tt>: is the user selected file path if user answers "Ok" or the " " string if user answers "Cancel"</li>
+<li>
+<tt><b>title='string'  </b></tt>:Optional argument which gives the title for the tk_getdir window.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates a dialog window for file selection</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+tk_getdir()
+tk_getdir('SCI/macros/xdess')
+tk_getdir(title='Choose a directory name ')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/tk_getfile.htm"><tt><b>tk_getfile</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/file.htm"><tt><b>file</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/fileio/fileinfo.htm"><tt><b>fileinfo</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

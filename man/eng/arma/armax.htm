@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>armax</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>armax</b> -  armax identification</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[arc,la,lb,sig,resid]=armax(r,s,y,u,[b0f,prf])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: output process  y(ny,n); ( ny: dimension of y , n : sample size)</li>
+<li>
+<tt><b>u</b></tt>: input process   u(nu,n); ( nu: dimension of u , n : sample size)</li>
+<li>
+<tt><b>r and s</b></tt>: auto-regression orders r &gt;=0 et s &gt;=-1</li>
+<li>
+<tt><b>b0f</b></tt>: optional parameter. Its default value is 0 and it means that the coefficient b0 must be identified. if bof=1 the b0 is supposed to be zero and is not identified</li>
+<li>
+<tt><b>prf</b></tt>: optional parameter for display control. If prf =1, the default value,  a display of the identified Arma is given.</li>
+<li>
+<tt><b>arc</b></tt>: a Scilab arma object (see armac)</li>
+<li>
+<tt><b>la</b></tt>: is the list(a,a+eta,a-eta) ( la = a in dimension 1) ; where eta is the estimated standard deviation.  , a=[Id,a1,a2,...,ar] where each ai is a matrix of size (ny,ny)</li>
+<li>
+<tt><b>lb</b></tt>: is the list(b,b+etb,b-etb) (lb =b in dimension 1) ; where etb is the estimated standard deviation. b=[b0,.....,b_s] where each bi is a matrix of size (nu,nu)</li>
+<li>
+<tt><b>sig</b></tt>: is the estimated standard deviation of the noise and resid=[ sig*e(t0),....] (</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    armax is used to identify the coefficients of a n-dimensional 
+    ARX process</p>
+<pre>
+
+   A(z^-1)y= B(z^-1)u + sig*e(t)
+   
+    </pre>
+<p>
+    where e(t) is a n-dimensional white noise with variance I.
+    sig  an nxn matrix and A(z) and B(z):</p>
+<pre>
+
+A(z) = 1+a1*z+...+a_r*z^r; ( r=0 =&gt; A(z)=1)
+B(z) = b0+b1*z+...+b_s z^s ( s=-1 =&gt; B(z)=0)
+   
+    </pre>
+<p>
+    for the method see Eykhoff in trends and progress in system identification, page 96.
+    with  
+     <tt><b>z(t)=[y(t-1),..,y(t-r),u(t),...,u(t-s)]</b></tt>
+    and
+     <tt><b>coef= [-a1,..,-ar,b0,...,b_s] </b></tt>
+    we can write 
+    <tt><b>y(t)= coef* z(t) + sig*e(t) </b></tt> and the algorithm minimises 
+    <tt><b>sum_{t=1}^N ( [y(t)- coef'z(t)]^2)</b></tt>
+    where t0=maxi(maxi(r,s)+1,1))).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//-Ex1- Arma model : y(t) = 0.2*u(t-1)+0.01*e(t-1)
+ny=1,nu=1,sig=0.01;
+Arma=armac(1,[0,0.2],[0,1],ny,nu,sig)  //defining the above arma model
+u=rand(1,1000,'normal');     //a random input sequence u
+y=arsimul(Arma,u); //simulation of a y output sequence associated with u.
+Armaest=armax(0,1,y,u);   //Identified model given u and y.
+Acoeff=Armaest('a');    //Coefficients of the polynomial A(x)
+Bcoeff=Armaest('b')     //Coefficients of the polynomial B(x)
+Dcoeff=Armaest('d');    //Coefficients of the polynomial D(x)
+[Ax,Bx,Dx]=arma2p(Armaest)   //Results in polynomial form. 
+
+//-Ex2- Arma1: y_t -0.8*y_{t-1} + 0.2*y_{t-2} =  sig*e(t)
+ny=1,nu=1;sig=0.001;
+// First step: simulation the Arma1 model, for that we define
+// Arma2: y_t -0.8*y_{t-1} + 0.2*y_{t-2} = sig*u(t)
+// with normal deviates for u(t).  
+Arma2=armac([1,-0.8,0.2],sig,0,ny,nu,0);
+//Definition of the Arma2 arma model (a model with B=sig and without noise!)
+u=rand(1,10000,'normal');  // An input sequence for Arma2
+y=arsimul(Arma2,u); // y = output of Arma2 with input u 
+//                     can be seen as output of Arma1.
+// Second step: identification. We look for an Arma model
+// y(t) + a1*y(t-1) + a2 *y(t-2) =  sig*e(t)
+Arma1est=armax(2,-1,y,[]);
+[A,B,D]=arma2p(Arma1est)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/imrep2ss.htm"><tt><b>imrep2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/time_id.htm"><tt><b>time_id</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/arl2.htm"><tt><b>arl2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J-Ph. Chancelier.  </p>
+</body>
+</html>

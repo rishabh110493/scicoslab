@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>spanplus</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spanplus</b> -  sum of subspaces</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[X,dim,dima]=spanplus(A,B[,tol])   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A, B</b></tt>: two real or complex matrices with equal number of rows</li>
+<li>
+<tt><b>X</b></tt>: orthogonal or unitary square matrix</li>
+<li>
+<tt><b>dim, dima</b></tt>: integers, dimension of subspaces</li>
+<li>
+<tt><b>tol</b></tt>: nonnegative real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes a  basis X such that:</p>
+<p>
+    the first <tt><b>dima</b></tt> columns of <tt><b>X</b></tt> span Range(<tt><b>A</b></tt>)
+    and the following (<tt><b>dim-dima</b></tt>) columns make a basis of <tt><b>A+B</b></tt>
+    relative to <tt><b>A</b></tt>.</p>
+<p>
+    The <tt><b>dim</b></tt> first columns of <tt><b>X</b></tt> make a basis for <tt><b>A+B</b></tt>.</p>
+<p>
+    One has the following canonical form for <tt><b>[A,B]</b></tt>:</p>
+<pre>
+
+         [*,*]    (dima rows)
+X'*[A,B]=[0,*]    (dim-dima rows)
+         [0,0]    
+   
+    </pre>
+<p><tt><b>tol</b></tt> is an optional argument (see function code).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(6,2)*rand(2,5);      // rank(A)=2
+B=[A(:,1),rand(6,2)]*rand(3,3);   //two additional independent vectors
+[X,dim,dimA]=spanplus(A,B);
+dimA
+dim
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spaninter.htm"><tt><b>spaninter</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/im_inv.htm"><tt><b>im_inv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spantwo.htm"><tt><b>spantwo</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ;   </p>
+</body>
+</html>

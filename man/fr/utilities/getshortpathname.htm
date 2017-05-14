@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>getshortpathname</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction Scilab</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>getshortpathname</b> - retourne le chemin au format
+  court (Seulement pour Windows)</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>shortpath=getshortgpathname(longpath)</tt></dd>
+<dd><tt>[shortpath,bOK]=getshortpathname(longpath)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>longpath</b></tt>: Une chaine de caractere contenant le chemin au format
+          long.</li>
+<li>
+<tt><b>shortpath</b></tt>: Une chaine de caractere contenant le chemin au format
+          court</li>
+<li>
+<tt><b>bOK</b></tt>: contient %T si le chemin a ete converti ou %F si ce n'est pas
+          le cas.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>La primitive getshortpathname convertie un chemin au format long en un
+    chemin au format court.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>[shortpath,bOK]=getshortpathname(SCI) 
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/getlongpathname.htm"><tt><b>getlongpathname</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Allan CORNET</p>
+</body>
+</html>

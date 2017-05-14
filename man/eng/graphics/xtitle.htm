@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xtitle</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xtitle</b> - add titles on a graphics
+  window</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xtitle(title,[x_label,[y_label,[z_label]]],&lt;opts_args&gt;)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>title,x_label,y_label, z_label</b></tt>: matrices of strings.</li>
+<li>
+<tt><b>&lt;opt_args&gt;</b></tt>: a sequence of statements <tt><b>key1=value1,
+          key2=value2</b></tt>, ... where keys may be <tt><b>boxed</b></tt> (see
+          below). In this case, the order has no special meaning.</li>
+<li>
+<tt><b>boxed</b></tt>: an integer value. If it is 1, a box is drawn around each
+          title.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xtitle</b></tt> add titles on a 2D or 3D plot. <tt><b>title</b></tt>
+    is the general title and <b>x_label</b>, <b>y_label</b> and
+    <b>z_label</b> are the titles on the three axis. If the arguments are
+    matrices, each line of the matrices is displayed on a different line.</p>
+<p>Enter the command <tt><b>xtitle()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// draw a surface
+plot3d() ;
+// puts the titles
+xtitle( 'My surface is blue', 'X axis', 'Y axis', 'Z axis' ) ;
+// draw a box around the titles
+xtitle( 'My surface is blue', 'X axis', 'Y axis', 'Z axis', boxed = 1 ) ;</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/titlepage.htm"><tt><b>titlepage</b></tt></a><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/label_properties.htm"><tt><b>label_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

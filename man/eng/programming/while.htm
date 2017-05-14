@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>while</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>while</b> -  while keyword</p>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>while</b></tt> clause. Must be terminated by <tt><b>"end"</b></tt></p>
+<p><tt><b>while expr ,instructions,...[,else instructions], end</b></tt></p>
+<p><tt><b>while expr do instructions,...[,else instructions], end</b></tt></p>
+<p><tt><b>while expr then instructions,...[,else instructions], end</b></tt></p>
+<p>Notes:</p>
+<dl>
+<dd>
+<b></b><p> The only constraint is that each "then" or
+	"do" keyword must be on the same line line as
+	"while" keyword.</p>
+</dd>
+<dd>
+<b></b><p> The "keyword "then" or "do" can
+	be replaced by a carriage return or a comma. For compatibility
+	with Matlab it is also possible, but not recommended, to put a
+	space between the end of the expression and the beginning of
+	the first instruction.</p>
+</dd>
+<dd>
+<b></b><p> 
+	The optional <tt><b>,else instructions</b></tt> construction
+	allows to gives instructions which are executed when expr
+	expression becomes false.</p>
+</dd>
+</dl>
+<p>
+      Warning: the number of characters used to define the body of any
+      conditionnal instruction (if while for or select/case) must be limited to
+    16k.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+	     e=1; a=1; k=1;
+	     while norm(a-(a+e),1) &gt; %eps, e=e/2; k=k+1; end
+	     e,k
+    
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/for.htm"><tt><b>for</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/select.htm"><tt><b>select</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/break.htm"><tt><b>break</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>milk_drop</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>milk_drop</b> -  milk drop 3D function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>z=milk_drop(x,y)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two row vectors of size n1 and n2.</li>
+<li>
+<tt><b>z</b></tt>: matrix of size (n1,n2).</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>milk_drop</b></tt> is a function representing the surface of a milk drop
+    falling down into milk. It
+    can be used to test functions <tt><b>eval3d</b></tt> and <tt><b>plot3d</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=-2:0.1:2; y=x;
+z=eval3d(milk_drop,x,y);
+plot3d(x,y,z)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/eval3d.htm"><tt><b>eval3d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot3d.htm"><tt><b>plot3d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Steer S.  </p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+wardropN                             Maxplus Function              wardropN
+NAME
+   WardropN  - Wardrop equilibrium ( Newton hybrid method )
+  
+CALLING SEQUENCE
+ bench=WardropN(a,k,eps,niter)
+PARAMETERS
+ a          : regularization coefficient (small number)
+            
+ k          : reducing regularization coefficient exponential rate (number
+            >= 1)
+            
+ eps        : precision of the convergence test (small number)
+            
+ niter      : maximal number of iterations
+            
+ bench      : niter x 5  matrix
+            
+ %net       : global variable NetList   
+            
+DESCRIPTION
+   Compute the Wardrop equilibrium of a transport assignment problem by
+  solving the following nodes-links variational formulation of the problem:
+   Min_q Sum_l C(f_l)  f_l=Sum_i q_li  Hq_i=d_i  O<=q_li  where :  - C(f)
+  is a cost in the classes defined by the lpf function, - H is is the
+  incidence nodes-arcs matrix of the network, - q_li is the flow of the
+  commodity i on the link l,  %net is the netlist containing all the
+  information relative to the network and the cost function used.  The
+  method used is a decomposed newton method in the space (q_i,v_i) i=1,p,
+  where the v_i denote the dual variables associated to the constraints
+  Hq_i=d_i .  The variable a regularizes the  matrices giving the
+  potentials. At each iteration a is reduced by a factor k. We can try
+  first a small a and k=1.   This method is useful mainly in the case of a
+  small number of commodities.  
+  
+EXAMPLES
+ 
+ // Definition of the Network
+ nw=4;
+ %net=TrafficExample("Regular City",nw,nw);
+ 
+ // Traffic Assignment
+ bench=WardropN(0.1,2,1.e-4,12);
+ 
+ // Visualization of the NET
+ ShowNet();
+ 
+SEE ALSO
+   DSD, FW, Probit, MSASUE, LogitNE, LogitNELS, TrafficAssig 
+  

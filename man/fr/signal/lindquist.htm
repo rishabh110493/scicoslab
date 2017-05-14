@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>lindquist</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>lindquist</b> -  Lindquist's algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[P,R,T]=lindquist(n,H,F,G,R0)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: number of iterations.</li>
+<li>
+<tt><b>H, F, G</b></tt>: estimated triple from the covariance sequence of <tt><b>y</b></tt>.</li>
+<li>
+<tt><b>R0</b></tt>: E(yk*yk')</li>
+<li>
+<tt><b>P</b></tt>: solution of the Riccati equation after n iterations.</li>
+<li>
+<tt><b>R, T</b></tt>: gain matrices of the filter.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes iteratively the minimal solution of the algebraic
+    Riccati equation and gives the matrices <tt><b>R</b></tt> and <tt><b>T</b></tt> of the 
+    filter model, by the Lindquist's algorithm.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/srfaur.htm"><tt><b>srfaur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/faurre.htm"><tt><b>faurre</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/signal/phc.htm"><tt><b>phc</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>G. Le V.  </p>
+</body>
+</html>

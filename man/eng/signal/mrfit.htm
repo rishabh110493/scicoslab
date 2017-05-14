@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>mrfit</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mrfit</b> -  frequency response fit</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>sys=mrfit(w,mag,order)  </tt></dd>
+<dd><tt>[num,den]=mrfit(w,mag,order)  </tt></dd>
+<dd><tt>sys=mrfit(w,mag,order,weight)  </tt></dd>
+<dd><tt>[num,den]=mrfit(w,mag,order,weight)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>w</b></tt>: positive real vector of frequencies (Hz)</li>
+<li>
+<tt><b>mag</b></tt>: real vector of frequency responses magnitude (same size as <tt><b>w</b></tt>)</li>
+<li>
+<tt><b>order</b></tt>: integer (required order, degree of <tt><b>den</b></tt>)</li>
+<li>
+<tt><b>weight</b></tt>: positive real vector (default value <tt><b>ones(w)</b></tt>).</li>
+<li>
+<tt><b>num,den</b></tt>: stable polynomials</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>sys=mrfit(w,mag,order,weight)</b></tt> returns a bi-stable transfer function
+    <tt><b>G(s)=sys=num/den</b></tt>, of of given <tt><b>order</b></tt> such that 
+    its frequency response magnitude <tt><b>abs(G(w(i)))</b></tt> 
+    matches <tt><b>mag(i)</b></tt> i.e. <tt><b>abs(freq(num,den,%i*w))</b></tt> should be 
+    close to <tt><b>mag</b></tt>.
+    <tt><b>weight(i)</b></tt> is the weigth given to <tt><b>w(i)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+w=0.01:0.01:2;s=poly(0,'s');
+G=syslin('c',2*(s^2+0.1*s+2),(s^2+s+1)*(s^2+0.3*s+1)); // syslin('c',Num,Den);
+fresp=repfreq(G,w);
+mag=abs(fresp);
+Gid=mrfit(w,mag,4);
+frespfit=repfreq(Gid,w);
+plot2d([w',w'],[mag(:),abs(frespfit(:))])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/cepstrum.htm"><tt><b>cepstrum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/signal/frfit.htm"><tt><b>frfit</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/freq.htm"><tt><b>freq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/calfrq.htm"><tt><b>calfrq</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

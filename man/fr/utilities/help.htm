@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>help</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>help</b> -  commande d'aide en ligne  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>help(key)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>key</b></tt>: Une chaîne de caractères. Donne le nom de la page d'aide à visualiser.</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>help</b></tt> sans argument, visualise la page hypertexte contenat la
+      liste des chapitres d'aide.</p>
+<p><tt><b>help(key)</b></tt> visualise la page d'aide associé avec le nom
+      donné par <tt><b>key</b></tt>. S'il n'y a pas de page d'aide, <tt><b>help(key)</b></tt>
+      appele automatiquement <tt><b>apropos(key)</b></tt>.</p>
+<p> Scilab comprend son propre browser html écrit en  TCL/TK. Il est
+      possible de choisir un autre browser. La variable globale
+      <tt><b>%browsehelp</b></tt> contient une chaîne de caractères définissant
+      quel browser doit être utilisé. Sa valeur initiale est fixée par le
+      fichier startup <tt><b>SCIHOME/.scilab</b></tt> ou <tt><b>SCIHOME/scilab.ini</b></tt>
+	  est peut être changée. </p>
+<p>Si cette variable est affectée à la matrice vide ( <tt><b>global
+	%browsehelp; %browsehelp=[]</b></tt>) alors une fenêtre de dialogue
+      apparait au lancement du help et permet de  choisir le browser
+      désiré. Attention, les differents browsers on des synatxes d'appel
+      différentes. Aussi si vous souhaitez ajouter un nouveau browser à la
+      liste vous devrez modifier la fonction Scilab <tt><b>browsehelp</b></tt>
+      dont le code source est dans  <tt><b>SCI/macros/util/browsehelp.sci</b></tt>.</p>
+<p> Voir  <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/man.htm"><tt><b>man</b></tt></a> pour apprendre à écrire de nouvelles pages d'aide.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/apropos.htm"><tt><b>apropos</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/man.htm"><tt><b>man</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>graph_2_mat</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graph_2_mat</b> -  matrice d'incidence sommets-arcs ou sommets-sommets d'un graphe  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>a = graph_2_mat(g,mat)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>mat  </b></tt>
+    : chaîne optionnelle, 'node-arc' ou 'node-node'
+</li>
+<li>
+<tt><b>a  </b></tt>
+    : matrice d'incidence (creuse)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>graph_2_mat</b></tt> calcule la matrice d'incidence sommets-arcs ou sommets-sommets d'un 
+    graphe <tt><b>g</b></tt>. 
+  </p>
+<p>
+    Si l'argument optionnel <tt><b>mat</b></tt> est omis ou est égal à la chaîne de caractères 
+    <tt><b>'node-arc'</b></tt>, la matrice sommets-arcs est calculée. Si <tt><b>mat</b></tt> est la chaîne de caractères
+    <tt><b>'node-node'</b></tt>, la matrice sommets-sommets est calculée.
+  </p>
+<p>
+    Si <tt><b>n</b></tt> est le nombre de sommets du graphe et 
+    <tt><b>m</b></tt> est le nombre d'arêtes du graphe, la matrice sommets-arcs est une
+    matrice creuse de taille <tt><b>(n,m)</b></tt>.
+  </p>
+<p>
+    Elle est définie comme suit; si le graphe est orienté :
+  </p>
+<p><tt><b>a(i,j) = +1</b></tt> si le sommet <tt><b>i</b></tt> est l'origine de l'arc <tt><b>j</b></tt></p>
+<p><tt><b>a(i,j) = -1</b></tt> si le sommet <tt><b>i</b></tt> est la destination de l'arc <tt><b>j</b></tt></p>
+<p>
+    Si le graphe est non-orienté :
+  </p>
+<p><tt><b>a(i,j) = 1</b></tt> si le sommet <tt><b>i</b></tt> est l'origine ou la destination de l'arc <tt><b>j</b></tt></p>
+<p>
+    Si <tt><b>n</b></tt> est le nombre de sommets du graphe, la matrice sommets-sommets 
+    est une matrice creuse de taille <tt><b>(n,n)</b></tt>.
+  </p>
+<p>
+    Elle est définie comme suit :
+  </p>
+<p><tt><b>a(i,j) = 1</b></tt> si il y a un arc du sommet <tt><b>i</b></tt> au sommet <tt><b>j</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+g=load_graph(SCI+'/demos/metanet/colored');
+a=graph_2_mat(g)
+a=graph_2_mat(g,'node-node')
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/mat_2_graph.htm"><tt><b>mat_2_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

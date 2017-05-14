@@ -1,0 +1,49 @@
+AONd                             Traffic-toolbox Function              AONd
+NAME
+   AONd  -  All or Nothing traffic assignment algorithm 
+  
+CALLING SEQUENCE
+   
+  
+ [F,f]=AONd(net)
+ [F,f]=AONd(net,t0)
+ [F,f]=AONd(tl,hl,t0,nn,origins,td,hd,dd)
+ 
+PARAMETERS
+ net        : a NetList, 
+            
+ t0         : row vector, the link travel time (if not given in net)
+            
+ tl, hl     : row vectors, tail and head nodes numbers of the links 
+            
+ nn         : node number
+            
+ origins    : origins of the OD pairs
+            
+ td, hd, dd : row vectors, tail and head nodes numbers of the demands, and
+            demands values
+            
+ F          : assigned flow
+            
+ f          : assigned flow disaggregated by commodity 
+            
+DESCRIPTION
+   Displays the non feasible OD pairs, if there are some. Those pairs are
+  ignored in the assignment. Assigns the flow with the All or Nothing
+  algorithm. For each OD-pair it looks for the minimum travel time path and
+  assigns all the demand to this path. The travel time of the links are
+  given by t0 or by the corresponding field in net. 
+  
+EXAMPLES
+ %net=TrafficExample('Nguyen Dupuis'); 
+ // we can see the Net 
+ ShowNet(); 
+ //we add a non feasible OD pair 
+ AddDemands(8,1,10); 
+ ShowNet() 
+ [F,f]=AONd(%net); 
+   
+  
+SEE ALSO
+   AON, IA, IAON, FW, CAPRES, TrafficAssig     
+  

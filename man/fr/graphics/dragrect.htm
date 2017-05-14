@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>dragrect</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>dragrect</b> -  déplace un ou plusieurs rectangles avec la souris  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>final_rect=dragrect(initial_rect)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>initial_rect  </b></tt>
+    : matrice 4xn contenant les définitions initiales des rectangles. Chaque colonne contient [x_gauche; y_haut; largeur; hauteur]. Si un seul rectangle est présent initial_rect peut être un rectangle. 
+</li>
+<li>
+<tt><b>final_rect  </b></tt>
+    : un rectangle défini par [x_gauche, y_haut, largeur, hauteur] 
+</li>
+<li>
+<tt><b>btn  </b></tt>
+    :un entier, le numero du bouton de la souris actionné.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>dragrect</b></tt> permet de déplacer un ou plusieurs rectangles à l'écran. La matrice 4xn
+    initial_rect définit les rectangles. Chaque colonne de <tt><b>initial_rect</b></tt>
+    contient  les définitions initiales des rectangles. Chaque colonne contient [x_gauche; y_haut; largeur; hauteur]. Quand un bouton de la souris est actionné <tt><b>dragrect</b></tt> renvoie les rectangles finaux dans <tt><b>final_Rect</b></tt>.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+xsetech(frect=[0,0,100,100])
+r=dragrect([10;10;30;10])
+xrect(r)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xrect.htm"><tt><b>xrect</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xrects.htm"><tt><b>xrects</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xclick.htm"><tt><b>xclick</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/xgetmouse.htm"><tt><b>xgetmouse</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>while</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab syntax and keyword </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>while</b> -  mot-clé utilisé dans une structure while
+    ... end  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>while expr ,instructions,...[,else instructions], end</tt></dd>
+<dd><tt>while expr do instructions,...[,else instructions], end</tt></dd>
+<dd><tt>while expr then instructions,...[,else instructions], end</tt></dd>
+</dl>
+<h3><font color="blue">Description</font></h3>Notes:<dl>
+<dd>
+<b></b>
+	  La seule contrainte est que chaque mot-clé <tt><b>then</b></tt> ou
+	  <tt><b>do</b></tt> soit sur la même ligne que le <tt><b>hile</b></tt>
+	  correspondant.
+	</dd>
+<dd>
+<b></b>
+	  Les mot-clés <tt><b>then</b></tt> et <tt><b>do</b></tt> peuvent
+	  être remplacés par un passage à la ligne ou une
+	  virgule. Pour la compatibilité avec Matlab, il est aussi
+	  possible, mais non recommendé de mettre un espace à la
+	  place de ces séparateurs.
+	</dd>
+<dd>
+<b></b>
+	  La construction <tt><b>,else instructions</b></tt> permet de spécifier
+	  des instructions à exécuter si l'expression <tt><b>expr</b></tt>
+	  est fausse. 
+	</dd>
+</dl>
+<p>
+      Attention : le nombre de caractères constituant le corps d'une
+      instruction conditionnelle (if while for ou select/case) est limité à
+      16k..
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    e=1; a=1; k=1;
+    while norm(a-(a+e),1) &gt; %eps, e=e/2; k=k+1; end
+    e,k
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/for.htm"><tt><b>for</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/select.htm"><tt><b>select</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/break.htm"><tt><b>break</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/return.htm"><tt><b>return</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/pause.htm"><tt><b>pause</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

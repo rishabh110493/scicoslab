@@ -1,0 +1,174 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>call</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>call</b> -  Fortran or C user routines call</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>// long form 'out' is present</tt></dd>
+<dd><tt>[y1,...,yk]=call("ident",x1,px1,"tx1",...,xn,pxn,"txn",  </tt></dd>
+<dd><tt>
+      "out",[ny1,my1],py1,"ty1",...,[nyl,myl],pyl,"tyl")  </tt></dd>
+<dd><tt>// short form : no 'out' parameter</tt></dd>
+<dd><tt>[y1,....,yk]=call("ident",x1,...,xn)
+    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>"ident"  </b></tt>: string.</li>
+<li>
+<tt><b>xi</b></tt>: real matrix or string</li>
+<li>
+<tt><b>pxi, pyi</b></tt>: integers</li>
+<li>
+<tt><b>txi, tyi</b></tt>: character string <tt><b>"d"</b></tt>,
+	    <tt><b>"r"</b></tt>, <tt><b>"i"</b></tt>  or
+	    <tt><b>"c"</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+      Interactive call of Fortran (or C) user program from Scilab. The
+      routine must be previously linked with Scilab. This link may be done:
+    </p>
+<dl>
+<dd>
+<b>-</b>with Scilab "<tt><b>link</b></tt>" command (incremental
+	  "soft" linking) during the Scilab session.(see
+	  <tt><b>link</b></tt>)</dd>
+<dd>
+<b>-</b>by "hard" re-linking. Writing the routine call within
+	  Scilab routine <tt><b>default/Ex-fort.f</b></tt>, adding the entry point
+	  in the file <tt><b>default/Flist</b></tt> and then re_linking Scilab
+	  with the command <tt><b>make bin/scilex</b></tt>  in main Scilab
+	  directory.</dd>
+</dl>
+<p>
+      There are two forms of calling syntax, a short one and a long one. 
+      The short one will give faster code and an easier calling syntax but 
+      one has to write a small (C or Fortran) interface in order to make the
+      short form possible. The long one make it possible to call a Fortran 
+      routine (or a C one) whitout modification of the code but the syntax is more
+      complex and the interpreted code slower.
+    </p>
+<p>
+      The meaning of each parameter is described now:
+    </p>
+<dl>
+<dd>
+<b>"ident"</b>is the name of the called subroutine.</dd>
+<dd>
+<b>x1,...,xn</b>are input variables (real matrices or strings) sent to the routine,</dd>
+<dd>
+<b>px1,...,pxn</b>are the respective positions of these variables in the calling
+	  sequence of the routine <tt><b>"ident"</b></tt> and</dd>
+<dd>
+<b>tx1,...,txn</b>are their types (<tt><b>"r"</b></tt>,
+	  <tt><b>"i"</b></tt>, <tt><b>"d"</b></tt> and
+	  <tt><b>"c"</b></tt>   for real (float) , integer, double
+	  precision and strings)</dd>
+<dd>
+<b>"out"</b>is a keyword used to separate input variables from output
+	  variables. when this key word is present it is assumes that  the long
+	  form will be used and when it is not prsent, the short form is
+	  used.</dd>
+<dd>
+<b>[ny1, my1]</b>are the size (<tt><b>#</b></tt> of rows and columns. For 'c'
+	  arguments,<tt><b>m1*n1</b></tt> is the number of charaters )  of output
+	  variables and</dd>
+<dd>
+<b>py1, ...</b>are the positions of output variables (possibly equal to
+	  <tt><b>pxi</b></tt> ) in the calling sequence of the routine. The
+	  <tt><b>pyi</b></tt>'s integers must be in increasing order.</dd>
+<dd>
+<b>"ty1", ...</b>are the Fortran types of output variables. The <tt><b>k</b></tt>
+	  first output variables are put in <tt><b>y1,..., yk</b></tt>.</dd>
+</dl>
+<p>
+      If an output variable coincides with an input variable
+      (i.e. <tt><b>pyi=pxj</b></tt> ) one can pass only its position <tt><b>pyi</b></tt> .
+      The size and type of <tt><b>yi</b></tt> are then the same as those of <tt><b>xi</b></tt>. 
+      If an output variable coincides with an input variable and one specify
+      the dimensions of the output variable <tt><b>[myl,nyl]</b></tt> must follow the
+      compatibility condition <tt><b>mxk*nxk &gt;= myl*nyl</b></tt>.</p>
+<p>
+      In the case of short syntax ,
+      <tt><b>[y1,....,yk]=call("ident",x1,...,xn)</b></tt>, 
+      the input parameters <tt><b>xi</b></tt>'s and the name
+      <tt><b>"ident"</b></tt> are sent to 
+      the interface routine <tt><b>Ex-fort</b></tt>. This interface routine is then 
+      very similar to an interface (see the source code in the directory
+      <tt><b>SCIDIR/default/Ex-fort.f</b></tt>).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    
+    //Example 1 with  a simple C code
+    f1=['#include &lt;math.h&gt;'
+        'void fooc(c,a,b,m,n)'
+         'double a[],*b,c[];'
+         'int *m,*n;'
+         '{'
+         '   int i;'
+         '   for ( i =0 ; i &lt; (*m)*(*n) ; i++) '
+         '     c[i] = sin(a[i]) + *b; '
+         '}'];
+
+    mputl(f1,'fooc.c')
+
+    //creating the shared library (a gateway, a Makefile and a loader are 
+    //generated. 
+
+    ilib_for_link('fooc','fooc.o',[],"c") 
+
+    // load the shared library 
+
+    exec loader.sce 
+
+    //using the new primitive
+    a=[1,2,3;4,5,6];b= %pi;
+    [m,n]=size(a);
+
+    // Inputs:
+    // a is in position 2 and double
+    // b                3     double
+    // n                4     integer
+    // m                5     integer
+    // Outputs:
+    // c is in position 1 and double with size [m,n]
+    c=call("fooc",a,2,"d",b,3,"d",m,4,"i",n,5,"i","out",[m,n],1,"d");
+
+    //Example 2 with  a simple Fortran code
+    f1=['      subroutine foof(c,a,b,n,m)'
+        '      integer n,m'
+        '      double precision a(*),b,c(*)'
+        '      do 10 i=1,m*n '
+        '        c(i) = sin(a(i))+b'
+        '   10 continue'
+        '      end'];
+    mputl(f1,'foof.f')
+
+    //creating the shared library (a gateway, a Makefile and a loader are 
+    //generated. 
+
+    ilib_for_link('foof','foof.o',[],"f") 
+
+    // load the shared library 
+
+    exec loader.sce 
+
+    //using the new primitive
+    a=[1,2,3;4,5,6];b= %pi;
+    [m,n]=size(a);
+    c=call("foof",a,2,"d",b,3,"d",m,4,"i",n,5,"i","out",[m,n],1,"d");
+
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/link.htm"><tt><b>link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/c_link.htm"><tt><b>c_link</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/utilities/intersci.htm"><tt><b>intersci</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/functions/addinter.htm"><tt><b>addinter</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

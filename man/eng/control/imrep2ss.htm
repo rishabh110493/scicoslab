@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>imrep2ss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>imrep2ss</b> -  state-space realization of an impulse response</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[sl]=imrep2ss(v [,deg])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>v</b></tt>: vector coefficients of impulse response, <tt><b>v(:,k)</b></tt> is the kth sample</li>
+<li>
+<tt><b>deg</b></tt>: integer (order required)</li>
+<li>
+<tt><b>sl</b></tt>: <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Impulse response to linear system conversion (one input).
+    <tt><b>v</b></tt> must have an even number of columns.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+s=poly(0,'s');
+H=[1/(s+0.5);2/(s-0.4)]   //strictly proper
+np=20;w=ldiv(H('num'),H('den'),np);
+rep=[w(1:np)';w(np+1:2*np)'];   //The impulse response
+H1=ss2tf(imrep2ss(rep))
+z=poly(0,'z');
+H=(2*z^2-3.4*z+1.5)/(z^2-1.6*z+0.8)     //Proper transfer function
+u=zeros(1,20);u(1)=1;
+rep=rtitr(H('num'),H('den'),u);   //Impulse rep. 
+//   &lt;=&gt; rep=ldiv(H('num'),H('den'),20)
+w=z*imrep2ss(rep)   //Realization with shifted impulse response 
+// i.e strictly proper to proper
+H2=ss2tf(w);
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/frep2tf.htm"><tt><b>frep2tf</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/arl2.htm"><tt><b>arl2</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/time_id.htm"><tt><b>time_id</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/arma/armax.htm"><tt><b>armax</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/markp2ss.htm"><tt><b>markp2ss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/ldiv.htm"><tt><b>ldiv</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

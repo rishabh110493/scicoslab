@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>drawlater</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>drawlater</b> - makes axes children
+  invisible.</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>drawlater()</tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>This function can be used not to display immediatly onto the
+    <tt><b>current figure</b></tt> the next created graphics objects - i.e. by
+    calling high level functions such as plotting functions or setting
+    properties to existant objects. The <tt><b>immediate_drawing</b></tt>
+    property of the current figure is set to <tt><b>'off'</b></tt> in order to
+    postpon the next drawings.</p>
+<p>It can specially be used with the <tt><b>drawnow</b></tt> function.</p>
+<p>To enable back the <tt><b>immediate_drawing</b></tt> for the current
+    figure, you can use <tt><b>drawnow</b></tt> function.</p>
+<p>Warning : note that between drawlater and drawnow calls, the current
+    figure may have changed. Therefore, this must be used carefully.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+  //Example :  one axes / one figure
+  set("figure_style","new") // select entity based graphics
+  drawlater(); 
+  xfarc(.25,.55,.1,.15,0,64*360);
+  xfarc(.55,.55,.1,.15,0,64*360);
+  xfrect(.3,.8,.3,.2); 
+  xfrect(.2,.7,.5,.2);  
+  xfrect(.32,.78,.1,.1);
+  xfrect(.44,.78,.14,.1);
+  xfrect(-.2,.4,1.5,.8);
+  xstring(0.33,.9,"A Scilab Car");    
+  a=get("current_axes");
+  a.children(1).font_size=4;
+  a.children(1).font_style=4;  
+  a.children(1).background=5;
+  a.children(3).background=8;
+  a.children(4).background=8; 
+  a.children(5).background=17;
+  a.children(6).background=17; 
+  a.children(7).background=25;
+  a.children(8).background=25;
+  xclick();drawnow();
+ 
+  //Example 2:: two axes / one figure
+
+  subplot(212)
+  a=gca();
+  drawlater // what will be present in this axes will be displayed later
+  plot2d // draw these axes and children later...
+
+  subplot(211) // Warning: we change the axes
+  plot2d1 // default drawing mode
+
+  draw(a) // ...axes only is visible providing you not redraw the window
+  drawnow() // all is visible
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/drawnow.htm"><tt><b>drawnow</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Djalel ABDEMOUCHE, F.Leray</p>
+</body>
+</html>

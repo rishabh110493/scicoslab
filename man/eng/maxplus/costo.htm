@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>costo </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>costo </b> -  discounted stochastic control (Howard algorithm) (maxplus)  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[v,p]=costo(D,H,a)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>D  </b></tt>
+    : maxplus (full or sparse) matrix (nxm)
+  </li>
+<li>
+<tt><b>H  </b></tt>
+    : standard (full or sparse) matrix (mxn)
+  </li>
+<li>
+<tt><b>a  </b></tt>
+    : discount rate
+  </li>
+<li>
+<tt><b>v  </b></tt>
+    : value function (Bellman function)
+  </li>
+<li>
+<tt><b>p  </b></tt>
+    : optimal policy  
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Solve (1+a)V=D(HV) corresponding to the
+    discounted stochastic control problem described by
+  </p>
+<p>
+    - the maxplus decision matrix (D)
+    containing the gains associated to the corresponding state (the row
+    number of the entry of D) and the decision (the column number
+    of the entry of D),
+  </p>
+<p>
+    - the standard rectangular stochastic matrix (H)
+    describing the possible transition probabilities in which the control
+    chooses (the row number of H). 
+  </p>
+<p>
+    The discount factor of the step n-1 is 1/(1+a)^n. 
+  </p>
+<p>
+    The first step is numbered 0.
+  </p>
+<p>
+    The Howard algorithm is used.
+  </p>
+<p>
+    The definition of v returned by costo is v=aV
+    because this quantity remains finite when a goes to zero.
+  </p>
+<p>
+    [v,p]=costo(D,H,0) returns v equal to the limit of aV when a goes to
+    zero which is also the optimal average cost by unit of time.
+  </p>
+<p></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+D=sparse(#([1 1;0 0;3 3]));
+H=sparse([1 0 0; 0 1/2 1/2 ]);
+[v,p]=costo(D,H,0.001)
+[v,p]=costo(D,H,0)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/karp.htm"><tt><b>karp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/howard.htm"><tt><b>howard</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/semihoward.htm"><tt><b>semihoward</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rgb2name</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rgb2name</b> -  returns the name of a color</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>names=rgb2name(r,g,b)  </tt></dd>
+<dd><tt>names=rgb2name(rgb)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>r,g,b</b></tt>: RGB integer values of a color.</li>
+<li>
+<tt><b>rgb</b></tt>: vector of RGB integer values of a color.</li>
+<li>
+<tt><b>names</b></tt>: names of the color.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>rgb2name</b></tt> returns the color name corresponding to the RGB values
+    given by its argument. A vector of color names can also be returned if the color has more than 1 name.
+    <tt><b>r</b></tt>, <tt><b>g</b></tt> and <tt><b>b</b></tt> must be integers between 0 and 255
+    corresponding to colors components red, green and blue. As usual 0 means no intensity and 
+    255 means all the intensity of the color. RGB values can also be given by a vector <tt><b>[r,g,b]</b></tt>.</p>
+<p> If no color is found <tt><b>[]</b></tt> is returned.</p>
+<p> The list of all known colors is given by <a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+rgb2name(255,128,128)
+rgb2name([255 215 0])
+// get color #10 of the current colormap and find its name
+cmap=get(gcf(),"color_map");
+rgb2name(cmap(10,:)*255)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color.htm"><tt><b>color</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/color_list.htm"><tt><b>color_list</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/name2rgb.htm"><tt><b>name2rgb</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

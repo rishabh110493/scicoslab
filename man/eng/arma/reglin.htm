@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>reglin</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>reglin</b> -  Linear regression</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[a,b,sig]=reglin(x,y)  </tt></dd></dl>
+<h3><font color="blue">Description</font></h3>
+<p>
+    solve the regression problem y=a*x+ b in the least square sense. 
+    <tt><b>sig</b></tt> is the standard deviation of the residual. <tt><b>x</b></tt> and <tt><b>y</b></tt>
+    are two matrices of size <tt><b>x(p,n)</b></tt> and <tt><b>y(q,n)</b></tt>, where  <tt><b>n</b></tt>
+    is the number of samples.</p>
+<p>
+    The estimator <tt><b>a</b></tt> is a matrix of size <tt><b>(q,p)</b></tt> and <tt><b>b</b></tt> is a
+    vector of size <tt><b>(q,1)</b></tt></p>
+<pre>
+
+// simulation of data for a(3,5) and b(3,1)
+x=rand(5,100);
+aa=testmatrix('magi',5);aa=aa(1:3,:);
+bb=[9;10;11]
+y=aa*x +bb*ones(1,100)+ 0.1*rand(3,100);
+// identification 
+[a,b,sig]=reglin(x,y);
+maxi(abs(aa-a))
+maxi(abs(bb-b))
+// an other example : fitting a polynom 
+f=1:100; x=[f.*f; f];
+y= [ 2,3]*x+ 10*ones(f) + 0.1*rand(f);
+[a,b]=reglin(x,y)
+   
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/pinv.htm"><tt><b>pinv</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/nonlinear/leastsq.htm"><tt><b>leastsq</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

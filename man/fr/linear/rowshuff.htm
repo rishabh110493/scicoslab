@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>rowshuff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>rowshuff</b> -  shuffle algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Ws,Fs1]=rowshuff(Fs, [alfa])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Fs</b></tt>: square real pencil <tt><b>Fs = s*E-A</b></tt>
+</li>
+<li>
+<tt><b>Ws</b></tt>: polynomial matrix</li>
+<li>
+<tt><b>Fs1</b></tt>: square real pencil <tt><b>F1s = s*E1 -A1</b></tt> with <tt><b>E1</b></tt> non-singular</li>
+<li>
+<tt><b>alfa</b></tt>: real number (<tt><b>alfa = 0</b></tt> is the default value)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Shuffle algorithm: Given the pencil <tt><b>Fs=s*E-A</b></tt>, returns Ws=W(s) 
+    (square polynomial matrix) such that:</p>
+<p><tt><b> Fs1 = s*E1-A1 = W(s)*(s*E-A) </b></tt> is a pencil with non singular <tt><b>E1</b></tt> matrix.</p>
+<p>
+    This is possible iff the pencil <tt><b>Fs = s*E-A</b></tt> is regular (i.e. invertible).
+    The degree of <tt><b>Ws</b></tt> is equal to the index of the pencil.</p>
+<p>
+    The poles at infinity of <tt><b>Fs</b></tt> are put to <tt><b>alfa</b></tt> and the zeros of <tt><b>Ws</b></tt> are at <tt><b>alfa</b></tt>.</p>
+<p>
+    Note that <tt><b>(s*E-A)^-1 = (s*E1-A1)^-1 * W(s) = (W(s)*(s*E-A))^-1 *W(s)</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+F=randpencil([],[2],[1,2,3],[]);
+F=rand(5,5)*F*rand(5,5);   // 5 x 5 regular pencil with 3 evals at 1,2,3
+[Ws,F1]=rowshuff(F,-1);
+[E1,A1]=pen2ea(F1);
+svd(E1)           //E1 non singular
+roots(det(Ws))
+clean(inv(F)-inv(F1)*Ws,1.d-7)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/pencan.htm"><tt><b>pencan</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/glever.htm"><tt><b>glever</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/penlaur.htm"><tt><b>penlaur</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. D.; ; ; ; ;   </p>
+</body>
+</html>

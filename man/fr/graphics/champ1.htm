@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>champ1</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>champ1</b> - 2D vector field plot with colored
+  arrows</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>champ1(x,y,fx,fy,[arfact,rect,strf])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y</b></tt>: two vectors which define the grid.</li>
+<li>
+<tt><b>fx</b></tt>: a matrix which describes the x component of the vector field.
+          <tt><b>fx(i,j)</b></tt> is the x component of the vector field at point
+          <tt><b>(x(i),y(j))</b></tt>.</li>
+<li>
+<tt><b>fy</b></tt>: a matrix which describes the y component of the vector field.
+          <tt><b>fy(i,j)</b></tt> is the y component of the vector field at point
+          <tt><b>(x(i),y(j))</b></tt>.</li>
+<li>
+<tt><b>arfact</b></tt>: an optional argument of type real which gives a scale factor
+          for the display of the arrow heads on the plot (default value is
+          1.0).</li>
+<li>
+<tt><b>rect</b></tt>: a vector <tt><b>rect=[xmin,ymin,xmax,ymax]</b></tt> which gives
+          the boundaries of the graphics frame to use.</li>
+<li>
+<tt><b>frameflag</b></tt>: controls the computation of the actual coordinate ranges from
+          the minimal requested values. The associated value should be an
+          integer ranging from 0 to 8.</li>
+<li>
+<tt><b>axesflag</b></tt>: specifies how the axes are drawn. The associated value should
+          be an integer ranging from 0 to 5.</li>
+<li>
+<tt><b>strf</b></tt>: a string of length 3 "xyz" which has the same meaning as the
+          <tt><b>strf</b></tt> parameter of <tt><b>plot2d</b></tt>. The first
+          character x has no effect with <tt><b>champ1</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>champ1</b></tt> draws a 2D vector field with colored arrows. The
+    color of the arrows depends on the intensity of the field.</p>
+<p>If you want arrows proportional to the intensity of the field, use
+    <tt><b>champ</b></tt>.</p>
+<p>Enter the command <tt><b>champ1()</b></tt> to see a demo.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+champ1(-5:5,-5:5,rand(11,11),rand(11,11),rect=[-10,-10,10,10],arfact=2)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/champ.htm"><tt><b>champ</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/fchamp.htm"><tt><b>fchamp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

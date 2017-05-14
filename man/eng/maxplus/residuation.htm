@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>residuation</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Operator  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>residuation</b> -   maxplus residuation operation  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>A\B  </tt></dd>
+<dd><tt>A/B  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+    : maxplus scalar or maxplus matrix
+  </li>
+<li>
+<tt><b>B  </b></tt>
+    : maxplus scalar or maxplus matrix 
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Residuation. 
+  </p>
+<p>
+    Computes the largest X such that <tt><b> A X &lt;= B</b></tt>
+    [resp. <tt><b> X A X &lt;= B</b></tt> ] where A X is the
+    maxplus matrix product of A by X.
+  </p>
+<p>
+     For A and B finite scalars, A/B= A\\B = B-A.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+a=#(1);b=#(2); a\b
+a=#([1,2;3,4]); a\a
+b=#([1;2]); a\b
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/star.htm"><tt><b>star</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

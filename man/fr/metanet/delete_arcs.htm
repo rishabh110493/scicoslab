@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>delete_arcs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>delete_arcs</b> -  détruit tous les arcs ou arêtes reliant un ensemble de sommets  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g1 = delete_arcs(ij,g)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>ij  </b></tt>
+    : matrice d'entiers (numéros des sommets)
+</li>
+<li>
+<tt><b>g  </b></tt>
+    : graphe (liste)
+</li>
+<li>
+<tt><b>g1  </b></tt>
+    : nouveau graphe (liste)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Si <tt><b>g</b></tt> est un graphe orienté,
+    <tt><b>delete_arcs</b></tt> renvoie le graphe <tt><b>g1</b></tt> avec les arcs définis par la matrice <tt><b>ij</b></tt> ayant été détruits.
+    <tt><b>ij</b></tt> doit être une matrice n x 2 contenant les numéros des sommets : les n arcs à détruire sont définis par les couples de sommets (<tt><b>ij(i,1)</b></tt>, <tt><b>ij(i,2)</b></tt>).
+  </p>
+<p>
+    Si <tt><b>g</b></tt> est un graphe non-orienté, les arêtes correspondant à la matrice <tt><b>ij</b></tt> sont détruites.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+ta=[1 1 2 2 2 3 4 5 5 7 8 8 9 10 10 10 10 10 11 12 13 13 13 14 15 16 16 17 17];
+he=[2 10 3 5 7 4 2 4 6 8 6 9 7 7 11 13 13 15 12 13 9 10 14 11 16 1 17 14 15];
+g=make_graph('foo',1,17,ta,he);
+g('node_x')=[283 163 63 57 164 164 273 271 339 384 504 513 439 623 631 757 642];
+g('node_y')=[59 133 223 318 227 319 221 324 432 141 209 319 428 443 187 151 301];
+show_graph(g);
+ij=[13 10;8 6;5 4;4 2];
+gt=delete_arcs(ij,g);
+show_graph(gt,'new');
+g('directed')=0;
+gt=delete_arcs(ij,g);
+show_graph(gt,'new');
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/add_edge.htm"><tt><b>add_edge</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/add_node.htm"><tt><b>add_node</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/metanet/delete_nodes.htm"><tt><b>delete_nodes</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

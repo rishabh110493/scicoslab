@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>twinkle</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>twinkle</b> -  is used to have a graphics entity twinkle</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>twinkle(h,[n]) </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>h</b></tt>: handle of a graphics entity.</li>
+<li>
+<tt><b>n</b></tt>: integer.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>twinkle</b></tt> let the graphics entity given by its handle <tt><b>h</b></tt> twinkle. It can be used to
+    find the graphics object corresponding to a graphics handle in the graphics window. By default the graphics
+    entity twinkles 5 times, but you can change this by using optional argument <tt><b>n</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=linspace(-2*%pi,2*%pi,100)';
+plot2d(x,[sin(x),cos(x)]);
+e=gce(); p1=e.children(1); p2=e.children(2);
+// cos plot twinkle
+twinkle(p1)
+// sin plot twinkle 10 times
+twinkle(p2,10)
+// axes twinkle
+twinkle(gca())
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/graphics_entities.htm"><tt><b>graphics_entities</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

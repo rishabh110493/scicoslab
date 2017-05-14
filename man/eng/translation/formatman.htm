@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>formatman</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>formatman</b> -  translates old NROFF man files in a directory into ascii, tex, html or xml</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>formatman(path [,to])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>path</b></tt>: character string, giving the path of the directory</li>
+<li>
+<tt><b>to</b></tt>: character string with possible values "ascii", "tex", "html", "xml"</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function, not yet fully checked, formats old help files (*.man) of a given
+    directory, written
+    in a subset of NROFF, to ascii, tex, html or xml.
+  </p>
+<p>
+    NOTE: this function is obsolete and MUST ONLY be used to translate old
+    NROFF help files into new XML help files.
+  </p>
+<p>
+    Known NROFF directives are .TH, .SH, .TP, .RS, .RE, .LP, .IG,
+     .nf, .fi, .TS, .TE, .ft, .IP
+  </p>
+<p>
+    Font handling like
+  </p>
+<pre>
+
+, , , , ,  ]
+   
+    </pre>
+<p>
+    are ignored
+  </p>
+<dl>
+<dd>
+<b>ascii</b>mode generates a .cat file for each .man file and a whatis file</dd>
+<dd>
+<b>tex</b>mode generates a .tex file for each .man file and a whatis.tex file</dd>
+<dd>
+<b>html</b>mode generates a .html file for each .man file and a index.html file</dd>
+<dd>
+<b>xml</b>mode generates a .xml file for each .man file</dd>
+</dl>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/help.htm"><tt><b>help</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/man.htm"><tt><b>man</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

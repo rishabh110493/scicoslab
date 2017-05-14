@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>numdiff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>numdiff</b> -  numerical gradient estimation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>g=numdiff(fun,x [,dx])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>fun</b></tt>: an external, Scilab function or list. See below for calling sequence, see also external for details about external functions.</li>
+<li>
+<tt><b>x</b></tt>: vector, the argument of the function  <tt><b>fun</b></tt>
+</li>
+<li>
+<tt><b>dx</b></tt>: vector, the finite difference step. Default value is  <tt><b>dx=sqrt(%eps)*(1+1d-3*abs(x))</b></tt>
+</li>
+<li>
+<tt><b>g</b></tt>: vector, the estimated gradient</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    given a function <tt><b>fun(x)</b></tt> from R^n to R^p
+    computes the matrix <tt><b>g</b></tt> such as</p>
+<pre>
+
+    [   d f    ]
+    [      i   ]
+g = [   ----   ]
+ ij [   d x    ]
+    [      j   ]
+   
+    </pre>
+<p>
+     using finite difference methods.</p>
+<p>
+    The function fun calling sequence must be <tt><b>y=fun(x,p1,p2,..pn)</b></tt>.If
+    parameters <tt><b>p1,p2,..pn</b></tt> exist then <tt><b>numdiff</b></tt> can be called as
+    follow g=numdiff(list(fun,p1,p2,..pn),x).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+function  f=myfun(x,y,z,t)
+f=(x+y)^t+z
+endfunction
+
+y=3;z=4;t=2;
+g=numdiff(list(myfun,3,4,2),1)
+
+x=1;
+exact=t*(x+y)^(t-1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/nonlinear/optim.htm"><tt><b>optim</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

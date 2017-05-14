@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>basename</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>basename</b> -  strip directory and suffix from filenames</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>files= basename(files[,flag [,flagexpand]])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>files</b></tt>: a string matrix giving a set of file names.</li>
+<li>
+<tt><b>flag,flagexpand</b></tt>: boolean optional parameters. (default value <tt><b>%t</b></tt>).</li>
+<li>
+<tt><b>files</b></tt>: a string matrix.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>basename</b></tt> return the basename of the file entries given in files.</p>
+<p>
+    If <tt><b>flag</b></tt> is true the files are first converted to the target 
+    type given by the <tt><b>MSDOS</b></tt> variable. 
+    Moreover, if <tt><b>flagexpand</b></tt> is true leading strings like
+    <tt><b>HOME</b></tt>, <tt><b>SCI</b></tt> or <tt><b>~</b></tt> are expanded using environment
+    variables.</p>
+<p>
+    Note that <tt><b>basename(files,%f)</b></tt> can give erroneous results if 
+    pathnames given in files do not follow the convention 
+    given by the <tt><b>MSDOS</b></tt> variable.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+files=basename('SCI/macros/util/poo.sci')
+files=basename('SCI/macros\util/poo.sci')
+files=basename('SCI/macros\util/poo.sci.k')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/listfiles.htm"><tt><b>listfiles</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/utilities/pathconvert.htm"><tt><b>pathconvert</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

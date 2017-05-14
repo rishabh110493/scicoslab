@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>findobj</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>findobj</b> -  find an object with specified property</p>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>prop</b></tt>: string character Name of the property to test (case unsensitive).</li>
+<li>
+<tt><b>value</b></tt>: string character specify the value the tested propoerty should be equal to (case sensitive).</li>
+<li>
+<tt><b>h</b></tt>: handle of the found object.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This routine is currently used to find objects knowing their 'tag'
+    property.  It returns handle of the first found object which property
+    'prop' is equal to 'value'. If such an object does not exist, the
+    function returns an empty matrix.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+h=figure();
+// creates  figure number 1.
+uicontrol( h, 'style','text', ...
+ 'string','This is a figure', ...
+ 'position',[50 70 100 100], ...
+ 'fontsize',15, ...
+ 'tag','Alabel');
+// put a  text in figure 1
+lab=findobj('tag','Alabel');
+// find the object which 'tag' value is 'Alabel'
+disp('the handle of the label is '+string(lab));
+close();
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/uicontrol.htm"><tt><b>uicontrol</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/tksci/uimenu.htm"><tt><b>uimenu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/set.htm"><tt><b>set</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/get.htm"><tt><b>get</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>Bertrand Guiheneuf</p>
+</body>
+</html>

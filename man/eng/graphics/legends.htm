@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>legends</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>legends</b> -  draw graph legend</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>legends(strings,style [,opt, with_box])  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>strings</b></tt>: n vector of strings, strings(i) is the legend of the ith curve</li>
+<li>
+<tt><b>style</b></tt>: integer row vector of size n (the plot styles, third parameter of plot2d) or an integer 2 x n matrix, style(1,k) contains the plot style for the kth curve and style(2,k) contains the line style (if style(1,k)&gt;0) or mark color (if style(1,k)&lt;0).</li>
+<li>
+<tt><b>opt</b></tt>: (optional) specify where to draw the legends; this parameter may be a integer
+                flag (or equivalently a string flag) or a vector [x,y] which gives the coordinates 
+                of the upper left corner of the legend box. In the first case the possible values
+                are:<ul>
+<li>
+<tt><b>1 or "ur"</b></tt> the legends are drawn in the upper right-hand corner.</li>
+<li>
+<tt><b>2 or "ul"</b></tt> the legends are drawn in the upper left-hand corner.</li>
+<li>
+<tt><b>3 or "ll"</b></tt> the legends are drawn in the lower left-hand corner.</li>
+<li>
+<tt><b>4 or "lr"</b></tt> the legends are drawn in the lower right-hand corner.</li>
+<li>
+<tt><b>5 or "?"</b></tt> interactive placement with the mouse  (default).</li>
+</ul>
+</li>
+<li>
+<tt><b>with_box</b></tt>: a boolean (default value %t) which sets ot not the drawing of the box.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Puts a legend on the current plot using the specified strings as
+    labels.</p>
+<p>
+    In the interactive placement (opt=5 or opt="?") move the legend box with the
+    mouse and press the left button to release it.</p>
+<p>
+    This function allows more flexible placement of the legends than the
+    leg plot2d argument.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+t=0:0.1:2*%pi;
+plot2d(t,[cos(t'),cos(2*t'),cos(3*t')],[-1,2 3]);  
+legends(['cos(t)';'cos(2*t)';'cos(3*t)'],[-1,2 3],opt="lr")
+xset("line style",2);plot2d(t,cos(t),style=5);
+xset("line style",4);plot2d(t,sin(t),style=3);
+legends(["sin(t)";"cos(t)"],[[5;2],[3;4]], with_box=%f, opt="?")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xstring.htm"><tt><b>xstring</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xtitle.htm"><tt><b>xtitle</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

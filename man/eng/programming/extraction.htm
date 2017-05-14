@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>extraction</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>extraction</b> -  matrix and list entry extraction</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>x(i,j)  </tt></dd>
+<dd><tt>x(i)  </tt></dd>
+<dd><tt>[...]=l(i)  </tt></dd>
+<dd><tt>[...]=l(k1)...(kn)(i) or [...]=l(list(k1,...,kn,i))  </tt></dd>
+<dd><tt>l(k1)...(kn)(i,j)   or l(list(k1,...,kn,list(i,j))  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: matrix  of any  possible types</li>
+<li>
+<tt><b>l</b></tt>: list variable</li>
+<li>
+<tt><b>i,j</b></tt>: indices</li>
+<li>
+<tt><b>k1,...kn</b></tt>: indices</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>MATRIX CASE</b><tt><b>i</b></tt> and <tt><b>j</b></tt>, can be:</dd>
+<dd>
+<b>-</b>real scalars or vectors or matrices with positive elements.</dd>
+<dd>
+<b>*</b><p><tt><b>r=x(i,j)</b></tt> builds the matrix <tt><b>r</b></tt> such as
+    <tt><b>r(l,k)=x(int(i(l)),int(j(k)))</b></tt> for  <tt><b>l</b></tt>
+    from 1 to <tt><b>size(i,'*')</b></tt> and <tt><b>k</b></tt>
+    from 1 to <tt><b>size(j,'*')</b></tt>.   <tt><b>i</b></tt>
+    (<tt><b>j</b></tt>) Maximum value must be less or equal to
+    <tt><b>size(x,1)</b></tt> (<tt><b>size(x,2)</b></tt>). 
+  </p>
+</dd>
+<dd>
+<b>*</b><p><tt><b>r=x(i)</b></tt> with <tt><b>x</b></tt> a 1x1 matrix builds the
+    matrix <tt><b>r</b></tt> such as
+    <tt><b>r(l,k)=x(int(i(l)),int(i(k)))</b></tt> for  <tt><b>l</b></tt>
+    from 1 to <tt><b>size(i,1)</b></tt> and <tt><b>k</b></tt> from 1 to
+    <tt><b>size(i,2)</b></tt>.   Note that in this case index
+    <tt><b>i</b></tt> is valid only if  all its entries are equal to
+    one. </p>
+</dd>
+<dd>
+<b>*</b><tt><b>r=x(i)</b></tt> with <tt><b>x</b></tt> a row vector builds the
+    row vector <tt><b>r</b></tt> such as <tt><b>r(l)=x(int(i(l)))</b></tt>
+    for <tt><b>l</b></tt> from 1 to <tt><b>size(i,'*')</b></tt><tt><b>i</b></tt>  Maximum value must be less or equal to
+    <tt><b>size(x,'*')</b></tt>.</dd>
+<dd>
+<b>*</b><p><tt><b>r=x(i)</b></tt> with <tt><b>x</b></tt> a matrix with one or more
+    columns builds the column vector <tt><b>r</b></tt> such as
+    <tt><b>r(l)</b></tt> (<tt><b>l</b></tt> from 1 to
+    <tt><b>size(i,'*')</b></tt>) contains the
+    <tt><b>int(i(l))</b></tt> entry of the column vector formed by the
+    concatenation of the <tt><b>x</b></tt>'s columns.
+    <tt><b>i</b></tt>  Maximum value must be less or equal to
+    <tt><b>size(x,'*')</b></tt>. </p>
+</dd>
+<dd>
+<b>-</b>the <tt><b> : </b></tt> symbol which stands for "all elements".</dd>
+<dd>
+<b>*</b><tt><b>r=x(i,:)</b></tt> builds the matrix <tt><b>r</b></tt> such as
+    <tt><b>r(l,k)=x(int(i(l)),k))</b></tt> for  <tt><b>l</b></tt> from 1 to
+    <tt><b>size(i,'*')</b></tt> and <tt><b>k</b></tt> from 1 to
+    <tt><b>size(x,2)</b></tt>
+</dd>
+<dd>
+<b>*</b><tt><b>r=x(:,j)</b></tt> builds the matrix <tt><b>r</b></tt> such as
+    <tt><b>r(l,k)=x(l,int(j(k)))</b></tt> for  <tt><b>l</b></tt> from 1 to
+    <tt><b>size(r,1)</b></tt> and <tt><b>k</b></tt> from 1 to
+    <tt><b>size(j,'*')</b></tt>.</dd>
+<dd>
+<b>*</b><tt><b>r=x(:)</b></tt> builds the column vector <tt><b>r</b></tt> formed
+    by the column concatenations of<tt><b> x</b></tt> columns. It is
+    equivalent to <tt><b>matrix(x,size(x,'*'),1)</b></tt>.</dd>
+<dd>
+<b>-</b>vector of boolean. If an index (<tt><b>i</b></tt>  or <tt><b>j</b></tt>
+    )is a vector of booleans it is interpreted as <tt><b>find(i)</b></tt>
+    or respectively  <tt><b>find(j)</b></tt>
+</dd>
+<dd>
+<b>-</b>a polynomial.  If an index (<tt><b>i</b></tt>  or <tt><b>j</b></tt> )is
+    a vector of polynomials or implicit polynomial vector it is
+    interpreted as <tt><b>horner(i,m)</b></tt> or respectively
+    <tt><b>horner(j,n)</b></tt> where <tt><b>m</b></tt> and <tt><b>n</b></tt>
+    are associated <tt><b>x</b></tt> dimensions.  Even if this feature
+    works for all polynomials, it is recommended to use polynomials in
+    <tt><b>$</b></tt> for readability.</dd>
+<dd>
+<b>LIST OR TLIST CASE</b><p>
+     If they are present the <tt><b>ki</b></tt> give the path to a
+     sub-list entry of <tt><b>l</b></tt> data structure. They allow a
+     recursive extraction without intermediate copies.  The
+     <tt><b>[...]=l(k1)...(kn)(i)</b></tt> and
+     <tt><b>[...]=l(list(k1,...,kn,i))</b></tt> instructions are
+     interpreted as:  <tt><b>lk1   = l(k1)</b></tt><tt><b> ..   = .. </b></tt><tt><b>lkn   = lkn-1(kn)</b></tt><tt><b>[...] = lkn(i)</b></tt>  
+     And the  <tt><b>l(k1)...(kn)(i,j)</b></tt> and
+     <tt><b>l(list(k1,...,kn,list(i,j))</b></tt> instructions are
+     interpreted as:  <tt><b>lk1   = l(k1)</b></tt><tt><b> ..   = ..  </b></tt><tt><b>lkn   = lkn-1(kn)</b></tt><tt><b> lkn(i,j)</b></tt><tt><b>i</b></tt> and <tt><b>j</b></tt>, can be:  When
+     path points on more than one list component the instruction must
+     have as many left hand side arguments as selected components. But
+     if the extraction syntax is used within a function input calling
+     sequence each returned list component is added to the function
+     calling sequence. </p>
+<p>
+    Note that, <tt><b> l(list()</b></tt> is the same as <tt><b> l</b></tt>.
+  </p>
+</dd>
+<dd>
+<b>-</b>real scalar or vector or matrix with positive elements.
+    <tt><b>[r1,...rn]=l(i)</b></tt> extracts the <tt><b>i(k)</b></tt>
+    elements from the list l and store them in <tt><b>rk</b></tt>
+    variables for  <tt><b>k</b></tt> from 1 to
+    <tt><b>size(i,'*')</b></tt>
+</dd>
+<dd>
+<b>-</b>the <tt><b> : </b></tt> symbol which stands for "all elements".</dd>
+<dd>
+<b>-</b>a vector of booleans. If <tt><b>i</b></tt> is a vector of booleans it is interpreted as <tt><b>find(i)</b></tt>.</dd>
+<dd>
+<b>-</b>a polynomial.  If <tt><b>i</b></tt>  is a vector of polynomials or
+    implicit polynomial vector it is interpreted as
+    <tt><b>horner(i,m)</b></tt> where <tt><b>m=size(l)</b></tt>.  Even if
+    this feature works for all polynomials, it is recommended to use
+    polynomials in <tt><b>$</b></tt> for readability.</dd>
+<dd><b>k1,..kn may be :</b></dd>
+<dd>
+<b>-</b>real positive scalar.</dd>
+<dd>
+<b>-</b>a polynomial,interpreted as <tt><b>horner(ki,m)</b></tt> where <tt><b>m</b></tt> is the corresponding sub-list size.</dd>
+<dd><b>- a character string associated with a sub-list entry name.</b></dd>
+</dl>
+<h3><font color="blue">Remarks</font></h3>
+<dl><p>
+    For soft coded matrix types such as rational functions and state
+    space linear systems, <tt><b>x(i)</b></tt> syntax may not be used for
+    vector element extraction due to confusion with list element
+    extraction. <tt><b>x(1,j)</b></tt> or <tt><b>x(i,1)</b></tt> syntax must
+    be used.</p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// MATRIX CASE
+a=[1 2 3;4 5 6]
+a(1,2)
+a([1 1],2)
+a(:,1)
+a(:,3:-1:1)
+a(1)
+a(6)
+a(:)
+a([%t %f %f %t])
+a([%t %f],[2 3])
+a(1:2,$-1)
+a($:-1:1,2)
+a($)
+//
+x='test'
+x([1 1;1 1;1 1])
+//
+b=[1/%s,(%s+1)/(%s-1)]
+b(1,1)
+b(1,$)
+b(2) // the numerator
+// LIST OR TLIST CASE
+l=list(1,'qwerw',%s)
+l(1)
+[a,b]=l([3 2])
+l($)
+x=tlist(l(2:3)) //form a tlist with the last 2 components of l
+//
+dts=list(1,tlist(['x';'a';'b'],10,[2 3]));
+dts(2)('a')
+dts(2)('b')(1,2)
+[a,b]=dts(2)(['a','b'])
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/horner.htm"><tt><b>horner</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/parents.htm"><tt><b>parents</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>playsnd</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>playsnd</b> - sound player facility</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[]=playsnd(y)  </tt></dd>
+<dd><tt>[]=playsnd(y,rate,bits [,command])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>y</b></tt>: A matrix. Each line descibe a channel</li>
+<li>
+<tt><b>fs</b></tt>: real number, sampling frequency (default value is 22050).</li>
+<li>
+<tt><b>bits</b></tt>: real number, number of bits (usually 8 or 16). Unused yet.</li>
+<li>
+<tt><b>command</b></tt>: Only used on Unix systems it gives the name of the command to use for playing sound 
+          (wav) files. The defaut value is <tt><b>play</b></tt>. If set <tt><b>/dev/audio</b></tt> then 
+          a 8 bits mu-law raw sound file is created and send to <tt><b>/dev/audio</b></tt>
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>Plays a multi channel signal given by a Scilab matrix were sound is sampled at rate given by
+    <tt><b>rate</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  // a two channel signal 
+  y=loadwave('SCI/demos/signal/sound/chimes.wav');
+  playsnd(y)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/lin2mu.htm"><tt><b>lin2mu</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/sound/wavread.htm"><tt><b>wavread</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

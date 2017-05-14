@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>waitbar</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>sciGUI toolbox function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>waitbar</b> -  Draw a waitbar</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>winId=waitbar(x)</tt></dd>
+<dd><tt>winId=waitbar(x,mes)</tt></dd>
+<dd><tt>winId=waitbar(mes)</tt></dd>
+<dd><tt>waitbar(x,winId)</tt></dd>
+<dd><tt>waitbar(mes,winId)</tt></dd>
+<dd><tt>waitbar(x,mes,winId)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real, fraction to display.</li>
+<li>
+<tt><b>mes</b></tt>: string, message to display.</li>
+<li>
+<tt><b>winId</b></tt>: integer greater than 0, window identificator.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>waitbar(x)</b></tt> create a new waitbar displaying a fraction x, return window identificator.</p>
+<p><tt><b>waitbar(x,mes)</b></tt> create a new waitbar displaying a fraction x and message mes, return window identificator.</p>
+<p><tt><b>waitbar(mes)</b></tt> create a new waitbar displaying a fraction 0 and message mes, return window identificator.</p>
+<p><tt><b>waitbar(x,mes)</b></tt> create a new waitbar displaying a fraction 0 and message mes, return window identificator.</p>
+<p><tt><b>waitbar(x,winId)</b></tt>, <tt><b>waitbar(mes,winId)</b></tt> and <tt><b>waitbar(x,mes,winId)</b></tt> update waitbar with window identificator winId.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+winId=waitbar('This is an example');
+realtimeinit(0.3);
+for j=0:0.1:1,
+    realtime(3*j);
+    waitbar(j,winId);
+end
+winclose(winId);
+</pre>
+<h3><font color="blue">Author</font></h3>
+<p>Jaime Urzua</p>
+</body>
+</html>

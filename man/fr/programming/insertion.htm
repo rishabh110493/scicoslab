@@ -1,0 +1,274 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>insertionaffectation</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>insertion</b> -  insertion/modification dans une
+    variable  </p>
+<p><b>affectation</b> -  affectation partielle d'une variable  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>x(i,j)=a  </tt></dd>
+<dd><tt>x(i)=a  </tt></dd>
+<dd><tt>l(i)=a  </tt></dd>
+<dd><tt>l(k1)...(kn)(i)=a ou l(list(k1,...,kn,i))=a  </tt></dd>
+<dd><tt>l(k1)...(kn)(i,j)=a ou l(list(k1,...,kn,list(i,j))=a  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x  </b></tt>
+	    : matrice de tout type
+	  </li>
+<li>
+<tt><b>l  </b></tt>
+	    : liste
+	  </li>
+<li>
+<tt><b>i,j  </b></tt>
+	    : indices
+	  </li>
+<li>
+<tt><b>k1,...kn  </b></tt>
+	    : indices à valeurs entières
+	  </li>
+<li>
+<tt><b>a  </b></tt>
+	    : nouvelles valeurs des termes
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>CAS DES MATRICES</b><p></p>Si  <tt><b>x</b></tt> est un tableau <tt><b>i</b></tt> et <tt><b>j</b></tt> peuvent être :<dl>
+<dd>
+<b>Des scalaires, vecteurs ou matrices</b>Dans ce cas les parties entieres des valeurs données en
+	      indices doivent être strictement positives. Seule la prtie
+	      entière est prise e, compte.<dl>
+<dd>
+<b></b>
+		  Si <tt><b>a</b></tt> est une matrice de dimensions
+		  <tt><b>(size(i,'*'),size(j,'*'))</b></tt><tt><b>x(i,j)=a</b></tt> renvoie une nouvelle matrice
+		  <tt><b>x</b></tt> telle que <tt><b>x(int(i(l)),int(j(k)))=a(l,k)
+		  </b></tt> pour <tt><b>l</b></tt> variant de 1 à
+		  <tt><b>size(i,'*')</b></tt> et <tt><b>k</b></tt> variant de
+		  1 à <tt><b>size(j,'*')</b></tt>, les autres composantes
+
+		  initiales de <tt><b>x</b></tt> sont inchangées.</dd>
+<dd>
+<b></b>Si <tt><b>a</b></tt> est un scalaire
+		  <tt><b>x(i,j)=a</b></tt> renvoie une nouvelle matrice
+		  <tt><b>x</b></tt> telle que <tt><b>x(int(i(l)),int(j(k)))=a </b></tt>
+		  pour <tt><b>l</b></tt> variant de 1 à
+		  <tt><b>size(i,'*')</b></tt> et <tt><b>k</b></tt> variant de
+		  1 à <tt><b>size(j,'*')</b></tt>, les autres composantes
+		  initiales de <tt><b>x</b></tt> sont inchangées.</dd>
+<dd>
+<b></b>Si la valeur maximum de <tt><b>i</b></tt> ou
+		  <tt><b>j</b></tt> dépasse la dimension correspondante de
+		  <tt><b>x</b></tt>, alors <tt><b>x</b></tt> est au préalable agrandie
+		  aux dimensions adéquates en stockant des zéros pour les matrices
+		  standard, des chaînes vides pour les matrices de chaînes de
+		  caractères ou la valeur %F pour les matrices booléennes.
+		</dd>
+<dd>
+<b></b><tt><b>x(i,j)=[]</b></tt> détruit les lignes
+		  spécifiées par <tt><b>i</b></tt> si <tt><b>j</b></tt> désigne toutes
+		  les colonnes de <tt><b>x</b></tt> ou détruit les colonnes
+		  spécifiées par <tt><b>j</b></tt> si <tt><b>i</b></tt> désigne toutes
+		  les lignes de <tt><b>x</b></tt>. Dans tous les autres cas
+		  <tt><b>x(i,j)=[]</b></tt> produit une erreur.
+		</dd>
+<dd>
+<b></b><tt><b>x(i)=a</b></tt> où <tt><b>a</b></tt> est un
+		  vecteur renvoie une nouvelle matrice <tt><b>x</b></tt> telle que
+		  <tt><b>x(int(i(l)))=a(l)</b></tt> pour <tt><b>l</b></tt> variant de 1
+		  à <tt><b>size(i,'*')</b></tt> , les autres composantes
+		  initiales de <tt><b>x</b></tt> sont inchangées.
+		</dd>
+<dd>
+<b></b><tt><b>x(i)=a</b></tt> où <tt><b>a</b></tt> est un
+		  scalaire, renvoie une nouvelle matrice <tt><b>x</b></tt> telle que
+		  <tt><b>x(int(i(l)))=a</b></tt> pour <tt><b>l</b></tt> variant de 1 à
+		  <tt><b>size(i,'*')</b></tt> , les autres composantes
+		  initiales de <tt><b>x</b></tt> sont inchangées.
+		<p>
+		  Si la valeur maximum de <tt><b>i</b></tt> dépasse
+		  <tt><b>size(x,1)</b></tt>, <tt><b>x</b></tt> est au préalable agrandie
+		  aux dimensions adéquates en stockant des zéros pour les matrices
+		  standard, des chaînes vides pour les matrices de chaînes de
+		  caractères ou la valeur %F pour les matrices booléennes.
+		</p>
+<dl>
+<dd>
+<b>Si</b><tt><b>x</b></tt> est une matrice 1 x 1 <tt><b>a</b></tt> peut
+		      être un vecteur ligne (resp. colonne) de dimension
+		      <tt><b>size(i,'*')</b></tt>. La matrice
+		      <tt><b>x</b></tt> obtenue est un vecteur ligne
+		      (resp. colonne)
+		    </dd>
+<dd>
+<b>Si</b><tt><b>x</b></tt> est un vecteur
+		      ligne (resp. colonne) <tt><b>a</b></tt> doit être un vecteur
+		      ligne (resp. colonne) de dimension
+		      <tt><b>size(i,'*')</b></tt>
+</dd>
+<dd>
+<b>Si</b><tt><b>x</b></tt> est une matrice
+		      en général <tt><b>a</b></tt> doit être un vecteur ligne ou
+		      colonne de dimension <tt><b>size(i,'*')</b></tt> et
+		      la valeur maximum de<tt><b>i</b></tt> ne peut dépasser
+		      <tt><b>size(x,'*')</b></tt>,
+		    </dd>
+</dl>
+</dd>
+<dd>
+<b></b><tt><b>x(i)=[]</b></tt> supprime les termes
+
+
+		  spécifiés par <tt><b>i</b></tt>.  </dd>
+</dl>
+</dd>
+<dd>
+<b>Le : symbole</b>
+	      Le symbole <tt><b> : </b></tt> signifiant "tous les éléments". <dl>
+<dd>
+<b></b><tt><b>x(i,:)=a</b></tt> est interprété comme
+
+		  <tt><b>x(i,1:size(x,2))=a</b></tt>
+</dd>
+<dd>
+<b></b><tt><b>x(:,j)=a</b></tt> est interprété comme
+		  <tt><b>x(1:size(x,1),j)=a</b></tt>
+</dd>
+<dd>
+<b></b><tt><b>x(:)=a</b></tt> renvoie dans
+		  <tt><b>x</b></tt> la matrice <tt><b>a</b></tt> remise en forme en
+		  accord avec les dimensions de
+		  x. <tt><b>size(x,'*')</b></tt> doit être égal
+		  à<tt><b>size(a,'*')</b></tt>
+</dd>
+</dl>
+</dd>
+<dd>
+<b>Vecteurs de booléens</b>  Si un indice
+	      
+	      (<tt><b>i</b></tt> ou <tt><b>j</b></tt> ) est un vecteur de booléens, il
+	      est interprété comme <tt><b>find(i)</b></tt> ou <tt><b>find(j)</b></tt>,
+	      respectivement.</dd>
+<dd>
+<b>Polynomes</b>Si un indice (<tt><b>i</b></tt> ou
+	      <tt><b>j</b></tt> ) est un vecteur de polynômes ou de polynômes
+	      implicites, il est interprété comme <tt><b>horner(i,m)</b></tt> ou
+	      <tt><b>horner(j,n)</b></tt>, respectivement, où <tt><b>m</b></tt> et
+	      <tt><b>n</b></tt> sont les dimensions de <tt><b>x</b></tt> associées.
+	      Même si cette fonctionnalité marche pour tous les polynômes, il
+	      est recommandé d'utiliser des polynômes dans <tt><b>$</b></tt>
+	      par souci de lisibilité.</dd>
+</dl>
+</dd>
+<dd>
+<b>CAS DES LISTES</b><dl>
+<dd>
+<b></b>
+	      S'ils sont présents les <tt><b>ki</b></tt> donnent le chemin
+	      vers un terme d'une sous-liste de la liste
+	      <tt><b>l</b></tt>. Ils permettent de faire une insertion récursive
+	      directe sans utiliser de variable intermédiaire.  Les instructions
+	      <tt><b>l(k1)...(kn)(i)=a</b></tt> et
+	      <tt><b>l(list(k1,...,kn,i)=a)</b></tt> sont interprétées comme :<p><tt><b>lk1 = l(k1)</b></tt><tt><b> ..  = ..  </b></tt></p>
+<p><tt><b>lkn =   lkn-1(kn)</b></tt></p>
+<p><tt><b>lkn(i) = a</b></tt><tt><b>lkn-1(kn) =lkn</b></tt><tt><b> ..  = ..</b></tt></p>les instructions<tt><b>l(k1)...(kn)(i,j)=a</b></tt> et
+	      <tt><b>l(list(k1,...,kn,list(i,j))=a</b></tt> sont interprétées
+	      comme:<p><tt><b>lk1 = l(k1)</b></tt><tt><b> ..  = ..  </b></tt></p>
+<p><tt><b>lkn =lkn-1(kn)</b></tt><tt><b>lkn(i,j) = a</b></tt></p>
+<p><tt><b>lkn-1(kn) = lkn</b></tt><tt><b> ..  = ..  </b></tt></p>
+<p><tt><b>l(k1) = lk1</b></tt></p>
+</dd>
+<dd>
+<b></b><tt><b>i</b></tt> peut être :<dl>
+<dd>
+<b></b>un scalaire réel positif
+		  <tt><b>l(0)=a</b></tt> ajoute un terme "à gauche"
+		  de la liste <tt><b>l(i)=a</b></tt> affecte <tt><b>a</b></tt> au
+		  terme <tt><b>i</b></tt> de la liste <tt><b>l</b></tt>. Si
+		  <tt><b>i&gt;size(l)</b></tt>, <tt><b>l</b></tt> est
+		  préalablement agrandie et les termes créés sont de type
+		  non-défini.  <tt><b>l(i)=null()</b></tt> supprime le terme
+		  <tt><b>i</b></tt>th de la liste.</dd>
+<dd>
+<b></b>un polynôme. Si <tt><b>i</b></tt> est un
+		  
+		  vecteur de polynômes ou de polynômes implicites il est
+		  interprété comme <tt><b>horner(i,m)</b></tt> où
+		  <tt><b>m=size(l)</b></tt>. Même si cette fonctionnalité marche
+		  pour tous les polynômes, il est recommandé d'utiliser
+		  des polynômes dans <tt><b>$</b></tt> par souci de lisibilité.</dd>
+</dl>
+</dd>
+<dd>
+<b></b><tt><b>k1,..kn</b></tt> peuvent être :<dl>
+<dd>
+<b></b>un polynôme, interprété comme
+		  <tt><b>horner(ki,m)</b></tt> ou <tt><b>m</b></tt> est la taille de
+		  la sous-liste correspondante.</dd>
+<dd>
+<b></b>une chaîne de caractères associée à un nom
+		  
+		  d'entrée de sous-liste.</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<h3><font color="blue">Remarque</font></h3>
+<dl><p>
+      Pour les matrices rationnelles et les systèmes dynamiques
+      linéaires stockés sous forme de représentation d'état, la
+      syntaxe <tt><b>x(i)</b></tt> ne doit pas être utilisée pour
+      l'insertion des éléments d'un vecteur, à cause de la
+      confusion possible avec l'insertion des éléments de liste. La
+      syntaxe <tt><b>x(1,j)</b></tt> où <tt><b>x(i,1)</b></tt> doit être
+      utilisée dans ce cas.
+    </p></dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    // CAS DES MATRICES
+    a=[1 2 3;4 5 6]
+    a(1,2)=10
+    a([1 1],2)=[-1;-2]
+    a(:,1)=[8;5]
+    a(1,3:-1:1)=[77 44 99]
+    a(1)=%s
+    a(6)=%s+1
+    a(:)=1:6
+    a([%t %f],1)=33
+    a(1:2,$-1)=[2;4]
+    a($:-1:1,1)=[8;7]
+    a($)=123
+    //
+    x='test'
+    x([4 5])=['4','5']
+    //
+    b=[1/%s,(%s+1)/(%s-1)]
+    b(1,1)=0
+    b(1,$)=b(1,$)+1
+    b(2)=[1 2] // le numérateur
+    // CAS des LISTES (types LIST et TLIST)
+    l=list(1,'qwerw',%s)
+    l(1)='Changed'
+    l(0)='Added'
+    l(6)=['one more';'added']
+    //
+    //
+    dts=list(1,tlist(['x';'a';'b'],10,[2 3]));
+    dts(2)('a')=33
+    dts(2)('b')(1,2)=-100
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/find.htm"><tt><b>find</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/horner.htm"><tt><b>horner</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/parents.htm"><tt><b>parents</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/extraction.htm"><tt><b>extraction</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

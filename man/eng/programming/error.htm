@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>error</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>error</b> -  error messages</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>error(message [,n])  </tt></dd>
+<dd><tt>error(n)  </tt></dd>
+<dd><tt>error(n,pos)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>message</b></tt>: a character string. The error message to be displayed.</li>
+<li>
+<tt><b>n</b></tt>: an integer. The number associated with the error message</li>
+<li>
+<tt><b>pos</b></tt>: an integer. a parameter for the error message</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>error</b></tt> function allow to issue an error message and to
+      handle the error. By defaut <tt><b>error</b></tt> stops the current
+      execution and resume to the prompt level. This default can be changed
+      using the <tt><b>errcatch</b></tt> or <tt><b>execstr(...,'errcatch')</b></tt> functions.</p>
+<p><tt><b>error(message)</b></tt> prints the character string contained in
+      <tt><b>message</b></tt>. The number associated with the error message is
+      10000 </p>
+<p><tt><b>error(message,n)</b></tt> prints the character string contained in
+      <tt><b>message</b></tt>. The number associated with the error message is
+      given by <tt><b>n</b></tt>. This number should be greater than 10000. </p>
+<p><tt><b>error(n)</b></tt> prints the predefined error message associated with
+      the error number <tt><b>n</b></tt>. </p>
+<p>Some predefined error messages  require a parameter (see
+      <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/error_table.htm"><tt><b>error_table</b></tt></a>). In this case the <tt><b>pos</b></tt> 
+      argument must be used <tt><b>error(n,pos)</b></tt> to give the parameter
+      value. In the other cases the <tt><b>pos</b></tt>  argument is ignored.</p>
+<p> see <a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/error_table.htm"><tt><b>error_table</b></tt></a> for a list of error messages and the
+      associated error numbers.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+error('my error message')
+error(43)
+error(52,3)
+
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/fileio/warning.htm"><tt><b>warning</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/errcatch.htm"><tt><b>errcatch</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/execstr.htm"><tt><b>execstr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/lasterror.htm"><tt><b>lasterror</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

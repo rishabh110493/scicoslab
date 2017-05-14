@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>struct</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>struct</b> - create a struct</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>st=struct(field1,value1,field2,value2...)</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>field1, field2, ..</b></tt>: strings represents the fields names</li>
+<li>
+<tt><b>value1, value2, ..</b></tt>: all data type (double, char, int, ...), represents the fields
+          values</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>This function returns a struct with the fields names
+    <tt><b>fields1</b></tt>, <tt><b>field2</b></tt>, ..., and the fields values
+    corresponding <tt><b>value1</b></tt>, <tt><b>value2</b></tt>, ...</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>// create a struct date
+date=struct('day',25,'month' ,'DEC','year',2006)
+//change the month
+date.month='AUG';
+// change the year
+date.year=1973;
+//change the day
+date.day=19;
+// add a new field
+date.semaine=32
+
+
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/mtlb/cell.htm"><tt><b>cell</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

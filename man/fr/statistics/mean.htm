@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mean</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mean</b> -  mean (row mean, column mean) of vector/matrix entries</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=mean(x)  </tt></dd>
+<dd><tt>y=mean(x,'r')  </tt></dd>
+<dd><tt>y=mean(x,'c')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: real vector or matrix</li>
+<li>
+<tt><b>y</b></tt>: scalar or vector</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    For a vector or a matrix <tt><b>x</b></tt>, <tt><b>y=mean(x)</b></tt>  returns in the
+    scalar <tt><b>y</b></tt> the mean of all the entries of <tt><b>x</b></tt>.</p>
+<p><tt><b>y=mean(x,'r')</b></tt> (or, equivalently, <tt><b>y=mean(x,1)</b></tt>) is the
+    rowwise mean. It returns a row vector:
+     <tt><b>y(j)= mean(x(:,j))</b></tt></p>
+<p><tt><b>y=mean(x,'c')</b></tt> (or, equivalently, <tt><b>y=mean(x,2)</b></tt>) is the
+    columnwise mean. It returns a column  vector: <tt><b>y(i)= mean(x(i,:))</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=[1,2,10;7,7.1,7.01];
+mean(A)
+mean(A,'r')
+mean(A,'c')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sum.htm"><tt><b>sum</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/median.htm"><tt><b>median</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/statistics/st_deviation.htm"><tt><b>st_deviation</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

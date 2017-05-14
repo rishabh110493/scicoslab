@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>determ</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>determ</b> -  déterminant d'une matrice de polynômes  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>res=determ(W [,k])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>W  </b></tt>
+    : matrice réelle de polynômes
+</li>
+<li>
+<tt><b>k  </b></tt>
+    : entier (borne supérieure pour le degré du déterminant de W)
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>res=determ(W [,k])</b></tt> renvoie le déterminant d'une
+    matrice réelle de polynômes (calculs fait par FFT si la taille de W
+    est supérieure à 2*2).
+  </p>
+<p><tt><b>k</b></tt> est un entier plus grand que le degré effectif du
+    déterminant.  de <tt><b>W</b></tt>.
+  </p>
+<p>
+    La valeur par défaut de <tt><b>k</b></tt> est la plus petite
+    puissance de 2 plus grande que <tt><b>n*maxi(degree(W))</b></tt>.
+  </p>
+<p>
+    Méthode (pour les matrices dont la taille est supérieure à 2*2) : évaluation du déterminant de <tt><b>W</b></tt> aux
+    fréquences de Fourier et FFT inverse appliquée aux coefficients du
+    déterminant.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+s=poly(0,'s');
+w=s*rand(10,10);
+determ(w)
+det(coeff(w,1))*s^10
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/det.htm"><tt><b>det</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/detr.htm"><tt><b>detr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/coffg.htm"><tt><b>coffg</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque  </p>
+</body>
+</html>

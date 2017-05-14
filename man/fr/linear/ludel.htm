@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ludel</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>ludel</b> -  libération de la mémoire allouée à des facteurs LU creux  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>ludel(hand)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>hand  </b></tt>
+    : pointeur vers des facteurs L,U creux déjà calculés (sortie de lufact)
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Cette fonction est à utiliser conjointement avec <tt><b>lufact</b></tt>. Elle libère la mémoire allouée pour le stockage des facteurs L,U creux renvoyés par <tt><b>lufact</b></tt>.
+  </p>
+<p>
+    La suite de commandes <tt><b>[p,r]=lufact(A);x=lusolve(p,b);ludel(p);</b></tt>
+    résout le système linéaire creux <tt><b>A*x = b</b></tt> et libère les facteurs creux dont <tt><b>p</b></tt> est le pointeur.
+  </p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/sparse.htm"><tt><b>sparse</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/lufact.htm"><tt><b>lufact</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/luget.htm"><tt><b>luget</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

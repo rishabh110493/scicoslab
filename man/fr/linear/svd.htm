@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>svd </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>svd </b> -   décomposition en valeurs singulières  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>s=svd(X)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X,0) (obsolete)  </tt></dd>
+<dd><tt>[U,S,V]=svd(X,"e")</tt></dd>
+<dd><tt>[U,S,V,rk]=svd(X [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X  </b></tt>
+	    : matrice réelle ou complexe
+	  </li>
+<li>
+<tt><b>s  </b></tt>
+	    : vecteur réel (valeurs singulières)
+	  </li>
+<li>
+<tt><b>S  </b></tt>
+	    : matrice réelle diagonale (valeurs singulières sur la diagonale)
+	  </li>
+<li>
+<tt><b>U,V  </b></tt>
+	    : matrices carrées unitaires (vecteurs singuliers).
+	  </li>
+<li>
+<tt><b>tol  </b></tt>
+	    : nombre réel positif
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[U,S,V]=svd(X)</b></tt> renvoie une matrice diagonale <tt><b>S</b></tt>, de même
+      dimension que <tt><b>X</b></tt> avec des éléments diagonaux positifs classés
+      par ordre décroissant, ainsi que deux matrices unitaires <tt><b>U</b></tt>
+      et <tt><b>V</b></tt> telles que 
+      <tt><b>X = U*S*V'</b></tt>.<tt><b>[U,S,V]=svd(X,"e")</b></tt>
+      renvoie la décomposition réduite : si <tt><b>X</b></tt> est une
+      matrice <tt><b>m x n </b></tt> et que <tt><b>m &gt; n </b></tt> alors
+      seulement les n premières colonnes de <tt><b>U</b></tt> sont
+      calculées et <tt><b>S</b></tt> est <tt><b>n x n </b></tt>.
+    </p>
+<p><tt><b>s=svd(X)</b></tt> renvoie un vecteur <tt><b>s</b></tt> contenant
+      les valeurs singulières.
+    </p>
+<p><tt><b>[U,S,V,rk]=svd(X [,tol])</b></tt> renvoie de plus
+      <tt><b>rk</b></tt>, le rang "numérique" de <tt><b>X</b></tt>
+      c'est à dire le nombre de valeurs singulières plus grandes
+      que <tt><b>tol</b></tt>.
+    </p>
+<p>
+      La valeur par défaut de <tt><b>tol</b></tt> est la même que pour la fonction <tt><b>rank</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    X=rand(4,2)*rand(2,4)
+    svd(X)
+    sqrt(spec(X*X'))
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/rowcomp.htm"><tt><b>rowcomp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/sva.htm"><tt><b>sva</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/spec.htm"><tt><b>spec</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+    la décomposition svd est basée sur les routines  DGESVD pour les
+    matrices réelles et  ZGESVD pour le cas complexe.
+    </body>
+</html>

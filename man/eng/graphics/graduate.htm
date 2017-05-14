@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>graduate</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>graduate</b> -  pretty axis graduations</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[xi,xa,np]=graduate( xmi, xma,n1,n2)   </tt></dd>
+<dd><tt>[xi,xa,np]=graduate( xmi, xma)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xmi,xma</b></tt>: real scalars</li>
+<li>
+<tt><b>n1, n2</b></tt>: integers with default values 3,10</li>
+<li>
+<tt><b>xi, xa</b></tt>:real scalars</li>
+<li>
+<tt><b>np</b></tt>: integer</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    graduate looks for the minimum interval <tt><b>[xi,xa]</b></tt> and a number of tics 
+    <tt><b>np</b></tt> such that:</p>
+<p><tt><b>xi &lt;= xmi &lt;= xma &lt;= xa</b></tt></p>
+<p><tt><b>xa - xi / np  =  k(10^n)</b></tt>,<tt><b>k</b></tt> in <tt><b>[1 3 5]</b></tt>  for an integer <tt><b>n</b></tt></p>
+<p><tt><b>n1 &lt; np &lt; n2</b></tt></p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+  y=(0:0.33:145.78)';
+  xbasc();plot2d1('enn',0,y)
+  [ymn,ymx,np]=graduate(mini(y),maxi(y))
+  rect=[1,ymn,prod(size(y)),ymx];
+  xbasc();plot2d1('enn',0,y,1,'011',' ',rect,[10,3,10,np])
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>S. Steer 1992;   </p>
+</body>
+</html>

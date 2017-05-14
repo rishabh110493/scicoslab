@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>zeros</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zeros</b> -  matrice nulle  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=zeros(m1,m2,...)  </tt></dd>
+<dd><tt>y=zeros(x)  </tt></dd>
+<dd><tt>y=zeros()  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x,y  </b></tt>
+    : matrices
+</li>
+<li>
+<tt><b>m1, m2,..  </b></tt>
+    : entiers
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Renvoie une matrice dont tous les termes sont nuls.
+  </p>
+<dl>
+<dd>
+<b>zeros(m1,m2)</b>Renvoie une matrice nulle de taille <tt><b>(m1,m2)</b></tt>.</dd>
+<dd>
+<b>zeros(m1,m2,..,mn)</b>: renvoie une matrice nulle de taille <tt><b>(m1,m2,..,mn)</b></tt>.</dd>
+<dd>
+<b>zeros(x)</b>: renvoie une matrice nulle de même taille que <tt><b>x</b></tt>.</dd>
+<dd>
+<b>zeros(x)</b>est aussi valide si <tt><b>x</b></tt> est une liste de type <tt><b>syslin</b></tt> (système dynamique linéaire sous forme d'une fonction de transfert ou d'une représentation d'état).</dd>
+</dl>
+<p>
+    Notez que <tt><b>zeros(3)</b></tt> est équivalent à <tt><b>zeros(a)</b></tt> avec <tt><b>a=3</b></tt> et donc n'est PAS une matrice 3x3 !
+  </p>
+<p>
+    zeros() est équivalent à zeros(1,1).
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+zeros(3)
+zeros(3,3)
+zeros(2,3,2)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/eye.htm"><tt><b>eye</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/ones.htm"><tt><b>ones</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/elementary/spzeros.htm"><tt><b>spzeros</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

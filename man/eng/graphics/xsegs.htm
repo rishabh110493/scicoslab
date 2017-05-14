@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xsegs</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xsegs</b> - draw unconnected
+  segments</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xsegs(xv,yv,[style])</tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xv,yv</b></tt>: matrices of the same size.</li>
+<li>
+<tt><b>style</b></tt>: vector or scalar. If <tt><b>style</b></tt> is a positive scalar,
+          it gives the color to use for all segments. If <tt><b>style</b></tt> is
+          a negative scalar, then current color is used. If <tt><b>style</b></tt>
+          is a vector, then <tt><b>style(i)</b></tt> gives the color to use for
+          segment <tt><b>i</b></tt>.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xsegs</b></tt> draws a set of unconnected segments given by
+    <tt><b>xv</b></tt> and <tt><b>yv</b></tt>. If <tt><b>xv</b></tt> and
+    <tt><b>yv</b></tt> are matrices they are considered as vectors by
+    concatenating their columns. The coordinates of the two points defining a
+    segment are given by two consecutive values of <tt><b>xv</b></tt> and
+    <tt><b>yv</b></tt>:</p>
+<p><tt><b>(xv(i),yv(i))--&gt;(xv(i+1),yv(i+1))</b></tt>.</p>
+<p>For instance, using matrices of size (2,n), the segments can be defined
+    by:</p>
+<pre>xv=[xi_1 xi_2 ...; xf_1 xf_2 ...] yv=[yi_1 yi_2 ...; yf_1 yf_2
+    ...]</pre>
+<p>and the segments are <tt><b>(xi_k,yi_k)--&gt;(xf_k,yf_k)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=2*%pi*(0:9)/10;
+xv=[sin(x);9*sin(x)];
+yv=[cos(x);9*cos(x)];
+plot2d([-10,10],[-10,10],[-1,-1],"022")
+xsegs(xv,yv,1:10)
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.</p>
+</body>
+</html>

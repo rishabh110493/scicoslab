@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>bezout</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>bezout</b> -  Bezout equation for polynomials or integers</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[thegcd,U]=bezout(p1,p2)   </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>p1, p2</b></tt>: two real polynomials or two integer scalars (type equal to 8)</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>[thegcd,U]=bezout(p1,p2)</b></tt> computes GCD <tt><b>thegcd</b></tt> of <tt><b>p1</b></tt> and <tt><b>p2</b></tt> and in addition a (2x2) 
+    unimodular matrix <tt><b>U</b></tt> such that:</p>
+<p><tt><b>[p1,p2]*U = [thegcd,0]</b></tt></p>
+<p>
+    The lcm of <tt><b>p1</b></tt> and <tt><b>p2</b></tt> is given by:</p>
+<p><tt><b>p1*U(1,2)</b></tt> (or <tt><b>-p2*U(2,2)</b></tt>)</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+// polynomial case
+x=poly(0,'x');
+p1=(x+1)*(x-3)^5;p2=(x-2)*(x-3)^3;
+[thegcd,U]=bezout(p1,p2) 
+det(U)
+clean([p1,p2]*U)
+thelcm=p1*U(1,2)
+lcm([p1,p2])
+// integer case
+i1=int32(2*3^5); i2=int32(2^3*3^2);
+[thegcd,U]=bezout(i1,i2) 
+V=int32([2^2*3^5, 2^3*3^2,2^2*3^4*5]);
+[thegcd,U]=gcd(V)
+V*U
+lcm(V)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/roots.htm"><tt><b>roots</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/simp.htm"><tt><b>simp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/clean.htm"><tt><b>clean</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/lcm.htm"><tt><b>lcm</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p> S. Steer INRIA</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>xarrows</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xarrows</b> -  dessine un ensemble de flèches  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xarrows(nx,ny,[arsize,style])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>nx,ny  </b></tt>
+    : valeurs réelles ou matrices de même taille.
+</li>
+<li>
+<tt><b>arsize  </b></tt>
+    : réel, taille des têtes des flèches. La valeur par défaut peut être obtenue  en prenant arsize = -1.
+</li>
+<li>
+<tt><b>style  </b></tt>
+    : matrice ou scalaire. Si <tt><b>style</b></tt> est positif il donne la couleur de ligne pour toutes les flèches. S'il est négatif  la couleur courante est utilisé. S'il est un vecteur, <tt><b>style(i)</b></tt> donne la couleur pour la flèche <tt><b>i</b></tt>.
+</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xarrows</b></tt> dessine un ensemble de flèches données par <tt><b>nx</b></tt> et <tt><b>ny</b></tt>.
+    Si <tt><b>nx</b></tt> et <tt><b>ny</b></tt> sont des vecteurs,
+    la flèche numéro i est définie par
+    <tt><b>(nx(i),ny(i))--&gt;(nx(i+1),ny(i+1))</b></tt>.
+    Si <tt><b>nx</b></tt> et <tt><b>ny</b></tt> sont des matrices :
+  </p>
+<pre>
+nx=[xi_1 x1_2 ...; xf_1 xf_2 ...]
+ny=[yi_1 y1_2 ...; yf_1 yf_2 ...]
+   </pre>
+<p>
+    la flèche numéro <tt><b>k</b></tt> est définie par <tt><b>(xi_k,yi_k)--&gt;(xf_k,yf_k)</b></tt>.
+  </p>
+<p><tt><b>xarrows</b></tt> utilise l'échelle graphique courante, qui peut être définie par appel préalable d'une fonction graphique de haut niveau comme <tt><b>plot2d</b></tt>.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=2*%pi*(0:9)/8;
+x1=[sin(x);9*sin(x)];
+y1=[cos(x);9*cos(x)];
+plot2d([-10,10],[-10,10],[-1,-1],"022")
+xset("clipgrf")
+xarrows(x1,y1,1,1:10)
+xset("clipoff")
+ </pre>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>

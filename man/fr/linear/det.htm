@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>det </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>det </b> -  déterminant  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>det(X)  </tt></dd>
+<dd><tt>[e,m]=det(X)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>X  </b></tt>
+	    : matrice réelle, complexe, polynomiale, rationnelle
+	  </li>
+<li>
+<tt><b>m  </b></tt>
+	    : nombre réel ou complexe, mantisse du déterminant en base 10
+	  </li>
+<li>
+<tt><b>e  </b></tt>
+	    : entier, exposant du déterminant en base 10 
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>det(X)</b></tt> ( <tt><b>m*10^e</b></tt> est le déterminant de la matrice carrée <tt><b>X</b></tt>.
+    </p>
+<p>
+      Pour les matrices polynomiales <tt><b>det(X)</b></tt> est équivalent à <tt><b>determ(X)</b></tt>.
+    </p>
+<p>
+      Pour les matrices rationnelles <tt><b>det(X)</b></tt> est équivalent à <tt><b>detr(X)</b></tt>.
+    </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    x=poly(0,'x');
+    det([x,1+x;2-x,x^2])
+    w=ssrand(2,2,4);roots(det(systmat(w))),trzeros(w)   // zéros du système linéaire
+    A=rand(3,3);
+    det(A), prod(spec(A))
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/detr.htm"><tt><b>detr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/polynomials/determ.htm"><tt><b>determ</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+      Le calcul du determinant est basé sur les routines Lapack :
+      DGETRF pour les matrices réelles et  ZGETRF pour le cas complexe.
+    </p>
+</body>
+</html>

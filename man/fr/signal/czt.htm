@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>czt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>czt</b> -  chirp z-transform algorithm</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[czx]=czt(x,m,w,phi,a,theta)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: input data sequence</li>
+<li>
+<tt><b>m</b></tt>: czt is evaluated at <tt><b>m</b></tt> points in z-plane</li>
+<li>
+<tt><b>w</b></tt>: magnitude multiplier</li>
+<li>
+<tt><b>phi</b></tt>: phase increment</li>
+<li>
+<tt><b>a</b></tt>: initial magnitude</li>
+<li>
+<tt><b>theta</b></tt>: initial phase</li>
+<li>
+<tt><b>czx</b></tt>: chirp z-transform output</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    chirp z-transform algorithm which calcultes the z-transform on a
+    spiral in the z-plane at the points
+    <tt><b>[a*exp(j*theta)][w^kexp(j*k*phi)] </b></tt> for
+    <tt><b>k=0,1,...,m-1</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+a=.7*exp(%i*%pi/6);
+[ffr,bds]=xgetech(); //preserve current context
+rect=[-1.2,-1.2*sqrt(2),1.2,1.2*sqrt(2)];
+t=2*%pi*(0:179)/179;xsetech([0,0,0.5,1]);
+plot2d(sin(t)',cos(t)',[2],"012",' ',rect)
+plot2d([0 real(a)]',[0 imag(a)]',[3],"000")
+xsegs([-1.0,0;1.0,0],[0,-1.0;0,1.0])
+w0=.93*exp(-%i*%pi/15);w=exp(-(0:9)*log(w0));z=a*w;
+zr=real(z);zi=imag(z);
+plot2d(zr',zi',[5],"000")
+xsetech([0.5,0,0.5,1]);
+plot2d(sin(t)',cos(t)',[2],"012",' ',rect)
+plot2d([0 real(a)]',[0 imag(a)]',[-1],"000")
+xsegs([-1.0,0;1.0,0],[0,-1.0;0,1.0])
+w0=w0/(.93*.93);w=exp(-(0:9)*log(w0));z=a*w;
+zr=real(z);zi=imag(z);
+plot2d(zr',zi',[5],"000")
+xsetech(ffr,bds); //restore context
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p>C. Bunks</p>
+</body>
+</html>

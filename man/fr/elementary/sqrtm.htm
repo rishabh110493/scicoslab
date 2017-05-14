@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>sqrtm</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sqrtm</b> -  racine carrée matricielle  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>y=sqrtm(x)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>x  </b></tt>
+    : matrice carrée réelle ou complexe
+</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>y=sqrt(x)</b></tt> est la racine carrée matricielle de la matrice <tt><b>x</b></tt> (<tt><b>x=y^2</b></tt>)
+    Le résultat peut être imprécis si <tt><b>x</b></tt> n'est pas symétrique.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+x=[0 1;2 4]
+w=sqrtm(x); 
+norm(w*w-x)
+x(1,2)=%i;
+w=sqrtm(x);norm(w*w-x,1)
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/expm.htm"><tt><b>expm</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/sqroot.htm"><tt><b>sqroot</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

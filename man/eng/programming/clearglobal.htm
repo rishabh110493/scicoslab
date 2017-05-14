@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>clearglobal</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>clearglobal</b> -  kills global variables</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>clearglobal()  </tt></dd>
+<dd><tt>clearglobal nam1 .. namn</tt></dd>
+<dd><tt>clearglobal('nam1', ..,'namn')  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li>
+<tt><b>nam1,..., namn</b></tt>: valid variable names</li></ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>clearglobal() </b></tt> kills all the global variables.</p>
+<p><tt><b>clearglobal nam1 .. namn</b></tt>  kills  the global variables given by
+    their names</p>
+<p>
+    Note that <tt><b>clearglobal() </b></tt> only clears the global variables, the
+    local copies of these global variables are not destroyed.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+global a b c
+a=1;b=2;c=3;
+who('global')
+clearglobal b
+who('global')
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/global.htm"><tt><b>global</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/programming/who.htm"><tt><b>who</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

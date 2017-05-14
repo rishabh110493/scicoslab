@@ -1,0 +1,127 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>spec</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>spec</b> -  valeurs propres d'une matrice  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>evals=spec(A)  </tt></dd>
+<dd><tt>[X,diagevals]=spec(A)  </tt></dd>
+<dd><tt></tt></dd>
+<dd><tt>evals=spec(A,E)  </tt></dd>
+<dd><tt>[al,be]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be,Z]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be]=spec(A,E)  </tt></dd>
+<dd><tt>[al,be,Q,Z]=spec(A,E)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A  </b></tt>
+	    : matrice carrée réelle ou complexe
+	  </li>
+<li>
+<tt><b>E  </b></tt>
+	    : matrice carrée réelle ou complexe de même dimensions que  <tt><b> A</b></tt>
+</li>
+<li>
+<tt><b>evals  </b></tt>
+	    : vecteur réel ou complexe
+	  </li>
+<li>
+<tt><b>diagevals  </b></tt>
+	    :  matrice carrée diagonale réelle ou complexe (les éléments
+	    diagonaux sont les valeurs propres)
+	  </li>
+<li>
+<tt><b>al  </b></tt>
+	    : vecteur réel ou complexe, al./be donnes les valeurs propres
+	  </li>
+<li>
+<tt><b>be  </b></tt>
+	    : vecteur réel ou complexe, al./be donnes les valeurs propres
+	  </li>
+<li>
+<tt><b>X  </b></tt>
+	    : matrice carrée inversible réelle ou complexe, matrices des
+	    vecteurs propres.
+	  </li>
+<li>
+<tt><b>Q  </b></tt>
+	    : matrice carrée inversible réelle ou complexe, matrices des
+	    vecteurs propres à gauche.
+	  </li>
+<li>
+<tt><b>Z  </b></tt>
+	    : atrice carrée inversible réelle ou complexe, matrices des
+	    vecteurs propres à droite.
+	  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<dl>
+<dd>
+<b>spec(A)</b>
+	  : <tt><b> evals=spec(A)</b></tt>  retourne dans le vecteur
+	  <tt><b>evals</b></tt> les valeurs propres de <tt><b>A</b></tt>.
+	<p><tt><b> [evals,X] =spec(A)</b></tt> retourne de plus les vecteurs
+	  propres (s'ils existent). Voir aussi <tt><b>bdiag</b></tt></p>
+</dd>
+<dd>
+<b>spec(A,B)</b>
+	  : <tt><b>evals=spec(A,E)</b></tt> retourne le  spectre du faisceau
+	  <tt><b>s E - A</b></tt>, c'est à dire les racines du déterminant de
+	  la matrice de polynômes <tt><b>s E - A</b></tt>.
+	<p><tt><b>[al,be] = spec(A,E)</b></tt> retourne le  spectre du faisceau
+	  <tt><b>s E - A</b></tt>, c'est à dire les racines du déterminant de
+	  la matrice de polynômes <tt><b>s E - A</b></tt>. Les valeurs propres
+	  sont données par <tt><b>al./be</b></tt>. Si <tt><b>be(i) = 0</b></tt> la
+	  <tt><b>i</b></tt>ième valeur propres est à l'infini. (Pour <tt><b>E =
+	    eye(A), al./be</b></tt> est <tt><b>spec(A)</b></tt>).
+	</p>
+<p><tt><b> [al,be,Z] = spec(A,E)</b></tt> retourne de plus la matrice
+	  <tt><b>Z</b></tt> des vecteurs propres généralisés à droite.
+	</p>
+<p><tt><b> [al,be,Q,Z] = spec(A,E)</b></tt> retourne de plus les matrices
+	  <tt><b>Q</b></tt> et <tt><b>Z</b></tt> des vecteurs propres généralisés à
+	  droite et à gauche.
+      </p>
+</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+    // MATRIX EIGENVALUES
+    A=diag([1,2,3]);X=rand(3,3);A=inv(X)*A*X;
+    spec(A)
+    //
+    x=poly(0,'x');
+    pol=det(x*eye()-A)
+    roots(pol)
+    //
+    [S,X]=bdiag(A);
+    clean(inv(X)*A*X)
+
+    // PENCIL EIGENVALUES
+    A=rand(3,3);
+    [al,be,Z] = spec(A,eye(A));al./be
+    clean(inv(Z)*A*Z)  //displaying the eigenvalues (generic matrix)
+    A=A+%i*rand(A);E=rand(A);
+    roots(det(%s*E-A))   //complex case
+
+    </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/programming/poly.htm"><tt><b>poly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/det.htm"><tt><b>det</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/gspec.htm"><tt><b>gspec</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/schur.htm"><tt><b>schur</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/bdiag.htm"><tt><b>bdiag</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/fr/linear/colcomp.htm"><tt><b>colcomp</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p>
+      Le calcul des valeurs propres des matrices est basé sur les
+      routines Lapack DGEEV and ZGEEV.
+    </p>
+<p>
+      Le calcul des valeurs propres des matrices est basé sur les
+      routines Lapack DGEEV and ZGEEV.
+    </p>
+</body>
+</html>

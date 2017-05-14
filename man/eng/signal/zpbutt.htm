@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>zpbutt</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zpbutt</b> -  Butterworth analog filter</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[pols,gain]=zpbutt(n,omegac)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>n</b></tt>: integer (filter order)</li>
+<li>
+<tt><b>omegac</b></tt>: real (cut-off frequency in Hertz)</li>
+<li>
+<tt><b>pols</b></tt>: resulting poles of filter</li>
+<li>
+<tt><b>gain</b></tt>: resulting gain of filter</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    computes the poles of a Butterworth analog
+    filter of order <tt><b>n</b></tt> and cutoff frequency omegac
+    transfer function H(s) is calculated by <tt><b>H(s)=gain/real(poly(pols,'s'))</b></tt></p>
+<h3><font color="blue">Author</font></h3>
+<p>F. Delebecque INRIA</p>
+</body>
+</html>

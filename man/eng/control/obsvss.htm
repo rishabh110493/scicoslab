@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>obsvss</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>obsvss</b> -  observable part</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>[Ao,Bo,Co]=obsvss(A,B,C [,tol])  </tt></dd>
+<dd><tt>[slo]=obsvss(sl [,tol])  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A,B,C,Ao,Bo,Co</b></tt>: real matrices</li>
+<li>
+<tt><b>sl,slo</b></tt>: <tt><b>syslin</b></tt> lists</li>
+<li>
+<tt><b>tol</b></tt>: real (threshold) (default value <tt><b>100*%eps</b></tt>)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>slo=(Ao,Bo,Co)</b></tt> is the observable part of linear system <tt><b>sl=(A,B,C)</b></tt> (<tt><b>syslin</b></tt> list)</p>
+<p><tt><b>tol</b></tt>  threshold to test controllability (see <tt><b>contr</b></tt>); 
+    default value = <tt><b>100*%eps</b></tt></p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contr.htm"><tt><b>contr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/contrss.htm"><tt><b>contrss</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obsv_mat.htm"><tt><b>obsv_mat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/obs_gram.htm"><tt><b>obs_gram</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

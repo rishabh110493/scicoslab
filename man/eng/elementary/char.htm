@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>char</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>char</b> - char function</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>y=char( x)</tt></dd>
+<dd><tt>y=char(st1,st2,st3,....)</tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: a cell of strings arrays, or an array of ascii codes</li>
+<li>
+<tt><b>st1,st2,st3</b></tt>: strings arrays</li>
+<li>
+<tt><b>y:</b></tt>a strings vector(column)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<tt><b>One input argument :</b></tt><p>Given <tt><b>a cell of strings arrays x</b></tt>, this function returns a
+    strings vector <tt><b>y </b></tt>in which the rows are the components of the
+    strings cell</p>
+<p>Given <tt><b>an array of ascii codes x,</b></tt> this function returns a
+    strings array <tt><b>y</b></tt> corresponding into ascii codes. If dims
+    (<tt><b>x</b></tt>)=[n1,n2,n3,n4,....],then returned value have same size as
+    input value instead of second dims, dims(<tt><b>y</b></tt>)=[n1,n3,n4,..]</p>
+<tt><b>More than one input argument :</b></tt><p>Given <tt><b>strings arrays</b></tt><tt><b>st1,st2,st3,...</b></tt>, this
+    function returns a vector of strings in which the rows are the components
+    of <tt><b>st1,st2,st3,... </b></tt><tt>In the vector </tt><tt><b>y </b></tt>the
+    length of all strings sti is completed by blanks, to have the same length
+    than the lengthmax of sti.//</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>//Example with a hypermatrix of ascii codes :
+x=hypermat([4,2,3],61:84);
+y=char(x)
+size(x)
+size(y)
+
+//Example with more than one argument :
+st1="zeros";
+st2=["one","two"];
+st3=["three"];
+y=char(st1,st2,st3)
+size(y)
+//all strings rows are completed by 'blanks' to have the same length : 6
+length(y)
+
+</pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/mtlb/asciimat.htm"><tt><b>asciimat</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.B</p>
+</body>
+</html>

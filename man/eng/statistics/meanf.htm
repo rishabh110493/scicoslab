@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>meanf</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>meanf</b> -  weighted mean of a vector or a matrix</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>m=meanf(val,fre)  </tt></dd>
+<dd><tt>m=meanf(val,fre,'r') or m=meanf(val,fre,1)  </tt></dd>
+<dd><tt>m=meanf(val,fre,'c') or m=meanf(val,fre,2)  </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul><li><tt><b>? </b></tt></li></ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    This function computes the mean  of a vector or matrix <tt><b> x</b></tt>.
+    For a vector or matrix <tt><b>  x</b></tt>, <tt><b> m=mn(x) </b></tt> returns
+    in scalar <tt><b> m</b></tt>  the mean of  all the entries of <tt><b> x </b></tt>.
+    <tt><b> m=mn(x,'r') </b></tt> (or,  equivalently, <tt><b> m=mn(x,1) </b></tt>)
+    returns in each entry of the row vector <tt><b> m</b></tt> the mean
+    of each column of <tt><b> x</b></tt>.
+    <tt><b> m=mn(x,'c') </b></tt> (or,  equivalently, <tt><b> m=mn(x,2) </b></tt>)
+    returns in  each entry of the column  vector <tt><b> m</b></tt> the
+    mean of each row of <tt><b> x</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[0.2113249 0.0002211 0.6653811;0.7560439 0.3303271 0.6283918]
+m=meanf(x,rand(x))
+m=meanf(x,[10 10 10;1 1 1],'r')
+m=meanf(x,[10 10 10;1 1 1],'c')
+ 
+  </pre>
+<h3><font color="blue">Author</font></h3>
+<p> Carlos Klimann</p>
+<h3><font color="blue">Bibliography</font></h3>
+<p>
+    Wonacott, T.H. &amp; Wonacott, R.J.; Introductory Statistics, fifth edition, J.Wiley &amp; Sons, 1990.</p>
+</body>
+</html>

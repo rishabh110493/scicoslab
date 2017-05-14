@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pinv</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>pinv</b> -  pseudoinverse</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>pinv(A,[tol])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>A</b></tt>: real or complex matrix</li>
+<li>
+<tt><b>tol</b></tt>: real number</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>X = pinv(A)</b></tt> produces a matrix <tt><b>X</b></tt> of the
+    same dimensions as <tt><b>A'</b></tt> such that:</p>
+<p><tt><b>A*X*A = A, X*A*X = X</b></tt>  and both
+    <tt><b>A*X</b></tt> and <tt><b>X*A</b></tt> are Hermitian .</p>
+<p>
+    The computation is  based  on SVD and  any  singular values 
+    lower than a tolerance are treated   as zero: this  tolerance 
+    is accessed by <tt><b>X=pinv(A,tol)</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+A=rand(5,2)*rand(2,4);
+norm(A*pinv(A)*A-A,1)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/rank.htm"><tt><b>rank</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/svd.htm"><tt><b>svd</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/qr.htm"><tt><b>qr</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Used Function</font></h3>
+<p><tt><b>pinv</b></tt> function is  based on the singular value decomposition
+ (Scilab function <tt><b>svd</b></tt>).</p>
+</body>
+</html>

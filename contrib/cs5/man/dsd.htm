@@ -1,0 +1,53 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>DSD </title></head><body bgcolor="FFFFFF"><CENTER>Traffic-toolbox Function  </CENTER><p><b>DSD  -   Disaggregated Simplicial Decomposition algorithm  </b></p><H3><font color="blue">Calling Sequence</font></H3><dl><dd><tt>[F,ta,ben,f]=DSD(net,routemax,nFW,eps,list_eps,list_itemax)  </tt></dd><dd><tt>[F,ta,f]=dsd(net,routemax,nFW,eps,list_eps,list_itemax)  </tt></dd></dl><H3><font color="blue">Parameters</font></H3><ul><ul>
+  <li><tt><b>net  </b></tt>
+    : a NetList
+  </li>
+  <li><tt><b>routemax  </b></tt>
+    : maximum number of general iterations
+  </li>
+  <li><tt><b>nFW  </b></tt>
+    : number of Frank-Wolfe iterations
+  </li>
+  <li><tt><b>eps  </b></tt>
+    : general precision
+  </li>
+  <li><tt><b>list_eps  </b></tt>
+    : array of precisions, Newton method precision, auxiliar precision and linear search precision
+  </li>
+  <li><tt><b>list_itemax  </b></tt>
+    : array of maximum number of iterations, Newton iterations, auxiliar iteration and linear search iteration
+  </li>
+  <li><tt><b>F  </b></tt>
+    : assigned flow
+  </li>
+  <li><tt><b>ta  </b></tt>
+    : link travel time for the assigned flow f
+  </li>
+  <li><tt><b>ben  </b></tt>
+    : ni x 5 matrix (ni number of performed general iterations) benchmark information
+  </li>
+  <li><tt><b>f  </b></tt>
+    : assigned flow disaggregated by commodity 
+  </li>
+ </ul></ul><H3><font color="blue">Description</font></H3><dl>
+  <p>
+     Assigns the flow with the disaggregated simplicial decomposition  algorithm.
+    This algorithm generates at each iteration a new route for each commodity using AON.
+    The traffic is assigned minimizing the total cost over the generated routes using
+    a Newton method.
+    The version DSD shows performance statistics.
+    The version dsd is used mostly inside other algorithms and it does not
+    displays any information.
+  </p>
+  <p>
+    The matrix ben contains intermediary informations on the
+    algorithm. For each iteration it gives the iteration number, time
+    spent, cost, memory used and an convergence error evaluation.
+  </p>
+  <p>
+  </p>
+  </dl><H3><font color="blue">EXAMPLES</font></H3><ul><pre>
+net=TrafficExample("Steenbrink");
+// uses the example net Steenbrink
+[F,ta,ben,f]=DSD(net,20,0,1e-4,[1e-6,1e-7,1e-8],[2,50,100]);
+   </pre></ul><H3><font color="blue">See Also</font></H3><p><ul><a href="AON.htm"><tt><b>AON</b></tt></a>&nbsp;&nbsp;<a href="IAON.htm"><tt><b>IAON</b></tt></a>&nbsp;&nbsp;<a href="CAPRES.htm"><tt><b>CAPRES</b></tt></a>&nbsp;&nbsp;<a href="FW.htm"><tt><b>FW</b></tt></a>&nbsp;&nbsp;<a href="TrafficAssig.htm"><tt><b>TrafficAssig</b></tt></a>&nbsp;&nbsp;</ul></p></body></html>

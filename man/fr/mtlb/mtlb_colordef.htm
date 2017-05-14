@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>mtlb_colordef</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Fonction M2SCI</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>mtlb_colordef</b> - Fonction d'émulation de la fonction Matlab colordef</p>
+<h3><font color="blue">Description</font></h3>
+<p>Il n'y a pas de fonction Scilab équivalente à la fonction Matlab <tt><b>colordef</b></tt> mais il existe 
+    des instructions équivalentes.</p>
+<p>
+    La fonction <tt><b>h = mtlb_colordef(color_option)</b></tt> ou
+    <tt><b>h = mtlb_colordef(fig,color_option)</b></tt> est utilisée par
+    <tt><b>mfile2sci</b></tt> pour remplacer <tt><b>colordef(color_option)</b></tt> ou
+    <tt><b>colordef(fig,color_option)</b></tt> quand il n'était pas
+    possible de savoir ce qu'étaient les paramètres d'entrée pendant la conversion d'un code
+    Matlab vers Scilab. Cette fonction va
+    déterminer la sémantique correcte pendant l'exécution. Pour obtenir un code plus performant
+    on peut remplacer les appels à <tt><b>mtlb_colordef</b></tt> :
+    </p>
+<dl><dd>
+<b></b><dd>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec un paramètre d'entrée, si <tt><b>color_option</b></tt> est égal à "black" ou "none"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig = gcf();fig.background = -1;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec un paramètre d'entrée, si <tt><b>color_option</b></tt> est égal à "white"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig = gcf();fig.background = -2;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux paramètres d'entrée, si <tt><b>fig</b></tt> est un handle graphique et
+	<tt><b>color_option</b></tt> est égal à "black" ou "none"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig.background = -1;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux paramètres d'entrée, si <tt><b>fig</b></tt> est un handle graphique et
+	<tt><b>color_option</b></tt> est égal à "white"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig.background = -2;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux paramètres d'entrée, si <tt><b>fig</b></tt> est égal à "new" et
+	<tt><b>color_option</b></tt> est égal à "black" ou "none"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig = scf(max(winsid())+1);fig.background = -1;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec deux paramètres d'entrée, si <tt><b>fig</b></tt> est égal à "new" et
+	<tt><b>color_option</b></tt> est égal à "white"
+        <tt><b>mtlb_colordef(color_option)</b></tt> peut être remplacé par <tt><b>fig = scf(max(winsid())+1);fig.background = -2;</b></tt>
+</li>
+<li>
+<b><font color="maroon"></font></b>
+        Pour les appels avec un paramètre de sortie <tt><b>h</b></tt>, ajouter <tt><b>h = fig;</b></tt> à la suite des instructions équivalentes.
+        </li>
+</dd>
+</dd></dl>
+<p>Attention : <tt><b>mtlb_colordef</b></tt> ne doit pas être utilisée pour une programmation manuelle.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/fr/graphics/figure_properties.htm"><tt><b>figure_properties</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Authors</font></h3>
+<dl><dd>
+<b></b>V.C.</dd></dl>
+</body>
+</html>

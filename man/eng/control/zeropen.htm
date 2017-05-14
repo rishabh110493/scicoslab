@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>zeropen</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>zeropen</b> -  zero pencil</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[Z,U]=zeropen(Sl)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sl</b></tt>: a linear system (<tt><b>syslin</b></tt> list in state-space form <tt><b>[A,B,C,D]</b></tt>)</li>
+<li>
+<tt><b>Z</b></tt>: matrix pencil <tt><b>Z=s*E-A</b></tt>
+</li>
+<li>
+<tt><b>U</b></tt>: square orthogonal matrix</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>Z = sE - F</b></tt>  is the zero pencil of the linear system <tt><b>Sl</b></tt> with 
+    matrices <tt><b>[A,B,C,D]</b></tt>. Utility function.</p>
+<p>
+    With <tt><b>U</b></tt> row compression of <tt><b>[B;D]</b></tt> i.e, <tt><b>U*[B;D]=[0;*]</b></tt>; one has:</p>
+<pre>
+
+U*[-sI+A |B;   [ Z |0;      
+      C  |D] = [ * |*]
+   
+    </pre>
+<p>
+    The zeros of <tt><b>Z</b></tt> are the zeros of <tt><b>Sl</b></tt>.</p>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/polynomials/systmat.htm"><tt><b>systmat</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/linear/kroneck.htm"><tt><b>kroneck</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

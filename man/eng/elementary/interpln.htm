@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>interpln</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>interpln</b> -  linear interpolation</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[y]=interpln(xyd,x)    </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xyd</b></tt>: 2 row matrix (xy coordinates of points)</li>
+<li>
+<tt><b>x</b></tt>: vector (abscissae)</li>
+<li>
+<tt><b>y</b></tt>: vector (y-axis values)</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    given <tt><b>xyd</b></tt> a set of points in the xy-plane  which increasing abscissae and <tt><b>x</b></tt> a set of abscissae, this function computes <tt><b>y</b></tt> the corresponding
+    y-axis values by linear interpolation.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[1 10 20 30 40];
+y=[1 30 -10 20 40];
+plot2d(x',y',[-3],"011"," ",[-10,-40,50,50]);
+yi=interpln([x;y],-4:45);
+plot2d((-4:45)',yi',[3],"000");
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/splin.htm"><tt><b>splin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/interp.htm"><tt><b>interp</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/smooth.htm"><tt><b>smooth</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

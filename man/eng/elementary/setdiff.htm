@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>setdiff</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>setdiff</b> -  returns components of a vector
+  which do not belong to another one</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>v=setdiff(a,b)  </tt></dd>
+<dd><tt>[v,ka]=setdiff(a,b)  </tt></dd>
+<dd><tt></tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>a</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>b</b></tt>: vector of real numbers or strings</li>
+<li>
+<tt><b>v</b></tt>: vector  of real numbers or strings with same orientation than <tt><b>a</b></tt>
+</li>
+<li>
+<tt><b>ka</b></tt>: row vector  of integers, ka(i) is the location of v(i) in a</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>setdiff(a,b)</b></tt> returns a sorted  vector which retains
+    the <tt><b>a</b></tt> entries which are not in <tt><b>b</b></tt></p>
+<p><tt><b>[v,ka]=setdiff(a,b)</b></tt> returns a sorted  vector which retains
+    the <tt><b>a</b></tt> entries which are not in <tt><b>b</b></tt> and the
+    location of these entries in a.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+ a = [223;111;2;4;2;2];
+ b = [2;3;21;223;123;22];
+ setdiff(a,b)
+ [v,k]=setdiff(string(a),string(b))
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/unique.htm"><tt><b>unique</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/sort.htm"><tt><b>sort</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/elementary/union.htm"><tt><b>union</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

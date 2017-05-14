@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>casc</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>casc</b> -   cascade realization of filter from coefficients</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[cels]=casc(x,z)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>x</b></tt>: (4xN)-matrix where each column is a cascade element, the first two column entries being the numerator coefficients and the second two column entries being the denominator coefficients</li>
+<li>
+<tt><b>z</b></tt>: string representing the cascade variable</li>
+<li>
+<tt><b>cels</b></tt>: resulting cascade representation</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    Creates cascade realization of filter from a matrix of coefficients
+    (utility function).</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[1,2,3;4,5,6;7,8,9;10,11,12]
+cels=casc(x,'z')
+ 
+  </pre>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sysfact</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>sysfact</b> -  system factorization</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[S,Series]=sysfact(Sys,Gain,flag)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>Sys</b></tt>: <tt><b>syslin</b></tt> list containing the matrices <tt><b>[A,B,C,D]</b></tt>.</li>
+<li>
+<tt><b>Gain</b></tt>: real matrix</li>
+<li>
+<tt><b>flag</b></tt>: string <tt><b>'post'</b></tt> or <tt><b>'pre'</b></tt>
+</li>
+<li>
+<tt><b>S</b></tt>: <tt><b>syslin</b></tt> list</li>
+<li>
+<tt><b>Series</b></tt>: <tt><b>syslin</b></tt> list</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    If <tt><b>flag</b></tt> equals <tt><b>'post'</b></tt>, <tt><b>sysfact</b></tt> returns in <tt><b>S</b></tt> the linear 
+    system with ABCD matrices <tt><b>(A+B*Gain, B , Gain, I)</b></tt>, and   <tt><b>Series</b></tt>, 
+    a minimal realization of the series system <tt><b>Sys*S</b></tt>.
+    If <tt><b>flag</b></tt> equals <tt><b>'pre'</b></tt>,  <tt><b>sysfact</b></tt> returns  the linear system
+    <tt><b>(A+Gain*C, Gain , C, I)</b></tt> and <tt><b>Series</b></tt>, a minimal realization of the 
+    series system <tt><b>S*Sys</b></tt>.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+//Kalman filter
+Sys=ssrand(3,2,4);Sys('D')=rand(3,2);
+S=sysfact(Sys,lqr(Sys),'post');
+ww=minss(Sys*S);
+ss2tf(gtild(ww)*ww),Sys('D')'*Sys('D')
+//Kernel
+Sys=ssrand(2,3,4);
+[X,d,F,U,k,Z]=abinv(Sys);
+ss2tf(Sys*Z)
+ss2tf(Sys*sysfact(Sys,F,'post')*U)
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqr.htm"><tt><b>lqr</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/control/lqe.htm"><tt><b>lqe</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>F.D.  </p>
+</body>
+</html>

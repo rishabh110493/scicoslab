@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>plotframe</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center></center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>plotframe</b> - plot a frame with scaling and
+  grids</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl>
+<dd><tt>plotframe(rect,tics,[arg_opt1,arg_opt2,arg_opt3])</tt></dd>
+<dd><tt>plotframe(rect,&lt;opts_args&gt;)
+    </tt></dd>
+</dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>rect</b></tt>: vector <tt><b>[xmin,ymin,xmax,ymax]</b></tt>.</li>
+<li>
+<tt><b>tics</b></tt>: vector <tt><b>[nx,mx,ny,my]</b></tt> where <tt><b>mx, nx</b></tt>
+          (resp. <tt><b>my, ny</b></tt>) are the number of x-axis (resp. y-axis)
+          intervals and subintervals.</li>
+<li>
+<tt><b>arg_optX</b></tt>: optional arguments up to three and choosen among.<ul>
+<li>
+<tt><b>flags</b></tt><p>: vector <tt><b>[wantgrids,findbounds]</b></tt> where
+                <tt><b>wantgrids</b></tt> is a boolean variable (<tt><b>%t</b></tt>
+                or <tt><b>%f</b></tt>) which indicates gridding.
+                <tt><b>findbounds</b></tt> is a boolean variable. If
+                <tt><b>findbounds</b></tt> is <tt><b>%t</b></tt>, the bounds given
+                in <tt><b>rect</b></tt> are allowed to be slightly modified (in
+                fact always increased) in order to have simpler graduations:
+                then <tt><b>tics(2)</b></tt> and <tt><b>tics(4)</b></tt> are
+                ignored.</p>
+</li>
+<li>
+<tt><b>captions</b></tt>: vector of 3 strings <tt><b>[title,x-leg,y-leg]</b></tt>
+                corresponding respectively to the title of the plot and the
+                captions on the x-axis and the y-axis.</li>
+<li>
+<tt><b>subwin</b></tt>: a vector of size 4 defining the sub window. The sub
+                window is specified with the parameter
+                <tt><b>subwin=[x,y,w,h]</b></tt> (upper-left, width, height). The
+                values in <tt><b>subwin</b></tt> are specified using proportion
+                of the width or height of the current graphics window (see
+                <tt><b>xsetech</b></tt>).</li>
+</ul>
+</li>
+<li>
+<tt><b>&lt;opts_args&gt;</b></tt>: This represents a sequence of statements
+          <b>key1=value1</b>,<b> key2=value2</b>,... where <b>key1</b>,
+          <b>key2</b>,... can be one of the following: <b>tics</b>,
+          <b>flags</b>, <b>captions</b> ou <b>subwin</b>. These
+          arguments have the same meaning as the ones used in the first form
+          of the routine.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>plotframe</b></tt> is used with 2D plotting functions
+    <tt><b>plot2d</b></tt>, <tt><b>plot2d1</b></tt>,... to set a graphics frame. It
+    must be used before <tt><b>plot2d</b></tt> which should be invoked with the
+    "000" superposition mode.</p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+x=[-0.3:0.8:27.3]';
+y=rand(x);
+rect=[min(x),min(y),max(x),max(y)];
+tics=[4,10,2,5];    //4 x-intervals and 2 y-intervals
+plotframe(rect,tics,[%f,%f],["My plot","x","y"],[0,0,0.5,0.5])
+plot2d(x,y,2,"000")
+plotframe(rect,tics,[%t,%f],["My plot with grids","x","y"],[0.5,0,0.5,0.5])
+plot2d(x,y,3,"000")
+plotframe(rect,tics,[%t,%t],..
+["My plot with grids and automatic bounds","x","y"],[0,0.5,0.5,0.5])
+plot2d(x,y,4,"000")
+plotframe(rect,flags=[%f,%t],tics=tics,..
+   captions=["My plot without grids but with automatic bounds ","x","y"],..
+   subwin=[0.5,0.5,0.5,0.5])
+plot2d(x,y,5,"000")
+xset("default")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/plot2d.htm"><tt><b>plot2d</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/graduate.htm"><tt><b>graduate</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xsetech.htm"><tt><b>xsetech</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

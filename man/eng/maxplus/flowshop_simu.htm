@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>flowshop_simu </title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Maxplus Function  </center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>flowshop_simu </b> -    maxplus linear system simulation ( flowshop )  </p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>[l,y]=flowshop_simu(s,nm,np,u)  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>s  </b></tt>
+    : dynamic linear maxplus system describing the open-loop flowshop 
+  </li>
+<li>
+<tt><b>nm  </b></tt>
+    : machine numbers
+  </li>
+<li>
+<tt><b>np  </b></tt>
+    : pallet numbers
+  </li>
+<li>
+<tt><b>u  </b></tt>
+    : input history
+  </li>
+<li>
+<tt><b>l  </b></tt>
+    : 1/throughput
+  </li>
+<li>
+<tt><b>y  </b></tt>
+    : "normalized" output trajectories (see explanations below)
+  </li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p>
+    nm is a vector which yields
+    the numbers of machines of each type working in parallel.
+  </p>
+<p>
+    np is a vector which yields the numbers
+    of pallets of each type (parts of each type are carried by specialized
+    pallets).
+  </p>
+<p>
+    flowshop_simu simulates a flowshop viewed as a maxplus linear system.
+  </p>
+<p>
+    The input data u is a matrix, the number of columns being the number of steps
+    in the simulation  (number of events of each type to be produced), the number
+    of rows is the number of inputs (which is equal to the size of nm plus the
+    size of np). An entry of u tells at which date the input (machine or part
+    corresponding to the row number) is made available for the k-th time, k being
+    the column number (event number). 
+  </p>
+<p>
+    l yields the inverse of the throughput.
+  </p>
+<p>
+    The result of the simulation is held by y which
+    is a matrix the columns of which are again numbered according to events
+    whereas the rows are associated with the same resources (parts or machines) as
+    for u. An entry of y is equal to the date at which the corresponding
+    part or machine is delivered or freed minus the drift term (defined
+    as the event number divided by the throughput). This normalisation keeps y
+    bounded and one can identify the transient part and the asymptotic
+    periodic part.
+  </p>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+PT=#([2,1;%0,1;4,%0]);
+s=flowshop(PT);
+u=ones(5,1)*[1:20]; // there are 5 inputs
+[l,y]=flowshop_simu(s,[1,1,1],[2,2],u) //there are 5 outputs
+plot2d(y');
+ </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/flowshop.htm"><tt><b>flowshop</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/mpsyslin.htm"><tt><b>mpsyslin</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/maxplus.htm"><tt><b>maxplus</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/maxplus/flowshop_graph.htm"><tt><b>flowshop_graph</b></tt></a>,&nbsp;&nbsp;</p>
+</body>
+</html>

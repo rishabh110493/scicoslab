@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>xpolys</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center>Scilab Function</center>
+<div align="right">Last update : 29/02/2016</div>
+<p><b>xpolys</b> -  draw a set of polylines or polygons</p>
+<h3><font color="blue">Calling Sequence</font></h3>
+<dl><dd><tt>xpolys(xpols,ypols,[draw])  </tt></dd></dl>
+<h3><font color="blue">Parameters</font></h3>
+<ul>
+<li>
+<tt><b>xpols,ypols</b></tt>: matrices of the same size (p,n) (points of the polylines).</li>
+<li>
+<tt><b>draw</b></tt>: vector of size n.</li>
+</ul>
+<h3><font color="blue">Description</font></h3>
+<p><tt><b>xpolys</b></tt> draws a set of polylinse using marks or dashed lines. 
+    The coordinates of each polyline
+    are stored in a column of <tt><b>xpols</b></tt> and <tt><b>ypols</b></tt>.
+  </p>
+<p>
+    The style of polyline i is given by <tt><b>draw(i)</b></tt>:
+  </p>
+<dl>
+<dd>
+<b>-</b>If <tt><b>draw(i)</b></tt> is negative, the mark with id <tt><b>-draw(i)</b></tt> is used to draw polyline i (marks are drawn using the current pattern). Use <tt><b>xset()</b></tt> to see the meaning of the ids.</dd>
+<dd>
+<b>-</b>If <tt><b>draw(i)</b></tt> is strictly positive, the line style (or color) with id  <tt><b>draw(i)</b></tt> is used to draw polyline i. Use <tt><b>xset()</b></tt> to see the meaning of the ids.</dd>
+</dl>
+<h3><font color="blue">Examples</font></h3>
+<pre>
+
+plot2d(0,0,-1,"012"," ",[0,0,1,1])
+rand("uniform")
+xset("color",3)
+xpolys(rand(3,5),rand(3,5),[-1,-2,0,1,2])
+xset("default")
+ 
+  </pre>
+<h3><font color="blue">See Also</font></h3>
+<p><a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfpoly.htm"><tt><b>xfpoly</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xfpolys.htm"><tt><b>xfpolys</b></tt></a>,&nbsp;&nbsp;<a href="../../../../../../home/jpc/Download/scicoslab/man/eng/graphics/xpoly.htm"><tt><b>xpoly</b></tt></a>,&nbsp;&nbsp;</p>
+<h3><font color="blue">Author</font></h3>
+<p>J.Ph.C.  </p>
+</body>
+</html>
